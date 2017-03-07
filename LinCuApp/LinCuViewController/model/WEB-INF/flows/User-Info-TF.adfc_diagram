@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">ManageUserInfo</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">213.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ManageUserInfo&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">249.24707</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">CreateUserInfo</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">525.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>CreateUserInfo&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">246.19531</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">create</property>
+      <property
+         name="sdm:polyPoints">R50,254.0,248.89648,484.0,245.84473,L50</property>
+   </ControlFlowCase>
+</SDM>

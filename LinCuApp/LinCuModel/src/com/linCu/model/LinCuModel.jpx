@@ -54,4 +54,12 @@
       <Attr Name="_VL" Value="true"/>
     </DesignTime>
   </Containee>
+  <Containee
+    Name="vvo"
+    PackageName="com.linCu.model.vvo"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
 </JboProject>

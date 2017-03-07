@@ -27,3 +27,10 @@ def LastApprovedDate_ExpressionScript_Expression()
 adf.currentDate
 }
 
+
+@TransientValueExpression(attributeName="CreditUnionId")
+def CreditUnionId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("CREDIT_UNIION_ID_SEQ",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

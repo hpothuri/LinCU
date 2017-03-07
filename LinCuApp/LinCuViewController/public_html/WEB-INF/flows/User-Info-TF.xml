@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="User-Info-TF">
+    <default-activity>ManageUserInfo</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="ManageUserInfo"></view>
+    <view id="CreateUserInfo"></view>
+    <control-flow-rule id="__1">
+      <from-activity-id>ManageUserInfo</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>create</from-outcome>
+        <to-activity-id>CreateUserInfo</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

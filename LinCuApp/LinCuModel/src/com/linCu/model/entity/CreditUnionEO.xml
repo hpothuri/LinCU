@@ -19,10 +19,14 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="CREDIT_UNION"
-    PrimaryKey="true">
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="CreditUnionEORow"/>
   </Attribute>
   <Attribute
     Name="CreditUnionCode"
@@ -199,7 +203,7 @@
     TableName="CREDIT_UNION">
     <TransientExpression
       Name="ExpressionScript"
-      trustMode="untrusted"
+      trustMode="trusted"
       CodeSourceName="CreditUnionEORow"/>
   </Attribute>
   <Attribute
@@ -226,7 +230,7 @@
     TableName="CREDIT_UNION">
     <TransientExpression
       Name="ExpressionScript"
-      trustMode="untrusted"
+      trustMode="trusted"
       CodeSourceName="CreditUnionEORow"/>
   </Attribute>
   <Attribute
@@ -264,7 +268,7 @@
     TableName="CREDIT_UNION">
     <TransientExpression
       Name="ExpressionScript"
-      trustMode="untrusted"
+      trustMode="trusted"
       CodeSourceName="CreditUnionEORow"/>
   </Attribute>
   <AccessorAttribute

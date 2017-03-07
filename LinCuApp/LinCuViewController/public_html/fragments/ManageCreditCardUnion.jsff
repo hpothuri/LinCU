@@ -1,20 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
-          xmlns:f="http://java.sun.com/jsf/core">
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="lincuviewcontrollerBundle" value="#{adfBundle['com.linCu.view.LinCuViewControllerBundle']}"/>
   <af:panelGroupLayout layout="vertical" id="pgl1">
-    <af:panelHeader text="CreditUnionEO" id="ph1">
+    <af:panelHeader text="#{lincuviewcontrollerBundle.MANAGE_CREDIT_UNION}" id="ph1">
       <af:query id="qryId1" headerText="Search" disclosed="true"
                 value="#{bindings.QueryCreditCardUnionQuery.queryDescriptor}"
                 model="#{bindings.QueryCreditCardUnionQuery.queryModel}"
                 queryListener="#{bindings.QueryCreditCardUnionQuery.processQuery}"
                 queryOperationListener="#{bindings.QueryCreditCardUnionQuery.processQueryOperation}"
-                resultComponentId="::pc1"/>
+                resultComponentId="::pc1" rows="4" maxColumns="2"/>
     </af:panelHeader>
     <af:panelCollection id="pc1" styleClass="AFStretchWidth">
       <f:facet name="menus"/>
       <f:facet name="toolbar">
         <af:toolbar id="t1">
-          <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+          <af:button actionListener="#{bindings.CreateInsert.execute}"
+                     text="#{lincuviewcontrollerBundle.CREATE_CREDIT_UNION}"
                      disabled="#{!bindings.CreateInsert.enabled}" id="b1" action="create"/>
         </af:toolbar>
       </f:facet>
@@ -25,11 +27,6 @@
                 selectionListener="#{bindings.CreditUnion.collectionModel.makeCurrent}" rowSelection="single"
                 fetchSize="#{bindings.CreditUnion.rangeSize}" id="resId1" partialTriggers="::b1"
                 styleClass="AFStretchWidth">
-        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionId.name}" sortable="true"
-                   headerText="#{bindings.CreditUnion.hints.CreditUnionId.label}" id="resId1c1">
-          <af:outputText value="#{row.CreditUnionId}" shortDesc="#{bindings.CreditUnion.hints.CreditUnionId.tooltip}"
-                         id="ot1"/>
-        </af:column>
         <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionCode.name}" sortable="true"
                    headerText="#{bindings.CreditUnion.hints.CreditUnionCode.label}" id="resId1c2">
           <af:outputText value="#{row.CreditUnionCode}"
@@ -71,12 +68,14 @@
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionCountry.tooltip}" id="ot9"/>
         </af:column>
         <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionPhone1.name}" sortable="true"
-                   headerText="#{bindings.CreditUnion.hints.CreditUnionPhone1.label}" id="resId1c10">
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionPhone1.label}" id="resId1c10" width="120"
+                   minimumWidth="120">
           <af:outputText value="#{row.CreditUnionPhone1}"
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionPhone1.tooltip}" id="ot10"/>
         </af:column>
         <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionPhone2.name}" sortable="true"
-                   headerText="#{bindings.CreditUnion.hints.CreditUnionPhone2.label}" id="resId1c11">
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionPhone2.label}" id="resId1c11" width="120"
+                   minimumWidth="120">
           <af:outputText value="#{row.CreditUnionPhone2}"
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionPhone2.tooltip}" id="ot11"/>
         </af:column>

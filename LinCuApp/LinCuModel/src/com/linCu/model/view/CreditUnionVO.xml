@@ -13,6 +13,28 @@
   CustomQuery="false"
   SelectAllAttributes="false"
   PageIterMode="Full">
+  <ViewAccessor
+    Name="CountryVA"
+    ViewObjectName="com.linCu.model.vvo.CountryVVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_CreditUnionCountry"
+    ListVOName="CountryVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CreditUnionCountry"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CountryId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CountryName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="CreditUnionEO"
     Entity="com.linCu.model.entity.CreditUnionEO"/>
@@ -22,86 +44,198 @@
     PrecisionRule="true"
     EntityAttrName="CreditUnionId"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_ID"/>
+    AliasName="CREDIT_UNION_ID"
+    IsUpdateable="while_insert"/>
   <ViewAttribute
     Name="CreditUnionCode"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreditUnionCode"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_CODE"/>
+    AliasName="CREDIT_UNION_CODE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="UNION_CODE"/>
+        <DISPLAYWIDTH
+          Value="35"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionName"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreditUnionName"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_NAME"/>
+    AliasName="CREDIT_UNION_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="UNION_NAME"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionAddres1"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreditUnionAddres1"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_ADDRES_1"/>
+    AliasName="CREDIT_UNION_ADDRES_1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ADDRESS_LINE1"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionAddres2"
     PrecisionRule="true"
     EntityAttrName="CreditUnionAddres2"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_ADDRES_2"/>
+    AliasName="CREDIT_UNION_ADDRES_2">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ADDRESS_LINE_2"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionAddres3"
     PrecisionRule="true"
     EntityAttrName="CreditUnionAddres3"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_ADDRES_3"/>
+    AliasName="CREDIT_UNION_ADDRES_3">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ADDRESS_LINE3"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionAddres4"
     PrecisionRule="true"
     EntityAttrName="CreditUnionAddres4"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_ADDRES_4"/>
+    AliasName="CREDIT_UNION_ADDRES_4">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ADDRESS_LINE4"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionCity"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreditUnionCity"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_CITY"/>
+    AliasName="CREDIT_UNION_CITY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CITY"/>
+        <DISPLAYWIDTH
+          Value="37"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionCountry"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreditUnionCountry"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_COUNTRY"/>
+    AliasName="CREDIT_UNION_COUNTRY"
+    LOVName="LOV_CreditUnionCountry">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="COUNTRY"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionPhone1"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreditUnionPhone1"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_PHONE_1"/>
+    AliasName="CREDIT_UNION_PHONE_1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="PRIMARY_PHONE_NUMBER"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionPhone2"
     PrecisionRule="true"
     EntityAttrName="CreditUnionPhone2"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_PHONE_2"/>
+    AliasName="CREDIT_UNION_PHONE_2">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ALTERNATE_PHONE_NUMBER"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionFax"
     PrecisionRule="true"
     EntityAttrName="CreditUnionFax"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_FAX"/>
+    AliasName="CREDIT_UNION_FAX">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="FAX"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionEmailId"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreditUnionEmailId"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_EMAIL_ID"/>
+    AliasName="CREDIT_UNION_EMAIL_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="EMAIL"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreatedBy"
     IsNotNull="true"
@@ -109,7 +243,14 @@
     EntityAttrName="CreatedBy"
     EntityUsage="CreditUnionEO"
     AliasName="CREATED_BY"
-    IsUpdateable="false"/>
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CREATED_BY"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreationDate"
     IsNotNull="true"
@@ -117,7 +258,14 @@
     EntityAttrName="CreationDate"
     EntityUsage="CreditUnionEO"
     AliasName="CREATION_DATE"
-    IsUpdateable="false"/>
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CREATED_ON"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdatedBy"
     IsNotNull="true"
@@ -125,7 +273,14 @@
     EntityAttrName="LastUpdatedBy"
     EntityUsage="CreditUnionEO"
     AliasName="LAST_UPDATED_BY"
-    IsUpdateable="false"/>
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="LAST_UPDATED_BY"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdateDate"
     IsNotNull="true"
@@ -133,7 +288,14 @@
     EntityAttrName="LastUpdateDate"
     EntityUsage="CreditUnionEO"
     AliasName="LAST_UPDATE_DATE"
-    IsUpdateable="false"/>
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="LAST_UPDATED_ON"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ObjectVersionId"
     IsNotNull="true"
@@ -169,10 +331,10 @@
           Value="Basic"/>
         <Property
           Name="allowConjunctionOverride"
-          Value="true"/>
+          Value="false"/>
         <Property
           Name="showInList"
-          Value="true"/>
+          Value="false"/>
         <Property
           Name="displayOperators"
           Value="InAdvancedMode"/>
@@ -186,42 +348,48 @@
         ViewAttribute="CreditUnionCode"
         Operator="="
         Conjunction="AND"
-        Value=""
         Required="Optional"/>
       <ViewCriteriaItem
         Name="CreditUnionName"
         ViewAttribute="CreditUnionName"
         Operator="="
         Conjunction="AND"
-        Value=""
         Required="Optional"/>
       <ViewCriteriaItem
         Name="CreditUnionCity"
         ViewAttribute="CreditUnionCity"
         Operator="="
         Conjunction="AND"
-        Value=""
         Required="Optional"/>
       <ViewCriteriaItem
         Name="CreditUnionCountry"
         ViewAttribute="CreditUnionCountry"
         Operator="="
         Conjunction="AND"
-        Value=""
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="CreditUnionPhone1"
+        ViewAttribute="CreditUnionPhone1"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="CreditUnionPhone2"
+        ViewAttribute="CreditUnionPhone2"
+        Operator="="
+        Conjunction="AND"
         Required="Optional"/>
       <ViewCriteriaItem
         Name="CreditUnionFax"
         ViewAttribute="CreditUnionFax"
         Operator="="
         Conjunction="AND"
-        Value=""
         Required="Optional"/>
       <ViewCriteriaItem
         Name="CreditUnionEmailId"
         ViewAttribute="CreditUnionEmailId"
         Operator="="
         Conjunction="AND"
-        Value=""
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
@@ -230,4 +398,8 @@
     ViewLink="com.linCu.model.viewLink.CreditUnionToBranchVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.linCu.model.LinCuModelBundle"/>
+  </ResourceBundle>
 </ViewObject>
