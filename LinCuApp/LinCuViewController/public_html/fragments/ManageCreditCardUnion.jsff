@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout layout="vertical" id="pgl1">
+    <af:panelHeader text="CreditUnionEO" id="ph1">
+      <af:query id="qryId1" headerText="Search" disclosed="true"
+                value="#{bindings.QueryCreditCardUnionQuery.queryDescriptor}"
+                model="#{bindings.QueryCreditCardUnionQuery.queryModel}"
+                queryListener="#{bindings.QueryCreditCardUnionQuery.processQuery}"
+                queryOperationListener="#{bindings.QueryCreditCardUnionQuery.processQueryOperation}"
+                resultComponentId="::pc1"/>
+    </af:panelHeader>
+    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+      <f:facet name="menus"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+          <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                     disabled="#{!bindings.CreateInsert.enabled}" id="b1" action="create"/>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="statusbar"/>
+      <af:table value="#{bindings.CreditUnion.collectionModel}" var="row" rows="#{bindings.CreditUnion.rangeSize}"
+                emptyText="#{bindings.CreditUnion.viewable ? 'No data to display.' : 'Access Denied.'}"
+                rowBandingInterval="0" selectedRowKeys="#{bindings.CreditUnion.collectionModel.selectedRow}"
+                selectionListener="#{bindings.CreditUnion.collectionModel.makeCurrent}" rowSelection="single"
+                fetchSize="#{bindings.CreditUnion.rangeSize}" id="resId1" partialTriggers="::b1"
+                styleClass="AFStretchWidth">
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionId.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionId.label}" id="resId1c1">
+          <af:outputText value="#{row.CreditUnionId}" shortDesc="#{bindings.CreditUnion.hints.CreditUnionId.tooltip}"
+                         id="ot1"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionCode.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionCode.label}" id="resId1c2">
+          <af:outputText value="#{row.CreditUnionCode}"
+                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionCode.tooltip}" id="ot2"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionName.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionName.label}" id="resId1c3">
+          <af:outputText value="#{row.CreditUnionName}"
+                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionName.tooltip}" id="ot3"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionAddres1.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionAddres1.label}" id="resId1c4">
+          <af:outputText value="#{row.CreditUnionAddres1}"
+                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionAddres1.tooltip}" id="ot4"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionAddres2.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionAddres2.label}" id="resId1c5">
+          <af:outputText value="#{row.CreditUnionAddres2}"
+                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionAddres2.tooltip}" id="ot5"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionAddres3.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionAddres3.label}" id="resId1c6">
+          <af:outputText value="#{row.CreditUnionAddres3}"
+                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionAddres3.tooltip}" id="ot6"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionAddres4.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionAddres4.label}" id="resId1c7">
+          <af:outputText value="#{row.CreditUnionAddres4}"
+                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionAddres4.tooltip}" id="ot7"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionCity.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionCity.label}" id="resId1c8">
+          <af:outputText value="#{row.CreditUnionCity}"
+                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionCity.tooltip}" id="ot8"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionCountry.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionCountry.label}" id="resId1c9">
+          <af:outputText value="#{row.CreditUnionCountry}"
+                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionCountry.tooltip}" id="ot9"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionPhone1.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionPhone1.label}" id="resId1c10">
+          <af:outputText value="#{row.CreditUnionPhone1}"
+                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionPhone1.tooltip}" id="ot10"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionPhone2.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionPhone2.label}" id="resId1c11">
+          <af:outputText value="#{row.CreditUnionPhone2}"
+                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionPhone2.tooltip}" id="ot11"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionFax.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionFax.label}" id="resId1c12">
+          <af:outputText value="#{row.CreditUnionFax}" shortDesc="#{bindings.CreditUnion.hints.CreditUnionFax.tooltip}"
+                         id="ot12"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionEmailId.name}" sortable="true"
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionEmailId.label}" id="resId1c13">
+          <af:outputText value="#{row.CreditUnionEmailId}"
+                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionEmailId.tooltip}" id="ot13"/>
+        </af:column>
+      </af:table>
+    </af:panelCollection>
+  </af:panelGroupLayout>
+</jsp:root>

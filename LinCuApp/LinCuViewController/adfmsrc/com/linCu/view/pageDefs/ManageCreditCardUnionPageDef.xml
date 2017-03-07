@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57" id="ManageCreditCardUnionPageDef"
+                Package="com.linCu.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CreditUnion" RangeSize="25" DataControl="LinCuAMDataControl" id="CreditUnionIterator"/>
+    <searchRegion Criteria="QueryCreditCardUnion" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="CreditUnionIterator" id="QueryCreditCardUnionQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CreditUnionIterator" id="CreditUnion">
+      <nodeDefinition DefName="com.linCu.model.view.CreditUnionVO" Name="CreditUnion0">
+        <AttrNames>
+          <Item Value="CreditUnionId"/>
+          <Item Value="CreditUnionCode"/>
+          <Item Value="CreditUnionName"/>
+          <Item Value="CreditUnionAddres1"/>
+          <Item Value="CreditUnionAddres2"/>
+          <Item Value="CreditUnionAddres3"/>
+          <Item Value="CreditUnionAddres4"/>
+          <Item Value="CreditUnionCity"/>
+          <Item Value="CreditUnionCountry"/>
+          <Item Value="CreditUnionPhone1"/>
+          <Item Value="CreditUnionPhone2"/>
+          <Item Value="CreditUnionFax"/>
+          <Item Value="CreditUnionEmailId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CreditUnionIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

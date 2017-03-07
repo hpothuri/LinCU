@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57" id="CreateCreditUnionPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CreditUnion" RangeSize="25" DataControl="LinCuAMDataControl" id="CreditUnionIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionId">
+      <AttrNames>
+        <Item Value="CreditUnionId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionCode">
+      <AttrNames>
+        <Item Value="CreditUnionCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionName">
+      <AttrNames>
+        <Item Value="CreditUnionName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionAddres1">
+      <AttrNames>
+        <Item Value="CreditUnionAddres1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionAddres2">
+      <AttrNames>
+        <Item Value="CreditUnionAddres2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionAddres3">
+      <AttrNames>
+        <Item Value="CreditUnionAddres3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionAddres4">
+      <AttrNames>
+        <Item Value="CreditUnionAddres4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionCity">
+      <AttrNames>
+        <Item Value="CreditUnionCity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionCountry">
+      <AttrNames>
+        <Item Value="CreditUnionCountry"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionPhone1">
+      <AttrNames>
+        <Item Value="CreditUnionPhone1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionPhone2">
+      <AttrNames>
+        <Item Value="CreditUnionPhone2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionFax">
+      <AttrNames>
+        <Item Value="CreditUnionFax"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionEmailId">
+      <AttrNames>
+        <Item Value="CreditUnionEmailId"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="LinCuAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="LinCuAMDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CreditUnionBranchToMemberInfoAssoc"
+  Version="12.2.1.11.57"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="CreditUnionBranchEO"
+    Cardinality="1"
+    Source="true"
+    Owner="com.linCu.model.entity.CreditUnionBranchEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CreditUnionBranchEO"/>
+      <Attr Name="_foreignKey" Value="com.linCu.model.entity.CreditUnionBranchEO.CreditUnionBranchPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.linCu.model.entity.CreditUnionBranchEO.CreditUnionId"/>
+      <Item Value="com.linCu.model.entity.CreditUnionBranchEO.CreditUnionBranchId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="LincuMemberInfoEO"
+    Cardinality="-1"
+    Owner="com.linCu.model.entity.LincuMemberInfoEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="LincuMemberInfoEO"/>
+      <Attr Name="_foreignKey" Value="com.linCu.model.entity.LincuMemberInfoEO.LincuMemberInfoFk1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.linCu.model.entity.LincuMemberInfoEO.CreditUnionId"/>
+      <Item Value="com.linCu.model.entity.LincuMemberInfoEO.CreditUnionBranchId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>
