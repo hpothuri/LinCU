@@ -32,6 +32,8 @@
       <property
          name="y">246.19531</property>
       <property
+         name="page">/CreateUserInfo.jsff</property>
+      <property
          name="exceptionHandler">false</property>
    </View>
    <ControlFlowCase

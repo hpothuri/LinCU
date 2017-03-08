@@ -6,7 +6,9 @@
       <shared/>
     </data-control-scope>
     <view id="ManageUserInfo"></view>
-    <view id="CreateUserInfo"></view>
+    <view id="CreateUserInfo">
+      <page>/CreateUserInfo.jsff</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>ManageUserInfo</from-activity-id>
       <control-flow-case id="__2">

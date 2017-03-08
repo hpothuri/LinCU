@@ -17,14 +17,7 @@
       <f:facet name="menuBar"/>
       <f:facet name="legend"/>
       <f:facet name="info"/>
-      <af:panelFormLayout id="pfl1">
-        <af:inputText value="#{bindings.CreditUnionId.inputValue}" label="#{bindings.CreditUnionId.hints.label}"
-                      required="#{bindings.CreditUnionId.hints.mandatory}"
-                      columns="#{bindings.CreditUnionId.hints.displayWidth}"
-                      maximumLength="#{bindings.CreditUnionId.hints.precision}"
-                      shortDesc="#{bindings.CreditUnionId.hints.tooltip}" id="it1">
-          <f:validator binding="#{bindings.CreditUnionId.validator}"/>
-        </af:inputText>
+      <af:panelFormLayout id="pfl1" maxColumns="2" rows="4">
         <af:inputText value="#{bindings.CreditUnionCode.inputValue}" label="#{bindings.CreditUnionCode.hints.label}"
                       required="#{bindings.CreditUnionCode.hints.mandatory}"
                       columns="#{bindings.CreditUnionCode.hints.displayWidth}"
@@ -78,14 +71,13 @@
                       shortDesc="#{bindings.CreditUnionCity.hints.tooltip}" id="it8">
           <f:validator binding="#{bindings.CreditUnionCity.validator}"/>
         </af:inputText>
-        <af:inputText value="#{bindings.CreditUnionCountry.inputValue}"
-                      label="#{bindings.CreditUnionCountry.hints.label}"
-                      required="#{bindings.CreditUnionCountry.hints.mandatory}"
-                      columns="#{bindings.CreditUnionCountry.hints.displayWidth}"
-                      maximumLength="#{bindings.CreditUnionCountry.hints.precision}"
-                      shortDesc="#{bindings.CreditUnionCountry.hints.tooltip}" id="it9">
+        <af:selectOneChoice value="#{bindings.CreditUnionCountry.inputValue}"
+                            label="#{bindings.CreditUnionCountry.label}"
+                            required="#{bindings.CreditUnionCountry.hints.mandatory}"
+                            shortDesc="#{bindings.CreditUnionCountry.hints.tooltip}" id="soc1">
+          <f:selectItems value="#{bindings.CreditUnionCountry.items}" id="si1"/>
           <f:validator binding="#{bindings.CreditUnionCountry.validator}"/>
-        </af:inputText>
+        </af:selectOneChoice>
         <af:inputText value="#{bindings.CreditUnionPhone1.inputValue}" label="#{bindings.CreditUnionPhone1.hints.label}"
                       required="#{bindings.CreditUnionPhone1.hints.mandatory}"
                       columns="#{bindings.CreditUnionPhone1.hints.displayWidth}"

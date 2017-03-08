@@ -5,8 +5,6 @@
     <f:view>
         <af:document title="TestPage" id="d1">
             <af:form id="f1">
-                <af:outputText value="My First ADF App to Glassfish server" id="ot1"
-                               inlineStyle="color:Red; font-size:large;"/>
                 <af:spacer width="10" height="10" id="s1"/>
                 <af:region value="#{bindings.CreditUnionTF1.regionModel}" id="r1"/>
             </af:form>

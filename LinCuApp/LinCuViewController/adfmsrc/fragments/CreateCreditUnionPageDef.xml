@@ -7,11 +7,6 @@
     <iterator Binds="CreditUnion" RangeSize="25" DataControl="LinCuAMDataControl" id="CreditUnionIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionId">
-      <AttrNames>
-        <Item Value="CreditUnionId"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionCode">
       <AttrNames>
         <Item Value="CreditUnionCode"/>
@@ -47,11 +42,6 @@
         <Item Value="CreditUnionCity"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionCountry">
-      <AttrNames>
-        <Item Value="CreditUnionCountry"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="CreditUnionIterator" id="CreditUnionPhone1">
       <AttrNames>
         <Item Value="CreditUnionPhone1"/>
@@ -74,5 +64,7 @@
     </attributeValues>
     <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="LinCuAMDataControl"/>
     <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="LinCuAMDataControl"/>
+    <list IterBinding="CreditUnionIterator" StaticList="false" Uses="LOV_CreditUnionCountry" id="CreditUnionCountry"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>

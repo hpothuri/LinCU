@@ -15,9 +15,10 @@
       <f:facet name="menus"/>
       <f:facet name="toolbar">
         <af:toolbar id="t1">
-          <af:button actionListener="#{bindings.CreateInsert.execute}"
-                     text="#{lincuviewcontrollerBundle.CREATE_CREDIT_UNION}"
-                     disabled="#{!bindings.CreateInsert.enabled}" id="b1" action="create"/>
+          <af:button text="#{lincuviewcontrollerBundle.CREATE_CREDIT_UNION}" id="b1"
+                     actionListener="#{creditUnion.createCreditUnion}" partialSubmit="false"/>
+          <af:button text="#{lincuviewcontrollerBundle.EDIT_CREDIT_UNION}" id="b2"
+                     actionListener="#{creditUnion.editCreditUnion}"/>
         </af:toolbar>
       </f:facet>
       <f:facet name="statusbar"/>
@@ -25,7 +26,7 @@
                 emptyText="#{bindings.CreditUnion.viewable ? 'No data to display.' : 'Access Denied.'}"
                 rowBandingInterval="0" selectedRowKeys="#{bindings.CreditUnion.collectionModel.selectedRow}"
                 selectionListener="#{bindings.CreditUnion.collectionModel.makeCurrent}" rowSelection="single"
-                fetchSize="#{bindings.CreditUnion.rangeSize}" id="resId1" partialTriggers="::b1"
+                fetchSize="#{bindings.CreditUnion.rangeSize}" id="resId1"
                 styleClass="AFStretchWidth">
         <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionCode.name}" sortable="true"
                    headerText="#{bindings.CreditUnion.hints.CreditUnionCode.label}" id="resId1c2">
@@ -91,5 +92,114 @@
         </af:column>
       </af:table>
     </af:panelCollection>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
+              binding="#{creditUnion.createCreditUnionPopup}">
+      <af:dialog id="d1" type="none" title="#{lincuviewcontrollerBundle.CREATE_CREDIT_UNION}">
+        <f:facet name="buttonBar">
+          <af:group id="g1">
+            <af:button actionListener="#{creditUnion.save}" text="#{lincuviewcontrollerBundle.SAVE}"
+                       id="b4"/>
+            <af:button actionListener="#{creditUnion.cancel}" text="#{lincuviewcontrollerBundle.CANCEL}"
+                       immediate="true" id="b5">
+              <af:resetActionListener/>
+            </af:button>
+          </af:group>
+        </f:facet>
+        <af:panelFormLayout id="pfl1" maxColumns="2" rows="6">
+          <af:inputText value="#{bindings.CreditUnionCode.inputValue}" label="#{bindings.CreditUnionCode.hints.label}"
+                        required="#{bindings.CreditUnionCode.hints.mandatory}"
+                        columns="#{bindings.CreditUnionCode.hints.displayWidth}"
+                        maximumLength="#{bindings.CreditUnionCode.hints.precision}"
+                        shortDesc="#{bindings.CreditUnionCode.hints.tooltip}" id="it2">
+            <f:validator binding="#{bindings.CreditUnionCode.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CreditUnionName.inputValue}" label="#{bindings.CreditUnionName.hints.label}"
+                        required="#{bindings.CreditUnionName.hints.mandatory}"
+                        columns="#{bindings.CreditUnionName.hints.displayWidth}"
+                        maximumLength="#{bindings.CreditUnionName.hints.precision}"
+                        shortDesc="#{bindings.CreditUnionName.hints.tooltip}" id="it3">
+            <f:validator binding="#{bindings.CreditUnionName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CreditUnionAddres1.inputValue}"
+                        label="#{bindings.CreditUnionAddres1.hints.label}"
+                        required="#{bindings.CreditUnionAddres1.hints.mandatory}"
+                        columns="#{bindings.CreditUnionAddres1.hints.displayWidth}"
+                        maximumLength="#{bindings.CreditUnionAddres1.hints.precision}"
+                        shortDesc="#{bindings.CreditUnionAddres1.hints.tooltip}" id="it4">
+            <f:validator binding="#{bindings.CreditUnionAddres1.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CreditUnionAddres2.inputValue}"
+                        label="#{bindings.CreditUnionAddres2.hints.label}"
+                        required="#{bindings.CreditUnionAddres2.hints.mandatory}"
+                        columns="#{bindings.CreditUnionAddres2.hints.displayWidth}"
+                        maximumLength="#{bindings.CreditUnionAddres2.hints.precision}"
+                        shortDesc="#{bindings.CreditUnionAddres2.hints.tooltip}" id="it5">
+            <f:validator binding="#{bindings.CreditUnionAddres2.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CreditUnionAddres3.inputValue}"
+                        label="#{bindings.CreditUnionAddres3.hints.label}"
+                        required="#{bindings.CreditUnionAddres3.hints.mandatory}"
+                        columns="#{bindings.CreditUnionAddres3.hints.displayWidth}"
+                        maximumLength="#{bindings.CreditUnionAddres3.hints.precision}"
+                        shortDesc="#{bindings.CreditUnionAddres3.hints.tooltip}" id="it6">
+            <f:validator binding="#{bindings.CreditUnionAddres3.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CreditUnionAddres4.inputValue}"
+                        label="#{bindings.CreditUnionAddres4.hints.label}"
+                        required="#{bindings.CreditUnionAddres4.hints.mandatory}"
+                        columns="#{bindings.CreditUnionAddres4.hints.displayWidth}"
+                        maximumLength="#{bindings.CreditUnionAddres4.hints.precision}"
+                        shortDesc="#{bindings.CreditUnionAddres4.hints.tooltip}" id="it7">
+            <f:validator binding="#{bindings.CreditUnionAddres4.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CreditUnionCity.inputValue}" label="#{bindings.CreditUnionCity.hints.label}"
+                        required="#{bindings.CreditUnionCity.hints.mandatory}"
+                        columns="#{bindings.CreditUnionCity.hints.displayWidth}"
+                        maximumLength="#{bindings.CreditUnionCity.hints.precision}"
+                        shortDesc="#{bindings.CreditUnionCity.hints.tooltip}" id="it8">
+            <f:validator binding="#{bindings.CreditUnionCity.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.CreditUnionCountry.inputValue}"
+                              label="#{bindings.CreditUnionCountry.label}"
+                              required="#{bindings.CreditUnionCountry.hints.mandatory}"
+                              shortDesc="#{bindings.CreditUnionCountry.hints.tooltip}" id="soc1"
+                              inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;">
+            <f:selectItems value="#{bindings.CreditUnionCountry.items}" id="si1"/>
+            <f:validator binding="#{bindings.CreditUnionCountry.validator}"/>
+          </af:selectOneChoice>
+          <af:inputText value="#{bindings.CreditUnionPhone1.inputValue}"
+                        label="#{bindings.CreditUnionPhone1.hints.label}"
+                        required="#{bindings.CreditUnionPhone1.hints.mandatory}"
+                        columns="#{bindings.CreditUnionPhone1.hints.displayWidth}"
+                        maximumLength="#{bindings.CreditUnionPhone1.hints.precision}"
+                        shortDesc="#{bindings.CreditUnionPhone1.hints.tooltip}" id="it9">
+            <f:validator binding="#{bindings.CreditUnionPhone1.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CreditUnionPhone2.inputValue}"
+                        label="#{bindings.CreditUnionPhone2.hints.label}"
+                        required="#{bindings.CreditUnionPhone2.hints.mandatory}"
+                        columns="#{bindings.CreditUnionPhone2.hints.displayWidth}"
+                        maximumLength="#{bindings.CreditUnionPhone2.hints.precision}"
+                        shortDesc="#{bindings.CreditUnionPhone2.hints.tooltip}" id="it10">
+            <f:validator binding="#{bindings.CreditUnionPhone2.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CreditUnionFax.inputValue}" label="#{bindings.CreditUnionFax.hints.label}"
+                        required="#{bindings.CreditUnionFax.hints.mandatory}"
+                        columns="#{bindings.CreditUnionFax.hints.displayWidth}"
+                        maximumLength="#{bindings.CreditUnionFax.hints.precision}"
+                        shortDesc="#{bindings.CreditUnionFax.hints.tooltip}" id="it11">
+            <f:validator binding="#{bindings.CreditUnionFax.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CreditUnionEmailId.inputValue}"
+                        label="#{bindings.CreditUnionEmailId.hints.label}"
+                        required="#{bindings.CreditUnionEmailId.hints.mandatory}"
+                        columns="#{bindings.CreditUnionEmailId.hints.displayWidth}"
+                        maximumLength="#{bindings.CreditUnionEmailId.hints.precision}"
+                        shortDesc="#{bindings.CreditUnionEmailId.hints.tooltip}" id="it12">
+            <f:validator binding="#{bindings.CreditUnionEmailId.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:dialog>
+    </af:popup>
   </af:panelGroupLayout>
 </jsp:root>

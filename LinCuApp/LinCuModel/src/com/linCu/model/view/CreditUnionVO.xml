@@ -58,7 +58,7 @@
         <LABEL
           ResId="UNION_CODE"/>
         <DISPLAYWIDTH
-          Value="35"/>
+          Value="37"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -74,7 +74,7 @@
         <LABEL
           ResId="UNION_NAME"/>
         <DISPLAYWIDTH
-          Value="40"/>
+          Value="37"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -90,7 +90,7 @@
         <LABEL
           ResId="ADDRESS_LINE1"/>
         <DISPLAYWIDTH
-          Value="40"/>
+          Value="37"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -105,7 +105,7 @@
         <LABEL
           ResId="ADDRESS_LINE_2"/>
         <DISPLAYWIDTH
-          Value="40"/>
+          Value="37"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -120,7 +120,7 @@
         <LABEL
           ResId="ADDRESS_LINE3"/>
         <DISPLAYWIDTH
-          Value="40"/>
+          Value="37"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -135,7 +135,7 @@
         <LABEL
           ResId="ADDRESS_LINE4"/>
         <DISPLAYWIDTH
-          Value="40"/>
+          Value="37"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -169,8 +169,6 @@
           Value="choice"/>
         <LABEL
           ResId="COUNTRY"/>
-        <DISPLAYWIDTH
-          Value="40"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -186,7 +184,7 @@
         <LABEL
           ResId="PRIMARY_PHONE_NUMBER"/>
         <DISPLAYWIDTH
-          Value="40"/>
+          Value="37"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -201,7 +199,7 @@
         <LABEL
           ResId="ALTERNATE_PHONE_NUMBER"/>
         <DISPLAYWIDTH
-          Value="40"/>
+          Value="37"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -216,7 +214,7 @@
         <LABEL
           ResId="FAX"/>
         <DISPLAYWIDTH
-          Value="40"/>
+          Value="37"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -232,7 +230,7 @@
         <LABEL
           ResId="EMAIL"/>
         <DISPLAYWIDTH
-          Value="40"/>
+          Value="37"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -334,10 +332,13 @@
           Value="false"/>
         <Property
           Name="showInList"
-          Value="false"/>
+          Value="true"/>
         <Property
           Name="displayOperators"
           Value="InAdvancedMode"/>
+        <Property
+          Name="displayName"
+          ResId="com.linCu.model.view.CreditUnionVO.QueryCreditCardUnion_displayName"/>
       </CustomProperties>
     </Properties>
     <ViewCriteriaRow
