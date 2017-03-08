@@ -9,16 +9,20 @@
                 model="#{bindings.QueryCreditCardUnionQuery.queryModel}"
                 queryListener="#{bindings.QueryCreditCardUnionQuery.processQuery}"
                 queryOperationListener="#{bindings.QueryCreditCardUnionQuery.processQueryOperation}"
-                resultComponentId="::pc1" rows="4" maxColumns="2"/>
+                resultComponentId="::pc1" rows="4" maxColumns="2" saveQueryMode="hidden"/>
     </af:panelHeader>
-    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+    <af:panelCollection id="pc1" styleClass="AFStretchWidth" partialTriggers="::b4 ::b5">
       <f:facet name="menus"/>
       <f:facet name="toolbar">
         <af:toolbar id="t1">
           <af:button text="#{lincuviewcontrollerBundle.CREATE_CREDIT_UNION}" id="b1"
-                     actionListener="#{creditUnion.createCreditUnion}" partialSubmit="false"/>
+                     actionListener="#{creditUnion.createCreditUnion}" partialSubmit="false">
+            <af:setPropertyListener from="create" to="#{pageFlowScope.action}" type="action"/>
+          </af:button>
           <af:button text="#{lincuviewcontrollerBundle.EDIT_CREDIT_UNION}" id="b2"
-                     actionListener="#{creditUnion.editCreditUnion}"/>
+                     actionListener="#{creditUnion.editCreditUnion}">
+            <af:setPropertyListener from="edit" to="#{pageFlowScope.action}" type="action"/>
+          </af:button>
         </af:toolbar>
       </f:facet>
       <f:facet name="statusbar"/>
@@ -27,9 +31,10 @@
                 rowBandingInterval="0" selectedRowKeys="#{bindings.CreditUnion.collectionModel.selectedRow}"
                 selectionListener="#{bindings.CreditUnion.collectionModel.makeCurrent}" rowSelection="single"
                 fetchSize="#{bindings.CreditUnion.rangeSize}" id="resId1"
-                styleClass="AFStretchWidth">
+                styleClass="AFStretchWidth" partialTriggers=":::b5 :::b4">
         <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionCode.name}" sortable="true"
-                   headerText="#{bindings.CreditUnion.hints.CreditUnionCode.label}" id="resId1c2">
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionCode.label}" id="resId1c2" width="80"
+                   minimumWidth="80" displayIndex="-1">
           <af:outputText value="#{row.CreditUnionCode}"
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionCode.tooltip}" id="ot2"/>
         </af:column>
@@ -54,7 +59,7 @@
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionAddres3.tooltip}" id="ot6"/>
         </af:column>
         <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionAddres4.name}" sortable="true"
-                   headerText="#{bindings.CreditUnion.hints.CreditUnionAddres4.label}" id="resId1c7">
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionAddres4.label}" id="resId1c7" visible="false">
           <af:outputText value="#{row.CreditUnionAddres4}"
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionAddres4.tooltip}" id="ot7"/>
         </af:column>
@@ -90,11 +95,18 @@
           <af:outputText value="#{row.CreditUnionEmailId}"
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionEmailId.tooltip}" id="ot13"/>
         </af:column>
+        <af:column id="c1" headerText="#{lincuviewcontrollerBundle.ACTION}" width="130" minimumWidth="130">
+          <af:button text="#{lincuviewcontrollerBundle.VIEW_EDIT_BRANCHES}" id="b3" action="view">
+            <af:setPropertyListener from="#{row.CreditUnionName}" to="#{pageFlowScope.creditUnionName}" type="action"/>
+          </af:button>
+        </af:column>
       </af:table>
     </af:panelCollection>
     <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
               binding="#{creditUnion.createCreditUnionPopup}">
-      <af:dialog id="d1" type="none" title="#{lincuviewcontrollerBundle.CREATE_CREDIT_UNION}">
+      <af:dialog id="d1" type="none"
+                 title="#{pageFlowScope.action eq 'create' ? lincuviewcontrollerBundle.CREATE_CREDIT_UNION : lincuviewcontrollerBundle.EDIT_CREDIT_UNION}"
+                 closeIconVisible="false">
         <f:facet name="buttonBar">
           <af:group id="g1">
             <af:button actionListener="#{creditUnion.save}" text="#{lincuviewcontrollerBundle.SAVE}"

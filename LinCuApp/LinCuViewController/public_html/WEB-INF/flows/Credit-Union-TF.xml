@@ -10,9 +10,31 @@
       <managed-bean-class>com.linCu.view.backingBeans.CreditUnion</managed-bean-class>
       <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__6">
+      <managed-bean-name>creditUnionBranches</managed-bean-name>
+      <managed-bean-class>com.linCu.view.backingBeans.CreditUnionBranches</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
     <view id="ManageCreditCardUnion">
       <page>/fragments/ManageCreditCardUnion.jsff</page>
     </view>
+    <view id="ManageBranches">
+      <page>/fragments/ManageBranches.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>ManageCreditCardUnion</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>view</from-outcome>
+        <to-activity-id>ManageBranches</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>ManageBranches</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>ManageCreditCardUnion</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
     <use-page-fragments/>
   </task-flow-definition>
 </adfc-config>

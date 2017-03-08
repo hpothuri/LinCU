@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57" id="ManageBranchesPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CreditUnionBranch" RangeSize="25" DataControl="LinCuAMDataControl" id="CreditUnionBranchIterator"/>
+    <searchRegion Criteria="QueryBranches" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="CreditUnionBranchIterator" id="QueryBranchesQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CreditUnionBranchIterator" id="CreditUnionBranch">
+      <nodeDefinition DefName="com.linCu.model.view.CreditUnionBranchVO" Name="CreditUnionBranch0">
+        <AttrNames>
+          <Item Value="CreditUnionBranchCode"/>
+          <Item Value="CreditUnionBranchName"/>
+          <Item Value="CreditUnionAddres1"/>
+          <Item Value="CreditUnionAddres2"/>
+          <Item Value="CreditUnionAddres3"/>
+          <Item Value="CreditUnionAddres4"/>
+          <Item Value="CreditUnionCity"/>
+          <Item Value="CreditUnionCountry"/>
+          <Item Value="CreditUnionPhone1"/>
+          <Item Value="CreditUnionPhone2"/>
+          <Item Value="CreditUnionEmailId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionBranchCode">
+      <AttrNames>
+        <Item Value="CreditUnionBranchCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionBranchName">
+      <AttrNames>
+        <Item Value="CreditUnionBranchName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionAddres1">
+      <AttrNames>
+        <Item Value="CreditUnionAddres1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionAddres2">
+      <AttrNames>
+        <Item Value="CreditUnionAddres2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionAddres3">
+      <AttrNames>
+        <Item Value="CreditUnionAddres3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionAddres4">
+      <AttrNames>
+        <Item Value="CreditUnionAddres4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionCity">
+      <AttrNames>
+        <Item Value="CreditUnionCity"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="CreditUnionBranchIterator" StaticList="false" Uses="LOV_CreditUnionCountry"
+          id="CreditUnionCountry" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionPhone1">
+      <AttrNames>
+        <Item Value="CreditUnionPhone1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionPhone2">
+      <AttrNames>
+        <Item Value="CreditUnionPhone2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionEmailId">
+      <AttrNames>
+        <Item Value="CreditUnionEmailId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="CreditUnionBranchIterator" id="CreateInsert"
+            InstanceName="LinCuAMDataControl.CreditUnionBranch" DataControl="LinCuAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="LinCuAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="LinCuAMDataControl"/>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionId">
+      <AttrNames>
+        <Item Value="CreditUnionId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="CreditUnionBranchId">
+      <AttrNames>
+        <Item Value="CreditUnionBranchId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

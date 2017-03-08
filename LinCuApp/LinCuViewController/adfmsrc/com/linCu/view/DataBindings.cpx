@@ -10,11 +10,13 @@
     <page path="/fragments/CreateCreditUnion.jsff" usageId="com_linCu_view_CreateCreditUnionPageDef"/>
     <page path="/TestPage.jspx" usageId="com_linCu_view_TestPagePageDef"/>
     <page path="/fragments/ManageCreditCardUnion.jsff" usageId="com_linCu_view_ManageCreditCardUnionPageDef"/>
+    <page path="/fragments/ManageBranches.jsff" usageId="com_linCu_view_ManageBranchesPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_linCu_view_CreateCreditUnionPageDef" path="fragments.CreateCreditUnionPageDef"/>
     <page id="com_linCu_view_TestPagePageDef" path="com.linCu.view.pageDefs.TestPagePageDef"/>
     <page id="com_linCu_view_ManageCreditCardUnionPageDef" path="com.linCu.view.pageDefs.ManageCreditCardUnionPageDef"/>
+    <page id="com_linCu_view_ManageBranchesPageDef" path="fragments.ManageBranchesPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="LinCuAMDataControl" Package="com.linCu.model.am"
