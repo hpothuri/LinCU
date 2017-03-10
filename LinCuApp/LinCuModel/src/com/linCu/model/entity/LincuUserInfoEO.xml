@@ -9,7 +9,8 @@
   DBObjectType="table"
   DBObjectName="LINCU_USER_INFO"
   AliasName="LincuUserInfoEO"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
   <Attribute
     Name="UserId"
     IsNotNull="true"
@@ -20,7 +21,12 @@
     Type="java.lang.Long"
     ColumnType="NUMBER"
     TableName="LINCU_USER_INFO"
-    PrimaryKey="true"/>
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="LincuUserInfoEORow"/>
+  </Attribute>
   <Attribute
     Name="FirstName"
     Precision="30"
@@ -53,8 +59,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_USER_INFO"
-    PrimaryKey="true">
+    TableName="LINCU_USER_INFO">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
@@ -67,15 +72,13 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_USER_INFO"
-    PrimaryKey="true">
+    TableName="LINCU_USER_INFO">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
   </Attribute>
   <Attribute
     Name="UserTypeCode"
-    IsNotNull="true"
     Precision="30"
     ColumnName="USER_TYPE_CODE"
     SQLType="VARCHAR"
@@ -101,7 +104,6 @@
   </Attribute>
   <Attribute
     Name="UserSupervisor"
-    IsNotNull="true"
     Precision="30"
     ColumnName="USER_SUPERVISOR"
     SQLType="VARCHAR"
@@ -166,8 +168,7 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="LINCU_USER_INFO"
-    IsUpdateable="while_insert"
-    HistoryColumn="UserHistory">
+    DefaultValue="test">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -179,9 +180,12 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_USER_INFO"
-    IsUpdateable="while_insert"
-    HistoryColumn="DateHistory"/>
+    TableName="LINCU_USER_INFO">
+    <TransientExpression
+      Name="ExpressionScript"
+      trustMode="untrusted"
+      CodeSourceName="LincuUserInfoEORow"/>
+  </Attribute>
   <Attribute
     Name="LastUpdatedBy"
     IsNotNull="true"
@@ -191,7 +195,7 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="LINCU_USER_INFO"
-    HistoryColumn="UserHistory">
+    DefaultValue="test">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -203,8 +207,12 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_USER_INFO"
-    HistoryColumn="DateHistory"/>
+    TableName="LINCU_USER_INFO">
+    <TransientExpression
+      Name="ExpressionScript"
+      trustMode="untrusted"
+      CodeSourceName="LincuUserInfoEORow"/>
+  </Attribute>
   <Attribute
     Name="ObjectVersionId"
     IsNotNull="true"
@@ -215,8 +223,8 @@
     Type="java.lang.Long"
     ColumnType="NUMBER"
     TableName="LINCU_USER_INFO"
-    HistoryColumn="VersionHistory"
-    ChangeIndicator="true"/>
+    ChangeIndicator="true"
+    DefaultValue="1"/>
   <Attribute
     Name="LastApprovedBy"
     IsNotNull="true"
@@ -225,7 +233,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_USER_INFO">
+    TableName="LINCU_USER_INFO"
+    DefaultValue="test">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -237,11 +246,16 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_USER_INFO"/>
+    TableName="LINCU_USER_INFO">
+    <TransientExpression
+      Name="ExpressionScript"
+      trustMode="untrusted"
+      CodeSourceName="LincuUserInfoEORow"/>
+  </Attribute>
   <Attribute
     Name="Password"
     IsNotNull="true"
-    Precision="20"
+    Precision="30"
     ColumnName="PASSWORD"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -249,6 +263,19 @@
     TableName="LINCU_USER_INFO">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserName"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="USER_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
   </Attribute>
   <AccessorAttribute
@@ -266,6 +293,16 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.linCu.model.entity.LincuUserInfoEO.UserId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="LincuUserInfoUk1">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="LINCU_USER_INFO_UK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.linCu.model.entity.LincuUserInfoEO.UserId"/>
       <Item Value="com.linCu.model.entity.LincuUserInfoEO.CreditUnionId"/>
       <Item Value="com.linCu.model.entity.LincuUserInfoEO.CreditUnionBranchId"/>
     </AttrArray>
@@ -280,6 +317,17 @@
     <AttrArray Name="Attributes"/>
   </Key>
   <Key
+    Name="UserNameUniqueAltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="LINCU_USER_INFO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.linCu.model.entity.LincuUserInfoEO.UserName"/>
+    </AttrArray>
+  </Key>
+  <Key
     Name="LincuUserInfoFk1">
     <DesignTime>
       <Attr Name="_referencedKey" Value="CREDIT_UNION_BRANCH_PK"/>
@@ -291,4 +339,17 @@
       <Item Value="com.linCu.model.entity.LincuUserInfoEO.CreditUnionBranchId"/>
     </AttrArray>
   </Key>
+  <validation:UniqueKeyValidationBean
+    Name="LincuUserInfoEORule0"
+    ResId="LOGIN_NAME_ALREADY_IN_USE__PLEASE_CHOOSE_ANOTHER_ONE"
+    KeyName="UserNameUniqueAltKey">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="UserName"/>
+    </validation:OnAttributes>
+  </validation:UniqueKeyValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.linCu.model.LinCuModelBundle"/>
+  </ResourceBundle>
 </Entity>

@@ -19,6 +19,138 @@
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
+  <ViewAccessor
+    Name="GenderVA"
+    ViewObjectName="com.linCu.model.vvo.GenderVVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LinCuRolesVA"
+    ViewObjectName="com.linCu.model.vvo.LinCuRolesVVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LincuUnionsVA"
+    ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LincuBranchesVA"
+    ViewObjectName="com.linCu.model.vvo.LincuBranchesVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByCreditUnion"
+      FullName="com.linCu.model.vvo.LincuBranchesVVO.QueryByCreditUnion"/>
+    <ParameterMap>
+      <PIMap Variable="bindCreditUnionId">
+        <TransientExpression
+          Name="ExpressionScript"><![CDATA[CreditUnionId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="LookUpDataVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          Name="ExpressionScript"><![CDATA['USER_TYPE_CODE']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_Gender"
+    ListVOName="GenderVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Gender"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="GenderCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="GenderName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_UserRole"
+    ListVOName="LinCuRolesVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+    <AttrArray Name="AttrNames">
+      <Item Value="UserRole"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Role"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="RoleDescription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CreditUnionId"
+    ListVOName="LincuUnionsVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CreditUnionId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CreditUnionId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CreditUnionName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CreditUnionBranchId"
+    ListVOName="LincuBranchesVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CreditUnionBranchId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CreditUnionBranchId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CreditUnionBranchName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_UserTypeCode"
+    ListVOName="LookUpDataVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UserTypeCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="LincuUserInfoEO"
     Entity="com.linCu.model.entity.LincuUserInfoEO"/>
@@ -28,108 +160,223 @@
     PrecisionRule="true"
     EntityAttrName="UserId"
     EntityUsage="LincuUserInfoEO"
-    AliasName="USER_ID"/>
+    AliasName="USER_ID"
+    IsUpdateable="while_insert"/>
   <ViewAttribute
     Name="FirstName"
     PrecisionRule="true"
     EntityAttrName="FirstName"
     EntityUsage="LincuUserInfoEO"
-    AliasName="FIRST_NAME"/>
+    AliasName="FIRST_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="37"/>
+        <LABEL
+          ResId="FIRST_NAME"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastName"
     PrecisionRule="true"
     EntityAttrName="LastName"
     EntityUsage="LincuUserInfoEO"
-    AliasName="LAST_NAME"/>
+    AliasName="LAST_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="37"/>
+        <LABEL
+          ResId="LAST_NAME"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionId"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreditUnionId"
     EntityUsage="LincuUserInfoEO"
-    AliasName="CREDIT_UNION_ID"/>
+    AliasName="CREDIT_UNION_ID"
+    LOVName="LOV_CreditUnionId">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="37"/>
+        <LABEL
+          ResId="CREDIT_UNION"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionBranchId"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreditUnionBranchId"
     EntityUsage="LincuUserInfoEO"
-    AliasName="CREDIT_UNION_BRANCH_ID"/>
+    AliasName="CREDIT_UNION_BRANCH_ID"
+    LOVName="LOV_CreditUnionBranchId">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="37"/>
+        <LABEL
+          ResId="BRANCH_NAME"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="UserTypeCode"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="UserTypeCode"
     EntityUsage="LincuUserInfoEO"
-    AliasName="USER_TYPE_CODE"/>
+    AliasName="USER_TYPE_CODE"
+    LOVName="LOV_UserTypeCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="37"/>
+        <LABEL
+          ResId="TYPE"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="UserRole"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="UserRole"
     EntityUsage="LincuUserInfoEO"
-    AliasName="USER_ROLE"/>
+    AliasName="USER_ROLE"
+    LOVName="LOV_UserRole">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="37"/>
+        <LABEL
+          ResId="ROLE"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="UserSupervisor"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="UserSupervisor"
     EntityUsage="LincuUserInfoEO"
-    AliasName="USER_SUPERVISOR"/>
+    AliasName="USER_SUPERVISOR">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="37"/>
+        <LABEL
+          ResId="SUPERVISOR"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Email"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="Email"
     EntityUsage="LincuUserInfoEO"
-    AliasName="EMAIL"/>
+    AliasName="EMAIL">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="37"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="MobilePhoneNumber"
     PrecisionRule="true"
     EntityAttrName="MobilePhoneNumber"
     EntityUsage="LincuUserInfoEO"
-    AliasName="MOBILE_PHONE_NUMBER"/>
+    AliasName="MOBILE_PHONE_NUMBER">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="37"/>
+        <LABEL
+          ResId="CONTACT_NUMBER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="DateOfBirth"
     PrecisionRule="true"
     EntityAttrName="DateOfBirth"
     EntityUsage="LincuUserInfoEO"
-    AliasName="DATE_OF_BIRTH"/>
+    AliasName="DATE_OF_BIRTH">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="33"/>
+        <LABEL
+          ResId="DATE_OF_BIRTH"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Gender"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="Gender"
     EntityUsage="LincuUserInfoEO"
-    AliasName="GENDER"/>
+    AliasName="GENDER"
+    LOVName="LOV_Gender">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="radio"/>
+        <DISPLAYWIDTH
+          Value="37"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreatedBy"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
     EntityUsage="LincuUserInfoEO"
-    AliasName="CREATED_BY"/>
+    AliasName="CREATED_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="CreationDate"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreationDate"
     EntityUsage="LincuUserInfoEO"
-    AliasName="CREATION_DATE"/>
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="LastUpdatedBy"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
     EntityUsage="LincuUserInfoEO"
-    AliasName="LAST_UPDATED_BY"/>
+    AliasName="LAST_UPDATED_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="LastUpdateDate"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdateDate"
     EntityUsage="LincuUserInfoEO"
-    AliasName="LAST_UPDATE_DATE"/>
+    AliasName="LAST_UPDATE_DATE"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="ObjectVersionId"
     IsNotNull="true"
@@ -157,5 +404,120 @@
     PrecisionRule="true"
     EntityAttrName="Password"
     EntityUsage="LincuUserInfoEO"
-    AliasName="PASSWORD"/>
+    AliasName="PASSWORD">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="37"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UserName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserName"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="USER_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="37"/>
+        <LABEL
+          ResId="LOGIN_NAME"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="QueryUserInfo"
+    ViewObjectName="com.linCu.model.view.LincuUserInfoVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="LincuUserInfoVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="LincuUserInfoVOCriteria_LincuUserInfoVOCriteria_row_0_FirstName"
+        ViewAttribute="FirstName"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="LastName"
+        ViewAttribute="LastName"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="CreditUnionId"
+        ViewAttribute="CreditUnionId"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="LincuUserInfoVOCriteria_LincuUserInfoVOCriteria_row_0_CreditUnionBranchId"
+        ViewAttribute="CreditUnionBranchId"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="UserRole"
+        ViewAttribute="UserRole"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Email"
+        ViewAttribute="Email"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="MobilePhoneNumber"
+        ViewAttribute="MobilePhoneNumber"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="LincuUserInfoVOCriteria_LincuUserInfoVOCriteria_row_0_DateOfBirth"
+        ViewAttribute="DateOfBirth"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Gender"
+        ViewAttribute="Gender"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="UserName"
+        ViewAttribute="UserName"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.linCu.model.LinCuModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

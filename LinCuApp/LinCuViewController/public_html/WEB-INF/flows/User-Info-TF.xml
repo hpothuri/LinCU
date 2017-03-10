@@ -5,9 +5,16 @@
     <data-control-scope>
       <shared/>
     </data-control-scope>
-    <view id="ManageUserInfo"></view>
+    <managed-bean id="__3">
+      <managed-bean-name>userInfo</managed-bean-name>
+      <managed-bean-class>com.linCu.view.backingBeans.UserInfo</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="ManageUserInfo">
+      <page>/fragments/ManageUserInfo.jsff</page>
+    </view>
     <view id="CreateUserInfo">
-      <page>/CreateUserInfo.jsff</page>
+      <page>/fragments/CreateUserInfo.jsff</page>
     </view>
     <control-flow-rule id="__1">
       <from-activity-id>ManageUserInfo</from-activity-id>

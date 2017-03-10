@@ -20,7 +20,7 @@
     Name="LincuMemberKycVO1"
     ViewObjectName="com.linCu.model.view.LincuMemberKycVO"/>
   <ViewUsage
-    Name="LincuUserInfoVO1"
+    Name="LincuUserInfo"
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO"/>
   <ViewUsage
     Name="CreditUnionBranch"

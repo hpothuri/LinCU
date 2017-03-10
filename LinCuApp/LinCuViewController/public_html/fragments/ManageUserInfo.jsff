@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="lincuviewcontrollerBundle" value="#{adfBundle['com.linCu.view.LinCuViewControllerBundle']}"/>
+  <af:panelGroupLayout layout="vertical" id="pgl1">
+    <af:panelHeader text="#{lincuviewcontrollerBundle.MANAGE_USER_INFORMATION}" id="ph1">
+      <af:query id="qryId1" headerText="Search" disclosed="true" value="#{bindings.QueryUserInfoQuery.queryDescriptor}"
+                model="#{bindings.QueryUserInfoQuery.queryModel}"
+                queryListener="#{bindings.QueryUserInfoQuery.processQuery}"
+                queryOperationListener="#{bindings.QueryUserInfoQuery.processQueryOperation}"
+                resultComponentId="::pc1" rows="5" maxColumns="2" saveQueryMode="hidden"/>
+    </af:panelHeader>
+    <af:panelCollection id="pc1" styleClass="AFStretchWidth" partialTriggers="::b3 ::b4">
+      <f:facet name="menus"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+          <af:button text="#{lincuviewcontrollerBundle.CREATE_USER}" id="b1" partialSubmit="false"
+                     actionListener="#{userInfo.createUser}">
+            <af:setPropertyListener from="create" to="#{pageFlowScope.action}" type="action"/>
+          </af:button>
+          <af:button text="#{lincuviewcontrollerBundle.EDIT_USER}" id="b2" actionListener="#{userInfo.editUser}">
+            <af:setPropertyListener from="edit" to="#{pageFlowScope.action}" type="action"/>
+          </af:button>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="statusbar"/>
+      <af:table value="#{bindings.LincuUserInfo.collectionModel}" var="row" rows="#{bindings.LincuUserInfo.rangeSize}"
+                emptyText="#{bindings.LincuUserInfo.viewable ? 'No data to display.' : 'Access Denied.'}"
+                rowBandingInterval="0" selectedRowKeys="#{bindings.LincuUserInfo.collectionModel.selectedRow}"
+                selectionListener="#{bindings.LincuUserInfo.collectionModel.makeCurrent}" rowSelection="single"
+                fetchSize="#{bindings.LincuUserInfo.rangeSize}" id="resId1">
+        <af:column headerText="#{bindings.LincuUserInfo.hints.FirstName.label}" id="resId1c1">
+          <af:outputText value="#{row.FirstName}" shortDesc="#{bindings.LincuUserInfo.hints.FirstName.tooltip}"
+                         id="ot1"/>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.LastName.label}" id="resId1c2">
+          <af:outputText value="#{row.LastName}" shortDesc="#{bindings.LincuUserInfo.hints.LastName.tooltip}" id="ot2"/>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.CreditUnionId.label}" id="resId1c3">
+          <af:selectOneChoice value="#{row.bindings.CreditUnionId.inputValue}"
+                              label="#{row.bindings.CreditUnionId.label}"
+                              required="#{bindings.LincuUserInfo.hints.CreditUnionId.mandatory}"
+                              shortDesc="#{bindings.LincuUserInfo.hints.CreditUnionId.tooltip}" readOnly="true"
+                              id="soc1">
+            <f:selectItems value="#{row.bindings.CreditUnionId.items}" id="si1"/>
+            <f:validator binding="#{row.bindings.CreditUnionId.validator}"/>
+          </af:selectOneChoice>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.CreditUnionBranchId.label}" id="resId1c4">
+          <af:selectOneChoice value="#{row.bindings.CreditUnionBranchId.inputValue}"
+                              label="#{row.bindings.CreditUnionBranchId.label}"
+                              required="#{bindings.LincuUserInfo.hints.CreditUnionBranchId.mandatory}"
+                              shortDesc="#{bindings.LincuUserInfo.hints.CreditUnionBranchId.tooltip}" readOnly="true"
+                              id="soc2">
+            <f:selectItems value="#{row.bindings.CreditUnionBranchId.items}" id="si2"/>
+            <f:validator binding="#{row.bindings.CreditUnionBranchId.validator}"/>
+          </af:selectOneChoice>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.UserRole.label}" id="resId1c5">
+          <af:selectOneChoice value="#{row.bindings.UserRole.inputValue}" label="#{row.bindings.UserRole.label}"
+                              required="#{bindings.LincuUserInfo.hints.UserRole.mandatory}"
+                              shortDesc="#{bindings.LincuUserInfo.hints.UserRole.tooltip}" readOnly="true" id="soc3">
+            <f:selectItems value="#{row.bindings.UserRole.items}" id="si3"/>
+            <f:validator binding="#{row.bindings.UserRole.validator}"/>
+          </af:selectOneChoice>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.Email.label}" id="resId1c6">
+          <af:outputText value="#{row.Email}" shortDesc="#{bindings.LincuUserInfo.hints.Email.tooltip}" id="ot3"/>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.MobilePhoneNumber.label}" id="resId1c7">
+          <af:outputText value="#{row.MobilePhoneNumber}"
+                         shortDesc="#{bindings.LincuUserInfo.hints.MobilePhoneNumber.tooltip}" id="ot4"/>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.DateOfBirth.label}" id="resId1c8">
+          <af:outputText value="#{row.DateOfBirth}" shortDesc="#{bindings.LincuUserInfo.hints.DateOfBirth.tooltip}"
+                         id="ot5">
+            <af:convertDateTime pattern="#{bindings.LincuUserInfo.hints.DateOfBirth.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.Gender.label}" id="resId1c9">
+          <af:selectOneChoice value="#{row.bindings.Gender.inputValue}" label="#{row.bindings.Gender.label}"
+                              required="#{bindings.LincuUserInfo.hints.Gender.mandatory}"
+                              shortDesc="#{bindings.LincuUserInfo.hints.Gender.tooltip}" readOnly="true" id="soc4">
+            <f:selectItems value="#{row.bindings.Gender.items}" id="si4"/>
+            <f:validator binding="#{row.bindings.Gender.validator}"/>
+          </af:selectOneChoice>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.Password.label}" id="resId1c10">
+          <af:outputText value="#{row.Password}" shortDesc="#{bindings.LincuUserInfo.hints.Password.tooltip}" id="ot6"/>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.UserName.label}" id="resId1c11">
+          <af:outputText value="#{row.UserName}" shortDesc="#{bindings.LincuUserInfo.hints.UserName.tooltip}" id="ot7"/>
+        </af:column>
+      </af:table>
+    </af:panelCollection>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
+              binding="#{userInfo.createUserPopup}">
+      <af:dialog id="d1" type="none" title="#{pageFlowScope.action eq 'create' ? lincuviewcontrollerBundle.CREATE_USER : lincuviewcontrollerBundle.EDIT_USER}"
+                 closeIconVisible="false">
+        <f:facet name="buttonBar">
+          <af:group id="g1">
+            <af:button actionListener="#{userInfo.save}" text="#{lincuviewcontrollerBundle.SAVE}" id="b3"/>
+            <af:button actionListener="#{userInfo.cancel}" text="#{lincuviewcontrollerBundle.CANCEL}"
+                       immediate="true" id="b4">
+              <af:resetActionListener/>
+            </af:button>
+          </af:group>
+        </f:facet>
+        <af:panelFormLayout id="pfl1" maxColumns="2" rows="6">
+          <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
+                        required="#{bindings.FirstName.hints.mandatory}"
+                        columns="#{bindings.FirstName.hints.displayWidth}"
+                        maximumLength="#{bindings.FirstName.hints.precision}"
+                        shortDesc="#{bindings.FirstName.hints.tooltip}" id="it1">
+            <f:validator binding="#{bindings.FirstName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
+                        required="#{bindings.LastName.hints.mandatory}"
+                        columns="#{bindings.LastName.hints.displayWidth}"
+                        maximumLength="#{bindings.LastName.hints.precision}"
+                        shortDesc="#{bindings.LastName.hints.tooltip}" id="it2">
+            <f:validator binding="#{bindings.LastName.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.CreditUnionId.inputValue}" label="#{bindings.CreditUnionId.label}"
+                              required="#{bindings.CreditUnionId.hints.mandatory}"
+                              shortDesc="#{bindings.CreditUnionId.hints.tooltip}" id="soc5"
+                              inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;width:252px;"
+                              autoSubmit="true" valueChangeListener="#{userInfo.changeCreditUniion}">
+            <f:selectItems value="#{bindings.CreditUnionId.items}" id="si5"/>
+            <f:validator binding="#{bindings.CreditUnionId.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.CreditUnionBranchId.inputValue}"
+                              label="#{bindings.CreditUnionBranchId.label}"
+                              required="false"
+                              shortDesc="#{bindings.CreditUnionBranchId.hints.tooltip}" id="soc6"
+                              inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;width:252px;"
+                              partialTriggers="soc5"
+                              binding="#{userInfo.creditUniionBranch}" showRequired="true" autoSubmit="true"
+                              valueChangeListener="#{userInfo.updateBranch}">
+            <f:selectItems value="#{bindings.CreditUnionBranchId.items}" id="si6"/>
+            <f:validator binding="#{bindings.CreditUnionBranchId.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.UserTypeCode.inputValue}" label="#{bindings.UserTypeCode.label}"
+                              required="true"
+                              shortDesc="#{bindings.UserTypeCode.hints.tooltip}" id="soc8"
+                              contentStyle="margin-top: 8px;width:252px;" inlineStyle="margin-top: 8px;"
+                              showRequired="true">
+            <f:selectItems value="#{bindings.UserTypeCode.items}" id="si9"/>
+            <f:validator binding="#{bindings.UserTypeCode.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.UserRole.inputValue}" label="#{bindings.UserRole.label}"
+                              required="#{bindings.UserRole.hints.mandatory}"
+                              shortDesc="#{bindings.UserRole.hints.tooltip}" id="soc7"
+                              inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;width:252px;">
+            <f:selectItems value="#{bindings.UserRole.items}" id="si7"/>
+            <f:validator binding="#{bindings.UserRole.validator}"/>
+          </af:selectOneChoice>
+          <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                        required="#{bindings.Email.hints.mandatory}" columns="#{bindings.Email.hints.displayWidth}"
+                        maximumLength="#{bindings.Email.hints.precision}" shortDesc="#{bindings.Email.hints.tooltip}"
+                        id="it3">
+            <f:validator binding="#{bindings.Email.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.MobilePhoneNumber.inputValue}"
+                        label="#{bindings.MobilePhoneNumber.hints.label}"
+                        required="#{bindings.MobilePhoneNumber.hints.mandatory}"
+                        columns="#{bindings.MobilePhoneNumber.hints.displayWidth}"
+                        maximumLength="#{bindings.MobilePhoneNumber.hints.precision}"
+                        shortDesc="#{bindings.MobilePhoneNumber.hints.tooltip}" id="it4">
+            <f:validator binding="#{bindings.MobilePhoneNumber.validator}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.DateOfBirth.inputValue}" label="#{bindings.DateOfBirth.hints.label}"
+                        required="#{bindings.DateOfBirth.hints.mandatory}"
+                        columns="#{bindings.DateOfBirth.hints.displayWidth}"
+                        shortDesc="#{bindings.DateOfBirth.hints.tooltip}" id="id1">
+            <f:validator binding="#{bindings.DateOfBirth.validator}"/>
+            <af:convertDateTime pattern="#{bindings.DateOfBirth.format}"/>
+          </af:inputDate>
+          <af:selectOneRadio value="#{bindings.Gender.inputValue}" label="#{bindings.Gender.label}"
+                             required="#{bindings.Gender.hints.mandatory}" shortDesc="#{bindings.Gender.hints.tooltip}"
+                             id="sor1" layout="horizontal">
+            <f:selectItems value="#{bindings.Gender.items}" id="si8"/>
+            <f:validator binding="#{bindings.Gender.validator}"/>
+          </af:selectOneRadio>
+          <af:inputText value="#{bindings.UserName.inputValue}" label="#{bindings.UserName.hints.label}"
+                        required="#{bindings.UserName.hints.mandatory}"
+                        columns="#{bindings.UserName.hints.displayWidth}"
+                        maximumLength="#{bindings.UserName.hints.precision}"
+                        shortDesc="#{bindings.UserName.hints.tooltip}" id="it5">
+            <f:validator binding="#{bindings.UserName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.Password.inputValue}" label="#{lincuviewcontrollerBundle.TEMPORARY_PASSWORD}"
+                        required="#{bindings.Password.hints.mandatory}"
+                        columns="#{bindings.Password.hints.displayWidth}"
+                        maximumLength="#{bindings.Password.hints.precision}"
+                        shortDesc="#{bindings.Password.hints.tooltip}" id="it6">
+            <f:validator binding="#{bindings.Password.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+</jsp:root>

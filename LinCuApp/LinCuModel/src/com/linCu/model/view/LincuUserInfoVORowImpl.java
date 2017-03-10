@@ -2,6 +2,7 @@ package com.linCu.model.view;
 
 import java.sql.Timestamp;
 
+import oracle.jbo.RowSet;
 import oracle.jbo.server.EntityImpl;
 import oracle.jbo.server.ViewRowImpl;
 // ---------------------------------------------------------------------
@@ -11,6 +12,8 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
 public class LincuUserInfoVORowImpl extends ViewRowImpl {
+
+
     public static final int ENTITY_LINCUUSERINFOEO = 0;
 
     /**
@@ -36,8 +39,15 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
         ObjectVersionId,
         LastApprovedBy,
         LastApprovedDate,
-        Password;
-        private static AttributesEnum[] vals = null;
+        Password,
+        UserName,
+        GenderVA,
+        LinCuRolesVA,
+        LincuUnionsVA,
+        LincuBranchesVA,
+        LookUpDataVA;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -59,6 +69,8 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
             return vals;
         }
     }
+
+
     public static final int USERID = AttributesEnum.UserId.index();
     public static final int FIRSTNAME = AttributesEnum.FirstName.index();
     public static final int LASTNAME = AttributesEnum.LastName.index();
@@ -79,6 +91,12 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
     public static final int LASTAPPROVEDBY = AttributesEnum.LastApprovedBy.index();
     public static final int LASTAPPROVEDDATE = AttributesEnum.LastApprovedDate.index();
     public static final int PASSWORD = AttributesEnum.Password.index();
+    public static final int USERNAME = AttributesEnum.UserName.index();
+    public static final int GENDERVA = AttributesEnum.GenderVA.index();
+    public static final int LINCUROLESVA = AttributesEnum.LinCuRolesVA.index();
+    public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
+    public static final int LINCUBRANCHESVA = AttributesEnum.LincuBranchesVA.index();
+    public static final int LOOKUPDATAVA = AttributesEnum.LookUpDataVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -294,13 +312,6 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
         return (String) getAttributeInternal(CREATEDBY);
     }
 
-    /**
-     * Sets <code>value</code> as attribute value for CREATED_BY using the alias name CreatedBy.
-     * @param value value to set the CREATED_BY
-     */
-    public void setCreatedBy(String value) {
-        setAttributeInternal(CREATEDBY, value);
-    }
 
     /**
      * Gets the attribute value for CREATION_DATE using the alias name CreationDate.
@@ -310,13 +321,6 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
         return (Timestamp) getAttributeInternal(CREATIONDATE);
     }
 
-    /**
-     * Sets <code>value</code> as attribute value for CREATION_DATE using the alias name CreationDate.
-     * @param value value to set the CREATION_DATE
-     */
-    public void setCreationDate(Timestamp value) {
-        setAttributeInternal(CREATIONDATE, value);
-    }
 
     /**
      * Gets the attribute value for LAST_UPDATED_BY using the alias name LastUpdatedBy.
@@ -326,13 +330,6 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
         return (String) getAttributeInternal(LASTUPDATEDBY);
     }
 
-    /**
-     * Sets <code>value</code> as attribute value for LAST_UPDATED_BY using the alias name LastUpdatedBy.
-     * @param value value to set the LAST_UPDATED_BY
-     */
-    public void setLastUpdatedBy(String value) {
-        setAttributeInternal(LASTUPDATEDBY, value);
-    }
 
     /**
      * Gets the attribute value for LAST_UPDATE_DATE using the alias name LastUpdateDate.
@@ -342,13 +339,6 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
         return (Timestamp) getAttributeInternal(LASTUPDATEDATE);
     }
 
-    /**
-     * Sets <code>value</code> as attribute value for LAST_UPDATE_DATE using the alias name LastUpdateDate.
-     * @param value value to set the LAST_UPDATE_DATE
-     */
-    public void setLastUpdateDate(Timestamp value) {
-        setAttributeInternal(LASTUPDATEDATE, value);
-    }
 
     /**
      * Gets the attribute value for OBJECT_VERSION_ID using the alias name ObjectVersionId.
@@ -412,6 +402,57 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
      */
     public void setPassword(String value) {
         setAttributeInternal(PASSWORD, value);
+    }
+
+    /**
+     * Gets the attribute value for USER_NAME using the alias name UserName.
+     * @return the USER_NAME
+     */
+    public String getUserName() {
+        return (String) getAttributeInternal(USERNAME);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for USER_NAME using the alias name UserName.
+     * @param value value to set the USER_NAME
+     */
+    public void setUserName(String value) {
+        setAttributeInternal(USERNAME, value);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> GenderVA.
+     */
+    public RowSet getGenderVA() {
+        return (RowSet) getAttributeInternal(GENDERVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> LinCuRolesVA.
+     */
+    public RowSet getLinCuRolesVA() {
+        return (RowSet) getAttributeInternal(LINCUROLESVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> LincuUnionsVA.
+     */
+    public RowSet getLincuUnionsVA() {
+        return (RowSet) getAttributeInternal(LINCUUNIONSVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> LincuBranchesVA.
+     */
+    public RowSet getLincuBranchesVA() {
+        return (RowSet) getAttributeInternal(LINCUBRANCHESVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> LookUpDataVA.
+     */
+    public RowSet getLookUpDataVA() {
+        return (RowSet) getAttributeInternal(LOOKUPDATAVA);
     }
 }
 

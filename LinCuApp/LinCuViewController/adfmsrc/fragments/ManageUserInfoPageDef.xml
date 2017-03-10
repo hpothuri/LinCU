@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57" id="ManageUserInfoPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LincuUserInfo" RangeSize="25" DataControl="LinCuAMDataControl" id="LincuUserInfoIterator"
+              ChangeEventPolicy="none"/>
+    <searchRegion Criteria="QueryUserInfo" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="LincuUserInfoIterator" id="QueryUserInfoQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="LincuUserInfoIterator" id="LincuUserInfo">
+      <nodeDefinition DefName="com.linCu.model.view.LincuUserInfoVO" Name="LincuUserInfo0">
+        <AttrNames>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+          <Item Value="CreditUnionId"/>
+          <Item Value="CreditUnionBranchId"/>
+          <Item Value="UserRole"/>
+          <Item Value="Email"/>
+          <Item Value="MobilePhoneNumber"/>
+          <Item Value="DateOfBirth"/>
+          <Item Value="Gender"/>
+          <Item Value="Password"/>
+          <Item Value="UserName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="LincuUserInfoIterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuUserInfoIterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LincuUserInfoIterator" StaticList="false" Uses="LOV_CreditUnionId" id="CreditUnionId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuUserInfoIterator" StaticList="false" Uses="LOV_CreditUnionBranchId"
+          id="CreditUnionBranchId" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuUserInfoIterator" StaticList="false" Uses="LOV_UserRole" id="UserRole"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LincuUserInfoIterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuUserInfoIterator" id="MobilePhoneNumber">
+      <AttrNames>
+        <Item Value="MobilePhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuUserInfoIterator" id="DateOfBirth">
+      <AttrNames>
+        <Item Value="DateOfBirth"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LincuUserInfoIterator" StaticList="false" Uses="LOV_Gender" id="Gender" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LincuUserInfoIterator" id="UserName">
+      <AttrNames>
+        <Item Value="UserName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuUserInfoIterator" id="Password">
+      <AttrNames>
+        <Item Value="Password"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LincuUserInfoIterator" StaticList="false" Uses="LOV_UserTypeCode" id="UserTypeCode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="LinCuAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="LinCuAMDataControl"/>
+    <action IterBinding="LincuUserInfoIterator" id="CreateInsert" InstanceName="LinCuAMDataControl.LincuUserInfo"
+            DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

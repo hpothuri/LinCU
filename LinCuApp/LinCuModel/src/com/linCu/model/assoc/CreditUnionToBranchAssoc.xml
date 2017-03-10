@@ -13,7 +13,9 @@
     Name="CreditUnionEO"
     Cardinality="1"
     Source="true"
-    Owner="com.linCu.model.entity.CreditUnionEO">
+    Owner="com.linCu.model.entity.CreditUnionEO"
+    DeleteContainee="true"
+    LockLevel="NONE">
     <DesignTime>
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_minCardinality" Value="1"/>
