@@ -41,11 +41,15 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
         LastApprovedDate,
         Password,
         UserName,
+        SecurityQustn,
+        SecurityQustnAns,
+        FirstLoginFlag,
         GenderVA,
         LinCuRolesVA,
         LincuUnionsVA,
         LincuBranchesVA,
-        LookUpDataVA;
+        LookUpDataVA,
+        SecurityQuestionsVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -92,11 +96,15 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
     public static final int LASTAPPROVEDDATE = AttributesEnum.LastApprovedDate.index();
     public static final int PASSWORD = AttributesEnum.Password.index();
     public static final int USERNAME = AttributesEnum.UserName.index();
+    public static final int SECURITYQUSTN = AttributesEnum.SecurityQustn.index();
+    public static final int SECURITYQUSTNANS = AttributesEnum.SecurityQustnAns.index();
+    public static final int FIRSTLOGINFLAG = AttributesEnum.FirstLoginFlag.index();
     public static final int GENDERVA = AttributesEnum.GenderVA.index();
     public static final int LINCUROLESVA = AttributesEnum.LinCuRolesVA.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
     public static final int LINCUBRANCHESVA = AttributesEnum.LincuBranchesVA.index();
     public static final int LOOKUPDATAVA = AttributesEnum.LookUpDataVA.index();
+    public static final int SECURITYQUESTIONSVA = AttributesEnum.SecurityQuestionsVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -421,6 +429,54 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for SECURITY_QUSTN using the alias name SecurityQustn.
+     * @return the SECURITY_QUSTN
+     */
+    public String getSecurityQustn() {
+        return (String) getAttributeInternal(SECURITYQUSTN);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SECURITY_QUSTN using the alias name SecurityQustn.
+     * @param value value to set the SECURITY_QUSTN
+     */
+    public void setSecurityQustn(String value) {
+        setAttributeInternal(SECURITYQUSTN, value);
+    }
+
+    /**
+     * Gets the attribute value for SECURITY_QUSTN_ANS using the alias name SecurityQustnAns.
+     * @return the SECURITY_QUSTN_ANS
+     */
+    public String getSecurityQustnAns() {
+        return (String) getAttributeInternal(SECURITYQUSTNANS);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SECURITY_QUSTN_ANS using the alias name SecurityQustnAns.
+     * @param value value to set the SECURITY_QUSTN_ANS
+     */
+    public void setSecurityQustnAns(String value) {
+        setAttributeInternal(SECURITYQUSTNANS, value);
+    }
+
+    /**
+     * Gets the attribute value for FIRST_LOGIN_FLAG using the alias name FirstLoginFlag.
+     * @return the FIRST_LOGIN_FLAG
+     */
+    public String getFirstLoginFlag() {
+        return (String) getAttributeInternal(FIRSTLOGINFLAG);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for FIRST_LOGIN_FLAG using the alias name FirstLoginFlag.
+     * @param value value to set the FIRST_LOGIN_FLAG
+     */
+    public void setFirstLoginFlag(String value) {
+        setAttributeInternal(FIRSTLOGINFLAG, value);
+    }
+
+    /**
      * Gets the view accessor <code>RowSet</code> GenderVA.
      */
     public RowSet getGenderVA() {
@@ -453,6 +509,13 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
      */
     public RowSet getLookUpDataVA() {
         return (RowSet) getAttributeInternal(LOOKUPDATAVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> SecurityQuestionsVA.
+     */
+    public RowSet getSecurityQuestionsVA() {
+        return (RowSet) getAttributeInternal(SECURITYQUESTIONSVA);
     }
 }
 

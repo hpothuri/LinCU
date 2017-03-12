@@ -84,7 +84,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_USER_INFO">
+    TableName="LINCU_USER_INFO"
+    IsNotNull="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
@@ -276,6 +277,44 @@
     TableName="LINCU_USER_INFO">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SecurityQustn"
+    Precision="50"
+    ColumnName="SECURITY_QUSTN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SecurityQustnAns"
+    Precision="250"
+    ColumnName="SECURITY_QUSTN_ANS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FirstLoginFlag"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="FIRST_LOGIN_FLAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO"
+    DefaultValue="Y">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
   </Attribute>
   <AccessorAttribute

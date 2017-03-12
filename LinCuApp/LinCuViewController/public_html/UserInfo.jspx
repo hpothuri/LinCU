@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="lincuviewcontrollerBundle" value="#{adfBundle['com.linCu.view.LinCuViewControllerBundle']}"/>
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="UserInfo.jspx" id="d1">
+            <af:form id="f1">
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow height="50px" id="gr2">
+                        <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                          <af:panelGroupLayout id="pgl7" layout="horizontal" styleClass="AFStretchWidth">
+                                <af:panelGroupLayout id="pgl6" layout="vertical" halign="start">
+                                    <af:outputText value="#{lincuviewcontrollerBundle.LINCU_APPLICATION}" id="ot1"
+                                                   inlineStyle="font-size:xx-large;"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl5" layout="vertical" halign="end"
+                                                     inlineStyle="margin-top:5px;margin-left:800px;">
+                                    <af:panelGroupLayout id="pgl4" layout="horizontal">
+                                        <af:outputText id="ot2"
+                                                       value="#{lincuviewcontrollerBundle.WELCOME} #{sessionScope.userSessionData.userName} (#{sessionScope.userSessionData.userRoleDesc})"
+                                                       inlineStyle="font-weight:bolder;"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgl3" layout="horizontal" halign="right">
+                                        <af:link id="l1" text="#{lincuviewcontrollerBundle.LOGOUT}"
+                                                 inlineStyle="font-size:medium; font-weight:bold;" action="login"/>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow height="100%" id="gr1">
+                        <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                            <af:panelGroupLayout layout="scroll" id="pgl2">
+                                <!-- Content -->
+                                <af:region value="#{bindings.UserInfoTF1.regionModel}" id="r1"/>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

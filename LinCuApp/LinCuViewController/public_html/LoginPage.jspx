@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="lincuviewcontrollerBundle" value="#{adfBundle['com.linCu.view.LinCuViewControllerBundle']}"/>
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="LoginPage.jspx" id="d1">
+            <af:messages id="m1"/>
+            <af:form id="f1">
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow height="50px" id="gr2">
+                        <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                            <!-- Header -->
+                            <af:outputText value="#{lincuviewcontrollerBundle.LINCU_APPLICATION}" id="ot1"
+                                           inlineStyle="font-size:xx-large;"/>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow height="100%" id="gr1">
+                        <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                            <af:panelGroupLayout layout="horizontal" id="pgl2" inlineStyle="margin-left:30%;margin-top:10%;">
+                                <af:panelGroupLayout id="pgl4" layout="horizontal" halign="center" valign="top">
+                                    <af:panelBox text="#{lincuviewcontrollerBundle.LOGIN_TO_LINCU}" id="pb1"
+                                                 showDisclosure="false"
+                                                 contentStyle="height:130px; width:300px;"
+                                                 inlineStyle="margin-right:50px;">
+                                        <f:facet name="toolbar"/>
+                                        <af:panelFormLayout id="pfl1" maxColumns="1" rows="4">
+                                            <f:facet name="footer"/>
+                                            <af:inputText label="#{lincuviewcontrollerBundle.USER_NAME}" id="it1"
+                                                          value="#{pageFlowScope.userName}" required="true"/>
+                                            <af:inputText label="#{lincuviewcontrollerBundle.PASSWORD}" id="it4"
+                                                          value="#{pageFlowScope.password}" required="true"
+                                                          secret="true"/>
+                                            <af:panelGroupLayout id="pgl3" layout="horizontal" halign="center">
+                                                <af:button
+                                                           text="#{lincuviewcontrollerBundle.LOGIN}" id="b1"
+                                                           action="#{loginBean.login}"/>
+                                            </af:panelGroupLayout>
+                                            <af:outputText value="#{loginBean.errorMessage}" id="ot2"
+                                                           partialTriggers="b1"
+                                                           inlineStyle="color:Red; font-weight:bold;"/>
+                                        </af:panelFormLayout>
+                                    </af:panelBox>
+                                    <af:panelBox text="#{lincuviewcontrollerBundle.MAY_I_HELP_YOU}" id="pb2"
+                                                 showDisclosure="false"
+                                                 contentStyle='height:130px; width:150px;'>
+                                        <f:facet name="toolbar"/>
+                                        <af:panelFormLayout id="pfl2" maxColumns="1" rows="2">
+                                            <f:facet name="footer"/>
+                                            <af:panelGroupLayout id="pgl5" layout="horizontal">
+                                                <af:image source="#{resource['images:ForgotPassword.png']}" id="i1"/>
+                                                <af:spacer width="10" height="10" id="s1"/>
+                                                <af:link text="#{lincuviewcontrollerBundle.FORGOT_PASSWORD}" id="l1"
+                                                         action="success" actionListener="#{loginBean.forgotPassword}"/>
+                                            </af:panelGroupLayout>
+                                            <af:panelGroupLayout id="pgl6" layout="horizontal">
+                                                <af:image source="#{resource['images:ResetPassword.png']}" id="i2"/>
+                                                <af:spacer width="10" height="10" id="s2"/>
+                                                <af:link id="l2" text="#{lincuviewcontrollerBundle.RESET_PASSWORD}"
+                                                         action="success" actionListener="#{loginBean.resetPassword}"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelFormLayout>
+                                    </af:panelBox>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

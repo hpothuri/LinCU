@@ -6,19 +6,15 @@
   Name="LinCuAM"
   Version="12.2.1.11.57"
   InheritPersonalization="merge"
-  ClearCacheOnRollback="true">
-  <ViewUsage
-    Name="CreditUnionBranchVO1"
-    ViewObjectName="com.linCu.model.view.CreditUnionBranchVO"/>
+  ClearCacheOnRollback="true"
+  ComponentClass="com.linCu.model.am.LinCuAMImpl"
+  ComponentInterface="com.linCu.model.am.common.LinCuAM">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <ViewUsage
     Name="CreditUnion"
     ViewObjectName="com.linCu.model.view.CreditUnionVO"/>
-  <ViewUsage
-    Name="LincuMemberInfoVO1"
-    ViewObjectName="com.linCu.model.view.LincuMemberInfoVO"/>
-  <ViewUsage
-    Name="LincuMemberKycVO1"
-    ViewObjectName="com.linCu.model.view.LincuMemberKycVO"/>
   <ViewUsage
     Name="LincuUserInfo"
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO"/>
@@ -26,45 +22,45 @@
     Name="CreditUnionBranch"
     ViewObjectName="com.linCu.model.view.CreditUnionBranchVO"/>
   <ViewUsage
-    Name="LincuUserInfoVO2"
+    Name="LoginView"
+    ViewObjectName="com.linCu.model.vvo.LoginVVO">
+    <ViewCriteriaUsage
+      Name="LoginVVOCriteria"
+      FullName="com.linCu.model.vvo.LoginVVO.LoginVVOCriteria"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="PasswordReset"
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO"/>
-  <ViewUsage
-    Name="LincuMemberInfoVO2"
-    ViewObjectName="com.linCu.model.view.LincuMemberInfoVO"/>
-  <ViewUsage
-    Name="LincuMemberKycVO2"
-    ViewObjectName="com.linCu.model.view.LincuMemberKycVO"/>
-  <ViewUsage
-    Name="LincuMemberKycVO3"
-    ViewObjectName="com.linCu.model.view.LincuMemberKycVO"/>
   <ViewLinkUsage
     Name="CreditUnionBranchVL"
     ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionToBranchVL"
     SrcViewUsageName="com.linCu.model.am.LinCuAM.CreditUnion"
     DstViewUsageName="com.linCu.model.am.LinCuAM.CreditUnionBranch"
     Reversed="false"/>
-  <ViewLinkUsage
-    Name="LincuUserInfoFk1Link1"
-    ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionBranchToUserInfoVL"
-    SrcViewUsageName="com.linCu.model.am.LinCuAM.CreditUnionBranchVO1"
-    DstViewUsageName="com.linCu.model.am.LinCuAM.LincuUserInfoVO2"
-    Reversed="false"/>
-  <ViewLinkUsage
-    Name="LincuMemberInfoFk1Link1"
-    ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionBranchToMemberInfoVL"
-    SrcViewUsageName="com.linCu.model.am.LinCuAM.CreditUnionBranchVO1"
-    DstViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberInfoVO2"
-    Reversed="false"/>
-  <ViewLinkUsage
-    Name="LincuMemberKycFk1Link1"
-    ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionBranchToMemberKycVL"
-    SrcViewUsageName="com.linCu.model.am.LinCuAM.CreditUnionBranchVO1"
-    DstViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberKycVO2"
-    Reversed="false"/>
-  <ViewLinkUsage
-    Name="LincuMemberKycFk2Link1"
-    ViewLinkObjectName="com.linCu.model.viewLink.MemberInfoToMemberKycVL"
-    SrcViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberInfoVO1"
-    DstViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberKycVO3"
-    Reversed="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="validateLogin"
+      MethodName="validateLogin">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="userName"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="password"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="userSessionInfo"
+      MethodName="userSessionInfo">
+      <Return
+        Name="_return_type_"
+        Type="java.util.Map"/>
+      <Parameter
+        Name="userName"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
 </AppModule>

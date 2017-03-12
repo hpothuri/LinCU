@@ -14,7 +14,9 @@
   SelectAllAttributes="false"
   PageIterMode="Full"
   RowClass="com.linCu.model.view.LincuUserInfoVORowImpl"
-  ComponentClass="com.linCu.model.view.LincuUserInfoVOImpl">
+  ComponentClass="com.linCu.model.view.LincuUserInfoVOImpl"
+  ComponentInterface="com.linCu.model.view.common.LincuUserInfoVO"
+  ClientProxyName="com.linCu.model.view.client.LincuUserInfoVOClient">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -56,6 +58,21 @@
       <PIMap Variable="bindLookUpType">
         <TransientExpression
           Name="ExpressionScript"><![CDATA['USER_TYPE_CODE']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="SecurityQuestionsVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['SECURITY_QUESTION']]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
@@ -141,6 +158,25 @@
     MRUCount="0">
     <AttrArray Name="AttrNames">
       <Item Value="UserTypeCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SecurityQustn"
+    ListVOName="SecurityQuestionsVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SecurityQustn"/>
     </AttrArray>
     <AttrArray Name="AttrExpressions"/>
     <AttrArray Name="ListAttrNames">
@@ -428,6 +464,37 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityQustn"
+    PrecisionRule="true"
+    EntityAttrName="SecurityQustn"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="SECURITY_QUSTN"
+    LOVName="LOV_SecurityQustn">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityQustnAns"
+    PrecisionRule="true"
+    EntityAttrName="SecurityQustnAns"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="SECURITY_QUSTN_ANS">
+    <Properties>
+      <SchemaBasedProperties/>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FirstLoginFlag"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="FirstLoginFlag"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="FIRST_LOGIN_FLAG"/>
   <ViewCriteria
     Name="QueryUserInfo"
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO"
@@ -516,6 +583,28 @@
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="resetPassword"
+      MethodName="resetPassword">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="oldPassword"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="newPassword"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="confirmPassword"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="securityAns"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.linCu.model.LinCuModelBundle"/>

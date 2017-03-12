@@ -13,6 +13,11 @@
     <page path="/fragments/ManageBranches.jsff" usageId="com_linCu_view_ManageBranchesPageDef"/>
     <page path="/fragments/ManageUserInfo.jsff" usageId="com_linCu_view_ManageUserInfoPageDef"/>
     <page path="/TestUserInfo.jspx" usageId="com_linCu_view_TestUserInfoPageDef"/>
+    <page path="/LoginPage.jspx" usageId="com_linCu_view_LoginPagePageDef"/>
+    <page path="/UserInfo.jspx" usageId="com_linCu_view_UserInfoPageDef"/>
+    <page path="/CreditUnion.jspx" usageId="com_linCu_view_CreditUnionPageDef"/>
+    <page path="/fragments/ManagePassword.jsff" usageId="com_linCu_view_ManagePasswordPageDef"/>
+    <page path="/ResetPassword.jspx" usageId="com_linCu_view_ResetPasswordPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_linCu_view_CreateCreditUnionPageDef" path="fragments.CreateCreditUnionPageDef"/>
@@ -21,6 +26,11 @@
     <page id="com_linCu_view_ManageBranchesPageDef" path="fragments.ManageBranchesPageDef"/>
     <page id="com_linCu_view_ManageUserInfoPageDef" path="fragments.ManageUserInfoPageDef"/>
     <page id="com_linCu_view_TestUserInfoPageDef" path="com.linCu.view.pageDefs.TestUserInfoPageDef"/>
+    <page id="com_linCu_view_LoginPagePageDef" path="com.linCu.view.pageDefs.LoginPagePageDef"/>
+    <page id="com_linCu_view_UserInfoPageDef" path="com.linCu.view.pageDefs.UserInfoPageDef"/>
+    <page id="com_linCu_view_CreditUnionPageDef" path="com.linCu.view.pageDefs.CreditUnionPageDef"/>
+    <page id="com_linCu_view_ManagePasswordPageDef" path="fragments.ManagePasswordPageDef"/>
+    <page id="com_linCu_view_ResetPasswordPageDef" path="com.linCu.view.pageDefs.ResetPasswordPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="LinCuAMDataControl" Package="com.linCu.model.am"

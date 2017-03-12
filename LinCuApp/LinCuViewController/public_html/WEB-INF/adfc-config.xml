@@ -1,2 +1,69 @@
 <?xml version="1.0" encoding="windows-1252" ?>
-<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2"></adfc-config>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="LoginPage">
+    <page>/LoginPage.jspx</page>
+  </view>
+  <router id="router1">
+    <case id="__8">
+      <expression>#{pageFlowScope.userInfo}</expression>
+      <outcome>userInfo</outcome>
+    </case>
+    <case id="__10">
+      <expression>#{pageFlowScope.creditUnion}</expression>
+      <outcome>creditUnion</outcome>
+    </case>
+    <case id="__11">
+      <expression>#{pageFlowScope.firstLogin}</expression>
+      <outcome>resetPassword</outcome>
+    </case>
+    <default-outcome>resetPassword</default-outcome>
+  </router>
+  <view id="CreditUnion">
+    <page>/CreditUnion.jspx</page>
+  </view>
+  <view id="UserInfo">
+    <page>/UserInfo.jspx</page>
+  </view>
+  <view id="ResetPassword">
+    <page>/ResetPassword.jspx</page>
+  </view>
+  <control-flow-rule id="__3">
+    <from-activity-id>router1</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome>creditUnion</from-outcome>
+      <to-activity-id>CreditUnion</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>userInfo</from-outcome>
+      <to-activity-id>UserInfo</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__9">
+      <from-outcome>resetPassword</from-outcome>
+      <to-activity-id>ResetPassword</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__6">
+    <from-activity-id>LoginPage</from-activity-id>
+    <control-flow-case id="__7">
+      <from-outcome>success</from-outcome>
+      <to-activity-id>router1</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__12">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__13">
+      <from-outcome>login</from-outcome>
+      <to-activity-id>LoginPage</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__1">
+    <managed-bean-name>loginBean</managed-bean-name>
+    <managed-bean-class>com.linCu.view.backingBeans.LoginBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>userSessionData</managed-bean-name>
+    <managed-bean-class>com.linCu.view.backingBeans.UserSessionData</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+</adfc-config>
