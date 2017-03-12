@@ -51,13 +51,15 @@
                                                 <af:image source="#{resource['images:ForgotPassword.png']}" id="i1"/>
                                                 <af:spacer width="10" height="10" id="s1"/>
                                                 <af:link text="#{lincuviewcontrollerBundle.FORGOT_PASSWORD}" id="l1"
-                                                         action="success" actionListener="#{loginBean.forgotPassword}"/>
+                                                         action="success" actionListener="#{loginBean.forgotPassword}"
+                                                         immediate="true"/>
                                             </af:panelGroupLayout>
                                             <af:panelGroupLayout id="pgl6" layout="horizontal">
                                                 <af:image source="#{resource['images:ResetPassword.png']}" id="i2"/>
                                                 <af:spacer width="10" height="10" id="s2"/>
                                                 <af:link id="l2" text="#{lincuviewcontrollerBundle.RESET_PASSWORD}"
-                                                         action="success" actionListener="#{loginBean.resetPassword}"/>
+                                                         action="success" actionListener="#{loginBean.resetPassword}"
+                                                         immediate="true"/>
                                             </af:panelGroupLayout>
                                         </af:panelFormLayout>
                                     </af:panelBox>
