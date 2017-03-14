@@ -43,7 +43,7 @@ public class LoginBean {
                         ADFUtils.setPageFlowScopeValue("creditUnion", true); 
                         ADFUtils.setPageFlowScopeValue("userInfo", false); 
                         ADFUtils.setPageFlowScopeValue("resetPassword", false);
-                    }else if(("MSMAN_ADMINR".equalsIgnoreCase(role)) || ("FCB".equalsIgnoreCase(role))){
+                    }else if(("MAN_ADMIN".equalsIgnoreCase(role)) || ("FCB".equalsIgnoreCase(role))){
                         ADFUtils.setPageFlowScopeValue("firstLogin", false);
                         ADFUtils.setPageFlowScopeValue("creditUnion", false); 
                         ADFUtils.setPageFlowScopeValue("userInfo", true);
