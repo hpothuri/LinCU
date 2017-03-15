@@ -18,6 +18,11 @@
     <page path="/CreditUnion.jspx" usageId="com_linCu_view_CreditUnionPageDef"/>
     <page path="/fragments/ManagePassword.jsff" usageId="com_linCu_view_ManagePasswordPageDef"/>
     <page path="/ResetPassword.jspx" usageId="com_linCu_view_ResetPasswordPageDef"/>
+    <page path="/MemberDetails.jspx" usageId="com_linCu_view_MemberDetailsPageDef"/>
+    <page path="/fragments/MemberInfo.jsff" usageId="com_linCu_view_MemberInfoPageDef"/>
+    <page path="/WEB-INF/flows/Member-Flow-TF.xml#Member-Flow-TF@CreateInsert"
+          usageId="com_linCu_view_Member_Flow_TF_Member_Flow_TF_CreateInsertPageDef"/>
+    <page path="/fragments/MemberKYC.jsff" usageId="com_linCu_view_MemberKYCPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_linCu_view_CreateCreditUnionPageDef" path="fragments.CreateCreditUnionPageDef"/>
@@ -31,6 +36,11 @@
     <page id="com_linCu_view_CreditUnionPageDef" path="com.linCu.view.pageDefs.CreditUnionPageDef"/>
     <page id="com_linCu_view_ManagePasswordPageDef" path="fragments.ManagePasswordPageDef"/>
     <page id="com_linCu_view_ResetPasswordPageDef" path="com.linCu.view.pageDefs.ResetPasswordPageDef"/>
+    <page id="com_linCu_view_MemberDetailsPageDef" path="com.linCu.view.pageDefs.MemberDetailsPageDef"/>
+    <page id="com_linCu_view_MemberInfoPageDef" path="fragments.MemberInfoPageDef"/>
+    <page id="com_linCu_view_Member_Flow_TF_Member_Flow_TF_CreateInsertPageDef"
+          path="flows.Member_Flow_TF_Member_Flow_TF_CreateInsertPageDef"/>
+    <page id="com_linCu_view_MemberKYCPageDef" path="fragments.MemberKYCPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="LinCuAMDataControl" Package="com.linCu.model.am"

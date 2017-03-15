@@ -106,5 +106,29 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     public LincuUserInfoVOImpl getPasswordReset() {
         return (LincuUserInfoVOImpl) findViewObject("PasswordReset");
     }
+
+    /**
+     * Container's getter for LincuMemberInfoVO1.
+     * @return LincuMemberInfoVO1
+     */
+    public ViewObjectImpl getLincuMemberInfo() {
+        return (ViewObjectImpl) findViewObject("LincuMemberInfo");
+    }
+
+    /**
+     * Container's getter for LincuMemberKycVO1.
+     * @return LincuMemberKycVO1
+     */
+    public ViewObjectImpl getLincuMemberKyc() {
+        return (ViewObjectImpl) findViewObject("LincuMemberKyc");
+    }
+
+    /**
+     * Container's getter for MemberInfoToMemberKycVL1.
+     * @return MemberInfoToMemberKycVL1
+     */
+    public ViewLinkImpl getMemberInfoToMemberKycVL1() {
+        return (ViewLinkImpl) findViewLink("MemberInfoToMemberKycVL1");
+    }
 }
 

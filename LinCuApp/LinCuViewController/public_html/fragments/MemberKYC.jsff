@@ -1,0 +1,490 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"  xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+          <c:set var="lincuviewcontrollerBundle" value="#{adfBundle['com.linCu.view.LinCuViewControllerBundle']}"/>
+ <af:panelGroupLayout layout="vertical" id="pgl1">
+  <af:panelHeader text="#{lincuviewcontrollerBundle.CREATE_MEMBERS}" id="ph1">
+   <af:panelGroupLayout id="pgl2" layout="horizontal" halign="center">
+    <af:button actionListener="#{bindings.Commit.execute}" text="#{lincuviewcontrollerBundle.SAVE}" disabled="#{!bindings.Commit.enabled}"
+               id="b1"/>
+    <af:button actionListener="#{bindings.Rollback.execute}" text="#{lincuviewcontrollerBundle.CANCEL}" disabled="#{!bindings.Rollback.enabled}"
+               immediate="true" id="b2">
+     <af:resetActionListener/>
+    </af:button>
+    <af:button text="#{lincuviewcontrollerBundle.BACK}" action="back" partialSubmit="true" id="b3"/>
+   </af:panelGroupLayout>
+   <af:panelFormLayout id="pfl1" rows="30" maxColumns="2">
+   <af:inputText value="#{bindings.LincuId.inputValue}" label="#{bindings.LincuId.hints.label}"
+                 required="#{bindings.LincuId.hints.mandatory}" columns="#{bindings.LincuId.hints.displayWidth}"
+                 maximumLength="#{bindings.LincuId.hints.precision}" shortDesc="#{bindings.LincuId.hints.tooltip}"
+                 id="it1">
+    <f:validator binding="#{bindings.LincuId.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MemberId.inputValue}" label="#{bindings.MemberId.hints.label}"
+                 required="#{bindings.MemberId.hints.mandatory}" columns="#{bindings.MemberId.hints.displayWidth}"
+                 maximumLength="#{bindings.MemberId.hints.precision}" shortDesc="#{bindings.MemberId.hints.tooltip}"
+                 id="it2">
+    <f:validator binding="#{bindings.MemberId.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.CreditUnionId.inputValue}" label="#{bindings.CreditUnionId.hints.label}"
+                 required="#{bindings.CreditUnionId.hints.mandatory}"
+                 columns="#{bindings.CreditUnionId.hints.displayWidth}"
+                 maximumLength="#{bindings.CreditUnionId.hints.precision}"
+                 shortDesc="#{bindings.CreditUnionId.hints.tooltip}" id="it3">
+    <f:validator binding="#{bindings.CreditUnionId.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.CreditUnionBranchId.inputValue}" label="#{bindings.CreditUnionBranchId.hints.label}"
+                 required="#{bindings.CreditUnionBranchId.hints.mandatory}"
+                 columns="#{bindings.CreditUnionBranchId.hints.displayWidth}"
+                 maximumLength="#{bindings.CreditUnionBranchId.hints.precision}"
+                 shortDesc="#{bindings.CreditUnionBranchId.hints.tooltip}" id="it4">
+    <f:validator binding="#{bindings.CreditUnionBranchId.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.ElectorialId.inputValue}" label="#{bindings.ElectorialId.hints.label}"
+                 required="#{bindings.ElectorialId.hints.mandatory}"
+                 columns="#{bindings.ElectorialId.hints.displayWidth}"
+                 maximumLength="#{bindings.ElectorialId.hints.precision}"
+                 shortDesc="#{bindings.ElectorialId.hints.tooltip}" id="it5">
+    <f:validator binding="#{bindings.ElectorialId.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.DriverPermit.inputValue}" label="#{bindings.DriverPermit.hints.label}"
+                 required="#{bindings.DriverPermit.hints.mandatory}"
+                 columns="#{bindings.DriverPermit.hints.displayWidth}"
+                 maximumLength="#{bindings.DriverPermit.hints.precision}"
+                 shortDesc="#{bindings.DriverPermit.hints.tooltip}" id="it6">
+    <f:validator binding="#{bindings.DriverPermit.validator}"/>
+   </af:inputText>
+   <af:inputDate value="#{bindings.DpIssueDate.inputValue}" label="#{bindings.DpIssueDate.hints.label}"
+                 required="#{bindings.DpIssueDate.hints.mandatory}" columns="#{bindings.DpIssueDate.hints.displayWidth}"
+                 shortDesc="#{bindings.DpIssueDate.hints.tooltip}" id="id1">
+    <f:validator binding="#{bindings.DpIssueDate.validator}"/>
+    <af:convertDateTime pattern="#{bindings.DpIssueDate.format}"/>
+   </af:inputDate>
+   <af:inputDate value="#{bindings.DpExpiryDate.inputValue}" label="#{bindings.DpExpiryDate.hints.label}"
+                 required="#{bindings.DpExpiryDate.hints.mandatory}"
+                 columns="#{bindings.DpExpiryDate.hints.displayWidth}"
+                 shortDesc="#{bindings.DpExpiryDate.hints.tooltip}" id="id2">
+    <f:validator binding="#{bindings.DpExpiryDate.validator}"/>
+    <af:convertDateTime pattern="#{bindings.DpExpiryDate.format}"/>
+   </af:inputDate>
+   <af:inputText value="#{bindings.PassportNo.inputValue}" label="#{bindings.PassportNo.hints.label}"
+                 required="#{bindings.PassportNo.hints.mandatory}" columns="#{bindings.PassportNo.hints.displayWidth}"
+                 maximumLength="#{bindings.PassportNo.hints.precision}" shortDesc="#{bindings.PassportNo.hints.tooltip}"
+                 id="it7">
+    <f:validator binding="#{bindings.PassportNo.validator}"/>
+   </af:inputText>
+   <af:inputDate value="#{bindings.PpIssueDate.inputValue}" label="#{bindings.PpIssueDate.hints.label}"
+                 required="#{bindings.PpIssueDate.hints.mandatory}" columns="#{bindings.PpIssueDate.hints.displayWidth}"
+                 shortDesc="#{bindings.PpIssueDate.hints.tooltip}" id="id3">
+    <f:validator binding="#{bindings.PpIssueDate.validator}"/>
+    <af:convertDateTime pattern="#{bindings.PpIssueDate.format}"/>
+   </af:inputDate>
+   <af:inputDate value="#{bindings.PpExpiryDate.inputValue}" label="#{bindings.PpExpiryDate.hints.label}"
+                 required="#{bindings.PpExpiryDate.hints.mandatory}"
+                 columns="#{bindings.PpExpiryDate.hints.displayWidth}"
+                 shortDesc="#{bindings.PpExpiryDate.hints.tooltip}" id="id4">
+    <f:validator binding="#{bindings.PpExpiryDate.validator}"/>
+    <af:convertDateTime pattern="#{bindings.PpExpiryDate.format}"/>
+   </af:inputDate>
+   <af:inputText value="#{bindings.BirNo.inputValue}" label="#{bindings.BirNo.hints.label}"
+                 required="#{bindings.BirNo.hints.mandatory}" columns="#{bindings.BirNo.hints.displayWidth}"
+                 maximumLength="#{bindings.BirNo.hints.precision}" shortDesc="#{bindings.BirNo.hints.tooltip}" id="it8">
+    <f:validator binding="#{bindings.BirNo.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.PermanentAddrLine1.inputValue}" label="#{bindings.PermanentAddrLine1.hints.label}"
+                 required="#{bindings.PermanentAddrLine1.hints.mandatory}"
+                 columns="#{bindings.PermanentAddrLine1.hints.displayWidth}"
+                 maximumLength="#{bindings.PermanentAddrLine1.hints.precision}"
+                 shortDesc="#{bindings.PermanentAddrLine1.hints.tooltip}" id="it9">
+    <f:validator binding="#{bindings.PermanentAddrLine1.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.PermanentAddrLine2.inputValue}" label="#{bindings.PermanentAddrLine2.hints.label}"
+                 required="#{bindings.PermanentAddrLine2.hints.mandatory}"
+                 columns="#{bindings.PermanentAddrLine2.hints.displayWidth}"
+                 maximumLength="#{bindings.PermanentAddrLine2.hints.precision}"
+                 shortDesc="#{bindings.PermanentAddrLine2.hints.tooltip}" id="it10">
+    <f:validator binding="#{bindings.PermanentAddrLine2.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.PermanentAddrLine3.inputValue}" label="#{bindings.PermanentAddrLine3.hints.label}"
+                 required="#{bindings.PermanentAddrLine3.hints.mandatory}"
+                 columns="#{bindings.PermanentAddrLine3.hints.displayWidth}"
+                 maximumLength="#{bindings.PermanentAddrLine3.hints.precision}"
+                 shortDesc="#{bindings.PermanentAddrLine3.hints.tooltip}" id="it11">
+    <f:validator binding="#{bindings.PermanentAddrLine3.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.PermanentAddrLine4.inputValue}" label="#{bindings.PermanentAddrLine4.hints.label}"
+                 required="#{bindings.PermanentAddrLine4.hints.mandatory}"
+                 columns="#{bindings.PermanentAddrLine4.hints.displayWidth}"
+                 maximumLength="#{bindings.PermanentAddrLine4.hints.precision}"
+                 shortDesc="#{bindings.PermanentAddrLine4.hints.tooltip}" id="it12">
+    <f:validator binding="#{bindings.PermanentAddrLine4.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.PermanentCity.inputValue}" label="#{bindings.PermanentCity.hints.label}"
+                 required="#{bindings.PermanentCity.hints.mandatory}"
+                 columns="#{bindings.PermanentCity.hints.displayWidth}"
+                 maximumLength="#{bindings.PermanentCity.hints.precision}"
+                 shortDesc="#{bindings.PermanentCity.hints.tooltip}" id="it13">
+    <f:validator binding="#{bindings.PermanentCity.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.PermanentState.inputValue}" label="#{bindings.PermanentState.hints.label}"
+                 required="#{bindings.PermanentState.hints.mandatory}"
+                 columns="#{bindings.PermanentState.hints.displayWidth}"
+                 maximumLength="#{bindings.PermanentState.hints.precision}"
+                 shortDesc="#{bindings.PermanentState.hints.tooltip}" id="it14">
+    <f:validator binding="#{bindings.PermanentState.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.PermanentZipCode.inputValue}" label="#{bindings.PermanentZipCode.hints.label}"
+                 required="#{bindings.PermanentZipCode.hints.mandatory}"
+                 columns="#{bindings.PermanentZipCode.hints.displayWidth}"
+                 maximumLength="#{bindings.PermanentZipCode.hints.precision}"
+                 shortDesc="#{bindings.PermanentZipCode.hints.tooltip}" id="it15">
+    <f:validator binding="#{bindings.PermanentZipCode.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.PermanentCountryCode.inputValue}"
+                 label="#{bindings.PermanentCountryCode.hints.label}"
+                 required="#{bindings.PermanentCountryCode.hints.mandatory}"
+                 columns="#{bindings.PermanentCountryCode.hints.displayWidth}"
+                 maximumLength="#{bindings.PermanentCountryCode.hints.precision}"
+                 shortDesc="#{bindings.PermanentCountryCode.hints.tooltip}" id="it16">
+    <f:validator binding="#{bindings.PermanentCountryCode.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.PermanentCountryDesc.inputValue}"
+                 label="#{bindings.PermanentCountryDesc.hints.label}"
+                 required="#{bindings.PermanentCountryDesc.hints.mandatory}"
+                 columns="#{bindings.PermanentCountryDesc.hints.displayWidth}"
+                 maximumLength="#{bindings.PermanentCountryDesc.hints.precision}"
+                 shortDesc="#{bindings.PermanentCountryDesc.hints.tooltip}" id="it17">
+    <f:validator binding="#{bindings.PermanentCountryDesc.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MailingAddrLine1.inputValue}" label="#{bindings.MailingAddrLine1.hints.label}"
+                 required="#{bindings.MailingAddrLine1.hints.mandatory}"
+                 columns="#{bindings.MailingAddrLine1.hints.displayWidth}"
+                 maximumLength="#{bindings.MailingAddrLine1.hints.precision}"
+                 shortDesc="#{bindings.MailingAddrLine1.hints.tooltip}" id="it18">
+    <f:validator binding="#{bindings.MailingAddrLine1.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MailingAddrLine2.inputValue}" label="#{bindings.MailingAddrLine2.hints.label}"
+                 required="#{bindings.MailingAddrLine2.hints.mandatory}"
+                 columns="#{bindings.MailingAddrLine2.hints.displayWidth}"
+                 maximumLength="#{bindings.MailingAddrLine2.hints.precision}"
+                 shortDesc="#{bindings.MailingAddrLine2.hints.tooltip}" id="it19">
+    <f:validator binding="#{bindings.MailingAddrLine2.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MailingAddrLine3.inputValue}" label="#{bindings.MailingAddrLine3.hints.label}"
+                 required="#{bindings.MailingAddrLine3.hints.mandatory}"
+                 columns="#{bindings.MailingAddrLine3.hints.displayWidth}"
+                 maximumLength="#{bindings.MailingAddrLine3.hints.precision}"
+                 shortDesc="#{bindings.MailingAddrLine3.hints.tooltip}" id="it20">
+    <f:validator binding="#{bindings.MailingAddrLine3.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MailingAddrLine4.inputValue}" label="#{bindings.MailingAddrLine4.hints.label}"
+                 required="#{bindings.MailingAddrLine4.hints.mandatory}"
+                 columns="#{bindings.MailingAddrLine4.hints.displayWidth}"
+                 maximumLength="#{bindings.MailingAddrLine4.hints.precision}"
+                 shortDesc="#{bindings.MailingAddrLine4.hints.tooltip}" id="it21">
+    <f:validator binding="#{bindings.MailingAddrLine4.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MailingCity.inputValue}" label="#{bindings.MailingCity.hints.label}"
+                 required="#{bindings.MailingCity.hints.mandatory}" columns="#{bindings.MailingCity.hints.displayWidth}"
+                 maximumLength="#{bindings.MailingCity.hints.precision}"
+                 shortDesc="#{bindings.MailingCity.hints.tooltip}" id="it22">
+    <f:validator binding="#{bindings.MailingCity.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MailingState.inputValue}" label="#{bindings.MailingState.hints.label}"
+                 required="#{bindings.MailingState.hints.mandatory}"
+                 columns="#{bindings.MailingState.hints.displayWidth}"
+                 maximumLength="#{bindings.MailingState.hints.precision}"
+                 shortDesc="#{bindings.MailingState.hints.tooltip}" id="it23">
+    <f:validator binding="#{bindings.MailingState.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MailingZipCode.inputValue}" label="#{bindings.MailingZipCode.hints.label}"
+                 required="#{bindings.MailingZipCode.hints.mandatory}"
+                 columns="#{bindings.MailingZipCode.hints.displayWidth}"
+                 maximumLength="#{bindings.MailingZipCode.hints.precision}"
+                 shortDesc="#{bindings.MailingZipCode.hints.tooltip}" id="it24">
+    <f:validator binding="#{bindings.MailingZipCode.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MailingCountryCode.inputValue}" label="#{bindings.MailingCountryCode.hints.label}"
+                 required="#{bindings.MailingCountryCode.hints.mandatory}"
+                 columns="#{bindings.MailingCountryCode.hints.displayWidth}"
+                 maximumLength="#{bindings.MailingCountryCode.hints.precision}"
+                 shortDesc="#{bindings.MailingCountryCode.hints.tooltip}" id="it25">
+    <f:validator binding="#{bindings.MailingCountryCode.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.BirthCountryCode.inputValue}" label="#{bindings.BirthCountryCode.hints.label}"
+                 required="#{bindings.BirthCountryCode.hints.mandatory}"
+                 columns="#{bindings.BirthCountryCode.hints.displayWidth}"
+                 maximumLength="#{bindings.BirthCountryCode.hints.precision}"
+                 shortDesc="#{bindings.BirthCountryCode.hints.tooltip}" id="it26">
+    <f:validator binding="#{bindings.BirthCountryCode.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.BirthCountryDesc.inputValue}" label="#{bindings.BirthCountryDesc.hints.label}"
+                 required="#{bindings.BirthCountryDesc.hints.mandatory}"
+                 columns="#{bindings.BirthCountryDesc.hints.displayWidth}"
+                 maximumLength="#{bindings.BirthCountryDesc.hints.precision}"
+                 shortDesc="#{bindings.BirthCountryDesc.hints.tooltip}" id="it27">
+    <f:validator binding="#{bindings.BirthCountryDesc.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.LocalTaxExempt.inputValue}" label="#{bindings.LocalTaxExempt.hints.label}"
+                 required="#{bindings.LocalTaxExempt.hints.mandatory}"
+                 columns="#{bindings.LocalTaxExempt.hints.displayWidth}"
+                 maximumLength="#{bindings.LocalTaxExempt.hints.precision}"
+                 shortDesc="#{bindings.LocalTaxExempt.hints.tooltip}" id="it28">
+    <f:validator binding="#{bindings.LocalTaxExempt.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.Nationality.inputValue}" label="#{bindings.Nationality.hints.label}"
+                 required="#{bindings.Nationality.hints.mandatory}" columns="#{bindings.Nationality.hints.displayWidth}"
+                 maximumLength="#{bindings.Nationality.hints.precision}"
+                 shortDesc="#{bindings.Nationality.hints.tooltip}" id="it29">
+    <f:validator binding="#{bindings.Nationality.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.EligibleForeignTax.inputValue}" label="#{bindings.EligibleForeignTax.hints.label}"
+                 required="#{bindings.EligibleForeignTax.hints.mandatory}"
+                 columns="#{bindings.EligibleForeignTax.hints.displayWidth}"
+                 maximumLength="#{bindings.EligibleForeignTax.hints.precision}"
+                 shortDesc="#{bindings.EligibleForeignTax.hints.tooltip}" id="it30">
+    <f:validator binding="#{bindings.EligibleForeignTax.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.DocForeignTaxExempt.inputValue}" label="#{bindings.DocForeignTaxExempt.hints.label}"
+                 required="#{bindings.DocForeignTaxExempt.hints.mandatory}"
+                 columns="#{bindings.DocForeignTaxExempt.hints.displayWidth}"
+                 maximumLength="#{bindings.DocForeignTaxExempt.hints.precision}"
+                 shortDesc="#{bindings.DocForeignTaxExempt.hints.tooltip}" id="it31">
+    <f:validator binding="#{bindings.DocForeignTaxExempt.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.ForeignCitizenship.inputValue}" label="#{bindings.ForeignCitizenship.hints.label}"
+                 required="#{bindings.ForeignCitizenship.hints.mandatory}"
+                 columns="#{bindings.ForeignCitizenship.hints.displayWidth}"
+                 maximumLength="#{bindings.ForeignCitizenship.hints.precision}"
+                 shortDesc="#{bindings.ForeignCitizenship.hints.tooltip}" id="it32">
+    <f:validator binding="#{bindings.ForeignCitizenship.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.PowerOfAttorney.inputValue}" label="#{bindings.PowerOfAttorney.hints.label}"
+                 required="#{bindings.PowerOfAttorney.hints.mandatory}"
+                 columns="#{bindings.PowerOfAttorney.hints.displayWidth}"
+                 maximumLength="#{bindings.PowerOfAttorney.hints.precision}"
+                 shortDesc="#{bindings.PowerOfAttorney.hints.tooltip}" id="it33">
+    <f:validator binding="#{bindings.PowerOfAttorney.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.CitizenShipCountry1.inputValue}" label="#{bindings.CitizenShipCountry1.hints.label}"
+                 required="#{bindings.CitizenShipCountry1.hints.mandatory}"
+                 columns="#{bindings.CitizenShipCountry1.hints.displayWidth}"
+                 maximumLength="#{bindings.CitizenShipCountry1.hints.precision}"
+                 shortDesc="#{bindings.CitizenShipCountry1.hints.tooltip}" id="it34">
+    <f:validator binding="#{bindings.CitizenShipCountry1.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.CitizenShipCountry2.inputValue}" label="#{bindings.CitizenShipCountry2.hints.label}"
+                 required="#{bindings.CitizenShipCountry2.hints.mandatory}"
+                 columns="#{bindings.CitizenShipCountry2.hints.displayWidth}"
+                 maximumLength="#{bindings.CitizenShipCountry2.hints.precision}"
+                 shortDesc="#{bindings.CitizenShipCountry2.hints.tooltip}" id="it35">
+    <f:validator binding="#{bindings.CitizenShipCountry2.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.CitizenShipCountry3.inputValue}" label="#{bindings.CitizenShipCountry3.hints.label}"
+                 required="#{bindings.CitizenShipCountry3.hints.mandatory}"
+                 columns="#{bindings.CitizenShipCountry3.hints.displayWidth}"
+                 maximumLength="#{bindings.CitizenShipCountry3.hints.precision}"
+                 shortDesc="#{bindings.CitizenShipCountry3.hints.tooltip}" id="it36">
+    <f:validator binding="#{bindings.CitizenShipCountry3.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.CitizenShipCountry4.inputValue}" label="#{bindings.CitizenShipCountry4.hints.label}"
+                 required="#{bindings.CitizenShipCountry4.hints.mandatory}"
+                 columns="#{bindings.CitizenShipCountry4.hints.displayWidth}"
+                 maximumLength="#{bindings.CitizenShipCountry4.hints.precision}"
+                 shortDesc="#{bindings.CitizenShipCountry4.hints.tooltip}" id="it37">
+    <f:validator binding="#{bindings.CitizenShipCountry4.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.ResidenceTin1.inputValue}" label="#{bindings.ResidenceTin1.hints.label}"
+                 required="#{bindings.ResidenceTin1.hints.mandatory}"
+                 columns="#{bindings.ResidenceTin1.hints.displayWidth}"
+                 maximumLength="#{bindings.ResidenceTin1.hints.precision}"
+                 shortDesc="#{bindings.ResidenceTin1.hints.tooltip}" id="it38">
+    <f:validator binding="#{bindings.ResidenceTin1.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.ResidenceTin2.inputValue}" label="#{bindings.ResidenceTin2.hints.label}"
+                 required="#{bindings.ResidenceTin2.hints.mandatory}"
+                 columns="#{bindings.ResidenceTin2.hints.displayWidth}"
+                 maximumLength="#{bindings.ResidenceTin2.hints.precision}"
+                 shortDesc="#{bindings.ResidenceTin2.hints.tooltip}" id="it39">
+    <f:validator binding="#{bindings.ResidenceTin2.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.ResidenceTin3.inputValue}" label="#{bindings.ResidenceTin3.hints.label}"
+                 required="#{bindings.ResidenceTin3.hints.mandatory}"
+                 columns="#{bindings.ResidenceTin3.hints.displayWidth}"
+                 maximumLength="#{bindings.ResidenceTin3.hints.precision}"
+                 shortDesc="#{bindings.ResidenceTin3.hints.tooltip}" id="it40">
+    <f:validator binding="#{bindings.ResidenceTin3.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.ResidenceTin4.inputValue}" label="#{bindings.ResidenceTin4.hints.label}"
+                 required="#{bindings.ResidenceTin4.hints.mandatory}"
+                 columns="#{bindings.ResidenceTin4.hints.displayWidth}"
+                 maximumLength="#{bindings.ResidenceTin4.hints.precision}"
+                 shortDesc="#{bindings.ResidenceTin4.hints.tooltip}" id="it41">
+    <f:validator binding="#{bindings.ResidenceTin4.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.Employer.inputValue}" label="#{bindings.Employer.hints.label}"
+                 required="#{bindings.Employer.hints.mandatory}" columns="#{bindings.Employer.hints.displayWidth}"
+                 maximumLength="#{bindings.Employer.hints.precision}" shortDesc="#{bindings.Employer.hints.tooltip}"
+                 id="it42">
+    <f:validator binding="#{bindings.Employer.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.EmployerAddress1.inputValue}" label="#{bindings.EmployerAddress1.hints.label}"
+                 required="#{bindings.EmployerAddress1.hints.mandatory}"
+                 columns="#{bindings.EmployerAddress1.hints.displayWidth}"
+                 maximumLength="#{bindings.EmployerAddress1.hints.precision}"
+                 shortDesc="#{bindings.EmployerAddress1.hints.tooltip}" id="it43">
+    <f:validator binding="#{bindings.EmployerAddress1.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.EmployerAddress2.inputValue}" label="#{bindings.EmployerAddress2.hints.label}"
+                 required="#{bindings.EmployerAddress2.hints.mandatory}"
+                 columns="#{bindings.EmployerAddress2.hints.displayWidth}"
+                 maximumLength="#{bindings.EmployerAddress2.hints.precision}"
+                 shortDesc="#{bindings.EmployerAddress2.hints.tooltip}" id="it44">
+    <f:validator binding="#{bindings.EmployerAddress2.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.WorkPhone.inputValue}" label="#{bindings.WorkPhone.hints.label}"
+                 required="#{bindings.WorkPhone.hints.mandatory}" columns="#{bindings.WorkPhone.hints.displayWidth}"
+                 maximumLength="#{bindings.WorkPhone.hints.precision}" shortDesc="#{bindings.WorkPhone.hints.tooltip}"
+                 id="it45">
+    <f:validator binding="#{bindings.WorkPhone.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.OccupationCode.inputValue}" label="#{bindings.OccupationCode.hints.label}"
+                 required="#{bindings.OccupationCode.hints.mandatory}"
+                 columns="#{bindings.OccupationCode.hints.displayWidth}"
+                 maximumLength="#{bindings.OccupationCode.hints.precision}"
+                 shortDesc="#{bindings.OccupationCode.hints.tooltip}" id="it46">
+    <f:validator binding="#{bindings.OccupationCode.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.ResidencyCode.inputValue}" label="#{bindings.ResidencyCode.hints.label}"
+                 required="#{bindings.ResidencyCode.hints.mandatory}"
+                 columns="#{bindings.ResidencyCode.hints.displayWidth}"
+                 maximumLength="#{bindings.ResidencyCode.hints.precision}"
+                 shortDesc="#{bindings.ResidencyCode.hints.tooltip}" id="it47">
+    <f:validator binding="#{bindings.ResidencyCode.validator}"/>
+    <af:convertNumber groupingUsed="false" pattern="#{bindings.ResidencyCode.format}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MotherMaidenName.inputValue}" label="#{bindings.MotherMaidenName.hints.label}"
+                 required="#{bindings.MotherMaidenName.hints.mandatory}"
+                 columns="#{bindings.MotherMaidenName.hints.displayWidth}"
+                 maximumLength="#{bindings.MotherMaidenName.hints.precision}"
+                 shortDesc="#{bindings.MotherMaidenName.hints.tooltip}" id="it48">
+    <f:validator binding="#{bindings.MotherMaidenName.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.NoOfDependents.inputValue}" label="#{bindings.NoOfDependents.hints.label}"
+                 required="#{bindings.NoOfDependents.hints.mandatory}"
+                 columns="#{bindings.NoOfDependents.hints.displayWidth}"
+                 maximumLength="#{bindings.NoOfDependents.hints.precision}"
+                 shortDesc="#{bindings.NoOfDependents.hints.tooltip}" id="it49">
+    <f:validator binding="#{bindings.NoOfDependents.validator}"/>
+    <af:convertNumber groupingUsed="false" pattern="#{bindings.NoOfDependents.format}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.IncomeCode.inputValue}" label="#{bindings.IncomeCode.hints.label}"
+                 required="#{bindings.IncomeCode.hints.mandatory}" columns="#{bindings.IncomeCode.hints.displayWidth}"
+                 maximumLength="#{bindings.IncomeCode.hints.precision}" shortDesc="#{bindings.IncomeCode.hints.tooltip}"
+                 id="it50">
+    <f:validator binding="#{bindings.IncomeCode.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.EducationCode.inputValue}" label="#{bindings.EducationCode.hints.label}"
+                 required="#{bindings.EducationCode.hints.mandatory}"
+                 columns="#{bindings.EducationCode.hints.displayWidth}"
+                 maximumLength="#{bindings.EducationCode.hints.precision}"
+                 shortDesc="#{bindings.EducationCode.hints.tooltip}" id="it51">
+    <f:validator binding="#{bindings.EducationCode.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.ShareholderCode.inputValue}" label="#{bindings.ShareholderCode.hints.label}"
+                 required="#{bindings.ShareholderCode.hints.mandatory}"
+                 columns="#{bindings.ShareholderCode.hints.displayWidth}"
+                 maximumLength="#{bindings.ShareholderCode.hints.precision}"
+                 shortDesc="#{bindings.ShareholderCode.hints.tooltip}" id="it52">
+    <f:validator binding="#{bindings.ShareholderCode.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.HomeOwnership.inputValue}" label="#{bindings.HomeOwnership.hints.label}"
+                 required="#{bindings.HomeOwnership.hints.mandatory}"
+                 columns="#{bindings.HomeOwnership.hints.displayWidth}"
+                 maximumLength="#{bindings.HomeOwnership.hints.precision}"
+                 shortDesc="#{bindings.HomeOwnership.hints.tooltip}" id="it53">
+    <f:validator binding="#{bindings.HomeOwnership.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.StreetType.inputValue}" label="#{bindings.StreetType.hints.label}"
+                 required="#{bindings.StreetType.hints.mandatory}" columns="#{bindings.StreetType.hints.displayWidth}"
+                 maximumLength="#{bindings.StreetType.hints.precision}" shortDesc="#{bindings.StreetType.hints.tooltip}"
+                 id="it54">
+    <f:validator binding="#{bindings.StreetType.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MonthlySalary.inputValue}" label="#{bindings.MonthlySalary.hints.label}"
+                 required="#{bindings.MonthlySalary.hints.mandatory}"
+                 columns="#{bindings.MonthlySalary.hints.displayWidth}"
+                 maximumLength="#{bindings.MonthlySalary.hints.precision}"
+                 shortDesc="#{bindings.MonthlySalary.hints.tooltip}" id="it55">
+    <f:validator binding="#{bindings.MonthlySalary.validator}"/>
+    <af:convertNumber groupingUsed="false" pattern="#{bindings.MonthlySalary.format}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.EmployerCity.inputValue}" label="#{bindings.EmployerCity.hints.label}"
+                 required="#{bindings.EmployerCity.hints.mandatory}"
+                 columns="#{bindings.EmployerCity.hints.displayWidth}"
+                 maximumLength="#{bindings.EmployerCity.hints.precision}"
+                 shortDesc="#{bindings.EmployerCity.hints.tooltip}" id="it56">
+    <f:validator binding="#{bindings.EmployerCity.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.MaritalStatus.inputValue}" label="#{bindings.MaritalStatus.hints.label}"
+                 required="#{bindings.MaritalStatus.hints.mandatory}"
+                 columns="#{bindings.MaritalStatus.hints.displayWidth}"
+                 maximumLength="#{bindings.MaritalStatus.hints.precision}"
+                 shortDesc="#{bindings.MaritalStatus.hints.tooltip}" id="it57">
+    <f:validator binding="#{bindings.MaritalStatus.validator}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.CreatedBy.inputValue}" label="#{bindings.CreatedBy.hints.label}"
+                 required="#{bindings.CreatedBy.hints.mandatory}" columns="#{bindings.CreatedBy.hints.displayWidth}"
+                 maximumLength="#{bindings.CreatedBy.hints.precision}" shortDesc="#{bindings.CreatedBy.hints.tooltip}"
+                 id="it58">
+    <f:validator binding="#{bindings.CreatedBy.validator}"/>
+   </af:inputText>
+   <af:inputDate value="#{bindings.CreationDate.inputValue}" label="#{bindings.CreationDate.hints.label}"
+                 required="#{bindings.CreationDate.hints.mandatory}"
+                 columns="#{bindings.CreationDate.hints.displayWidth}"
+                 shortDesc="#{bindings.CreationDate.hints.tooltip}" id="id5">
+    <f:validator binding="#{bindings.CreationDate.validator}"/>
+    <af:convertDateTime pattern="#{bindings.CreationDate.format}"/>
+   </af:inputDate>
+   <af:inputText value="#{bindings.LastUpdatedBy.inputValue}" label="#{bindings.LastUpdatedBy.hints.label}"
+                 required="#{bindings.LastUpdatedBy.hints.mandatory}"
+                 columns="#{bindings.LastUpdatedBy.hints.displayWidth}"
+                 maximumLength="#{bindings.LastUpdatedBy.hints.precision}"
+                 shortDesc="#{bindings.LastUpdatedBy.hints.tooltip}" id="it59">
+    <f:validator binding="#{bindings.LastUpdatedBy.validator}"/>
+   </af:inputText>
+   <af:inputDate value="#{bindings.LastUpdateDate.inputValue}" label="#{bindings.LastUpdateDate.hints.label}"
+                 required="#{bindings.LastUpdateDate.hints.mandatory}"
+                 columns="#{bindings.LastUpdateDate.hints.displayWidth}"
+                 shortDesc="#{bindings.LastUpdateDate.hints.tooltip}" id="id6">
+    <f:validator binding="#{bindings.LastUpdateDate.validator}"/>
+    <af:convertDateTime pattern="#{bindings.LastUpdateDate.format}"/>
+   </af:inputDate>
+   <af:inputText value="#{bindings.ObjectVersionId.inputValue}" label="#{bindings.ObjectVersionId.hints.label}"
+                 required="#{bindings.ObjectVersionId.hints.mandatory}"
+                 columns="#{bindings.ObjectVersionId.hints.displayWidth}"
+                 maximumLength="#{bindings.ObjectVersionId.hints.precision}"
+                 shortDesc="#{bindings.ObjectVersionId.hints.tooltip}" id="it60">
+    <f:validator binding="#{bindings.ObjectVersionId.validator}"/>
+    <af:convertNumber groupingUsed="false" pattern="#{bindings.ObjectVersionId.format}"/>
+   </af:inputText>
+   <af:inputText value="#{bindings.LastApprovedBy.inputValue}" label="#{bindings.LastApprovedBy.hints.label}"
+                 required="#{bindings.LastApprovedBy.hints.mandatory}"
+                 columns="#{bindings.LastApprovedBy.hints.displayWidth}"
+                 maximumLength="#{bindings.LastApprovedBy.hints.precision}"
+                 shortDesc="#{bindings.LastApprovedBy.hints.tooltip}" id="it61">
+    <f:validator binding="#{bindings.LastApprovedBy.validator}"/>
+   </af:inputText>
+   <af:inputDate value="#{bindings.LastApprovedDate.inputValue}" label="#{bindings.LastApprovedDate.hints.label}"
+                 required="#{bindings.LastApprovedDate.hints.mandatory}"
+                 columns="#{bindings.LastApprovedDate.hints.displayWidth}"
+                 shortDesc="#{bindings.LastApprovedDate.hints.tooltip}" id="id7">
+    <f:validator binding="#{bindings.LastApprovedDate.validator}"/>
+    <af:convertDateTime pattern="#{bindings.LastApprovedDate.format}"/>
+   </af:inputDate>
+   
+  </af:panelFormLayout>
+
+  </af:panelHeader>
+ </af:panelGroupLayout>
+ </jsp:root>

@@ -4,15 +4,36 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LincuMemberInfoVO"
-  Version="12.2.1.11.57"
+  Version="12.2.1.12.24"
   InheritPersonalization="merge"
-  SelectListFlags="1"
-  FromListFlags="1"
-  WhereFlags="1"
   BindingStyle="OracleName"
   CustomQuery="false"
-  SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  SelectList="LincuMemberInfoEO.LINCU_ID, 
+       LincuMemberInfoEO.MEMBER_ID, 
+       LincuMemberInfoEO.CREDIT_UNION_ID, 
+       LincuMemberInfoEO.CREDIT_UNION_BRANCH_ID, 
+       LincuMemberInfoEO.MEMBER_PREFIX, 
+       LincuMemberInfoEO.FIRST_NAME, 
+       LincuMemberInfoEO.MIDDLE_NAME, 
+       LincuMemberInfoEO.LAST_NAME, 
+       LincuMemberInfoEO.DATE_OF_BIRTH, 
+       LincuMemberInfoEO.GENDER, 
+       LincuMemberInfoEO.EMAIL, 
+       LincuMemberInfoEO.HOME_PHONE_NUMBER, 
+       LincuMemberInfoEO.BUSINESS_PHONE_NUMBER, 
+       LincuMemberInfoEO.BUSINESS_PHONE_EXTN, 
+       LincuMemberInfoEO.MOBILE_PHONE_NUMBER, 
+       LincuMemberInfoEO.FAX_NUMBER, 
+       LincuMemberInfoEO.TIN_OR_SID, 
+       LincuMemberInfoEO.CREATED_BY, 
+       LincuMemberInfoEO.CREATION_DATE, 
+       LincuMemberInfoEO.LAST_UPDATED_BY, 
+       LincuMemberInfoEO.LAST_UPDATE_DATE, 
+       LincuMemberInfoEO.OBJECT_VERSION_ID, 
+       LincuMemberInfoEO.LAST_APPROVED_BY, 
+       LincuMemberInfoEO.LAST_APPROVED_DATE"
+  FromList="LINCU_MEMBER_INFO LincuMemberInfoEO">
   <EntityUsage
     Name="LincuMemberInfoEO"
     Entity="com.linCu.model.entity.LincuMemberInfoEO"/>
@@ -131,28 +152,32 @@
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="CREATED_BY"/>
+    AliasName="CREATED_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="CreationDate"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreationDate"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="CREATION_DATE"/>
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="LastUpdatedBy"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="LAST_UPDATED_BY"/>
+    AliasName="LAST_UPDATED_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="LastUpdateDate"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdateDate"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="LAST_UPDATE_DATE"/>
+    AliasName="LAST_UPDATE_DATE"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="ObjectVersionId"
     IsNotNull="true"
@@ -174,6 +199,111 @@
     EntityAttrName="LastApprovedDate"
     EntityUsage="LincuMemberInfoEO"
     AliasName="LAST_APPROVED_DATE"/>
+  <ViewCriteria
+    Name="LincuMemberInfoVOCriteria"
+    ViewObjectName="com.linCu.model.view.LincuMemberInfoVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="LincuMemberInfoVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="LincuId"
+        ViewAttribute="LincuId"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="MemberId"
+        ViewAttribute="MemberId"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="CreditUnionId"
+        ViewAttribute="CreditUnionId"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="CreditUnionBranchId"
+        ViewAttribute="CreditUnionBranchId"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItemCompound
+        Name="FirstName"
+        ViewAttribute="FirstName">
+        <ViewCriteria
+          Name="LincuMemberInfoVOCriteria_LincuMemberInfoVOCriteria_row_0_FirstName_itemHolder"
+          ViewObjectName="com.linCu.model.view.LincuMemberInfoVO"
+          Conjunction="OR">
+          <ViewCriteriaRow
+            Name="LincuMemberInfoVOCriteria_LincuMemberInfoVOCriteria_row_0_FirstName_itemHolder_row_0"
+            Conjunction="AND">
+            <ViewCriteriaItem
+              Name="FirstName"
+              ViewAttribute="FirstName"
+              Operator="STARTSWITH"
+              Conjunction="AND"
+              Required="Optional"/>
+          </ViewCriteriaRow>
+          <ViewCriteriaRow
+            Name="LincuMemberInfoVOCriteria_LincuMemberInfoVOCriteria_row_0_FirstName_itemHolder_row_1"
+            Conjunction="AND">
+            <ViewCriteriaItem
+              Name="LincuMemberInfoVOCriteria_LincuMemberInfoVOCriteria_row_0_FirstName_LincuMemberInfoVOCriteria_LincuMemberInfoVOCriteria_row_0_FirstName_itemHolder_LincuMemberInfoVOCriteria_LincuMemberInfoVOCriteria_row_0_FirstName_itemHolder_row_1_FirstName"
+              ViewAttribute="FirstName"
+              Operator="STARTSWITH"
+              Conjunction="AND"
+              Required="Optional"/>
+          </ViewCriteriaRow>
+        </ViewCriteria>
+      </ViewCriteriaItemCompound>
+      <ViewCriteriaItem
+        Name="LastName"
+        ViewAttribute="LastName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Email"
+        ViewAttribute="Email"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="TinOrSid"
+        ViewAttribute="TinOrSid"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="LastApprovedBy"
+        ViewAttribute="LastApprovedBy"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="LincuMemberKycVO"
     ViewLink="com.linCu.model.viewLink.MemberInfoToMemberKycVL"

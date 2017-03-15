@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="MemberInfoPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LincuMemberInfo" RangeSize="25" DataControl="LinCuAMDataControl" id="LincuMemberInfoIterator"/>
+    <searchRegion Criteria="LincuMemberInfoVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="LincuMemberInfoIterator" id="LincuMemberInfoVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="LincuMemberInfoIterator" id="LincuMemberInfo">
+      <nodeDefinition DefName="com.linCu.model.view.LincuMemberInfoVO" Name="LincuMemberInfo0">
+        <AttrNames>
+          <Item Value="LincuId"/>
+          <Item Value="MemberId"/>
+          <Item Value="CreditUnionId"/>
+          <Item Value="CreditUnionBranchId"/>
+          <Item Value="MemberPrefix"/>
+          <Item Value="FirstName"/>
+          <Item Value="MiddleName"/>
+          <Item Value="LastName"/>
+          <Item Value="DateOfBirth"/>
+          <Item Value="Gender"/>
+          <Item Value="Email"/>
+          <Item Value="HomePhoneNumber"/>
+          <Item Value="BusinessPhoneNumber"/>
+          <Item Value="BusinessPhoneExtn"/>
+          <Item Value="MobilePhoneNumber"/>
+          <Item Value="FaxNumber"/>
+          <Item Value="TinOrSid"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="ObjectVersionId"/>
+          <Item Value="LastApprovedBy"/>
+          <Item Value="LastApprovedDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
