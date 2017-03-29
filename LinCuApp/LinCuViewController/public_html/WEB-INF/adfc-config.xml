@@ -66,4 +66,9 @@
     <managed-bean-class>com.linCu.view.backingBeans.UserSessionData</managed-bean-class>
     <managed-bean-scope>session</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__14">
+    <managed-bean-name>IndexDynamicRegion</managed-bean-name>
+    <managed-bean-class>com.linCu.view.controller.IndexDynamicRegion</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
 </adfc-config>

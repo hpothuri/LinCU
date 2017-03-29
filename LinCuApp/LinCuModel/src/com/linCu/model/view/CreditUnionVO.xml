@@ -162,7 +162,8 @@
     EntityAttrName="CreditUnionCountry"
     EntityUsage="CreditUnionEO"
     AliasName="CREDIT_UNION_COUNTRY"
-    LOVName="LOV_CreditUnionCountry">
+    LOVName="LOV_CreditUnionCountry"
+    DefaultValue="1">
     <Properties>
       <SchemaBasedProperties>
         <CONTROLTYPE
