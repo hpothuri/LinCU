@@ -170,7 +170,8 @@
     EntityAttrName="CreditUnionCountry"
     EntityUsage="CreditUnionBranchEO"
     AliasName="CREDIT_UNION_COUNTRY"
-    LOVName="LOV_CreditUnionCountry">
+    LOVName="LOV_CreditUnionCountry"
+    DefaultValue="1">
     <Properties>
       <SchemaBasedProperties>
         <CONTROLTYPE
@@ -349,16 +350,6 @@
   <ViewLinkAccessor
     Name="LincuUserInfoVO"
     ViewLink="com.linCu.model.viewLink.CreditUnionBranchToUserInfoVL"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <ViewLinkAccessor
-    Name="LincuMemberInfoVO"
-    ViewLink="com.linCu.model.viewLink.CreditUnionBranchToMemberInfoVL"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <ViewLinkAccessor
-    Name="LincuMemberKycVO"
-    ViewLink="com.linCu.model.viewLink.CreditUnionBranchToMemberKycVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <ResourceBundle>

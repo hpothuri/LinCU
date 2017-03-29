@@ -19,5 +19,16 @@
                   ReturnName="data.LinCuAMDataControl.methodResults.userSessionInfo_LinCuAMDataControl_dataProvider_userSessionInfo_result">
       <NamedData NDName="userName" NDValue="#{pageFlowScope.userName}" NDType="java.lang.String"/>
     </methodAction>
+    <methodAction id="userCurrentRow" RequiresUpdateModel="true" Action="invokeMethod" MethodName="userCurrentRow"
+                  IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.userCurrentRow_LinCuAMDataControl_dataProvider_userCurrentRow_result">
+      <NamedData NDName="userName" NDValue="#{pageFlowScope.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="setUserCurrentRow" RequiresUpdateModel="true" Action="invokeMethod" MethodName="setUserCurrentRow"
+                  IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider">
+      <NamedData NDName="userId" NDValue="#{pageFlowScope.userId}" NDType="java.lang.Long"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

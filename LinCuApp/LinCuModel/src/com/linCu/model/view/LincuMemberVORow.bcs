@@ -1,0 +1,12 @@
+//Groovy Scripts for com.linCu.model.view.LincuMemberVO
+
+package com.linCu.model.view
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="MemberId1")
+def MemberId1_ExpressionScript_Expression()
+{
+MemberId
+}
+

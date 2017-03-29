@@ -2,39 +2,54 @@
 <SDM>
    <OverallProperties
       id="OverallProperties1"/>
-   <View
-      id="View2">
+   <MethodCall
+      id="MethodCall9">
       <property
-         name="activityId">MemberInfo</property>
+         name="activityId">CreateInsert</property>
+      <property
+         name="x">173.01465</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>CreateInsert&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="y">381.43652</property>
+      <property
+         name="exceptionHandler">false</property>
+   </MethodCall>
+   <View
+      id="View3">
+      <property
+         name="activityId">ManageMember</property>
       <property
          name="pageFragment">true</property>
       <property
-         name="x">233.0127</property>
+         name="x">-67.23242</property>
       <property
          name="start">true</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>MemberInfo&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>ManageMember&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
-         name="y">198.29297</property>
+         name="y">272.64355</property>
       <property
-         name="page">/fragments/MemberInfo.jsff</property>
+         name="page">/fragments/ManageMember.jsff</property>
       <property
          name="exceptionHandler">false</property>
    </View>
    <View
-      id="View3">
+      id="View4">
       <property
-         name="activityId">MemberKYC</property>
+         name="activityId">Member</property>
       <property
          name="pageFragment">true</property>
       <property
-         name="x">565.3418</property>
+         name="x">359.5</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>MemberKYC&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>Member&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
-         name="y">170.39648</property>
+         name="y">249.29297</property>
       <property
-         name="page">/fragments/MemberKYC.jsff</property>
+         name="page">/fragments/Member.jsff</property>
       <property
          name="exceptionHandler">false</property>
    </View>
@@ -42,43 +57,40 @@
       islink="true"
       id="ControlFlowCase5"
       from="View3"
-      to="View2">
-      <property
-         name="fromOutcome">back</property>
-      <property
-         name="sdm:polyPoints">L54,524.3418,173.5459,274.0127,197.94238,R50</property>
-   </ControlFlowCase>
-   <MethodCall
-      id="MethodCall6">
-      <property
-         name="activityId">CreateInsert</property>
-      <property
-         name="x">378.01465</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>CreateInsert&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
-      <property
-         name="y">67.74707</property>
-      <property
-         name="exceptionHandler">false</property>
-   </MethodCall>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase7"
-      from="View2"
-      to="MethodCall6">
+      to="MethodCall9">
       <property
          name="fromOutcome">createMember</property>
       <property
-         name="sdm:polyPoints">T50,233.0127,143.94238,337.01465,67.396484,L50</property>
+         name="sdm:polyPoints">R58,-26.232422,279.29297,132.01465,381.08594,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="MethodCall9"
+      to="View4">
+      <property
+         name="fromOutcome">CreateInsert</property>
+      <property
+         name="sdm:polyPoints">T50,173.01465,327.08594,318.5,248.94238,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase7"
+      from="View3"
+      to="View4">
+      <property
+         name="fromOutcome">editMember</property>
+      <property
+         name="sdm:polyPoints">R42,-26.232422,265.29297,317.3347,241.94238,L42</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase8"
-      from="MethodCall6"
+      from="View4"
       to="View3">
       <property
-         name="fromOutcome">CreateInsert</property>
+         name="fromOutcome">cancel</property>
       <property
-         name="sdm:polyPoints">R50,419.01465,67.396484,524.3418,166.5459,L46</property>
+         name="sdm:polyPoints">L50,317.5716,248.94238,-25.995619,272.29297,R50</property>
    </ControlFlowCase>
 </SDM>

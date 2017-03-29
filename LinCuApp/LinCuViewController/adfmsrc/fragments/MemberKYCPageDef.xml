@@ -4,350 +4,94 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="LincuMemberKyc" RangeSize="25" DataControl="LinCuAMDataControl" id="LincuMemberKycIterator"/>
+    <iterator Binds="LincuMember" RangeSize="25" DataControl="LinCuAMDataControl" id="LincuMemberIterator"/>
+    <searchRegion Criteria="LincuMemberVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="LincuMemberIterator" id="LincuMemberVOCriteriaQuery"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="LincuId">
-      <AttrNames>
-        <Item Value="LincuId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MemberId">
-      <AttrNames>
-        <Item Value="MemberId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="CreditUnionId">
-      <AttrNames>
-        <Item Value="CreditUnionId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="CreditUnionBranchId">
-      <AttrNames>
-        <Item Value="CreditUnionBranchId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="ElectorialId">
-      <AttrNames>
-        <Item Value="ElectorialId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="DriverPermit">
-      <AttrNames>
-        <Item Value="DriverPermit"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="DpIssueDate">
-      <AttrNames>
-        <Item Value="DpIssueDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="DpExpiryDate">
-      <AttrNames>
-        <Item Value="DpExpiryDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PassportNo">
-      <AttrNames>
-        <Item Value="PassportNo"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PpIssueDate">
-      <AttrNames>
-        <Item Value="PpIssueDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PpExpiryDate">
-      <AttrNames>
-        <Item Value="PpExpiryDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="BirNo">
-      <AttrNames>
-        <Item Value="BirNo"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PermanentAddrLine1">
-      <AttrNames>
-        <Item Value="PermanentAddrLine1"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PermanentAddrLine2">
-      <AttrNames>
-        <Item Value="PermanentAddrLine2"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PermanentAddrLine3">
-      <AttrNames>
-        <Item Value="PermanentAddrLine3"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PermanentAddrLine4">
-      <AttrNames>
-        <Item Value="PermanentAddrLine4"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PermanentCity">
-      <AttrNames>
-        <Item Value="PermanentCity"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PermanentState">
-      <AttrNames>
-        <Item Value="PermanentState"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PermanentZipCode">
-      <AttrNames>
-        <Item Value="PermanentZipCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PermanentCountryCode">
-      <AttrNames>
-        <Item Value="PermanentCountryCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PermanentCountryDesc">
-      <AttrNames>
-        <Item Value="PermanentCountryDesc"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MailingAddrLine1">
-      <AttrNames>
-        <Item Value="MailingAddrLine1"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MailingAddrLine2">
-      <AttrNames>
-        <Item Value="MailingAddrLine2"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MailingAddrLine3">
-      <AttrNames>
-        <Item Value="MailingAddrLine3"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MailingAddrLine4">
-      <AttrNames>
-        <Item Value="MailingAddrLine4"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MailingCity">
-      <AttrNames>
-        <Item Value="MailingCity"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MailingState">
-      <AttrNames>
-        <Item Value="MailingState"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MailingZipCode">
-      <AttrNames>
-        <Item Value="MailingZipCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MailingCountryCode">
-      <AttrNames>
-        <Item Value="MailingCountryCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="BirthCountryCode">
-      <AttrNames>
-        <Item Value="BirthCountryCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="BirthCountryDesc">
-      <AttrNames>
-        <Item Value="BirthCountryDesc"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="LocalTaxExempt">
-      <AttrNames>
-        <Item Value="LocalTaxExempt"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="Nationality">
-      <AttrNames>
-        <Item Value="Nationality"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="EligibleForeignTax">
-      <AttrNames>
-        <Item Value="EligibleForeignTax"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="DocForeignTaxExempt">
-      <AttrNames>
-        <Item Value="DocForeignTaxExempt"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="ForeignCitizenship">
-      <AttrNames>
-        <Item Value="ForeignCitizenship"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="PowerOfAttorney">
-      <AttrNames>
-        <Item Value="PowerOfAttorney"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="CitizenShipCountry1">
-      <AttrNames>
-        <Item Value="CitizenShipCountry1"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="CitizenShipCountry2">
-      <AttrNames>
-        <Item Value="CitizenShipCountry2"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="CitizenShipCountry3">
-      <AttrNames>
-        <Item Value="CitizenShipCountry3"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="CitizenShipCountry4">
-      <AttrNames>
-        <Item Value="CitizenShipCountry4"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="ResidenceTin1">
-      <AttrNames>
-        <Item Value="ResidenceTin1"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="ResidenceTin2">
-      <AttrNames>
-        <Item Value="ResidenceTin2"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="ResidenceTin3">
-      <AttrNames>
-        <Item Value="ResidenceTin3"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="ResidenceTin4">
-      <AttrNames>
-        <Item Value="ResidenceTin4"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="Employer">
-      <AttrNames>
-        <Item Value="Employer"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="EmployerAddress1">
-      <AttrNames>
-        <Item Value="EmployerAddress1"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="EmployerAddress2">
-      <AttrNames>
-        <Item Value="EmployerAddress2"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="WorkPhone">
-      <AttrNames>
-        <Item Value="WorkPhone"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="OccupationCode">
-      <AttrNames>
-        <Item Value="OccupationCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="ResidencyCode">
-      <AttrNames>
-        <Item Value="ResidencyCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MotherMaidenName">
-      <AttrNames>
-        <Item Value="MotherMaidenName"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="NoOfDependents">
-      <AttrNames>
-        <Item Value="NoOfDependents"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="IncomeCode">
-      <AttrNames>
-        <Item Value="IncomeCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="EducationCode">
-      <AttrNames>
-        <Item Value="EducationCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="ShareholderCode">
-      <AttrNames>
-        <Item Value="ShareholderCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="HomeOwnership">
-      <AttrNames>
-        <Item Value="HomeOwnership"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="StreetType">
-      <AttrNames>
-        <Item Value="StreetType"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MonthlySalary">
-      <AttrNames>
-        <Item Value="MonthlySalary"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="EmployerCity">
-      <AttrNames>
-        <Item Value="EmployerCity"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="MaritalStatus">
-      <AttrNames>
-        <Item Value="MaritalStatus"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="CreatedBy">
-      <AttrNames>
-        <Item Value="CreatedBy"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="CreationDate">
-      <AttrNames>
-        <Item Value="CreationDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="LastUpdatedBy">
-      <AttrNames>
-        <Item Value="LastUpdatedBy"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="LastUpdateDate">
-      <AttrNames>
-        <Item Value="LastUpdateDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="ObjectVersionId">
-      <AttrNames>
-        <Item Value="ObjectVersionId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="LastApprovedBy">
-      <AttrNames>
-        <Item Value="LastApprovedBy"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberKycIterator" id="LastApprovedDate">
-      <AttrNames>
-        <Item Value="LastApprovedDate"/>
-      </AttrNames>
-    </attributeValues>
-    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="LinCuAMDataControl"/>
-    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="LinCuAMDataControl"/>
+    <tree IterBinding="LincuMemberIterator" id="LincuMember">
+      <nodeDefinition DefName="com.linCu.model.view.LincuMemberVO" Name="LincuMember0">
+        <AttrNames>
+          <Item Value="BusinessPhoneExtn"/>
+          <Item Value="BusinessPhoneNumber"/>
+          <Item Value="CreditUnionBranchId"/>
+          <Item Value="CreditUnionId"/>
+          <Item Value="DateOfBirth"/>
+          <Item Value="Email"/>
+          <Item Value="FaxNumber"/>
+          <Item Value="FirstName"/>
+          <Item Value="Gender"/>
+          <Item Value="HomePhoneNumber"/>
+          <Item Value="LastApprovedBy"/>
+          <Item Value="LastApprovedDate"/>
+          <Item Value="LastName"/>
+          <Item Value="MemberId"/>
+          <Item Value="MemberPrefix"/>
+          <Item Value="MiddleName"/>
+          <Item Value="MobilePhoneNumber"/>
+          <Item Value="TinOrSid"/>
+          <Item Value="BirNo"/>
+          <Item Value="BirthCountryCode"/>
+          <Item Value="BirthCountryDesc"/>
+          <Item Value="CitizenShipCountry1"/>
+          <Item Value="CitizenShipCountry2"/>
+          <Item Value="CitizenShipCountry3"/>
+          <Item Value="CitizenShipCountry4"/>
+          <Item Value="CreditUnionBranchId1"/>
+          <Item Value="CreditUnionId1"/>
+          <Item Value="DocForeignTaxExempt"/>
+          <Item Value="DpExpiryDate"/>
+          <Item Value="DpIssueDate"/>
+          <Item Value="DriverPermit"/>
+          <Item Value="EducationCode"/>
+          <Item Value="ElectorialId"/>
+          <Item Value="EligibleForeignTax"/>
+          <Item Value="Employer"/>
+          <Item Value="EmployerAddress1"/>
+          <Item Value="EmployerAddress2"/>
+          <Item Value="EmployerCity"/>
+          <Item Value="ForeignCitizenship"/>
+          <Item Value="HomeOwnership"/>
+          <Item Value="IncomeCode"/>
+          <Item Value="LocalTaxExempt"/>
+          <Item Value="MailingAddrLine1"/>
+          <Item Value="MailingAddrLine2"/>
+          <Item Value="MailingAddrLine3"/>
+          <Item Value="MailingAddrLine4"/>
+          <Item Value="MailingCity"/>
+          <Item Value="MailingCountryCode"/>
+          <Item Value="MailingState"/>
+          <Item Value="MailingZipCode"/>
+          <Item Value="MaritalStatus"/>
+          <Item Value="MemberId1"/>
+          <Item Value="MonthlySalary"/>
+          <Item Value="MotherMaidenName"/>
+          <Item Value="Nationality"/>
+          <Item Value="NoOfDependents"/>
+          <Item Value="OccupationCode"/>
+          <Item Value="PassportNo"/>
+          <Item Value="PermanentAddrLine1"/>
+          <Item Value="PermanentAddrLine2"/>
+          <Item Value="PermanentAddrLine3"/>
+          <Item Value="PermanentAddrLine4"/>
+          <Item Value="PermanentCity"/>
+          <Item Value="PermanentCountryCode"/>
+          <Item Value="PermanentCountryDesc"/>
+          <Item Value="PermanentState"/>
+          <Item Value="PermanentZipCode"/>
+          <Item Value="PowerOfAttorney"/>
+          <Item Value="PpExpiryDate"/>
+          <Item Value="PpIssueDate"/>
+          <Item Value="ResidenceTin1"/>
+          <Item Value="ResidenceTin2"/>
+          <Item Value="ResidenceTin3"/>
+          <Item Value="ResidenceTin4"/>
+          <Item Value="ResidencyCode"/>
+          <Item Value="ShareholderCode"/>
+          <Item Value="StreetType"/>
+          <Item Value="WorkPhone"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>

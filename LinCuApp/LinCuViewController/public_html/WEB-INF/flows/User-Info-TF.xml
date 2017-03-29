@@ -13,16 +13,6 @@
     <view id="ManageUserInfo">
       <page>/fragments/ManageUserInfo.jsff</page>
     </view>
-    <view id="CreateUserInfo">
-      <page>/fragments/CreateUserInfo.jsff</page>
-    </view>
-    <control-flow-rule id="__1">
-      <from-activity-id>ManageUserInfo</from-activity-id>
-      <control-flow-case id="__2">
-        <from-outcome>create</from-outcome>
-        <to-activity-id>CreateUserInfo</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
     <use-page-fragments/>
   </task-flow-definition>
 </adfc-config>

@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"  xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+          <c:set var="lincuviewcontrollerBundle" value="#{adfBundle['com.linCu.view.LinCuViewControllerBundle']}"/>
+ <af:panelGroupLayout layout="vertical" id="pgl1">
+  <af:panelGroupLayout layout="vertical" id="pgl2">
+   <af:panelHeader text="LincuMemberInfoEO" id="ph1">
+    <af:query id="qryId1" headerText="Search" disclosed="true"
+              value="#{bindings.LincuMemberVOCriteriaQuery.queryDescriptor}"
+              model="#{bindings.LincuMemberVOCriteriaQuery.queryModel}"
+              queryListener="#{bindings.LincuMemberVOCriteriaQuery.processQuery}"
+              queryOperationListener="#{bindings.LincuMemberVOCriteriaQuery.processQueryOperation}"
+              resultComponentId="::pc1" saveQueryMode="hidden" maxColumns="2" rows="3"/>
+   </af:panelHeader>
+   <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+    <f:facet name="menus"/>
+    <f:facet name="toolbar">
+     <af:toolbar id="t1">
+      <af:button text="#{lincuviewcontrollerBundle.CREATE_MEMBER}" id="b1" action="createMember"/>
+      <af:button text="#{lincuviewcontrollerBundle.EDIT_MEMBER}" id="b2" action="editMember"/>
+     </af:toolbar>
+    </f:facet>
+    <f:facet name="statusbar"/>
+    <af:table value="#{bindings.LincuMember.collectionModel}" var="row" rows="#{bindings.LincuMember.rangeSize}"
+              emptyText="#{bindings.LincuMember.viewable ? 'No data to display.' : 'Access Denied.'}"
+              rowBandingInterval="0" selectedRowKeys="#{bindings.LincuMember.collectionModel.selectedRow}"
+              selectionListener="#{bindings.LincuMember.collectionModel.makeCurrent}" rowSelection="single"
+              fetchSize="#{bindings.LincuMember.rangeSize}" id="resId1">
+     <af:column headerText="#{bindings.LincuMember.hints.CreditUnionId.label}" id="resId1c4">
+      <af:selectOneChoice value="#{row.bindings.CreditUnionId.inputValue}" label="#{row.bindings.CreditUnionId.label}"
+                          required="#{bindings.LincuMember.hints.CreditUnionId.mandatory}"
+                          shortDesc="#{bindings.LincuMember.hints.CreditUnionId.tooltip}" readOnly="true" id="soc2">
+       <f:selectItems value="#{row.bindings.CreditUnionId.items}" id="si2"/>
+       <f:validator binding="#{row.bindings.CreditUnionId.validator}"/>
+      </af:selectOneChoice>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.CreditUnionBranchId.label}" id="resId1c3">
+      <af:selectOneChoice value="#{row.bindings.CreditUnionBranchId.inputValue}"
+                          label="#{row.bindings.CreditUnionBranchId.label}"
+                          required="#{bindings.LincuMember.hints.CreditUnionBranchId.mandatory}"
+                          shortDesc="#{bindings.LincuMember.hints.CreditUnionBranchId.tooltip}" readOnly="true"
+                          id="soc1">
+       <f:selectItems value="#{row.bindings.CreditUnionBranchId.items}" id="si1"/>
+       <f:validator binding="#{row.bindings.CreditUnionBranchId.validator}"/>
+      </af:selectOneChoice>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.MemberId.label}" id="resId1c14">
+      <af:outputText value="#{row.MemberId}" shortDesc="#{bindings.LincuMember.hints.MemberId.tooltip}" id="ot12"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.FirstName.label}" id="resId1c8">
+      <af:outputText value="#{row.FirstName}" shortDesc="#{bindings.LincuMember.hints.FirstName.tooltip}" id="ot6"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.MiddleName.label}" id="resId1c16">
+      <af:outputText value="#{row.MiddleName}" shortDesc="#{bindings.LincuMember.hints.MiddleName.tooltip}" id="ot14"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.LastName.label}" id="resId1c13">
+      <af:outputText value="#{row.LastName}" shortDesc="#{bindings.LincuMember.hints.LastName.tooltip}" id="ot11"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.MotherMaidenName.label}" id="resId1c54">
+      <af:outputText value="#{row.MotherMaidenName}" shortDesc="#{bindings.LincuMember.hints.MotherMaidenName.tooltip}"
+                     id="ot52"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.DateOfBirth.label}" id="resId1c5">
+      <af:outputText value="#{row.DateOfBirth}" shortDesc="#{bindings.LincuMember.hints.DateOfBirth.tooltip}" id="ot3">
+       <af:convertDateTime pattern="#{bindings.LincuMember.hints.DateOfBirth.format}"/>
+      </af:outputText>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.Email.label}" id="resId1c6">
+      <af:outputText value="#{row.Email}" shortDesc="#{bindings.LincuMember.hints.Email.tooltip}" id="ot4"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.MobilePhoneNumber.label}" id="resId1c17">
+      <af:outputText value="#{row.MobilePhoneNumber}"
+                     shortDesc="#{bindings.LincuMember.hints.MobilePhoneNumber.tooltip}" id="ot15"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.HomePhoneNumber.label}" id="resId1c10">
+      <af:outputText value="#{row.HomePhoneNumber}" shortDesc="#{bindings.LincuMember.hints.HomePhoneNumber.tooltip}"
+                     id="ot8"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.FaxNumber.label}" id="resId1c7">
+      <af:outputText value="#{row.FaxNumber}" shortDesc="#{bindings.LincuMember.hints.FaxNumber.tooltip}" id="ot5"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.PassportNo.label}" id="resId1c58">
+      <af:outputText value="#{row.PassportNo}" shortDesc="#{bindings.LincuMember.hints.PassportNo.tooltip}" id="ot56"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.BirNo.label}" id="resId1c19">
+      <af:outputText value="#{row.BirNo}" shortDesc="#{bindings.LincuMember.hints.BirNo.tooltip}" id="ot17"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.EducationCode.label}" id="resId1c32"/>
+     <af:column headerText="#{bindings.LincuMember.hints.ElectorialId.label}" id="resId1c33">
+      <af:outputText value="#{row.ElectorialId}" shortDesc="#{bindings.LincuMember.hints.ElectorialId.tooltip}"
+                     id="ot31"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.Employer.label}" id="resId1c35">
+      <af:outputText value="#{row.Employer}" shortDesc="#{bindings.LincuMember.hints.Employer.tooltip}" id="ot33"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.Nationality.label}" id="resId1c55">
+      <af:outputText value="#{row.Nationality}" shortDesc="#{bindings.LincuMember.hints.Nationality.tooltip}"
+                     id="ot53"/>
+     </af:column>
+    </af:table>
+   </af:panelCollection>
+  </af:panelGroupLayout>
+ </af:panelGroupLayout>
+ </jsp:root>

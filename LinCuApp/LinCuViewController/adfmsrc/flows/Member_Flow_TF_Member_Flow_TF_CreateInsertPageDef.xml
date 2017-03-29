@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57"
                 id="Member_Flow_TF_Member_Flow_TF_CreateInsertPageDef" Package="flows" SkipValidation="true">
   <parameters/>
   <executables>
-    <iterator Binds="LincuMemberKyc" RangeSize="25" DataControl="LinCuAMDataControl" id="LincuMemberKycIterator"/>
+    <iterator Binds="LincuMember" RangeSize="25" DataControl="LinCuAMDataControl" id="LincuMemberIterator"/>
   </executables>
   <bindings>
-    <action IterBinding="LincuMemberKycIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="LincuMemberIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
   </bindings>
 </pageDefinition>

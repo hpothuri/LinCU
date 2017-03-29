@@ -8,14 +8,14 @@
             <af:form id="f1">
                 <af:panelGridLayout id="pgl1">
                     <af:gridRow height="50px" id="gr2">
-                        <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
-                          <af:panelGroupLayout id="pgl7" layout="horizontal" styleClass="AFStretchWidth">
+                        <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                            <af:panelGroupLayout id="pgl7" layout="horizontal" styleClass="AFStretchWidth">
                                 <af:panelGroupLayout id="pgl6" layout="vertical" halign="start">
                                     <af:outputText value="#{lincuviewcontrollerBundle.LINCU_APPLICATION}" id="ot1"
                                                    inlineStyle="font-size:xx-large;"/>
                                 </af:panelGroupLayout>
                                 <af:panelGroupLayout id="pgl5" layout="vertical" halign="end"
-                                                     inlineStyle="margin-top:5px;margin-left:800px;">
+                                                     inlineStyle="margin-top:5px;margin-left:930px;">
                                     <af:panelGroupLayout id="pgl4" layout="horizontal">
                                         <af:outputText id="ot2"
                                                        value="#{lincuviewcontrollerBundle.WELCOME} #{sessionScope.userSessionData.userName} (#{sessionScope.userSessionData.userRoleDesc})"
@@ -30,7 +30,7 @@
                         </af:gridCell>
                     </af:gridRow>
                     <af:gridRow height="100%" id="gr1">
-                        <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
                             <af:panelGroupLayout layout="scroll" id="pgl2">
                                 <!-- Content -->
                                 <af:region value="#{bindings.UserInfoTF1.regionModel}" id="r1"/>

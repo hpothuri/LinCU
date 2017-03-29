@@ -11,20 +11,6 @@
   AliasName="LincuMemberInfoEO"
   BindingStyle="OracleName">
   <Attribute
-    Name="LincuId"
-    IsNotNull="true"
-    Precision="20"
-    ColumnName="LINCU_ID"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO"
-    PrimaryKey="true">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="20"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="MemberId"
     IsNotNull="true"
     Precision="15"
@@ -32,10 +18,15 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO"
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="LincuMemberInfoEORow"/>
   </Attribute>
   <Attribute
     Name="CreditUnionId"
@@ -226,8 +217,7 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="LINCU_MEMBER_INFO"
-    IsUpdateable="while_insert"
-    HistoryColumn="UserHistory">
+    DefaultValue="test">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -239,9 +229,12 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_INFO"
-    IsUpdateable="while_insert"
-    HistoryColumn="DateHistory"/>
+    TableName="LINCU_MEMBER_INFO">
+    <TransientExpression
+      Name="ExpressionScript"
+      trustMode="trusted"
+      CodeSourceName="LincuMemberInfoEORow"/>
+  </Attribute>
   <Attribute
     Name="LastUpdatedBy"
     IsNotNull="true"
@@ -251,7 +244,7 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="LINCU_MEMBER_INFO"
-    HistoryColumn="UserHistory">
+    DefaultValue="test">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -263,8 +256,12 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_INFO"
-    HistoryColumn="DateHistory"/>
+    TableName="LINCU_MEMBER_INFO">
+    <TransientExpression
+      Name="ExpressionScript"
+      trustMode="trusted"
+      CodeSourceName="LincuMemberInfoEORow"/>
+  </Attribute>
   <Attribute
     Name="ObjectVersionId"
     IsNotNull="true"
@@ -276,7 +273,7 @@
     ColumnType="NUMBER"
     TableName="LINCU_MEMBER_INFO"
     ChangeIndicator="true"
-    HistoryColumn="VersionHistory"/>
+    DefaultValue="1"/>
   <Attribute
     Name="LastApprovedBy"
     IsNotNull="true"
@@ -285,7 +282,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO"
+    DefaultValue="test">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -297,7 +295,12 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_INFO"/>
+    TableName="LINCU_MEMBER_INFO">
+    <TransientExpression
+      Name="ExpressionScript"
+      trustMode="trusted"
+      CodeSourceName="LincuMemberInfoEORow"/>
+  </Attribute>
   <AccessorAttribute
     Name="CreditUnionBranchEO"
     Association="com.linCu.model.assoc.CreditUnionBranchToMemberInfoAssoc"
@@ -319,7 +322,7 @@
       <Attr Name="_DBObjectName" Value="LINCU_MEMBER_INFO_PK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.linCu.model.entity.LincuMemberInfoEO.LincuId"/>
+      <Item Value="com.linCu.model.entity.LincuMemberInfoEO.MemberId"/>
     </AttrArray>
   </Key>
   <Key

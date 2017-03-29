@@ -19,10 +19,9 @@
       <Attr Name="_minCardinality" Value="1"/>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="LincuMemberInfoEO"/>
-      <Attr Name="_foreignKey" Value="com.linCu.model.entity.LincuMemberInfoEO.LincuMemberInfoPk"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.linCu.model.entity.LincuMemberInfoEO.LincuId"/>
+      <Item Value="com.linCu.model.entity.LincuMemberInfoEO.MemberId"/>
     </AttrArray>
   </AssociationEnd>
   <AssociationEnd
@@ -33,10 +32,9 @@
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="LincuMemberKycEO"/>
-      <Attr Name="_foreignKey" Value="com.linCu.model.entity.LincuMemberKycEO.LincuMemberKycFk2"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.linCu.model.entity.LincuMemberKycEO.LincuId"/>
+      <Item Value="com.linCu.model.entity.LincuMemberKycEO.MemberId"/>
     </AttrArray>
   </AssociationEnd>
 </Association>

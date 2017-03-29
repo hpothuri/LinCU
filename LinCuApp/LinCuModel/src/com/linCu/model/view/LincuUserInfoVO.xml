@@ -374,10 +374,10 @@
     LOVName="LOV_Gender">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="radio"/>
         <DISPLAYWIDTH
           Value="37"/>
+        <CONTROLTYPE
+          Value="radio"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -483,11 +483,7 @@
     PrecisionRule="true"
     EntityAttrName="SecurityQustnAns"
     EntityUsage="LincuUserInfoEO"
-    AliasName="SECURITY_QUSTN_ANS">
-    <Properties>
-      <SchemaBasedProperties/>
-    </Properties>
-  </ViewAttribute>
+    AliasName="SECURITY_QUSTN_ANS"/>
   <ViewAttribute
     Name="FirstLoginFlag"
     IsNotNull="true"

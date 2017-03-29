@@ -1,14 +1,18 @@
 package com.linCu.model.am;
 
 import com.linCu.model.am.common.LinCuAM;
+import com.linCu.model.view.LincuMemberVOImpl;
 import com.linCu.model.view.LincuUserInfoVOImpl;
 
+import com.linCu.model.view.LincuUserInfoVORowImpl;
 import com.linCu.model.vvo.LoginVVOImpl;
 import java.util.Map;
 import com.linCu.model.vvo.LoginVVORowImpl;
 
 import java.util.HashMap;
 
+import oracle.jbo.Key;
+import oracle.jbo.Row;
 import oracle.jbo.server.ApplicationModuleImpl;
 import oracle.jbo.server.ViewLinkImpl;
 import oracle.jbo.server.ViewObjectImpl;
@@ -107,28 +111,38 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         return (LincuUserInfoVOImpl) findViewObject("PasswordReset");
     }
 
-    /**
-     * Container's getter for LincuMemberInfoVO1.
-     * @return LincuMemberInfoVO1
-     */
-    public ViewObjectImpl getLincuMemberInfo() {
-        return (ViewObjectImpl) findViewObject("LincuMemberInfo");
+
+    public Long userCurrentRow(String userName){
+        LoginVVOImpl loginView = this.getLoginView();
+        loginView.setbindUserName(userName); 
+        loginView.executeQuery();
+        LoginVVORowImpl row = (LoginVVORowImpl)loginView.first();
+        if(row != null){
+            Long userId = row.getUserId();
+            if(userId != null){
+                return userId;
+            }
+        }else{
+            return null;
+        }
+        return null;
+    }
+    
+    public void setUserCurrentRow(Long userId){
+        System.out.println("---UserId----"+userId);
+        LincuUserInfoVOImpl loginView = this.getPasswordReset();
+        Row[] rows = loginView.findByKey(new Key(new Object[]{userId}), 1);
+        LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)rows[0];
+        loginView.setCurrentRow(row);
+        
     }
 
     /**
-     * Container's getter for LincuMemberKycVO1.
-     * @return LincuMemberKycVO1
+     * Container's getter for LincuMemberVO1.
+     * @return LincuMemberVO1
      */
-    public ViewObjectImpl getLincuMemberKyc() {
-        return (ViewObjectImpl) findViewObject("LincuMemberKyc");
-    }
-
-    /**
-     * Container's getter for MemberInfoToMemberKycVL1.
-     * @return MemberInfoToMemberKycVL1
-     */
-    public ViewLinkImpl getMemberInfoToMemberKycVL1() {
-        return (ViewLinkImpl) findViewLink("MemberInfoToMemberKycVL1");
+    public LincuMemberVOImpl getLincuMember() {
+        return (LincuMemberVOImpl) findViewObject("LincuMember");
     }
 }
 

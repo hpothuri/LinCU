@@ -16,7 +16,8 @@ public class LoginVVORowImpl extends ViewRowImpl {
         Password,
         FirstLoginFlag,
         Role,
-        RoleDescription;
+        RoleDescription,
+        UserId;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -46,6 +47,7 @@ public class LoginVVORowImpl extends ViewRowImpl {
     public static final int FIRSTLOGINFLAG = AttributesEnum.FirstLoginFlag.index();
     public static final int ROLE = AttributesEnum.Role.index();
     public static final int ROLEDESCRIPTION = AttributesEnum.RoleDescription.index();
+    public static final int USERID = AttributesEnum.UserId.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -91,6 +93,14 @@ public class LoginVVORowImpl extends ViewRowImpl {
      */
     public String getRoleDescription() {
         return (String) getAttributeInternal(ROLEDESCRIPTION);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute UserId.
+     * @return the UserId
+     */
+    public Long getUserId() {
+        return (Long) getAttributeInternal(USERID);
     }
 }
 

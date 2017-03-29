@@ -11,5 +11,9 @@ public interface LinCuAM extends ApplicationModule {
     String validateLogin(String userName, String password);
 
     Map userSessionInfo(String userName);
+
+    Long userCurrentRow(String userName);
+
+    void setUserCurrentRow(Long userId);
 }
 

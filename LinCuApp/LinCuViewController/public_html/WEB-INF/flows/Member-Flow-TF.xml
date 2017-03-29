@@ -1,41 +1,45 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="Member-Flow-TF">
-    <default-activity>MemberInfo</default-activity>
+    <default-activity>ManageMember</default-activity>
     <data-control-scope>
       <shared/>
     </data-control-scope>
-    <view id="MemberInfo">
-      <page>/fragments/MemberInfo.jsff</page>
-    </view>
-    <view id="MemberKYC">
-      <page>/fragments/MemberKYC.jsff</page>
-    </view>
     <method-call id="CreateInsert">
       <method>#{bindings.CreateInsert.execute}</method>
       <outcome>
         <fixed-outcome>CreateInsert</fixed-outcome>
       </outcome>
     </method-call>
-    <control-flow-rule id="__3">
-      <from-activity-id>MemberKYC</from-activity-id>
-      <control-flow-case id="__4">
-        <from-outcome>back</from-outcome>
-        <to-activity-id>MemberInfo</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
+    <view id="ManageMember">
+      <page>/fragments/ManageMember.jsff</page>
+    </view>
+    <view id="Member">
+      <page>/fragments/Member.jsff</page>
+    </view>
     <control-flow-rule id="__1">
-      <from-activity-id>MemberInfo</from-activity-id>
+      <from-activity-id>ManageMember</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>createMember</from-outcome>
         <to-activity-id>CreateInsert</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>editMember</from-outcome>
+        <to-activity-id>Member</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
-    <control-flow-rule id="__5">
+    <control-flow-rule id="__3">
       <from-activity-id>CreateInsert</from-activity-id>
-      <control-flow-case id="__6">
+      <control-flow-case id="__4">
         <from-outcome>CreateInsert</from-outcome>
-        <to-activity-id>MemberKYC</to-activity-id>
+        <to-activity-id>Member</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>Member</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>cancel</from-outcome>
+        <to-activity-id>ManageMember</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>

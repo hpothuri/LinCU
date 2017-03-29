@@ -26,8 +26,8 @@
     Name="bindUserName"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT LUI.USER_NAME, LUI.PASSWORD, LUI.FIRST_LOGIN_FLAG, LR.ROLE, LR.ROLE_DESCRIPTION   
-FROM LINCU_USER_INFO LUI, LINCU_ROLES LR  
+  <SQLQuery><![CDATA[SELECT LUI.USER_NAME, LUI.PASSWORD, LUI.FIRST_LOGIN_FLAG, LR.ROLE, LR.ROLE_DESCRIPTION, LUI.USER_ID   
+FROM LINCU_USER_INFO LUI, LINCU_ROLES LR   
 WHERE LUI.USER_ROLE = LR.ROLE]]></SQLQuery>
   <ViewAttribute
     Name="UserName"
@@ -104,6 +104,18 @@ WHERE LUI.USER_ROLE = LR.ROLE]]></SQLQuery>
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
   </ViewAttribute>
+  <ViewAttribute
+    Name="UserId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Scale="0"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    AliasName="USER_ID"
+    Expression="USER_ID"
+    SQLType="NUMERIC"/>
   <ViewCriteria
     Name="LoginVVOCriteria"
     ViewObjectName="com.linCu.model.vvo.LoginVVO"

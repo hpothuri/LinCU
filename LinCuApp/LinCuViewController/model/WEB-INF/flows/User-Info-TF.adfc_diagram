@@ -21,31 +21,4 @@
       <property
          name="exceptionHandler">false</property>
    </View>
-   <View
-      id="View3">
-      <property
-         name="activityId">CreateUserInfo</property>
-      <property
-         name="pageFragment">true</property>
-      <property
-         name="x">525.0</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>CreateUserInfo&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="y">246.19531</property>
-      <property
-         name="page">/fragments/CreateUserInfo.jsff</property>
-      <property
-         name="exceptionHandler">false</property>
-   </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase4"
-      from="View2"
-      to="View3">
-      <property
-         name="fromOutcome">create</property>
-      <property
-         name="sdm:polyPoints">R50,254.0,248.89648,484.0,245.84473,L50</property>
-   </ControlFlowCase>
 </SDM>

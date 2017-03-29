@@ -4,7 +4,7 @@
 <AppModule
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LinCuAM"
-  Version="12.2.1.12.24"
+  Version="12.2.1.11.57"
   InheritPersonalization="merge"
   ClearCacheOnRollback="true"
   ComponentClass="com.linCu.model.am.LinCuAMImpl"
@@ -32,22 +32,13 @@
     Name="PasswordReset"
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO"/>
   <ViewUsage
-    Name="LincuMemberInfo"
-    ViewObjectName="com.linCu.model.view.LincuMemberInfoVO"/>
-  <ViewUsage
-    Name="LincuMemberKyc"
-    ViewObjectName="com.linCu.model.view.LincuMemberKycVO"/>
+    Name="LincuMember"
+    ViewObjectName="com.linCu.model.view.LincuMemberVO"/>
   <ViewLinkUsage
     Name="CreditUnionBranchVL"
     ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionToBranchVL"
     SrcViewUsageName="com.linCu.model.am.LinCuAM.CreditUnion"
     DstViewUsageName="com.linCu.model.am.LinCuAM.CreditUnionBranch"
-    Reversed="false"/>
-  <ViewLinkUsage
-    Name="MemberInfoToMemberKycVL1"
-    ViewLinkObjectName="com.linCu.model.viewLink.MemberInfoToMemberKycVL"
-    SrcViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberInfo"
-    DstViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberKyc"
     Reversed="false"/>
   <ClientInterface
     Name="__clientInterface">
@@ -73,6 +64,26 @@
       <Parameter
         Name="userName"
         Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="userCurrentRow"
+      MethodName="userCurrentRow">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.Long"/>
+      <Parameter
+        Name="userName"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="setUserCurrentRow"
+      MethodName="setUserCurrentRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="userId"
+        Type="java.lang.Long"/>
     </Method>
   </ClientInterface>
 </AppModule>
