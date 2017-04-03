@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57" id="CardPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LincuMemberCard" RangeSize="25" DataControl="LinCuAMDataControl" id="LincuMemberCardIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CardStatus" id="CardStatus"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CreditUnionId" id="CreditUnionId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MemberId" id="MemberId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CardReqType" id="CardReqType"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="BusinessPhoneExtn">
+      <AttrNames>
+        <Item Value="BusinessPhoneExtn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="BusinessPhoneNumber">
+      <AttrNames>
+        <Item Value="BusinessPhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="DateOfBirth">
+      <AttrNames>
+        <Item Value="DateOfBirth"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="FaxNumber">
+      <AttrNames>
+        <Item Value="FaxNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="HomePhoneNumber">
+      <AttrNames>
+        <Item Value="HomePhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MemberPrefix">
+      <AttrNames>
+        <Item Value="MemberPrefix"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MiddleName">
+      <AttrNames>
+        <Item Value="MiddleName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MobilePhoneNumber">
+      <AttrNames>
+        <Item Value="MobilePhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="BirNo">
+      <AttrNames>
+        <Item Value="BirNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="DriverPermit">
+      <AttrNames>
+        <Item Value="DriverPermit"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="EducationCode">
+      <AttrNames>
+        <Item Value="EducationCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="ElectorialId">
+      <AttrNames>
+        <Item Value="ElectorialId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="Employer">
+      <AttrNames>
+        <Item Value="Employer"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="EmployerAddress1">
+      <AttrNames>
+        <Item Value="EmployerAddress1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="EmployerAddress2">
+      <AttrNames>
+        <Item Value="EmployerAddress2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="EmployerCity">
+      <AttrNames>
+        <Item Value="EmployerCity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="LocalTaxExempt">
+      <AttrNames>
+        <Item Value="LocalTaxExempt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MailingAddrLine1">
+      <AttrNames>
+        <Item Value="MailingAddrLine1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MailingAddrLine2">
+      <AttrNames>
+        <Item Value="MailingAddrLine2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MailingAddrLine3">
+      <AttrNames>
+        <Item Value="MailingAddrLine3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MailingAddrLine4">
+      <AttrNames>
+        <Item Value="MailingAddrLine4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MailingCity">
+      <AttrNames>
+        <Item Value="MailingCity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MailingState">
+      <AttrNames>
+        <Item Value="MailingState"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MailingZipCode">
+      <AttrNames>
+        <Item Value="MailingZipCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MonthlySalary">
+      <AttrNames>
+        <Item Value="MonthlySalary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MotherMaidenName">
+      <AttrNames>
+        <Item Value="MotherMaidenName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="Nationality">
+      <AttrNames>
+        <Item Value="Nationality"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="NoOfDependents">
+      <AttrNames>
+        <Item Value="NoOfDependents"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="OccupationCode">
+      <AttrNames>
+        <Item Value="OccupationCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="PassportNo">
+      <AttrNames>
+        <Item Value="PassportNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="PermanentAddrLine1">
+      <AttrNames>
+        <Item Value="PermanentAddrLine1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="PermanentAddrLine2">
+      <AttrNames>
+        <Item Value="PermanentAddrLine2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="PermanentAddrLine3">
+      <AttrNames>
+        <Item Value="PermanentAddrLine3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="PermanentAddrLine4">
+      <AttrNames>
+        <Item Value="PermanentAddrLine4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="PermanentCity">
+      <AttrNames>
+        <Item Value="PermanentCity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="PermanentState">
+      <AttrNames>
+        <Item Value="PermanentState"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="PermanentZipCode">
+      <AttrNames>
+        <Item Value="PermanentZipCode"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="LinCuAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CitizenShipCountry1"
+          id="CitizenShipCountry1" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CitizenShipCountry2"
+          id="CitizenShipCountry2" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CitizenShipCountry3"
+          id="CitizenShipCountry3" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CitizenShipCountry4"
+          id="CitizenShipCountry4" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_EligibleForeignTax"
+          id="EligibleForeignTax" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_DocForeignTaxExempt"
+          id="DocForeignTaxExempt" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_ForeignCitizenship"
+          id="ForeignCitizenship" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_PowerOfAttorney" id="PowerOfAttorney"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MailingCountryCode"
+          id="MailingCountryCode" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_PermanentCountryCode"
+          id="PermanentCountryCode" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <methodAction id="submitCard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="submitCard"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMemberCard"/>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="reject" RequiresUpdateModel="true" Action="invokeMethod" MethodName="reject"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMemberCard">
+      <NamedData NDName="rejector" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="approve" RequiresUpdateModel="true" Action="invokeMethod" MethodName="approve"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMemberCard">
+      <NamedData NDName="approver" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="CardStatus1">
+      <AttrNames>
+        <Item Value="CardStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_BirthCountryCode" id="BirthCountryCode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_HomeOwnership" id="HomeOwnership"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_Gender" id="Gender" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MaritalStatus" id="MaritalStatus"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_ShareholderCode" id="ShareholderCode"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

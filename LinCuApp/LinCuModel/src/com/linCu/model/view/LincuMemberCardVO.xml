@@ -3,40 +3,77 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="LincuMemberVO"
+  Name="LincuMemberCardVO"
   Version="12.2.1.11.57"
   InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
   SelectListFlags="1"
   FromListFlags="1"
   WhereFlags="1"
-  BindingStyle="OracleName"
-  CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full"
-  RowClass="com.linCu.model.view.LincuMemberVORowImpl"
-  ComponentClass="com.linCu.model.view.LincuMemberVOImpl">
+  RowClass="com.linCu.model.view.LincuMemberCardVORowImpl"
+  ComponentClass="com.linCu.model.view.LincuMemberCardVOImpl"
+  ComponentInterface="com.linCu.model.view.common.LincuMemberCardVO"
+  ClientProxyName="com.linCu.model.view.client.LincuMemberCardVOClient">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <ViewAccessor
+    Name="CardTypeVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['CARD_TYPE']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
     Name="LincuUnionsVA"
     ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"
     RowLevelBinds="true"/>
   <ViewAccessor
-    Name="LincuBranchesVA"
-    ViewObjectName="com.linCu.model.vvo.LincuBranchesVVO"
+    Name="MemberVA"
+    ViewObjectName="com.linCu.model.vvo.MemberVVO"
     RowLevelBinds="true">
     <ViewCriteriaUsage
-      Name="QueryByCreditUnion"
-      FullName="com.linCu.model.vvo.LincuBranchesVVO.QueryByCreditUnion"/>
+      Name="MemberVVOCriteria"
+      FullName="com.linCu.model.vvo.MemberVVO.MemberVVOCriteria"/>
     <ParameterMap>
-      <PIMap Variable="bindCreditUnionId">
+      <PIMap Variable="bindUnionId">
         <TransientExpression
+          trustMode="untrusted"
           Name="ExpressionScript"><![CDATA[CreditUnionId]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="ApplicationStatusVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['APPLICATION_STATUS']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="CountryVA"
+    ViewObjectName="com.linCu.model.vvo.CountryVVO"
+    RowLevelBinds="true"/>
   <ViewAccessor
     Name="GenderVA"
     ViewObjectName="com.linCu.model.vvo.GenderVVO"
@@ -46,28 +83,24 @@
     ViewObjectName="com.linCu.model.vvo.MaritalStatusVVO"
     RowLevelBinds="true"/>
   <ViewAccessor
-    Name="FCBShareholdingVA"
-    ViewObjectName="com.linCu.model.vvo.FCBShareholdingVVO"
-    RowLevelBinds="true"/>
-  <ViewAccessor
-    Name="CountryVA"
-    ViewObjectName="com.linCu.model.vvo.CountryVVO"
+    Name="YesOrNoVA"
+    ViewObjectName="com.linCu.model.vvo.YesOrNoVVO"
     RowLevelBinds="true"/>
   <ViewAccessor
     Name="HomeOwnershipVA"
     ViewObjectName="com.linCu.model.vvo.HomeOwnershipVVO"
     RowLevelBinds="true"/>
   <ViewAccessor
-    Name="YesOrNoVA"
-    ViewObjectName="com.linCu.model.vvo.YesOrNoVVO"
+    Name="FCBShareholdingVA"
+    ViewObjectName="com.linCu.model.vvo.FCBShareholdingVVO"
     RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_CreditUnionId"
     ListVOName="LincuUnionsVA"
     ListRangeSize="-1"
     NullValueFlag="start"
-    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
-    MRUCount="0">
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="CreditUnionId"/>
     </AttrArray>
@@ -81,21 +114,171 @@
     <DisplayCriteria/>
   </ListBinding>
   <ListBinding
-    Name="LOV_CreditUnionBranchId"
-    ListVOName="LincuBranchesVA"
+    Name="LOV_MemberId"
+    ListVOName="MemberVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+    <AttrArray Name="AttrNames">
+      <Item Value="MemberId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="MemberId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="MemberId"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CardStatus"
+    ListVOName="ApplicationStatusVA"
     ListRangeSize="-1"
     NullValueFlag="start"
     NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
     MRUCount="0">
     <AttrArray Name="AttrNames">
-      <Item Value="CreditUnionBranchId"/>
+      <Item Value="CardStatus"/>
     </AttrArray>
     <AttrArray Name="AttrExpressions"/>
     <AttrArray Name="ListAttrNames">
-      <Item Value="CreditUnionBranchId"/>
+      <Item Value="LookupCode"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="CreditUnionBranchName"/>
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CardReqType"
+    ListVOName="CardTypeVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+    <AttrArray Name="AttrNames">
+      <Item Value="CardReqType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PermanentCountryCode"
+    ListVOName="CountryVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PermanentCountryCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CountryId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CountryName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_MailingCountryCode"
+    ListVOName="CountryVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="MailingCountryCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CountryId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CountryName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CitizenShipCountry1"
+    ListVOName="CountryVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CitizenShipCountry1"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CountryId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CountryName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CitizenShipCountry2"
+    ListVOName="CountryVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CitizenShipCountry2"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CountryId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CountryName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CitizenShipCountry3"
+    ListVOName="CountryVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CitizenShipCountry3"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CountryId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CountryName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CitizenShipCountry4"
+    ListVOName="CountryVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CitizenShipCountry4"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CountryId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CountryName"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -132,96 +315,6 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="MaritalStatusDesc"/>
-    </AttrArray>
-    <DisplayCriteria/>
-  </ListBinding>
-  <ListBinding
-    Name="LOV_ShareholderCode"
-    ListVOName="FCBShareholdingVA"
-    ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="ShareholderCode"/>
-    </AttrArray>
-    <AttrArray Name="AttrExpressions"/>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="ShareholderCode"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="ShareholderDesc"/>
-    </AttrArray>
-    <DisplayCriteria/>
-  </ListBinding>
-  <ListBinding
-    Name="LOV_PermanentCountryCode"
-    ListVOName="CountryVA"
-    ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="PermanentCountryCode"/>
-    </AttrArray>
-    <AttrArray Name="AttrExpressions"/>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="CountryId"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="CountryName"/>
-    </AttrArray>
-    <DisplayCriteria/>
-  </ListBinding>
-  <ListBinding
-    Name="LOV_HomeOwnership"
-    ListVOName="HomeOwnershipVA"
-    ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="HomeOwnership"/>
-    </AttrArray>
-    <AttrArray Name="AttrExpressions"/>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="OwnershipCode"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="OwnershipDesc"/>
-    </AttrArray>
-    <DisplayCriteria/>
-  </ListBinding>
-  <ListBinding
-    Name="LOV_MailingCountryCode"
-    ListVOName="CountryVA"
-    ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="MailingCountryCode"/>
-    </AttrArray>
-    <AttrArray Name="AttrExpressions"/>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="CountryId"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="CountryName"/>
-    </AttrArray>
-    <DisplayCriteria/>
-  </ListBinding>
-  <ListBinding
-    Name="LOV_BirthCountryCode"
-    ListVOName="CountryVA"
-    ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="BirthCountryCode"/>
-    </AttrArray>
-    <AttrArray Name="AttrExpressions"/>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="CountryId"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="CountryName"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -298,13 +391,13 @@
     <DisplayCriteria/>
   </ListBinding>
   <ListBinding
-    Name="LOV_CitizenShipCountry1"
+    Name="LOV_BirthCountryCode"
     ListVOName="CountryVA"
     ListRangeSize="-1"
     NullValueFlag="none"
     MRUCount="0">
     <AttrArray Name="AttrNames">
-      <Item Value="CitizenShipCountry1"/>
+      <Item Value="BirthCountryCode"/>
     </AttrArray>
     <AttrArray Name="AttrExpressions"/>
     <AttrArray Name="ListAttrNames">
@@ -316,217 +409,292 @@
     <DisplayCriteria/>
   </ListBinding>
   <ListBinding
-    Name="LOV_CitizenShipCountry2"
-    ListVOName="CountryVA"
+    Name="LOV_HomeOwnership"
+    ListVOName="HomeOwnershipVA"
     ListRangeSize="-1"
     NullValueFlag="none"
     MRUCount="0">
     <AttrArray Name="AttrNames">
-      <Item Value="CitizenShipCountry2"/>
+      <Item Value="HomeOwnership"/>
     </AttrArray>
     <AttrArray Name="AttrExpressions"/>
     <AttrArray Name="ListAttrNames">
-      <Item Value="CountryId"/>
+      <Item Value="OwnershipCode"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="CountryName"/>
+      <Item Value="OwnershipDesc"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
   <ListBinding
-    Name="LOV_CitizenShipCountry3"
-    ListVOName="CountryVA"
+    Name="LOV_ShareholderCode"
+    ListVOName="FCBShareholdingVA"
     ListRangeSize="-1"
     NullValueFlag="none"
     MRUCount="0">
     <AttrArray Name="AttrNames">
-      <Item Value="CitizenShipCountry3"/>
+      <Item Value="ShareholderCode"/>
     </AttrArray>
     <AttrArray Name="AttrExpressions"/>
     <AttrArray Name="ListAttrNames">
-      <Item Value="CountryId"/>
+      <Item Value="ShareholderCode"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="CountryName"/>
-    </AttrArray>
-    <DisplayCriteria/>
-  </ListBinding>
-  <ListBinding
-    Name="LOV_CitizenShipCountry4"
-    ListVOName="CountryVA"
-    ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="CitizenShipCountry4"/>
-    </AttrArray>
-    <AttrArray Name="AttrExpressions"/>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="CountryId"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="CountryName"/>
+      <Item Value="ShareholderDesc"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
   <EntityUsage
+    Name="LincuMemberCardEO"
+    Entity="com.linCu.model.entity.LincuMemberCardEO"/>
+  <EntityUsage
     Name="LincuMemberInfoEO"
-    Entity="com.linCu.model.entity.LincuMemberInfoEO"/>
+    Entity="com.linCu.model.entity.LincuMemberInfoEO"
+    Association="com.linCu.model.assoc.MemberCardToMemberInfoAssoc"
+    AssociationEnd="com.linCu.model.assoc.MemberCardToMemberInfoAssoc.LincuMemberInfoEO"
+    SourceUsage="com.linCu.model.view.LincuMemberCardVO.LincuMemberCardEO"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN"
+    Reference="true"
+    ReadOnly="true">
+    <DesignTime>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.linCu.model.entity.LincuMemberInfoEO.MemberId"/>
+      </AttrArray>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.linCu.model.entity.LincuMemberCardEO.MemberId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
   <EntityUsage
     Name="LincuMemberKycEO"
     Entity="com.linCu.model.entity.LincuMemberKycEO"
-    Association="com.linCu.model.assoc.MemberInfoToMemberKycAssoc"
-    AssociationEnd="com.linCu.model.assoc.MemberInfoToMemberKycAssoc.LincuMemberKycEO"
-    SourceUsage="com.linCu.model.view.LincuMemberVO.LincuMemberInfoEO"
+    Association="com.linCu.model.assoc.MemberCardToMemberKycAssoc"
+    AssociationEnd="com.linCu.model.assoc.MemberCardToMemberKycAssoc.LincuMemberKycEO"
+    SourceUsage="com.linCu.model.view.LincuMemberCardVO.LincuMemberCardEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
     JoinType="INNER JOIN">
     <DesignTime>
       <AttrArray Name="_dstAttributes">
         <Item Value="com.linCu.model.entity.LincuMemberKycEO.MemberId"/>
       </AttrArray>
       <AttrArray Name="_srcAttributes">
-        <Item Value="com.linCu.model.entity.LincuMemberInfoEO.MemberId"/>
+        <Item Value="com.linCu.model.entity.LincuMemberCardEO.MemberId"/>
       </AttrArray>
     </DesignTime>
   </EntityUsage>
   <ViewAttribute
-    Name="BusinessPhoneExtn"
+    Name="AuthorizedBy"
     PrecisionRule="true"
-    EntityAttrName="BusinessPhoneExtn"
-    EntityUsage="LincuMemberInfoEO"
-    AliasName="BUSINESS_PHONE_EXTN">
+    EntityAttrName="AuthorizedBy"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="AUTHORIZED_BY">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
-          ResId="BUSINESS_PHONE_EXTENSION"/>
-        <DISPLAYWIDTH
-          Value="40"/>
+          ResId="AUTHORIZED_REJECTED_BY"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
   <ViewAttribute
-    Name="BusinessPhoneNumber"
+    Name="AuthorizedOn"
     PrecisionRule="true"
-    EntityAttrName="BusinessPhoneNumber"
-    EntityUsage="LincuMemberInfoEO"
-    AliasName="BUSINESS_PHONE_NUMBER">
+    EntityAttrName="AuthorizedOn"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="AUTHORIZED_ON">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
-          ResId="BUSINESS_PHONE"/>
-        <DISPLAYWIDTH
-          Value="40"/>
+          ResId="AUTHORIZED_REJECTED_ON"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CardId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CardId"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="CARD_ID"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="CardReqType"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CardReqType"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="CARD_REQ_TYPE"
+    LOVName="LOV_CardReqType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="CARD_REQUEST_TYPE"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CardStatus"
+    PrecisionRule="true"
+    EntityAttrName="CardStatus"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="CARD_STATUS"
+    LOVName="LOV_CardStatus">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="CARD_STATUS"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
   <ViewAttribute
     Name="CreatedBy"
-    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="CREATED_BY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CREATED_BY"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedOn"
+    PrecisionRule="true"
+    EntityAttrName="CreatedOn"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="CREATED_ON">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CREATED_ON"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreditUnionId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreditUnionId"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="CREDIT_UNION_ID"
+    LOVName="LOV_CreditUnionId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MemberCardType"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="MemberCardType"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="MEMBER_CARD_TYPE"/>
+  <ViewAttribute
+    Name="MemberId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="MemberId"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="MEMBER_ID"
+    LOVName="LOV_MemberId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="MEMBER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SubmittedOn"
+    PrecisionRule="true"
+    EntityAttrName="SubmittedOn"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="SUBMITTED_ON">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="SUBMITTED_ON"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BusinessPhoneExtn"
+    PrecisionRule="true"
+    EntityAttrName="BusinessPhoneExtn"
+    EntityUsage="LincuMemberInfoEO"
+    AliasName="BUSINESS_PHONE_EXTN"/>
+  <ViewAttribute
+    Name="BusinessPhoneNumber"
+    PrecisionRule="true"
+    EntityAttrName="BusinessPhoneNumber"
+    EntityUsage="LincuMemberInfoEO"
+    AliasName="BUSINESS_PHONE_NUMBER"/>
+  <ViewAttribute
+    Name="CreatedBy1"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="CREATED_BY"/>
+    AliasName="CREATED_BY1"/>
   <ViewAttribute
     Name="CreationDate"
-    IsUpdateable="false"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreationDate"
     EntityUsage="LincuMemberInfoEO"
     AliasName="CREATION_DATE"/>
   <ViewAttribute
-    Name="CreditUnionId"
-    IsNotNull="true"
-    PrecisionRule="true"
-    EntityAttrName="CreditUnionId"
-    EntityUsage="LincuMemberInfoEO"
-    AliasName="CREDIT_UNION_ID"
-    LOVName="LOV_CreditUnionId">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="CREDIT_UNION"/>
-        <CONTROLTYPE
-          Value="choice"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
-  <ViewAttribute
     Name="CreditUnionBranchId"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreditUnionBranchId"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="CREDIT_UNION_BRANCH_ID"
-    LOVName="LOV_CreditUnionBranchId">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="CREDIT_UNION_BRANCH"/>
-        <CONTROLTYPE
-          Value="choice"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="CREDIT_UNION_BRANCH_ID"/>
+  <ViewAttribute
+    Name="CreditUnionId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreditUnionId"
+    EntityUsage="LincuMemberInfoEO"
+    AliasName="CREDIT_UNION_ID1"/>
   <ViewAttribute
     Name="DateOfBirth"
     PrecisionRule="true"
     EntityAttrName="DateOfBirth"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="DATE_OF_BIRTH">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="37"/>
-        <LABEL
-          ResId="DATE_OF_BIRTH"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="DATE_OF_BIRTH"/>
   <ViewAttribute
     Name="Email"
     PrecisionRule="true"
     EntityAttrName="Email"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="EMAIL">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="EMAIL"/>
   <ViewAttribute
     Name="FaxNumber"
     PrecisionRule="true"
     EntityAttrName="FaxNumber"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="FAX_NUMBER">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="FAX_NUMBER"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="FAX_NUMBER"/>
   <ViewAttribute
     Name="FirstName"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="FirstName"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="FIRST_NAME">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="FIRST_NAME"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="FIRST_NAME"/>
   <ViewAttribute
     Name="Gender"
     PrecisionRule="true"
@@ -546,16 +714,7 @@
     PrecisionRule="true"
     EntityAttrName="HomePhoneNumber"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="HOME_PHONE_NUMBER">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="HOME_PHONE"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="HOME_PHONE_NUMBER"/>
   <ViewAttribute
     Name="LastApprovedBy"
     IsNotNull="true"
@@ -576,19 +735,9 @@
     PrecisionRule="true"
     EntityAttrName="LastName"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="LAST_NAME">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="LAST_NAME"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="LAST_NAME"/>
   <ViewAttribute
     Name="LastUpdateDate"
-    IsUpdateable="false"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdateDate"
@@ -596,66 +745,38 @@
     AliasName="LAST_UPDATE_DATE"/>
   <ViewAttribute
     Name="LastUpdatedBy"
-    IsUpdateable="false"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
     EntityUsage="LincuMemberInfoEO"
     AliasName="LAST_UPDATED_BY"/>
   <ViewAttribute
-    Name="MemberId"
+    Name="MemberId1"
+    IsUpdateable="while_insert"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="MemberId"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="MEMBER_ID"
-    IsUpdateable="while_insert"/>
+    AliasName="MEMBER_ID1"/>
   <ViewAttribute
     Name="MemberPrefix"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="MemberPrefix"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="MEMBER_PREFIX">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="PREFIX"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MEMBER_PREFIX"/>
   <ViewAttribute
     Name="MiddleName"
     PrecisionRule="true"
     EntityAttrName="MiddleName"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="MIDDLE_NAME">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="MIDDLE_NAME"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MIDDLE_NAME"/>
   <ViewAttribute
     Name="MobilePhoneNumber"
     PrecisionRule="true"
     EntityAttrName="MobilePhoneNumber"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="MOBILE_PHONE_NUMBER">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="MOBILE_PHONE"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MOBILE_PHONE_NUMBER"/>
   <ViewAttribute
     Name="ObjectVersionId"
     IsNotNull="true"
@@ -675,16 +796,7 @@
     PrecisionRule="true"
     EntityAttrName="BirNo"
     EntityUsage="LincuMemberKycEO"
-    AliasName="BIR_NO">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="BIR"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="BIR_NO"/>
   <ViewAttribute
     Name="BirthCountryCode"
     IsNotNull="true"
@@ -692,20 +804,16 @@
     EntityAttrName="BirthCountryCode"
     EntityUsage="LincuMemberKycEO"
     AliasName="BIRTH_COUNTRY_CODE"
-    DefaultValue="1"
     LOVName="LOV_BirthCountryCode">
     <Properties>
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
-        <LABEL
-          ResId="COUNTRY_OF_BIRTH"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
   <ViewAttribute
     Name="BirthCountryDesc"
-    IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="BirthCountryDesc"
     EntityUsage="LincuMemberKycEO"
@@ -721,8 +829,6 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
-        <LABEL
-          ResId="CITIZENSHIP_COUNTRY_1"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -735,8 +841,6 @@
     LOVName="LOV_CitizenShipCountry2">
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="CITIZENSHIP_COUNTRY_2"/>
         <CONTROLTYPE
           Value="choice"/>
       </SchemaBasedProperties>
@@ -753,8 +857,6 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
-        <LABEL
-          ResId="CITIZENSHIP_COUNTRY_3"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -767,24 +869,20 @@
     LOVName="LOV_CitizenShipCountry4">
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="CITIZENSHIP_COUNTRY_4"/>
         <CONTROLTYPE
           Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
   <ViewAttribute
-    Name="CreatedBy1"
-    IsUpdateable="false"
+    Name="CreatedBy2"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
     EntityUsage="LincuMemberKycEO"
-    AliasName="CREATED_BY1"/>
+    AliasName="CREATED_BY2"/>
   <ViewAttribute
     Name="CreationDate1"
-    IsUpdateable="false"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreationDate"
@@ -798,12 +896,12 @@
     EntityUsage="LincuMemberKycEO"
     AliasName="CREDIT_UNION_BRANCH_ID1"/>
   <ViewAttribute
-    Name="CreditUnionId1"
+    Name="CreditUnionId2"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreditUnionId"
     EntityUsage="LincuMemberKycEO"
-    AliasName="CREDIT_UNION_ID1"/>
+    AliasName="CREDIT_UNION_ID2"/>
   <ViewAttribute
     Name="DocForeignTaxExempt"
     IsNotNull="true"
@@ -814,10 +912,8 @@
     LOVName="LOV_DocForeignTaxExempt">
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="DOCUMENTS_FOR_FOREIGN_TAX_EXCEPTION"/>
         <CONTROLTYPE
-          Value="radio"/>
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -839,47 +935,20 @@
     PrecisionRule="true"
     EntityAttrName="DriverPermit"
     EntityUsage="LincuMemberKycEO"
-    AliasName="DRIVER_PERMIT">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="DRIVER_S_PERMIT"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="DRIVER_PERMIT"/>
   <ViewAttribute
     Name="EducationCode"
     PrecisionRule="true"
     EntityAttrName="EducationCode"
     EntityUsage="LincuMemberKycEO"
-    AliasName="EDUCATION_CODE">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="EDUCATION"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="EDUCATION_CODE"/>
   <ViewAttribute
     Name="ElectorialId"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="ElectorialId"
     EntityUsage="LincuMemberKycEO"
-    AliasName="ELECTORIAL_ID">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="ELECTORIAL_ID"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="ELECTORIAL_ID"/>
   <ViewAttribute
     Name="EligibleForeignTax"
     IsNotNull="true"
@@ -890,8 +959,6 @@
     LOVName="LOV_EligibleForeignTax">
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="ELIGIBLE_FOR_FOREIGN_TAX"/>
         <CONTROLTYPE
           Value="radio"/>
       </SchemaBasedProperties>
@@ -902,55 +969,25 @@
     PrecisionRule="true"
     EntityAttrName="Employer"
     EntityUsage="LincuMemberKycEO"
-    AliasName="EMPLOYER">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="EMPLOYER_S_NAME"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="EMPLOYER"/>
   <ViewAttribute
     Name="EmployerAddress1"
     PrecisionRule="true"
     EntityAttrName="EmployerAddress1"
     EntityUsage="LincuMemberKycEO"
-    AliasName="EMPLOYER_ADDRESS1">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="ADDRESS_LINE1"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="EMPLOYER_ADDRESS1"/>
   <ViewAttribute
     Name="EmployerAddress2"
     PrecisionRule="true"
     EntityAttrName="EmployerAddress2"
     EntityUsage="LincuMemberKycEO"
-    AliasName="EMPLOYER_ADDRESS2">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="ADDRESS_LINE_2"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="EMPLOYER_ADDRESS2"/>
   <ViewAttribute
     Name="EmployerCity"
     PrecisionRule="true"
     EntityAttrName="EmployerCity"
     EntityUsage="LincuMemberKycEO"
-    AliasName="EMPLOYER_CITY">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="CITY"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="EMPLOYER_CITY"/>
   <ViewAttribute
     Name="ForeignCitizenship"
     IsNotNull="true"
@@ -963,8 +1000,6 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="radio"/>
-        <LABEL
-          ResId="CITIZENSHIP_IN_ANOTHER_COUNTRY"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -979,8 +1014,6 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="radio"/>
-        <LABEL
-          ResId="HOME_OWNERSHIP"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1006,7 +1039,6 @@
     AliasName="LAST_APPROVED_DATE1"/>
   <ViewAttribute
     Name="LastUpdateDate1"
-    IsUpdateable="false"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdateDate"
@@ -1014,7 +1046,6 @@
     AliasName="LAST_UPDATE_DATE1"/>
   <ViewAttribute
     Name="LastUpdatedBy1"
-    IsUpdateable="false"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
@@ -1026,96 +1057,42 @@
     PrecisionRule="true"
     EntityAttrName="LocalTaxExempt"
     EntityUsage="LincuMemberKycEO"
-    AliasName="LOCAL_TAX_EXEMPT">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="LOCAL_TAX_EXEMPT"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="LOCAL_TAX_EXEMPT"/>
   <ViewAttribute
     Name="MailingAddrLine1"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="MailingAddrLine1"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MAILING_ADDR_LINE1">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="LINE_1"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MAILING_ADDR_LINE1"/>
   <ViewAttribute
     Name="MailingAddrLine2"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="MailingAddrLine2"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MAILING_ADDR_LINE2">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="LINE_2"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MAILING_ADDR_LINE2"/>
   <ViewAttribute
     Name="MailingAddrLine3"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="MailingAddrLine3"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MAILING_ADDR_LINE3">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="LINE_3"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MAILING_ADDR_LINE3"/>
   <ViewAttribute
     Name="MailingAddrLine4"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="MailingAddrLine4"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MAILING_ADDR_LINE4">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="STREET"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MAILING_ADDR_LINE4"/>
   <ViewAttribute
     Name="MailingCity"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="MailingCity"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MAILING_CITY">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="CITY"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MAILING_CITY"/>
   <ViewAttribute
     Name="MailingCountryCode"
     IsNotNull="true"
@@ -1123,14 +1100,9 @@
     EntityAttrName="MailingCountryCode"
     EntityUsage="LincuMemberKycEO"
     AliasName="MAILING_COUNTRY_CODE"
-    DefaultValue="1"
     LOVName="LOV_MailingCountryCode">
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="COUNTRY"/>
-        <DISPLAYWIDTH
-          Value="40"/>
         <CONTROLTYPE
           Value="choice"/>
       </SchemaBasedProperties>
@@ -1142,32 +1114,14 @@
     PrecisionRule="true"
     EntityAttrName="MailingState"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MAILING_STATE">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="STATE"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MAILING_STATE"/>
   <ViewAttribute
     Name="MailingZipCode"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="MailingZipCode"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MAILING_ZIP_CODE">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="ZIP_CODE"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MAILING_ZIP_CODE"/>
   <ViewAttribute
     Name="MaritalStatus"
     IsNotNull="true"
@@ -1178,85 +1132,45 @@
     LOVName="LOV_MaritalStatus">
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="MARITAL_STATUS"/>
         <CONTROLTYPE
           Value="radio"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
   <ViewAttribute
-    Name="MemberId1"
+    Name="MemberId2"
+    IsUpdateable="while_insert"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="MemberId"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MEMBER_ID1"
-    IsUpdateable="while_insert">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberVORow"/>
-  </ViewAttribute>
+    AliasName="MEMBER_ID2"/>
   <ViewAttribute
     Name="MonthlySalary"
     PrecisionRule="true"
     EntityAttrName="MonthlySalary"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MONTHLY_SALARY">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="ANNUAL_INCOME"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MONTHLY_SALARY"/>
   <ViewAttribute
     Name="MotherMaidenName"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="MotherMaidenName"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MOTHER_MAIDEN_NAME">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="MOTHER_S_MAIDEN_NAME"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="MOTHER_MAIDEN_NAME"/>
   <ViewAttribute
     Name="Nationality"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="Nationality"
     EntityUsage="LincuMemberKycEO"
-    AliasName="NATIONALITY">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="NATIONALITY"/>
   <ViewAttribute
     Name="NoOfDependents"
     PrecisionRule="true"
     EntityAttrName="NoOfDependents"
     EntityUsage="LincuMemberKycEO"
-    AliasName="NO_OF_DEPENDENTS">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="NO__OF_DEPENDENTS"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="NO_OF_DEPENDENTS"/>
   <ViewAttribute
     Name="ObjectVersionId1"
     IsNotNull="true"
@@ -1269,102 +1183,49 @@
     PrecisionRule="true"
     EntityAttrName="OccupationCode"
     EntityUsage="LincuMemberKycEO"
-    AliasName="OCCUPATION_CODE">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="OCCUPATION"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="OCCUPATION_CODE"/>
   <ViewAttribute
     Name="PassportNo"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="PassportNo"
     EntityUsage="LincuMemberKycEO"
-    AliasName="PASSPORT_NO">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="PASSPORT"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="PASSPORT_NO"/>
   <ViewAttribute
     Name="PermanentAddrLine1"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="PermanentAddrLine1"
     EntityUsage="LincuMemberKycEO"
-    AliasName="PERMANENT_ADDR_LINE1">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="LINE_1"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="PERMANENT_ADDR_LINE1"/>
   <ViewAttribute
     Name="PermanentAddrLine2"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="PermanentAddrLine2"
     EntityUsage="LincuMemberKycEO"
-    AliasName="PERMANENT_ADDR_LINE2">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="LINE_2"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="PERMANENT_ADDR_LINE2"/>
   <ViewAttribute
     Name="PermanentAddrLine3"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="PermanentAddrLine3"
     EntityUsage="LincuMemberKycEO"
-    AliasName="PERMANENT_ADDR_LINE3">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="LINE_3"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="PERMANENT_ADDR_LINE3"/>
   <ViewAttribute
     Name="PermanentAddrLine4"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="PermanentAddrLine4"
     EntityUsage="LincuMemberKycEO"
-    AliasName="PERMANENT_ADDR_LINE4">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="STREET"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="PERMANENT_ADDR_LINE4"/>
   <ViewAttribute
     Name="PermanentCity"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="PermanentCity"
     EntityUsage="LincuMemberKycEO"
-    AliasName="PERMANENT_CITY">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="CITY"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="PERMANENT_CITY"/>
   <ViewAttribute
     Name="PermanentCountryCode"
     IsNotNull="true"
@@ -1372,14 +1233,9 @@
     EntityAttrName="PermanentCountryCode"
     EntityUsage="LincuMemberKycEO"
     AliasName="PERMANENT_COUNTRY_CODE"
-    DefaultValue="1"
     LOVName="LOV_PermanentCountryCode">
     <Properties>
       <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <LABEL
-          ResId="COUNTRY"/>
         <CONTROLTYPE
           Value="choice"/>
       </SchemaBasedProperties>
@@ -1387,7 +1243,6 @@
   </ViewAttribute>
   <ViewAttribute
     Name="PermanentCountryDesc"
-    IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="PermanentCountryDesc"
     EntityUsage="LincuMemberKycEO"
@@ -1398,32 +1253,14 @@
     PrecisionRule="true"
     EntityAttrName="PermanentState"
     EntityUsage="LincuMemberKycEO"
-    AliasName="PERMANENT_STATE">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="STATE"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="PERMANENT_STATE"/>
   <ViewAttribute
     Name="PermanentZipCode"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="PermanentZipCode"
     EntityUsage="LincuMemberKycEO"
-    AliasName="PERMANENT_ZIP_CODE">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="ZIP_CODE"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="PERMANENT_ZIP_CODE"/>
   <ViewAttribute
     Name="PowerOfAttorney"
     IsNotNull="true"
@@ -1434,8 +1271,6 @@
     LOVName="LOV_PowerOfAttorney">
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="POWER_OF_ATTORNEY"/>
         <CONTROLTYPE
           Value="radio"/>
       </SchemaBasedProperties>
@@ -1492,12 +1327,8 @@
     LOVName="LOV_ShareholderCode">
     <Properties>
       <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="40"/>
         <CONTROLTYPE
           Value="radio"/>
-        <LABEL
-          ResId="FCB_SHAREHOLDING"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1513,9 +1344,15 @@
     EntityAttrName="WorkPhone"
     EntityUsage="LincuMemberKycEO"
     AliasName="WORK_PHONE"/>
+  <ViewAttribute
+    Name="Comments"
+    PrecisionRule="true"
+    EntityAttrName="Comments"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="COMMENTS"/>
   <ViewCriteria
-    Name="LincuMemberVOCriteria"
-    ViewObjectName="com.linCu.model.view.LincuMemberVO"
+    Name="LincuMemberCardVOCriteria"
+    ViewObjectName="com.linCu.model.view.LincuMemberCardVO"
     Conjunction="AND">
     <Properties Name="_Props">
       <CustomProperties>
@@ -1537,46 +1374,67 @@
       </CustomProperties>
     </Properties>
     <ViewCriteriaRow
-      Name="LincuMemberVOCriteria_row_0"
+      Name="LincuMemberCardVOCriteria_row_0"
       UpperColumns="1">
       <ViewCriteriaItem
-        Name="CreditUnionId"
-        ViewAttribute="CreditUnionId"
+        Name="CardReqType"
+        ViewAttribute="CardReqType"
         Operator="="
         Conjunction="AND"
         Required="Optional"/>
       <ViewCriteriaItem
-        Name="CreditUnionBranchId"
-        ViewAttribute="CreditUnionBranchId"
+        Name="CardStatus"
+        ViewAttribute="CardStatus"
         Operator="="
         Conjunction="AND"
         Required="Optional"/>
       <ViewCriteriaItem
-        Name="FirstName"
-        ViewAttribute="FirstName"
-        Operator="STARTSWITH"
+        Name="MemberId"
+        ViewAttribute="MemberId"
+        Operator="="
         Conjunction="AND"
         Required="Optional"/>
       <ViewCriteriaItem
-        Name="LastName"
-        ViewAttribute="LastName"
-        Operator="STARTSWITH"
-        Conjunction="AND"
-        Required="Optional"/>
-      <ViewCriteriaItem
-        Name="MiddleName"
-        ViewAttribute="MiddleName"
-        Operator="STARTSWITH"
-        Conjunction="AND"
-        Required="Optional"/>
-      <ViewCriteriaItem
-        Name="MotherMaidenName"
-        ViewAttribute="MotherMaidenName"
-        Operator="STARTSWITH"
+        Name="SubmittedOn"
+        ViewAttribute="SubmittedOn"
+        Operator="="
         Conjunction="AND"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="CardId"/>
+  </AttrArray>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="submitCard"
+      MethodName="submitCard">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="approve"
+      MethodName="approve">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="approver"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="reject"
+      MethodName="reject">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="rejector"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.linCu.model.LinCuModelBundle"/>

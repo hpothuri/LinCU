@@ -3,12 +3,12 @@
 <!---->
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="LincuMemberInfoEO"
+  Name="LincuMemberInfoAuditEO"
   Version="12.2.1.11.57"
   InheritPersonalization="merge"
   DBObjectType="table"
-  DBObjectName="LINCU_MEMBER_INFO"
-  AliasName="LincuMemberInfoEO"
+  DBObjectName="LINCU_MEMBER_INFO_AUDIT"
+  AliasName="LincuMemberInfoAuditEO"
   BindingStyle="OracleName">
   <Attribute
     Name="MemberId"
@@ -18,15 +18,10 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO"
-    PrimaryKey="true"
-    IsUpdateable="while_insert">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberInfoEORow"/>
   </Attribute>
   <Attribute
     Name="CreditUnionId"
@@ -36,7 +31,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
@@ -49,7 +44,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
@@ -62,7 +57,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="5"/>
     </DesignTime>
@@ -75,7 +70,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="17"/>
     </DesignTime>
@@ -87,7 +82,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
@@ -100,7 +95,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
@@ -111,7 +106,7 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_INFO"/>
+    TableName="LINCU_MEMBER_INFO_AUDIT"/>
   <Attribute
     Name="Gender"
     Precision="1"
@@ -119,7 +114,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
@@ -131,7 +126,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -143,7 +138,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="12"/>
     </DesignTime>
@@ -155,7 +150,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="12"/>
     </DesignTime>
@@ -167,7 +162,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="4"/>
     </DesignTime>
@@ -179,7 +174,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="12"/>
     </DesignTime>
@@ -191,7 +186,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
@@ -203,63 +198,32 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="CreatedBy"
+    Name="UpdatedBy"
     IsNotNull="true"
     Precision="60"
-    ColumnName="CREATED_BY"
+    ColumnName="UPDATED_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO"
-    DefaultValue="test">
+    TableName="LINCU_MEMBER_INFO_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="CreationDate"
+    Name="UpdateDate"
     IsNotNull="true"
-    ColumnName="CREATION_DATE"
+    ColumnName="UPDATE_DATE"
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_INFO">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberInfoEORow"/>
-  </Attribute>
-  <Attribute
-    Name="LastUpdatedBy"
-    IsNotNull="true"
-    Precision="60"
-    ColumnName="LAST_UPDATED_BY"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO"
-    DefaultValue="test">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="60"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="LastUpdateDate"
-    IsNotNull="true"
-    ColumnName="LAST_UPDATE_DATE"
-    SQLType="DATE"
-    Type="java.sql.Timestamp"
-    ColumnType="DATE"
-    TableName="LINCU_MEMBER_INFO">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberInfoEORow"/>
-  </Attribute>
+    TableName="LINCU_MEMBER_INFO_AUDIT"/>
   <Attribute
     Name="ObjectVersionId"
     IsNotNull="true"
@@ -269,92 +233,42 @@
     SQLType="NUMERIC"
     Type="java.lang.Long"
     ColumnType="NUMBER"
-    TableName="LINCU_MEMBER_INFO"
-    ChangeIndicator="true"
-    DefaultValue="1"/>
+    TableName="LINCU_MEMBER_INFO_AUDIT"/>
   <Attribute
-    Name="LastApprovedBy"
+    Name="LincuAuditId"
     IsNotNull="true"
-    Precision="60"
-    ColumnName="LAST_APPROVED_BY"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO"
-    DefaultValue="test">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="60"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="LastApprovedDate"
-    IsNotNull="true"
-    ColumnName="LAST_APPROVED_DATE"
-    SQLType="DATE"
-    Type="java.sql.Timestamp"
-    ColumnType="DATE"
-    TableName="LINCU_MEMBER_INFO">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberInfoEORow"/>
-  </Attribute>
+    ColumnName="LINCU_AUDIT_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="LINCU_MEMBER_INFO_AUDIT"
+    PrimaryKey="true"/>
   <AccessorAttribute
-    Name="CreditUnionBranchEO"
-    Association="com.linCu.model.assoc.CreditUnionBranchToMemberInfoAssoc"
-    AssociationEnd="com.linCu.model.assoc.CreditUnionBranchToMemberInfoAssoc.CreditUnionBranchEO"
-    AssociationOtherEnd="com.linCu.model.assoc.CreditUnionBranchToMemberInfoAssoc.LincuMemberInfoEO"
-    Type="oracle.jbo.server.EntityImpl"
-    IsUpdateable="true"/>
-  <AccessorAttribute
-    Name="LincuMemberKycEO"
-    Association="com.linCu.model.assoc.MemberInfoToMemberKycAssoc"
-    AssociationEnd="com.linCu.model.assoc.MemberInfoToMemberKycAssoc.LincuMemberKycEO"
-    AssociationOtherEnd="com.linCu.model.assoc.MemberInfoToMemberKycAssoc.LincuMemberInfoEO"
-    Type="oracle.jbo.server.EntityImpl"
-    IsUpdateable="true"/>
-  <AccessorAttribute
-    Name="LincuMemberInfoAuditEO"
+    Name="LincuMemberInfoEO"
     Association="com.linCu.model.assoc.LincuMemberInfoAuditAssoc"
-    AssociationEnd="com.linCu.model.assoc.LincuMemberInfoAuditAssoc.LincuMemberInfoAuditEO"
-    AssociationOtherEnd="com.linCu.model.assoc.LincuMemberInfoAuditAssoc.LincuMemberInfoEO"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <AccessorAttribute
-    Name="LincuMemberCardEO"
-    Association="com.linCu.model.assoc.MemberCardToMemberInfoAssoc"
-    AssociationEnd="com.linCu.model.assoc.MemberCardToMemberInfoAssoc.LincuMemberCardEO"
-    AssociationOtherEnd="com.linCu.model.assoc.MemberCardToMemberInfoAssoc.LincuMemberInfoEO"
+    AssociationEnd="com.linCu.model.assoc.LincuMemberInfoAuditAssoc.LincuMemberInfoEO"
+    AssociationOtherEnd="com.linCu.model.assoc.LincuMemberInfoAuditAssoc.LincuMemberInfoAuditEO"
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
   <Key
-    Name="LincuMemberInfoPk"
+    Name="LincuMemberInfoAuditPk"
     PrimaryKey="true">
     <DesignTime>
-      <Attr Name="_DBObjectName" Value="LINCU_MEMBER_INFO_PK"/>
+      <Attr Name="_DBObjectName" Value="LINCU_MEMBER_INFO_AUDIT_PK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.linCu.model.entity.LincuMemberInfoEO.MemberId"/>
+      <Item Value="com.linCu.model.entity.LincuMemberInfoAuditEO.LincuAuditId"/>
     </AttrArray>
   </Key>
   <Key
-    Name="MemberGenderChk">
+    Name="LincuMemberInfoAuditFk1">
     <DesignTime>
-      <Attr Name="_checkCondition" Value="GENDER in ('M','F')"/>
-      <Attr Name="_isCheck" Value="true"/>
-      <Attr Name="_DBObjectName" Value="MEMBER_GENDER_CHK"/>
-    </DesignTime>
-    <AttrArray Name="Attributes"/>
-  </Key>
-  <Key
-    Name="LincuMemberInfoFk1">
-    <DesignTime>
-      <Attr Name="_referencedKey" Value="CREDIT_UNION_BRANCH_PK"/>
+      <Attr Name="_referencedKey" Value="LINCU_MEMBER_INFO_PK"/>
       <Attr Name="_isForeign" Value="true"/>
-      <Attr Name="_DBObjectName" Value="LINCU_MEMBER_INFO_FK_1"/>
+      <Attr Name="_DBObjectName" Value="LINCU_MEMBER_INFO_AUDIT_FK1"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.linCu.model.entity.LincuMemberInfoEO.CreditUnionId"/>
-      <Item Value="com.linCu.model.entity.LincuMemberInfoEO.CreditUnionBranchId"/>
+      <Item Value="com.linCu.model.entity.LincuMemberInfoAuditEO.MemberId"/>
     </AttrArray>
   </Key>
 </Entity>

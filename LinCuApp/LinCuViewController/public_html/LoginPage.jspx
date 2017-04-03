@@ -53,6 +53,8 @@
                                                 <af:link text="#{lincuviewcontrollerBundle.FORGOT_PASSWORD}" id="l1"
                                                          action="success" actionListener="#{loginBean.forgotPassword}"
                                                          immediate="true"/>
+                                                 <af:outputText value="&amp;CHAR(10)&amp;" id="rvd4121"/>        
+                                                         
                                             </af:panelGroupLayout>
                                             <af:panelGroupLayout id="pgl6" layout="horizontal">
                                                 <af:image source="#{resource['images:ResetPassword.png']}" id="i2"/>

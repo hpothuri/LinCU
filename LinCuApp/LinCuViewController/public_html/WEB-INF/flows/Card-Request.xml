@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Card-Request">
+    <default-activity>ManageCards</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__8">
+      <managed-bean-name>card</managed-bean-name>
+      <managed-bean-class>com.linCu.view.backingBeans.CardBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="ManageCards">
+      <page>/fragments/ManageCards.jsff</page>
+    </view>
+    <view id="Card">
+      <page>/fragments/Card.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>ManageCards</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>edit</from-outcome>
+        <to-activity-id>Card</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>create</from-outcome>
+        <to-activity-id>CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>Card</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>Card</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>cancel</from-outcome>
+        <to-activity-id>ManageCards</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

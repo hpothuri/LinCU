@@ -13,5 +13,6 @@ public class LincuMemberVOImpl extends ViewObjectImpl {
      */
     public LincuMemberVOImpl() {
     }
+
 }
 

@@ -34,6 +34,9 @@
   <ViewUsage
     Name="LincuMember"
     ViewObjectName="com.linCu.model.view.LincuMemberVO"/>
+  <ViewUsage
+    Name="LincuMemberCard"
+    ViewObjectName="com.linCu.model.view.LincuMemberCardVO"/>
   <ViewLinkUsage
     Name="CreditUnionBranchVL"
     ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionToBranchVL"

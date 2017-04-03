@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="lincuviewcontrollerBundle" value="#{adfBundle['com.linCu.view.LinCuViewControllerBundle']}"/>
+  <af:panelGroupLayout layout="vertical" id="pgl1">
+    <af:panelHeader text="#{lincuviewcontrollerBundle.MANAGE_CARD_APPLICATIONS}" id="ph1">
+      <af:query id="qryId1" headerText="Search" disclosed="true"
+                value="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor}"
+                model="#{bindings.LincuMemberCardVOCriteriaQuery.queryModel}"
+                queryListener="#{bindings.LincuMemberCardVOCriteriaQuery.processQuery}"
+                queryOperationListener="#{bindings.LincuMemberCardVOCriteriaQuery.processQueryOperation}"
+                resultComponentId="::pc1" maxColumns="2" rows="2" saveQueryMode="hidden"/>
+    </af:panelHeader>
+    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+      <f:facet name="menus"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+          <af:button text="#{lincuviewcontrollerBundle.REQUEST_CARD}" id="b1" action="create"/>
+          <af:button text="#{lincuviewcontrollerBundle.EDIT_REQUEST}" id="b2" action="edit"/>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="statusbar"/>
+      <af:table value="#{bindings.LincuMemberCard.collectionModel}" var="row"
+                rows="#{bindings.LincuMemberCard.rangeSize}"
+                emptyText="#{bindings.LincuMemberCard.viewable ? 'No data to display.' : 'Access Denied.'}"
+                rowBandingInterval="0" selectedRowKeys="#{bindings.LincuMemberCard.collectionModel.selectedRow}"
+                selectionListener="#{bindings.LincuMemberCard.collectionModel.makeCurrent}" rowSelection="single"
+                fetchSize="#{bindings.LincuMemberCard.rangeSize}"
+                filterModel="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor}" filterVisible="true"
+                queryListener="#{bindings.LincuMemberCardVOCriteriaQuery.processQuery}" varStatus="vs" id="resId1">
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.MemberId.name}" filterable="true" sortable="true"
+                   headerText="#{bindings.LincuMemberCard.hints.MemberId.label}" id="resId1c1">
+          <af:selectOneChoice value="#{row.bindings.MemberId.inputValue}" label="#{row.bindings.MemberId.label}"
+                              required="#{bindings.LincuMemberCard.hints.MemberId.mandatory}"
+                              shortDesc="#{bindings.LincuMemberCard.hints.MemberId.tooltip}" readOnly="true" id="soc1">
+            <f:selectItems value="#{row.bindings.MemberId.items}" id="si1"/>
+            <f:validator binding="#{row.bindings.MemberId.validator}"/>
+          </af:selectOneChoice>
+        </af:column>
+        <af:column headerText="#{bindings.LincuMemberCard.hints.CardReqType.label}" id="c1" filterable="true" sortable="true"
+                   sortProperty="#{bindings.LincuMemberCard.hints.CardReqType.name}" width="150" minimumWidth="150">
+          <af:selectOneChoice value="#{row.bindings.CardReqType.inputValue}" label="#{row.bindings.CardReqType.label}"
+                              required="#{bindings.LincuMemberCard.hints.CardReqType.mandatory}"
+                              shortDesc="#{bindings.LincuMemberCard.hints.CardReqType.tooltip}" id="soc3"
+                              readOnly="true">
+            <f:selectItems value="#{row.bindings.CardReqType.items}" id="si3"/>
+            <f:validator binding="#{row.bindings.CardReqType.validator}"/>
+          </af:selectOneChoice>
+        </af:column>
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.CardStatus.name}" filterable="true" sortable="true"
+                   headerText="#{bindings.LincuMemberCard.hints.CardStatus.label}" id="resId1c3">
+          <af:selectOneChoice value="#{row.bindings.CardStatus.inputValue}" label="#{row.bindings.CardStatus.label}"
+                              required="#{bindings.LincuMemberCard.hints.CardStatus.mandatory}"
+                              shortDesc="#{bindings.LincuMemberCard.hints.CardStatus.tooltip}" readOnly="true"
+                              id="soc2">
+            <f:selectItems value="#{row.bindings.CardStatus.items}" id="si2"/>
+            <f:validator binding="#{row.bindings.CardStatus.validator}"/>
+          </af:selectOneChoice>
+        </af:column>
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.CreatedBy.name}" filterable="true" sortable="true"
+                   headerText="#{bindings.LincuMemberCard.hints.CreatedBy.label}" id="resId1c4">
+          <af:outputText value="#{row.CreatedBy}" shortDesc="#{bindings.LincuMemberCard.hints.CreatedBy.tooltip}"
+                         id="ot2"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.CreatedOn.name}" filterable="true" sortable="true"
+                   headerText="#{bindings.LincuMemberCard.hints.CreatedOn.label}" id="resId1c5">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.CreatedOn.value}"
+                          id="id1">
+              <af:convertDateTime pattern="#{bindings.LincuMemberCard.hints.CreatedOn.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.CreatedOn}" shortDesc="#{bindings.LincuMemberCard.hints.CreatedOn.tooltip}"
+                         id="ot3">
+            <af:convertDateTime pattern="#{bindings.LincuMemberCard.hints.CreatedOn.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.SubmittedOn.name}" filterable="true" sortable="true"
+                   headerText="#{bindings.LincuMemberCard.hints.SubmittedOn.label}" id="resId1c6">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.SubmittedOn.value}"
+                          id="id2">
+              <af:convertDateTime pattern="#{bindings.LincuMemberCard.hints.SubmittedOn.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.SubmittedOn}" shortDesc="#{bindings.LincuMemberCard.hints.SubmittedOn.tooltip}"
+                         id="ot4">
+            <af:convertDateTime pattern="#{bindings.LincuMemberCard.hints.SubmittedOn.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.AuthorizedBy.name}" filterable="true" sortable="true"
+                   headerText="#{bindings.LincuMemberCard.hints.AuthorizedBy.label}" id="resId1c7">
+          <af:outputText value="#{row.AuthorizedBy}" shortDesc="#{bindings.LincuMemberCard.hints.AuthorizedBy.tooltip}"
+                         id="ot5"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.AuthorizedOn.name}" filterable="true" sortable="true"
+                   headerText="#{bindings.LincuMemberCard.hints.AuthorizedOn.label}" id="resId1c8">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.AuthorizedOn.value}"
+                          id="id3">
+              <af:convertDateTime pattern="#{bindings.LincuMemberCard.hints.AuthorizedOn.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.AuthorizedOn}" shortDesc="#{bindings.LincuMemberCard.hints.AuthorizedOn.tooltip}"
+                         id="ot6">
+            <af:convertDateTime pattern="#{bindings.LincuMemberCard.hints.AuthorizedOn.format}"/>
+          </af:outputText>
+        </af:column>
+      </af:table>
+    </af:panelCollection>
+  </af:panelGroupLayout>
+</jsp:root>

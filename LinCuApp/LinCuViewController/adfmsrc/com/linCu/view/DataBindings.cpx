@@ -24,6 +24,10 @@
     <page path="/WEB-INF/flows/Member-Flow-TF.xml#Member-Flow-TF@CreateInsert"
           usageId="com_linCu_view_Member_Flow_TF_Member_Flow_TF_CreateInsertPageDef"/>
     <page path="/index.jsf" usageId="com_linCu_view_indexPageDef"/>
+    <page path="/fragments/ManageCards.jsff" usageId="com_linCu_view_ManageCardsPageDef"/>
+    <page path="/WEB-INF/flows/Card-Request.xml#Card-Request@CreateInsert"
+          usageId="com_linCu_view_Card_Request_Card_Request_CreateInsertPageDef"/>
+    <page path="/fragments/Card.jsff" usageId="com_linCu_view_CardPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_linCu_view_CreateCreditUnionPageDef" path="fragments.CreateCreditUnionPageDef"/>
@@ -43,6 +47,10 @@
     <page id="com_linCu_view_Member_Flow_TF_Member_Flow_TF_CreateInsertPageDef"
           path="flows.Member_Flow_TF_Member_Flow_TF_CreateInsertPageDef"/>
     <page id="com_linCu_view_indexPageDef" path="com.linCu.view.pageDefs.indexPageDef"/>
+    <page id="com_linCu_view_ManageCardsPageDef" path="fragments.ManageCardsPageDef"/>
+    <page id="com_linCu_view_Card_Request_Card_Request_CreateInsertPageDef"
+          path="flows.Card_Request_Card_Request_CreateInsertPageDef"/>
+    <page id="com_linCu_view_CardPageDef" path="fragments.CardPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="LinCuAMDataControl" Package="com.linCu.model.am"

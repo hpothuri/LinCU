@@ -14,6 +14,8 @@ public class IndexDynamicRegion implements Serializable {
     private static final String CREDIT_UNION_TASKFLOW = "/WEB-INF/flows/Credit-Union-TF.xml#Credit-Union-TF";
     private static final String MEMBER_TASKFLOW = "/WEB-INF/flows/Member-Flow-TF.xml#Member-Flow-TF";
     private static final String USER_INFO_TASKFLOW = "/WEB-INF/flows/User-Info-TF.xml#User-Info-TF";
+    private static final String CARD_REQUEST_TASKFLOW = "/WEB-INF/flows/Card-Request.xml#Card-Request";
+    //private static final String USER_LOGIN = "/WEB-INF/flows/User-Info-TF.xml#User-Info-TF";
     private String taskFlowId = CREDIT_UNION_TASKFLOW;
 
     public IndexDynamicRegion() {
@@ -41,4 +43,10 @@ public class IndexDynamicRegion implements Serializable {
         setDynamicTaskFlowId(USER_INFO_TASKFLOW);
         return null;
     }
+    
+    public String cardRequest() {
+        setDynamicTaskFlowId(CARD_REQUEST_TASKFLOW);
+        return null;
+    }
+    
 }

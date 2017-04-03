@@ -3,12 +3,12 @@
 <!---->
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="LincuMemberKycEO"
+  Name="LincuMemberKycAuditEO"
   Version="12.2.1.11.57"
   InheritPersonalization="merge"
   DBObjectType="table"
-  DBObjectName="LINCU_MEMBER_KYC"
-  AliasName="LincuMemberKycEO"
+  DBObjectName="LINCU_MEMBER_KYC_AUDIT"
+  AliasName="LincuMemberKycAudit"
   BindingStyle="OracleName">
   <Attribute
     Name="MemberId"
@@ -18,9 +18,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC"
-    PrimaryKey="true"
-    IsUpdateable="while_insert">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
@@ -33,7 +31,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
@@ -46,7 +44,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
@@ -59,7 +57,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="11"/>
     </DesignTime>
@@ -72,7 +70,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="11"/>
     </DesignTime>
@@ -83,14 +81,14 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_KYC"/>
+    TableName="LINCU_MEMBER_KYC_AUDIT"/>
   <Attribute
     Name="DpExpiryDate"
     ColumnName="DP_EXPIRY_DATE"
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_KYC"/>
+    TableName="LINCU_MEMBER_KYC_AUDIT"/>
   <Attribute
     Name="PassportNo"
     IsNotNull="true"
@@ -99,7 +97,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="11"/>
     </DesignTime>
@@ -110,14 +108,14 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_KYC"/>
+    TableName="LINCU_MEMBER_KYC_AUDIT"/>
   <Attribute
     Name="PpExpiryDate"
     ColumnName="PP_EXPIRY_DATE"
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_KYC"/>
+    TableName="LINCU_MEMBER_KYC_AUDIT"/>
   <Attribute
     Name="BirNo"
     IsNotNull="true"
@@ -126,7 +124,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="11"/>
     </DesignTime>
@@ -139,7 +137,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -152,7 +150,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -165,7 +163,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -178,7 +176,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -191,7 +189,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -204,9 +202,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="2"/>
+      <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -217,7 +215,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
@@ -230,9 +228,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="2"/>
+      <Attr Name="_DisplaySize" Value="4"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -242,7 +240,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -255,7 +253,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -268,7 +266,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -281,7 +279,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -294,7 +292,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -307,7 +305,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -320,9 +318,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="2"/>
+      <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -333,7 +331,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
@@ -346,9 +344,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="2"/>
+      <Attr Name="_DisplaySize" Value="4"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -359,9 +357,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="2"/>
+      <Attr Name="_DisplaySize" Value="4"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -371,7 +369,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -384,7 +382,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
@@ -397,9 +395,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="2"/>
+      <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -410,7 +408,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
@@ -423,7 +421,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
@@ -436,7 +434,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
@@ -449,7 +447,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
@@ -461,9 +459,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="2"/>
+      <Attr Name="_DisplaySize" Value="4"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -473,9 +471,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="2"/>
+      <Attr Name="_DisplaySize" Value="4"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -485,9 +483,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="2"/>
+      <Attr Name="_DisplaySize" Value="4"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -497,9 +495,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="2"/>
+      <Attr Name="_DisplaySize" Value="4"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -509,7 +507,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -521,7 +519,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -533,7 +531,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -545,7 +543,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -557,7 +555,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -569,7 +567,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -581,7 +579,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -593,7 +591,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="12"/>
     </DesignTime>
@@ -605,9 +603,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="3"/>
+      <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -618,7 +616,7 @@
     SQLType="NUMERIC"
     Type="java.lang.Integer"
     ColumnType="NUMBER"
-    TableName="LINCU_MEMBER_KYC"/>
+    TableName="LINCU_MEMBER_KYC_AUDIT"/>
   <Attribute
     Name="MotherMaidenName"
     IsNotNull="true"
@@ -627,7 +625,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
     </DesignTime>
@@ -640,7 +638,7 @@
     SQLType="NUMERIC"
     Type="java.lang.Integer"
     ColumnType="NUMBER"
-    TableName="LINCU_MEMBER_KYC"/>
+    TableName="LINCU_MEMBER_KYC_AUDIT"/>
   <Attribute
     Name="IncomeCode"
     Precision="3"
@@ -648,7 +646,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="3"/>
     </DesignTime>
@@ -660,9 +658,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="4"/>
+      <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -672,7 +670,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="4"/>
     </DesignTime>
@@ -684,9 +682,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="1"/>
+      <Attr Name="_DisplaySize" Value="4"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -696,7 +694,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="2"/>
     </DesignTime>
@@ -709,7 +707,7 @@
     SQLType="NUMERIC"
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
-    TableName="LINCU_MEMBER_KYC"/>
+    TableName="LINCU_MEMBER_KYC_AUDIT"/>
   <Attribute
     Name="EmployerCity"
     Precision="20"
@@ -717,7 +715,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
     </DesignTime>
@@ -730,63 +728,32 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="2"/>
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="CreatedBy"
+    Name="UpdatedBy"
     IsNotNull="true"
     Precision="60"
-    ColumnName="CREATED_BY"
+    ColumnName="UPDATED_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC"
-    DefaultValue="test">
+    TableName="LINCU_MEMBER_KYC_AUDIT">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="CreationDate"
+    Name="UpdateDate"
     IsNotNull="true"
-    ColumnName="CREATION_DATE"
+    ColumnName="UPDATE_DATE"
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_KYC">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberKycEORow"/>
-  </Attribute>
-  <Attribute
-    Name="LastUpdatedBy"
-    IsNotNull="true"
-    Precision="60"
-    ColumnName="LAST_UPDATED_BY"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC"
-    DefaultValue="test">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="60"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="LastUpdateDate"
-    IsNotNull="true"
-    ColumnName="LAST_UPDATE_DATE"
-    SQLType="DATE"
-    Type="java.sql.Timestamp"
-    ColumnType="DATE"
-    TableName="LINCU_MEMBER_KYC">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberKycEORow"/>
-  </Attribute>
+    TableName="LINCU_MEMBER_KYC_AUDIT"/>
   <Attribute
     Name="ObjectVersionId"
     IsNotNull="true"
@@ -796,83 +763,42 @@
     SQLType="NUMERIC"
     Type="java.lang.Long"
     ColumnType="NUMBER"
-    TableName="LINCU_MEMBER_KYC"
-    ChangeIndicator="true"
-    DefaultValue="1"/>
+    TableName="LINCU_MEMBER_KYC_AUDIT"/>
   <Attribute
-    Name="LastApprovedBy"
+    Name="LincuAuditId"
     IsNotNull="true"
-    Precision="60"
-    ColumnName="LAST_APPROVED_BY"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC"
-    DefaultValue="test">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="60"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="LastApprovedDate"
-    IsNotNull="true"
-    ColumnName="LAST_APPROVED_DATE"
-    SQLType="DATE"
-    Type="java.sql.Timestamp"
-    ColumnType="DATE"
-    TableName="LINCU_MEMBER_KYC">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberKycEORow"/>
-  </Attribute>
+    ColumnName="LINCU_AUDIT_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="LINCU_MEMBER_KYC_AUDIT"
+    PrimaryKey="true"/>
   <AccessorAttribute
-    Name="CreditUnionBranchEO"
-    Association="com.linCu.model.assoc.CreditUnionBranchToMemberKycAssoc"
-    AssociationEnd="com.linCu.model.assoc.CreditUnionBranchToMemberKycAssoc.CreditUnionBranchEO"
-    AssociationOtherEnd="com.linCu.model.assoc.CreditUnionBranchToMemberKycAssoc.LincuMemberKycEO"
-    Type="oracle.jbo.server.EntityImpl"
-    IsUpdateable="true"/>
-  <AccessorAttribute
-    Name="LincuMemberInfoEO"
-    Association="com.linCu.model.assoc.MemberInfoToMemberKycAssoc"
-    AssociationEnd="com.linCu.model.assoc.MemberInfoToMemberKycAssoc.LincuMemberInfoEO"
-    AssociationOtherEnd="com.linCu.model.assoc.MemberInfoToMemberKycAssoc.LincuMemberKycEO"
-    Type="oracle.jbo.server.EntityImpl"
-    IsUpdateable="true"/>
-  <AccessorAttribute
-    Name="LincuMemberKycAudit"
+    Name="LincuMemberKycEO"
     Association="com.linCu.model.assoc.LincuMemberKycAuditAssoc"
-    AssociationEnd="com.linCu.model.assoc.LincuMemberKycAuditAssoc.LincuMemberKycAudit"
-    AssociationOtherEnd="com.linCu.model.assoc.LincuMemberKycAuditAssoc.LincuMemberKycEO"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <AccessorAttribute
-    Name="LincuMemberCardEO"
-    Association="com.linCu.model.assoc.MemberCardToMemberKycAssoc"
-    AssociationEnd="com.linCu.model.assoc.MemberCardToMemberKycAssoc.LincuMemberCardEO"
-    AssociationOtherEnd="com.linCu.model.assoc.MemberCardToMemberKycAssoc.LincuMemberKycEO"
+    AssociationEnd="com.linCu.model.assoc.LincuMemberKycAuditAssoc.LincuMemberKycEO"
+    AssociationOtherEnd="com.linCu.model.assoc.LincuMemberKycAuditAssoc.LincuMemberKycAudit"
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
   <Key
-    Name="LincuMemberKycPk"
+    Name="LincuMemberKycAuditPk"
     PrimaryKey="true">
     <DesignTime>
-      <Attr Name="_DBObjectName" Value="LINCU_MEMBER_KYC_PK"/>
+      <Attr Name="_DBObjectName" Value="LINCU_MEMBER_KYC_AUDIT_PK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.linCu.model.entity.LincuMemberKycEO.MemberId"/>
+      <Item Value="com.linCu.model.entity.LincuMemberKycAuditEO.LincuAuditId"/>
     </AttrArray>
   </Key>
   <Key
-    Name="LincuMemberKycFk1">
+    Name="LincuMemberKycAuditFk1">
     <DesignTime>
-      <Attr Name="_referencedKey" Value="CREDIT_UNION_BRANCH_PK"/>
+      <Attr Name="_referencedKey" Value="LINCU_MEMBER_KYC_PK"/>
       <Attr Name="_isForeign" Value="true"/>
-      <Attr Name="_DBObjectName" Value="LINCU_MEMBER_KYC_FK_1"/>
+      <Attr Name="_DBObjectName" Value="LINCU_MEMBER_KYC_AUDIT_FK1"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.linCu.model.entity.LincuMemberKycEO.CreditUnionId"/>
-      <Item Value="com.linCu.model.entity.LincuMemberKycEO.CreditUnionBranchId"/>
+      <Item Value="com.linCu.model.entity.LincuMemberKycAuditEO.MemberId"/>
     </AttrArray>
   </Key>
 </Entity>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57" id="ManageCardsPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LincuMemberCard" RangeSize="25" DataControl="LinCuAMDataControl" id="LincuMemberCardIterator"/>
+    <searchRegion Criteria="LincuMemberCardVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="LincuMemberCardIterator" id="LincuMemberCardVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="LincuMemberCardIterator" id="LincuMemberCard">
+      <nodeDefinition DefName="com.linCu.model.view.LincuMemberCardVO" Name="LincuMemberCard0">
+        <AttrNames>
+          <Item Value="MemberId"/>
+          <Item Value="CardReqType"/>
+          <Item Value="CardStatus"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedOn"/>
+          <Item Value="SubmittedOn"/>
+          <Item Value="AuthorizedBy"/>
+          <Item Value="AuthorizedOn"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
