@@ -1,0 +1,12 @@
+//Groovy Scripts for com.linCu.model.entity.LincuMemberCardDocsEO
+
+package com.linCu.model.entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="DocId")
+def DocId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("MEMBER_CARD_DOCS_ID_SEQ",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

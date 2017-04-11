@@ -174,6 +174,13 @@
     AssociationOtherEnd="com.linCu.model.assoc.MemberCardToMemberKycAssoc.LincuMemberCardEO"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="LincuMemberCardDocsEO"
+    Association="com.linCu.model.assoc.LincuMemberCardDocsAssoc"
+    AssociationEnd="com.linCu.model.assoc.LincuMemberCardDocsAssoc.LincuMemberCardDocsEO"
+    AssociationOtherEnd="com.linCu.model.assoc.LincuMemberCardDocsAssoc.LincuMemberCardEO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <Key
     Name="LincuMemberCardCardStatusCheck">
     <DesignTime>

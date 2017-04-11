@@ -1,6 +1,7 @@
 package com.linCu.model.am;
 
 import com.linCu.model.am.common.LinCuAM;
+import com.linCu.model.view.LincuMemberCardDocsVOImpl;
 import com.linCu.model.view.LincuMemberCardVOImpl;
 import com.linCu.model.view.LincuMemberVOImpl;
 import com.linCu.model.view.LincuUserInfoVOImpl;
@@ -152,6 +153,22 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
      */
     public LincuMemberCardVOImpl getLincuMemberCard() {
         return (LincuMemberCardVOImpl) findViewObject("LincuMemberCard");
+    }
+
+    /**
+     * Container's getter for LincuMemberCardDocsVO1.
+     * @return LincuMemberCardDocsVO1
+     */
+    public LincuMemberCardDocsVOImpl getLincuMemberCardDocs() {
+        return (LincuMemberCardDocsVOImpl) findViewObject("LincuMemberCardDocs");
+    }
+
+    /**
+     * Container's getter for MemberCardToMemberDocsVL1.
+     * @return MemberCardToMemberDocsVL1
+     */
+    public ViewLinkImpl getMemberCardToMemberDocsVL1() {
+        return (ViewLinkImpl) findViewLink("MemberCardToMemberDocsVL1");
     }
 }
 
