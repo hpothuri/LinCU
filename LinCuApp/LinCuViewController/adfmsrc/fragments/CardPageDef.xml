@@ -5,6 +5,8 @@
   <executables>
     <variableIterator id="variables"/>
     <iterator Binds="LincuMemberCard" RangeSize="25" DataControl="LinCuAMDataControl" id="LincuMemberCardIterator"/>
+    <iterator Binds="LincuMemberCardDocs" RangeSize="25" DataControl="LinCuAMDataControl"
+              id="LincuMemberCardDocsIterator"/>
   </executables>
   <bindings>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CardStatus" id="CardStatus"
@@ -270,5 +272,47 @@
           DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_ShareholderCode" id="ShareholderCode"
           DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <tree IterBinding="LincuMemberCardDocsIterator" id="LincuMemberCardDocs">
+      <nodeDefinition DefName="com.linCu.model.view.LincuMemberCardDocsVO" Name="LincuMemberCardDocs0">
+        <AttrNames>
+          <Item Value="DocId"/>
+          <Item Value="DocDesc"/>
+          <Item Value="DocumentName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="LincuMemberCardDocsIterator" id="DocId">
+      <AttrNames>
+        <Item Value="DocId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardDocsIterator" id="CardId">
+      <AttrNames>
+        <Item Value="CardId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardDocsIterator" id="DocDesc">
+      <AttrNames>
+        <Item Value="DocDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="LincuMemberCardDocsIterator" id="CreateInsert"
+            InstanceName="LinCuAMDataControl.LincuMemberCardDocs" DataControl="LinCuAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="LincuMemberCardDocsIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="LincuMemberCardDocsIterator" id="Document">
+      <AttrNames>
+        <Item Value="Document"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="removeCurrentRow" RequiresUpdateModel="true" Action="invokeMethod" MethodName="removeCurrentRow"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMemberCardDocs"/>
+    <attributeValues IterBinding="LincuMemberCardDocsIterator" id="DocumentName">
+      <AttrNames>
+        <Item Value="DocumentName"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

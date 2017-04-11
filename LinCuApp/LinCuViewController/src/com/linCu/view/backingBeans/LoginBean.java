@@ -22,7 +22,6 @@ public class LoginBean {
             if("FirstLoginSuccess".equalsIgnoreCase(msg)){
                 ADFUtils.setPageFlowScopeValue("firstLogin", true);
                 ADFUtils.setPageFlowScopeValue("creditUnion", false); 
-                ADFUtils.setPageFlowScopeValue("userInfo", false);
                 ADFUtils.setPageFlowScopeValue("resetPassword", true);
                 Long userId = (Long) ADFUtils.executeOperationBinding("userCurrentRow"); 
                 ADFUtils.setPageFlowScopeValue("userId", userId);
@@ -33,27 +32,14 @@ public class LoginBean {
                 if(userMap != null && userMap.size()>0){
                     FacesContext fc = FacesContext.getCurrentInstance();
                     UserSessionData userSessionData = (UserSessionData)fc.getApplication().evaluateExpressionGet(fc, "#{userSessionData}", Object.class);
-                    
-//                UserSessionData userSessionData = new UserSessionData(); 
                 userSessionData.setUserName(userMap.get("userName").toString()); 
                 userSessionData.setUserRole(userMap.get("role").toString());
                 userSessionData.setUserRoleDesc(userMap.get("roleDesc").toString());
-//                ADFContext.getCurrent().getSessionScope().put("userSessionData", userSessionData);
-                if(userMap.get("role") != null){
-                    String role = userMap.get("role").toString();
-                    if(("MSR".equalsIgnoreCase(role)) || ("SUP".equalsIgnoreCase(role))){
+                
                         ADFUtils.setPageFlowScopeValue("firstLogin", false);
                         ADFUtils.setPageFlowScopeValue("creditUnion", true); 
-                        ADFUtils.setPageFlowScopeValue("userInfo", false); 
                         ADFUtils.setPageFlowScopeValue("resetPassword", false);
-                    }else if(("MAN_ADMIN".equalsIgnoreCase(role)) || ("FCB".equalsIgnoreCase(role))){
-                        ADFUtils.setPageFlowScopeValue("firstLogin", false);
-                        ADFUtils.setPageFlowScopeValue("creditUnion", false); 
-                        ADFUtils.setPageFlowScopeValue("userInfo", true);
-                        ADFUtils.setPageFlowScopeValue("resetPassword", false);
-                    }
                 
-                }
                 }
             return "success";
             }else if("InvalidLogin".equalsIgnoreCase(msg)){
@@ -78,14 +64,12 @@ public class LoginBean {
     public void forgotPassword(ActionEvent actionEvent) {
         ADFUtils.setPageFlowScopeValue("firstLogin", false);
         ADFUtils.setPageFlowScopeValue("creditUnion", false); 
-        ADFUtils.setPageFlowScopeValue("userInfo", false);
         ADFUtils.setPageFlowScopeValue("resetPassword", false);
     }
 
     public void resetPassword(ActionEvent actionEvent) {
         ADFUtils.setPageFlowScopeValue("firstLogin", false);
         ADFUtils.setPageFlowScopeValue("creditUnion", false); 
-        ADFUtils.setPageFlowScopeValue("userInfo", false);
         ADFUtils.setPageFlowScopeValue("resetPassword", true);
     }
 }

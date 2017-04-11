@@ -89,12 +89,14 @@
           </af:outputText>
         </af:column>
         <af:column sortProperty="#{bindings.LincuMemberCard.hints.AuthorizedBy.name}" filterable="true" sortable="true"
-                   headerText="#{bindings.LincuMemberCard.hints.AuthorizedBy.label}" id="resId1c7">
+                   headerText="#{bindings.LincuMemberCard.hints.AuthorizedBy.label}" id="resId1c7" width="150"
+                   minimumWidth="150">
           <af:outputText value="#{row.AuthorizedBy}" shortDesc="#{bindings.LincuMemberCard.hints.AuthorizedBy.tooltip}"
                          id="ot5"/>
         </af:column>
         <af:column sortProperty="#{bindings.LincuMemberCard.hints.AuthorizedOn.name}" filterable="true" sortable="true"
-                   headerText="#{bindings.LincuMemberCard.hints.AuthorizedOn.label}" id="resId1c8">
+                   headerText="#{bindings.LincuMemberCard.hints.AuthorizedOn.label}" id="resId1c8" width="150"
+                   minimumWidth="150">
           <f:facet name="filter">
             <af:inputDate value="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.AuthorizedOn.value}"
                           id="id3">

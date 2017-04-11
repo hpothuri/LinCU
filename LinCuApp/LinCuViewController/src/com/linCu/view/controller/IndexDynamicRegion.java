@@ -1,5 +1,9 @@
 package com.linCu.view.controller;
 
+import com.linCu.view.utils.ADFUtils;
+
+import com.linCu.view.utils.JSFUtils;
+
 import java.io.Serializable;
 
 import oracle.adf.controller.TaskFlowId;
@@ -22,6 +26,7 @@ public class IndexDynamicRegion implements Serializable {
     }
 
     public TaskFlowId getDynamicTaskFlowId() {
+        
         return TaskFlowId.parse(taskFlowId);
     }
 

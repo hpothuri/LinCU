@@ -3,36 +3,115 @@
           xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
   <c:set var="lincuviewcontrollerBundle" value="#{adfBundle['com.linCu.view.LinCuViewControllerBundle']}"/>
   <af:panelGroupLayout id="pgl1" layout="vertical">
-    <af:panelFormLayout id="pfl1" rows="1" maxColumns="4">
-      <af:selectOneChoice value="#{bindings.CardReqType.inputValue}" label="#{bindings.CardReqType.label}"
-                          required="#{bindings.CardReqType.hints.mandatory}"
-                          shortDesc="#{bindings.CardReqType.hints.tooltip}" id="soc4"
-                          disabled="#{(bindings.CardStatus1 eq 'SUBMITTED') or (bindings.CardStatus1 eq 'AUTHORIZED')}">
-        <f:selectItems value="#{bindings.CardReqType.items}" id="si4"/>
-        <f:validator binding="#{bindings.CardReqType.validator}"/>
-      </af:selectOneChoice>
-      <af:selectOneChoice value="#{bindings.CreditUnionId.inputValue}" label="#{bindings.CreditUnionId.label}"
-                          required="#{bindings.CreditUnionId.hints.mandatory}"
-                          shortDesc="#{bindings.CreditUnionId.hints.tooltip}" id="soc2" autoSubmit="true"
-                          disabled="#{(bindings.CardStatus1 eq 'SUBMITTED') or (bindings.CardStatus1 eq 'AUTHORIZED')}">
-        <f:selectItems value="#{bindings.CreditUnionId.items}" id="si2"/>
-        <f:validator binding="#{bindings.CreditUnionId.validator}"/>
-      </af:selectOneChoice>
-      <af:selectOneChoice value="#{bindings.MemberId.inputValue}" label="#{bindings.MemberId.label}"
-                          required="false" shortDesc="#{bindings.MemberId.hints.tooltip}"
-                          id="soc3" autoSubmit="true" partialTriggers="soc2" showRequired="true"
-                          disabled="#{(bindings.CardStatus1 eq 'SUBMITTED') or (bindings.CardStatus1 eq 'AUTHORIZED')}">
-        <f:selectItems value="#{bindings.MemberId.items}" id="si3"/>
-        <f:validator binding="#{bindings.MemberId.validator}"/>
-      </af:selectOneChoice>
-      <af:selectOneChoice value="#{bindings.CardStatus.inputValue}" label="#{bindings.CardStatus.label}"
-                          required="#{bindings.CardStatus.hints.mandatory}"
-                          shortDesc="#{bindings.CardStatus.hints.tooltip}" id="soc1" disabled="true">
-        <f:selectItems value="#{bindings.CardStatus.items}" id="si1"/>
-        <f:validator binding="#{bindings.CardStatus.validator}"/>
-      </af:selectOneChoice>
-    </af:panelFormLayout>
-    <af:spacer width="10" height="10" id="s1"/>
+    <af:panelGroupLayout id="pgl2" layout="horizontal" halign="end">
+      <af:button text="#{lincuviewcontrollerBundle.AUTHORIZE}" id="b4" actionListener="#{card.openPopup}"
+                 disabled="#{(bindings.CardStatus1 eq 'REJECTED') or (bindings.CardStatus1 eq 'AUTHORIZED')}">
+        <af:setPropertyListener from="APPROVE" to="#{pageFlowScope.action}" type="action"/>
+      </af:button>
+      <af:spacer width="10" height="10" id="s4"/>
+      <af:button text="#{lincuviewcontrollerBundle.REJECT}" id="b5" actionListener="#{card.openPopup}"
+                 disabled="#{(bindings.CardStatus1 eq 'REJECTED') or (bindings.CardStatus1 eq 'AUTHORIZED')}">
+        <af:setPropertyListener from="REJECT" to="#{pageFlowScope.action}" type="action"/>
+      </af:button>
+      <af:spacer width="10" height="10" id="s5"/>
+      <af:button actionListener="#{bindings.Commit.execute}" text="#{lincuviewcontrollerBundle.SAVE}" id="b1"/>
+      <af:spacer width="10" height="10" id="s3"/>
+      <af:button actionListener="#{card.saveAndSubmit}" text="#{lincuviewcontrollerBundle.SAVE_AND_SUBMIT}" id="b3"/>
+      <af:spacer width="10" height="10" id="s6"/>
+      <af:button actionListener="#{bindings.Rollback.execute}" text="#{lincuviewcontrollerBundle.CLOSE}"
+                 immediate="true" id="b8" action="cancel">
+        <af:resetActionListener/>
+      </af:button>
+      <af:spacer width="10" height="10" id="s8"/>
+      <af:button actionListener="#{bindings.Rollback.execute}" text="#{lincuviewcontrollerBundle.CANCEL}"
+                 immediate="true" id="b2" action="cancel">
+        <af:resetActionListener/>
+      </af:button>
+    </af:panelGroupLayout>
+    <af:spacer width="10" height="10" id="s9"/>
+    <af:panelBox text="#{lincuviewcontrollerBundle.REQUEST_CARD}" id="pb7">
+      <f:facet name="toolbar"/>
+      <af:panelFormLayout id="pfl1" rows="1" maxColumns="4">
+        <af:selectOneChoice value="#{bindings.CardReqType.inputValue}" label="#{bindings.CardReqType.label}"
+                            required="#{bindings.CardReqType.hints.mandatory}"
+                            shortDesc="#{bindings.CardReqType.hints.tooltip}" id="soc4"
+                            disabled="#{(bindings.CardStatus1 eq 'SUBMITTED') or (bindings.CardStatus1 eq 'AUTHORIZED')}"
+                            autoSubmit="true">
+          <f:selectItems value="#{bindings.CardReqType.items}" id="si4"/>
+          <f:validator binding="#{bindings.CardReqType.validator}"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice value="#{bindings.CreditUnionId.inputValue}" label="#{bindings.CreditUnionId.label}"
+                            required="#{bindings.CreditUnionId.hints.mandatory}"
+                            shortDesc="#{bindings.CreditUnionId.hints.tooltip}" id="soc2" autoSubmit="true"
+                            disabled="#{(bindings.CardStatus1 eq 'SUBMITTED') or (bindings.CardStatus1 eq 'AUTHORIZED')}">
+          <f:selectItems value="#{bindings.CreditUnionId.items}" id="si2"/>
+          <f:validator binding="#{bindings.CreditUnionId.validator}"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice value="#{bindings.MemberId.inputValue}" label="#{bindings.MemberId.label}" required="false"
+                            shortDesc="#{bindings.MemberId.hints.tooltip}" id="soc3" autoSubmit="true"
+                            partialTriggers="soc2" showRequired="true"
+                            disabled="#{(bindings.CardStatus1 eq 'SUBMITTED') or (bindings.CardStatus1 eq 'AUTHORIZED')}">
+          <f:selectItems value="#{bindings.MemberId.items}" id="si3"/>
+          <f:validator binding="#{bindings.MemberId.validator}"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice value="#{bindings.CardStatus.inputValue}" label="#{bindings.CardStatus.label}"
+                            required="#{bindings.CardStatus.hints.mandatory}"
+                            shortDesc="#{bindings.CardStatus.hints.tooltip}" id="soc1" disabled="true">
+          <f:selectItems value="#{bindings.CardStatus.items}" id="si1"/>
+          <f:validator binding="#{bindings.CardStatus.validator}"/>
+        </af:selectOneChoice>
+      </af:panelFormLayout>
+    </af:panelBox>
+    <af:panelBox text="#{lincuviewcontrollerBundle.ATTACH_DOCUMENTS}" id="pb6">
+      <f:facet name="toolbar"/>
+      <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:button text="#{lincuviewcontrollerBundle.ATTACH}" id="b10" action="#{card.attachDocument}"
+                       partialSubmit="false"/>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.LincuMemberCardDocs.collectionModel}" var="row"
+                  rows="#{bindings.LincuMemberCardDocs.rangeSize}"
+                  emptyText="#{bindings.LincuMemberCardDocs.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="0" selectedRowKeys="#{bindings.LincuMemberCardDocs.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.LincuMemberCardDocs.collectionModel.makeCurrent}" rowSelection="single"
+                  fetchSize="#{bindings.LincuMemberCardDocs.rangeSize}" id="t1" autoHeightRows="5"
+                  partialTriggers="l3">
+          <af:column headerText="#{bindings.LincuMemberCardDocs.hints.DocId.label}" id="c1">
+            <af:outputText value="#{row.DocId}" shortDesc="#{bindings.LincuMemberCardDocs.hints.DocId.tooltip}"
+                           id="ot1">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.LincuMemberCardDocs.hints.DocId.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.LincuMemberCardDocs.hints.DocDesc.label}" id="c2" width="200"
+                     minimumWidth="200">
+            <af:outputText value="#{row.DocDesc}" shortDesc="#{bindings.LincuMemberCardDocs.hints.DocDesc.tooltip}"
+                           id="ot2"/>
+          </af:column>
+          <af:column headerText="#{bindings.LincuMemberCardDocs.hints.DocumentName.label}" id="c4" width="250"
+                     minimumWidth="250">
+            <af:outputText value="#{row.DocumentName}"
+                           shortDesc="#{bindings.LincuMemberCardDocs.hints.DocumentName.tooltip}" id="ot3"/>
+          </af:column>
+          <af:column id="c6" headerText="#{lincuviewcontrollerBundle.VIEW}" align="center">
+            <af:link id="l1" icon="/images/viewDocument.png">
+              <af:showPopupBehavior popupId=":::p3"/>
+            </af:link>
+          </af:column>
+          <af:column id="c5" align="center" headerText="#{lincuviewcontrollerBundle.DOWNLOAD}">
+            <af:link id="l2" icon="/images/download.png">
+              <af:fileDownloadActionListener filename="#{row.DocumentName}" method="#{card.downloadFile}"/>
+            </af:link>
+          </af:column>
+          <af:column id="c3" headerText="#{lincuviewcontrollerBundle.DELETE}" align="center">
+            <af:link id="l3" icon="/images/delete.png" actionListener="#{bindings.Delete.execute}"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </af:panelBox>
     <af:panelBox text="#{lincuviewcontrollerBundle.PRIMARY_CARD_HOLDER_INFORMATION}" id="pb1" immediate="true"
                  partialTriggers="soc3">
       <f:facet name="toolbar"/>
@@ -123,7 +202,7 @@
                           required="#{bindings.MiddleName.hints.mandatory}"
                           columns="#{bindings.MiddleName.hints.displayWidth}"
                           maximumLength="#{bindings.MiddleName.hints.precision}"
-                          shortDesc="#{bindings.MiddleName.hints.tooltip}" id="it14">
+                          shortDesc="#{bindings.MiddleName.hints.tooltip}" id="it14" simple="true">
               <f:validator binding="#{bindings.MiddleName.validator}"/>
             </af:inputText>
           </af:gridCell>
@@ -148,7 +227,7 @@
                           required="#{bindings.FaxNumber.hints.mandatory}"
                           columns="#{bindings.FaxNumber.hints.displayWidth}"
                           maximumLength="#{bindings.FaxNumber.hints.precision}"
-                          shortDesc="#{bindings.FaxNumber.hints.tooltip}" id="it5">
+                          shortDesc="#{bindings.FaxNumber.hints.tooltip}" id="it5" simple="true">
               <f:validator binding="#{bindings.FaxNumber.validator}"/>
             </af:inputText>
           </af:gridCell>
@@ -794,31 +873,6 @@
       </af:panelGridLayout>
     </af:panelBox>
     <af:spacer width="10" height="10" id="s7"/>
-    <af:panelGroupLayout id="pgl2" layout="horizontal" halign="end">
-      <af:button text="#{lincuviewcontrollerBundle.AUTHORIZE}" id="b4" actionListener="#{card.openPopup}"
-                 disabled="#{(bindings.CardStatus1 eq 'REJECTED') or (bindings.CardStatus1 eq 'AUTHORIZED')}">
-        <af:setPropertyListener from="APPROVE" to="#{pageFlowScope.action}" type="action"/>
-      </af:button>
-      <af:spacer width="10" height="10" id="s4"/>
-      <af:button text="#{lincuviewcontrollerBundle.REJECT}" id="b5" actionListener="#{card.openPopup}"
-                 disabled="#{(bindings.CardStatus1 eq 'REJECTED') or (bindings.CardStatus1 eq 'AUTHORIZED')}">
-      <af:setPropertyListener from="REJECT" to="#{pageFlowScope.action}" type="action"/>
-      </af:button>
-      <af:spacer width="10" height="10" id="s5"/>
-      <af:button actionListener="#{bindings.Commit.execute}" text="#{lincuviewcontrollerBundle.SAVE}" id="b1"/>
-        <af:spacer width="10" height="10" id="s3"/>
-      <af:button actionListener="#{card.saveAndSubmit}" text="#{lincuviewcontrollerBundle.SAVE_AND_SUBMIT}" id="b3"/>
-      <af:spacer width="10" height="10" id="s6"/>
-       <af:button actionListener="#{bindings.Rollback.execute}" text="#{lincuviewcontrollerBundle.CLOSE}"
-                 immediate="true" id="b8" action="cancel">
-        <af:resetActionListener/>
-      </af:button>
-      <af:spacer width="10" height="10" id="s8"/>
-      <af:button actionListener="#{bindings.Rollback.execute}" text="#{lincuviewcontrollerBundle.CANCEL}"
-                 immediate="true" id="b2" action="cancel">
-        <af:resetActionListener/>
-      </af:button>
-    </af:panelGroupLayout>
     <af:popup childCreation="deferred" autoCancel="disabled" id="p1" binding="#{card.commentsPopup}">
       <af:dialog id="d1"
                  title="#{pageFlowScope.action eq 'REJECT' ? lincuviewcontrollerBundle.REJECT_REASON : lincuviewcontrollerBundle.APPROVE_REASON}"
@@ -836,6 +890,47 @@
           <f:validator binding="#{bindings.Comments.validator}"/>
         </af:inputText>
       </af:dialog>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p2" binding="#{card.attachDocument}"
+              contentDelivery="lazyUncached">
+      <af:dialog id="d2" type="none" title="#{lincuviewcontrollerBundle.UPLOAD_DOCUMENT}">
+        <f:facet name="buttonBar">
+          <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b11" actionListener="#{card.confirmUpload}"/>
+          <af:button text="#{lincuviewcontrollerBundle.CANCEL}" id="b14" actionListener="#{card.cancelUpload}"/>
+        </f:facet>
+        <af:panelFormLayout id="pfl2">
+          <af:inputText value="#{bindings.DocId.inputValue}" label="#{bindings.DocId.hints.label}"
+                        required="#{bindings.DocId.hints.mandatory}" columns="#{bindings.DocId.hints.displayWidth}"
+                        maximumLength="#{bindings.DocId.hints.precision}" shortDesc="#{bindings.DocId.hints.tooltip}"
+                        id="it7" readOnly="true">
+            <f:validator binding="#{bindings.DocId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.DocId.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CardId.inputValue}" label="#{bindings.CardId.hints.label}"
+                        required="#{bindings.CardId.hints.mandatory}" columns="#{bindings.CardId.hints.displayWidth}"
+                        maximumLength="#{bindings.CardId.hints.precision}" shortDesc="#{bindings.CardId.hints.tooltip}"
+                        id="it9" readOnly="true">
+            <f:validator binding="#{bindings.CardId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.CardId.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.DocDesc.inputValue}" label="#{bindings.DocDesc.hints.label}"
+                        required="true" columns="#{bindings.DocDesc.hints.displayWidth}"
+                        maximumLength="#{bindings.DocDesc.hints.precision}"
+                        shortDesc="#{bindings.DocDesc.hints.tooltip}" id="it11">
+            <f:validator binding="#{bindings.DocDesc.validator}"/>
+          </af:inputText>
+          <af:inputFile label="#{lincuviewcontrollerBundle.UPLOAD_DOCUMENTS}" id="if1" value="#{card.file}"/>
+          <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b12" action="#{card.uploadDoc}" rendered="false"/>
+        </af:panelFormLayout>
+      </af:dialog>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p3" contentDelivery="lazyUncached">
+      <af:panelWindow id="pw1" modal="true" contentWidth="800" contentHeight="670" resize="on"
+                      title="#{lincuviewcontrollerBundle.VIEW_DOCUMENT}">
+        <af:inlineFrame id="if2" styleClass="AFStretchWidth" inlineStyle="height:660px;"
+                        source="/imageservlet?docId=#{bindings.DocId.inputValue}"
+                        shortDesc="#{lincuviewcontrollerBundle.VIEW_DOCUMENT}"/>
+      </af:panelWindow>
     </af:popup>
   </af:panelGroupLayout>
 </jsp:root>

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import java.sql.Timestamp;
 
+import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
 import oracle.jbo.server.EntityImpl;
 import oracle.jbo.server.ViewRowImpl;
@@ -124,6 +125,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         StreetType,
         WorkPhone,
         Comments,
+        LincuMemberCardDocsVO,
         CardTypeVA,
         LincuUnionsVA,
         MemberVA,
@@ -261,6 +263,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int STREETTYPE = AttributesEnum.StreetType.index();
     public static final int WORKPHONE = AttributesEnum.WorkPhone.index();
     public static final int COMMENTS = AttributesEnum.Comments.index();
+    public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int CARDTYPEVA = AttributesEnum.CardTypeVA.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
     public static final int MEMBERVA = AttributesEnum.MemberVA.index();
@@ -1932,6 +1935,13 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      */
     public void setComments(String value) {
         setAttributeInternal(COMMENTS, value);
+    }
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link LincuMemberCardDocsVO.
+     */
+    public RowIterator getLincuMemberCardDocsVO() {
+        return (RowIterator) getAttributeInternal(LINCUMEMBERCARDDOCSVO);
     }
 
     /**

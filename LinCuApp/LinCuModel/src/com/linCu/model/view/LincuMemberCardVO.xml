@@ -1405,6 +1405,11 @@
   <AttrArray Name="KeyAttributes">
     <Item Value="CardId"/>
   </AttrArray>
+  <ViewLinkAccessor
+    Name="LincuMemberCardDocsVO"
+    ViewLink="com.linCu.model.viewLink.MemberCardToMemberDocsVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <ClientInterface
     Name="__clientInterface">
     <Method

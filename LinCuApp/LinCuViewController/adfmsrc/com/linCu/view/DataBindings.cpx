@@ -13,7 +13,7 @@
     <page path="/fragments/ManageBranches.jsff" usageId="com_linCu_view_ManageBranchesPageDef"/>
     <page path="/fragments/ManageUserInfo.jsff" usageId="com_linCu_view_ManageUserInfoPageDef"/>
     <page path="/TestUserInfo.jspx" usageId="com_linCu_view_TestUserInfoPageDef"/>
-    <page path="/LoginPage.jspx" usageId="com_linCu_view_LoginPagePageDef"/>
+    <page path="/LoginPage.jsf" usageId="com_linCu_view_LoginPagePageDef"/>
     <page path="/UserInfo.jspx" usageId="com_linCu_view_UserInfoPageDef"/>
     <page path="/CreditUnion.jspx" usageId="com_linCu_view_CreditUnionPageDef"/>
     <page path="/fragments/ManagePassword.jsff" usageId="com_linCu_view_ManagePasswordPageDef"/>

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <view id="LoginPage">
-    <page>/LoginPage.jspx</page>
+    <page>/LoginPage.jsf</page>
   </view>
   <router id="router1">
-    <case id="__8">
-      <expression>#{pageFlowScope.userInfo}</expression>
-      <outcome>userInfo</outcome>
-    </case>
     <case id="__10">
       <expression>#{pageFlowScope.creditUnion}</expression>
       <outcome>creditUnion</outcome>
@@ -18,24 +14,17 @@
     </case>
     <default-outcome>resetPassword</default-outcome>
   </router>
-  <view id="CreditUnion">
-    <page>/CreditUnion.jspx</page>
-  </view>
-  <view id="UserInfo">
-    <page>/UserInfo.jspx</page>
-  </view>
   <view id="ResetPassword">
     <page>/ResetPassword.jspx</page>
+  </view>
+  <view id="index">
+    <page>/index.jsf</page>
   </view>
   <control-flow-rule id="__3">
     <from-activity-id>router1</from-activity-id>
     <control-flow-case id="__4">
       <from-outcome>creditUnion</from-outcome>
-      <to-activity-id>CreditUnion</to-activity-id>
-    </control-flow-case>
-    <control-flow-case id="__5">
-      <from-outcome>userInfo</from-outcome>
-      <to-activity-id>UserInfo</to-activity-id>
+      <to-activity-id>index</to-activity-id>
     </control-flow-case>
     <control-flow-case id="__9">
       <from-outcome>resetPassword</from-outcome>

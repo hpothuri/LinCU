@@ -33,7 +33,8 @@ public class LincuMemberCardVOImpl extends ViewObjectImpl implements LincuMember
         if(row != null){
             long time = System.currentTimeMillis();
             java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
-            row.setSubmittedOn(timestamp);
+            row.setAuthorizedOn(timestamp);
+            row.setAuthorizedBy("test");
             row.setCardStatus("AUTHORIZED");
         }
         
@@ -45,6 +46,7 @@ public class LincuMemberCardVOImpl extends ViewObjectImpl implements LincuMember
             long time = System.currentTimeMillis();
             java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
             row.setAuthorizedOn(timestamp);
+            row.setAuthorizedBy("test");
             row.setCardStatus("REJECTED");
         }
         
