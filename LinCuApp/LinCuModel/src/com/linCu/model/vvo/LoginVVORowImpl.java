@@ -17,7 +17,8 @@ public class LoginVVORowImpl extends ViewRowImpl {
         FirstLoginFlag,
         Role,
         RoleDescription,
-        UserId;
+        UserId,
+        CreditUnionId;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -48,6 +49,7 @@ public class LoginVVORowImpl extends ViewRowImpl {
     public static final int ROLE = AttributesEnum.Role.index();
     public static final int ROLEDESCRIPTION = AttributesEnum.RoleDescription.index();
     public static final int USERID = AttributesEnum.UserId.index();
+    public static final int CREDITUNIONID = AttributesEnum.CreditUnionId.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -101,6 +103,14 @@ public class LoginVVORowImpl extends ViewRowImpl {
      */
     public Long getUserId() {
         return (Long) getAttributeInternal(USERID);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute CreditUnionId.
+     * @return the CreditUnionId
+     */
+    public String getCreditUnionId() {
+        return (String) getAttributeInternal(CREDITUNIONID);
     }
 }
 

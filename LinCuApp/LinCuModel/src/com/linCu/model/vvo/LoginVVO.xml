@@ -26,8 +26,8 @@
     Name="bindUserName"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT LUI.USER_NAME, LUI.PASSWORD, LUI.FIRST_LOGIN_FLAG, LR.ROLE, LR.ROLE_DESCRIPTION, LUI.USER_ID   
-FROM LINCU_USER_INFO LUI, LINCU_ROLES LR   
+  <SQLQuery><![CDATA[SELECT LUI.USER_NAME, LUI.PASSWORD, LUI.FIRST_LOGIN_FLAG, LR.ROLE, LR.ROLE_DESCRIPTION, LUI.USER_ID, LUI.CREDIT_UNION_ID    
+FROM LINCU_USER_INFO LUI, LINCU_ROLES LR    
 WHERE LUI.USER_ROLE = LR.ROLE]]></SQLQuery>
   <ViewAttribute
     Name="UserName"
@@ -116,6 +116,21 @@ WHERE LUI.USER_ROLE = LR.ROLE]]></SQLQuery>
     AliasName="USER_ID"
     Expression="USER_ID"
     SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CreditUnionId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CREDIT_UNION_ID"
+    Expression="CREDIT_UNION_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </ViewAttribute>
   <ViewCriteria
     Name="LoginVVOCriteria"
     ViewObjectName="com.linCu.model.vvo.LoginVVO"

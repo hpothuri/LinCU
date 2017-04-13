@@ -15,8 +15,16 @@
       <f:facet name="menus"/>
       <f:facet name="toolbar">
         <af:toolbar id="t1">
-          <af:button text="#{lincuviewcontrollerBundle.REQUEST_CARD}" id="b1" action="create"/>
-          <af:button text="#{lincuviewcontrollerBundle.EDIT_REQUEST}" id="b2" action="edit"/>
+        <af:commandToolbarButton text="#{lincuviewcontrollerBundle.REQUEST_CARD}" id="ctb1" icon="/images/card.png" action="create"/>
+            <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EDIT_CARD_REQUEST}" id="ctb2" icon="/images/card.png" action="edit"/>
+          <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT}" id="ctb3" icon="/images/Excel-16.gif">
+              <af:exportCollectionActionListener type="excelHTML" exportedId="resId1" filename="CardList.xls"
+                                                 title="Card List"/>
+            </af:commandToolbarButton>
+            <af:commandToolbarButton text="#{lincuviewcontrollerBundle.UPLOAD}" id="ctb4" icon="/images/Excel-16.gif"
+                                     actionListener="#{card.requestBulkCards}">
+            <af:showPopupBehavior popupId="::p2"/>
+          </af:commandToolbarButton>
         </af:toolbar>
       </f:facet>
       <f:facet name="statusbar"/>
@@ -27,7 +35,8 @@
                 selectionListener="#{bindings.LincuMemberCard.collectionModel.makeCurrent}" rowSelection="single"
                 fetchSize="#{bindings.LincuMemberCard.rangeSize}"
                 filterModel="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor}" filterVisible="true"
-                queryListener="#{bindings.LincuMemberCardVOCriteriaQuery.processQuery}" varStatus="vs" id="resId1">
+                queryListener="#{bindings.LincuMemberCardVOCriteriaQuery.processQuery}" varStatus="vs" id="resId1"
+                binding="#{card.cardTable}">
         <af:column sortProperty="#{bindings.LincuMemberCard.hints.MemberId.name}" filterable="true" sortable="true"
                    headerText="#{bindings.LincuMemberCard.hints.MemberId.label}" id="resId1c1">
           <af:selectOneChoice value="#{row.bindings.MemberId.inputValue}" label="#{row.bindings.MemberId.label}"
@@ -110,5 +119,16 @@
         </af:column>
       </af:table>
     </af:panelCollection>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p2" binding="#{card.attachDocument}"
+              contentDelivery="lazyUncached">
+      <af:dialog id="d2" type="cancel" title="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}">
+        <f:facet name="buttonBar">
+          <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b11" actionListener="#{card.massUpload}"/>
+        </f:facet>
+        <af:panelFormLayout id="pfl2">
+          <af:inputFile label="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}" id="if1" value="#{card.file}"/>
+        </af:panelFormLayout>
+      </af:dialog>
+    </af:popup>
   </af:panelGroupLayout>
 </jsp:root>

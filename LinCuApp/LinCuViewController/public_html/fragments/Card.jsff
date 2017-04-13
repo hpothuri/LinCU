@@ -68,8 +68,10 @@
         <f:facet name="menus"/>
         <f:facet name="toolbar">
           <af:toolbar id="t2">
-            <af:button text="#{lincuviewcontrollerBundle.ATTACH}" id="b10" action="#{card.attachDocument}"
-                       partialSubmit="false"/>
+            <af:commandToolbarButton text="#{lincuviewcontrollerBundle.ATTACH}" id="ctb1" icon="/images/attach.png"
+                                     action="#{card.attachDocument}" partialSubmit="false"/>
+            <!--<af:spacer width="10" height="10" id="s1"/>
+            <af:link id="l4" icon="/images/exportToExcel.png"/>-->
           </af:toolbar>
         </f:facet>
         <f:facet name="statusbar"/>
@@ -896,7 +898,8 @@
       <af:dialog id="d2" type="none" title="#{lincuviewcontrollerBundle.UPLOAD_DOCUMENT}">
         <f:facet name="buttonBar">
           <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b11" actionListener="#{card.confirmUpload}"/>
-          <af:button text="#{lincuviewcontrollerBundle.CANCEL}" id="b14" actionListener="#{card.cancelUpload}"/>
+          <af:button text="#{lincuviewcontrollerBundle.CANCEL}" id="b14" actionListener="#{card.cancelUpload}"
+                     immediate="true"/>
         </f:facet>
         <af:panelFormLayout id="pfl2">
           <af:inputText value="#{bindings.DocId.inputValue}" label="#{bindings.DocId.hints.label}"
@@ -919,7 +922,7 @@
                         shortDesc="#{bindings.DocDesc.hints.tooltip}" id="it11">
             <f:validator binding="#{bindings.DocDesc.validator}"/>
           </af:inputText>
-          <af:inputFile label="#{lincuviewcontrollerBundle.UPLOAD_DOCUMENTS}" id="if1" value="#{card.file}"/>
+          <af:inputFile label="#{lincuviewcontrollerBundle.UPLOAD_DOCUMENTS}" id="if1" value="#{card.uploadFile}"/>
           <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b12" action="#{card.uploadDoc}" rendered="false"/>
         </af:panelFormLayout>
       </af:dialog>

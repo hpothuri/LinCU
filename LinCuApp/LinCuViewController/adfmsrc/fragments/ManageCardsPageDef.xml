@@ -23,5 +23,9 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <action IterBinding="LincuMemberCardIterator" id="CreateInsert" InstanceName="LinCuAMDataControl.LincuMemberCard"
+            DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="LincuMemberCardIterator" id="Execute" InstanceName="LinCuAMDataControl.LincuMemberCard"
+            DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
   </bindings>
 </pageDefinition>
