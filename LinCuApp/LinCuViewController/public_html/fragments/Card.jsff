@@ -173,13 +173,12 @@
             <af:outputLabel value="#{lincuviewcontrollerBundle.MARITAL_STATUS}" id="ol40"/>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="24%" id="gc90">
-            <af:selectOneRadio value="#{bindings.MaritalStatus.inputValue}" label="#{bindings.MaritalStatus.label}"
-                               required="#{bindings.MaritalStatus.hints.mandatory}"
-                               shortDesc="#{bindings.MaritalStatus.hints.tooltip}" id="sor2" simple="true"
-                               contentStyle="margin-top: 4px;">
+            <af:selectOneChoice value="#{bindings.MaritalStatus.inputValue}" label="#{bindings.MaritalStatus.label}"
+                                required="#{bindings.MaritalStatus.hints.mandatory}"
+                                shortDesc="#{bindings.MaritalStatus.hints.tooltip}" id="soc12">
               <f:selectItems value="#{bindings.MaritalStatus.items}" id="si19"/>
               <f:validator binding="#{bindings.MaritalStatus.validator}"/>
-            </af:selectOneRadio>
+            </af:selectOneChoice>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="10%" id="gc91" halign="end">
             <af:outputLabel value="#{lincuviewcontrollerBundle.MOBILE_PHONE_}" id="ol41"/>
@@ -263,13 +262,12 @@
             <af:outputLabel value="#{lincuviewcontrollerBundle.EDUCATION}" id="ol47"/>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="24%" marginEnd="5px" id="gc104">
-            <af:inputText value="#{bindings.EducationCode.inputValue}" label="#{bindings.EducationCode.hints.label}"
-                          required="#{bindings.EducationCode.hints.mandatory}"
-                          columns="#{bindings.EducationCode.hints.displayWidth}"
-                          maximumLength="#{bindings.EducationCode.hints.precision}"
-                          shortDesc="#{bindings.EducationCode.hints.tooltip}" id="it30" simple="true">
+            <af:selectOneChoice value="#{bindings.EducationCode.inputValue}" label="#{bindings.EducationCode.label}"
+                                required="#{bindings.EducationCode.hints.mandatory}"
+                                shortDesc="#{bindings.EducationCode.hints.tooltip}" id="soc13" simple="true">
+              <f:selectItems value="#{bindings.EducationCode.items}" id="si20"/>
               <f:validator binding="#{bindings.EducationCode.validator}"/>
-            </af:inputText>
+            </af:selectOneChoice>
           </af:gridCell>
         </af:gridRow>
         <af:gridRow marginTop="5px" height="auto" id="gr18">
@@ -399,14 +397,13 @@
             <af:outputLabel value="#{lincuviewcontrollerBundle.STREET}" id="ol28"/>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="24%" id="gc66">
-            <af:inputText value="#{bindings.PermanentAddrLine4.inputValue}"
-                          label="#{bindings.PermanentAddrLine4.hints.label}"
-                          required="#{bindings.PermanentAddrLine4.hints.mandatory}"
-                          columns="#{bindings.PermanentAddrLine4.hints.displayWidth}"
-                          maximumLength="#{bindings.PermanentAddrLine4.hints.precision}"
-                          shortDesc="#{bindings.PermanentAddrLine4.hints.tooltip}" id="it63" simple="true">
+            <af:selectOneChoice value="#{bindings.PermanentAddrLine4.inputValue}"
+                                label="#{bindings.PermanentAddrLine4.label}"
+                                required="#{bindings.PermanentAddrLine4.hints.mandatory}"
+                                shortDesc="#{bindings.PermanentAddrLine4.hints.tooltip}" id="soc17" simple="true">
+              <f:selectItems value="#{bindings.PermanentAddrLine4.items}" id="si25"/>
               <f:validator binding="#{bindings.PermanentAddrLine4.validator}"/>
-            </af:inputText>
+            </af:selectOneChoice>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="10%" id="gc67" halign="end">
             <af:outputLabel value="#{lincuviewcontrollerBundle.COUNTRY}" id="ol29"/>
@@ -523,14 +520,13 @@
             <af:outputLabel value="#{lincuviewcontrollerBundle.STREET}" id="ol20"/>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="24%" id="gc48">
-            <af:inputText value="#{bindings.MailingAddrLine4.inputValue}"
-                          label="#{bindings.MailingAddrLine4.hints.label}"
-                          required="#{bindings.MailingAddrLine4.hints.mandatory}"
-                          columns="#{bindings.MailingAddrLine4.hints.displayWidth}"
-                          maximumLength="#{bindings.MailingAddrLine4.hints.precision}"
-                          shortDesc="#{bindings.MailingAddrLine4.hints.tooltip}" id="it46" simple="true">
+            <af:selectOneChoice value="#{bindings.MailingAddrLine4.inputValue}"
+                                label="#{bindings.MailingAddrLine4.label}"
+                                required="#{bindings.MailingAddrLine4.hints.mandatory}"
+                                shortDesc="#{bindings.MailingAddrLine4.hints.tooltip}" id="soc16" simple="true">
+              <f:selectItems value="#{bindings.MailingAddrLine4.items}" id="si24"/>
               <f:validator binding="#{bindings.MailingAddrLine4.validator}"/>
-            </af:inputText>
+            </af:selectOneChoice>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="10%" id="gc49" halign="end">
             <af:outputLabel value="#{lincuviewcontrollerBundle.COUNTRY}" id="ol21"/>
@@ -664,13 +660,12 @@
             <af:outputLabel value="#{lincuviewcontrollerBundle.OCCUPATION}" id="ol16"/>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="22%" id="gc34">
-            <af:inputText value="#{bindings.OccupationCode.inputValue}" label="#{bindings.OccupationCode.hints.label}"
-                          required="#{bindings.OccupationCode.hints.mandatory}"
-                          columns="#{bindings.OccupationCode.hints.displayWidth}"
-                          maximumLength="#{bindings.OccupationCode.hints.precision}"
-                          shortDesc="#{bindings.OccupationCode.hints.tooltip}" id="it58" simple="true">
+            <af:selectOneChoice value="#{bindings.OccupationCode.inputValue}" label="#{bindings.OccupationCode.label}"
+                                required="#{bindings.OccupationCode.hints.mandatory}"
+                                shortDesc="#{bindings.OccupationCode.hints.tooltip}" id="soc14" simple="true">
+              <f:selectItems value="#{bindings.OccupationCode.items}" id="si21"/>
               <f:validator binding="#{bindings.OccupationCode.validator}"/>
-            </af:inputText>
+            </af:selectOneChoice>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="10%" id="gc35" halign="end">
             <af:outputLabel value="#{lincuviewcontrollerBundle.ADDRESS_LINE_2}" id="ol14"/>
@@ -765,13 +760,12 @@
             <af:outputLabel value="#{lincuviewcontrollerBundle.LOCAL_TAX_EXEMPT}" id="ol4"/>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="22%" id="gc8">
-            <af:inputText value="#{bindings.LocalTaxExempt.inputValue}" label="#{bindings.LocalTaxExempt.hints.label}"
-                          required="#{bindings.LocalTaxExempt.hints.mandatory}"
-                          columns="#{bindings.LocalTaxExempt.hints.displayWidth}"
-                          maximumLength="#{bindings.LocalTaxExempt.hints.precision}"
-                          shortDesc="#{bindings.LocalTaxExempt.hints.tooltip}" id="it42" simple="true">
+            <af:selectOneRadio value="#{bindings.LocalTaxExempt.inputValue}" label="#{bindings.LocalTaxExempt.label}"
+                               required="#{bindings.LocalTaxExempt.hints.mandatory}"
+                               shortDesc="#{bindings.LocalTaxExempt.hints.tooltip}" id="sor2" simple="true" contentStyle="margin-top: 4px;">
+              <f:selectItems value="#{bindings.LocalTaxExempt.items}" id="si22"/>
               <f:validator binding="#{bindings.LocalTaxExempt.validator}"/>
-            </af:inputText>
+            </af:selectOneRadio>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="10%" id="gc9" halign="end">
             <af:outputLabel value="#{lincuviewcontrollerBundle.CITIZENSHIP_COUNTRY_2}" id="ol5"/>
@@ -803,13 +797,12 @@
             <af:outputLabel value="#{lincuviewcontrollerBundle.NATIONALITY}" id="ol7"/>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="22%" id="gc14">
-            <af:inputText value="#{bindings.Nationality.inputValue}" label="#{bindings.Nationality.hints.label}"
-                          required="#{bindings.Nationality.hints.mandatory}"
-                          columns="#{bindings.Nationality.hints.displayWidth}"
-                          maximumLength="#{bindings.Nationality.hints.precision}"
-                          shortDesc="#{bindings.Nationality.hints.tooltip}" id="it55" simple="true">
+            <af:selectOneChoice value="#{bindings.Nationality.inputValue}" label="#{bindings.Nationality.label}"
+                                required="#{bindings.Nationality.hints.mandatory}"
+                                shortDesc="#{bindings.Nationality.hints.tooltip}" id="soc15" simple="true">
+              <f:selectItems value="#{bindings.Nationality.items}" id="si23"/>
               <f:validator binding="#{bindings.Nationality.validator}"/>
-            </af:inputText>
+            </af:selectOneChoice>
           </af:gridCell>
           <af:gridCell marginStart="5px" width="10%" id="gc15"/>
           <af:gridCell marginStart="5px" width="24%" id="gc16"/>

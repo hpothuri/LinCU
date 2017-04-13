@@ -79,12 +79,12 @@
           <f:selectItems value="#{bindings.Gender.items}" id="si3"/>
           <f:validator binding="#{bindings.Gender.validator}"/>
         </af:selectOneRadio>
-        <af:selectOneRadio value="#{bindings.MaritalStatus.inputValue}" label="#{bindings.MaritalStatus.label}"
-                           required="#{bindings.MaritalStatus.hints.mandatory}"
-                           shortDesc="#{bindings.MaritalStatus.hints.tooltip}" id="sor2" layout="horizontal">
+        <af:selectOneChoice value="#{bindings.MaritalStatus.inputValue}" label="#{bindings.MaritalStatus.label}"
+                            required="#{bindings.MaritalStatus.hints.mandatory}"
+                            shortDesc="#{bindings.MaritalStatus.hints.tooltip}" id="soc11" contentStyle="margin-top: 8px;width:295px;">
           <f:selectItems value="#{bindings.MaritalStatus.items}" id="si4"/>
           <f:validator binding="#{bindings.MaritalStatus.validator}"/>
-        </af:selectOneRadio>
+        </af:selectOneChoice>
         <af:inputText value="#{bindings.NoOfDependents.inputValue}" label="#{bindings.NoOfDependents.hints.label}"
                       required="#{bindings.NoOfDependents.hints.mandatory}"
                       columns="#{bindings.NoOfDependents.hints.displayWidth}"
@@ -141,13 +141,13 @@
                       shortDesc="#{bindings.FaxNumber.hints.tooltip}" id="it5">
           <f:validator binding="#{bindings.FaxNumber.validator}"/>
         </af:inputText>
-        <af:inputText value="#{bindings.EducationCode.inputValue}" label="#{bindings.EducationCode.hints.label}"
-                      required="#{bindings.EducationCode.hints.mandatory}"
-                      columns="#{bindings.EducationCode.hints.displayWidth}"
-                      maximumLength="#{bindings.EducationCode.hints.precision}"
-                      shortDesc="#{bindings.EducationCode.hints.tooltip}" id="it30">
+        <af:selectOneChoice value="#{bindings.EducationCode.inputValue}" label="#{bindings.EducationCode.label}"
+                            required="#{bindings.EducationCode.hints.mandatory}"
+                            shortDesc="#{bindings.EducationCode.hints.tooltip}" id="soc14"
+                            contentStyle="margin-top: 8px;width:295px;">
+          <f:selectItems value="#{bindings.EducationCode.items}" id="si22"/>
           <f:validator binding="#{bindings.EducationCode.validator}"/>
-        </af:inputText>
+        </af:selectOneChoice>
         <af:inputText value="#{bindings.MonthlySalary.inputValue}" label="#{bindings.MonthlySalary.hints.label}"
                       required="#{bindings.MonthlySalary.hints.mandatory}"
                       columns="#{bindings.MonthlySalary.hints.displayWidth}"
@@ -192,14 +192,13 @@
                       shortDesc="#{bindings.PermanentAddrLine3.hints.tooltip}" id="it62">
           <f:validator binding="#{bindings.PermanentAddrLine3.validator}"/>
         </af:inputText>
-        <af:inputText value="#{bindings.PermanentAddrLine4.inputValue}"
-                      label="#{bindings.PermanentAddrLine4.hints.label}"
-                      required="#{bindings.PermanentAddrLine4.hints.mandatory}"
-                      columns="#{bindings.PermanentAddrLine4.hints.displayWidth}"
-                      maximumLength="#{bindings.PermanentAddrLine4.hints.precision}"
-                      shortDesc="#{bindings.PermanentAddrLine4.hints.tooltip}" id="it63">
+        <af:selectOneChoice value="#{bindings.PermanentAddrLine4.inputValue}"
+                            label="#{bindings.PermanentAddrLine4.label}"
+                            required="#{bindings.PermanentAddrLine4.hints.mandatory}"
+                            shortDesc="#{bindings.PermanentAddrLine4.hints.tooltip}" id="soc12" contentStyle="margin-top: 8px;width:295px;">
+          <f:selectItems value="#{bindings.PermanentAddrLine4.items}" id="si20"/>
           <f:validator binding="#{bindings.PermanentAddrLine4.validator}"/>
-        </af:inputText>
+        </af:selectOneChoice>
         <af:inputText value="#{bindings.PermanentCity.inputValue}" label="#{bindings.PermanentCity.hints.label}"
                       required="#{bindings.PermanentCity.hints.mandatory}"
                       columns="#{bindings.PermanentCity.hints.displayWidth}"
@@ -262,13 +261,12 @@
                       shortDesc="#{bindings.MailingAddrLine3.hints.tooltip}" id="it45">
           <f:validator binding="#{bindings.MailingAddrLine3.validator}"/>
         </af:inputText>
-        <af:inputText value="#{bindings.MailingAddrLine4.inputValue}" label="#{bindings.MailingAddrLine4.hints.label}"
-                      required="#{bindings.MailingAddrLine4.hints.mandatory}"
-                      columns="#{bindings.MailingAddrLine4.hints.displayWidth}"
-                      maximumLength="#{bindings.MailingAddrLine4.hints.precision}"
-                      shortDesc="#{bindings.MailingAddrLine4.hints.tooltip}" id="it46">
+        <af:selectOneChoice value="#{bindings.MailingAddrLine4.inputValue}" label="#{bindings.MailingAddrLine4.label}"
+                            required="#{bindings.MailingAddrLine4.hints.mandatory}"
+                            shortDesc="#{bindings.MailingAddrLine4.hints.tooltip}" id="soc13" contentStyle="width:295px;">
+          <f:selectItems value="#{bindings.MailingAddrLine4.items}" id="si21"/>
           <f:validator binding="#{bindings.MailingAddrLine4.validator}"/>
-        </af:inputText>
+        </af:selectOneChoice>
         <af:inputText value="#{bindings.MailingCity.inputValue}" label="#{bindings.MailingCity.hints.label}"
                       required="#{bindings.MailingCity.hints.mandatory}"
                       columns="#{bindings.MailingCity.hints.displayWidth}"
@@ -310,13 +308,12 @@
                       shortDesc="#{bindings.Employer.hints.tooltip}" id="it33">
           <f:validator binding="#{bindings.Employer.validator}"/>
         </af:inputText>
-        <af:inputText value="#{bindings.OccupationCode.inputValue}" label="#{bindings.OccupationCode.hints.label}"
-                      required="#{bindings.OccupationCode.hints.mandatory}"
-                      columns="#{bindings.OccupationCode.hints.displayWidth}"
-                      maximumLength="#{bindings.OccupationCode.hints.precision}"
-                      shortDesc="#{bindings.OccupationCode.hints.tooltip}" id="it58">
+        <af:selectOneChoice value="#{bindings.OccupationCode.inputValue}" label="#{bindings.OccupationCode.label}"
+                            required="#{bindings.OccupationCode.hints.mandatory}"
+                            shortDesc="#{bindings.OccupationCode.hints.tooltip}" id="soc15" contentStyle="margin-top: 8px;width:295px;">
+          <f:selectItems value="#{bindings.OccupationCode.items}" id="si23"/>
           <f:validator binding="#{bindings.OccupationCode.validator}"/>
-        </af:inputText>
+        </af:selectOneChoice>
         <af:outputText id="ot1"/>
         <af:inputText value="#{bindings.EmployerAddress1.inputValue}" label="#{bindings.EmployerAddress1.hints.label}"
                       required="#{bindings.EmployerAddress1.hints.mandatory}"
@@ -367,20 +364,18 @@
           <f:selectItems value="#{bindings.BirthCountryCode.items}" id="si17"/>
           <f:validator binding="#{bindings.BirthCountryCode.validator}"/>
         </af:selectOneChoice>
-        <af:inputText value="#{bindings.LocalTaxExempt.inputValue}" label="#{bindings.LocalTaxExempt.hints.label}"
-                      required="#{bindings.LocalTaxExempt.hints.mandatory}"
-                      columns="#{bindings.LocalTaxExempt.hints.displayWidth}"
-                      maximumLength="#{bindings.LocalTaxExempt.hints.precision}"
-                      shortDesc="#{bindings.LocalTaxExempt.hints.tooltip}" id="it42">
+        <af:selectOneRadio value="#{bindings.LocalTaxExempt.inputValue}" label="#{bindings.LocalTaxExempt.label}"
+                           required="#{bindings.LocalTaxExempt.hints.mandatory}"
+                           shortDesc="#{bindings.LocalTaxExempt.hints.tooltip}" id="sor9" layout="horizontal">
+          <f:selectItems value="#{bindings.LocalTaxExempt.items}" id="si18"/>
           <f:validator binding="#{bindings.LocalTaxExempt.validator}"/>
-        </af:inputText>
-        <af:inputText value="#{bindings.Nationality.inputValue}" label="#{bindings.Nationality.hints.label}"
-                      required="#{bindings.Nationality.hints.mandatory}"
-                      columns="#{bindings.Nationality.hints.displayWidth}"
-                      maximumLength="#{bindings.Nationality.hints.precision}"
-                      shortDesc="#{bindings.Nationality.hints.tooltip}" id="it55">
+        </af:selectOneRadio>
+        <af:selectOneChoice value="#{bindings.Nationality.inputValue}" label="#{bindings.Nationality.label}"
+                            required="#{bindings.Nationality.hints.mandatory}"
+                            shortDesc="#{bindings.Nationality.hints.tooltip}" id="soc10" contentStyle="margin-top: 8px;width:295px;">
+          <f:selectItems value="#{bindings.Nationality.items}" id="si19"/>
           <f:validator binding="#{bindings.Nationality.validator}"/>
-        </af:inputText>
+        </af:selectOneChoice>
         <af:selectOneChoice value="#{bindings.CitizenShipCountry1.inputValue}"
                             label="#{bindings.CitizenShipCountry1.label}"
                             required="#{bindings.CitizenShipCountry1.hints.mandatory}"

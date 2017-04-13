@@ -102,6 +102,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             userMap.put("userName", row.getUserName());
             userMap.put("role", row.getRole());
             userMap.put("roleDesc", row.getRoleDescription()); 
+            userMap.put("userType", row.getRoleDescription());
             userMap.put("creditUnionId", row.getCreditUnionId());
         }
         return userMap;

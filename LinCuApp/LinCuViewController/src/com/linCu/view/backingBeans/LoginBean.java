@@ -31,10 +31,14 @@ public class LoginBean {
                 Map userMap = (Map) ADFUtils.executeOperationBinding("userSessionInfo"); 
                 if(userMap != null && userMap.size()>0){
                     FacesContext fc = FacesContext.getCurrentInstance();
-                    UserSessionData userSessionData = (UserSessionData)fc.getApplication().evaluateExpressionGet(fc, "#{userSessionData}", Object.class);
+                    
+                    UserSessionData userSessionData = new UserSessionData();
+                    //UserSessionData userSessionData = (UserSessionData)fc.getApplication().evaluateExpressionGet(fc, "#{userSessionData}", Object.class);
                 userSessionData.setUserName(userMap.get("userName").toString()); 
                 userSessionData.setUserRole(userMap.get("role").toString());
                 userSessionData.setUserRoleDesc(userMap.get("roleDesc").toString());
+                userSessionData.setUnionId(userMap.get("creditUnionId").toString());
+                fc.getExternalContext().getSessionMap().put("user", userSessionData);
                 
                         ADFUtils.setPageFlowScopeValue("firstLogin", false);
                         ADFUtils.setPageFlowScopeValue("creditUnion", true); 
@@ -71,5 +75,9 @@ public class LoginBean {
         ADFUtils.setPageFlowScopeValue("firstLogin", false);
         ADFUtils.setPageFlowScopeValue("creditUnion", false); 
         ADFUtils.setPageFlowScopeValue("resetPassword", true);
+    }
+
+    public void logout(ActionEvent actionEvent) {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
     }
 }

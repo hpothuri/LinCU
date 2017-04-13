@@ -132,8 +132,11 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         ApplicationStatusVA,
         CountryVA,
         GenderVA,
-        MaritalStatusVA,
         YesOrNoVA,
+        MaritalStatusVA,
+        EducationVA,
+        OccupationVA,
+        StreetVA,
         HomeOwnershipVA,
         FCBShareholdingVA;
         static AttributesEnum[] vals = null;
@@ -270,8 +273,11 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int APPLICATIONSTATUSVA = AttributesEnum.ApplicationStatusVA.index();
     public static final int COUNTRYVA = AttributesEnum.CountryVA.index();
     public static final int GENDERVA = AttributesEnum.GenderVA.index();
-    public static final int MARITALSTATUSVA = AttributesEnum.MaritalStatusVA.index();
     public static final int YESORNOVA = AttributesEnum.YesOrNoVA.index();
+    public static final int MARITALSTATUSVA = AttributesEnum.MaritalStatusVA.index();
+    public static final int EDUCATIONVA = AttributesEnum.EducationVA.index();
+    public static final int OCCUPATIONVA = AttributesEnum.OccupationVA.index();
+    public static final int STREETVA = AttributesEnum.StreetVA.index();
     public static final int HOMEOWNERSHIPVA = AttributesEnum.HomeOwnershipVA.index();
     public static final int FCBSHAREHOLDINGVA = AttributesEnum.FCBShareholdingVA.index();
 
@@ -1986,12 +1992,6 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         return (RowSet) getAttributeInternal(GENDERVA);
     }
 
-    /**
-     * Gets the view accessor <code>RowSet</code> MaritalStatusVA.
-     */
-    public RowSet getMaritalStatusVA() {
-        return (RowSet) getAttributeInternal(MARITALSTATUSVA);
-    }
 
     /**
      * Gets the view accessor <code>RowSet</code> YesOrNoVA.
@@ -2000,15 +2000,44 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         return (RowSet) getAttributeInternal(YESORNOVA);
     }
 
+
     /**
-     * Gets the view accessor <code>RowSet</code> HomeOwnershipVA.
+     * Gets the view accessor <code>RowSet</code> LookUpDataVVO1.
+     */
+    public RowSet getMaritalStatusVA() {
+        return (RowSet) getAttributeInternal(MARITALSTATUSVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> EducationVA.
+     */
+    public RowSet getEducationVA() {
+        return (RowSet) getAttributeInternal(EDUCATIONVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> OccupationVA.
+     */
+    public RowSet getOccupationVA() {
+        return (RowSet) getAttributeInternal(OCCUPATIONVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> StreetVA.
+     */
+    public RowSet getStreetVA() {
+        return (RowSet) getAttributeInternal(STREETVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> LookUpDataVVO1.
      */
     public RowSet getHomeOwnershipVA() {
         return (RowSet) getAttributeInternal(HOMEOWNERSHIPVA);
     }
 
     /**
-     * Gets the view accessor <code>RowSet</code> FCBShareholdingVA.
+     * Gets the view accessor <code>RowSet</code> LookUpDataVVO1.
      */
     public RowSet getFCBShareholdingVA() {
         return (RowSet) getAttributeInternal(FCBSHAREHOLDINGVA);

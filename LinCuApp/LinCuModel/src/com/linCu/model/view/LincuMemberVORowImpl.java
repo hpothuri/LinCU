@@ -114,11 +114,14 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
         LincuUnionsVA,
         LincuBranchesVA,
         GenderVA,
-        MaritalStatusVA,
-        FCBShareholdingVA,
         CountryVA,
+        YesOrNoVA,
+        MaritalStatusVA,
+        StreetTypeVA,
         HomeOwnershipVA,
-        YesOrNoVA;
+        FCBShareholdingVA,
+        EducationVA,
+        OccupationVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -237,11 +240,14 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
     public static final int LINCUBRANCHESVA = AttributesEnum.LincuBranchesVA.index();
     public static final int GENDERVA = AttributesEnum.GenderVA.index();
-    public static final int MARITALSTATUSVA = AttributesEnum.MaritalStatusVA.index();
-    public static final int FCBSHAREHOLDINGVA = AttributesEnum.FCBShareholdingVA.index();
     public static final int COUNTRYVA = AttributesEnum.CountryVA.index();
-    public static final int HOMEOWNERSHIPVA = AttributesEnum.HomeOwnershipVA.index();
     public static final int YESORNOVA = AttributesEnum.YesOrNoVA.index();
+    public static final int MARITALSTATUSVA = AttributesEnum.MaritalStatusVA.index();
+    public static final int STREETTYPEVA = AttributesEnum.StreetTypeVA.index();
+    public static final int HOMEOWNERSHIPVA = AttributesEnum.HomeOwnershipVA.index();
+    public static final int FCBSHAREHOLDINGVA = AttributesEnum.FCBShareholdingVA.index();
+    public static final int EDUCATIONVA = AttributesEnum.EducationVA.index();
+    public static final int OCCUPATIONVA = AttributesEnum.OccupationVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -1665,19 +1671,6 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
         return (RowSet) getAttributeInternal(GENDERVA);
     }
 
-    /**
-     * Gets the view accessor <code>RowSet</code> MaritalStatusVA.
-     */
-    public RowSet getMaritalStatusVA() {
-        return (RowSet) getAttributeInternal(MARITALSTATUSVA);
-    }
-
-    /**
-     * Gets the view accessor <code>RowSet</code> FCBShareholdingVA.
-     */
-    public RowSet getFCBShareholdingVA() {
-        return (RowSet) getAttributeInternal(FCBSHAREHOLDINGVA);
-    }
 
     /**
      * Gets the view accessor <code>RowSet</code> CountryVA.
@@ -1686,18 +1679,54 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
         return (RowSet) getAttributeInternal(COUNTRYVA);
     }
 
-    /**
-     * Gets the view accessor <code>RowSet</code> HomeOwnershipVA.
-     */
-    public RowSet getHomeOwnershipVA() {
-        return (RowSet) getAttributeInternal(HOMEOWNERSHIPVA);
-    }
 
     /**
      * Gets the view accessor <code>RowSet</code> YesOrNoVA.
      */
     public RowSet getYesOrNoVA() {
         return (RowSet) getAttributeInternal(YESORNOVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> LookUpDataVA.
+     */
+    public RowSet getMaritalStatusVA() {
+        return (RowSet) getAttributeInternal(MARITALSTATUSVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> StreetTypeVA.
+     */
+    public RowSet getStreetTypeVA() {
+        return (RowSet) getAttributeInternal(STREETTYPEVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> LookUpDataVVO1.
+     */
+    public RowSet getHomeOwnershipVA() {
+        return (RowSet) getAttributeInternal(HOMEOWNERSHIPVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> LookUpDataVVO1.
+     */
+    public RowSet getFCBShareholdingVA() {
+        return (RowSet) getAttributeInternal(FCBSHAREHOLDINGVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> EducationVA.
+     */
+    public RowSet getEducationVA() {
+        return (RowSet) getAttributeInternal(EDUCATIONVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> OccupationVA.
+     */
+    public RowSet getOccupationVA() {
+        return (RowSet) getAttributeInternal(OCCUPATIONVA);
     }
 }
 

@@ -42,24 +42,91 @@
     ViewObjectName="com.linCu.model.vvo.GenderVVO"
     RowLevelBinds="true"/>
   <ViewAccessor
-    Name="MaritalStatusVA"
-    ViewObjectName="com.linCu.model.vvo.MaritalStatusVVO"
-    RowLevelBinds="true"/>
-  <ViewAccessor
-    Name="FCBShareholdingVA"
-    ViewObjectName="com.linCu.model.vvo.FCBShareholdingVVO"
-    RowLevelBinds="true"/>
-  <ViewAccessor
     Name="CountryVA"
     ViewObjectName="com.linCu.model.vvo.CountryVVO"
     RowLevelBinds="true"/>
   <ViewAccessor
-    Name="HomeOwnershipVA"
-    ViewObjectName="com.linCu.model.vvo.HomeOwnershipVVO"
-    RowLevelBinds="true"/>
-  <ViewAccessor
     Name="YesOrNoVA"
     ViewObjectName="com.linCu.model.vvo.YesOrNoVVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="MaritalStatusVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['MARITAL_STATUS']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="StreetTypeVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['STREET_TYPE']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="HomeOwnershipVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['HOME_OWNERSHIP']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="FCBShareholdingVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['SHAREHOLDER_CODE']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="EducationVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['EDUCATION_CODE']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="OccupationVA"
+    ViewObjectName="com.linCu.model.vvo.OccupationCodesVVO"
     RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_CreditUnionId"
@@ -118,42 +185,6 @@
     <DisplayCriteria/>
   </ListBinding>
   <ListBinding
-    Name="LOV_MaritalStatus"
-    ListVOName="MaritalStatusVA"
-    ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="MaritalStatus"/>
-    </AttrArray>
-    <AttrArray Name="AttrExpressions"/>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="MaritalStatusCode"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="MaritalStatusDesc"/>
-    </AttrArray>
-    <DisplayCriteria/>
-  </ListBinding>
-  <ListBinding
-    Name="LOV_ShareholderCode"
-    ListVOName="FCBShareholdingVA"
-    ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="ShareholderCode"/>
-    </AttrArray>
-    <AttrArray Name="AttrExpressions"/>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="ShareholderCode"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="ShareholderDesc"/>
-    </AttrArray>
-    <DisplayCriteria/>
-  </ListBinding>
-  <ListBinding
     Name="LOV_PermanentCountryCode"
     ListVOName="CountryVA"
     ListRangeSize="-1"
@@ -168,24 +199,6 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="CountryName"/>
-    </AttrArray>
-    <DisplayCriteria/>
-  </ListBinding>
-  <ListBinding
-    Name="LOV_HomeOwnership"
-    ListVOName="HomeOwnershipVA"
-    ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="HomeOwnership"/>
-    </AttrArray>
-    <AttrArray Name="AttrExpressions"/>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="OwnershipCode"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="OwnershipDesc"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -366,6 +379,173 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="CountryName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Nationality"
+    ListVOName="CountryVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Nationality"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CountryId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CountryName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_LocalTaxExempt"
+    ListVOName="YesOrNoVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="LocalTaxExempt"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Code"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_MaritalStatus"
+    ListVOName="MaritalStatusVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="MaritalStatus"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_MailingAddrLine4"
+    ListVOName="StreetTypeVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="MailingAddrLine4"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PermanentAddrLine4"
+    ListVOName="StreetTypeVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+    <AttrArray Name="AttrNames">
+      <Item Value="PermanentAddrLine4"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_HomeOwnership"
+    ListVOName="HomeOwnershipVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="HomeOwnership"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_EducationCode"
+    ListVOName="EducationVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="EducationCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ShareholderCode"
+    ListVOName="FCBShareholdingVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ShareholderCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_OccupationCode"
+    ListVOName="OccupationVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OccupationCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OccupationId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OccupationDes"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -854,13 +1034,16 @@
     PrecisionRule="true"
     EntityAttrName="EducationCode"
     EntityUsage="LincuMemberKycEO"
-    AliasName="EDUCATION_CODE">
+    AliasName="EDUCATION_CODE"
+    LOVName="LOV_EducationCode">
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="40"/>
         <LABEL
           ResId="EDUCATION"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -977,10 +1160,10 @@
     LOVName="LOV_HomeOwnership">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="radio"/>
         <LABEL
           ResId="HOME_OWNERSHIP"/>
+        <CONTROLTYPE
+          Value="radio"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1026,13 +1209,16 @@
     PrecisionRule="true"
     EntityAttrName="LocalTaxExempt"
     EntityUsage="LincuMemberKycEO"
-    AliasName="LOCAL_TAX_EXEMPT">
+    AliasName="LOCAL_TAX_EXEMPT"
+    LOVName="LOV_LocalTaxExempt">
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="40"/>
         <LABEL
           ResId="LOCAL_TAX_EXEMPT"/>
+        <CONTROLTYPE
+          Value="radio"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1090,13 +1276,16 @@
     PrecisionRule="true"
     EntityAttrName="MailingAddrLine4"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MAILING_ADDR_LINE4">
+    AliasName="MAILING_ADDR_LINE4"
+    LOVName="LOV_MailingAddrLine4">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
           ResId="STREET"/>
         <DISPLAYWIDTH
           Value="40"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1181,7 +1370,7 @@
         <LABEL
           ResId="MARITAL_STATUS"/>
         <CONTROLTYPE
-          Value="radio"/>
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1234,11 +1423,15 @@
     PrecisionRule="true"
     EntityAttrName="Nationality"
     EntityUsage="LincuMemberKycEO"
-    AliasName="NATIONALITY">
+    AliasName="NATIONALITY"
+    LOVName="LOV_Nationality"
+    DefaultValue="1">
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="40"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1269,13 +1462,16 @@
     PrecisionRule="true"
     EntityAttrName="OccupationCode"
     EntityUsage="LincuMemberKycEO"
-    AliasName="OCCUPATION_CODE">
+    AliasName="OCCUPATION_CODE"
+    LOVName="LOV_OccupationCode">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
           ResId="OCCUPATION"/>
         <DISPLAYWIDTH
           Value="40"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1343,11 +1539,14 @@
     PrecisionRule="true"
     EntityAttrName="PermanentAddrLine4"
     EntityUsage="LincuMemberKycEO"
-    AliasName="PERMANENT_ADDR_LINE4">
+    AliasName="PERMANENT_ADDR_LINE4"
+    LOVName="LOV_PermanentAddrLine4">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
           ResId="STREET"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1494,10 +1693,10 @@
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="40"/>
-        <CONTROLTYPE
-          Value="radio"/>
         <LABEL
           ResId="FCB_SHAREHOLDING"/>
+        <CONTROLTYPE
+          Value="radio"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

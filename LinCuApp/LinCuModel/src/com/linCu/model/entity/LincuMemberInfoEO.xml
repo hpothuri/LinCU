@@ -56,7 +56,6 @@
   </Attribute>
   <Attribute
     Name="MemberPrefix"
-    IsNotNull="true"
     Precision="5"
     ColumnName="MEMBER_PREFIX"
     SQLType="VARCHAR"
@@ -82,7 +81,7 @@
   </Attribute>
   <Attribute
     Name="MiddleName"
-    Precision="30"
+    Precision="17"
     ColumnName="MIDDLE_NAME"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -236,7 +235,6 @@
   </Attribute>
   <Attribute
     Name="LastUpdatedBy"
-    IsNotNull="true"
     Precision="60"
     ColumnName="LAST_UPDATED_BY"
     SQLType="VARCHAR"
@@ -250,7 +248,6 @@
   </Attribute>
   <Attribute
     Name="LastUpdateDate"
-    IsNotNull="true"
     ColumnName="LAST_UPDATE_DATE"
     SQLType="DATE"
     Type="java.sql.Timestamp"
@@ -262,7 +259,6 @@
   </Attribute>
   <Attribute
     Name="ObjectVersionId"
-    IsNotNull="true"
     Precision="15"
     Scale="0"
     ColumnName="OBJECT_VERSION_ID"
@@ -274,7 +270,6 @@
     DefaultValue="1"/>
   <Attribute
     Name="LastApprovedBy"
-    IsNotNull="true"
     Precision="60"
     ColumnName="LAST_APPROVED_BY"
     SQLType="VARCHAR"
@@ -288,7 +283,6 @@
   </Attribute>
   <Attribute
     Name="LastApprovedDate"
-    IsNotNull="true"
     ColumnName="LAST_APPROVED_DATE"
     SQLType="DATE"
     Type="java.sql.Timestamp"

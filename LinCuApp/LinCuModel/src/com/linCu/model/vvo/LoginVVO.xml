@@ -26,8 +26,8 @@
     Name="bindUserName"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT LUI.USER_NAME, LUI.PASSWORD, LUI.FIRST_LOGIN_FLAG, LR.ROLE, LR.ROLE_DESCRIPTION, LUI.USER_ID, LUI.CREDIT_UNION_ID    
-FROM LINCU_USER_INFO LUI, LINCU_ROLES LR    
+  <SQLQuery><![CDATA[SELECT LUI.USER_NAME, LUI.PASSWORD, LUI.FIRST_LOGIN_FLAG, LR.ROLE, LR.ROLE_DESCRIPTION, LUI.USER_ID, LUI.CREDIT_UNION_ID, LUI.USER_TYPE_CODE, LUI.EMAIL    
+FROM LINCU_USER_INFO LUI, LINCU_ROLES LR      
 WHERE LUI.USER_ROLE = LR.ROLE]]></SQLQuery>
   <ViewAttribute
     Name="UserName"
@@ -129,6 +129,36 @@ WHERE LUI.USER_ROLE = LR.ROLE]]></SQLQuery>
     SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UserTypeCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="USER_TYPE_CODE"
+    Expression="USER_TYPE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Email"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="EMAIL"
+    Expression="EMAIL"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
     </DesignTime>
   </ViewAttribute>
   <ViewCriteria

@@ -4,6 +4,7 @@ public class UserSessionData {
     private String userName;
     private String userRole;
     private String userRoleDesc;
+    private String unionId;
     public UserSessionData() {
         super();
     }
@@ -31,4 +32,13 @@ public class UserSessionData {
     public String getUserRoleDesc() {
         return userRoleDesc;
     }
+
+    public void setUnionId(String unionId) {
+        this.unionId = unionId;
+    }
+
+    public String getUnionId() {
+        return unionId;
+    }
+    
 }

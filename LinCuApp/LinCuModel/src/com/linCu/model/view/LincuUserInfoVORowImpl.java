@@ -262,6 +262,7 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
      */
     public void setEmail(String value) {
         setAttributeInternal(EMAIL, value);
+        setUserName(value);
     }
 
     /**

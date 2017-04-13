@@ -158,7 +158,7 @@
           <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
                         required="#{bindings.Email.hints.mandatory}" columns="#{bindings.Email.hints.displayWidth}"
                         maximumLength="#{bindings.Email.hints.precision}" shortDesc="#{bindings.Email.hints.tooltip}"
-                        id="it3">
+                        id="it3" autoSubmit="true">
             <f:validator binding="#{bindings.Email.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.MobilePhoneNumber.inputValue}"
@@ -186,7 +186,7 @@
                         required="#{bindings.UserName.hints.mandatory}"
                         columns="#{bindings.UserName.hints.displayWidth}"
                         maximumLength="#{bindings.UserName.hints.precision}"
-                        shortDesc="#{bindings.UserName.hints.tooltip}" id="it5">
+                        shortDesc="#{bindings.UserName.hints.tooltip}" id="it5" disabled="true" partialTriggers="it3">
             <f:validator binding="#{bindings.UserName.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.Password.inputValue}" label="#{lincuviewcontrollerBundle.TEMPORARY_PASSWORD}"

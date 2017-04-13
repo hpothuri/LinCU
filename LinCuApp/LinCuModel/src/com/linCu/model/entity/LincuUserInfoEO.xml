@@ -268,13 +268,13 @@
   </Attribute>
   <Attribute
     Name="UserName"
-    IsNotNull="true"
     Precision="50"
     ColumnName="USER_NAME"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_USER_INFO">
+    TableName="LINCU_USER_INFO"
+    IsNotNull="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -344,6 +344,18 @@
       <Item Value="com.linCu.model.entity.LincuUserInfoEO.UserId"/>
       <Item Value="com.linCu.model.entity.LincuUserInfoEO.CreditUnionId"/>
       <Item Value="com.linCu.model.entity.LincuUserInfoEO.CreditUnionBranchId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="LincuUserInfoUserNameCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"USER_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="LINCU_USER_INFO_USER_NAME_CHEC"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.linCu.model.entity.LincuUserInfoEO.UserName"/>
     </AttrArray>
   </Key>
   <Key

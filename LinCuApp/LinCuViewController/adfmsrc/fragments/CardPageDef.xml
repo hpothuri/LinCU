@@ -82,11 +82,6 @@
         <Item Value="DriverPermit"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="LincuMemberCardIterator" id="EducationCode">
-      <AttrNames>
-        <Item Value="EducationCode"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="LincuMemberCardIterator" id="ElectorialId">
       <AttrNames>
         <Item Value="ElectorialId"/>
@@ -112,11 +107,6 @@
         <Item Value="EmployerCity"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="LincuMemberCardIterator" id="LocalTaxExempt">
-      <AttrNames>
-        <Item Value="LocalTaxExempt"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="LincuMemberCardIterator" id="MailingAddrLine1">
       <AttrNames>
         <Item Value="MailingAddrLine1"/>
@@ -130,11 +120,6 @@
     <attributeValues IterBinding="LincuMemberCardIterator" id="MailingAddrLine3">
       <AttrNames>
         <Item Value="MailingAddrLine3"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberCardIterator" id="MailingAddrLine4">
-      <AttrNames>
-        <Item Value="MailingAddrLine4"/>
       </AttrNames>
     </attributeValues>
     <attributeValues IterBinding="LincuMemberCardIterator" id="MailingCity">
@@ -162,19 +147,9 @@
         <Item Value="MotherMaidenName"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="LincuMemberCardIterator" id="Nationality">
-      <AttrNames>
-        <Item Value="Nationality"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="LincuMemberCardIterator" id="NoOfDependents">
       <AttrNames>
         <Item Value="NoOfDependents"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberCardIterator" id="OccupationCode">
-      <AttrNames>
-        <Item Value="OccupationCode"/>
       </AttrNames>
     </attributeValues>
     <attributeValues IterBinding="LincuMemberCardIterator" id="PassportNo">
@@ -195,11 +170,6 @@
     <attributeValues IterBinding="LincuMemberCardIterator" id="PermanentAddrLine3">
       <AttrNames>
         <Item Value="PermanentAddrLine3"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberCardIterator" id="PermanentAddrLine4">
-      <AttrNames>
-        <Item Value="PermanentAddrLine4"/>
       </AttrNames>
     </attributeValues>
     <attributeValues IterBinding="LincuMemberCardIterator" id="PermanentCity">
@@ -268,8 +238,6 @@
           DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_Gender" id="Gender" DTSupportsMRU="false"
           SelectItemValueMode="ListObject"/>
-    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MaritalStatus" id="MaritalStatus"
-          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_ShareholderCode" id="ShareholderCode"
           DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
     <tree IterBinding="LincuMemberCardDocsIterator" id="LincuMemberCardDocs">
@@ -314,5 +282,19 @@
         <Item Value="DocumentName"/>
       </AttrNames>
     </attributeValues>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MaritalStatus" id="MaritalStatus"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_EducationCode" id="EducationCode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_OccupationCode" id="OccupationCode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_LocalTaxExempt" id="LocalTaxExempt"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_Nationality" id="Nationality"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MailingAddrLine4" id="MailingAddrLine4"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_PermanentAddrLine4"
+          id="PermanentAddrLine4" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>

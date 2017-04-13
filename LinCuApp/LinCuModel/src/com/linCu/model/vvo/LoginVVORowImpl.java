@@ -18,7 +18,9 @@ public class LoginVVORowImpl extends ViewRowImpl {
         Role,
         RoleDescription,
         UserId,
-        CreditUnionId;
+        CreditUnionId,
+        UserTypeCode,
+        Email;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -50,6 +52,8 @@ public class LoginVVORowImpl extends ViewRowImpl {
     public static final int ROLEDESCRIPTION = AttributesEnum.RoleDescription.index();
     public static final int USERID = AttributesEnum.UserId.index();
     public static final int CREDITUNIONID = AttributesEnum.CreditUnionId.index();
+    public static final int USERTYPECODE = AttributesEnum.UserTypeCode.index();
+    public static final int EMAIL = AttributesEnum.Email.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -111,6 +115,22 @@ public class LoginVVORowImpl extends ViewRowImpl {
      */
     public String getCreditUnionId() {
         return (String) getAttributeInternal(CREDITUNIONID);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute UserTypeCode.
+     * @return the UserTypeCode
+     */
+    public String getUserTypeCode() {
+        return (String) getAttributeInternal(USERTYPECODE);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute Email.
+     * @return the Email
+     */
+    public String getEmail() {
+        return (String) getAttributeInternal(EMAIL);
     }
 }
 

@@ -87,4 +87,5 @@ public class UserInfo {
     public void updateBranch(ValueChangeEvent valueChangeEvent) {
         valueChangeEvent.getComponent().processUpdates(FacesContext.getCurrentInstance());
     }
+
 }
