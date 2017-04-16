@@ -57,7 +57,7 @@ public class CardBean {
     private RichPopup commentsPopup;
     private RichPopup attachDocument;
     private UploadedFile _file;
-//    private UploadedFile _uploadFile;
+    private UploadedFile _uploadFile;
     private RichTable cardTable;
 
     public CardBean() {
@@ -271,7 +271,7 @@ public class CardBean {
 
                    int Index = 0;
                    //Iterate over row's columns
-                   for (int column = 0; column < tempRow.getLastCellNum(); column++) {
+                   for (int column = 0; column <= tempRow.getLastCellNum(); column++) {
                        Cell MytempCell = tempRow.getCell(column);
                        if (MytempCell != null) {
                            Index = MytempCell.getColumnIndex();
@@ -282,12 +282,10 @@ public class CardBean {
                        } else if (Index == 1) {
                            row.setAttribute("CardReqType", MytempCell.getStringCellValue());
 
-                       }  else if (Index == 2) {
-                           row.setAttribute("CardStatus", MytempCell.getStringCellValue());
-
-                       } 
+                       }   
                        
                          } else {
+                            row.setAttribute("CardStatus", "DRAFT");
                             row.setAttribute("CreditUnionId", userSessionData.getUnionId());
                             row.setAttribute("CreatedBy", userSessionData.getUserName());
                             long time = System.currentTimeMillis();
@@ -302,7 +300,7 @@ public class CardBean {
                skipcnt++;
            }
            //Execute table viewObject
-           executeOperation("Execute").execute();
+           //executeOperation("Execute").execute();
        }
     
      /**
@@ -313,11 +311,13 @@ public class CardBean {
          public void readNProcessExcelx(InputStream xlsx) throws IOException {
 
              CollectionModel cModel = (CollectionModel) getCardTable().getValue();
-
              JUCtrlHierBinding tableBinding = (JUCtrlHierBinding) cModel.getWrappedData();
-             //Acess the ADF iterator binding that is used with ADF table binding
              DCIteratorBinding iter = tableBinding.getDCIteratorBinding();
-
+            
+             FacesContext ctx = FacesContext.getCurrentInstance();  
+             ExpressionFactory ef = ctx.getApplication().getExpressionFactory();  
+             ValueExpression ve = ef.createValueExpression(ctx.getELContext(), "#{user}", UserSessionData.class);  
+             UserSessionData userSessionData = (UserSessionData)ve.getValue(ctx.getELContext());
              //Use XSSFWorkbook for XLS file
              XSSFWorkbook WorkBook = null;
              int sheetIndex = 0;
@@ -342,7 +342,7 @@ public class CardBean {
                      oracle.jbo.Row row = iter.getNavigatableRowIterator().getCurrentRow();
                      int Index = 0;
                      //Iterate over row's columns
-                     for (int column = 0; column < tempRow.getLastCellNum(); column++) {
+                     for (int column = 0; column <= tempRow.getLastCellNum(); column++) {
 
                          Cell MytempCell = tempRow.getCell(column);
                          if (MytempCell != null) {
@@ -354,12 +354,14 @@ public class CardBean {
                              } else if (Index == 1) {
                                  row.setAttribute("CardReqType", MytempCell.getStringCellValue());
 
-                             }  else if (Index == 2) {
-                                 row.setAttribute("CardStatus", MytempCell.getStringCellValue());
-
-                             }  
+                             }   
                          } else {
-                             row.setAttribute("CreditUnionId", 32);
+                             row.setAttribute("CardStatus", "DRAFT");
+                             row.setAttribute("CreditUnionId", userSessionData.getUnionId());
+                             row.setAttribute("CreatedBy", userSessionData.getUserName());
+                             long time = System.currentTimeMillis();
+                             java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+                             row.setAttribute("CreatedOn", timestamp);
                              Index++;
                          }
 
@@ -393,16 +395,16 @@ public class CardBean {
         return cardTable;
     }
 
-//    public void setUploadFile(UploadedFile _uploadFile) {
-//        this._uploadFile = _uploadFile;
-//    }
-//
-//    public UploadedFile getUploadFile() {
-//        return _uploadFile;
-//    }
+    public void setUploadFile(UploadedFile _uploadFile) {
+        this._uploadFile = _uploadFile;
+    }
+
+    public UploadedFile getUploadFile() {
+        return _uploadFile;
+    }
 
     public void massUpload(ActionEvent actionEvent) {
-        UploadedFile file = this.getFile();
+        UploadedFile file = this.getUploadFile();
         try {
                     //Check if file is XLSX
                     if (file.getContentType().equalsIgnoreCase("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") ||
@@ -423,7 +425,10 @@ public class CardBean {
                         msg.setSeverity(FacesMessage.SEVERITY_WARN);
                         FacesContext.getCurrentInstance().addMessage(null, msg);
                     }
-                    AdfFacesContext.getCurrentInstance().addPartialTarget(getCardTable());
+                    ADFUtils.executeOperationBinding("Commit"); 
+                    this.getAttachDocument().hide();
+                    JSFUtils.addInformationMessage("Applications are uploaded successfully");
+                    //AdfFacesContext.getCurrentInstance().addPartialTarget(getCardTable());
 
                 } catch (IOException e) {
                     // TODO

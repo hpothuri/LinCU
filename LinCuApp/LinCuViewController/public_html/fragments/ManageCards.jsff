@@ -38,7 +38,7 @@
                 fetchSize="#{bindings.LincuMemberCard.rangeSize}"
                 filterModel="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor}" filterVisible="true"
                 queryListener="#{bindings.LincuMemberCardVOCriteriaQuery.processQuery}" varStatus="vs" id="resId1"
-                binding="#{card.cardTable}">
+                binding="#{card.cardTable}" autoHeightRows="0">
         <af:column sortProperty="#{bindings.LincuMemberCard.hints.MemberId.name}" filterable="true" sortable="true"
                    headerText="#{bindings.LincuMemberCard.hints.MemberId.label}" id="resId1c1">
           <af:selectOneChoice value="#{row.bindings.MemberId.inputValue}" label="#{row.bindings.MemberId.label}"
@@ -128,8 +128,8 @@
           <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b11" actionListener="#{card.massUpload}"/>
         </f:facet>
         <af:panelFormLayout id="pfl2">
-          <af:inputFile label="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}" id="if1" value="#{card.uploadFile}"
-                        autoSubmit="true"/>
+          <af:inputFile label="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}" id="if1" value="#{card.uploadFile}"/>
+          <!--<af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b12" actionListener="#{card.massUpload}" rendered="true"/>-->
         </af:panelFormLayout>
       </af:dialog>
     </af:popup>

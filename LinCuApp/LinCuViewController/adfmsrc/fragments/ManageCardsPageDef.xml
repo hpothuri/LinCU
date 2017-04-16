@@ -27,5 +27,6 @@
             DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
     <action IterBinding="LincuMemberCardIterator" id="Execute" InstanceName="LinCuAMDataControl.LincuMemberCard"
             DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action id="Commit" DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
   </bindings>
 </pageDefinition>
