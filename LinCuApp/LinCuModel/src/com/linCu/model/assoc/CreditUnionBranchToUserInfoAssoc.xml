@@ -21,7 +21,6 @@
       <Attr Name="_minCardinality" Value="1"/>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="CreditUnionBranchEO"/>
-      <Attr Name="_foreignKey" Value="com.linCu.model.entity.CreditUnionBranchEO.CreditUnionBranchPk"/>
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.linCu.model.entity.CreditUnionBranchEO.CreditUnionId"/>
@@ -36,7 +35,6 @@
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="LincuUserInfoEO"/>
-      <Attr Name="_foreignKey" Value="com.linCu.model.entity.LincuUserInfoEO.LincuUserInfoFk1"/>
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.linCu.model.entity.LincuUserInfoEO.CreditUnionId"/>

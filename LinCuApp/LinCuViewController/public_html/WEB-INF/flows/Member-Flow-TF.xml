@@ -5,33 +5,31 @@
     <data-control-scope>
       <shared/>
     </data-control-scope>
-    <method-call id="CreateInsert">
-      <method>#{bindings.CreateInsert.execute}</method>
-      <outcome>
-        <fixed-outcome>CreateInsert</fixed-outcome>
-      </outcome>
-    </method-call>
+    <managed-bean id="__8">
+      <managed-bean-name>member</managed-bean-name>
+      <managed-bean-class>com.linCu.view.backingBeans.MemberBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
     <view id="ManageMember">
       <page>/fragments/ManageMember.jsff</page>
     </view>
     <view id="Member">
       <page>/fragments/Member.jsff</page>
     </view>
+    <method-call id="createMember">
+      <method>#{bindings.createMember.execute}</method>
+      <outcome>
+        <fixed-outcome>createMember</fixed-outcome>
+      </outcome>
+    </method-call>
     <control-flow-rule id="__1">
       <from-activity-id>ManageMember</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>createMember</from-outcome>
-        <to-activity-id>CreateInsert</to-activity-id>
+        <to-activity-id>createMember</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__5">
         <from-outcome>editMember</from-outcome>
-        <to-activity-id>Member</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__3">
-      <from-activity-id>CreateInsert</from-activity-id>
-      <control-flow-case id="__4">
-        <from-outcome>CreateInsert</from-outcome>
         <to-activity-id>Member</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
@@ -40,6 +38,13 @@
       <control-flow-case id="__7">
         <from-outcome>cancel</from-outcome>
         <to-activity-id>ManageMember</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>createMember</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>createMember</from-outcome>
+        <to-activity-id>Member</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>

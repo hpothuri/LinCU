@@ -323,6 +323,14 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
 
 
     /**
+     * Sets <code>value</code> as attribute value for CREATED_BY using the alias name CreatedBy.
+     * @param value value to set the CREATED_BY
+     */
+    public void setCreatedBy(String value) {
+        setAttributeInternal(CREATEDBY, value);
+    }
+
+    /**
      * Gets the attribute value for CREATION_DATE using the alias name CreationDate.
      * @return the CREATION_DATE
      */
@@ -330,6 +338,14 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
         return (Timestamp) getAttributeInternal(CREATIONDATE);
     }
 
+
+    /**
+     * Sets <code>value</code> as attribute value for CREATION_DATE using the alias name CreationDate.
+     * @param value value to set the CREATION_DATE
+     */
+    public void setCreationDate(Timestamp value) {
+        setAttributeInternal(CREATIONDATE, value);
+    }
 
     /**
      * Gets the attribute value for LAST_UPDATED_BY using the alias name LastUpdatedBy.
@@ -341,6 +357,14 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
 
 
     /**
+     * Sets <code>value</code> as attribute value for LAST_UPDATED_BY using the alias name LastUpdatedBy.
+     * @param value value to set the LAST_UPDATED_BY
+     */
+    public void setLastUpdatedBy(String value) {
+        setAttributeInternal(LASTUPDATEDBY, value);
+    }
+
+    /**
      * Gets the attribute value for LAST_UPDATE_DATE using the alias name LastUpdateDate.
      * @return the LAST_UPDATE_DATE
      */
@@ -348,6 +372,14 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
         return (Timestamp) getAttributeInternal(LASTUPDATEDATE);
     }
 
+
+    /**
+     * Sets <code>value</code> as attribute value for LAST_UPDATE_DATE using the alias name LastUpdateDate.
+     * @param value value to set the LAST_UPDATE_DATE
+     */
+    public void setLastUpdateDate(Timestamp value) {
+        setAttributeInternal(LASTUPDATEDATE, value);
+    }
 
     /**
      * Gets the attribute value for OBJECT_VERSION_ID using the alias name ObjectVersionId.

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57"
+                id="Member_Flow_TF_Member_Flow_TF_createMemberPageDef" Package="flows" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="createMember" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createMember"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMember">
+      <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

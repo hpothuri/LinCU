@@ -14,7 +14,9 @@
   SelectAllAttributes="false"
   PageIterMode="Full"
   RowClass="com.linCu.model.view.LincuMemberVORowImpl"
-  ComponentClass="com.linCu.model.view.LincuMemberVOImpl">
+  ComponentClass="com.linCu.model.view.LincuMemberVOImpl"
+  ComponentInterface="com.linCu.model.view.common.LincuMemberVO"
+  ClientProxyName="com.linCu.model.view.client.LincuMemberVOClient">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -600,7 +602,7 @@
   </ViewAttribute>
   <ViewAttribute
     Name="CreatedBy"
-    IsUpdateable="false"
+    IsUpdateable="while_insert"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
@@ -608,7 +610,7 @@
     AliasName="CREATED_BY"/>
   <ViewAttribute
     Name="CreationDate"
-    IsUpdateable="false"
+    IsUpdateable="while_insert"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreationDate"
@@ -768,7 +770,6 @@
   </ViewAttribute>
   <ViewAttribute
     Name="LastUpdateDate"
-    IsUpdateable="false"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdateDate"
@@ -776,7 +777,6 @@
     AliasName="LAST_UPDATE_DATE"/>
   <ViewAttribute
     Name="LastUpdatedBy"
-    IsUpdateable="false"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
@@ -956,7 +956,7 @@
   </ViewAttribute>
   <ViewAttribute
     Name="CreatedBy1"
-    IsUpdateable="false"
+    IsUpdateable="while_insert"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
@@ -964,7 +964,7 @@
     AliasName="CREATED_BY1"/>
   <ViewAttribute
     Name="CreationDate1"
-    IsUpdateable="false"
+    IsUpdateable="while_insert"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreationDate"
@@ -1189,7 +1189,6 @@
     AliasName="LAST_APPROVED_DATE1"/>
   <ViewAttribute
     Name="LastUpdateDate1"
-    IsUpdateable="false"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdateDate"
@@ -1197,7 +1196,6 @@
     AliasName="LAST_UPDATE_DATE1"/>
   <ViewAttribute
     Name="LastUpdatedBy1"
-    IsUpdateable="false"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
@@ -1776,6 +1774,29 @@
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="createMember"
+      MethodName="createMember">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="user"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="updateMember"
+      MethodName="updateMember">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="user"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.linCu.model.LinCuModelBundle"/>

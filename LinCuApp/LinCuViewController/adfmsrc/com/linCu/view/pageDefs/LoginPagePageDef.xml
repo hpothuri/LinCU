@@ -11,7 +11,7 @@
                   InstanceName="data.LinCuAMDataControl.dataProvider"
                   ReturnName="data.LinCuAMDataControl.methodResults.validateLogin_LinCuAMDataControl_dataProvider_validateLogin_result">
       <NamedData NDName="userName" NDValue="#{pageFlowScope.userName}" NDType="java.lang.String"/>
-      <NamedData NDName="password" NDValue="#{pageFlowScope.password}" NDType="java.lang.String"/>
+      <NamedData NDName="password" NDValue="" NDType="java.lang.String"/>
     </methodAction>
     <methodAction id="userSessionInfo" RequiresUpdateModel="true" Action="invokeMethod" MethodName="userSessionInfo"
                   IsViewObjectMethod="false" DataControl="LinCuAMDataControl"

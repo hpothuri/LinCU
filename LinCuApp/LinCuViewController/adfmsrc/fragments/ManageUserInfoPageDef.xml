@@ -65,16 +65,26 @@
         <Item Value="UserName"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="LincuUserInfoIterator" id="Password">
-      <AttrNames>
-        <Item Value="Password"/>
-      </AttrNames>
-    </attributeValues>
     <list IterBinding="LincuUserInfoIterator" StaticList="false" Uses="LOV_UserTypeCode" id="UserTypeCode"
           DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
     <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="LinCuAMDataControl"/>
     <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="LinCuAMDataControl"/>
     <action IterBinding="LincuUserInfoIterator" id="CreateInsert" InstanceName="LinCuAMDataControl.LincuUserInfo"
             DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <methodAction id="createUser" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createUser"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuUserInfo">
+      <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="updateUser" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updateUser"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuUserInfo">
+      <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="updatePassword" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updatePassword"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuUserInfo">
+      <NamedData NDName="password" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

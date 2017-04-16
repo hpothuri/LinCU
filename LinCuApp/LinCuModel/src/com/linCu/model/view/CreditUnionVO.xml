@@ -12,7 +12,15 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  RowClass="com.linCu.model.view.CreditUnionVORowImpl"
+  ComponentClass="com.linCu.model.view.CreditUnionVOImpl"
+  ComponentInterface="com.linCu.model.view.common.CreditUnionVO"
+  ClientProxyName="com.linCu.model.view.client.CreditUnionVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <ViewAccessor
     Name="CountryVA"
     ViewObjectName="com.linCu.model.vvo.CountryVVO"
@@ -242,7 +250,7 @@
     EntityAttrName="CreatedBy"
     EntityUsage="CreditUnionEO"
     AliasName="CREATED_BY"
-    IsUpdateable="false">
+    IsUpdateable="while_insert">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -257,7 +265,7 @@
     EntityAttrName="CreationDate"
     EntityUsage="CreditUnionEO"
     AliasName="CREATION_DATE"
-    IsUpdateable="false">
+    IsUpdateable="while_insert">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -271,8 +279,7 @@
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
     EntityUsage="CreditUnionEO"
-    AliasName="LAST_UPDATED_BY"
-    IsUpdateable="false">
+    AliasName="LAST_UPDATED_BY">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -286,8 +293,7 @@
     PrecisionRule="true"
     EntityAttrName="LastUpdateDate"
     EntityUsage="CreditUnionEO"
-    AliasName="LAST_UPDATE_DATE"
-    IsUpdateable="false">
+    AliasName="LAST_UPDATE_DATE">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -400,6 +406,29 @@
     ViewLink="com.linCu.model.viewLink.CreditUnionToBranchVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="createCreditUnion"
+      MethodName="createCreditUnion">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="user"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="updateCreditUnion"
+      MethodName="updateCreditUnion">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="user"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.linCu.model.LinCuModelBundle"/>

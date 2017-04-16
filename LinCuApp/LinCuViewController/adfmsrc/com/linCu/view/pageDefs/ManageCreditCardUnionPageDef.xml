@@ -88,5 +88,15 @@
         <Item Value="CreditUnionEmailId"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="createCreditUnion" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createCreditUnion"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.CreditUnion">
+      <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="updateCreditUnion" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updateCreditUnion"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.CreditUnion">
+      <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

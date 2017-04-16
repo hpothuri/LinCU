@@ -1,6 +1,14 @@
 package com.linCu.view.backingBeans;
 
+import com.linCu.constants.LinCUConstants;
 import com.linCu.view.utils.ADFUtils;
+
+import com.linCu.view.utils.EmailUtil;
+
+import com.linCu.view.utils.PasswordUtil;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -30,7 +38,7 @@ public class UserInfo {
 
     public void createUser(ActionEvent actionEvent) {
         try {
-            ADFUtils.executeOperationBinding("CreateInsert"); 
+            ADFUtils.executeOperationBinding("createUser"); 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -45,7 +53,20 @@ public class UserInfo {
 
     public void save(ActionEvent actionEvent) {
         try {
+            String action = (String)ADFUtils.getPageFlowScopeValue("action");
+            if((action != null) && ("create".equalsIgnoreCase(action))){
+            String userName = (String)ADFUtils.getBoundAttributeValue("Email");
+            String password = PasswordUtil.generateRamdomPassword();
+            Map paramMap = new HashMap();
+            paramMap.put("password", PasswordUtil.encryptPassword(password));
+            ADFUtils.executeOperationBinding("updatePassword",paramMap);
+            String subject  = "Your LinCU Account is created";
+            String content = "Dear User," + "\n\n Your LinCU account has been created, You can access system using below credentials.\n\n Login Name: ".concat(userName).concat("\n\n Password: ").concat(password);
+            EmailUtil.sendEmail(LinCUConstants.EMAIL_USER, userName, subject, content);
+            }
+            ADFUtils.executeOperationBinding("updateUser"); 
             ADFUtils.executeOperationBinding("Commit"); 
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }

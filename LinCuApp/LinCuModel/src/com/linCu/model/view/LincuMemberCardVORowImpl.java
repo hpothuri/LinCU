@@ -1,5 +1,7 @@
 package com.linCu.model.view;
 
+import com.linCu.model.entity.LincuMemberCardEOImpl;
+
 import java.math.BigDecimal;
 
 import java.sql.Timestamp;
@@ -23,8 +25,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      * AttributesEnum: generated enum for identifying attributes and accessors. DO NOT MODIFY.
      */
     public enum AttributesEnum {
-        AuthorizedBy,
         AuthorizedOn,
+        AuthorizedBy,
         CardId,
         CardReqType,
         CardStatus,
@@ -125,6 +127,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         StreetType,
         WorkPhone,
         Comments,
+        TransCardStatus,
         LincuMemberCardDocsVO,
         CardTypeVA,
         LincuUnionsVA,
@@ -164,8 +167,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     }
 
 
-    public static final int AUTHORIZEDBY = AttributesEnum.AuthorizedBy.index();
     public static final int AUTHORIZEDON = AttributesEnum.AuthorizedOn.index();
+    public static final int AUTHORIZEDBY = AttributesEnum.AuthorizedBy.index();
     public static final int CARDID = AttributesEnum.CardId.index();
     public static final int CARDREQTYPE = AttributesEnum.CardReqType.index();
     public static final int CARDSTATUS = AttributesEnum.CardStatus.index();
@@ -266,6 +269,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int STREETTYPE = AttributesEnum.StreetType.index();
     public static final int WORKPHONE = AttributesEnum.WorkPhone.index();
     public static final int COMMENTS = AttributesEnum.Comments.index();
+    public static final int TRANSCARDSTATUS = AttributesEnum.TransCardStatus.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int CARDTYPEVA = AttributesEnum.CardTypeVA.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
@@ -291,8 +295,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      * Gets LincuMemberCardEO entity object.
      * @return the LincuMemberCardEO
      */
-    public EntityImpl getLincuMemberCardEO() {
-        return (EntityImpl) getEntity(ENTITY_LINCUMEMBERCARDEO);
+    public LincuMemberCardEOImpl getLincuMemberCardEO() {
+        return (LincuMemberCardEOImpl) getEntity(ENTITY_LINCUMEMBERCARDEO);
     }
 
     /**
@@ -1941,6 +1945,15 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      */
     public void setComments(String value) {
         setAttributeInternal(COMMENTS, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute TransCardStatus.
+     * @return the TransCardStatus
+     */
+    public String getTransCardStatus() {
+        return this.getCardStatus();
+        //return (String) getAttributeInternal(TRANSCARDSTATUS);
     }
 
     /**

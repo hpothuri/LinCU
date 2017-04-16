@@ -21,6 +21,40 @@
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
+  <ViewAccessor
+    Name="DocumentTypeVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['DOCUMENT_PROOF_TYPE']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_DocumentType"
+    ListVOName="DocumentTypeVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DocumentType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="LincuMemberCardDocsEO"
     Entity="com.linCu.model.entity.LincuMemberCardDocsEO"/>
@@ -82,6 +116,28 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="DocumentType"
+    PrecisionRule="true"
+    EntityAttrName="DocumentType"
+    EntityUsage="LincuMemberCardDocsEO"
+    AliasName="DOCUMENT_TYPE"
+    LOVName="LOV_DocumentType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Required"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Required"
+    EntityUsage="LincuMemberCardDocsEO"
+    AliasName="REQUIRED"
+    DefaultValue="N"/>
   <ClientInterface
     Name="__clientInterface">
     <Method

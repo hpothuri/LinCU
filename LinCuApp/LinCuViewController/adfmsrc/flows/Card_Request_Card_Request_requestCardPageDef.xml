@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57"
+                id="Card_Request_Card_Request_requestCardPageDef" Package="flows" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="requestCard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="requestCard"
+                  IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider">
+      <NamedData NDName="requestor" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+      <NamedData NDName="creditUnionId" NDValue="#{sessionScope.user.unionId}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

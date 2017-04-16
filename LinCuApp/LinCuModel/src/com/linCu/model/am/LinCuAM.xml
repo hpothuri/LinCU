@@ -39,7 +39,9 @@
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"/>
   <ViewUsage
     Name="LincuMemberCardDocs"
-    ViewObjectName="com.linCu.model.view.LincuMemberCardDocsVO"/>
+    ViewObjectName="com.linCu.model.view.LincuMemberCardDocsVO"
+    FetchSize="11"
+    RangeSize="10"/>
   <ViewLinkUsage
     Name="CreditUnionBranchVL"
     ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionToBranchVL"
@@ -96,6 +98,36 @@
       <Parameter
         Name="userId"
         Type="java.lang.Long"/>
+    </Method>
+    <Method
+      Name="userExists"
+      MethodName="userExists">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="userName"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="requestCard"
+      MethodName="requestCard">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="requestor"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="creditUnionId"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="isAllRequiredDocumentsUploaded"
+      MethodName="isAllRequiredDocumentsUploaded">
+      <Return
+        Name="_return_type_"
+        Type="boolean"/>
     </Method>
   </ClientInterface>
 </AppModule>

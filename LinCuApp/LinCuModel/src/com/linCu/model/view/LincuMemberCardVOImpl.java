@@ -20,6 +20,8 @@ public class LincuMemberCardVOImpl extends ViewObjectImpl implements LincuMember
     public void submitCard(){
         LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl)this.getCurrentRow();
         if(row != null){
+//            this.executeQuery();
+//            this.setCurrentRow(row);
             long time = System.currentTimeMillis();
             java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
             row.setSubmittedOn(timestamp);
@@ -31,10 +33,12 @@ public class LincuMemberCardVOImpl extends ViewObjectImpl implements LincuMember
     public void approve(String approver){
         LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl)this.getCurrentRow();
         if(row != null){
+//            this.executeQuery();
+//            this.setCurrentRow(row);
             long time = System.currentTimeMillis();
             java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
             row.setAuthorizedOn(timestamp);
-            row.setAuthorizedBy("test");
+            row.setAuthorizedBy(approver);
             row.setCardStatus("AUTHORIZED");
         }
         
@@ -43,13 +47,28 @@ public class LincuMemberCardVOImpl extends ViewObjectImpl implements LincuMember
     public void reject(String rejector){
         LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl)this.getCurrentRow();
         if(row != null){
+//            this.executeQuery();
+//            this.setCurrentRow(row);
             long time = System.currentTimeMillis();
             java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
             row.setAuthorizedOn(timestamp);
-            row.setAuthorizedBy("test");
+            row.setAuthorizedBy(rejector);
             row.setCardStatus("REJECTED");
         }
         
+    }
+    
+    public void requestCard(String requestor, String creditUnionId){
+        LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl) this.createRow();
+        if(row != null){
+        this.insertRow(row);
+        this.setCurrentRow(row);
+        row.setCreditUnionId(creditUnionId);
+        row.setCreatedBy(requestor);
+        long time = System.currentTimeMillis();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+        row.setCreatedOn(timestamp);
+        }
     }
 }
 

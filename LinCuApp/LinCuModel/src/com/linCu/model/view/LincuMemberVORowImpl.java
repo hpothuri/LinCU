@@ -14,6 +14,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
 public class LincuMemberVORowImpl extends ViewRowImpl {
+
     public static final int ENTITY_LINCUMEMBERINFOEO = 0;
     public static final int ENTITY_LINCUMEMBERKYCEO = 1;
 
@@ -312,6 +313,14 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Sets <code>value</code> as attribute value for CREATED_BY using the alias name CreatedBy.
+     * @param value value to set the CREATED_BY
+     */
+    public void setCreatedBy(String value) {
+        setAttributeInternal(CREATEDBY, value);
+    }
+
+    /**
      * Gets the attribute value for CREATION_DATE using the alias name CreationDate.
      * @return the CREATION_DATE
      */
@@ -320,20 +329,11 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     }
 
     /**
-     * Gets the attribute value for CREDIT_UNION_BRANCH_ID using the alias name CreditUnionBranchId.
-     * @return the CREDIT_UNION_BRANCH_ID
+     * Sets <code>value</code> as attribute value for CREATION_DATE using the alias name CreationDate.
+     * @param value value to set the CREATION_DATE
      */
-    public String getCreditUnionBranchId() {
-        return (String) getAttributeInternal(CREDITUNIONBRANCHID);
-    }
-
-    /**
-     * Sets <code>value</code> as attribute value for CREDIT_UNION_BRANCH_ID using the alias name CreditUnionBranchId.
-     * @param value value to set the CREDIT_UNION_BRANCH_ID
-     */
-    public void setCreditUnionBranchId(String value) {
-        setAttributeInternal(CREDITUNIONBRANCHID, value);
-        this.setCreditUnionBranchId1(value);
+    public void setCreationDate(Timestamp value) {
+        setAttributeInternal(CREATIONDATE, value);
     }
 
     /**
@@ -351,6 +351,23 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     public void setCreditUnionId(String value) {
         setAttributeInternal(CREDITUNIONID, value);
         this.setCreditUnionId1(value);
+    }
+
+    /**
+     * Gets the attribute value for CREDIT_UNION_BRANCH_ID using the alias name CreditUnionBranchId.
+     * @return the CREDIT_UNION_BRANCH_ID
+     */
+    public String getCreditUnionBranchId() {
+        return (String) getAttributeInternal(CREDITUNIONBRANCHID);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for CREDIT_UNION_BRANCH_ID using the alias name CreditUnionBranchId.
+     * @param value value to set the CREDIT_UNION_BRANCH_ID
+     */
+    public void setCreditUnionBranchId(String value) {
+        setAttributeInternal(CREDITUNIONBRANCHID, value);
+        this.setCreditUnionBranchId1(value);
     }
 
     /**
@@ -506,11 +523,27 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Sets <code>value</code> as attribute value for LAST_UPDATE_DATE using the alias name LastUpdateDate.
+     * @param value value to set the LAST_UPDATE_DATE
+     */
+    public void setLastUpdateDate(Timestamp value) {
+        setAttributeInternal(LASTUPDATEDATE, value);
+    }
+
+    /**
      * Gets the attribute value for LAST_UPDATED_BY using the alias name LastUpdatedBy.
      * @return the LAST_UPDATED_BY
      */
     public String getLastUpdatedBy() {
         return (String) getAttributeInternal(LASTUPDATEDBY);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LAST_UPDATED_BY using the alias name LastUpdatedBy.
+     * @param value value to set the LAST_UPDATED_BY
+     */
+    public void setLastUpdatedBy(String value) {
+        setAttributeInternal(LASTUPDATEDBY, value);
     }
 
     /**
@@ -527,7 +560,6 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
      */
     public void setMemberId(String value) {
         setAttributeInternal(MEMBERID, value);
-        //this.setMemberId1(value);
     }
 
     /**
@@ -731,11 +763,27 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Sets <code>value</code> as attribute value for CREATED_BY using the alias name CreatedBy1.
+     * @param value value to set the CREATED_BY
+     */
+    public void setCreatedBy1(String value) {
+        setAttributeInternal(CREATEDBY1, value);
+    }
+
+    /**
      * Gets the attribute value for CREATION_DATE using the alias name CreationDate1.
      * @return the CREATION_DATE
      */
     public Timestamp getCreationDate1() {
         return (Timestamp) getAttributeInternal(CREATIONDATE1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for CREATION_DATE using the alias name CreationDate1.
+     * @param value value to set the CREATION_DATE
+     */
+    public void setCreationDate1(Timestamp value) {
+        setAttributeInternal(CREATIONDATE1, value);
     }
 
     /**
@@ -1035,11 +1083,27 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Sets <code>value</code> as attribute value for LAST_UPDATE_DATE using the alias name LastUpdateDate1.
+     * @param value value to set the LAST_UPDATE_DATE
+     */
+    public void setLastUpdateDate1(Timestamp value) {
+        setAttributeInternal(LASTUPDATEDATE1, value);
+    }
+
+    /**
      * Gets the attribute value for LAST_UPDATED_BY using the alias name LastUpdatedBy1.
      * @return the LAST_UPDATED_BY
      */
     public String getLastUpdatedBy1() {
         return (String) getAttributeInternal(LASTUPDATEDBY1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LAST_UPDATED_BY using the alias name LastUpdatedBy1.
+     * @param value value to set the LAST_UPDATED_BY
+     */
+    public void setLastUpdatedBy1(String value) {
+        setAttributeInternal(LASTUPDATEDBY1, value);
     }
 
     /**
@@ -1671,14 +1735,12 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
         return (RowSet) getAttributeInternal(GENDERVA);
     }
 
-
     /**
      * Gets the view accessor <code>RowSet</code> CountryVA.
      */
     public RowSet getCountryVA() {
         return (RowSet) getAttributeInternal(COUNTRYVA);
     }
-
 
     /**
      * Gets the view accessor <code>RowSet</code> YesOrNoVA.
@@ -1688,7 +1750,7 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     }
 
     /**
-     * Gets the view accessor <code>RowSet</code> LookUpDataVA.
+     * Gets the view accessor <code>RowSet</code> MaritalStatusVA.
      */
     public RowSet getMaritalStatusVA() {
         return (RowSet) getAttributeInternal(MARITALSTATUSVA);
@@ -1702,14 +1764,14 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     }
 
     /**
-     * Gets the view accessor <code>RowSet</code> LookUpDataVVO1.
+     * Gets the view accessor <code>RowSet</code> HomeOwnershipVA.
      */
     public RowSet getHomeOwnershipVA() {
         return (RowSet) getAttributeInternal(HOMEOWNERSHIPVA);
     }
 
     /**
-     * Gets the view accessor <code>RowSet</code> LookUpDataVVO1.
+     * Gets the view accessor <code>RowSet</code> FCBShareholdingVA.
      */
     public RowSet getFCBShareholdingVA() {
         return (RowSet) getAttributeInternal(FCBSHAREHOLDINGVA);
@@ -1728,5 +1790,7 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     public RowSet getOccupationVA() {
         return (RowSet) getAttributeInternal(OCCUPATIONVA);
     }
+
+
 }
 

@@ -23,7 +23,7 @@ public class CreditUnionBranches {
 
     public void createCreditUnionBranch(ActionEvent actionEvent) {
         try {
-            ADFUtils.executeOperationBinding("CreateInsert"); 
+            ADFUtils.executeOperationBinding("createBranch"); 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -38,6 +38,7 @@ public class CreditUnionBranches {
 
     public void save(ActionEvent actionEvent) {
         try {
+            ADFUtils.executeOperationBinding("updateBranch"); 
             ADFUtils.executeOperationBinding("Commit"); 
         } catch (Exception ex) {
             ex.printStackTrace();

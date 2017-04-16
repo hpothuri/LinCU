@@ -220,18 +220,13 @@
     <methodAction id="reject" RequiresUpdateModel="true" Action="invokeMethod" MethodName="reject"
                   IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
                   InstanceName="data.LinCuAMDataControl.LincuMemberCard">
-      <NamedData NDName="rejector" NDType="java.lang.String"/>
+      <NamedData NDName="rejector" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
     </methodAction>
     <methodAction id="approve" RequiresUpdateModel="true" Action="invokeMethod" MethodName="approve"
                   IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
                   InstanceName="data.LinCuAMDataControl.LincuMemberCard">
-      <NamedData NDName="approver" NDType="java.lang.String"/>
+      <NamedData NDName="approver" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
     </methodAction>
-    <attributeValues IterBinding="LincuMemberCardIterator" id="CardStatus1">
-      <AttrNames>
-        <Item Value="CardStatus"/>
-      </AttrNames>
-    </attributeValues>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_BirthCountryCode" id="BirthCountryCode"
           DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_HomeOwnership" id="HomeOwnership"
@@ -246,6 +241,8 @@
           <Item Value="DocId"/>
           <Item Value="DocDesc"/>
           <Item Value="DocumentName"/>
+          <Item Value="DocumentType"/>
+          <Item Value="Required"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -257,11 +254,6 @@
     <attributeValues IterBinding="LincuMemberCardDocsIterator" id="CardId">
       <AttrNames>
         <Item Value="CardId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="LincuMemberCardDocsIterator" id="DocDesc">
-      <AttrNames>
-        <Item Value="DocDesc"/>
       </AttrNames>
     </attributeValues>
     <action IterBinding="LincuMemberCardDocsIterator" id="CreateInsert"
@@ -296,5 +288,21 @@
           DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_PermanentAddrLine4"
           id="PermanentAddrLine4" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MemberId1">
+      <AttrNames>
+        <Item Value="MemberId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LincuMemberCardDocsIterator" StaticList="false" Uses="LOV_DocumentType" id="DocumentType"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <methodAction id="isAllRequiredDocumentsUploaded" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="isAllRequiredDocumentsUploaded" IsViewObjectMethod="false"
+                  DataControl="LinCuAMDataControl" InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.isAllRequiredDocumentsUploaded_LinCuAMDataControl_dataProvider_isAllRequiredDocumentsUploaded_result"/>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="TransCardStatus">
+      <AttrNames>
+        <Item Value="TransCardStatus"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

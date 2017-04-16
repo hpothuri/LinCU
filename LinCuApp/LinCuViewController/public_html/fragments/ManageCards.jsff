@@ -17,12 +17,14 @@
         <af:toolbar id="t1">
         <af:commandToolbarButton text="#{lincuviewcontrollerBundle.REQUEST_CARD}" id="ctb1" icon="/images/card.png" action="create"/>
             <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EDIT_CARD_REQUEST}" id="ctb2" icon="/images/card.png" action="edit"/>
-          <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT}" id="ctb3" icon="/images/Excel-16.gif">
+          <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT}" id="ctb3" icon="/images/Excel-16.gif"
+                                   rendered="#{(sessionScope.user.userRole eq 'FCB')}">
               <af:exportCollectionActionListener type="excelHTML" exportedId="resId1" filename="CardList.xls"
                                                  title="Card List"/>
             </af:commandToolbarButton>
             <af:commandToolbarButton text="#{lincuviewcontrollerBundle.UPLOAD}" id="ctb4" icon="/images/Excel-16.gif"
-                                     actionListener="#{card.requestBulkCards}">
+                                     actionListener="#{card.requestBulkCards}"
+                                     rendered="#{(sessionScope.user.userRole eq 'MSR')}">
             <af:showPopupBehavior popupId="::p2"/>
           </af:commandToolbarButton>
         </af:toolbar>
@@ -126,7 +128,8 @@
           <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b11" actionListener="#{card.massUpload}"/>
         </f:facet>
         <af:panelFormLayout id="pfl2">
-          <af:inputFile label="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}" id="if1" value="#{card.file}"/>
+          <af:inputFile label="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}" id="if1" value="#{card.uploadFile}"
+                        autoSubmit="true"/>
         </af:panelFormLayout>
       </af:dialog>
     </af:popup>

@@ -216,7 +216,8 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="LINCU_MEMBER_INFO"
-    DefaultValue="test">
+    IsUpdateable="while_insert"
+    RetrievedOnInsert="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -228,7 +229,9 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO"
+    IsUpdateable="while_insert"
+    RetrievedOnInsert="true">
     <TransientExpression
       Name="ExpressionScript"
       CodeSourceName="LincuMemberInfoEORow"/>
@@ -241,7 +244,9 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="LINCU_MEMBER_INFO"
-    DefaultValue="test">
+    IsNotNull="true"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -252,7 +257,10 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_INFO">
+    TableName="LINCU_MEMBER_INFO"
+    IsNotNull="true"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true">
     <TransientExpression
       Name="ExpressionScript"
       CodeSourceName="LincuMemberInfoEORow"/>
@@ -265,9 +273,7 @@
     SQLType="NUMERIC"
     Type="java.lang.Long"
     ColumnType="NUMBER"
-    TableName="LINCU_MEMBER_INFO"
-    ChangeIndicator="true"
-    DefaultValue="1"/>
+    TableName="LINCU_MEMBER_INFO"/>
   <Attribute
     Name="LastApprovedBy"
     Precision="60"
@@ -275,8 +281,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_INFO"
-    DefaultValue="test">
+    TableName="LINCU_MEMBER_INFO">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -287,11 +292,7 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_INFO">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberInfoEORow"/>
-  </Attribute>
+    TableName="LINCU_MEMBER_INFO"/>
   <AccessorAttribute
     Name="CreditUnionBranchEO"
     Association="com.linCu.model.assoc.CreditUnionBranchToMemberInfoAssoc"
@@ -320,6 +321,30 @@
     AssociationOtherEnd="com.linCu.model.assoc.MemberCardToMemberInfoAssoc.LincuMemberInfoEO"
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
+  <Key
+    Name="LincuMemberInfoLastUpdateDateCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="LINCU_MEMBER_INFO_LAST_UPDATE_"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.linCu.model.entity.LincuMemberInfoEO.LastUpdateDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="LincuMemberInfoLastUpdatedByCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="LINCU_MEMBER_INFO_LAST_UPDATED"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.linCu.model.entity.LincuMemberInfoEO.LastUpdatedBy"/>
+    </AttrArray>
+  </Key>
   <Key
     Name="LincuMemberInfoPk"
     PrimaryKey="true">

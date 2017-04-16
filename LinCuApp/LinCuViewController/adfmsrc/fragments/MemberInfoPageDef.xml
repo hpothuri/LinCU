@@ -295,5 +295,10 @@
           DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
     <list IterBinding="LincuMemberIterator" StaticList="false" Uses="LOV_OccupationCode" id="OccupationCode"
           DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <methodAction id="updateMember" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updateMember"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMember">
+      <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

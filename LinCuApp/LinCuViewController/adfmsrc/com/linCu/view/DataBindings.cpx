@@ -21,13 +21,13 @@
     <page path="/Member.jspx" usageId="com_linCu_view_MemberDetailsPageDef"/>
     <page path="/fragments/Member.jsff" usageId="com_linCu_view_MemberInfoPageDef"/>
     <page path="/fragments/ManageMember.jsff" usageId="com_linCu_view_MemberKYCPageDef"/>
-    <page path="/WEB-INF/flows/Member-Flow-TF.xml#Member-Flow-TF@CreateInsert"
-          usageId="com_linCu_view_Member_Flow_TF_Member_Flow_TF_CreateInsertPageDef"/>
     <page path="/index.jsf" usageId="com_linCu_view_indexPageDef"/>
     <page path="/fragments/ManageCards.jsff" usageId="com_linCu_view_ManageCardsPageDef"/>
-    <page path="/WEB-INF/flows/Card-Request.xml#Card-Request@CreateInsert"
-          usageId="com_linCu_view_Card_Request_Card_Request_CreateInsertPageDef"/>
     <page path="/fragments/Card.jsff" usageId="com_linCu_view_CardPageDef"/>
+    <page path="/WEB-INF/flows/Member-Flow-TF.xml#Member-Flow-TF@createMember"
+          usageId="com_linCu_view_Member_Flow_TF_Member_Flow_TF_createMemberPageDef"/>
+    <page path="/WEB-INF/flows/Card-Request.xml#Card-Request@requestCard"
+          usageId="com_linCu_view_Card_Request_Card_Request_requestCardPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_linCu_view_CreateCreditUnionPageDef" path="fragments.CreateCreditUnionPageDef"/>
@@ -44,13 +44,13 @@
     <page id="com_linCu_view_MemberDetailsPageDef" path="com.linCu.view.pageDefs.MemberDetailsPageDef"/>
     <page id="com_linCu_view_MemberInfoPageDef" path="fragments.MemberInfoPageDef"/>
     <page id="com_linCu_view_MemberKYCPageDef" path="fragments.MemberKYCPageDef"/>
-    <page id="com_linCu_view_Member_Flow_TF_Member_Flow_TF_CreateInsertPageDef"
-          path="flows.Member_Flow_TF_Member_Flow_TF_CreateInsertPageDef"/>
     <page id="com_linCu_view_indexPageDef" path="com.linCu.view.pageDefs.indexPageDef"/>
     <page id="com_linCu_view_ManageCardsPageDef" path="fragments.ManageCardsPageDef"/>
-    <page id="com_linCu_view_Card_Request_Card_Request_CreateInsertPageDef"
-          path="flows.Card_Request_Card_Request_CreateInsertPageDef"/>
     <page id="com_linCu_view_CardPageDef" path="fragments.CardPageDef"/>
+    <page id="com_linCu_view_Member_Flow_TF_Member_Flow_TF_createMemberPageDef"
+          path="flows.Member_Flow_TF_Member_Flow_TF_createMemberPageDef"/>
+    <page id="com_linCu_view_Card_Request_Card_Request_requestCardPageDef"
+          path="flows.Card_Request_Card_Request_requestCardPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="LinCuAMDataControl" Package="com.linCu.model.am"

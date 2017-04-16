@@ -16,10 +16,10 @@
     <view id="Card">
       <page>/fragments/Card.jsff</page>
     </view>
-    <method-call id="CreateInsert">
-      <method>#{bindings.CreateInsert.execute}</method>
+    <method-call id="requestCard">
+      <method>#{bindings.requestCard.execute}</method>
       <outcome>
-        <fixed-outcome>CreateInsert</fixed-outcome>
+        <fixed-outcome>requestCard</fixed-outcome>
       </outcome>
     </method-call>
     <control-flow-rule id="__1">
@@ -30,14 +30,7 @@
       </control-flow-case>
       <control-flow-case id="__3">
         <from-outcome>create</from-outcome>
-        <to-activity-id>CreateInsert</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__4">
-      <from-activity-id>CreateInsert</from-activity-id>
-      <control-flow-case id="__5">
-        <from-outcome>CreateInsert</from-outcome>
-        <to-activity-id>Card</to-activity-id>
+        <to-activity-id>requestCard</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__6">
@@ -45,6 +38,13 @@
       <control-flow-case id="__7">
         <from-outcome>cancel</from-outcome>
         <to-activity-id>ManageCards</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>requestCard</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>requestCard</from-outcome>
+        <to-activity-id>Card</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>

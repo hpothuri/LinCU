@@ -2,6 +2,7 @@ package com.linCu.model.view;
 
 import java.math.BigDecimal;
 
+import oracle.jbo.RowSet;
 import oracle.jbo.domain.BlobDomain;
 import oracle.jbo.server.EntityImpl;
 import oracle.jbo.server.ViewRowImpl;
@@ -13,6 +14,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---------------------------------------------------------------------
 public class LincuMemberCardDocsVORowImpl extends ViewRowImpl {
 
+
     public static final int ENTITY_LINCUMEMBERCARDDOCSEO = 0;
 
     /**
@@ -23,7 +25,10 @@ public class LincuMemberCardDocsVORowImpl extends ViewRowImpl {
         DocDesc,
         DocId,
         Document,
-        DocumentName;
+        DocumentName,
+        DocumentType,
+        Required,
+        DocumentTypeVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -48,11 +53,15 @@ public class LincuMemberCardDocsVORowImpl extends ViewRowImpl {
         }
     }
 
+
     public static final int CARDID = AttributesEnum.CardId.index();
     public static final int DOCDESC = AttributesEnum.DocDesc.index();
     public static final int DOCID = AttributesEnum.DocId.index();
     public static final int DOCUMENT = AttributesEnum.Document.index();
     public static final int DOCUMENTNAME = AttributesEnum.DocumentName.index();
+    public static final int DOCUMENTTYPE = AttributesEnum.DocumentType.index();
+    public static final int REQUIRED = AttributesEnum.Required.index();
+    public static final int DOCUMENTTYPEVA = AttributesEnum.DocumentTypeVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -146,6 +155,45 @@ public class LincuMemberCardDocsVORowImpl extends ViewRowImpl {
      */
     public void setDocumentName(String value) {
         setAttributeInternal(DOCUMENTNAME, value);
+    }
+
+    /**
+     * Gets the attribute value for DOCUMENT_TYPE using the alias name DocumentType.
+     * @return the DOCUMENT_TYPE
+     */
+    public String getDocumentType() {
+        return (String) getAttributeInternal(DOCUMENTTYPE);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for DOCUMENT_TYPE using the alias name DocumentType.
+     * @param value value to set the DOCUMENT_TYPE
+     */
+    public void setDocumentType(String value) {
+        setAttributeInternal(DOCUMENTTYPE, value);
+    }
+
+    /**
+     * Gets the attribute value for REQUIRED using the alias name Required.
+     * @return the REQUIRED
+     */
+    public String getRequired() {
+        return (String) getAttributeInternal(REQUIRED);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for REQUIRED using the alias name Required.
+     * @param value value to set the REQUIRED
+     */
+    public void setRequired(String value) {
+        setAttributeInternal(REQUIRED, value);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> DocumentTypeVA.
+     */
+    public RowSet getDocumentTypeVA() {
+        return (RowSet) getAttributeInternal(DOCUMENTTYPEVA);
     }
 }
 

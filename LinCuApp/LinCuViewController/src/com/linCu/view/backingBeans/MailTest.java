@@ -9,9 +9,37 @@ public class MailTest {
     }
 
     public static void main(String[] args) {
-        //from,password,to,subject,message  
-            MailTest.send("dileepchemical@gmail.com","pddskm24@GL","dileepchemical@gmail.com","hello javatpoint","How r u?");  
-            //change from, password and to  
+                     final String username = "dbmstestmail@gmail.com";
+                    final String password = "dbmstestmail123";
+
+                    Properties props = new Properties();
+                    props.put("mail.smtp.auth", "true");
+                    props.put("mail.smtp.starttls.enable", "true");
+                    props.put("mail.smtp.host", "smtp.gmail.com");
+                    props.put("mail.smtp.port", "587");
+            
+                    Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+                            protected PasswordAuthentication getPasswordAuthentication() {
+                                return new PasswordAuthentication(username, password);
+                            }
+                        });
+            
+                    try {
+            
+                        Message message = new MimeMessage(session);
+                        message.setFrom(new InternetAddress("dbmstestmail@gmail.com"));
+                        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("dileeprongaliprojects@gmail.com"));
+                        message.setSubject("Testing Subject");
+                        message.setText("Dear User," + "\n\n You are added to LinCU system as Admin, You can access system using below credentials.\n\n Login Name: "+username+"\n\n Password: "+password);
+            
+                        Transport.send(message);
+            
+                        System.out.println("Done");
+            
+                    } catch (MessagingException e) {
+                        throw new RuntimeException(e);
+                    }
+
     }
     
     public static void send(String from,String password,String to,String sub,String msg){  

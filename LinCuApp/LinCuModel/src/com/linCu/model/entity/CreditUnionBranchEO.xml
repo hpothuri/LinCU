@@ -189,8 +189,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="CREDIT_UNION_BRANCH"
-    DefaultValue="test">
+    TableName="CREDIT_UNION_BRANCH">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -216,8 +215,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="CREDIT_UNION_BRANCH"
-    DefaultValue="test">
+    TableName="CREDIT_UNION_BRANCH">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -237,43 +235,32 @@
   </Attribute>
   <Attribute
     Name="ObjectVersionId"
-    IsNotNull="true"
     Precision="15"
     Scale="0"
     ColumnName="OBJECT_VERSION_ID"
     SQLType="NUMERIC"
     Type="java.lang.Long"
     ColumnType="NUMBER"
-    TableName="CREDIT_UNION_BRANCH"
-    ChangeIndicator="true"
-    DefaultValue="1"/>
+    TableName="CREDIT_UNION_BRANCH"/>
   <Attribute
     Name="LastApprovedBy"
-    IsNotNull="true"
     Precision="60"
     ColumnName="LAST_APPROVED_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="CREDIT_UNION_BRANCH"
-    DefaultValue="test">
+    TableName="CREDIT_UNION_BRANCH">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
   </Attribute>
   <Attribute
     Name="LastApprovedDate"
-    IsNotNull="true"
     ColumnName="LAST_APPROVED_DATE"
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="CREDIT_UNION_BRANCH">
-    <TransientExpression
-      Name="ExpressionScript"
-      trustMode="untrusted"
-      CodeSourceName="CreditUnionBranchEORow"/>
-  </Attribute>
+    TableName="CREDIT_UNION_BRANCH"/>
   <AccessorAttribute
     Name="CreditUnionEO"
     Association="com.linCu.model.assoc.CreditUnionToBranchAssoc"

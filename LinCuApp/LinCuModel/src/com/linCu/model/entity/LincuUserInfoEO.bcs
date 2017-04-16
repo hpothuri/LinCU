@@ -4,25 +4,10 @@ package com.linCu.model.entity
 
 import oracle.jbo.script.annotation.TransientValueExpression;
 
-@TransientValueExpression(attributeName="LastApprovedDate")
-def LastApprovedDate_ExpressionScript_Expression()
-{
-adf.currentDate
-}
 
 
-@TransientValueExpression(attributeName="LastUpdateDate")
-def LastUpdateDate_ExpressionScript_Expression()
-{
-adf.currentDate
-}
 
 
-@TransientValueExpression(attributeName="CreationDate")
-def CreationDate_ExpressionScript_Expression()
-{
-adf.currentDate
-}
 
 
 @TransientValueExpression(attributeName="UserId")

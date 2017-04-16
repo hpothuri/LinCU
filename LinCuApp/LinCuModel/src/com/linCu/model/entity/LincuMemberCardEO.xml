@@ -9,7 +9,12 @@
   DBObjectType="table"
   DBObjectName="LINCU_MEMBER_CARD"
   AliasName="LincuMemberCardEO"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  RowClass="com.linCu.model.entity.LincuMemberCardEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <Attribute
     Name="CardId"
     IsNotNull="true"
@@ -19,11 +24,8 @@
     ColumnType="NUMBER"
     TableName="LINCU_MEMBER_CARD"
     PrimaryKey="true"
-    IsUpdateable="while_insert">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberCardEORow"/>
-  </Attribute>
+    IsUpdateable="while_insert"
+    RetrievedOnInsert="true"/>
   <Attribute
     Name="MemberId"
     IsNotNull="true"
@@ -83,8 +85,9 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="LINCU_MEMBER_CARD"
-    DefaultValue="test"
-    IsNotNull="true">
+    IsNotNull="true"
+    IsUpdateable="while_insert"
+    RetrievedOnInsert="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -96,18 +99,18 @@
     Type="java.sql.Timestamp"
     ColumnType="DATE"
     TableName="LINCU_MEMBER_CARD"
-    IsNotNull="true">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberCardEORow"/>
-  </Attribute>
+    IsNotNull="true"
+    RetrievedOnInsert="true"
+    IsUpdateable="while_insert"/>
   <Attribute
     Name="SubmittedOn"
     ColumnName="SUBMITTED_ON"
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_CARD"/>
+    TableName="LINCU_MEMBER_CARD"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true"/>
   <Attribute
     Name="AuthorizedBy"
     Precision="40"
@@ -115,7 +118,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_CARD">
+    TableName="LINCU_MEMBER_CARD"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
@@ -126,7 +131,9 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_CARD"/>
+    TableName="LINCU_MEMBER_CARD"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true"/>
   <Attribute
     Name="CardStatus"
     Precision="40"
@@ -136,7 +143,9 @@
     ColumnType="VARCHAR2"
     TableName="LINCU_MEMBER_CARD"
     DefaultValue="DRAFT"
-    IsNotNull="true">
+    IsNotNull="true"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>

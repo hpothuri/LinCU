@@ -28,7 +28,7 @@ public class CreditUnion {
 
     public void createCreditUnion(ActionEvent actionEvent) {
         try {
-            ADFUtils.executeOperationBinding("CreateInsert"); 
+            ADFUtils.executeOperationBinding("createCreditUnion"); 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -43,6 +43,7 @@ public class CreditUnion {
 
     public void save(ActionEvent actionEvent) {
         try {
+            ADFUtils.executeOperationBinding("updateCreditUnion"); 
             ADFUtils.executeOperationBinding("Commit"); 
         } catch (Exception ex) {
             ex.printStackTrace();

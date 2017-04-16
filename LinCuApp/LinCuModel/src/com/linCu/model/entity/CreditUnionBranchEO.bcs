@@ -11,13 +11,6 @@ def CreditUnionBranchId_ExpressionScript_Expression()
 }
 
 
-@TransientValueExpression(attributeName="LastApprovedDate")
-def LastApprovedDate_ExpressionScript_Expression()
-{
-adf.currentDate
-}
-
-
 @TransientValueExpression(attributeName="LastUpdateDate")
 def LastUpdateDate_ExpressionScript_Expression()
 {

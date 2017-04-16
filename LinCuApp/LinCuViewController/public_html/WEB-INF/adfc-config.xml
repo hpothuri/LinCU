@@ -9,13 +9,21 @@
       <outcome>creditUnion</outcome>
     </case>
     <case id="__11">
-      <expression>#{pageFlowScope.firstLogin}</expression>
+      <expression>#{pageFlowScope.passwordPage}</expression>
       <outcome>resetPassword</outcome>
     </case>
     <default-outcome>resetPassword</default-outcome>
   </router>
   <view id="ResetPassword">
     <page>/ResetPassword.jspx</page>
+    <input-page-parameter id="__5">
+      <from-value>#{pageFlowScope.action}</from-value>
+      <to-value>#{pageFlowScope.action}</to-value>
+    </input-page-parameter>
+    <input-page-parameter id="__8">
+      <from-value>#{pageFlowScope.userId}</from-value>
+      <to-value>#{pageFlowScope.userId}</to-value>
+    </input-page-parameter>
   </view>
   <view id="index">
     <page>/index.jsf</page>

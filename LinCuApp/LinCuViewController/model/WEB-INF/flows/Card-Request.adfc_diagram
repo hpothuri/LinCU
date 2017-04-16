@@ -15,7 +15,7 @@
       <property
          name="description">&lt;html>&lt;p>&lt;b>ManageCards&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
-         name="y">283.5459</property>
+         name="y">281.79297</property>
       <property
          name="page">/fragments/ManageCards.jsff</property>
       <property
@@ -46,40 +46,7 @@
       <property
          name="fromOutcome">edit</property>
       <property
-         name="sdm:polyPoints">R46,320.0,279.6953,599.92566,273.74707,L46</property>
-   </ControlFlowCase>
-   <MethodCall
-      id="MethodCall5">
-      <property
-         name="activityId">CreateInsert</property>
-      <property
-         name="x">473.01465</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>CreateInsert&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
-      <property
-         name="y">481.1494</property>
-      <property
-         name="exceptionHandler">false</property>
-   </MethodCall>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase6"
-      from="View2"
-      to="MethodCall5">
-      <property
-         name="fromOutcome">create</property>
-      <property
-         name="sdm:polyPoints">B50,279.0,337.1953,432.01465,480.79883,L50</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase7"
-      from="MethodCall5"
-      to="View3">
-      <property
-         name="fromOutcome">CreateInsert</property>
-      <property
-         name="sdm:polyPoints">T50,473.01465,426.79883,641.0,331.24707,B50</property>
+         name="sdm:polyPoints">R46,320.0,277.94238,599.9476,273.74707,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -89,6 +56,39 @@
       <property
          name="fromOutcome">cancel</property>
       <property
-         name="sdm:polyPoints">L54,600.0,280.74707,320.07434,286.6953,R54</property>
+         name="sdm:polyPoints">L54,600.0,280.74707,320.05243,284.94238,R54</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall10">
+      <property
+         name="activityId">requestCard</property>
+      <property
+         name="x">489.01758</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>requestCard&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="y">472.1494</property>
+      <property
+         name="exceptionHandler">false</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase11"
+      from="View2"
+      to="MethodCall10">
+      <property
+         name="fromOutcome">create</property>
+      <property
+         name="sdm:polyPoints">B50,279.0,335.44238,448.01758,471.79883,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="MethodCall10"
+      to="View3">
+      <property
+         name="fromOutcome">requestCard</property>
+      <property
+         name="sdm:polyPoints">T50,489.01758,417.79883,641.0,331.24707,B50</property>
    </ControlFlowCase>
 </SDM>

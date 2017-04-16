@@ -64,6 +64,31 @@
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="Required"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="REQUIRED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_CARD_DOCS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DocumentType"
+    Precision="30"
+    ColumnName="DOCUMENT_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_CARD_DOCS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="LincuMemberCardEO"
     Association="com.linCu.model.assoc.LincuMemberCardDocsAssoc"

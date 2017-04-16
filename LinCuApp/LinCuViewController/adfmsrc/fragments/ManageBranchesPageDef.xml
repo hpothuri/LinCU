@@ -93,5 +93,15 @@
         <Item Value="CreditUnionBranchId"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="createBranch" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createBranch"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.CreditUnionBranch">
+      <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="updateBranch" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updateBranch"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.CreditUnionBranch">
+      <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

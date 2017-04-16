@@ -24,10 +24,3 @@ def LastUpdateDate_ExpressionScript_Expression()
 adf.currentDate
 }
 
-
-@TransientValueExpression(attributeName="LastApprovedDate")
-def LastApprovedDate_ExpressionScript_Expression()
-{
-adf.currentDate
-}
-

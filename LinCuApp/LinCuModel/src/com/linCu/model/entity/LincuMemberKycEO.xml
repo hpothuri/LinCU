@@ -20,7 +20,8 @@
     ColumnType="VARCHAR2"
     TableName="LINCU_MEMBER_KYC"
     PrimaryKey="true"
-    IsUpdateable="while_insert">
+    IsUpdateable="while_insert"
+    RetrievedOnInsert="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
@@ -33,7 +34,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
@@ -46,7 +49,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
+    TableName="LINCU_MEMBER_KYC"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
@@ -605,8 +610,7 @@
     SQLType="NUMERIC"
     Type="java.lang.Integer"
     ColumnType="NUMBER"
-    TableName="LINCU_MEMBER_KYC"
-    IsNotNull="true"/>
+    TableName="LINCU_MEMBER_KYC"/>
   <Attribute
     Name="MotherMaidenName"
     IsNotNull="true"
@@ -732,7 +736,8 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="LINCU_MEMBER_KYC"
-    DefaultValue="test">
+    IsUpdateable="while_insert"
+    RetrievedOnInsert="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -744,11 +749,9 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_KYC">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberKycEORow"/>
-  </Attribute>
+    TableName="LINCU_MEMBER_KYC"
+    IsUpdateable="while_insert"
+    RetrievedOnInsert="true"/>
   <Attribute
     Name="LastUpdatedBy"
     IsNotNull="true"
@@ -758,7 +761,8 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="LINCU_MEMBER_KYC"
-    DefaultValue="test">
+    RetrievedOnUpdate="true"
+    RetrievedOnInsert="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -770,49 +774,37 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_KYC">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberKycEORow"/>
-  </Attribute>
+    TableName="LINCU_MEMBER_KYC"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true"/>
   <Attribute
     Name="ObjectVersionId"
-    IsNotNull="true"
     Precision="15"
     Scale="0"
     ColumnName="OBJECT_VERSION_ID"
     SQLType="NUMERIC"
     Type="java.lang.Long"
     ColumnType="NUMBER"
-    TableName="LINCU_MEMBER_KYC"
-    ChangeIndicator="true"
-    DefaultValue="1"/>
+    TableName="LINCU_MEMBER_KYC"/>
   <Attribute
     Name="LastApprovedBy"
-    IsNotNull="true"
     Precision="60"
     ColumnName="LAST_APPROVED_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC"
-    DefaultValue="test">
+    TableName="LINCU_MEMBER_KYC">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
   </Attribute>
   <Attribute
     Name="LastApprovedDate"
-    IsNotNull="true"
     ColumnName="LAST_APPROVED_DATE"
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LINCU_MEMBER_KYC">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuMemberKycEORow"/>
-  </Attribute>
+    TableName="LINCU_MEMBER_KYC"/>
   <AccessorAttribute
     Name="CreditUnionBranchEO"
     Association="com.linCu.model.assoc.CreditUnionBranchToMemberKycAssoc"
@@ -861,18 +853,6 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.linCu.model.entity.LincuMemberKycEO.MemberId"/>
-    </AttrArray>
-  </Key>
-  <Key
-    Name="LincuMemberKycResidencyCodeCheck">
-    <DesignTime>
-      <Attr Name="_isNotNull" Value="true"/>
-      <Attr Name="_checkCondition" Value='"RESIDENCY_CODE" IS NOT NULL'/>
-      <Attr Name="_isCheck" Value="true"/>
-      <Attr Name="_DBObjectName" Value="LINCU_MEMBER_KYC_RESIDENCY_COD"/>
-    </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.linCu.model.entity.LincuMemberKycEO.ResidencyCode"/>
     </AttrArray>
   </Key>
   <Key

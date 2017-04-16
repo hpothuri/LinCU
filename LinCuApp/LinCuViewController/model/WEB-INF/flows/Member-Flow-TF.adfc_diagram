@@ -2,21 +2,6 @@
 <SDM>
    <OverallProperties
       id="OverallProperties1"/>
-   <MethodCall
-      id="MethodCall9">
-      <property
-         name="activityId">CreateInsert</property>
-      <property
-         name="x">173.01465</property>
-      <property
-         name="start">false</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>CreateInsert&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
-      <property
-         name="y">381.43652</property>
-      <property
-         name="exceptionHandler">false</property>
-   </MethodCall>
    <View
       id="View3">
       <property
@@ -57,21 +42,11 @@
       islink="true"
       id="ControlFlowCase5"
       from="View3"
-      to="MethodCall9">
+      to="MethodCall10">
       <property
          name="fromOutcome">createMember</property>
       <property
-         name="sdm:polyPoints">R58,-26.232422,279.29297,132.01465,381.08594,L50</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase6"
-      from="MethodCall9"
-      to="View4">
-      <property
-         name="fromOutcome">CreateInsert</property>
-      <property
-         name="sdm:polyPoints">T50,173.01465,327.08594,318.5,248.94238,L50</property>
+         name="sdm:polyPoints">B50,-67.23242,326.29297,122.76074,468.09766,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -81,7 +56,7 @@
       <property
          name="fromOutcome">editMember</property>
       <property
-         name="sdm:polyPoints">R42,-26.232422,265.29297,317.3347,241.94238,L42</property>
+         name="sdm:polyPoints">R46,-26.232422,268.79297,318.26312,245.44238,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -91,6 +66,29 @@
       <property
          name="fromOutcome">cancel</property>
       <property
-         name="sdm:polyPoints">L50,317.5716,248.94238,-25.995619,272.29297,R50</property>
+         name="sdm:polyPoints">L54,318.5,252.44238,-25.995619,275.79297,R54</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall10">
+      <property
+         name="activityId">createMember</property>
+      <property
+         name="x">163.76074</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>createMember&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="y">468.44824</property>
+      <property
+         name="exceptionHandler">false</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase11"
+      from="MethodCall10"
+      to="View4">
+      <property
+         name="fromOutcome">createMember</property>
+      <property
+         name="sdm:polyPoints">T50,163.76074,414.09766,359.5,302.94238,B50</property>
    </ControlFlowCase>
 </SDM>

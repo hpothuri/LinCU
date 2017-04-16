@@ -15,5 +15,11 @@ public interface LinCuAM extends ApplicationModule {
     Long userCurrentRow(String userName);
 
     void setUserCurrentRow(Long userId);
+
+    String userExists(String userName);
+
+    void requestCard(String requestor, String creditUnionId);
+
+    boolean isAllRequiredDocumentsUploaded();
 }
 

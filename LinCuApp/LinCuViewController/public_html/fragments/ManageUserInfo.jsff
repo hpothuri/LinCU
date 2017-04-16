@@ -106,16 +106,16 @@
             </af:button>
           </af:group>
         </f:facet>
-        <af:panelFormLayout id="pfl1" maxColumns="2" rows="6">
+        <af:panelFormLayout id="pfl1" maxColumns="2" rows="5">
           <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
-                        required="#{bindings.FirstName.hints.mandatory}"
+                        required="true"
                         columns="#{bindings.FirstName.hints.displayWidth}"
                         maximumLength="#{bindings.FirstName.hints.precision}"
                         shortDesc="#{bindings.FirstName.hints.tooltip}" id="it1">
             <f:validator binding="#{bindings.FirstName.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
-                        required="#{bindings.LastName.hints.mandatory}"
+                        required="true"
                         columns="#{bindings.LastName.hints.displayWidth}"
                         maximumLength="#{bindings.LastName.hints.precision}"
                         shortDesc="#{bindings.LastName.hints.tooltip}" id="it2">
@@ -186,15 +186,9 @@
                         required="#{bindings.UserName.hints.mandatory}"
                         columns="#{bindings.UserName.hints.displayWidth}"
                         maximumLength="#{bindings.UserName.hints.precision}"
-                        shortDesc="#{bindings.UserName.hints.tooltip}" id="it5" disabled="true" partialTriggers="it3">
+                        shortDesc="#{bindings.UserName.hints.tooltip}" id="it5" disabled="true" partialTriggers="it3"
+                        rendered="false">
             <f:validator binding="#{bindings.UserName.validator}"/>
-          </af:inputText>
-          <af:inputText value="#{bindings.Password.inputValue}" label="#{lincuviewcontrollerBundle.TEMPORARY_PASSWORD}"
-                        required="#{bindings.Password.hints.mandatory}"
-                        columns="#{bindings.Password.hints.displayWidth}"
-                        maximumLength="#{bindings.Password.hints.precision}"
-                        shortDesc="#{bindings.Password.hints.tooltip}" id="it6">
-            <f:validator binding="#{bindings.Password.validator}"/>
           </af:inputText>
         </af:panelFormLayout>
       </af:dialog>

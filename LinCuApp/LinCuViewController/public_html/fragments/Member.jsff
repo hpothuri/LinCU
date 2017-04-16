@@ -444,9 +444,9 @@
     </af:panelBox>
     <af:spacer width="10" height="10" id="s4"/>
     <af:panelGroupLayout id="pgl2" layout="horizontal" halign="end">
-        <af:button actionListener="#{bindings.Commit.execute}" text="#{lincuviewcontrollerBundle.SAVE}" id="b1"/>
+        <af:button actionListener="#{member.save}" text="#{lincuviewcontrollerBundle.SAVE}" id="b1"/>
         <af:spacer width="10" height="10" id="s3"/>
-      <af:button actionListener="#{bindings.Commit.execute}" text="#{lincuviewcontrollerBundle.SAVE_AND_CLOSE}" id="b3"
+      <af:button actionListener="#{member.save}" text="#{lincuviewcontrollerBundle.SAVE_AND_CLOSE}" id="b3"
                  action="cancel"/>
       <af:spacer width="10" height="10" id="s6"/>
       <af:button actionListener="#{bindings.Rollback.execute}" text="#{lincuviewcontrollerBundle.CANCEL}"

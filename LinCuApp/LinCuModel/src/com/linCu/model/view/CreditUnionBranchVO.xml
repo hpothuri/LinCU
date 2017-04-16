@@ -12,7 +12,15 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  RowClass="com.linCu.model.view.CreditUnionBranchVORowImpl"
+  ComponentClass="com.linCu.model.view.CreditUnionBranchVOImpl"
+  ComponentInterface="com.linCu.model.view.common.CreditUnionBranchVO"
+  ClientProxyName="com.linCu.model.view.client.CreditUnionBranchVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <ViewAccessor
     Name="CountryVA"
     ViewObjectName="com.linCu.model.vvo.CountryVVO"
@@ -237,7 +245,7 @@
     EntityAttrName="CreatedBy"
     EntityUsage="CreditUnionBranchEO"
     AliasName="CREATED_BY"
-    IsUpdateable="false"/>
+    IsUpdateable="while_insert"/>
   <ViewAttribute
     Name="CreationDate"
     IsNotNull="true"
@@ -245,23 +253,21 @@
     EntityAttrName="CreationDate"
     EntityUsage="CreditUnionBranchEO"
     AliasName="CREATION_DATE"
-    IsUpdateable="false"/>
+    IsUpdateable="while_insert"/>
   <ViewAttribute
     Name="LastUpdatedBy"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
     EntityUsage="CreditUnionBranchEO"
-    AliasName="LAST_UPDATED_BY"
-    IsUpdateable="false"/>
+    AliasName="LAST_UPDATED_BY"/>
   <ViewAttribute
     Name="LastUpdateDate"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdateDate"
     EntityUsage="CreditUnionBranchEO"
-    AliasName="LAST_UPDATE_DATE"
-    IsUpdateable="false"/>
+    AliasName="LAST_UPDATE_DATE"/>
   <ViewAttribute
     Name="ObjectVersionId"
     IsNotNull="true"
@@ -352,6 +358,29 @@
     ViewLink="com.linCu.model.viewLink.CreditUnionBranchToUserInfoVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="createBranch"
+      MethodName="createBranch">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="user"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="updateBranch"
+      MethodName="updateBranch">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="user"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.linCu.model.LinCuModelBundle"/>

@@ -30,7 +30,6 @@ public class AuthFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response; 
         
         String requestURL = req.getRequestURI();
-        System.out.println("-----------------------requestURL---------------------"+requestURL);  
         if((requestURL != null) && (requestURL.endsWith("index"))){
             HttpSession session = req.getSession(false); 
             

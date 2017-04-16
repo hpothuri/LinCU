@@ -2,6 +2,8 @@ package com.linCu.view.backingBeans;
 
 import com.linCu.view.utils.ADFUtils;
 
+import com.linCu.view.utils.JSFUtils;
+
 import java.io.IOException;
 
 import java.util.HashMap;
@@ -30,6 +32,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.el.ExpressionFactory;
+import javax.el.ValueExpression;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
@@ -52,7 +57,7 @@ public class CardBean {
     private RichPopup commentsPopup;
     private RichPopup attachDocument;
     private UploadedFile _file;
-    private UploadedFile _uploadFile;
+//    private UploadedFile _uploadFile;
     private RichTable cardTable;
 
     public CardBean() {
@@ -61,8 +66,13 @@ public class CardBean {
 
     public void saveAndSubmit(ActionEvent actionEvent) {
         try {
+             Boolean isAllReqDocsUploaded = (Boolean)ADFUtils.executeOperationBinding("isAllRequiredDocumentsUploaded");
+            if(isAllReqDocsUploaded){
              ADFUtils.executeOperationBinding("submitCard");
-            ADFUtils.executeOperationBinding("Commit"); 
+            ADFUtils.executeOperationBinding("Commit");
+            }else{
+                JSFUtils.addErrorMessage("Please add required documents");
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -83,9 +93,7 @@ public class CardBean {
 
     public void approve(ActionEvent actionEvent) {
         try {
-            Map paramMap = new HashMap();
-            paramMap.put("approver", "test");
-            ADFUtils.executeOperationBinding("approve",paramMap);
+            ADFUtils.executeOperationBinding("approve");
             ADFUtils.executeOperationBinding("Commit");
             this.getCommentsPopup().hide();
         } catch (Exception ex) {
@@ -96,9 +104,7 @@ public class CardBean {
 
     public void reject(ActionEvent actionEvent) {
         try {
-            Map paramMap = new HashMap();
-            paramMap.put("rejector", "test");
-            ADFUtils.executeOperationBinding("reject",paramMap);
+            ADFUtils.executeOperationBinding("reject");
             ADFUtils.executeOperationBinding("Commit");
             this.getCommentsPopup().hide();
         } catch (Exception ex) {
@@ -108,6 +114,8 @@ public class CardBean {
 
     public String attachDocument() {
         try {
+            String action = (String)ADFUtils.getPageFlowScopeValue("action");
+            if("create".equalsIgnoreCase(action))
             ADFUtils.executeOperationBinding("CreateInsert"); 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -142,6 +150,8 @@ public class CardBean {
 
         oracle.jbo.Row row = itr.getCurrentRow();
         row.setAttribute("Document", createBlobDomain(imageFile));
+        row.setAttribute("DocumentName", imageFile.getFilename());
+        //this.getAttachDocument().hide();
         return null;
     }
     
@@ -170,6 +180,8 @@ public class CardBean {
 
     public void cancelUpload(ActionEvent actionEvent) {
         try {
+            String action = (String)ADFUtils.getPageFlowScopeValue("action");
+            if("create".equalsIgnoreCase(action))
             ADFUtils.executeOperationBinding("removeCurrentRow"); 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -178,15 +190,15 @@ public class CardBean {
     }
 
     public void confirmUpload(ActionEvent actionEvent) {
-        UploadedFile imageFile = this.getFile();
-        BindingContext bindingCtx = BindingContext.getCurrent();
-        BindingContainer bindingcnt = bindingCtx.getCurrentBindingsEntry();
-        DCBindingContainer dcContainger = (DCBindingContainer) bindingcnt;
-        DCIteratorBinding itr = dcContainger.findIteratorBinding("LincuMemberCardDocsIterator");
-
-        oracle.jbo.Row row = itr.getCurrentRow();
-        row.setAttribute("Document", createBlobDomain(imageFile));
-        row.setAttribute("DocumentName", imageFile.getFilename());
+//        UploadedFile imageFile = this.getFile();
+//        BindingContext bindingCtx = BindingContext.getCurrent();
+//        BindingContainer bindingcnt = bindingCtx.getCurrentBindingsEntry();
+//        DCBindingContainer dcContainger = (DCBindingContainer) bindingcnt;
+//        DCIteratorBinding itr = dcContainger.findIteratorBinding("LincuMemberCardDocsIterator");
+//
+//        oracle.jbo.Row row = itr.getCurrentRow();
+//        row.setAttribute("Document", createBlobDomain(imageFile));
+//        row.setAttribute("DocumentName", imageFile.getFilename());
         this.getAttachDocument().hide();
     }
 
@@ -225,7 +237,12 @@ public class CardBean {
            CollectionModel cModel = (CollectionModel) getCardTable().getValue();
            JUCtrlHierBinding tableBinding = (JUCtrlHierBinding) cModel.getWrappedData();
            DCIteratorBinding iter = tableBinding.getDCIteratorBinding();
-
+        
+           FacesContext ctx = FacesContext.getCurrentInstance();  
+           ExpressionFactory ef = ctx.getApplication().getExpressionFactory();  
+           ValueExpression ve = ef.createValueExpression(ctx.getELContext(), "#{user}", UserSessionData.class);  
+           UserSessionData userSessionData = (UserSessionData)ve.getValue(ctx.getELContext());
+           
            //Use HSSFWorkbook for XLS file
            HSSFWorkbook WorkBook = null;
 
@@ -271,7 +288,11 @@ public class CardBean {
                        } 
                        
                          } else {
-                            row.setAttribute("CreditUnionId", 32);
+                            row.setAttribute("CreditUnionId", userSessionData.getUnionId());
+                            row.setAttribute("CreatedBy", userSessionData.getUserName());
+                            long time = System.currentTimeMillis();
+                            java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+                            row.setAttribute("CreatedOn", timestamp);
                            Index++;
                         }
 
@@ -372,13 +393,13 @@ public class CardBean {
         return cardTable;
     }
 
-    public void setUploadFile(UploadedFile _uploadFile) {
-        this._uploadFile = _uploadFile;
-    }
-
-    public UploadedFile getUploadFile() {
-        return _uploadFile;
-    }
+//    public void setUploadFile(UploadedFile _uploadFile) {
+//        this._uploadFile = _uploadFile;
+//    }
+//
+//    public UploadedFile getUploadFile() {
+//        return _uploadFile;
+//    }
 
     public void massUpload(ActionEvent actionEvent) {
         UploadedFile file = this.getFile();
@@ -408,4 +429,5 @@ public class CardBean {
                     // TODO
                 }
     }
+
 }

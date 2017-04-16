@@ -2,13 +2,14 @@ package com.linCu.view.backingBeans;
 
 import com.linCu.view.utils.ADFUtils;
 
+import com.linCu.view.utils.PasswordUtil;
+
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
 
 import javax.faces.event.ActionEvent;
-
-import oracle.adf.share.ADFContext;
 
 public class LoginBean {
     private String errorMessage;
@@ -18,11 +19,18 @@ public class LoginBean {
 
     public String login() {
         try {
-          String msg = (String) ADFUtils.executeOperationBinding("validateLogin"); 
+          String password = (String)ADFUtils.getPageFlowScopeValue("password");
+          System.out.println("-----Password------"+password);
+            System.out.println("-----Password------"+PasswordUtil.encryptPassword(password));  
+          Map paramMap = new HashMap();
+          paramMap.put("password", PasswordUtil.encryptPassword(password));  
+          String msg = (String) ADFUtils.executeOperationBinding("validateLogin",paramMap); 
             if("FirstLoginSuccess".equalsIgnoreCase(msg)){
-                ADFUtils.setPageFlowScopeValue("firstLogin", true);
+                ADFUtils.setPageFlowScopeValue("passwordPage", true);
+                ADFUtils.setPageFlowScopeValue("action", "first");
+                //ADFUtils.setPageFlowScopeValue("firstLogin", true);
                 ADFUtils.setPageFlowScopeValue("creditUnion", false); 
-                ADFUtils.setPageFlowScopeValue("resetPassword", true);
+                //ADFUtils.setPageFlowScopeValue("resetPassword", true);
                 Long userId = (Long) ADFUtils.executeOperationBinding("userCurrentRow"); 
                 ADFUtils.setPageFlowScopeValue("userId", userId);
                 ADFUtils.executeOperationBinding("setUserCurrentRow"); 
@@ -37,12 +45,15 @@ public class LoginBean {
                 userSessionData.setUserName(userMap.get("userName").toString()); 
                 userSessionData.setUserRole(userMap.get("role").toString());
                 userSessionData.setUserRoleDesc(userMap.get("roleDesc").toString());
+                if(userMap.get("creditUnionId") != null)
                 userSessionData.setUnionId(userMap.get("creditUnionId").toString());
+                userSessionData.setUserType(userMap.get("userType").toString());
                 fc.getExternalContext().getSessionMap().put("user", userSessionData);
-                
-                        ADFUtils.setPageFlowScopeValue("firstLogin", false);
+                    
+                    ADFUtils.setPageFlowScopeValue("passwordPage", false);
+                        //ADFUtils.setPageFlowScopeValue("firstLogin", false);
                         ADFUtils.setPageFlowScopeValue("creditUnion", true); 
-                        ADFUtils.setPageFlowScopeValue("resetPassword", false);
+                        //ADFUtils.setPageFlowScopeValue("resetPassword", false);
                 
                 }
             return "success";
@@ -66,15 +77,19 @@ public class LoginBean {
     }
 
     public void forgotPassword(ActionEvent actionEvent) {
-        ADFUtils.setPageFlowScopeValue("firstLogin", false);
+        ADFUtils.setPageFlowScopeValue("action", "forgot");
+        ADFUtils.setPageFlowScopeValue("passwordPage", true);
+//        ADFUtils.setPageFlowScopeValue("firstLogin", true);
         ADFUtils.setPageFlowScopeValue("creditUnion", false); 
-        ADFUtils.setPageFlowScopeValue("resetPassword", false);
+//        ADFUtils.setPageFlowScopeValue("resetPassword", false);
     }
 
     public void resetPassword(ActionEvent actionEvent) {
-        ADFUtils.setPageFlowScopeValue("firstLogin", false);
+        ADFUtils.setPageFlowScopeValue("action", "reset");
+        ADFUtils.setPageFlowScopeValue("passwordPage", true);
+//        ADFUtils.setPageFlowScopeValue("firstLogin", false);
         ADFUtils.setPageFlowScopeValue("creditUnion", false); 
-        ADFUtils.setPageFlowScopeValue("resetPassword", true);
+//        ADFUtils.setPageFlowScopeValue("resetPassword", true);
     }
 
     public void logout(ActionEvent actionEvent) {

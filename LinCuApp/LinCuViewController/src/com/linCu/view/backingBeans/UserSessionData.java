@@ -5,6 +5,7 @@ public class UserSessionData {
     private String userRole;
     private String userRoleDesc;
     private String unionId;
+    private String userType;
     public UserSessionData() {
         super();
     }
@@ -40,5 +41,12 @@ public class UserSessionData {
     public String getUnionId() {
         return unionId;
     }
-    
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
 }

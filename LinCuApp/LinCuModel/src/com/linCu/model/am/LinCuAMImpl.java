@@ -1,8 +1,12 @@
 package com.linCu.model.am;
 
 import com.linCu.model.am.common.LinCuAM;
+import com.linCu.model.view.CreditUnionBranchVOImpl;
+import com.linCu.model.view.CreditUnionVOImpl;
 import com.linCu.model.view.LincuMemberCardDocsVOImpl;
+import com.linCu.model.view.LincuMemberCardDocsVORowImpl;
 import com.linCu.model.view.LincuMemberCardVOImpl;
+import com.linCu.model.view.LincuMemberCardVORowImpl;
 import com.linCu.model.view.LincuMemberVOImpl;
 import com.linCu.model.view.LincuUserInfoVOImpl;
 
@@ -35,8 +39,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
      * Container's getter for CreditUnion.
      * @return CreditUnion
      */
-    public ViewObjectImpl getCreditUnion() {
-        return (ViewObjectImpl) findViewObject("CreditUnion");
+    public CreditUnionVOImpl getCreditUnion() {
+        return (CreditUnionVOImpl) findViewObject("CreditUnion");
     }
 
     /**
@@ -51,8 +55,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
      * Container's getter for CreditUnionBranch.
      * @return CreditUnionBranch
      */
-    public ViewObjectImpl getCreditUnionBranch() {
-        return (ViewObjectImpl) findViewObject("CreditUnionBranch");
+    public CreditUnionBranchVOImpl getCreditUnionBranch() {
+        return (CreditUnionBranchVOImpl) findViewObject("CreditUnionBranch");
     }
 
     /**
@@ -133,7 +137,6 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     }
     
     public void setUserCurrentRow(Long userId){
-        System.out.println("---UserId----"+userId);
         LincuUserInfoVOImpl loginView = this.getPasswordReset();
         Row[] rows = loginView.findByKey(new Key(new Object[]{userId}), 1);
         LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)rows[0];
@@ -171,6 +174,59 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
      */
     public ViewLinkImpl getMemberCardToMemberDocsVL1() {
         return (ViewLinkImpl) findViewLink("MemberCardToMemberDocsVL1");
+    }
+    
+    public String userExists(String userName){
+        LoginVVOImpl loginView = this.getLoginView();
+        loginView.setbindUserName(userName); 
+        loginView.executeQuery();
+        LoginVVORowImpl row = (LoginVVORowImpl)loginView.first();
+        if(row != null){
+            return "success";
+        }else{
+            return "InvalidUserName";
+        }
+    }
+    
+    public void requestCard(String requestor, String creditUnionId){
+        LincuMemberCardVOImpl cardVO = this.getLincuMemberCard();
+        LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl) cardVO.createRow();
+        if(row != null){
+        cardVO.insertRow(row);
+        cardVO.setCurrentRow(row);
+        row.setCreditUnionId(creditUnionId);
+        row.setCreatedBy(requestor);
+        long time = System.currentTimeMillis();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+        row.setCreatedOn(timestamp);
+        LincuMemberCardDocsVOImpl docVO = this.getLincuMemberCardDocs();
+        LincuMemberCardDocsVORowImpl docRow1 = (LincuMemberCardDocsVORowImpl) docVO.createRow();
+        if(docRow1 != null){
+            docVO.insertRow(docRow1);
+            docRow1.setRequired("Y"); 
+            docRow1.setDocumentType("ID_PROOF");
+        }
+            LincuMemberCardDocsVORowImpl docRow2 = (LincuMemberCardDocsVORowImpl) docVO.createRow();
+            if(docRow2 != null){
+                docVO.insertRow(docRow2);
+                docRow2.setRequired("Y"); 
+                docRow2.setDocumentType("ADDRESS_PROOF");
+            }
+        }
+    }
+    
+    public boolean isAllRequiredDocumentsUploaded(){
+        LincuMemberCardDocsVOImpl vo = this.getLincuMemberCardDocs();
+           Row rows[] = vo.getAllRowsInRange();
+           for(Row row : rows){
+              LincuMemberCardDocsVORowImpl docRow = (LincuMemberCardDocsVORowImpl)row;
+               if(docRow != null){
+                   if("Y".contentEquals(docRow.getRequired()) && docRow.getDocument() == null){
+                       return false;
+                   }
+               }
+             }
+        return true;
     }
 }
 

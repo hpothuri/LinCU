@@ -6,6 +6,20 @@ import oracle.jbo.ViewObject;
 // ---    Sat Mar 11 16:37:16 IST 2017
 // ---------------------------------------------------------------------
 public interface LincuUserInfoVO extends ViewObject {
-    String resetPassword(String oldPassword, String newPassword, String confirmPassword, String securityAns);
+
+    void createUser(String user);
+
+    void updateUser(String user);
+
+    void forgotPassword();
+
+
+    String firstTimeResetPassword(String newPassword, String confirmPassword, Long userId);
+
+    void forgotResetPassword(String password, Long userId);
+
+    String resetPassword(String oldPassword, String newPassword, String confirmPassword, Long userId);
+
+    void updatePassword(String password);
 }
 

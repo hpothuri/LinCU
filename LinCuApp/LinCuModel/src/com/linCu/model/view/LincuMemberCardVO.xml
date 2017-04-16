@@ -652,19 +652,6 @@
     </DesignTime>
   </EntityUsage>
   <ViewAttribute
-    Name="AuthorizedBy"
-    PrecisionRule="true"
-    EntityAttrName="AuthorizedBy"
-    EntityUsage="LincuMemberCardEO"
-    AliasName="AUTHORIZED_BY">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="AUTHORIZED_REJECTED_BY"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
-  <ViewAttribute
     Name="AuthorizedOn"
     PrecisionRule="true"
     EntityAttrName="AuthorizedOn"
@@ -674,6 +661,19 @@
       <SchemaBasedProperties>
         <LABEL
           ResId="AUTHORIZED_REJECTED_ON"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AuthorizedBy"
+    PrecisionRule="true"
+    EntityAttrName="AuthorizedBy"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="AUTHORIZED_BY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="AUTHORIZED_REJECTED_BY"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -723,7 +723,8 @@
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
     EntityUsage="LincuMemberCardEO"
-    AliasName="CREATED_BY">
+    AliasName="CREATED_BY"
+    IsUpdateable="while_insert">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -736,7 +737,8 @@
     PrecisionRule="true"
     EntityAttrName="CreatedOn"
     EntityUsage="LincuMemberCardEO"
-    AliasName="CREATED_ON">
+    AliasName="CREATED_ON"
+    IsUpdateable="while_insert">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -814,14 +816,16 @@
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="CREATED_BY1"/>
+    AliasName="CREATED_BY1"
+    IsUpdateable="while_insert"/>
   <ViewAttribute
     Name="CreationDate"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreationDate"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="CREATION_DATE"/>
+    AliasName="CREATION_DATE"
+    IsUpdateable="while_insert"/>
   <ViewAttribute
     Name="CreditUnionBranchId"
     IsNotNull="true"
@@ -1046,14 +1050,16 @@
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
     EntityUsage="LincuMemberKycEO"
-    AliasName="CREATED_BY2"/>
+    AliasName="CREATED_BY2"
+    IsUpdateable="while_insert"/>
   <ViewAttribute
     Name="CreationDate1"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="CreationDate"
     EntityUsage="LincuMemberKycEO"
-    AliasName="CREATION_DATE1"/>
+    AliasName="CREATION_DATE1"
+    IsUpdateable="while_insert"/>
   <ViewAttribute
     Name="CreditUnionBranchId1"
     IsNotNull="true"
@@ -1564,6 +1570,17 @@
     EntityAttrName="Comments"
     EntityUsage="LincuMemberCardEO"
     AliasName="COMMENTS"/>
+  <ViewAttribute
+    Name="TransCardStatus"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
   <ViewCriteria
     Name="LincuMemberCardVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"

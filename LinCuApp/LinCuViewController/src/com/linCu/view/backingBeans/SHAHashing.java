@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 public class SHAHashing {
     public static void main(String[] args) throws Exception {
-        String password = "123456";
+        String password = "welcome1";
 
         MessageDigest md = MessageDigest.getInstance("SHA-512");
         md.update(password.getBytes());

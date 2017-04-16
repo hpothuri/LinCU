@@ -388,7 +388,7 @@
     EntityAttrName="CreatedBy"
     EntityUsage="LincuUserInfoEO"
     AliasName="CREATED_BY"
-    IsUpdateable="false"/>
+    IsUpdateable="while_insert"/>
   <ViewAttribute
     Name="CreationDate"
     IsNotNull="true"
@@ -396,23 +396,21 @@
     EntityAttrName="CreationDate"
     EntityUsage="LincuUserInfoEO"
     AliasName="CREATION_DATE"
-    IsUpdateable="false"/>
+    IsUpdateable="while_insert"/>
   <ViewAttribute
     Name="LastUpdatedBy"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
     EntityUsage="LincuUserInfoEO"
-    AliasName="LAST_UPDATED_BY"
-    IsUpdateable="false"/>
+    AliasName="LAST_UPDATED_BY"/>
   <ViewAttribute
     Name="LastUpdateDate"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdateDate"
     EntityUsage="LincuUserInfoEO"
-    AliasName="LAST_UPDATE_DATE"
-    IsUpdateable="false"/>
+    AliasName="LAST_UPDATE_DATE"/>
   <ViewAttribute
     Name="ObjectVersionId"
     IsNotNull="true"
@@ -582,6 +580,62 @@
   <ClientInterface
     Name="__clientInterface">
     <Method
+      Name="createUser"
+      MethodName="createUser">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="user"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="updateUser"
+      MethodName="updateUser">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="user"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="forgotPassword"
+      MethodName="forgotPassword">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="firstTimeResetPassword"
+      MethodName="firstTimeResetPassword">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="newPassword"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="confirmPassword"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="userId"
+        Type="java.lang.Long"/>
+    </Method>
+    <Method
+      Name="forgotResetPassword"
+      MethodName="forgotResetPassword">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="password"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="userId"
+        Type="java.lang.Long"/>
+    </Method>
+    <Method
       Name="resetPassword"
       MethodName="resetPassword">
       <Return
@@ -597,7 +651,17 @@
         Name="confirmPassword"
         Type="java.lang.String"/>
       <Parameter
-        Name="securityAns"
+        Name="userId"
+        Type="java.lang.Long"/>
+    </Method>
+    <Method
+      Name="updatePassword"
+      MethodName="updatePassword">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="password"
         Type="java.lang.String"/>
     </Method>
   </ClientInterface>
