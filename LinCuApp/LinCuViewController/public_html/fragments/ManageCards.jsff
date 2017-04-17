@@ -125,7 +125,8 @@
               contentDelivery="lazyUncached">
       <af:dialog id="d2" type="cancel" title="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}">
         <f:facet name="buttonBar">
-          <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b11" actionListener="#{card.massUpload}"/>
+          <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b11" actionListener="#{card.massUpload}"
+                     partialSubmit="false"/>
         </f:facet>
         <af:panelFormLayout id="pfl2">
           <af:inputFile label="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}" id="if1" value="#{card.uploadFile}"/>
