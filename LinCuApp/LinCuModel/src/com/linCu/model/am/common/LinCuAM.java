@@ -21,5 +21,7 @@ public interface LinCuAM extends ApplicationModule {
     void requestCard(String requestor, String creditUnionId);
 
     boolean isAllRequiredDocumentsUploaded();
+
+    void addRequiredDcosRecords();
 }
 

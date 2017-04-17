@@ -110,7 +110,8 @@
             <af:outputText value="#{row.DocumentName}"
                            shortDesc="#{bindings.LincuMemberCardDocs.hints.DocumentName.tooltip}" id="ot3"/>
           </af:column>
-          <af:column id="c7" headerText="#{lincuviewcontrollerBundle.ATTACH}" align="center">
+          <af:column id="c7" headerText="#{lincuviewcontrollerBundle.ATTACH}" align="center"
+                     rendered="#{(sessionScope.user.userRole eq 'MSR')}">
             <af:link id="l4" icon="/images/attach.png" action="#{card.attachDocument}"
                      visible="#{row.bindings.Required.inputValue eq 'Y'}">
               <af:setPropertyListener from="mandatory" to="#{pageFlowScope.action}" type="action"/>
@@ -126,7 +127,8 @@
               <af:fileDownloadActionListener filename="#{row.DocumentName}" method="#{card.downloadFile}"/>
             </af:link>
           </af:column>
-          <af:column id="c3" headerText="#{lincuviewcontrollerBundle.DELETE}" align="center">
+          <af:column id="c3" headerText="#{lincuviewcontrollerBundle.DELETE}" align="center"
+                     rendered="#{(sessionScope.user.userRole eq 'MSR')}">
             <af:link id="l3" icon="/images/delete.png" actionListener="#{bindings.Delete.execute}"
                      visible="#{row.bindings.Required.inputValue eq 'N'}"/>
           </af:column>

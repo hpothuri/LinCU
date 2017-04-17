@@ -295,6 +295,7 @@ public class CardBean {
                         }
 
     }
+                   ADFUtils.executeOperationBinding("addRequiredDcosRecords"); 
                    sno++;
                }
                skipcnt++;

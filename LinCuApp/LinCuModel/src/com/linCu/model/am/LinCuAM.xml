@@ -129,5 +129,12 @@
         Name="_return_type_"
         Type="boolean"/>
     </Method>
+    <Method
+      Name="addRequiredDcosRecords"
+      MethodName="addRequiredDcosRecords">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
   </ClientInterface>
 </AppModule>

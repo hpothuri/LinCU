@@ -228,5 +228,27 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
              }
         return true;
     }
+    
+    public void addRequiredDcosRecords(){
+        LincuMemberCardVOImpl cardVO = this.getLincuMemberCard();
+        LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl) cardVO.getCurrentRow();
+        System.out.println("---Current Card Id---"+row.getCardId());
+        if(row != null){
+        cardVO.setCurrentRow(row);
+        LincuMemberCardDocsVOImpl docVO = this.getLincuMemberCardDocs();
+        LincuMemberCardDocsVORowImpl docRow1 = (LincuMemberCardDocsVORowImpl) docVO.createRow();
+        if(docRow1 != null){
+            docVO.insertRow(docRow1);
+            docRow1.setRequired("Y"); 
+            docRow1.setDocumentType("ID_PROOF");
+        }
+            LincuMemberCardDocsVORowImpl docRow2 = (LincuMemberCardDocsVORowImpl) docVO.createRow();
+            if(docRow2 != null){
+                docVO.insertRow(docRow2);
+                docRow2.setRequired("Y"); 
+                docRow2.setDocumentType("ADDRESS_PROOF");
+            }
+        }
+    }
 }
 
