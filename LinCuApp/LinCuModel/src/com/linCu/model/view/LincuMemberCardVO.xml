@@ -1670,6 +1670,46 @@
         Name="rejector"
         Type="java.lang.String"/>
     </Method>
+    <Method
+      Name="fcbApprove"
+      MethodName="fcbApprove">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="approver"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="fcbReject"
+      MethodName="fcbReject">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="rejector"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="lincuApprove"
+      MethodName="lincuApprove">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="approver"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="lincuReject"
+      MethodName="lincuReject">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="rejector"
+        Type="java.lang.String"/>
+    </Method>
   </ClientInterface>
   <ResourceBundle>
     <PropertiesBundle

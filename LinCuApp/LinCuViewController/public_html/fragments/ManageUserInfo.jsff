@@ -85,9 +85,6 @@
             <f:validator binding="#{row.bindings.Gender.validator}"/>
           </af:selectOneChoice>
         </af:column>
-        <af:column headerText="#{bindings.LincuUserInfo.hints.Password.label}" id="resId1c10">
-          <af:outputText value="#{row.Password}" shortDesc="#{bindings.LincuUserInfo.hints.Password.tooltip}" id="ot6"/>
-        </af:column>
         <af:column headerText="#{bindings.LincuUserInfo.hints.UserName.label}" id="resId1c11">
           <af:outputText value="#{row.UserName}" shortDesc="#{bindings.LincuUserInfo.hints.UserName.tooltip}" id="ot7"/>
         </af:column>

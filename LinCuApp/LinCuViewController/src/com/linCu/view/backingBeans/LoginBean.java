@@ -2,6 +2,7 @@ package com.linCu.view.backingBeans;
 
 import com.linCu.view.utils.ADFUtils;
 
+import com.linCu.view.utils.JSFUtils;
 import com.linCu.view.utils.PasswordUtil;
 
 import java.util.HashMap;
@@ -45,11 +46,14 @@ public class LoginBean {
                 userSessionData.setUserName(userMap.get("userName").toString()); 
                 userSessionData.setUserRole(userMap.get("role").toString());
                 userSessionData.setUserRoleDesc(userMap.get("roleDesc").toString());
-                if(userMap.get("creditUnionId") != null)
+                if(userMap.get("creditUnionId") != null){
                 userSessionData.setUnionId(userMap.get("creditUnionId").toString());
+                JSFUtils.getSession().setAttribute("creditUnionId", userMap.get("creditUnionId").toString());
+                }
                 userSessionData.setUserType(userMap.get("userType").toString());
                 fc.getExternalContext().getSessionMap().put("user", userSessionData);
                     
+                    JSFUtils.getSession().setAttribute("role", userMap.get("role").toString());
                     ADFUtils.setPageFlowScopeValue("passwordPage", false);
                         //ADFUtils.setPageFlowScopeValue("firstLogin", false);
                         ADFUtils.setPageFlowScopeValue("creditUnion", true); 

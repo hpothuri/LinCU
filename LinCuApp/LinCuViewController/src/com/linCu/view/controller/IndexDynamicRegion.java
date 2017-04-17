@@ -39,6 +39,8 @@ public class IndexDynamicRegion implements Serializable {
             taskFlowId = CARD_REQUEST_TASKFLOW;
         }else if(LinCUConstants.PREPAID_ADMIN.equalsIgnoreCase(userSessionData.getUserRole())){
             taskFlowId = USER_INFO_TASKFLOW;
+        }else if(LinCUConstants.LINCU_ADMIN.equalsIgnoreCase(userSessionData.getUserRole())){
+            taskFlowId = CARD_REQUEST_TASKFLOW;
         }else{
             taskFlowId = CARD_REQUEST_TASKFLOW;
         }

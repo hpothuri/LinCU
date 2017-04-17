@@ -15,8 +15,9 @@
       <f:facet name="menus"/>
       <f:facet name="toolbar">
         <af:toolbar id="t1">
-        <af:commandToolbarButton text="#{lincuviewcontrollerBundle.REQUEST_CARD}" id="ctb1" icon="/images/card.png" action="create"/>
-            <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EDIT_CARD_REQUEST}" id="ctb2" icon="/images/card.png" action="edit"/>
+        <af:commandToolbarButton text="#{lincuviewcontrollerBundle.REQUEST_CARD}" id="ctb1" icon="/images/card.png" action="create"
+                                 rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
+            <af:commandToolbarButton text="#{sessionScope.user.userRole eq 'MSR' ? lincuviewcontrollerBundle.EDIT_CARD_REQUEST : lincuviewcontrollerBundle.VIEW_CARD_REQUEST}" id="ctb2" icon="/images/card.png" action="edit"/>
           <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT}" id="ctb3" icon="/images/Excel-16.gif"
                                    rendered="#{(sessionScope.user.userRole eq 'FCB')}">
               <af:exportCollectionActionListener type="excelHTML" exportedId="resId1" filename="CardList.xls"

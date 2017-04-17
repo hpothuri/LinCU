@@ -12,5 +12,12 @@ public interface LincuMemberCardVO extends ViewObject {
 
     void reject(String rejector);
 
+    void fcbApprove(String approver);
+
+    void fcbReject(String rejector);
+
+    void lincuApprove(String approver);
+
+    void lincuReject(String rejector);
 }
 

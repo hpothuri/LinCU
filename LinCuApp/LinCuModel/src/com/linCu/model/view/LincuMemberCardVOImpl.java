@@ -20,8 +20,6 @@ public class LincuMemberCardVOImpl extends ViewObjectImpl implements LincuMember
     public void submitCard(){
         LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl)this.getCurrentRow();
         if(row != null){
-//            this.executeQuery();
-//            this.setCurrentRow(row);
             long time = System.currentTimeMillis();
             java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
             row.setSubmittedOn(timestamp);
@@ -33,8 +31,6 @@ public class LincuMemberCardVOImpl extends ViewObjectImpl implements LincuMember
     public void approve(String approver){
         LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl)this.getCurrentRow();
         if(row != null){
-//            this.executeQuery();
-//            this.setCurrentRow(row);
             long time = System.currentTimeMillis();
             java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
             row.setAuthorizedOn(timestamp);
@@ -47,8 +43,6 @@ public class LincuMemberCardVOImpl extends ViewObjectImpl implements LincuMember
     public void reject(String rejector){
         LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl)this.getCurrentRow();
         if(row != null){
-//            this.executeQuery();
-//            this.setCurrentRow(row);
             long time = System.currentTimeMillis();
             java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
             row.setAuthorizedOn(timestamp);
@@ -58,6 +52,53 @@ public class LincuMemberCardVOImpl extends ViewObjectImpl implements LincuMember
         
     }
     
+    public void lincuApprove(String approver){
+        LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl)this.getCurrentRow();
+        if(row != null){
+            long time = System.currentTimeMillis();
+            java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+            row.setAuthorizedOn(timestamp);
+            row.setAuthorizedBy(approver);
+            row.setCardStatus("LINCU_AUTHORIZED");
+        }
+        
+    }
+    
+    public void lincuReject(String rejector){
+        LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl)this.getCurrentRow();
+        if(row != null){
+            long time = System.currentTimeMillis();
+            java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+            row.setAuthorizedOn(timestamp);
+            row.setAuthorizedBy(rejector);
+            row.setCardStatus("LINCU_REJECTED");
+        }
+        
+    }
+    
+    public void fcbApprove(String approver){
+        LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl)this.getCurrentRow();
+        if(row != null){
+            long time = System.currentTimeMillis();
+            java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+            row.setAuthorizedOn(timestamp);
+            row.setAuthorizedBy(approver);
+            row.setCardStatus("FCB_AUTHORIZED");
+        }
+        
+    }
+    
+    public void fcbReject(String rejector){
+        LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl)this.getCurrentRow();
+        if(row != null){
+            long time = System.currentTimeMillis();
+            java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+            row.setAuthorizedOn(timestamp);
+            row.setAuthorizedBy(rejector);
+            row.setCardStatus("FCB_REJECTED");
+        }
+        
+    }
     public void requestCard(String requestor, String creditUnionId){
         LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl) this.createRow();
         if(row != null){

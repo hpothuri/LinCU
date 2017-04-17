@@ -304,5 +304,25 @@
         <Item Value="TransCardStatus"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="lincuApprove" RequiresUpdateModel="true" Action="invokeMethod" MethodName="lincuApprove"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMemberCard">
+      <NamedData NDName="approver" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="lincuReject" RequiresUpdateModel="true" Action="invokeMethod" MethodName="lincuReject"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMemberCard">
+      <NamedData NDName="rejector" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="fcbApprove" RequiresUpdateModel="true" Action="invokeMethod" MethodName="fcbApprove"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMemberCard">
+      <NamedData NDName="approver" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="fcbReject" RequiresUpdateModel="true" Action="invokeMethod" MethodName="fcbReject"
+                  IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMemberCard">
+      <NamedData NDName="rejector" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

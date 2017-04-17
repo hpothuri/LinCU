@@ -6,23 +6,44 @@
     <af:panelGroupLayout id="pgl2" layout="horizontal" halign="end">
       <af:button text="#{lincuviewcontrollerBundle.AUTHORIZE}" id="b4" actionListener="#{card.openPopup}"
                  rendered="#{(sessionScope.user.userRole eq 'SUP') or(sessionScope.user.userRole eq 'MAN_ADMIN')}">
-        <af:setPropertyListener from="APPROVE" to="#{pageFlowScope.action}" type="action"/>
+        <af:setPropertyListener from="AUTHORIZED" to="#{pageFlowScope.action}" type="action"/>
       </af:button>
+      <af:button text="#{lincuviewcontrollerBundle.AUTHORIZE}" id="b13" actionListener="#{card.openPopup}"
+                 rendered="#{sessionScope.user.userRole eq 'LINCU_ADMIN'}"
+                 visible="#{bindings.TransCardStatus eq 'AUTHORIZED'}">
+                  <af:setPropertyListener from="LINCU_AUTHORIZED" to="#{pageFlowScope.action}" type="action"/>
+                 </af:button>
+      <af:button text="#{lincuviewcontrollerBundle.AUTHORIZE}" id="b15" actionListener="#{card.openPopup}"
+                 rendered="#{sessionScope.user.userRole eq 'FCB'}"
+                 visible="#{bindings.TransCardStatus eq 'LINCU_AUTHORIZED'}">
+                  <af:setPropertyListener from="FCB_AUTHORIZED" to="#{pageFlowScope.action}" type="action"/>
+                 </af:button>
       <af:spacer width="10" height="10" id="s4"/>
       <af:button text="#{lincuviewcontrollerBundle.REJECT}" id="b5" actionListener="#{card.openPopup}"
                  disabled="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'AUTHORIZED')}"
                  rendered="#{(sessionScope.user.userRole eq 'SUP')}">
-        <af:setPropertyListener from="REJECT" to="#{pageFlowScope.action}" type="action"/>
+        <af:setPropertyListener from="REJECTED" to="#{pageFlowScope.action}" type="action"/>
       </af:button>
+      <af:button text="#{lincuviewcontrollerBundle.REJECT}" id="b9" actionListener="#{card.openPopup}"
+                 rendered="#{sessionScope.user.userRole eq 'LINCU_ADMIN'}"
+                 visible="#{bindings.TransCardStatus eq 'AUTHORIZED'}">
+                  <af:setPropertyListener from="LINCU_REJECTED" to="#{pageFlowScope.action}" type="action"/>
+                 </af:button>
+      <af:button text="#{lincuviewcontrollerBundle.REJECT}" id="b10" rendered="#{sessionScope.user.userRole eq 'FCB'}"
+                 visible="#{bindings.TransCardStatus eq 'LINCU_AUTHORIZED'}" actionListener="#{card.openPopup}">
+                  <af:setPropertyListener from="FCB_REJECTED" to="#{pageFlowScope.action}" type="action"/>
+                 </af:button>
       <af:spacer width="10" height="10" id="s5"/>
       <af:button actionListener="#{bindings.Commit.execute}" text="#{lincuviewcontrollerBundle.SAVE}" id="b1"
-                 visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT')}"
+                 visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED')}"
                  rendered="#{(sessionScope.user.userRole eq 'MSR')}" partialSubmit="false"/>
-      <af:spacer width="10" height="10" id="s3"/>
+      <af:spacer width="10" height="10" id="s3" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
       <af:button actionListener="#{card.saveAndSubmit}" text="#{lincuviewcontrollerBundle.SAVE_AND_SUBMIT}" id="b3"
-                 visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT')}"
-                 rendered="#{(sessionScope.user.userRole eq 'MSR')}" partialSubmit="false"/>
-      <af:spacer width="10" height="10" id="s6"/>
+                 visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED')}"
+                 rendered="#{(sessionScope.user.userRole eq 'MSR')}" partialSubmit="false">
+                 <af:setPropertyListener from="SUBMIT" to="#{pageFlowScope.action}" type="action"/>
+                 </af:button>
+      <af:spacer width="10" height="10" id="s6" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
       <af:button actionListener="#{bindings.Rollback.execute}" text="#{lincuviewcontrollerBundle.CLOSE}"
                  immediate="true" id="b8" action="cancel">
         <af:resetActionListener/>
@@ -41,7 +62,7 @@
         <af:selectOneChoice value="#{bindings.CardReqType.inputValue}" label="#{bindings.CardReqType.label}"
                             required="#{bindings.CardReqType.hints.mandatory}"
                             shortDesc="#{bindings.CardReqType.hints.tooltip}" id="soc4"
-                            disabled="#{(bindings.TransCardStatus eq 'SUBMITTED') or (bindings.TransCardStatus eq 'AUTHORIZED')}"
+                            disabled="#{(sessionScope.user.userRole ne 'MSR') or (bindings.TransCardStatus eq 'SUBMITTED')}"
                             autoSubmit="true">
           <f:selectItems value="#{bindings.CardReqType.items}" id="si4"/>
           <f:validator binding="#{bindings.CardReqType.validator}"/>
@@ -56,7 +77,7 @@
         <af:selectOneChoice value="#{bindings.MemberId.inputValue}" label="#{bindings.MemberId.label}" required="false"
                             shortDesc="#{bindings.MemberId.hints.tooltip}" id="soc3" autoSubmit="true"
                             partialTriggers="soc2" showRequired="true"
-                            disabled="#{(bindings.TransCardStatus eq 'SUBMITTED') or (bindings.TransCardStatus eq 'AUTHORIZED')}">
+                            disabled="#{(sessionScope.user.userRole ne 'MSR') or (bindings.TransCardStatus eq 'SUBMITTED')}">
           <f:selectItems value="#{bindings.MemberId.items}" id="si3"/>
           <f:validator binding="#{bindings.MemberId.validator}"/>
         </af:selectOneChoice>
@@ -76,7 +97,7 @@
           <af:toolbar id="t2" rendered="#{(sessionScope.user.userRole eq 'MSR')}">
             <af:commandToolbarButton text="#{lincuviewcontrollerBundle.ATTACH}" id="ctb1" icon="/images/attach.png"
                                      action="#{card.attachDocument}" partialSubmit="false"
-                                     visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT')}">
+                                     visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED')}">
               <af:setPropertyListener from="create" to="#{pageFlowScope.action}" type="action"/>
             </af:commandToolbarButton>
           </af:toolbar>
@@ -899,13 +920,23 @@
     <af:spacer width="10" height="10" id="s7"/>
     <af:popup childCreation="deferred" autoCancel="disabled" id="p1" binding="#{card.commentsPopup}">
       <af:dialog id="d1"
-                 title="#{pageFlowScope.action eq 'REJECT' ? lincuviewcontrollerBundle.REJECT_REASON : lincuviewcontrollerBundle.APPROVE_REASON}"
+                 title="#{((pageFlowScope.action eq 'REJECTED') or (pageFlowScope.action eq 'LINCU_REJECTED') or (pageFlowScope.action eq 'FCB_REJECTED')) ? lincuviewcontrollerBundle.REJECT_REASON : (pageFlowScope.action eq 'SUBMIT' ? lincuviewcontrollerBundle.SUBMIT_REASON : lincuviewcontrollerBundle.APPROVE_REASON)}"
                  type="cancel">
         <f:facet name="buttonBar">
-          <af:button text="#{lincuviewcontrollerBundle.OK}" id="b6" visible="#{pageFlowScope.action eq 'REJECT'}"
-                     actionListener="#{card.reject}"/>
-          <af:button text="#{lincuviewcontrollerBundle.OK}" id="b7" visible="#{pageFlowScope.action ne 'REJECT'}"
-          actionListener="#{card.approve}"/>
+          <af:button text="#{lincuviewcontrollerBundle.OK}" id="b6" visible="#{pageFlowScope.action eq 'REJECTED'}"
+                     actionListener="#{card.reject}" partialSubmit="false"/>
+          <af:button text="#{lincuviewcontrollerBundle.OK}" id="b7" visible="#{pageFlowScope.action eq 'AUTHORIZED'}"
+          actionListener="#{card.approve}" partialSubmit="false"/>
+          <af:button text="#{lincuviewcontrollerBundle.OK}" id="b16" visible="#{pageFlowScope.action eq 'LINCU_REJECTED'}"
+                     actionListener="#{card.lincuReject}" partialSubmit="false"/>
+          <af:button text="#{lincuviewcontrollerBundle.OK}" id="b17" visible="#{pageFlowScope.action eq 'LINCU_AUTHORIZED'}"
+          actionListener="#{card.lincuApprove}" partialSubmit="false"/>
+          <af:button text="#{lincuviewcontrollerBundle.OK}" id="b18" visible="#{pageFlowScope.action eq 'FCB_REJECTED'}"
+                     actionListener="#{card.fcbReject}" partialSubmit="false"/>
+          <af:button text="#{lincuviewcontrollerBundle.OK}" id="b19" visible="#{pageFlowScope.action eq 'FCB_AUTHORIZED'}"
+          actionListener="#{card.fcbApprove}" partialSubmit="false"/>
+          <af:button text="#{lincuviewcontrollerBundle.SUBMIT}" id="b20" visible="#{pageFlowScope.action eq 'SUBMIT'}"
+          actionListener="#{card.submitNotes}" partialSubmit="false"/>
         </f:facet>
         <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
                       required="#{bindings.Comments.hints.mandatory}" columns="50"

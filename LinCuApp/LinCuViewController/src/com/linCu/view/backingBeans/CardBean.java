@@ -1,50 +1,33 @@
 package com.linCu.view.backingBeans;
 
 import com.linCu.view.utils.ADFUtils;
-
 import com.linCu.view.utils.JSFUtils;
 
 import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import javax.faces.application.FacesMessage;
-
-import oracle.adf.model.AttributeBinding;
-import oracle.adf.model.BindingContext;
-import oracle.adf.model.binding.DCBindingContainer;
-import oracle.adf.model.binding.DCIteratorBinding;
-import oracle.binding.BindingContainer;
-import oracle.adf.view.rich.component.rich.RichPopup;
-import org.apache.myfaces.trinidad.model.UploadedFile;
-import oracle.jbo.domain.BlobDomain;
-import org.apache.commons.io.IOUtils;
-import java.io.IOException;
-import java.io.InputStream;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.el.ExpressionFactory;
 import javax.el.ValueExpression;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ValueChangeEvent;
+import javax.faces.event.ActionEvent;
+
+import oracle.adf.model.AttributeBinding;
 import oracle.adf.model.BindingContext;
+import oracle.adf.model.binding.DCBindingContainer;
 import oracle.adf.model.binding.DCIteratorBinding;
+import oracle.adf.view.rich.component.rich.RichPopup;
 import oracle.adf.view.rich.component.rich.data.RichTable;
-import oracle.adf.view.rich.context.AdfFacesContext;
+
 import oracle.binding.BindingContainer;
 import oracle.binding.OperationBinding;
+
+import oracle.jbo.domain.BlobDomain;
 import oracle.jbo.uicli.binding.JUCtrlHierBinding;
+
+import org.apache.commons.io.IOUtils;
 import org.apache.myfaces.trinidad.model.CollectionModel;
 import org.apache.myfaces.trinidad.model.UploadedFile;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -53,6 +36,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 public class CardBean {
     private RichPopup commentsPopup;
     private RichPopup attachDocument;
@@ -68,8 +52,10 @@ public class CardBean {
         try {
              Boolean isAllReqDocsUploaded = (Boolean)ADFUtils.executeOperationBinding("isAllRequiredDocumentsUploaded");
             if(isAllReqDocsUploaded){
-             ADFUtils.executeOperationBinding("submitCard");
-            ADFUtils.executeOperationBinding("Commit");
+                RichPopup.PopupHints hints = new RichPopup.PopupHints();
+                this.getCommentsPopup().show(hints);
+//             ADFUtils.executeOperationBinding("submitCard");
+//            ADFUtils.executeOperationBinding("Commit");
             }else{
                 JSFUtils.addErrorMessage("Please add required documents");
             }
@@ -77,7 +63,16 @@ public class CardBean {
             ex.printStackTrace();
         }
     }
-
+    
+    public void submitNotes(ActionEvent actionEvent){
+        try {
+              ADFUtils.executeOperationBinding("submitCard");
+              ADFUtils.executeOperationBinding("Commit");
+            this.getCommentsPopup().hide();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     public void openPopup(ActionEvent actionEvent) {
         RichPopup.PopupHints hints = new RichPopup.PopupHints();
         this.getCommentsPopup().show(hints);
@@ -111,7 +106,49 @@ public class CardBean {
             ex.printStackTrace();
         }
     }
+    
+    public void lincuApprove(ActionEvent actionEvent) {
+        try {
+            ADFUtils.executeOperationBinding("lincuApprove");
+            ADFUtils.executeOperationBinding("Commit");
+            this.getCommentsPopup().hide();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+    }
 
+    public void lincuReject(ActionEvent actionEvent) {
+        try {
+            ADFUtils.executeOperationBinding("lincuReject");
+            ADFUtils.executeOperationBinding("Commit");
+            this.getCommentsPopup().hide();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void fcbApprove(ActionEvent actionEvent) {
+        try {
+            ADFUtils.executeOperationBinding("fcbApprove");
+            ADFUtils.executeOperationBinding("Commit");
+            this.getCommentsPopup().hide();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+
+    public void fcbReject(ActionEvent actionEvent) {
+        try {
+            ADFUtils.executeOperationBinding("fcbReject");
+            ADFUtils.executeOperationBinding("Commit");
+            this.getCommentsPopup().hide();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public String attachDocument() {
         try {
             String action = (String)ADFUtils.getPageFlowScopeValue("action");
