@@ -20,15 +20,15 @@
                 <f:facet name="appNav">
                     <af:button text="#{lincuviewcontrollerBundle.MANAGE_CREDIT_UNION}" id="b1" action="#{viewScope.IndexDynamicRegion.creditUnion}"
                                styleClass="AFAppNavbarButton" selected="true" type="radio"
-                               rendered="#{(sessionScope.user.userRole eq 'MAN_ADMIN')}"/>
+                               rendered="#{(sessionScope.user.userRole eq 'MAN_ADMIN')}" immediate="true"/>
                     <af:button text="#{lincuviewcontrollerBundle.MANAGE_USERS}" id="b2" action="#{viewScope.IndexDynamicRegion.userInfo}"
-                               styleClass="AFAppNavbarButton" type="radio"
+                               styleClass="AFAppNavbarButton" type="radio" immediate="true"
                                rendered="#{(sessionScope.user.userRole eq 'MAN_ADMIN') or (sessionScope.user.userRole eq 'PREPAID_ADMIN')}"/>
                     <af:button text="#{lincuviewcontrollerBundle.MANAGE_MEMBERS}" id="b3" styleClass="AFAppNavbarButton"
-                               action="#{viewScope.IndexDynamicRegion.member}" type="radio"
+                               action="#{viewScope.IndexDynamicRegion.member}" type="radio" immediate="true"
                                rendered="#{(sessionScope.user.userRole eq 'MAN_ADMIN') or (sessionScope.user.userRole eq 'MSR')}"/>
                     <af:button text="#{lincuviewcontrollerBundle.MANAGE_CARD_APPLICATIONS}" id="b4" styleClass="AFAppNavbarButton"
-                               action="#{viewScope.IndexDynamicRegion.cardRequest}" type="radio"
+                               action="#{viewScope.IndexDynamicRegion.cardRequest}" type="radio" immediate="true"
                                rendered="#{(sessionScope.user.userRole eq 'SUP') or(sessionScope.user.userRole eq 'MAN_ADMIN') or (sessionScope.user.userRole eq 'MSR') or(sessionScope.user.userRole eq 'FCB') or (sessionScope.user.userRole eq 'LINCU_ADMIN')}"/>
                 </f:facet>
                 <f:facet name="globalLinks"></f:facet>

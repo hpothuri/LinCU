@@ -9,12 +9,12 @@ import com.linCu.model.view.LincuMemberCardVOImpl;
 import com.linCu.model.view.LincuMemberCardVORowImpl;
 import com.linCu.model.view.LincuMemberVOImpl;
 import com.linCu.model.view.LincuUserInfoVOImpl;
-
+import oracle.jbo.server.SequenceImpl;
 import com.linCu.model.view.LincuUserInfoVORowImpl;
 import com.linCu.model.vvo.LoginVVOImpl;
 import java.util.Map;
 import com.linCu.model.vvo.LoginVVORowImpl;
-
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 import oracle.jbo.Key;
@@ -249,6 +249,17 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
                 docRow2.setDocumentType("ADDRESS_PROOF");
             }
         }
+    }
+
+    public void addToBatch() {
+        Row[] selectedRows = getLincuMemberCard().getFilteredRows("RowSelection", Boolean.TRUE);
+        SequenceImpl nextBatchNum = new SequenceImpl("BATCH_NUMBER_SEQ", getDBTransaction());
+        for (Row row : selectedRows) {
+            ((LincuMemberCardVORowImpl) row).setBatchNumber(nextBatchNum.getSequenceNumber().getBigDecimalValue());
+            ((LincuMemberCardVORowImpl) row).setRowSelection(Boolean.FALSE);
+        }
+        getLincuMemberCard().clearCache();
+        getLincuMemberCard().executeQuery();
     }
 }
 

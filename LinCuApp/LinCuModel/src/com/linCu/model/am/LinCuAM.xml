@@ -4,7 +4,7 @@
 <AppModule
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LinCuAM"
-  Version="12.2.1.11.57"
+  Version="12.2.1.16.48"
   InheritPersonalization="merge"
   ClearCacheOnRollback="true"
   ComponentClass="com.linCu.model.am.LinCuAMImpl"
@@ -195,6 +195,13 @@
     <Method
       Name="addRequiredDcosRecords"
       MethodName="addRequiredDcosRecords">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="addToBatch"
+      MethodName="addToBatch">
       <Return
         Name="_return_type_"
         Type="void"/>

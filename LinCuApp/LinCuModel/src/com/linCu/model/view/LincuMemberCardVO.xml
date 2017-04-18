@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LincuMemberCardVO"
-  Version="12.2.1.11.57"
+  Version="12.2.1.16.48"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -15,8 +15,7 @@
   SelectAllAttributes="false"
   RowClass="com.linCu.model.view.LincuMemberCardVORowImpl"
   ComponentClass="com.linCu.model.view.LincuMemberCardVOImpl"
-  ComponentInterface="com.linCu.model.view.common.LincuMemberCardVO"
-  ClientProxyName="com.linCu.model.view.client.LincuMemberCardVOClient">
+  ComponentInterface="com.linCu.model.view.common.LincuMemberCardVO">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -1602,6 +1601,29 @@
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="RowSelection"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Boolean"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="BIT"
+    DefaultValue="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.linCu.model.view.LincuMemberCardVO.RowSelection_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BatchNumber"
+    PrecisionRule="true"
+    EntityAttrName="BatchNumber"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="BATCH_NUMBER"/>
   <ViewCriteria
     Name="LincuMemberCardVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"

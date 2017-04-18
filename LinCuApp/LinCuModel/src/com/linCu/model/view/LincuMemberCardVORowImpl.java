@@ -128,6 +128,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         WorkPhone,
         Comments,
         TransCardStatus,
+        RowSelection,
+        BatchNumber,
         LincuMemberCardDocsVO,
         CardTypeVA,
         LincuUnionsVA,
@@ -142,7 +144,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         StreetVA,
         HomeOwnershipVA,
         FCBShareholdingVA;
-        static AttributesEnum[] vals = null;
+        private static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
 
@@ -270,6 +272,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int WORKPHONE = AttributesEnum.WorkPhone.index();
     public static final int COMMENTS = AttributesEnum.Comments.index();
     public static final int TRANSCARDSTATUS = AttributesEnum.TransCardStatus.index();
+    public static final int ROWSELECTION = AttributesEnum.RowSelection.index();
+    public static final int BATCHNUMBER = AttributesEnum.BatchNumber.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int CARDTYPEVA = AttributesEnum.CardTypeVA.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
@@ -1954,6 +1958,38 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public String getTransCardStatus() {
         return this.getCardStatus();
         //return (String) getAttributeInternal(TRANSCARDSTATUS);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute RowSelection.
+     * @return the RowSelection
+     */
+    public Boolean getRowSelection() {
+        return (Boolean) getAttributeInternal(ROWSELECTION);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute RowSelection.
+     * @param value value to set the  RowSelection
+     */
+    public void setRowSelection(Boolean value) {
+        setAttributeInternal(ROWSELECTION, value);
+    }
+
+    /**
+     * Gets the attribute value for BATCH_NUMBER using the alias name BatchNumber.
+     * @return the BATCH_NUMBER
+     */
+    public BigDecimal getBatchNumber() {
+        return (BigDecimal) getAttributeInternal(BATCHNUMBER);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for BATCH_NUMBER using the alias name BatchNumber.
+     * @param value value to set the BATCH_NUMBER
+     */
+    public void setBatchNumber(BigDecimal value) {
+        setAttributeInternal(BATCHNUMBER, value);
     }
 
     /**

@@ -23,5 +23,7 @@ public interface LinCuAM extends ApplicationModule {
     boolean isAllRequiredDocumentsUploaded();
 
     void addRequiredDcosRecords();
+
+    void addToBatch();
 }
 

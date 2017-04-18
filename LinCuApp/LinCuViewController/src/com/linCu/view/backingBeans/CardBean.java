@@ -473,4 +473,15 @@ public class CardBean {
                 }
     }
 
+    public void addToBatch(ActionEvent actionEvent) {
+        // Add event code here...
+        OperationBinding oper = ADFUtils.findOperation("addToBatch");
+        oper.execute();
+        if(oper.getErrors() != null && oper.getErrors().size() >0)
+          return;
+        else {
+            ADFUtils.executeOperationBinding("Commit");            
+            JSFUtils.addInformationMessage("Selected card requests have been added to a new batch successfully");
+        }
+    }
 }

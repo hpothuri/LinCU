@@ -20,6 +20,8 @@
           <Item Value="SubmittedOn"/>
           <Item Value="AuthorizedBy"/>
           <Item Value="AuthorizedOn"/>
+          <Item Value="BatchNumber"/>
+          <Item Value="RowSelection" Binds="RowSelection" />
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -31,5 +33,17 @@
     <methodAction id="addRequiredDcosRecords" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="addRequiredDcosRecords" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
                   InstanceName="data.LinCuAMDataControl.dataProvider"/>
+    <button IterBinding="LincuMemberCardIterator" StaticList="true" id="RowSelection">
+      <AttrNames>
+        <Item Value="RowSelection"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <methodAction id="addToBatch" RequiresUpdateModel="true" Action="invokeMethod" MethodName="addToBatch"
+                  IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="bindings.addToBatch.dataControl.dataProvider"/>
   </bindings>
 </pageDefinition>

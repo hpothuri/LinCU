@@ -28,6 +28,8 @@
                                      rendered="#{(sessionScope.user.userRole eq 'MSR')}">
             <af:showPopupBehavior popupId="::p2"/>
           </af:commandToolbarButton>
+          <af:commandToolbarButton text="#{lincuviewcontrollerBundle.ADD_TO_BATCH}" id="ctb21" icon="/images/card.png"
+                                   actionListener="#{card.addToBatch}"/>
         </af:toolbar>
       </f:facet>
       <f:facet name="statusbar"/>
@@ -39,7 +41,13 @@
                 fetchSize="#{bindings.LincuMemberCard.rangeSize}"
                 filterModel="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor}" filterVisible="true"
                 queryListener="#{bindings.LincuMemberCardVOCriteriaQuery.processQuery}" varStatus="vs" id="resId1"
-                binding="#{card.cardTable}" autoHeightRows="0">
+                binding="#{card.cardTable}" autoHeightRows="0" partialTriggers="::ctb21">
+        <af:column align="center" headerText="#{bindings.LincuMemberCard.hints.RowSelection.label}" id="c2"
+                   filterable="true">
+          <af:selectBooleanCheckbox id="sbc1" shortDesc="#{bindings.LincuMemberCard.hints.RowSelection.tooltip}" autoSubmit="true"
+                                    value="#{row.bindings.RowSelection.inputValue}"
+                                    visible="#{row.bindings.CardStatus.attributeValue eq 'FCB_AUTHORIZED' and row.bindings.BatchNumber.inputValue eq null}"/>
+        </af:column>
         <af:column sortProperty="#{bindings.LincuMemberCard.hints.MemberId.name}" filterable="true" sortable="true"
                    headerText="#{bindings.LincuMemberCard.hints.MemberId.label}" id="resId1c1">
           <af:selectOneChoice value="#{row.bindings.MemberId.inputValue}" label="#{row.bindings.MemberId.label}"
@@ -49,8 +57,9 @@
             <f:validator binding="#{row.bindings.MemberId.validator}"/>
           </af:selectOneChoice>
         </af:column>
-        <af:column headerText="#{bindings.LincuMemberCard.hints.CardReqType.label}" id="c1" filterable="true" sortable="true"
-                   sortProperty="#{bindings.LincuMemberCard.hints.CardReqType.name}" width="150" minimumWidth="150">
+        <af:column headerText="#{bindings.LincuMemberCard.hints.CardReqType.label}" id="c1" filterable="true"
+                   sortable="true" sortProperty="#{bindings.LincuMemberCard.hints.CardReqType.name}" width="150"
+                   minimumWidth="150">
           <af:selectOneChoice value="#{row.bindings.CardReqType.inputValue}" label="#{row.bindings.CardReqType.label}"
                               required="#{bindings.LincuMemberCard.hints.CardReqType.mandatory}"
                               shortDesc="#{bindings.LincuMemberCard.hints.CardReqType.tooltip}" id="soc3"
@@ -118,6 +127,13 @@
           <af:outputText value="#{row.AuthorizedOn}" shortDesc="#{bindings.LincuMemberCard.hints.AuthorizedOn.tooltip}"
                          id="ot6">
             <af:convertDateTime pattern="#{bindings.LincuMemberCard.hints.AuthorizedOn.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.BatchNumber.name}" filterable="true"
+                   headerText="#{bindings.LincuMemberCard.hints.BatchNumber.label}" id="c3">
+          <af:outputText value="#{row.BatchNumber}" shortDesc="#{bindings.LincuMemberCard.hints.BatchNumber.tooltip}"
+                         id="ot1">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.LincuMemberCard.hints.BatchNumber.format}"/>
           </af:outputText>
         </af:column>
       </af:table>

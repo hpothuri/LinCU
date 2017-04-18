@@ -44,6 +44,7 @@ public class LincuMemberCardEOImpl extends EntityImpl {
         AuthorizedOn,
         CardStatus,
         Comments,
+        BatchNumber,
         LincuMemberCardAuditEO,
         LincuMemberInfoEO,
         LincuMemberKycEO,
@@ -71,6 +72,7 @@ public class LincuMemberCardEOImpl extends EntityImpl {
         }
     }
 
+
     public static final int CARDID = AttributesEnum.CardId.index();
     public static final int MEMBERID = AttributesEnum.MemberId.index();
     public static final int MEMBERCARDTYPE = AttributesEnum.MemberCardType.index();
@@ -83,6 +85,7 @@ public class LincuMemberCardEOImpl extends EntityImpl {
     public static final int AUTHORIZEDON = AttributesEnum.AuthorizedOn.index();
     public static final int CARDSTATUS = AttributesEnum.CardStatus.index();
     public static final int COMMENTS = AttributesEnum.Comments.index();
+    public static final int BATCHNUMBER = AttributesEnum.BatchNumber.index();
     public static final int LINCUMEMBERCARDAUDITEO = AttributesEnum.LincuMemberCardAuditEO.index();
     public static final int LINCUMEMBERINFOEO = AttributesEnum.LincuMemberInfoEO.index();
     public static final int LINCUMEMBERKYCEO = AttributesEnum.LincuMemberKycEO.index();
@@ -100,6 +103,7 @@ public class LincuMemberCardEOImpl extends EntityImpl {
     public static synchronized EntityDefImpl getDefinitionObject() {
         return EntityDefImpl.findDefObject("com.linCu.model.entity.LincuMemberCardEO");
     }
+
 
     /**
      * Gets the attribute value for CardId, using the alias name CardId.
@@ -291,6 +295,22 @@ public class LincuMemberCardEOImpl extends EntityImpl {
      */
     public void setComments(String value) {
         setAttributeInternal(COMMENTS, value);
+    }
+
+    /**
+     * Gets the attribute value for BatchNumber, using the alias name BatchNumber.
+     * @return the value of BatchNumber
+     */
+    public BigDecimal getBatchNumber() {
+        return (BigDecimal) getAttributeInternal(BATCHNUMBER);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for BatchNumber.
+     * @param value value to set the BatchNumber
+     */
+    public void setBatchNumber(BigDecimal value) {
+        setAttributeInternal(BATCHNUMBER, value);
     }
 
     /**
