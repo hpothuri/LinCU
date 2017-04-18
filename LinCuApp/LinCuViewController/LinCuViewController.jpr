@@ -307,11 +307,11 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Poi-ooxml-3.15.jar"/>
+            <value n="id" v="Activation.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Poi-ooxml-schemas-3.15.jar"/>
+            <value n="id" v="Mail.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -319,11 +319,11 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Activation.jar"/>
+            <value n="id" v="Poi-ooxml-3.15.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Mail.jar"/>
+            <value n="id" v="Poi-ooxml-schemas-3.15.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -359,33 +359,6 @@
          <list n="libraryDefinitions">
             <hash>
                <list n="classPath">
-                  <url path="../../lib/poi-ooxml-3.15.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Poi-ooxml-3.15.jar"/>
-               <value n="id" v="Poi-ooxml-3.15.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
-                  <url path="../../lib/poi-ooxml-schemas-3.15.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Poi-ooxml-schemas-3.15.jar"/>
-               <value n="id" v="Poi-ooxml-schemas-3.15.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
-                  <url path="../../lib/poi-3.11.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Poi-3.11.jar"/>
-               <value n="id" v="Poi-3.11.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
                   <url path="../../lib/activation.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
@@ -400,6 +373,33 @@
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Mail.jar"/>
                <value n="id" v="Mail.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../../lib/poi-3.11.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Poi-3.11.jar"/>
+               <value n="id" v="Poi-3.11.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../../lib/poi-ooxml-3.15.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Poi-ooxml-3.15.jar"/>
+               <value n="id" v="Poi-ooxml-3.15.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../../lib/poi-ooxml-schemas-3.15.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Poi-ooxml-schemas-3.15.jar"/>
+               <value n="id" v="Poi-ooxml-schemas-3.15.jar"/>
                <value n="locked" v="true"/>
             </hash>
          </list>
@@ -510,11 +510,11 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Poi-ooxml-3.15.jar"/>
+            <value n="id" v="Activation.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Poi-ooxml-schemas-3.15.jar"/>
+            <value n="id" v="Mail.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -522,11 +522,11 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Activation.jar"/>
+            <value n="id" v="Poi-ooxml-3.15.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Mail.jar"/>
+            <value n="id" v="Poi-ooxml-schemas-3.15.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>

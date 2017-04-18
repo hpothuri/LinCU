@@ -47,5 +47,21 @@ public class LincuMemberVOImpl extends ViewObjectImpl implements LincuMemberVO {
             row.setLastUpdateDate1(timestamp);
         }
     }
+
+    /**
+     * Returns the variable value for bindCreditUnionId.
+     * @return variable value for bindCreditUnionId
+     */
+    public String getbindCreditUnionId() {
+        return (String) ensureVariableManager().getVariableValue("bindCreditUnionId");
+    }
+
+    /**
+     * Sets <code>value</code> for variable bindCreditUnionId.
+     * @param value value to bind as bindCreditUnionId
+     */
+    public void setbindCreditUnionId(String value) {
+        ensureVariableManager().setVariableValue("bindCreditUnionId", value);
+    }
 }
 

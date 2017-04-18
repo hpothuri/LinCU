@@ -17,7 +17,18 @@
     ViewObjectName="com.linCu.model.view.CreditUnionVO"/>
   <ViewUsage
     Name="LincuUserInfo"
-    ViewObjectName="com.linCu.model.view.LincuUserInfoVO"/>
+    ViewObjectName="com.linCu.model.view.LincuUserInfoVO">
+    <ViewCriteriaUsage
+      Name="QueryByCreditUnion"
+      FullName="com.linCu.model.view.LincuUserInfoVO.QueryByCreditUnion"/>
+    <ParameterMap>
+      <PIMap Variable="bindCreditUnionId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[adf.context.current.sessionScope.get('creditUnionId')]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
   <ViewUsage
     Name="CreditUnionBranch"
     ViewObjectName="com.linCu.model.view.CreditUnionBranchVO"/>
@@ -33,10 +44,62 @@
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO"/>
   <ViewUsage
     Name="LincuMember"
-    ViewObjectName="com.linCu.model.view.LincuMemberVO"/>
+    ViewObjectName="com.linCu.model.view.LincuMemberVO">
+    <ViewCriteriaUsage
+      Name="QueryByCreditUnion"
+      FullName="com.linCu.model.view.LincuMemberVO.QueryByCreditUnion"/>
+    <ParameterMap>
+      <PIMap Variable="bindCreditUnionId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[ adf.context.current.sessionScope.get('creditUnionId')]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
   <ViewUsage
     Name="LincuMemberCard"
-    ViewObjectName="com.linCu.model.view.LincuMemberCardVO"/>
+    ViewObjectName="com.linCu.model.view.LincuMemberCardVO">
+    <ViewCriteriaUsage
+      Name="QueryByCardStatus"
+      FullName="com.linCu.model.view.LincuMemberCardVO.QueryByCardStatus"/>
+    <ViewCriteriaUsage
+      Name="QueryByCreditUnion"
+      FullName="com.linCu.model.view.LincuMemberCardVO.QueryByCreditUnion"/>
+    <ParameterMap>
+      <PIMap Variable="bindStatus">
+        <TransientExpression
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'FCB') ? 'LINCU_AUTHORIZED' : ((adf.context.current.sessionScope.get('role') == 'LINCU_ADMIN') || (adf.context.current.sessionScope.get('role') == 'PREPAID_ADMIN') || (adf.context.current.sessionScope.get('role') == 'SUP') || (adf.context.current.sessionScope.get('role') == 'MAN_ADMIN') ? 'AUTHORIZED' : null)]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus1">
+        <TransientExpression
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'FCB') ? 'FCB_AUTHORIZED' : ((adf.context.current.sessionScope.get('role') == 'LINCU_ADMIN') ? 'LINCU_AUTHORIZED' : null)]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus2">
+        <TransientExpression
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'FCB') ? 'FCB_REJECTED' : ((adf.context.current.sessionScope.get('role') == 'LINCU_ADMIN') ? 'LINCU_REJECTED' : null)]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus3">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'SUP') ? 'SUBMITTED' :  null]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus4">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[((adf.context.current.sessionScope.get('role') == 'SUP') || (adf.context.current.sessionScope.get('role') == 'MAN_ADMIN'))? 'REJECTED' :  null]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindCreditUnionId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[((adf.context.current.sessionScope.get('role') == 'MSR') || (adf.context.current.sessionScope.get('role') == 'SUP') || (adf.context.current.sessionScope.get('role') == 'MAN_ADMIN') ) ? adf.context.current.sessionScope.get('creditUnionId') :  null]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus5">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'MAN_ADMIN') ? 'DRAFT' :  null]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
   <ViewUsage
     Name="LincuMemberCardDocs"
     ViewObjectName="com.linCu.model.view.LincuMemberCardDocsVO"

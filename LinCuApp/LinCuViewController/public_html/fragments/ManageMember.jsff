@@ -4,7 +4,7 @@
           <c:set var="lincuviewcontrollerBundle" value="#{adfBundle['com.linCu.view.LinCuViewControllerBundle']}"/>
  <af:panelGroupLayout layout="vertical" id="pgl1">
   <af:panelGroupLayout layout="vertical" id="pgl2">
-   <af:panelHeader text="#{lincuviewcontrollerBundle.VIEW_EDIT_BRANCHES}" id="ph1">
+   <af:panelHeader text="#{lincuviewcontrollerBundle.MANAGE_MEMBERS}" id="ph1">
     <af:query id="qryId1" headerText="Search" disclosed="true"
               value="#{bindings.LincuMemberVOCriteriaQuery.queryDescriptor}"
               model="#{bindings.LincuMemberVOCriteriaQuery.queryModel}"

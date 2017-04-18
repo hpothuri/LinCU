@@ -111,5 +111,117 @@ public class LincuMemberCardVOImpl extends ViewObjectImpl implements LincuMember
         row.setCreatedOn(timestamp);
         }
     }
+
+    /**
+     * Returns the variable value for bindStatus.
+     * @return variable value for bindStatus
+     */
+    public String getbindStatus() {
+        return (String) ensureVariableManager().getVariableValue("bindStatus");
+    }
+
+    /**
+     * Sets <code>value</code> for variable bindStatus.
+     * @param value value to bind as bindStatus
+     */
+    public void setbindStatus(String value) {
+        ensureVariableManager().setVariableValue("bindStatus", value);
+    }
+
+    /**
+     * Returns the variable value for bindStatus1.
+     * @return variable value for bindStatus1
+     */
+    public String getbindStatus1() {
+        return (String) ensureVariableManager().getVariableValue("bindStatus1");
+    }
+
+    /**
+     * Sets <code>value</code> for variable bindStatus1.
+     * @param value value to bind as bindStatus1
+     */
+    public void setbindStatus1(String value) {
+        ensureVariableManager().setVariableValue("bindStatus1", value);
+    }
+
+    /**
+     * Returns the variable value for bindStatus2.
+     * @return variable value for bindStatus2
+     */
+    public String getbindStatus2() {
+        return (String) ensureVariableManager().getVariableValue("bindStatus2");
+    }
+
+    /**
+     * Sets <code>value</code> for variable bindStatus2.
+     * @param value value to bind as bindStatus2
+     */
+    public void setbindStatus2(String value) {
+        ensureVariableManager().setVariableValue("bindStatus2", value);
+    }
+
+    /**
+     * Returns the variable value for bindStatus3.
+     * @return variable value for bindStatus3
+     */
+    public String getbindStatus3() {
+        return (String) ensureVariableManager().getVariableValue("bindStatus3");
+    }
+
+    /**
+     * Sets <code>value</code> for variable bindStatus3.
+     * @param value value to bind as bindStatus3
+     */
+    public void setbindStatus3(String value) {
+        ensureVariableManager().setVariableValue("bindStatus3", value);
+    }
+
+    /**
+     * Returns the variable value for bindStatus4.
+     * @return variable value for bindStatus4
+     */
+    public String getbindStatus4() {
+        return (String) ensureVariableManager().getVariableValue("bindStatus4");
+    }
+
+    /**
+     * Sets <code>value</code> for variable bindStatus4.
+     * @param value value to bind as bindStatus4
+     */
+    public void setbindStatus4(String value) {
+        ensureVariableManager().setVariableValue("bindStatus4", value);
+    }
+
+    /**
+     * Returns the variable value for bindCreditUnionId.
+     * @return variable value for bindCreditUnionId
+     */
+    public String getbindCreditUnionId() {
+        return (String) ensureVariableManager().getVariableValue("bindCreditUnionId");
+    }
+
+    /**
+     * Sets <code>value</code> for variable bindCreditUnionId.
+     * @param value value to bind as bindCreditUnionId
+     */
+    public void setbindCreditUnionId(String value) {
+        ensureVariableManager().setVariableValue("bindCreditUnionId", value);
+    }
+
+    /**
+     * Returns the variable value for bindStatus5.
+     * @return variable value for bindStatus5
+     */
+    public String getbindStatus5() {
+        return (String) ensureVariableManager().getVariableValue("bindStatus5");
+    }
+
+    /**
+     * Sets <code>value</code> for variable bindStatus5.
+     * @param value value to bind as bindStatus5
+     */
+    public void setbindStatus5(String value) {
+        ensureVariableManager().setVariableValue("bindStatus5", value);
+    }
 }
 

@@ -18,6 +18,10 @@
         ResId="com.linCu.model.vvo.LincuUnionsVVO_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
+  <Variable
+    Name="bindCreditUnionId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <SQLQuery><![CDATA[SELECT CREDIT_UNION_ID, CREDIT_UNION_CODE, CREDIT_UNION_NAME FROM CREDIT_UNION]]></SQLQuery>
   <ViewAttribute
     Name="CreditUnionId"
@@ -64,6 +68,42 @@
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
   </ViewAttribute>
+  <ViewCriteria
+    Name="QueryByCreditUnion"
+    ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="LincuUnionsVVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CreditUnionId"
+        ViewAttribute="CreditUnionId"
+        Operator="="
+        Conjunction="AND"
+        Value=":bindCreditUnionId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <AttrArray Name="KeyAttributes">
     <Item Value="CreditUnionId"/>
   </AttrArray>

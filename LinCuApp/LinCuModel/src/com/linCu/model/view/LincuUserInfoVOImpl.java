@@ -118,5 +118,21 @@ public class LincuUserInfoVOImpl extends ViewObjectImpl implements LincuUserInfo
         row.setPassword(password);
         }
     }
+
+    /**
+     * Returns the variable value for bindCreditUnionId.
+     * @return variable value for bindCreditUnionId
+     */
+    public String getbindCreditUnionId() {
+        return (String) ensureVariableManager().getVariableValue("bindCreditUnionId");
+    }
+
+    /**
+     * Sets <code>value</code> for variable bindCreditUnionId.
+     * @param value value to bind as bindCreditUnionId
+     */
+    public void setbindCreditUnionId(String value) {
+        ensureVariableManager().setVariableValue("bindCreditUnionId", value);
+    }
 }
 

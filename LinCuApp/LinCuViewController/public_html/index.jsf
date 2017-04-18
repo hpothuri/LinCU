@@ -29,7 +29,7 @@
                                rendered="#{(sessionScope.user.userRole eq 'MAN_ADMIN') or (sessionScope.user.userRole eq 'MSR')}"/>
                     <af:button text="#{lincuviewcontrollerBundle.MANAGE_CARD_APPLICATIONS}" id="b4" styleClass="AFAppNavbarButton"
                                action="#{viewScope.IndexDynamicRegion.cardRequest}" type="radio"
-                               rendered="#{(sessionScope.user.userRole eq 'SUP') or(sessionScope.user.userRole eq 'MAN_ADMIN') or (sessionScope.user.userRole eq 'MSR') or(sessionScope.user.userRole eq 'FCB')}"/>
+                               rendered="#{(sessionScope.user.userRole eq 'SUP') or(sessionScope.user.userRole eq 'MAN_ADMIN') or (sessionScope.user.userRole eq 'MSR') or(sessionScope.user.userRole eq 'FCB') or (sessionScope.user.userRole eq 'LINCU_ADMIN')}"/>
                 </f:facet>
                 <f:facet name="globalLinks"></f:facet>
                 <f:facet name="footer">

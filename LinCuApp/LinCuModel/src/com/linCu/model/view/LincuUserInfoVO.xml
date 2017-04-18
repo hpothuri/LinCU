@@ -21,6 +21,10 @@
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
+  <Variable
+    Name="bindCreditUnionId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <ViewAccessor
     Name="GenderVA"
     ViewObjectName="com.linCu.model.vvo.GenderVVO"
@@ -32,7 +36,18 @@
   <ViewAccessor
     Name="LincuUnionsVA"
     ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"
-    RowLevelBinds="true"/>
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByCreditUnion"
+      FullName="com.linCu.model.vvo.LincuUnionsVVO.QueryByCreditUnion"/>
+    <ParameterMap>
+      <PIMap Variable="bindCreditUnionId">
+        <TransientExpression
+          trustMode="trusted"
+          Name="ExpressionScript"><![CDATA[adf.context.current.sessionScope.get('creditUnionId')]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ViewAccessor
     Name="LincuBranchesVA"
     ViewObjectName="com.linCu.model.vvo.LincuBranchesVVO"
@@ -574,6 +589,42 @@
         ViewAttribute="UserName"
         Operator="="
         Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="QueryByCreditUnion"
+    ViewObjectName="com.linCu.model.view.LincuUserInfoVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="LincuUserInfoVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CreditUnionId"
+        ViewAttribute="CreditUnionId"
+        Operator="="
+        Conjunction="AND"
+        Value=":bindCreditUnionId"
+        IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
