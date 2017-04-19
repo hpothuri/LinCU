@@ -324,5 +324,25 @@
                   InstanceName="data.LinCuAMDataControl.LincuMemberCard">
       <NamedData NDName="rejector" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
     </methodAction>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="AdminComments">
+      <AttrNames>
+        <Item Value="AdminComments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="LincuComments">
+      <AttrNames>
+        <Item Value="LincuComments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="SupComments">
+      <AttrNames>
+        <Item Value="SupComments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="FcbComments">
+      <AttrNames>
+        <Item Value="FcbComments"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

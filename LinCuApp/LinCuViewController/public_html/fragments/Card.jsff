@@ -5,7 +5,8 @@
   <af:panelGroupLayout id="pgl1" layout="vertical">
     <af:panelGroupLayout id="pgl2" layout="horizontal" halign="end">
       <af:button text="#{lincuviewcontrollerBundle.AUTHORIZE}" id="b4" actionListener="#{card.openPopup}"
-                 rendered="#{(sessionScope.user.userRole eq 'SUP') or(sessionScope.user.userRole eq 'MAN_ADMIN')}">
+                 rendered="#{(sessionScope.user.userRole eq 'SUP') or(sessionScope.user.userRole eq 'MAN_ADMIN')}"
+                 visible="#{(bindings.TransCardStatus eq 'SUBMITTED')}">
         <af:setPropertyListener from="AUTHORIZED" to="#{pageFlowScope.action}" type="action"/>
       </af:button>
       <af:button text="#{lincuviewcontrollerBundle.AUTHORIZE}" id="b13" actionListener="#{card.openPopup}"
@@ -20,7 +21,7 @@
                  </af:button>
       <af:spacer width="10" height="10" id="s4"/>
       <af:button text="#{lincuviewcontrollerBundle.REJECT}" id="b5" actionListener="#{card.openPopup}"
-                 disabled="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'AUTHORIZED')}"
+                 visible="#{(bindings.TransCardStatus eq 'SUBMITTED')}"
                  rendered="#{(sessionScope.user.userRole eq 'SUP')}">
         <af:setPropertyListener from="REJECTED" to="#{pageFlowScope.action}" type="action"/>
       </af:button>
@@ -941,8 +942,41 @@
         <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
                       required="#{bindings.Comments.hints.mandatory}" columns="50"
                       maximumLength="#{bindings.Comments.hints.precision}"
-                      shortDesc="#{bindings.Comments.hints.tooltip}" id="it3" rows="6">
+                      shortDesc="#{bindings.Comments.hints.tooltip}" id="it3" rows="6"
+                      rendered="#{sessionScope.user.userRole eq 'MSR'}">
           <f:validator binding="#{bindings.Comments.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.AdminComments.inputValue}" label="#{bindings.AdminComments.hints.label}"
+                      required="#{bindings.AdminComments.hints.mandatory}"
+                      columns="50"
+                      maximumLength="#{bindings.AdminComments.hints.precision}"
+                      shortDesc="#{bindings.AdminComments.hints.tooltip}" id="it11" rows="6"
+                      rendered="#{sessionScope.user.userRole eq 'MAN_ADMIN'}">
+          <f:validator binding="#{bindings.AdminComments.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.LincuComments.inputValue}" label="#{bindings.LincuComments.hints.label}"
+                      required="#{bindings.LincuComments.hints.mandatory}"
+                      columns="50"
+                      maximumLength="#{bindings.LincuComments.hints.precision}"
+                      shortDesc="#{bindings.LincuComments.hints.tooltip}" id="it12" rows="6"
+                      rendered="#{sessionScope.user.userRole eq 'LINCU_ADMIN'}">
+          <f:validator binding="#{bindings.LincuComments.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.SupComments.inputValue}" label="#{bindings.SupComments.hints.label}"
+                      required="#{bindings.SupComments.hints.mandatory}"
+                      columns="50"
+                      maximumLength="#{bindings.SupComments.hints.precision}"
+                      shortDesc="#{bindings.SupComments.hints.tooltip}" id="it16" rows="6"
+                      rendered="#{sessionScope.user.userRole eq 'SUP'}">
+          <f:validator binding="#{bindings.SupComments.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.FcbComments.inputValue}" label="#{bindings.FcbComments.hints.label}"
+                      required="#{bindings.FcbComments.hints.mandatory}"
+                      columns="50"
+                      maximumLength="#{bindings.FcbComments.hints.precision}"
+                      shortDesc="#{bindings.FcbComments.hints.tooltip}" id="it17" rows="6"
+                      rendered="#{sessionScope.user.userRole eq 'FCB'}">
+          <f:validator binding="#{bindings.FcbComments.validator}"/>
         </af:inputText>
       </af:dialog>
     </af:popup>

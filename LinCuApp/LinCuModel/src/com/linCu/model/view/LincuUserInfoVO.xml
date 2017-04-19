@@ -43,7 +43,6 @@
     <ParameterMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
-          trustMode="trusted"
           Name="ExpressionScript"><![CDATA[adf.context.current.sessionScope.get('creditUnionId')]]></TransientExpression>
       </PIMap>
     </ParameterMap>
@@ -192,6 +191,82 @@
     MRUCount="0">
     <AttrArray Name="AttrNames">
       <Item Value="SecurityQustn"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SecurityQustn1"
+    ListVOName="SecurityQuestionsVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SecurityQustn1"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SecurityQustn2"
+    ListVOName="SecurityQuestionsVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SecurityQustn2"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SecurityQustn3"
+    ListVOName="SecurityQuestionsVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SecurityQustn3"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SecurityQustn4"
+    ListVOName="SecurityQuestionsVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SecurityQustn4"/>
     </AttrArray>
     <AttrArray Name="AttrExpressions"/>
     <AttrArray Name="ListAttrNames">
@@ -488,6 +563,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <LABEL
+          ResId="SECURITY_QUESTION_1"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -496,7 +573,14 @@
     PrecisionRule="true"
     EntityAttrName="SecurityQustnAns"
     EntityUsage="LincuUserInfoEO"
-    AliasName="SECURITY_QUSTN_ANS"/>
+    AliasName="SECURITY_QUSTN_ANS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ANSWER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="FirstLoginFlag"
     IsNotNull="true"
@@ -504,6 +588,122 @@
     EntityAttrName="FirstLoginFlag"
     EntityUsage="LincuUserInfoEO"
     AliasName="FIRST_LOGIN_FLAG"/>
+  <ViewAttribute
+    Name="SecurityQustn1"
+    PrecisionRule="true"
+    EntityAttrName="SecurityQustn1"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="SECURITY_QUSTN1"
+    LOVName="LOV_SecurityQustn1">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="SECURITY_QUESTION_2"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityQustn2"
+    PrecisionRule="true"
+    EntityAttrName="SecurityQustn2"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="SECURITY_QUSTN2"
+    LOVName="LOV_SecurityQustn2">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="SECURITY_QUESTION_3"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityQustn3"
+    PrecisionRule="true"
+    EntityAttrName="SecurityQustn3"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="SECURITY_QUSTN3"
+    LOVName="LOV_SecurityQustn3">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="SECURITY_QUESTION_4"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityQustn4"
+    PrecisionRule="true"
+    EntityAttrName="SecurityQustn4"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="SECURITY_QUSTN4"
+    LOVName="LOV_SecurityQustn4">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="SECURITY_QUESTION_5"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityQustnAns1"
+    PrecisionRule="true"
+    EntityAttrName="SecurityQustnAns1"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="SECURITY_QUSTN_ANS1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ANSWER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityQustnAns2"
+    PrecisionRule="true"
+    EntityAttrName="SecurityQustnAns2"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="SECURITY_QUSTN_ANS2">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ANSWER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityQustnAns3"
+    PrecisionRule="true"
+    EntityAttrName="SecurityQustnAns3"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="SECURITY_QUSTN_ANS3">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ANSWER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityQustnAns4"
+    PrecisionRule="true"
+    EntityAttrName="SecurityQustnAns4"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="SECURITY_QUSTN_ANS4">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ANSWER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewCriteria
     Name="QueryUserInfo"
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO"
@@ -656,54 +856,6 @@
       <Return
         Name="_return_type_"
         Type="void"/>
-    </Method>
-    <Method
-      Name="firstTimeResetPassword"
-      MethodName="firstTimeResetPassword">
-      <Return
-        Name="_return_type_"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="newPassword"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="confirmPassword"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="userId"
-        Type="java.lang.Long"/>
-    </Method>
-    <Method
-      Name="forgotResetPassword"
-      MethodName="forgotResetPassword">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="password"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="userId"
-        Type="java.lang.Long"/>
-    </Method>
-    <Method
-      Name="resetPassword"
-      MethodName="resetPassword">
-      <Return
-        Name="_return_type_"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="oldPassword"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="newPassword"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="confirmPassword"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="userId"
-        Type="java.lang.Long"/>
     </Method>
     <Method
       Name="updatePassword"

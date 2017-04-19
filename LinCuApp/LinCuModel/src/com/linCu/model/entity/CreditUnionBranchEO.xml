@@ -9,7 +9,8 @@
   DBObjectType="table"
   DBObjectName="CREDIT_UNION_BRANCH"
   AliasName="CreditUnionBranchEO"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
   <Attribute
     Name="CreditUnionId"
     IsNotNull="true"
@@ -180,6 +181,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
+    <validation:RegExpValidationBean
+      Name="CreditUnionEmailIdRule0"
+      ResId="com.linCu.model.entity.CreditUnionBranchEO.CreditUnionEmailId_Rule_0"
+      OnAttribute="CreditUnionEmailId"
+      Pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
+      Inverse="false"/>
   </Attribute>
   <Attribute
     Name="CreatedBy"
@@ -311,4 +318,8 @@
       <Item Value="com.linCu.model.entity.CreditUnionBranchEO.CreditUnionId"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.linCu.model.LinCuModelBundle"/>
+  </ResourceBundle>
 </Entity>

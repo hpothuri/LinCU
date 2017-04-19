@@ -4,7 +4,7 @@
 <AppModule
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LinCuAM"
-  Version="12.2.1.16.48"
+  Version="12.2.1.11.57"
   InheritPersonalization="merge"
   ClearCacheOnRollback="true"
   ComponentClass="com.linCu.model.am.LinCuAMImpl"
@@ -80,22 +80,18 @@
       </PIMap>
       <PIMap Variable="bindStatus3">
         <TransientExpression
-          trustMode="untrusted"
           Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'SUP') ? 'SUBMITTED' :  null]]></TransientExpression>
       </PIMap>
       <PIMap Variable="bindStatus4">
         <TransientExpression
-          trustMode="untrusted"
           Name="ExpressionScript"><![CDATA[((adf.context.current.sessionScope.get('role') == 'SUP') || (adf.context.current.sessionScope.get('role') == 'MAN_ADMIN'))? 'REJECTED' :  null]]></TransientExpression>
       </PIMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
-          trustMode="untrusted"
           Name="ExpressionScript"><![CDATA[((adf.context.current.sessionScope.get('role') == 'MSR') || (adf.context.current.sessionScope.get('role') == 'SUP') || (adf.context.current.sessionScope.get('role') == 'MAN_ADMIN') ) ? adf.context.current.sessionScope.get('creditUnionId') :  null]]></TransientExpression>
       </PIMap>
       <PIMap Variable="bindStatus5">
         <TransientExpression
-          trustMode="untrusted"
           Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'MAN_ADMIN') ? 'DRAFT' :  null]]></TransientExpression>
       </PIMap>
     </ParameterMap>
@@ -205,6 +201,80 @@
       <Return
         Name="_return_type_"
         Type="void"/>
+    </Method>
+    <Method
+      Name="setLoggedInUserCurrentRow"
+      MethodName="setLoggedInUserCurrentRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="userName"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="firstTimeResetPassword"
+      MethodName="firstTimeResetPassword">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="newPassword"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="confirmPassword"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="userId"
+        Type="java.lang.Long"/>
+    </Method>
+    <Method
+      Name="validateSecQustns"
+      MethodName="validateSecQustns">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="answer1"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="answer2"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="answer3"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="answer4"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="answer5"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="resetPassword"
+      MethodName="resetPassword">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="oldPassword"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="newPassword"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="confirmPassword"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="forgotResetPassword"
+      MethodName="forgotResetPassword">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="password"
+        Type="java.lang.String"/>
     </Method>
   </ClientInterface>
 </AppModule>

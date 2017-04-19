@@ -25,5 +25,15 @@ public interface LinCuAM extends ApplicationModule {
     void addRequiredDcosRecords();
 
     void addToBatch();
+
+    void setLoggedInUserCurrentRow(String userName);
+
+    String firstTimeResetPassword(String newPassword, String confirmPassword, Long userId);
+
+    String validateSecQustns(String answer1, String answer2, String answer3, String answer4, String answer5);
+
+    String resetPassword(String oldPassword, String newPassword, String confirmPassword);
+
+    void forgotResetPassword(String password);
 }
 

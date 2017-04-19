@@ -125,6 +125,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="25"/>
     </DesignTime>
+    <validation:RegExpValidationBean
+      Name="EmailRule0"
+      ResId="com.linCu.model.entity.LincuUserInfoEO.Email_Rule_0"
+      OnAttribute="Email"
+      Pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
+      Inverse="false"/>
   </Attribute>
   <Attribute
     Name="MobilePhoneNumber"
@@ -295,6 +301,102 @@
     DefaultValue="Y">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SecurityQustn1"
+    Precision="50"
+    ColumnName="SECURITY_QUSTN1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SecurityQustnAns1"
+    Precision="250"
+    ColumnName="SECURITY_QUSTN_ANS1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SecurityQustn2"
+    Precision="50"
+    ColumnName="SECURITY_QUSTN2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SecurityQustnAns2"
+    Precision="250"
+    ColumnName="SECURITY_QUSTN_ANS2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SecurityQustn3"
+    Precision="50"
+    ColumnName="SECURITY_QUSTN3"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SecurityQustnAns3"
+    Precision="250"
+    ColumnName="SECURITY_QUSTN_ANS3"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SecurityQustn4"
+    Precision="50"
+    ColumnName="SECURITY_QUSTN4"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SecurityQustnAns4"
+    Precision="250"
+    ColumnName="SECURITY_QUSTN_ANS4"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_USER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
     </DesignTime>
   </Attribute>
   <AccessorAttribute

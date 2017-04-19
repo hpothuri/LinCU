@@ -14,12 +14,7 @@ public interface LincuUserInfoVO extends ViewObject {
     void forgotPassword();
 
 
-    String firstTimeResetPassword(String newPassword, String confirmPassword, Long userId);
-
-    void forgotResetPassword(String password, Long userId);
-
-    String resetPassword(String oldPassword, String newPassword, String confirmPassword, Long userId);
-
     void updatePassword(String password);
+
 }
 

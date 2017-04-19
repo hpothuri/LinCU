@@ -45,6 +45,10 @@ public class LincuMemberCardEOImpl extends EntityImpl {
         CardStatus,
         Comments,
         BatchNumber,
+        LincuComments,
+        FcbComments,
+        AdminComments,
+        SupComments,
         LincuMemberCardAuditEO,
         LincuMemberInfoEO,
         LincuMemberKycEO,
@@ -86,6 +90,10 @@ public class LincuMemberCardEOImpl extends EntityImpl {
     public static final int CARDSTATUS = AttributesEnum.CardStatus.index();
     public static final int COMMENTS = AttributesEnum.Comments.index();
     public static final int BATCHNUMBER = AttributesEnum.BatchNumber.index();
+    public static final int LINCUCOMMENTS = AttributesEnum.LincuComments.index();
+    public static final int FCBCOMMENTS = AttributesEnum.FcbComments.index();
+    public static final int ADMINCOMMENTS = AttributesEnum.AdminComments.index();
+    public static final int SUPCOMMENTS = AttributesEnum.SupComments.index();
     public static final int LINCUMEMBERCARDAUDITEO = AttributesEnum.LincuMemberCardAuditEO.index();
     public static final int LINCUMEMBERINFOEO = AttributesEnum.LincuMemberInfoEO.index();
     public static final int LINCUMEMBERKYCEO = AttributesEnum.LincuMemberKycEO.index();
@@ -311,6 +319,70 @@ public class LincuMemberCardEOImpl extends EntityImpl {
      */
     public void setBatchNumber(BigDecimal value) {
         setAttributeInternal(BATCHNUMBER, value);
+    }
+
+    /**
+     * Gets the attribute value for LincuComments, using the alias name LincuComments.
+     * @return the value of LincuComments
+     */
+    public String getLincuComments() {
+        return (String) getAttributeInternal(LINCUCOMMENTS);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for LincuComments.
+     * @param value value to set the LincuComments
+     */
+    public void setLincuComments(String value) {
+        setAttributeInternal(LINCUCOMMENTS, value);
+    }
+
+    /**
+     * Gets the attribute value for FcbComments, using the alias name FcbComments.
+     * @return the value of FcbComments
+     */
+    public String getFcbComments() {
+        return (String) getAttributeInternal(FCBCOMMENTS);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for FcbComments.
+     * @param value value to set the FcbComments
+     */
+    public void setFcbComments(String value) {
+        setAttributeInternal(FCBCOMMENTS, value);
+    }
+
+    /**
+     * Gets the attribute value for AdminComments, using the alias name AdminComments.
+     * @return the value of AdminComments
+     */
+    public String getAdminComments() {
+        return (String) getAttributeInternal(ADMINCOMMENTS);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for AdminComments.
+     * @param value value to set the AdminComments
+     */
+    public void setAdminComments(String value) {
+        setAttributeInternal(ADMINCOMMENTS, value);
+    }
+
+    /**
+     * Gets the attribute value for SupComments, using the alias name SupComments.
+     * @return the value of SupComments
+     */
+    public String getSupComments() {
+        return (String) getAttributeInternal(SUPCOMMENTS);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for SupComments.
+     * @param value value to set the SupComments
+     */
+    public void setSupComments(String value) {
+        setAttributeInternal(SUPCOMMENTS, value);
     }
 
     /**

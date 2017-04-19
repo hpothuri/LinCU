@@ -17,6 +17,9 @@ import com.linCu.model.vvo.LoginVVORowImpl;
 import java.math.BigDecimal;
 import java.util.HashMap;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import oracle.jbo.Key;
 import oracle.jbo.Row;
 import oracle.jbo.server.ApplicationModuleImpl;
@@ -140,8 +143,134 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         LincuUserInfoVOImpl loginView = this.getPasswordReset();
         Row[] rows = loginView.findByKey(new Key(new Object[]{userId}), 1);
         LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)rows[0];
-        loginView.setCurrentRow(row);
+        this.getPasswordReset().setCurrentRow(row);
         
+    }
+    
+    public String firstTimeResetPassword(String newPassword, String confirmPassword, Long userId){
+        if((newPassword != null) && (confirmPassword != null) && newPassword.equalsIgnoreCase(confirmPassword)){  
+            LincuUserInfoVOImpl loginView = this.getPasswordReset();
+            LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)loginView.getCurrentRow();
+            loginView.setCurrentRow(row);  
+           if(row != null){
+               String qustn1 = row.getSecurityQustn();
+               String qustn2 = row.getSecurityQustn1();
+               String qustn3 = row.getSecurityQustn2();
+               String qustn4 = row.getSecurityQustn3();
+               String qustn5 = row.getSecurityQustn4();
+               
+               Set<String> setToFindDuplicate = new HashSet<String>();
+               if(qustn1 != null){
+                 boolean notDuplicate = setToFindDuplicate.add(qustn1); 
+                 if(!notDuplicate)
+                 return "duplicateNotAllowed";
+               }
+               if(qustn2 != null){
+                 boolean notDuplicate = setToFindDuplicate.add(qustn2); 
+                 if(!notDuplicate)
+                 return "duplicateNotAllowed";
+               }
+               if(qustn3 != null){
+                 boolean notDuplicate = setToFindDuplicate.add(qustn3); 
+                 if(!notDuplicate)
+                 return "duplicateNotAllowed";
+               }
+               if(qustn4 != null){
+                 boolean notDuplicate = setToFindDuplicate.add(qustn4); 
+                 if(!notDuplicate)
+                 return "duplicateNotAllowed";
+               }
+               if(qustn5 != null){
+                 boolean notDuplicate = setToFindDuplicate.add(qustn5); 
+                 if(!notDuplicate)
+                 return "duplicateNotAllowed";
+               }
+                  row.setPassword(newPassword);
+                  row.setFirstLoginFlag("N");
+                  this.getDBTransaction().commit();
+                  return "success";             
+           }
+            
+        }else{
+            return "MismatchInConfirmPassword";
+        }
+        
+        return "failure";
+    }
+    
+    public String validateSecQustns(String answer1, String answer2, String answer3, String answer4, String answer5){
+        LincuUserInfoVOImpl loginView = this.getPasswordReset();
+        LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)loginView.getCurrentRow();
+        loginView.setCurrentRow(row); 
+        if(row != null){
+            if((answer1 != null) && (!answer1.equalsIgnoreCase(row.getSecurityQustnAns()))){
+              return "failure";  
+            }
+            if((answer2 != null) && (!answer2.equalsIgnoreCase(row.getSecurityQustnAns1()))){
+              return "failure";  
+            }
+            if((answer3 != null) && (!answer3.equalsIgnoreCase(row.getSecurityQustnAns2()))){
+              return "failure";  
+            }
+            if((answer4 != null) && (!answer4.equalsIgnoreCase(row.getSecurityQustnAns3()))){
+              return "failure";  
+            }
+            if((answer5 != null) && (!answer5.equalsIgnoreCase(row.getSecurityQustnAns4()))){
+              return "failure";  
+            }
+        }
+       return "success"; 
+    }
+    
+    public String resetPassword(String oldPassword, String newPassword, String confirmPassword){
+        if((newPassword != null) && (confirmPassword != null) && newPassword.equalsIgnoreCase(confirmPassword)){
+            LincuUserInfoVOImpl loginView = this.getPasswordReset();
+            LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)loginView.getCurrentRow();
+            loginView.setCurrentRow(row); 
+           if(row != null){
+              String password =  row.getPassword();
+              if((oldPassword != null) && (password != null) && oldPassword.equalsIgnoreCase(password)){
+                  row.setPassword(newPassword);
+                  row.setFirstLoginFlag("N");
+                  this.getDBTransaction().commit();
+                  return "success";
+              }else{
+                  return "InvalidOldPassword";
+              }
+           }
+            
+        }else{
+            return "MismatchInConfirmPassword";
+        }
+        
+        //this.getCurrentRow();
+        
+        return "failure";
+    }
+    
+    public void forgotResetPassword(String password){
+        LincuUserInfoVOImpl loginView = this.getPasswordReset();
+        LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)loginView.getCurrentRow();
+        loginView.setCurrentRow(row); 
+        if(row != null){
+        row.setPassword(password);
+        row.setFirstLoginFlag("Y");
+        }
+    }
+    
+    public void setLoggedInUserCurrentRow(String userName){
+        LoginVVOImpl loginView = this.getLoginView();
+        loginView.setbindUserName(userName); 
+        loginView.executeQuery();
+        LoginVVORowImpl row = (LoginVVORowImpl)loginView.first();
+        if(row != null){
+            Long userId = row.getUserId();
+            if(userId != null){
+                Row[] rows = loginView.findByKey(new Key(new Object[]{userId}), 1);
+                LincuUserInfoVORowImpl row1 = (LincuUserInfoVORowImpl)rows[0];
+                loginView.setCurrentRow(row1);
+            }
+        }
     }
 
     /**

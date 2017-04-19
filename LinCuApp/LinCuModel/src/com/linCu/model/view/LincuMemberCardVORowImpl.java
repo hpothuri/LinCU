@@ -130,6 +130,10 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         TransCardStatus,
         RowSelection,
         BatchNumber,
+        FcbComments,
+        LincuComments,
+        SupComments,
+        AdminComments,
         LincuMemberCardDocsVO,
         CardTypeVA,
         LincuUnionsVA,
@@ -144,7 +148,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         StreetVA,
         HomeOwnershipVA,
         FCBShareholdingVA;
-        private static AttributesEnum[] vals = null;
+        static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
 
@@ -274,6 +278,10 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int TRANSCARDSTATUS = AttributesEnum.TransCardStatus.index();
     public static final int ROWSELECTION = AttributesEnum.RowSelection.index();
     public static final int BATCHNUMBER = AttributesEnum.BatchNumber.index();
+    public static final int FCBCOMMENTS = AttributesEnum.FcbComments.index();
+    public static final int LINCUCOMMENTS = AttributesEnum.LincuComments.index();
+    public static final int SUPCOMMENTS = AttributesEnum.SupComments.index();
+    public static final int ADMINCOMMENTS = AttributesEnum.AdminComments.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int CARDTYPEVA = AttributesEnum.CardTypeVA.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
@@ -1990,6 +1998,70 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      */
     public void setBatchNumber(BigDecimal value) {
         setAttributeInternal(BATCHNUMBER, value);
+    }
+
+    /**
+     * Gets the attribute value for FCB_COMMENTS using the alias name FcbComments.
+     * @return the FCB_COMMENTS
+     */
+    public String getFcbComments() {
+        return (String) getAttributeInternal(FCBCOMMENTS);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for FCB_COMMENTS using the alias name FcbComments.
+     * @param value value to set the FCB_COMMENTS
+     */
+    public void setFcbComments(String value) {
+        setAttributeInternal(FCBCOMMENTS, value);
+    }
+
+    /**
+     * Gets the attribute value for LINCU_COMMENTS using the alias name LincuComments.
+     * @return the LINCU_COMMENTS
+     */
+    public String getLincuComments() {
+        return (String) getAttributeInternal(LINCUCOMMENTS);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LINCU_COMMENTS using the alias name LincuComments.
+     * @param value value to set the LINCU_COMMENTS
+     */
+    public void setLincuComments(String value) {
+        setAttributeInternal(LINCUCOMMENTS, value);
+    }
+
+    /**
+     * Gets the attribute value for SUP_COMMENTS using the alias name SupComments.
+     * @return the SUP_COMMENTS
+     */
+    public String getSupComments() {
+        return (String) getAttributeInternal(SUPCOMMENTS);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SUP_COMMENTS using the alias name SupComments.
+     * @param value value to set the SUP_COMMENTS
+     */
+    public void setSupComments(String value) {
+        setAttributeInternal(SUPCOMMENTS, value);
+    }
+
+    /**
+     * Gets the attribute value for ADMIN_COMMENTS using the alias name AdminComments.
+     * @return the ADMIN_COMMENTS
+     */
+    public String getAdminComments() {
+        return (String) getAttributeInternal(ADMINCOMMENTS);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ADMIN_COMMENTS using the alias name AdminComments.
+     * @param value value to set the ADMIN_COMMENTS
+     */
+    public void setAdminComments(String value) {
+        setAttributeInternal(ADMINCOMMENTS, value);
     }
 
     /**

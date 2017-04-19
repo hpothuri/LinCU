@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LincuMemberCardVO"
-  Version="12.2.1.16.48"
+  Version="12.2.1.11.57"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -15,7 +15,8 @@
   SelectAllAttributes="false"
   RowClass="com.linCu.model.view.LincuMemberCardVORowImpl"
   ComponentClass="com.linCu.model.view.LincuMemberCardVOImpl"
-  ComponentInterface="com.linCu.model.view.common.LincuMemberCardVO">
+  ComponentInterface="com.linCu.model.view.common.LincuMemberCardVO"
+  ClientProxyName="com.linCu.model.view.client.LincuMemberCardVOClient">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -1624,6 +1625,58 @@
     EntityAttrName="BatchNumber"
     EntityUsage="LincuMemberCardEO"
     AliasName="BATCH_NUMBER"/>
+  <ViewAttribute
+    Name="FcbComments"
+    PrecisionRule="true"
+    EntityAttrName="FcbComments"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="FCB_COMMENTS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="COMMENTS"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LincuComments"
+    PrecisionRule="true"
+    EntityAttrName="LincuComments"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="LINCU_COMMENTS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="COMMENTS"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SupComments"
+    PrecisionRule="true"
+    EntityAttrName="SupComments"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="SUP_COMMENTS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="COMMENTS"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AdminComments"
+    PrecisionRule="true"
+    EntityAttrName="AdminComments"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="ADMIN_COMMENTS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="COMMENTS"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewCriteria
     Name="LincuMemberCardVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"
@@ -1663,14 +1716,14 @@
         Conjunction="AND"
         Required="Optional"/>
       <ViewCriteriaItem
-        Name="MemberId"
-        ViewAttribute="MemberId"
+        Name="SubmittedOn"
+        ViewAttribute="SubmittedOn"
         Operator="="
         Conjunction="AND"
         Required="Optional"/>
       <ViewCriteriaItem
-        Name="SubmittedOn"
-        ViewAttribute="SubmittedOn"
+        Name="BatchNumber"
+        ViewAttribute="BatchNumber"
         Operator="="
         Conjunction="AND"
         Required="Optional"/>

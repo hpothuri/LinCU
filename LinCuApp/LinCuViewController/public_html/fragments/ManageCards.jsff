@@ -43,7 +43,7 @@
                 queryListener="#{bindings.LincuMemberCardVOCriteriaQuery.processQuery}" varStatus="vs" id="resId1"
                 binding="#{card.cardTable}" autoHeightRows="0" partialTriggers="::ctb21">
         <af:column align="center" headerText="#{bindings.LincuMemberCard.hints.RowSelection.label}" id="c2"
-                   filterable="true">
+                   filterable="true" rendered="#{(sessionScope.user.userRole eq 'FCB')}">
           <af:selectBooleanCheckbox id="sbc1" shortDesc="#{bindings.LincuMemberCard.hints.RowSelection.tooltip}" autoSubmit="true"
                                     value="#{row.bindings.RowSelection.inputValue}"
                                     visible="#{row.bindings.CardStatus.attributeValue eq 'FCB_AUTHORIZED' and row.bindings.BatchNumber.inputValue eq null}"/>

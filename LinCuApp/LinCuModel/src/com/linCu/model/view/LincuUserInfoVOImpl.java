@@ -22,32 +22,57 @@ public class LincuUserInfoVOImpl extends ViewObjectImpl implements LincuUserInfo
         return null;
     }
     
-    public String resetPassword(String oldPassword, String newPassword, String confirmPassword, Long userId ){
-        if((newPassword != null) && (confirmPassword != null) && newPassword.equalsIgnoreCase(confirmPassword)){
-            LincuUserInfoVOImpl loginView = this;
-            Row[] rows = loginView.findByKey(new Key(new Object[]{userId}), 1);
-            LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)rows[0];
-            loginView.setCurrentRow(row); 
-           if(row != null){
-              String password =  row.getPassword();
-              if((oldPassword != null) && (password != null) && oldPassword.equalsIgnoreCase(password)){
-                  row.setPassword(newPassword);
-                  row.setFirstLoginFlag("N");
-                  this.getDBTransaction().commit();
-                  return "success";
-              }else{
-                  return "InvalidOldPassword";
-              }
-           }
-            
-        }else{
-            return "MismatchInConfirmPassword";
-        }
-        
-        //this.getCurrentRow();
-        
-        return "failure";
-    }
+//    public String resetPassword(String oldPassword, String newPassword, String confirmPassword, Long userId ){
+//        if((newPassword != null) && (confirmPassword != null) && newPassword.equalsIgnoreCase(confirmPassword)){
+//            LincuUserInfoVOImpl loginView = this;
+//            Row[] rows = loginView.findByKey(new Key(new Object[]{userId}), 1);
+//            LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)rows[0];
+//            loginView.setCurrentRow(row); 
+//           if(row != null){
+//              String password =  row.getPassword();
+//              if((oldPassword != null) && (password != null) && oldPassword.equalsIgnoreCase(password)){
+//                  row.setPassword(newPassword);
+//                  row.setFirstLoginFlag("N");
+//                  this.getDBTransaction().commit();
+//                  return "success";
+//              }else{
+//                  return "InvalidOldPassword";
+//              }
+//           }
+//            
+//        }else{
+//            return "MismatchInConfirmPassword";
+//        }
+//        
+//        //this.getCurrentRow();
+//        
+//        return "failure";
+//    }
+    
+//    public String validateSecQustns(String answer1, String answer2, String answer3, String answer4, String answer5, Long userId){
+//        LincuUserInfoVOImpl loginView = this;
+//        Row[] rows = loginView.findByKey(new Key(new Object[]{userId}), 1);
+//        LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)rows[0];
+//        loginView.setCurrentRow(row); 
+//        if(row != null){
+//            if((answer1 != null) && (!answer1.equalsIgnoreCase(row.getSecurityQustnAns()))){
+//              return "failure";  
+//            }
+//            if((answer2 != null) && (!answer2.equalsIgnoreCase(row.getSecurityQustnAns1()))){
+//              return "failure";  
+//            }
+//            if((answer3 != null) && (!answer3.equalsIgnoreCase(row.getSecurityQustnAns2()))){
+//              return "failure";  
+//            }
+//            if((answer4 != null) && (!answer4.equalsIgnoreCase(row.getSecurityQustnAns3()))){
+//              return "failure";  
+//            }
+//            if((answer5 != null) && (!answer5.equalsIgnoreCase(row.getSecurityQustnAns4()))){
+//              return "failure";  
+//            }
+//        }
+//       return "success"; 
+//    }
     
     public void createUser(String user){
         LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl) this.createRow();
@@ -74,16 +99,16 @@ public class LincuUserInfoVOImpl extends ViewObjectImpl implements LincuUserInfo
         }
     }
     
-    public void forgotResetPassword(String password, Long userId){
-        LincuUserInfoVOImpl loginView = this;
-        Row[] rows = loginView.findByKey(new Key(new Object[]{userId}), 1);
-        LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)rows[0];
-        loginView.setCurrentRow(row); 
-        if(row != null){
-        row.setPassword(password);
-        row.setFirstLoginFlag("Y");
-        }
-    }
+//    public void forgotResetPassword(String password, Long userId){
+//        LincuUserInfoVOImpl loginView = this;
+//        Row[] rows = loginView.findByKey(new Key(new Object[]{userId}), 1);
+//        LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)rows[0];
+//        loginView.setCurrentRow(row); 
+//        if(row != null){
+//        row.setPassword(password);
+//        row.setFirstLoginFlag("Y");
+//        }
+//    }
     
     public void forgotPassword(){
         LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl) this.getCurrentRow();
@@ -91,27 +116,7 @@ public class LincuUserInfoVOImpl extends ViewObjectImpl implements LincuUserInfo
         row.setFirstLoginFlag("Y");
         }
     }
-    
-    public String firstTimeResetPassword(String newPassword, String confirmPassword, Long userId){
-        if((newPassword != null) && (confirmPassword != null) && newPassword.equalsIgnoreCase(confirmPassword)){  
-            LincuUserInfoVOImpl loginView = this;
-            Row[] rows = loginView.findByKey(new Key(new Object[]{userId}), 1);
-            LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl)rows[0];
-            loginView.setCurrentRow(row);  
-           if(row != null){
-                  row.setPassword(newPassword);
-                  row.setFirstLoginFlag("N");
-                  this.getDBTransaction().commit();
-                  return "success";             
-           }
-            
-        }else{
-            return "MismatchInConfirmPassword";
-        }
-        
-        return "failure";
-    }
-    
+     
     public void updatePassword(String password){
         LincuUserInfoVORowImpl row = (LincuUserInfoVORowImpl) this.getCurrentRow();
         if(row != null){

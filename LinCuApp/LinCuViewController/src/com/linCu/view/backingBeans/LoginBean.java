@@ -34,7 +34,7 @@ public class LoginBean {
                 //ADFUtils.setPageFlowScopeValue("resetPassword", true);
                 Long userId = (Long) ADFUtils.executeOperationBinding("userCurrentRow"); 
                 ADFUtils.setPageFlowScopeValue("userId", userId);
-                ADFUtils.executeOperationBinding("setUserCurrentRow"); 
+                //ADFUtils.executeOperationBinding("setUserCurrentRow"); 
                 return "success";
             }else if("Success".equalsIgnoreCase(msg)){
                 Map userMap = (Map) ADFUtils.executeOperationBinding("userSessionInfo"); 

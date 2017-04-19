@@ -44,6 +44,14 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
         SecurityQustn,
         SecurityQustnAns,
         FirstLoginFlag,
+        SecurityQustn1,
+        SecurityQustn2,
+        SecurityQustn3,
+        SecurityQustn4,
+        SecurityQustnAns1,
+        SecurityQustnAns2,
+        SecurityQustnAns3,
+        SecurityQustnAns4,
         GenderVA,
         LinCuRolesVA,
         LincuUnionsVA,
@@ -99,6 +107,14 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
     public static final int SECURITYQUSTN = AttributesEnum.SecurityQustn.index();
     public static final int SECURITYQUSTNANS = AttributesEnum.SecurityQustnAns.index();
     public static final int FIRSTLOGINFLAG = AttributesEnum.FirstLoginFlag.index();
+    public static final int SECURITYQUSTN1 = AttributesEnum.SecurityQustn1.index();
+    public static final int SECURITYQUSTN2 = AttributesEnum.SecurityQustn2.index();
+    public static final int SECURITYQUSTN3 = AttributesEnum.SecurityQustn3.index();
+    public static final int SECURITYQUSTN4 = AttributesEnum.SecurityQustn4.index();
+    public static final int SECURITYQUSTNANS1 = AttributesEnum.SecurityQustnAns1.index();
+    public static final int SECURITYQUSTNANS2 = AttributesEnum.SecurityQustnAns2.index();
+    public static final int SECURITYQUSTNANS3 = AttributesEnum.SecurityQustnAns3.index();
+    public static final int SECURITYQUSTNANS4 = AttributesEnum.SecurityQustnAns4.index();
     public static final int GENDERVA = AttributesEnum.GenderVA.index();
     public static final int LINCUROLESVA = AttributesEnum.LinCuRolesVA.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
@@ -507,6 +523,134 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
      */
     public void setFirstLoginFlag(String value) {
         setAttributeInternal(FIRSTLOGINFLAG, value);
+    }
+
+    /**
+     * Gets the attribute value for SECURITY_QUSTN1 using the alias name SecurityQustn1.
+     * @return the SECURITY_QUSTN1
+     */
+    public String getSecurityQustn1() {
+        return (String) getAttributeInternal(SECURITYQUSTN1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SECURITY_QUSTN1 using the alias name SecurityQustn1.
+     * @param value value to set the SECURITY_QUSTN1
+     */
+    public void setSecurityQustn1(String value) {
+        setAttributeInternal(SECURITYQUSTN1, value);
+    }
+
+    /**
+     * Gets the attribute value for SECURITY_QUSTN2 using the alias name SecurityQustn2.
+     * @return the SECURITY_QUSTN2
+     */
+    public String getSecurityQustn2() {
+        return (String) getAttributeInternal(SECURITYQUSTN2);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SECURITY_QUSTN2 using the alias name SecurityQustn2.
+     * @param value value to set the SECURITY_QUSTN2
+     */
+    public void setSecurityQustn2(String value) {
+        setAttributeInternal(SECURITYQUSTN2, value);
+    }
+
+    /**
+     * Gets the attribute value for SECURITY_QUSTN3 using the alias name SecurityQustn3.
+     * @return the SECURITY_QUSTN3
+     */
+    public String getSecurityQustn3() {
+        return (String) getAttributeInternal(SECURITYQUSTN3);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SECURITY_QUSTN3 using the alias name SecurityQustn3.
+     * @param value value to set the SECURITY_QUSTN3
+     */
+    public void setSecurityQustn3(String value) {
+        setAttributeInternal(SECURITYQUSTN3, value);
+    }
+
+    /**
+     * Gets the attribute value for SECURITY_QUSTN4 using the alias name SecurityQustn4.
+     * @return the SECURITY_QUSTN4
+     */
+    public String getSecurityQustn4() {
+        return (String) getAttributeInternal(SECURITYQUSTN4);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SECURITY_QUSTN4 using the alias name SecurityQustn4.
+     * @param value value to set the SECURITY_QUSTN4
+     */
+    public void setSecurityQustn4(String value) {
+        setAttributeInternal(SECURITYQUSTN4, value);
+    }
+
+    /**
+     * Gets the attribute value for SECURITY_QUSTN_ANS1 using the alias name SecurityQustnAns1.
+     * @return the SECURITY_QUSTN_ANS1
+     */
+    public String getSecurityQustnAns1() {
+        return (String) getAttributeInternal(SECURITYQUSTNANS1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SECURITY_QUSTN_ANS1 using the alias name SecurityQustnAns1.
+     * @param value value to set the SECURITY_QUSTN_ANS1
+     */
+    public void setSecurityQustnAns1(String value) {
+        setAttributeInternal(SECURITYQUSTNANS1, value);
+    }
+
+    /**
+     * Gets the attribute value for SECURITY_QUSTN_ANS2 using the alias name SecurityQustnAns2.
+     * @return the SECURITY_QUSTN_ANS2
+     */
+    public String getSecurityQustnAns2() {
+        return (String) getAttributeInternal(SECURITYQUSTNANS2);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SECURITY_QUSTN_ANS2 using the alias name SecurityQustnAns2.
+     * @param value value to set the SECURITY_QUSTN_ANS2
+     */
+    public void setSecurityQustnAns2(String value) {
+        setAttributeInternal(SECURITYQUSTNANS2, value);
+    }
+
+    /**
+     * Gets the attribute value for SECURITY_QUSTN_ANS3 using the alias name SecurityQustnAns3.
+     * @return the SECURITY_QUSTN_ANS3
+     */
+    public String getSecurityQustnAns3() {
+        return (String) getAttributeInternal(SECURITYQUSTNANS3);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SECURITY_QUSTN_ANS3 using the alias name SecurityQustnAns3.
+     * @param value value to set the SECURITY_QUSTN_ANS3
+     */
+    public void setSecurityQustnAns3(String value) {
+        setAttributeInternal(SECURITYQUSTNANS3, value);
+    }
+
+    /**
+     * Gets the attribute value for SECURITY_QUSTN_ANS4 using the alias name SecurityQustnAns4.
+     * @return the SECURITY_QUSTN_ANS4
+     */
+    public String getSecurityQustnAns4() {
+        return (String) getAttributeInternal(SECURITYQUSTNANS4);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SECURITY_QUSTN_ANS4 using the alias name SecurityQustnAns4.
+     * @param value value to set the SECURITY_QUSTN_ANS4
+     */
+    public void setSecurityQustnAns4(String value) {
+        setAttributeInternal(SECURITYQUSTNANS4, value);
     }
 
     /**
