@@ -7,6 +7,8 @@
     <iterator Binds="LincuMemberCard" RangeSize="25" DataControl="LinCuAMDataControl" id="LincuMemberCardIterator"/>
     <iterator Binds="LincuMemberCardDocs" RangeSize="25" DataControl="LinCuAMDataControl"
               id="LincuMemberCardDocsIterator"/>
+    <iterator Binds="LincuMemberCardAudit" RangeSize="25" DataControl="LinCuAMDataControl"
+              id="LincuMemberCardAuditIterator"/>
   </executables>
   <bindings>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CardStatus" id="CardStatus"
@@ -187,7 +189,6 @@
         <Item Value="PermanentZipCode"/>
       </AttrNames>
     </attributeValues>
-    <action id="Commit" DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
     <action id="Rollback" DataControl="LinCuAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CitizenShipCountry1"
           id="CitizenShipCountry1" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
@@ -344,5 +345,20 @@
         <Item Value="FcbComments"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="saveCardRequest" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveCardRequest"
+                  IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"/>
+    <methodAction id="updateAuditTable" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updateAuditTable"
+                  IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"/>
+    <action id="Commit" DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <tree IterBinding="LincuMemberCardAuditIterator" id="LincuMemberCardAudit">
+      <nodeDefinition DefName="com.linCu.model.view.LincuMemberCardAuditVO" Name="LincuMemberCardAudit0">
+        <AttrNames>
+          <Item Value="Comments"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>

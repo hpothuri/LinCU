@@ -12,28 +12,13 @@
   BindingStyle="OracleName">
   <Attribute
     Name="CardId"
-    IsNotNull="true"
     ColumnName="CARD_ID"
     SQLType="NUMERIC"
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="LINCU_MEMBER_CARD_AUDIT"/>
   <Attribute
-    Name="LincuId"
-    IsNotNull="true"
-    Precision="10"
-    ColumnName="LINCU_ID"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_CARD_AUDIT">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="10"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="MemberId"
-    IsNotNull="true"
     Precision="15"
     ColumnName="MEMBER_ID"
     SQLType="VARCHAR"
@@ -45,29 +30,7 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="MemberCardType"
-    IsNotNull="true"
-    Precision="1"
-    ColumnName="MEMBER_CARD_TYPE"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_CARD_AUDIT">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="1"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="IssueDate"
-    IsNotNull="true"
-    ColumnName="ISSUE_DATE"
-    SQLType="TIMESTAMP"
-    Type="java.sql.Timestamp"
-    ColumnType="TIMESTAMP"
-    TableName="LINCU_MEMBER_CARD_AUDIT"/>
-  <Attribute
     Name="CardReqType"
-    IsNotNull="true"
     Precision="20"
     ColumnName="CARD_REQ_TYPE"
     SQLType="VARCHAR"
@@ -86,11 +49,15 @@
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="LINCU_MEMBER_CARD_AUDIT"
-    PrimaryKey="true"/>
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="LincuMemberCardAuditEORow"/>
+  </Attribute>
   <Attribute
     Name="UpdatedBy"
-    IsNotNull="true"
-    Precision="20"
+    Precision="60"
     ColumnName="UPDATED_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -107,12 +74,48 @@
     Type="java.sql.Timestamp"
     ColumnType="DATE"
     TableName="LINCU_MEMBER_CARD_AUDIT"/>
+  <Attribute
+    Name="Status"
+    Precision="40"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_CARD_AUDIT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreditUnionId"
+    Precision="10"
+    ColumnName="CREDIT_UNION_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_CARD_AUDIT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Comments"
+    Precision="300"
+    ColumnName="COMMENTS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_CARD_AUDIT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="300"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="LincuMemberCardEO"
     Association="com.linCu.model.assoc.LincuMemberCardAuditAssoc"
     AssociationEnd="com.linCu.model.assoc.LincuMemberCardAuditAssoc.LincuMemberCardEO"
     AssociationOtherEnd="com.linCu.model.assoc.LincuMemberCardAuditAssoc.LincuMemberCardAuditEO"
-    Type="oracle.jbo.server.EntityImpl"
+    Type="com.linCu.model.entity.LincuMemberCardEOImpl"
     IsUpdateable="true"/>
   <Key
     Name="LincuMemberCardAuditPk"

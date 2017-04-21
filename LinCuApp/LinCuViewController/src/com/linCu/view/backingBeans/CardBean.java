@@ -3,6 +3,8 @@ package com.linCu.view.backingBeans;
 import com.linCu.view.utils.ADFUtils;
 import com.linCu.view.utils.JSFUtils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -55,7 +57,6 @@ public class CardBean {
                 RichPopup.PopupHints hints = new RichPopup.PopupHints();
                 this.getCommentsPopup().show(hints);
 //             ADFUtils.executeOperationBinding("submitCard");
-//            ADFUtils.executeOperationBinding("Commit");
             }else{
                 JSFUtils.addErrorMessage("Please add required documents");
             }
@@ -67,6 +68,7 @@ public class CardBean {
     public void submitNotes(ActionEvent actionEvent){
         try {
               ADFUtils.executeOperationBinding("submitCard");
+              ADFUtils.executeOperationBinding("updateAuditTable");
               ADFUtils.executeOperationBinding("Commit");
             this.getCommentsPopup().hide();
         } catch (Exception ex) {
@@ -89,6 +91,7 @@ public class CardBean {
     public void approve(ActionEvent actionEvent) {
         try {
             ADFUtils.executeOperationBinding("approve");
+            ADFUtils.executeOperationBinding("updateAuditTable");
             ADFUtils.executeOperationBinding("Commit");
             this.getCommentsPopup().hide();
         } catch (Exception ex) {
@@ -100,6 +103,7 @@ public class CardBean {
     public void reject(ActionEvent actionEvent) {
         try {
             ADFUtils.executeOperationBinding("reject");
+            ADFUtils.executeOperationBinding("updateAuditTable");
             ADFUtils.executeOperationBinding("Commit");
             this.getCommentsPopup().hide();
         } catch (Exception ex) {
@@ -110,6 +114,7 @@ public class CardBean {
     public void lincuApprove(ActionEvent actionEvent) {
         try {
             ADFUtils.executeOperationBinding("lincuApprove");
+            ADFUtils.executeOperationBinding("updateAuditTable");
             ADFUtils.executeOperationBinding("Commit");
             this.getCommentsPopup().hide();
         } catch (Exception ex) {
@@ -121,6 +126,7 @@ public class CardBean {
     public void lincuReject(ActionEvent actionEvent) {
         try {
             ADFUtils.executeOperationBinding("lincuReject");
+            ADFUtils.executeOperationBinding("updateAuditTable");
             ADFUtils.executeOperationBinding("Commit");
             this.getCommentsPopup().hide();
         } catch (Exception ex) {
@@ -131,6 +137,7 @@ public class CardBean {
     public void fcbApprove(ActionEvent actionEvent) {
         try {
             ADFUtils.executeOperationBinding("fcbApprove");
+            ADFUtils.executeOperationBinding("updateAuditTable");
             ADFUtils.executeOperationBinding("Commit");
             this.getCommentsPopup().hide();
         } catch (Exception ex) {
@@ -142,6 +149,7 @@ public class CardBean {
     public void fcbReject(ActionEvent actionEvent) {
         try {
             ADFUtils.executeOperationBinding("fcbReject");
+            ADFUtils.executeOperationBinding("updateAuditTable");
             ADFUtils.executeOperationBinding("Commit");
             this.getCommentsPopup().hide();
         } catch (Exception ex) {
@@ -482,6 +490,57 @@ public class CardBean {
         else {
             ADFUtils.executeOperationBinding("Commit");            
             JSFUtils.addInformationMessage("Selected card requests have been added to a new batch successfully");
+        }
+    }
+
+    public void dlownloadAgreement(FacesContext facesContext, OutputStream outputStream) {
+        String a_PDF_file = "C:\\Users\\DileepKumar\\Desktop\\LinCUDocs\\InteractiveElectr0nicServicesAgreement.pdf";
+               
+               File file = new File(a_PDF_file);
+               
+               InputStream is = null;
+               
+        
+               try {
+                   is = new FileInputStream(file);
+                   
+                   
+                   int read = 0;
+                   byte[] bytes = new byte[1024];
+                   
+                   while ((read = is.read(bytes)) != -1) {
+                        outputStream.write(bytes, 0, read);
+                   }
+                   
+                   
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+               finally {
+                   if (is != null) {
+                               try {
+                                     is.close();
+                                } catch (IOException e) {
+                                   e.printStackTrace();
+                              }
+                    }
+                    if (outputStream != null) {
+                           try {
+                                 outputStream.flush();
+                            } catch (Exception e) {
+                                   e.printStackTrace();
+                            }
+                          }
+                       }    
+           }
+
+    public void save(ActionEvent actionEvent) {
+        try {
+            ADFUtils.executeOperationBinding("saveCardRequest");
+            ADFUtils.executeOperationBinding("Commit");
+            this.getCommentsPopup().hide();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 }

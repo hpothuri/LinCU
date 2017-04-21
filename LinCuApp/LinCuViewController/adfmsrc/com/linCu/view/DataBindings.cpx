@@ -17,7 +17,7 @@
     <page path="/UserInfo.jspx" usageId="com_linCu_view_UserInfoPageDef"/>
     <page path="/CreditUnion.jspx" usageId="com_linCu_view_CreditUnionPageDef"/>
     <page path="/fragments/ManagePassword.jsff" usageId="com_linCu_view_ManagePasswordPageDef"/>
-    <page path="/ResetPassword.jspx" usageId="com_linCu_view_ResetPasswordPageDef"/>
+    <page path="/ResetPassword.jsf" usageId="com_linCu_view_ResetPasswordPageDef"/>
     <page path="/Member.jspx" usageId="com_linCu_view_MemberDetailsPageDef"/>
     <page path="/fragments/Member.jsff" usageId="com_linCu_view_MemberInfoPageDef"/>
     <page path="/fragments/ManageMember.jsff" usageId="com_linCu_view_MemberKYCPageDef"/>

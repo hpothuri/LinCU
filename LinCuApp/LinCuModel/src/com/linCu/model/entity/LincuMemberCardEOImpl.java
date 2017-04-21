@@ -34,7 +34,6 @@ public class LincuMemberCardEOImpl extends EntityImpl {
     public enum AttributesEnum {
         CardId,
         MemberId,
-        MemberCardType,
         CardReqType,
         CreditUnionId,
         CreatedBy,
@@ -49,10 +48,10 @@ public class LincuMemberCardEOImpl extends EntityImpl {
         FcbComments,
         AdminComments,
         SupComments,
-        LincuMemberCardAuditEO,
         LincuMemberInfoEO,
         LincuMemberKycEO,
-        LincuMemberCardDocsEO;
+        LincuMemberCardDocsEO,
+        LincuMemberCardAuditEO;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -79,7 +78,6 @@ public class LincuMemberCardEOImpl extends EntityImpl {
 
     public static final int CARDID = AttributesEnum.CardId.index();
     public static final int MEMBERID = AttributesEnum.MemberId.index();
-    public static final int MEMBERCARDTYPE = AttributesEnum.MemberCardType.index();
     public static final int CARDREQTYPE = AttributesEnum.CardReqType.index();
     public static final int CREDITUNIONID = AttributesEnum.CreditUnionId.index();
     public static final int CREATEDBY = AttributesEnum.CreatedBy.index();
@@ -94,10 +92,10 @@ public class LincuMemberCardEOImpl extends EntityImpl {
     public static final int FCBCOMMENTS = AttributesEnum.FcbComments.index();
     public static final int ADMINCOMMENTS = AttributesEnum.AdminComments.index();
     public static final int SUPCOMMENTS = AttributesEnum.SupComments.index();
-    public static final int LINCUMEMBERCARDAUDITEO = AttributesEnum.LincuMemberCardAuditEO.index();
     public static final int LINCUMEMBERINFOEO = AttributesEnum.LincuMemberInfoEO.index();
     public static final int LINCUMEMBERKYCEO = AttributesEnum.LincuMemberKycEO.index();
     public static final int LINCUMEMBERCARDDOCSEO = AttributesEnum.LincuMemberCardDocsEO.index();
+    public static final int LINCUMEMBERCARDAUDITEO = AttributesEnum.LincuMemberCardAuditEO.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -145,21 +143,6 @@ public class LincuMemberCardEOImpl extends EntityImpl {
         setAttributeInternal(MEMBERID, value);
     }
 
-    /**
-     * Gets the attribute value for MemberCardType, using the alias name MemberCardType.
-     * @return the value of MemberCardType
-     */
-    public String getMemberCardType() {
-        return (String) getAttributeInternal(MEMBERCARDTYPE);
-    }
-
-    /**
-     * Sets <code>value</code> as the attribute value for MemberCardType.
-     * @param value value to set the MemberCardType
-     */
-    public void setMemberCardType(String value) {
-        setAttributeInternal(MEMBERCARDTYPE, value);
-    }
 
     /**
      * Gets the attribute value for CardReqType, using the alias name CardReqType.
@@ -385,12 +368,6 @@ public class LincuMemberCardEOImpl extends EntityImpl {
         setAttributeInternal(SUPCOMMENTS, value);
     }
 
-    /**
-     * @return the associated entity oracle.jbo.RowIterator.
-     */
-    public RowIterator getLincuMemberCardAuditEO() {
-        return (RowIterator) getAttributeInternal(LINCUMEMBERCARDAUDITEO);
-    }
 
     /**
      * @return the associated entity oracle.jbo.RowIterator.
@@ -411,6 +388,13 @@ public class LincuMemberCardEOImpl extends EntityImpl {
      */
     public RowIterator getLincuMemberCardDocsEO() {
         return (RowIterator) getAttributeInternal(LINCUMEMBERCARDDOCSEO);
+    }
+
+    /**
+     * @return the associated entity oracle.jbo.RowIterator.
+     */
+    public RowIterator getLincuMemberCardAuditEO() {
+        return (RowIterator) getAttributeInternal(LINCUMEMBERCARDAUDITEO);
     }
 
     /**

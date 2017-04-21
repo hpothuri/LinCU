@@ -40,18 +40,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="MemberCardType"
-    Precision="1"
-    ColumnName="MEMBER_CARD_TYPE"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_CARD">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="1"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="CardReqType"
     IsNotNull="true"
     Precision="20"
@@ -79,7 +67,7 @@
   </Attribute>
   <Attribute
     Name="CreatedBy"
-    Precision="40"
+    Precision="60"
     ColumnName="CREATED_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -113,7 +101,7 @@
     RetrievedOnUpdate="true"/>
   <Attribute
     Name="AuthorizedBy"
-    Precision="40"
+    Precision="60"
     ColumnName="AUTHORIZED_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -218,13 +206,6 @@
     </DesignTime>
   </Attribute>
   <AccessorAttribute
-    Name="LincuMemberCardAuditEO"
-    Association="com.linCu.model.assoc.LincuMemberCardAuditAssoc"
-    AssociationEnd="com.linCu.model.assoc.LincuMemberCardAuditAssoc.LincuMemberCardAuditEO"
-    AssociationOtherEnd="com.linCu.model.assoc.LincuMemberCardAuditAssoc.LincuMemberCardEO"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <AccessorAttribute
     Name="LincuMemberInfoEO"
     Association="com.linCu.model.assoc.MemberCardToMemberInfoAssoc"
     AssociationEnd="com.linCu.model.assoc.MemberCardToMemberInfoAssoc.LincuMemberInfoEO"
@@ -243,6 +224,13 @@
     Association="com.linCu.model.assoc.LincuMemberCardDocsAssoc"
     AssociationEnd="com.linCu.model.assoc.LincuMemberCardDocsAssoc.LincuMemberCardDocsEO"
     AssociationOtherEnd="com.linCu.model.assoc.LincuMemberCardDocsAssoc.LincuMemberCardEO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="LincuMemberCardAuditEO"
+    Association="com.linCu.model.assoc.LincuMemberCardAuditAssoc"
+    AssociationEnd="com.linCu.model.assoc.LincuMemberCardAuditAssoc.LincuMemberCardAuditEO"
+    AssociationOtherEnd="com.linCu.model.assoc.LincuMemberCardAuditAssoc.LincuMemberCardEO"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <Key

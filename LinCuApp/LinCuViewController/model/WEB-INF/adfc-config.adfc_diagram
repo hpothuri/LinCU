@@ -51,7 +51,7 @@
       <property
          name="y">68.99414</property>
       <property
-         name="page">/ResetPassword.jspx</property>
+         name="page">/ResetPassword.jsf</property>
       <property
          name="exceptionHandler">false</property>
    </View>

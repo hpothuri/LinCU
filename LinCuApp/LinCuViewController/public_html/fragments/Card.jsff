@@ -4,6 +4,10 @@
   <c:set var="lincuviewcontrollerBundle" value="#{adfBundle['com.linCu.view.LinCuViewControllerBundle']}"/>
   <af:panelGroupLayout id="pgl1" layout="vertical">
     <af:panelGroupLayout id="pgl2" layout="horizontal" halign="end">
+      <af:button text="#{lincuviewcontrollerBundle.VIEW_COMMENTS}" id="b21">
+        <af:showPopupBehavior popupId="p4"/>
+      </af:button>
+      <af:spacer width="10" height="10" id="s10"/>
       <af:button text="#{lincuviewcontrollerBundle.AUTHORIZE}" id="b4" actionListener="#{card.openPopup}"
                  rendered="#{(sessionScope.user.userRole eq 'SUP') or(sessionScope.user.userRole eq 'MAN_ADMIN')}"
                  visible="#{(bindings.TransCardStatus eq 'SUBMITTED')}">
@@ -35,7 +39,7 @@
                   <af:setPropertyListener from="FCB_REJECTED" to="#{pageFlowScope.action}" type="action"/>
                  </af:button>
       <af:spacer width="10" height="10" id="s5"/>
-      <af:button actionListener="#{bindings.Commit.execute}" text="#{lincuviewcontrollerBundle.SAVE}" id="b1"
+      <af:button actionListener="#{card.save}" text="#{lincuviewcontrollerBundle.SAVE}" id="b1"
                  visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED')}"
                  rendered="#{(sessionScope.user.userRole eq 'MSR')}" partialSubmit="false"/>
       <af:spacer width="10" height="10" id="s3" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
@@ -1022,6 +1026,29 @@
                         source="/imageservlet?docId=#{bindings.DocId.inputValue}"
                         shortDesc="#{lincuviewcontrollerBundle.VIEW_DOCUMENT}"/>
       </af:panelWindow>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p4">
+      <af:dialog id="d3" type="ok" title="#{lincuviewcontrollerBundle.VIEW_COMMENTS}" closeIconVisible="false">
+        <f:facet name="buttonBar"/>
+        <af:listView value="#{bindings.LincuMemberCardAudit.collectionModel}" var="item"
+                     emptyText="#{bindings.LincuMemberCardAudit.viewable ? 'No data to display.' : 'Access Denied.'}"
+                     fetchSize="#{bindings.LincuMemberCardAudit.rangeSize}" id="lv1">
+          <af:listItem id="li1" rendered="#{item.bindings.Comments.inputValue ne null}">
+            <af:panelGroupLayout layout="horizontal" id="pgl10">
+              <f:facet name="separator">
+                <af:spacer width="10" id="s1"/>
+              </f:facet>
+              <af:panelFormLayout id="pfl3" maxColumns="1" rows="2">
+                <f:facet name="footer"/>
+                <af:outputFormatted value="#{item.bindings.Status.inputValue eq 'SUBMITTED' ? 'MSR Submission Comments' : (item.bindings.Status.inputValue eq 'REJECTED' ? 'Supervisor Rejection Comments' : (item.bindings.Status.inputValue eq 'AUTHORIZED' ? 'Supervisor Authorization Comments' : (item.bindings.Status.inputValue eq 'LINCU_REJECTED' ? 'LinCU Rejection Comments' : (item.bindings.Status.inputValue eq 'LINCU_AUTHORIZED' ? 'LinCu Authorization Comments' : (item.bindings.Status.inputValue eq 'FCB_REJECTED' ? 'FCB Rejection Comments' : 'FCB Authorization Comments')))))}" id="of1"
+                                    inlineStyle="font-weight:bold;"/>
+                <af:inputText id="it19" value="#{item.bindings.Comments.inputValue}" columns="50" rows="6"
+                              disabled="true" simple="true"/>
+              </af:panelFormLayout>
+            </af:panelGroupLayout>
+          </af:listItem>
+        </af:listView>
+      </af:dialog>
     </af:popup>
   </af:panelGroupLayout>
 </jsp:root>

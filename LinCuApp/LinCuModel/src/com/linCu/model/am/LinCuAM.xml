@@ -101,6 +101,9 @@
     ViewObjectName="com.linCu.model.view.LincuMemberCardDocsVO"
     FetchSize="11"
     RangeSize="10"/>
+  <ViewUsage
+    Name="LincuMemberCardAudit"
+    ViewObjectName="com.linCu.model.view.LincuMemberCardAuditVO"/>
   <ViewLinkUsage
     Name="CreditUnionBranchVL"
     ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionToBranchVL"
@@ -112,6 +115,12 @@
     ViewLinkObjectName="com.linCu.model.viewLink.MemberCardToMemberDocsVL"
     SrcViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberCard"
     DstViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberCardDocs"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="MemberCardToMemberCardAuditVL1"
+    ViewLinkObjectName="com.linCu.model.viewLink.MemberCardToMemberCardAuditVL"
+    SrcViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberCard"
+    DstViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberCardAudit"
     Reversed="false"/>
   <ClientInterface
     Name="__clientInterface">
@@ -275,6 +284,20 @@
       <Parameter
         Name="password"
         Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="saveCardRequest"
+      MethodName="saveCardRequest">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="updateAuditTable"
+      MethodName="updateAuditTable">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
     </Method>
   </ClientInterface>
 </AppModule>

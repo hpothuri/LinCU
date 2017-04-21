@@ -3,6 +3,8 @@ package com.linCu.model.am;
 import com.linCu.model.am.common.LinCuAM;
 import com.linCu.model.view.CreditUnionBranchVOImpl;
 import com.linCu.model.view.CreditUnionVOImpl;
+import com.linCu.model.view.LincuMemberCardAuditVOImpl;
+import com.linCu.model.view.LincuMemberCardAuditVORowImpl;
 import com.linCu.model.view.LincuMemberCardDocsVOImpl;
 import com.linCu.model.view.LincuMemberCardDocsVORowImpl;
 import com.linCu.model.view.LincuMemberCardVOImpl;
@@ -328,6 +330,19 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         long time = System.currentTimeMillis();
         java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         row.setCreatedOn(timestamp);
+        //Create audit record
+            LincuMemberCardAuditVOImpl audit = this.getLincuMemberCardAudit();
+            LincuMemberCardAuditVORowImpl auditRow = (LincuMemberCardAuditVORowImpl)audit.createRow();
+            if(auditRow != null){
+                audit.insertRow(auditRow);
+                audit.setCurrentRow(auditRow);
+                auditRow.setCardId(row.getCardId());
+                auditRow.setStatus("DRAFT");
+                auditRow.setUpdatedBy(requestor);
+                auditRow.setUpdatedDate(timestamp);
+                auditRow.setCreditUnionId(creditUnionId);
+            }
+            //Create required docs for card
         LincuMemberCardDocsVOImpl docVO = this.getLincuMemberCardDocs();
         LincuMemberCardDocsVORowImpl docRow1 = (LincuMemberCardDocsVORowImpl) docVO.createRow();
         if(docRow1 != null){
@@ -344,6 +359,52 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         }
     }
     
+    public void saveCardRequest(){
+        LincuMemberCardVOImpl cardVO = this.getLincuMemberCard();
+        LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl) cardVO.getCurrentRow();
+        if(row != null){
+        cardVO.setCurrentRow(row);
+        //Create audit record
+            LincuMemberCardAuditVOImpl audit = this.getLincuMemberCardAudit();
+            LincuMemberCardAuditVORowImpl auditRow = (LincuMemberCardAuditVORowImpl)audit.getCurrentRow();
+            if(auditRow != null && "DRAFT".equalsIgnoreCase(row.getCardStatus())){
+                audit.setCurrentRow(auditRow);
+                auditRow.setCardReqType(row.getCardReqType());
+                auditRow.setMemberId(row.getMemberId());
+            } 
+        }
+    }
+    
+    public void updateAuditTable(){
+        LincuMemberCardVOImpl cardVO = this.getLincuMemberCard();
+        LincuMemberCardVORowImpl row = (LincuMemberCardVORowImpl) cardVO.getCurrentRow();
+        if(row != null){
+        cardVO.setCurrentRow(row);
+        //Create audit record
+            LincuMemberCardAuditVOImpl audit = this.getLincuMemberCardAudit();
+            LincuMemberCardAuditVORowImpl auditRow = (LincuMemberCardAuditVORowImpl)audit.createRow();
+            if(auditRow != null){
+                audit.insertRow(auditRow);
+                audit.setCurrentRow(auditRow);
+                auditRow.setCardId(row.getCardId());
+                auditRow.setCardReqType(row.getCardReqType());
+                if("SUBMITTED".equalsIgnoreCase(row.getCardStatus())){
+                auditRow.setComments(row.getComments());
+                }else if("REJECTED".equalsIgnoreCase(row.getCardStatus()) || "AUTHORIZED".equalsIgnoreCase(row.getCardStatus())){
+                auditRow.setComments(row.getSupComments());    
+                }else if("LINCU_REJECTED".equalsIgnoreCase(row.getCardStatus()) || "LINCU_AUTHORIZED".equalsIgnoreCase(row.getCardStatus())){
+                auditRow.setComments(row.getLincuComments());       
+                }else if("FCB_REJECTED".equalsIgnoreCase(row.getCardStatus()) || "FCB_AUTHORIZED".equalsIgnoreCase(row.getCardStatus())){
+                auditRow.setComments(row.getFcbComments());       
+                }
+                auditRow.setCreditUnionId(row.getCreditUnionId());
+                auditRow.setMemberId(row.getMemberId());
+                auditRow.setStatus(row.getCardStatus());
+                auditRow.setUpdatedBy(row.getLastUpdatedBy());             
+                auditRow.setUpdatedDate(row.getLastUpdateDate());
+            } 
+        }
+    }
     public boolean isAllRequiredDocumentsUploaded(){
         LincuMemberCardDocsVOImpl vo = this.getLincuMemberCardDocs();
            Row rows[] = vo.getAllRowsInRange();
@@ -389,6 +450,22 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         }
         getLincuMemberCard().clearCache();
         getLincuMemberCard().executeQuery();
+    }
+
+    /**
+     * Container's getter for LincuMemberCardAuditVO1.
+     * @return LincuMemberCardAuditVO1
+     */
+    public LincuMemberCardAuditVOImpl getLincuMemberCardAudit() {
+        return (LincuMemberCardAuditVOImpl) findViewObject("LincuMemberCardAudit");
+    }
+
+    /**
+     * Container's getter for MemberCardToMemberCardAuditVL1.
+     * @return MemberCardToMemberCardAuditVL1
+     */
+    public ViewLinkImpl getMemberCardToMemberCardAuditVL1() {
+        return (ViewLinkImpl) findViewLink("MemberCardToMemberCardAuditVL1");
     }
 }
 

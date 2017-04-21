@@ -315,13 +315,6 @@
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
   <AccessorAttribute
-    Name="LincuMemberInfoAuditEO"
-    Association="com.linCu.model.assoc.LincuMemberInfoAuditAssoc"
-    AssociationEnd="com.linCu.model.assoc.LincuMemberInfoAuditAssoc.LincuMemberInfoAuditEO"
-    AssociationOtherEnd="com.linCu.model.assoc.LincuMemberInfoAuditAssoc.LincuMemberInfoEO"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <AccessorAttribute
     Name="LincuMemberCardEO"
     Association="com.linCu.model.assoc.MemberCardToMemberInfoAssoc"
     AssociationEnd="com.linCu.model.assoc.MemberCardToMemberInfoAssoc.LincuMemberCardEO"

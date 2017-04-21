@@ -58,7 +58,7 @@ public class PasswordUtil {
     }
     
     public static String generateRamdomPassword(){
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*=+?";
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$&";
         String pwd = RandomStringUtils.random( 10, characters );
         System.out.println( "-------------Random Password------------------"+pwd );
        return pwd; 

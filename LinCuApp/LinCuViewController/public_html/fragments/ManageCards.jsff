@@ -29,7 +29,7 @@
             <af:showPopupBehavior popupId="::p2"/>
           </af:commandToolbarButton>
           <af:commandToolbarButton text="#{lincuviewcontrollerBundle.ADD_TO_BATCH}" id="ctb21" icon="/images/card.png"
-                                   actionListener="#{card.addToBatch}"/>
+                                   actionListener="#{card.addToBatch}" rendered="#{(sessionScope.user.userRole eq 'FCB')}"/>
         </af:toolbar>
       </f:facet>
       <f:facet name="statusbar"/>
@@ -143,7 +143,7 @@
       <af:dialog id="d2" type="cancel" title="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}">
         <f:facet name="buttonBar">
           <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b11" actionListener="#{card.massUpload}"
-                     partialSubmit="false" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
+                     partialSubmit="false"/>
         </f:facet>
         <af:panelFormLayout id="pfl2">
           <af:inputFile label="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}" id="if1" value="#{card.uploadFile}"/>

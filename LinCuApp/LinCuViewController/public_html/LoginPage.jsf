@@ -40,7 +40,7 @@
                                             <af:panelFormLayout id="pfl1" maxColumns="1" rows="4">
                                                 <f:facet name="footer"/>
                                                 <af:inputText label="#{lincuviewcontrollerBundle.USER_NAME}" id="it1"
-                                                              value="#{pageFlowScope.userName}" required="true"/>
+                                                              value="#{pageFlowScope.userName}" required="true" autoComplete="off"/>
                                                 <af:inputText label="#{lincuviewcontrollerBundle.PASSWORD}" id="it4"
                                                               value="#{pageFlowScope.password}" required="true"
                                                               secret="true"/>

@@ -33,7 +33,6 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         CreatedBy,
         CreatedOn,
         CreditUnionId,
-        MemberCardType,
         MemberId,
         SubmittedOn,
         BusinessPhoneExtn,
@@ -135,6 +134,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         SupComments,
         AdminComments,
         LincuMemberCardDocsVO,
+        LincuMemberCardAuditVO,
         CardTypeVA,
         LincuUnionsVA,
         MemberVA,
@@ -181,7 +181,6 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int CREATEDBY = AttributesEnum.CreatedBy.index();
     public static final int CREATEDON = AttributesEnum.CreatedOn.index();
     public static final int CREDITUNIONID = AttributesEnum.CreditUnionId.index();
-    public static final int MEMBERCARDTYPE = AttributesEnum.MemberCardType.index();
     public static final int MEMBERID = AttributesEnum.MemberId.index();
     public static final int SUBMITTEDON = AttributesEnum.SubmittedOn.index();
     public static final int BUSINESSPHONEEXTN = AttributesEnum.BusinessPhoneExtn.index();
@@ -283,6 +282,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int SUPCOMMENTS = AttributesEnum.SupComments.index();
     public static final int ADMINCOMMENTS = AttributesEnum.AdminComments.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
+    public static final int LINCUMEMBERCARDAUDITVO = AttributesEnum.LincuMemberCardAuditVO.index();
     public static final int CARDTYPEVA = AttributesEnum.CardTypeVA.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
     public static final int MEMBERVA = AttributesEnum.MemberVA.index();
@@ -455,21 +455,6 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         setAttributeInternal(CREDITUNIONID, value);
     }
 
-    /**
-     * Gets the attribute value for MEMBER_CARD_TYPE using the alias name MemberCardType.
-     * @return the MEMBER_CARD_TYPE
-     */
-    public String getMemberCardType() {
-        return (String) getAttributeInternal(MEMBERCARDTYPE);
-    }
-
-    /**
-     * Sets <code>value</code> as attribute value for MEMBER_CARD_TYPE using the alias name MemberCardType.
-     * @param value value to set the MEMBER_CARD_TYPE
-     */
-    public void setMemberCardType(String value) {
-        setAttributeInternal(MEMBERCARDTYPE, value);
-    }
 
     /**
      * Gets the attribute value for MEMBER_ID using the alias name MemberId.
@@ -2069,6 +2054,13 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      */
     public RowIterator getLincuMemberCardDocsVO() {
         return (RowIterator) getAttributeInternal(LINCUMEMBERCARDDOCSVO);
+    }
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link LincuMemberCardAuditVO.
+     */
+    public RowIterator getLincuMemberCardAuditVO() {
+        return (RowIterator) getAttributeInternal(LINCUMEMBERCARDAUDITVO);
     }
 
     /**

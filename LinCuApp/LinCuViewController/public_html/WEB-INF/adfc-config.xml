@@ -15,7 +15,7 @@
     <default-outcome>resetPassword</default-outcome>
   </router>
   <view id="ResetPassword">
-    <page>/ResetPassword.jspx</page>
+    <page>/ResetPassword.jsf</page>
     <input-page-parameter id="__5">
       <from-value>#{pageFlowScope.action}</from-value>
       <to-value>#{pageFlowScope.action}</to-value>

@@ -35,5 +35,9 @@ public interface LinCuAM extends ApplicationModule {
     String resetPassword(String oldPassword, String newPassword, String confirmPassword);
 
     void forgotResetPassword(String password);
+
+    void saveCardRequest();
+
+    void updateAuditTable();
 }
 

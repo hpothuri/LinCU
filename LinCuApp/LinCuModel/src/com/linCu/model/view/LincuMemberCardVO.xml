@@ -783,13 +783,6 @@
     </Properties>
   </ViewAttribute>
   <ViewAttribute
-    Name="MemberCardType"
-    IsNotNull="true"
-    PrecisionRule="true"
-    EntityAttrName="MemberCardType"
-    EntityUsage="LincuMemberCardEO"
-    AliasName="MEMBER_CARD_TYPE"/>
-  <ViewAttribute
     Name="MemberId"
     IsNotNull="true"
     PrecisionRule="true"
@@ -1880,6 +1873,11 @@
   <ViewLinkAccessor
     Name="LincuMemberCardDocsVO"
     ViewLink="com.linCu.model.viewLink.MemberCardToMemberDocsVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="LincuMemberCardAuditVO"
+    ViewLink="com.linCu.model.viewLink.MemberCardToMemberCardAuditVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <ClientInterface

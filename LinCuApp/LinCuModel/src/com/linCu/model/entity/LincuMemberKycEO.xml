@@ -820,13 +820,6 @@
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
   <AccessorAttribute
-    Name="LincuMemberKycAudit"
-    Association="com.linCu.model.assoc.LincuMemberKycAuditAssoc"
-    AssociationEnd="com.linCu.model.assoc.LincuMemberKycAuditAssoc.LincuMemberKycAudit"
-    AssociationOtherEnd="com.linCu.model.assoc.LincuMemberKycAuditAssoc.LincuMemberKycEO"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <AccessorAttribute
     Name="LincuMemberCardEO"
     Association="com.linCu.model.assoc.MemberCardToMemberKycAssoc"
     AssociationEnd="com.linCu.model.assoc.MemberCardToMemberKycAssoc.LincuMemberCardEO"
