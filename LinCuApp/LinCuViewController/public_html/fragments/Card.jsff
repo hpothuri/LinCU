@@ -105,6 +105,11 @@
                                      visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED')}">
               <af:setPropertyListener from="create" to="#{pageFlowScope.action}" type="action"/>
             </af:commandToolbarButton>
+            <af:spacer width="10" height="10" id="s11"/>
+            <af:commandToolbarButton text="#{lincuviewcontrollerBundle.DOWNLOAD_ALL}" id="ctb2" icon="/images/attach.png">
+              <af:fileDownloadActionListener filename="DocumentsZip.zip" method="#{card.downloadDocsAsZip}"
+                                             contentType="application/zip; charset=utf-8"/>
+            </af:commandToolbarButton>
           </af:toolbar>
         </f:facet>
         <f:facet name="statusbar"/>

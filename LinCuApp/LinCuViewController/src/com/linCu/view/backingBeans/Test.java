@@ -1,25 +1,45 @@
 package com.linCu.view.backingBeans;
 
-import java.util.Random;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
 
 public class Test {
-    public Test() {
-        super();
-    }
+
 
     public static void main(String[] args) {
-        Test test = new Test();
-        String characters = "";
-        //        String pwd = RandomStringUtils.random( 3, characters );
-        //        System.out.println( "-------------Random Password------------------"+pwd );
-        Random randomGenerator = new Random();
-        while (characters.length() < 3) {
 
-            int random = randomGenerator.nextInt(6);
-            if ((!characters.contains(String.valueOf(random))) && (random != 0)){
-                characters = characters.concat(String.valueOf(random));
+        String zipFile = "C:/Test/archive.zip";
+        String[] srcFiles = { "C:/Test/GaneshMarksList.pdf", "C:/Test/imp.txt", "C:/Test/photo.jpg" };
+        try {
+            // create byte buffer
+            byte[] buffer = new byte[1024];
+            FileOutputStream fos = new FileOutputStream(zipFile);
+            ZipOutputStream zos = new ZipOutputStream(fos);
+            for (int i = 0; i < srcFiles.length; i++) {
+                File srcFile = new File(srcFiles[i]);
+                FileInputStream fis = new FileInputStream(srcFile);
+                // begin writing a new ZIP entry, positions the stream to the start of the entry data
+                zos.putNextEntry(new ZipEntry(srcFile.getName()));
+                int length;
+                while ((length = fis.read(buffer)) > 0) {
+                    zos.write(buffer, 0, length);
+                }
+                zos.closeEntry();
+                // close the InputStream
+                fis.close();
             }
+            // close the ZipOutputStream
+            zos.close();
         }
-        System.out.println( "-------------Random Password------------------"+characters );
+        catch (IOException ioe) {
+            System.out.println("Error creating zip file: " + ioe);
+        }
     }
+
 }

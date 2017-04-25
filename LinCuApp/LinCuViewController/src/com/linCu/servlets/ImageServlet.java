@@ -38,7 +38,7 @@ public class ImageServlet extends HttpServlet {
         Connection conn = null;
         try {
             Context ctx = new InitialContext();
-            DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/LinCuDBDS");
+            DataSource ds = (DataSource)ctx.lookup("jdbc/LinCuDBDS");
             conn = ds.getConnection();
             PreparedStatement ps;
             ps = conn.prepareStatement("SELECT DOCUMENT, DOCUMENT_NAME FROM LINCU_MEMBER_CARD_DOCS WHERE DOC_ID = ?");

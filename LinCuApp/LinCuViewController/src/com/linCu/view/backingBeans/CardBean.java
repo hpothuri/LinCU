@@ -3,11 +3,22 @@ package com.linCu.view.backingBeans;
 import com.linCu.view.utils.ADFUtils;
 import com.linCu.view.utils.JSFUtils;
 
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
+import java.nio.file.StandardCopyOption;
+
+import java.util.ArrayList;
+
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import javax.el.ExpressionFactory;
 import javax.el.ValueExpression;
@@ -23,9 +34,12 @@ import oracle.adf.model.binding.DCIteratorBinding;
 import oracle.adf.view.rich.component.rich.RichPopup;
 import oracle.adf.view.rich.component.rich.data.RichTable;
 
+import oracle.adf.view.rich.context.AdfFacesContext;
+
 import oracle.binding.BindingContainer;
 import oracle.binding.OperationBinding;
 
+import oracle.jbo.ViewObject;
 import oracle.jbo.domain.BlobDomain;
 import oracle.jbo.uicli.binding.JUCtrlHierBinding;
 
@@ -248,7 +262,7 @@ public class CardBean {
     }
 
     public void downloadFile(FacesContext facesContext, OutputStream outputStream) {
-        BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();  
+             BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();  
              AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("Document");  
              if (attr != null)  
              {  
@@ -269,6 +283,52 @@ public class CardBean {
              }  
     }
 
+    public void downloadDocsAsZip(FacesContext facesContext, OutputStream outputStream) {
+        try {
+        DCIteratorBinding iter = ADFUtils.findIterator("LincuMemberCardDocsIterator");
+        ViewObject cardDocsView = iter.getViewObject();
+        oracle.jbo.Row rows[] = cardDocsView.getAllRowsInRange();
+        ZipOutputStream zos = new ZipOutputStream(outputStream);
+        for(oracle.jbo.Row docRow : rows){
+            BlobDomain blob = (BlobDomain) docRow.getAttribute("Document"); 
+            String fileName = (String)docRow.getAttribute("DocumentName"); 
+            InputStream initialStream = blob.getInputStream();
+            // create byte buffer
+            File srcFile = stream2file(initialStream);
+            IOUtils.closeQuietly(initialStream);    
+            byte[] buffer = new byte[1024];
+                FileInputStream fis = new FileInputStream(srcFile);
+                // begin writing a new ZIP entry, positions the stream to the start of the entry data
+                zos.putNextEntry(new ZipEntry(fileName));
+                int length;
+                while ((length = fis.read(buffer)) > 0) {
+                    zos.write(buffer, 0, length);
+                }
+                zos.closeEntry();
+                // close the InputStream
+                fis.close();
+            
+        }
+            zos.close();
+            outputStream.flush();
+            outputStream.close(); 
+        }
+        catch (IOException ioe) {
+            System.out.println("Error creating zip file: " + ioe);
+        }
+
+    }
+    
+    
+    public static File stream2file (InputStream in) throws IOException {
+            File tempFile = File.createTempFile("stream2file", ".tmp");
+            tempFile.deleteOnExit();
+            try (FileOutputStream out = new FileOutputStream(tempFile)) {
+                IOUtils.copy(in, out);
+            }
+            return tempFile;
+        }
+    
     public void requestBulkCards(ActionEvent actionEvent) {
         // Add event code here...
     }
@@ -543,4 +603,11 @@ public class CardBean {
             ex.printStackTrace();
         }
     }
+    
+    public void getMultipleDownload(FacesContext facesContext,
+                                        OutputStream outputStream) throws IOException,
+                                                                          InterruptedException {
+     
+            
+        }
 }
