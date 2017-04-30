@@ -5,7 +5,7 @@ import com.linCu.view.utils.JSFUtils;
 
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -604,10 +604,15 @@ public class CardBean {
         }
     }
     
-    public void getMultipleDownload(FacesContext facesContext,
-                                        OutputStream outputStream) throws IOException,
-                                                                          InterruptedException {
-     
-            
-        }
+    public void exportCardDetailsDownload(FacesContext facesContext, OutputStream outputStream) {
+    try {
+    List wb = (List) ADFUtils.executeOperationBinding("createExportCardDetailsWb"); //method for creating WB
+    HSSFWorkbook workbook = (HSSFWorkbook) wb.get(0);
+    workbook.write(outputStream);
+    outputStream.flush();
+    } catch (IOException ex) {
+    ex.printStackTrace();
+    }
+
+    }
 }

@@ -25,7 +25,7 @@
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
           trustMode="untrusted"
-          Name="ExpressionScript"><![CDATA[adf.context.current.sessionScope.get('creditUnionId')]]></TransientExpression>
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') != 'PREPAID_ADMIN') ? adf.context.current.sessionScope.get('creditUnionId') :  null]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewUsage>
@@ -298,6 +298,13 @@
       <Return
         Name="_return_type_"
         Type="void"/>
+    </Method>
+    <Method
+      Name="createExportCardDetailsWb"
+      MethodName="createExportCardDetailsWb">
+      <Return
+        Name="_return_type_"
+        Type="java.util.List"/>
     </Method>
   </ClientInterface>
 </AppModule>

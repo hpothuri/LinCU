@@ -99,14 +99,15 @@
       <af:panelCollection id="pc1" styleClass="AFStretchWidth">
         <f:facet name="menus"/>
         <f:facet name="toolbar">
-          <af:toolbar id="t2" rendered="#{(sessionScope.user.userRole eq 'MSR')}">
+          <af:toolbar id="t2">
             <af:commandToolbarButton text="#{lincuviewcontrollerBundle.ATTACH}" id="ctb1" icon="/images/attach.png"
                                      action="#{card.attachDocument}" partialSubmit="false"
-                                     visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED')}">
+                                     visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED')}"
+                                      rendered="#{(sessionScope.user.userRole eq 'MSR')}">
               <af:setPropertyListener from="create" to="#{pageFlowScope.action}" type="action"/>
             </af:commandToolbarButton>
             <af:spacer width="10" height="10" id="s11"/>
-            <af:commandToolbarButton text="#{lincuviewcontrollerBundle.DOWNLOAD_ALL}" id="ctb2" icon="/images/attach.png">
+            <af:commandToolbarButton text="#{lincuviewcontrollerBundle.DOWNLOAD_ALL}" id="ctb2" icon="/images/attach.png" rendered="#{(sessionScope.user.userRole eq 'FCB')}">
               <af:fileDownloadActionListener filename="DocumentsZip.zip" method="#{card.downloadDocsAsZip}"
                                              contentType="application/zip; charset=utf-8"/>
             </af:commandToolbarButton>

@@ -354,6 +354,14 @@
             <value n="id" v="BC4J Oracle Domains"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="Com.bea.core.apache.commons.lang.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Commons-io.commons-io.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <hash n="internalDefinitions">
          <list n="libraryDefinitions">
@@ -400,6 +408,24 @@
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Poi-ooxml-schemas-3.15.jar"/>
                <value n="id" v="Poi-ooxml-schemas-3.15.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../../lib/com.bea.core.apache.commons.lang.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Com.bea.core.apache.commons.lang.jar"/>
+               <value n="id" v="Com.bea.core.apache.commons.lang.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../../lib/commons-io.commons-io.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Commons-io.commons-io.jar"/>
+               <value n="id" v="Commons-io.commons-io.jar"/>
                <value n="locked" v="true"/>
             </hash>
          </list>
@@ -555,6 +581,14 @@
          </hash>
          <hash>
             <value n="id" v="BC4J Oracle Domains"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Com.bea.core.apache.commons.lang.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Commons-io.commons-io.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

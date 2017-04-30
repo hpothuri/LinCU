@@ -1,5 +1,6 @@
 package com.linCu.model.am.common;
 
+import java.util.List;
 import java.util.Map;
 
 import oracle.jbo.ApplicationModule;
@@ -39,5 +40,7 @@ public interface LinCuAM extends ApplicationModule {
     void saveCardRequest();
 
     void updateAuditTable();
+
+    List createExportCardDetailsWb();
 }
 

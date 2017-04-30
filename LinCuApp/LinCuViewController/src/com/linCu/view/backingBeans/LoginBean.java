@@ -5,12 +5,18 @@ import com.linCu.view.utils.ADFUtils;
 import com.linCu.view.utils.JSFUtils;
 import com.linCu.view.utils.PasswordUtil;
 
+import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
 
 import javax.faces.event.ActionEvent;
+
+import javax.servlet.http.HttpSession;
+
+import oracle.adf.share.ADFContext;
 
 public class LoginBean {
     private String errorMessage;
@@ -97,6 +103,15 @@ public class LoginBean {
     }
 
     public void logout(ActionEvent actionEvent) {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        //FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        
+        ADFContext.getCurrent().removeScope(ADFContext.SESSION_SCOPE);
+               FacesContext fctx = FacesContext.getCurrentInstance();
+               ((HttpSession) fctx.getExternalContext().getSession(false)).invalidate();
+//               try {
+//                   //fctx.getExternalContext().redirect("faces/login");
+//               } catch (IOException e) {
+//                   e.printStackTrace();
+//               }
     }
 }

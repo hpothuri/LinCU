@@ -45,5 +45,9 @@
     <methodAction id="addToBatch" RequiresUpdateModel="true" Action="invokeMethod" MethodName="addToBatch"
                   IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
                   InstanceName="bindings.addToBatch.dataControl.dataProvider"/>
+    <methodAction id="createExportCardDetailsWb" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="createExportCardDetailsWb" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.createExportCardDetailsWb_LinCuAMDataControl_dataProvider_createExportCardDetailsWb_result"/>
   </bindings>
 </pageDefinition>
