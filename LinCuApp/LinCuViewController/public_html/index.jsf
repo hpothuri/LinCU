@@ -45,6 +45,14 @@
                     <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
                                partialTriggers=":::bBarFDC:b1 :::bBarFDC:b2 :::bBarFDC:b3"
                                styleClass="ContentContainerWorkaround"/>
+                    <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                              binding="#{viewScope.IndexDynamicRegion.infoPopup}">
+                        <af:dialog id="d2" type="ok" closeIconVisible="false"
+                                   title="#{lincuviewcontrollerBundle.INFORMATION_MESSAGE}">
+                            <f:facet name="buttonBar"/>
+                            <af:outputText value="#{lincuviewcontrollerBundle.UNSAVED_CHANGES}" id="ot2"/>
+                        </af:dialog>
+                    </af:popup>
                 </f:facet>
                 <f:facet name="start"/>
                 <f:facet name="end"/>

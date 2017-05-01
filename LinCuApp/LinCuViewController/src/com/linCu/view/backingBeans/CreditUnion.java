@@ -2,12 +2,15 @@ package com.linCu.view.backingBeans;
 
 import com.linCu.view.utils.ADFUtils;
 
+import com.linCu.view.utils.JSFUtils;
+
 import javax.faces.event.ActionEvent;
 
 import oracle.adf.view.rich.component.rich.RichPopup;
 
 public class CreditUnion {
     private RichPopup createCreditUnionPopup;
+    private RichPopup deleteCreditUnionConfirmPopup;
 
     public CreditUnion() {
         super();
@@ -58,5 +61,37 @@ public class CreditUnion {
             ex.printStackTrace();
         }
         this.getCreateCreditUnionPopup().hide();
+    }
+
+    public void confirmdeleteCreditUnion(ActionEvent actionEvent) {
+        try {
+            Boolean deleteCreditUnionAllowed = (Boolean)ADFUtils.executeOperationBinding("deleteCreditUnionAllowed");
+            if(deleteCreditUnionAllowed){
+                RichPopup.PopupHints hints = new RichPopup.PopupHints();
+                this.getDeleteCreditUnionConfirmPopup().show(hints);   
+            }else{
+                JSFUtils.addErrorMessage("Cannot delete the credit union. It has branches associated to it.");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void setDeleteCreditUnionConfirmPopup(RichPopup deleteCreditUnionConfirmPopup) {
+        this.deleteCreditUnionConfirmPopup = deleteCreditUnionConfirmPopup;
+    }
+
+    public RichPopup getDeleteCreditUnionConfirmPopup() {
+        return deleteCreditUnionConfirmPopup;
+    }
+
+    public void deleteCreditUnion(ActionEvent actionEvent) {
+        try {
+            ADFUtils.executeOperationBinding("Delete"); 
+            ADFUtils.executeOperationBinding("Commit"); 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        this.getDeleteCreditUnionConfirmPopup().hide();
     }
 }

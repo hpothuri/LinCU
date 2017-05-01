@@ -104,6 +104,9 @@
   <ViewUsage
     Name="LincuMemberCardAudit"
     ViewObjectName="com.linCu.model.view.LincuMemberCardAuditVO"/>
+  <ViewUsage
+    Name="YesOrNoVO"
+    ViewObjectName="com.linCu.model.vvo.YesOrNoVVO"/>
   <ViewLinkUsage
     Name="CreditUnionBranchVL"
     ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionToBranchVL"
@@ -305,6 +308,13 @@
       <Return
         Name="_return_type_"
         Type="java.util.List"/>
+    </Method>
+    <Method
+      Name="deleteCreditUnionAllowed"
+      MethodName="deleteCreditUnionAllowed">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.Boolean"/>
     </Method>
   </ClientInterface>
 </AppModule>

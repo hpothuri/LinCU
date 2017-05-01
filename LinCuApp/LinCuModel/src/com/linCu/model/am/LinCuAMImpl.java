@@ -31,6 +31,9 @@ import oracle.jbo.RowSetIterator;
 import oracle.jbo.server.ApplicationModuleImpl;
 import oracle.jbo.server.ViewLinkImpl;
 
+
+import oracle.jbo.server.ViewObjectImpl;
+
 import org.apache.poi.hssf.usermodel.HSSFBorderFormatting;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -1056,6 +1059,25 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     List list = new ArrayList();
     list.add(wb);
     return list;
+    }
+
+    /**
+     * Container's getter for YesOrNoVVO2.
+     * @return YesOrNoVVO2
+     */
+    public ViewObjectImpl getYesOrNoVO() {
+        return (ViewObjectImpl) findViewObject("YesOrNoVO");
+    }
+    
+    public Boolean deleteCreditUnionAllowed(){
+        CreditUnionBranchVOImpl creditUnionBranchVOImpl = this.getCreditUnionBranch();
+        int rowCount = creditUnionBranchVOImpl.getRowCount();
+        System.out.println("----------rowCount------------"+rowCount);
+        if(rowCount > 0){
+           return false; 
+        }else{
+            return true;
+        }
     }
 }
 

@@ -42,5 +42,7 @@ public interface LinCuAM extends ApplicationModule {
     void updateAuditTable();
 
     List createExportCardDetailsWb();
+
+    Boolean deleteCreditUnionAllowed();
 }
 

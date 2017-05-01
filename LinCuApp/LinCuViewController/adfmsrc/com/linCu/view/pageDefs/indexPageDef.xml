@@ -6,6 +6,9 @@
     <variableIterator id="variables"/>
     <taskFlow taskFlowId="${viewScope.IndexDynamicRegion.dynamicTaskFlowId}" id="dynamicRegion1"
               xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator id="YesOrNoVOIterator" Binds="YesOrNoVO" DataControl="LinCuAMDataControl" RangeSize="25"/>
   </executables>
-  <bindings/>
+  <bindings>
+    <action id="Rollback" DataControl="LinCuAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
 </pageDefinition>

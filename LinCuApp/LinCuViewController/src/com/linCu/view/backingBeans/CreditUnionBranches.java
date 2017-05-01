@@ -14,6 +14,7 @@ import oracle.jbo.Key;
 
 public class CreditUnionBranches {
     private RichPopup creditUnionBranchPopup;
+    private RichPopup deleteBranchConfirmPopup;
 
     public CreditUnionBranches() {
         super();
@@ -73,5 +74,13 @@ public class CreditUnionBranches {
             ex.printStackTrace();
         }
         this.getCreditUnionBranchPopup().hide();
+    }
+
+    public void setDeleteBranchConfirmPopup(RichPopup deleteBranchConfirmPopup) {
+        this.deleteBranchConfirmPopup = deleteBranchConfirmPopup;
+    }
+
+    public RichPopup getDeleteBranchConfirmPopup() {
+        return deleteBranchConfirmPopup;
     }
 }

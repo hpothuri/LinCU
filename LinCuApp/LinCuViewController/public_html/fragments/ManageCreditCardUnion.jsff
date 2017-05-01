@@ -20,9 +20,11 @@
             <af:setPropertyListener from="create" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
           <af:button text="#{lincuviewcontrollerBundle.EDIT_CREDIT_UNION}" id="b2"
-                     actionListener="#{creditUnion.editCreditUnion}">
+                     actionListener="#{creditUnion.editCreditUnion}" disabled="#{!bindings.Delete.enabled}">
             <af:setPropertyListener from="edit" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
+          <af:button text="#{lincuviewcontrollerBundle.DELETE_CREDIT_UNION}" disabled="#{!bindings.Delete.enabled}"
+                     id="b6" actionListener="#{creditUnion.confirmdeleteCreditUnion}"/>
         </af:toolbar>
       </f:facet>
       <f:facet name="statusbar"/>
@@ -31,7 +33,7 @@
                 rowBandingInterval="0" selectedRowKeys="#{bindings.CreditUnion.collectionModel.selectedRow}"
                 selectionListener="#{bindings.CreditUnion.collectionModel.makeCurrent}" rowSelection="single"
                 fetchSize="#{bindings.CreditUnion.rangeSize}" id="resId1"
-                styleClass="AFStretchWidth" partialTriggers=":::b5 :::b4">
+                styleClass="AFStretchWidth" partialTriggers=":::b5 :::b4 ::b6">
         <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionCode.name}" sortable="true"
                    headerText="#{bindings.CreditUnion.hints.CreditUnionCode.label}" id="resId1c2" width="80"
                    minimumWidth="80" displayIndex="-1">
@@ -211,6 +213,15 @@
             <f:validator binding="#{bindings.CreditUnionEmailId.validator}"/>
           </af:inputText>
         </af:panelFormLayout>
+      </af:dialog>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+              binding="#{creditUnion.deleteCreditUnionConfirmPopup}">
+      <af:dialog id="d2" closeIconVisible="false" title="#{lincuviewcontrollerBundle.CONFIRM_DELETE}" type="cancel">
+        <f:facet name="buttonBar">
+          <af:button text="#{lincuviewcontrollerBundle.OK}" id="b7" actionListener="#{creditUnion.deleteCreditUnion}"/>
+        </f:facet>
+        <af:outputText value="#{lincuviewcontrollerBundle.DELETE_SELECTED_CREDIT_UNION}" id="ot1"/>
       </af:dialog>
     </af:popup>
   </af:panelGroupLayout>

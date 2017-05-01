@@ -98,5 +98,10 @@
                   InstanceName="data.LinCuAMDataControl.CreditUnion">
       <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
     </methodAction>
+    <action IterBinding="CreditUnionIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <methodAction id="deleteCreditUnionAllowed" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="deleteCreditUnionAllowed" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.deleteCreditUnionAllowed_LinCuAMDataControl_dataProvider_deleteCreditUnionAllowed_result"/>
   </bindings>
 </pageDefinition>
