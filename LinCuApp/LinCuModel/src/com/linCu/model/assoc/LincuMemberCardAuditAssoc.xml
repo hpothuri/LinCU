@@ -13,7 +13,9 @@
     Name="LincuMemberCardEO"
     Cardinality="1"
     Source="true"
-    Owner="com.linCu.model.entity.LincuMemberCardEO">
+    Owner="com.linCu.model.entity.LincuMemberCardEO"
+    LockLevel="NONE"
+    DeleteContainee="true">
     <DesignTime>
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_minCardinality" Value="1"/>

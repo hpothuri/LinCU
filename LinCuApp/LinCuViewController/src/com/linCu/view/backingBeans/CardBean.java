@@ -59,6 +59,7 @@ public class CardBean {
     private UploadedFile _file;
     private UploadedFile _uploadFile;
     private RichTable cardTable;
+    private RichPopup deleteConfirm;
 
     public CardBean() {
         super();
@@ -614,5 +615,32 @@ public class CardBean {
     ex.printStackTrace();
     }
 
+    }
+
+    public void setDeleteConfirm(RichPopup deleteConfirm) {
+        this.deleteConfirm = deleteConfirm;
+    }
+
+    public RichPopup getDeleteConfirm() {
+        return deleteConfirm;
+    }
+
+    public void confirmDeleteAction(ActionEvent actionEvent) {
+        try {
+                RichPopup.PopupHints hints = new RichPopup.PopupHints();
+                this.getDeleteConfirm().show(hints);              
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void deleteCard(ActionEvent actionEvent) {
+        try {
+            ADFUtils.executeOperationBinding("Delete"); 
+            ADFUtils.executeOperationBinding("Commit"); 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        this.getDeleteConfirm().hide();
     }
 }

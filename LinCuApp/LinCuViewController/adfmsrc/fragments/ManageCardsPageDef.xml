@@ -49,5 +49,7 @@
                   MethodName="createExportCardDetailsWb" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
                   InstanceName="data.LinCuAMDataControl.dataProvider"
                   ReturnName="data.LinCuAMDataControl.methodResults.createExportCardDetailsWb_LinCuAMDataControl_dataProvider_createExportCardDetailsWb_result"/>
+    <action IterBinding="LincuMemberCardIterator" id="Delete" InstanceName="LinCuAMDataControl.LincuMemberCard"
+            DataControl="LinCuAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
   </bindings>
 </pageDefinition>
