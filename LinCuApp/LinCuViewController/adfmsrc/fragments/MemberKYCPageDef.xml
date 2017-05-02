@@ -93,5 +93,11 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <action IterBinding="LincuMemberIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <methodAction id="deleteMemeberAllowed" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="deleteMemeberAllowed" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.deleteMemeberAllowed_LinCuAMDataControl_dataProvider_deleteMemeberAllowed_result"/>
+    <action id="Commit" DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
   </bindings>
 </pageDefinition>

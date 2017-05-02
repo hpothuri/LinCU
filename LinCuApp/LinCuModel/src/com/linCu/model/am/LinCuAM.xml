@@ -316,5 +316,12 @@
         Name="_return_type_"
         Type="java.lang.Boolean"/>
     </Method>
+    <Method
+      Name="deleteMemeberAllowed"
+      MethodName="deleteMemeberAllowed">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.Boolean"/>
+    </Method>
   </ClientInterface>
 </AppModule>

@@ -17,7 +17,9 @@
     <f:facet name="toolbar">
      <af:toolbar id="t1">
       <af:button text="#{lincuviewcontrollerBundle.CREATE_MEMBER}" id="b1" action="createMember"/>
-      <af:button text="#{lincuviewcontrollerBundle.EDIT_MEMBER}" id="b2" action="editMember"/>
+      <af:button text="#{lincuviewcontrollerBundle.EDIT_MEMBER}" id="b2" action="editMember" disabled="#{!bindings.Delete.enabled}"/>
+      <af:button actionListener="#{member.deleteConfirm}" text="#{lincuviewcontrollerBundle.DELETE_MEMBER}" disabled="#{!bindings.Delete.enabled}"
+                 id="b3"/>
      </af:toolbar>
     </f:facet>
     <f:facet name="statusbar"/>
@@ -25,7 +27,7 @@
               emptyText="#{bindings.LincuMember.viewable ? 'No data to display.' : 'Access Denied.'}"
               rowBandingInterval="0" selectedRowKeys="#{bindings.LincuMember.collectionModel.selectedRow}"
               selectionListener="#{bindings.LincuMember.collectionModel.makeCurrent}" rowSelection="single"
-              fetchSize="#{bindings.LincuMember.rangeSize}" id="resId1">
+              fetchSize="#{bindings.LincuMember.rangeSize}" id="resId1" partialTriggers="::b3">
      <af:column headerText="#{bindings.LincuMember.hints.CreditUnionId.label}" id="resId1c4">
       <af:selectOneChoice value="#{row.bindings.CreditUnionId.inputValue}" label="#{row.bindings.CreditUnionId.label}"
                           required="#{bindings.LincuMember.hints.CreditUnionId.mandatory}"
@@ -99,6 +101,14 @@
      </af:column>
     </af:table>
    </af:panelCollection>
+   <af:popup childCreation="deferred" autoCancel="disabled" id="p1" binding="#{member.confirmDeletePopup}">
+    <af:dialog id="d1" title="#{lincuviewcontrollerBundle.CONFIRM_DELETE}" type="cancel" closeIconVisible="false">
+     <f:facet name="buttonBar">
+      <af:button text="#{lincuviewcontrollerBundle.OK}" id="b4" actionListener="#{member.deleteMember}"/>
+     </f:facet>
+     <af:outputText value="#{lincuviewcontrollerBundle.DELETE_SELECTED_MEMBER}" id="ot1"/>
+    </af:dialog>
+   </af:popup>
   </af:panelGroupLayout>
  </af:panelGroupLayout>
  </jsp:root>

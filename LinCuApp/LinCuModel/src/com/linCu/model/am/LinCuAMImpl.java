@@ -11,6 +11,7 @@ import com.linCu.model.view.LincuMemberCardDocsVORowImpl;
 import com.linCu.model.view.LincuMemberCardVOImpl;
 import com.linCu.model.view.LincuMemberCardVORowImpl;
 import com.linCu.model.view.LincuMemberVOImpl;
+import com.linCu.model.view.LincuMemberVORowImpl;
 import com.linCu.model.view.LincuUserInfoVOImpl;
 import oracle.jbo.server.SequenceImpl;
 import com.linCu.model.view.LincuUserInfoVORowImpl;
@@ -1072,9 +1073,20 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     public Boolean deleteCreditUnionAllowed(){
         CreditUnionBranchVOImpl creditUnionBranchVOImpl = this.getCreditUnionBranch();
         int rowCount = creditUnionBranchVOImpl.getRowCount();
-        System.out.println("----------rowCount------------"+rowCount);
         if(rowCount > 0){
            return false; 
+        }else{
+            return true;
+        }
+    }
+    
+    public Boolean deleteMemeberAllowed(){
+         LincuMemberVOImpl memberVO = this.getLincuMember();
+        LincuMemberVORowImpl memberRow = (LincuMemberVORowImpl)memberVO.getCurrentRow();
+        LincuMemberCardVOImpl cardVO = this.getLincuMemberCard();
+        Row[] cardRows = cardVO.getFilteredRows("MemberId", memberRow.getMemberId());
+        if(cardRows != null && cardRows.length > 0){
+            return false;
         }else{
             return true;
         }
