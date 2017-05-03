@@ -107,6 +107,9 @@
   <ViewUsage
     Name="YesOrNoVO"
     ViewObjectName="com.linCu.model.vvo.YesOrNoVVO"/>
+  <ViewUsage
+    Name="ReadOnlyLincuUnions"
+    ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"/>
   <ViewLinkUsage
     Name="CreditUnionBranchVL"
     ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionToBranchVL"
