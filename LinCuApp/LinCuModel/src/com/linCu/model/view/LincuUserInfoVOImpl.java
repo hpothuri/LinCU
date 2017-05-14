@@ -139,5 +139,21 @@ public class LincuUserInfoVOImpl extends ViewObjectImpl implements LincuUserInfo
     public void setbindCreditUnionId(String value) {
         ensureVariableManager().setVariableValue("bindCreditUnionId", value);
     }
+
+    /**
+     * Returns the variable value for bindCreatedBy.
+     * @return variable value for bindCreatedBy
+     */
+    public String getbindCreatedBy() {
+        return (String) ensureVariableManager().getVariableValue("bindCreatedBy");
+    }
+
+    /**
+     * Sets <code>value</code> for variable bindCreatedBy.
+     * @param value value to bind as bindCreatedBy
+     */
+    public void setbindCreatedBy(String value) {
+        ensureVariableManager().setVariableValue("bindCreatedBy", value);
+    }
 }
 

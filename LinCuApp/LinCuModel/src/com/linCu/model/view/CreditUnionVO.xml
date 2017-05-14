@@ -60,7 +60,8 @@
     PrecisionRule="true"
     EntityAttrName="CreditUnionCode"
     EntityUsage="CreditUnionEO"
-    AliasName="CREDIT_UNION_CODE">
+    AliasName="CREDIT_UNION_CODE"
+    IsUpdateable="while_insert">
     <Properties>
       <SchemaBasedProperties>
         <LABEL

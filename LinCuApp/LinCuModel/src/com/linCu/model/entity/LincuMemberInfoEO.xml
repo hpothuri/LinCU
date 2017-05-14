@@ -153,6 +153,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="12"/>
     </DesignTime>
+    <validation:RegExpValidationBean
+      Name="HomePhoneNumberRule0"
+      ResId="INVALID_PHONE_NUMBER_FORMAT"
+      OnAttribute="HomePhoneNumber"
+      Pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
+      Inverse="false"/>
   </Attribute>
   <Attribute
     Name="BusinessPhoneNumber"
@@ -165,6 +171,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="12"/>
     </DesignTime>
+    <validation:RegExpValidationBean
+      Name="BusinessPhoneNumberRule0"
+      ResId="INVALID_PHONE_NUMBER_FORMAT"
+      OnAttribute="BusinessPhoneNumber"
+      Pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
+      Inverse="false"/>
   </Attribute>
   <Attribute
     Name="BusinessPhoneExtn"
@@ -189,6 +201,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="12"/>
     </DesignTime>
+    <validation:RegExpValidationBean
+      Name="MobilePhoneNumberRule0"
+      ResId="INVALID_PHONE_NUMBER_FORMAT"
+      OnAttribute="MobilePhoneNumber"
+      Pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
+      Inverse="false"/>
   </Attribute>
   <Attribute
     Name="FaxNumber"

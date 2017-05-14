@@ -52,12 +52,15 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
         SecurityQustnAns2,
         SecurityQustnAns3,
         SecurityQustnAns4,
+        SwitchRoles,
         GenderVA,
         LinCuRolesVA,
         LincuUnionsVA,
         LincuBranchesVA,
         LookUpDataVA,
-        SecurityQuestionsVA;
+        SecurityQuestionsVA,
+        CreditUnionLinCuRolesVA,
+        FCBRolesVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -115,12 +118,15 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
     public static final int SECURITYQUSTNANS2 = AttributesEnum.SecurityQustnAns2.index();
     public static final int SECURITYQUSTNANS3 = AttributesEnum.SecurityQustnAns3.index();
     public static final int SECURITYQUSTNANS4 = AttributesEnum.SecurityQustnAns4.index();
+    public static final int SWITCHROLES = AttributesEnum.SwitchRoles.index();
     public static final int GENDERVA = AttributesEnum.GenderVA.index();
     public static final int LINCUROLESVA = AttributesEnum.LinCuRolesVA.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
     public static final int LINCUBRANCHESVA = AttributesEnum.LincuBranchesVA.index();
     public static final int LOOKUPDATAVA = AttributesEnum.LookUpDataVA.index();
     public static final int SECURITYQUESTIONSVA = AttributesEnum.SecurityQuestionsVA.index();
+    public static final int CREDITUNIONLINCUROLESVA = AttributesEnum.CreditUnionLinCuRolesVA.index();
+    public static final int FCBROLESVA = AttributesEnum.FCBRolesVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -229,6 +235,16 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
      * @param value value to set the USER_TYPE_CODE
      */
     public void setUserTypeCode(String value) {
+        System.out.println("------------UserTypeCode-------"+value);
+        if(value != null){
+            if("CREDIT_UNION".equalsIgnoreCase(value)){
+                this.setSwitchRoles("LOV_UserRole1");
+            }else if("LINCU".equalsIgnoreCase(value)){
+                this.setSwitchRoles("LOV_UserRole");
+            }else{
+                this.setSwitchRoles("LOV_UserRole12");
+            }
+        }
         setAttributeInternal(USERTYPECODE, value);
     }
 
@@ -654,6 +670,23 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for the calculated attribute ViewAttr.
+     * @return the ViewAttr
+     */
+    public String getSwitchRoles() {
+        System.out.println("UserTypeCode-------------------"+this.getUserTypeCode());
+        return (String) getAttributeInternal(SWITCHROLES);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute SwitchRoles.
+     * @param value value to set the  SwitchRoles
+     */
+    public void setSwitchRoles(String value) {
+        setAttributeInternal(SWITCHROLES, value);
+    }
+
+    /**
      * Gets the view accessor <code>RowSet</code> GenderVA.
      */
     public RowSet getGenderVA() {
@@ -693,6 +726,20 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
      */
     public RowSet getSecurityQuestionsVA() {
         return (RowSet) getAttributeInternal(SECURITYQUESTIONSVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> CreditUnionLinCuRolesVA.
+     */
+    public RowSet getCreditUnionLinCuRolesVA() {
+        return (RowSet) getAttributeInternal(CREDITUNIONLINCUROLESVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> FCBRolesVA.
+     */
+    public RowSet getFCBRolesVA() {
+        return (RowSet) getAttributeInternal(FCBROLESVA);
     }
 }
 

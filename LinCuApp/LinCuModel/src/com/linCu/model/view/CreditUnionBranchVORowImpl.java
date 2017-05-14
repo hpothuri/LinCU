@@ -13,6 +13,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
 public class CreditUnionBranchVORowImpl extends ViewRowImpl {
+
     public static final int ENTITY_CREDITUNIONBRANCHEO = 0;
 
     /**
@@ -41,7 +42,8 @@ public class CreditUnionBranchVORowImpl extends ViewRowImpl {
         LastApprovedDate,
         LincuUserInfoVO,
         CountryVA;
-        private static AttributesEnum[] vals = null;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -63,6 +65,7 @@ public class CreditUnionBranchVORowImpl extends ViewRowImpl {
             return vals;
         }
     }
+
     public static final int CREDITUNIONID = AttributesEnum.CreditUnionId.index();
     public static final int CREDITUNIONBRANCHID = AttributesEnum.CreditUnionBranchId.index();
     public static final int CREDITUNIONBRANCHCODE = AttributesEnum.CreditUnionBranchCode.index();
@@ -145,7 +148,7 @@ public class CreditUnionBranchVORowImpl extends ViewRowImpl {
      * @param value value to set the CREDIT_UNION_BRANCH_CODE
      */
     public void setCreditUnionBranchCode(String value) {
-        setAttributeInternal(CREDITUNIONBRANCHCODE, value);
+        setAttributeInternal(CREDITUNIONBRANCHCODE, value.toUpperCase());
     }
 
     /**

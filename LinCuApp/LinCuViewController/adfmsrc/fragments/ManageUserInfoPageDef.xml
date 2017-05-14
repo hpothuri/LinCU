@@ -86,5 +86,11 @@
                   InstanceName="data.LinCuAMDataControl.LincuUserInfo">
       <NamedData NDName="password" NDType="java.lang.String"/>
     </methodAction>
+    <action IterBinding="LincuUserInfoIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="LincuUserInfoIterator" id="UserTypeCode1">
+      <AttrNames>
+        <Item Value="UserTypeCode"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

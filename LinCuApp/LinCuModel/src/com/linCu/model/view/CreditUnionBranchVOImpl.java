@@ -18,11 +18,15 @@ public class CreditUnionBranchVOImpl extends ViewObjectImpl implements CreditUni
     
     public void createBranch(String user){
         CreditUnionBranchVORowImpl row = (CreditUnionBranchVORowImpl) this.createRow();
+        long time = System.currentTimeMillis();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         if(row != null){
         this.insertRow(row);
         this.setCurrentRow(row);
-        row.setCreatedBy(user);
-        row.setLastUpdatedBy(user);
+            row.setCreatedBy(user);
+            row.setCreationDate(timestamp);
+            row.setLastUpdatedBy(user);
+            row.setLastUpdateDate(timestamp);
         }
     }
     

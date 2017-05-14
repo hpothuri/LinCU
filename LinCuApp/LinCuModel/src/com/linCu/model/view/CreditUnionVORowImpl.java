@@ -134,7 +134,7 @@ public class CreditUnionVORowImpl extends ViewRowImpl {
      * @param value value to set the CREDIT_UNION_CODE
      */
     public void setCreditUnionCode(String value) {
-        setAttributeInternal(CREDITUNIONCODE, value);
+        setAttributeInternal(CREDITUNIONCODE, value.toUpperCase());
     }
 
     /**

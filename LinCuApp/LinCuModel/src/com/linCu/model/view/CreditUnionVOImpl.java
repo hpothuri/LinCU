@@ -18,11 +18,15 @@ public class CreditUnionVOImpl extends ViewObjectImpl implements CreditUnionVO {
     
     public void createCreditUnion(String user){
         CreditUnionVORowImpl row = (CreditUnionVORowImpl) this.createRow();
+        long time = System.currentTimeMillis();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         if(row != null){
         this.insertRow(row);
         this.setCurrentRow(row);
-        row.setCreatedBy(user);
-        row.setLastUpdatedBy(user);
+            row.setCreatedBy(user);
+            row.setCreationDate(timestamp);
+            row.setLastUpdatedBy(user);
+            row.setLastUpdateDate(timestamp);
         }
     }
     

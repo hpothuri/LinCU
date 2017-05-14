@@ -25,6 +25,10 @@
     Name="bindCreditUnionId"
     Kind="viewcriteria"
     Type="java.lang.String"/>
+  <Variable
+    Name="bindCreatedBy"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <ViewAccessor
     Name="GenderVA"
     ViewObjectName="com.linCu.model.vvo.GenderVVO"
@@ -32,7 +36,11 @@
   <ViewAccessor
     Name="LinCuRolesVA"
     ViewObjectName="com.linCu.model.vvo.LinCuRolesVVO"
-    RowLevelBinds="true"/>
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLincu"
+      FullName="com.linCu.model.vvo.LinCuRolesVVO.QueryByLincu"/>
+  </ViewAccessor>
   <ViewAccessor
     Name="LincuUnionsVA"
     ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"
@@ -90,6 +98,22 @@
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="CreditUnionLinCuRolesVA"
+    ViewObjectName="com.linCu.model.vvo.LinCuRolesVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryCreditUnionRoles"
+      FullName="com.linCu.model.vvo.LinCuRolesVVO.QueryCreditUnionRoles"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="FCBRolesVA"
+    ViewObjectName="com.linCu.model.vvo.LinCuRolesVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByFCB"
+      FullName="com.linCu.model.vvo.LinCuRolesVVO.QueryByFCB"/>
+  </ViewAccessor>
   <ListBinding
     Name="LOV_Gender"
     ListVOName="GenderVA"
@@ -112,9 +136,8 @@
     Name="LOV_UserRole"
     ListVOName="LinCuRolesVA"
     ListRangeSize="-1"
-    NullValueFlag="start"
-    MRUCount="0"
-    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+    NullValueFlag="none"
+    MRUCount="0">
     <AttrArray Name="AttrNames">
       <Item Value="UserRole"/>
     </AttrArray>
@@ -131,8 +154,9 @@
     Name="LOV_CreditUnionId"
     ListVOName="LincuUnionsVA"
     ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="CreditUnionId"/>
     </AttrArray>
@@ -149,8 +173,9 @@
     Name="LOV_CreditUnionBranchId"
     ListVOName="LincuBranchesVA"
     ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="CreditUnionBranchId"/>
     </AttrArray>
@@ -277,6 +302,42 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
+  <ListBinding
+    Name="LOV_UserRole1"
+    ListVOName="CreditUnionLinCuRolesVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UserRole"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Role"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="RoleDescription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_UserRole12"
+    ListVOName="FCBRolesVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UserRole"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Role"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="RoleDescription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="LincuUserInfoEO"
     Entity="com.linCu.model.entity.LincuUserInfoEO"/>
@@ -293,7 +354,8 @@
     PrecisionRule="true"
     EntityAttrName="FirstName"
     EntityUsage="LincuUserInfoEO"
-    AliasName="FIRST_NAME">
+    AliasName="FIRST_NAME"
+    IsUpdateable="while_insert">
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
@@ -308,7 +370,8 @@
     PrecisionRule="true"
     EntityAttrName="LastName"
     EntityUsage="LincuUserInfoEO"
-    AliasName="LAST_NAME">
+    AliasName="LAST_NAME"
+    IsUpdateable="while_insert">
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
@@ -382,17 +445,22 @@
     EntityAttrName="UserRole"
     EntityUsage="LincuUserInfoEO"
     AliasName="USER_ROLE"
-    LOVName="LOV_UserRole">
+    LOVName="LOV_UserRole1"
+    LOVFinder="SwitchRoles">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="choice"/>
         <DISPLAYWIDTH
           Value="37"/>
         <LABEL
           ResId="ROLE"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
+    <Dependencies>
+      <Item
+        Value="SwitchRoles"/>
+    </Dependencies>
   </ViewAttribute>
   <ViewAttribute
     Name="UserSupervisor"
@@ -416,7 +484,8 @@
     PrecisionRule="true"
     EntityAttrName="Email"
     EntityUsage="LincuUserInfoEO"
-    AliasName="EMAIL">
+    AliasName="EMAIL"
+    IsUpdateable="while_insert">
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
@@ -704,6 +773,14 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="SwitchRoles"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="$none$"
+    SQLType="VARCHAR"/>
   <ViewCriteria
     Name="QueryUserInfo"
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO"
@@ -824,6 +901,14 @@
         Operator="="
         Conjunction="AND"
         Value=":bindCreditUnionId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="QueryByCreditUnion_LincuUserInfoVOCriteria_row_0_CreatedBy"
+        ViewAttribute="CreatedBy"
+        Operator="="
+        Conjunction="OR"
+        Value=":bindCreatedBy"
         IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>

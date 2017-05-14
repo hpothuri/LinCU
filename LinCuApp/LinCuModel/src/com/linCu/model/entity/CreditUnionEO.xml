@@ -142,6 +142,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
+    <validation:RegExpValidationBean
+      Name="CreditUnionPhone1Rule0"
+      ResId="INVALID_PHONE_NUMBER_FORMAT"
+      OnAttribute="CreditUnionPhone1"
+      Pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
+      Inverse="false"/>
   </Attribute>
   <Attribute
     Name="CreditUnionPhone2"
@@ -154,6 +160,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
+    <validation:RegExpValidationBean
+      Name="CreditUnionPhone2Rule0"
+      ResId="INVALID_PHONE_NUMBER_FORMAT"
+      OnAttribute="CreditUnionPhone2"
+      Pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
+      Inverse="false"/>
   </Attribute>
   <Attribute
     Name="CreditUnionFax"
@@ -194,7 +206,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="CREDIT_UNION">
+    TableName="CREDIT_UNION"
+    RetrievedOnInsert="true"
+    IsUpdateable="while_insert">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -206,12 +220,9 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="CREDIT_UNION">
-    <TransientExpression
-      Name="ExpressionScript"
-      trustMode="untrusted"
-      CodeSourceName="CreditUnionEORow"/>
-  </Attribute>
+    TableName="CREDIT_UNION"
+    RetrievedOnInsert="true"
+    IsUpdateable="while_insert"/>
   <Attribute
     Name="LastUpdatedBy"
     IsNotNull="true"
@@ -220,7 +231,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="CREDIT_UNION">
+    TableName="CREDIT_UNION"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -232,11 +245,9 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="CREDIT_UNION">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="CreditUnionEORow"/>
-  </Attribute>
+    TableName="CREDIT_UNION"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true"/>
   <Attribute
     Name="ObjectVersionId"
     IsNotNull="true"
@@ -284,6 +295,26 @@
       <Item Value="com.linCu.model.entity.CreditUnionEO.CreditUnionId"/>
     </AttrArray>
   </Key>
+  <Key
+    Name="UniqueUnionCodeAltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CREDIT_UNION"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.linCu.model.entity.CreditUnionEO.CreditUnionCode"/>
+    </AttrArray>
+  </Key>
+  <validation:UniqueKeyValidationBean
+    Name="CreditUnionEORule0"
+    ResId="CREDIT_UNION_CODE_ALREADY_EXISTS"
+    KeyName="UniqueUnionCodeAltKey">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="CreditUnionCode"/>
+    </validation:OnAttributes>
+  </validation:UniqueKeyValidationBean>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.linCu.model.LinCuModelBundle"/>

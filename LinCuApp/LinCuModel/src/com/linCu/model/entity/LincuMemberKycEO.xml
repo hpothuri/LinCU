@@ -9,7 +9,8 @@
   DBObjectType="table"
   DBObjectName="LINCU_MEMBER_KYC"
   AliasName="LincuMemberKycEO"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
   <Attribute
     Name="MemberId"
     IsNotNull="true"
@@ -588,6 +589,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="12"/>
     </DesignTime>
+    <validation:RegExpValidationBean
+      Name="WorkPhoneRule0"
+      ResId="INVALID_PHONE_NUMBER_FORMAT"
+      OnAttribute="WorkPhone"
+      Pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
+      Inverse="false"/>
   </Attribute>
   <Attribute
     Name="OccupationCode"
@@ -860,4 +867,8 @@
       <Item Value="com.linCu.model.entity.LincuMemberKycEO.CreditUnionBranchId"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.linCu.model.LinCuModelBundle"/>
+  </ResourceBundle>
 </Entity>
