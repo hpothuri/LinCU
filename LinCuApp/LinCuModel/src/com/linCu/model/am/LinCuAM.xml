@@ -27,6 +27,11 @@
           trustMode="untrusted"
           Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') != 'PREPAID_ADMIN') ? adf.context.current.sessionScope.get('creditUnionId') :  null]]></TransientExpression>
       </PIMap>
+      <PIMap Variable="bindCreatedBy">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[adf.context.current.sessionScope.get('user')]]></TransientExpression>
+      </PIMap>
     </ParameterMap>
   </ViewUsage>
   <ViewUsage

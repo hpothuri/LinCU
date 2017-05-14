@@ -10,7 +10,12 @@
   DBObjectName="LINCU_USER_INFO"
   AliasName="LincuUserInfoEO"
   BindingStyle="OracleName"
-  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation"
+  RowClass="com.linCu.model.entity.LincuUserInfoEOImpl">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+  </DesignTime>
   <Attribute
     Name="UserId"
     IsNotNull="true"
@@ -22,11 +27,7 @@
     ColumnType="NUMBER"
     TableName="LINCU_USER_INFO"
     PrimaryKey="true"
-    IsUpdateable="while_insert">
-    <TransientExpression
-      Name="ExpressionScript"
-      CodeSourceName="LincuUserInfoEORow"/>
-  </Attribute>
+    IsUpdateable="while_insert"/>
   <Attribute
     Name="FirstName"
     Precision="30"
@@ -34,7 +35,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_USER_INFO">
+    TableName="LINCU_USER_INFO"
+    IsUpdateable="while_insert">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
@@ -46,7 +48,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LINCU_USER_INFO">
+    TableName="LINCU_USER_INFO"
+    IsUpdateable="while_insert">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
@@ -100,6 +103,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="UserRoleRule0"
+      ResId="ROLE_IS_REQUIRED"
+      Description="Mandatory"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
   </Attribute>
   <Attribute
     Name="UserSupervisor"
@@ -143,6 +152,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
     </DesignTime>
+    <validation:RegExpValidationBean
+      Name="MobilePhoneNumberRule0"
+      ResId="INVALID_PHONE_NUMBER_FORMAT"
+      OnAttribute="MobilePhoneNumber"
+      Pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
+      Inverse="false"/>
   </Attribute>
   <Attribute
     Name="DateOfBirth"
@@ -173,7 +188,8 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="LINCU_USER_INFO"
-    RetrievedOnInsert="true">
+    RetrievedOnInsert="true"
+    IsUpdateable="while_insert">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -186,7 +202,8 @@
     Type="java.sql.Timestamp"
     ColumnType="DATE"
     TableName="LINCU_USER_INFO"
-    RetrievedOnInsert="true"/>
+    RetrievedOnInsert="true"
+    IsUpdateable="while_insert"/>
   <Attribute
     Name="LastUpdatedBy"
     IsNotNull="true"
