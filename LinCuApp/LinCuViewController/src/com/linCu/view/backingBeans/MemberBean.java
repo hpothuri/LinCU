@@ -4,7 +4,14 @@ import com.linCu.view.utils.ADFUtils;
 
 import com.linCu.view.utils.JSFUtils;
 
+import com.linCu.view.utils.PasswordUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.faces.event.ActionEvent;
+
+import javax.faces.event.ValueChangeEvent;
 
 import oracle.adf.view.rich.component.rich.RichPopup;
 
@@ -54,5 +61,13 @@ public class MemberBean {
             ex.printStackTrace();
         }
         this.getConfirmDeletePopup().hide();
+    }
+
+    public void onCopyOfPermanantAddress(ValueChangeEvent valueChangeEvent) {
+        System.out.println("-----------valueChangeEvent--------"+valueChangeEvent.getOldValue());
+       System.out.println("-----------valueChangeEvent--------"+valueChangeEvent.getNewValue());
+        Map paramMap = new HashMap();
+        paramMap.put("copy", valueChangeEvent.getNewValue());
+        ADFUtils.executeOperationBinding("copyPermanantAddress",paramMap);
     }
 }

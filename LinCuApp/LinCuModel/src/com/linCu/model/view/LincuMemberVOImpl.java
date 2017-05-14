@@ -63,5 +63,28 @@ public class LincuMemberVOImpl extends ViewObjectImpl implements LincuMemberVO {
     public void setbindCreditUnionId(String value) {
         ensureVariableManager().setVariableValue("bindCreditUnionId", value);
     }
+    
+    public void copyPermanantAddress(Boolean copy){
+        LincuMemberVORowImpl row = (LincuMemberVORowImpl) this.getCurrentRow();
+        if(copy){
+            row.setMailingAddrLine1(row.getPermanentAddrLine1());
+            row.setMailingAddrLine2(row.getPermanentAddrLine2());  
+            row.setMailingAddrLine3(row.getPermanentAddrLine3());  
+            row.setMailingAddrLine4(row.getPermanentAddrLine4());  
+            row.setMailingCity(row.getPermanentCity());
+            row.setMailingState(row.getPermanentState());
+            row.setMailingCountryCode(row.getPermanentCountryCode());
+            row.setMailingZipCode(row.getPermanentZipCode());
+        }else{
+            row.setMailingAddrLine1(null);
+            row.setMailingAddrLine2(null);  
+            row.setMailingAddrLine3(null);  
+            row.setMailingAddrLine4(null);  
+            row.setMailingCity(null);
+            row.setMailingState(null);
+            row.setMailingCountryCode(null);
+            row.setMailingZipCode(null);
+        }
+    }
 }
 

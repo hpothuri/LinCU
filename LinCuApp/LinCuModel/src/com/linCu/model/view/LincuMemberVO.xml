@@ -35,7 +35,6 @@
     <ParameterMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
-          trustMode="trusted"
           Name="ExpressionScript"><![CDATA[adf.context.current.sessionScope.get('creditUnionId')]]></TransientExpression>
       </PIMap>
     </ParameterMap>
@@ -1846,6 +1845,16 @@
       <Parameter
         Name="user"
         Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="copyPermanantAddress"
+      MethodName="copyPermanantAddress">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="copy"
+        Type="java.lang.Boolean"/>
     </Method>
   </ClientInterface>
   <ResourceBundle>

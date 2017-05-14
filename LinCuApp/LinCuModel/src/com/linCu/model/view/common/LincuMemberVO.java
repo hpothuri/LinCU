@@ -9,5 +9,7 @@ public interface LincuMemberVO extends ViewObject {
     void createMember(String user);
 
     void updateMember(String user);
+
+    void copyPermanantAddress(Boolean copy);
 }
 

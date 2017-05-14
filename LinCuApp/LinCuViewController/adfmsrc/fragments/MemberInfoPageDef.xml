@@ -300,5 +300,10 @@
                   InstanceName="data.LinCuAMDataControl.LincuMember">
       <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
     </methodAction>
+    <methodAction id="copyPermanantAddress" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="copyPermanantAddress" IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMember">
+      <NamedData NDName="copy" NDType="java.lang.Boolean"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

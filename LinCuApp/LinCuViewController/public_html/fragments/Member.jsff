@@ -173,7 +173,7 @@
                       required="#{bindings.PermanentAddrLine1.hints.mandatory}"
                       columns="#{bindings.PermanentAddrLine1.hints.displayWidth}"
                       maximumLength="#{bindings.PermanentAddrLine1.hints.precision}"
-                      shortDesc="#{bindings.PermanentAddrLine1.hints.tooltip}" id="it60">
+                      shortDesc="#{bindings.PermanentAddrLine1.hints.tooltip}" id="it60" autoSubmit="true">
           <f:validator binding="#{bindings.PermanentAddrLine1.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.PermanentAddrLine2.inputValue}"
@@ -181,7 +181,7 @@
                       required="#{bindings.PermanentAddrLine2.hints.mandatory}"
                       columns="#{bindings.PermanentAddrLine2.hints.displayWidth}"
                       maximumLength="#{bindings.PermanentAddrLine2.hints.precision}"
-                      shortDesc="#{bindings.PermanentAddrLine2.hints.tooltip}" id="it61">
+                      shortDesc="#{bindings.PermanentAddrLine2.hints.tooltip}" id="it61" autoSubmit="true">
           <f:validator binding="#{bindings.PermanentAddrLine2.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.PermanentAddrLine3.inputValue}"
@@ -189,13 +189,14 @@
                       required="#{bindings.PermanentAddrLine3.hints.mandatory}"
                       columns="#{bindings.PermanentAddrLine3.hints.displayWidth}"
                       maximumLength="#{bindings.PermanentAddrLine3.hints.precision}"
-                      shortDesc="#{bindings.PermanentAddrLine3.hints.tooltip}" id="it62">
+                      shortDesc="#{bindings.PermanentAddrLine3.hints.tooltip}" id="it62" autoSubmit="true">
           <f:validator binding="#{bindings.PermanentAddrLine3.validator}"/>
         </af:inputText>
         <af:selectOneChoice value="#{bindings.PermanentAddrLine4.inputValue}"
                             label="#{bindings.PermanentAddrLine4.label}"
                             required="#{bindings.PermanentAddrLine4.hints.mandatory}"
-                            shortDesc="#{bindings.PermanentAddrLine4.hints.tooltip}" id="soc12" contentStyle="margin-top: 8px;width:295px;">
+                            shortDesc="#{bindings.PermanentAddrLine4.hints.tooltip}" id="soc12" contentStyle="margin-top: 8px;width:295px;"
+                            autoSubmit="true">
           <f:selectItems value="#{bindings.PermanentAddrLine4.items}" id="si20"/>
           <f:validator binding="#{bindings.PermanentAddrLine4.validator}"/>
         </af:selectOneChoice>
@@ -203,21 +204,21 @@
                       required="#{bindings.PermanentCity.hints.mandatory}"
                       columns="#{bindings.PermanentCity.hints.displayWidth}"
                       maximumLength="#{bindings.PermanentCity.hints.precision}"
-                      shortDesc="#{bindings.PermanentCity.hints.tooltip}" id="it64">
+                      shortDesc="#{bindings.PermanentCity.hints.tooltip}" id="it64" autoSubmit="true">
           <f:validator binding="#{bindings.PermanentCity.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.PermanentState.inputValue}" label="#{bindings.PermanentState.hints.label}"
                       required="#{bindings.PermanentState.hints.mandatory}"
                       columns="#{bindings.PermanentState.hints.displayWidth}"
                       maximumLength="#{bindings.PermanentState.hints.precision}"
-                      shortDesc="#{bindings.PermanentState.hints.tooltip}" id="it67">
+                      shortDesc="#{bindings.PermanentState.hints.tooltip}" id="it67" autoSubmit="true">
           <f:validator binding="#{bindings.PermanentState.validator}"/>
         </af:inputText>
         <af:selectOneChoice value="#{bindings.PermanentCountryCode.inputValue}"
                             label="#{bindings.PermanentCountryCode.label}"
                             required="#{bindings.PermanentCountryCode.hints.mandatory}"
                             shortDesc="#{bindings.PermanentCountryCode.hints.tooltip}" id="soc3"
-                            contentStyle="margin-top: 8px;width:295px;">
+                            contentStyle="margin-top: 8px;width:295px;" autoSubmit="true">
           <f:selectItems value="#{bindings.PermanentCountryCode.items}" id="si6"/>
           <f:validator binding="#{bindings.PermanentCountryCode.validator}"/>
         </af:selectOneChoice>
@@ -225,7 +226,7 @@
                       required="#{bindings.PermanentZipCode.hints.mandatory}"
                       columns="#{bindings.PermanentZipCode.hints.displayWidth}"
                       maximumLength="#{bindings.PermanentZipCode.hints.precision}"
-                      shortDesc="#{bindings.PermanentZipCode.hints.tooltip}" id="it68">
+                      shortDesc="#{bindings.PermanentZipCode.hints.tooltip}" id="it68" autoSubmit="true">
           <f:validator binding="#{bindings.PermanentZipCode.validator}"/>
         </af:inputText>
         <af:selectOneRadio value="#{bindings.HomeOwnership.inputValue}" label="#{bindings.HomeOwnership.label}"
@@ -238,18 +239,24 @@
     </af:panelBox>
     <af:panelBox text="#{lincuviewcontrollerBundle.MAILING_ADDRESS}" id="pb3" immediate="true">
       <f:facet name="toolbar">
-        <af:group id="g1">
-          <af:selectBooleanCheckbox label="#{lincuviewcontrollerBundle.SAME_AS_PERMANANT_ADDRESS}" id="sbc1"/>
-          <af:spacer width="100" id="s7"/>
-        </af:group>
+        <af:panelGridLayout id="pgl3" inlineStyle="margin-top:14px;" rendered="true">
+          <af:gridRow height="auto" id="gr1">
+            <af:gridCell width="50%" id="gc1" marginStart="50px">
+              <af:selectBooleanCheckbox label="#{lincuviewcontrollerBundle.SAME_AS_PERMANANT_ADDRESS}" id="sbc1"
+                                        autoSubmit="true" valueChangeListener="#{member.onCopyOfPermanantAddress}"/>
+            </af:gridCell>
+            <af:gridCell width="50%" id="gc2" marginStart="50px"/>
+          </af:gridRow>
+        </af:panelGridLayout>
       </f:facet>
-      <af:panelFormLayout id="pfl4" rows="3" maxColumns="3" labelWidth="30%" inlineStyle="text-align:left;">
+      <af:panelFormLayout id="pfl4" rows="3" maxColumns="3" labelWidth="30%" inlineStyle="text-align:left;"
+                          partialTriggers="sbc1">
         <f:facet name="footer"/>
         <af:inputText value="#{bindings.MailingAddrLine1.inputValue}" label="#{bindings.MailingAddrLine1.hints.label}"
-                      required="#{bindings.MailingAddrLine1.hints.mandatory}"
+                      required="false"
                       columns="#{bindings.MailingAddrLine1.hints.displayWidth}"
                       maximumLength="#{bindings.MailingAddrLine1.hints.precision}"
-                      shortDesc="#{bindings.MailingAddrLine1.hints.tooltip}" id="it43">
+                      shortDesc="#{bindings.MailingAddrLine1.hints.tooltip}" id="it43" showRequired="true">
           <f:validator binding="#{bindings.MailingAddrLine1.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.MailingAddrLine2.inputValue}" label="#{bindings.MailingAddrLine2.hints.label}"
@@ -273,10 +280,10 @@
           <f:validator binding="#{bindings.MailingAddrLine4.validator}"/>
         </af:selectOneChoice>
         <af:inputText value="#{bindings.MailingCity.inputValue}" label="#{bindings.MailingCity.hints.label}"
-                      required="#{bindings.MailingCity.hints.mandatory}"
+                      required="false"
                       columns="#{bindings.MailingCity.hints.displayWidth}"
                       maximumLength="#{bindings.MailingCity.hints.precision}"
-                      shortDesc="#{bindings.MailingCity.hints.tooltip}" id="it47">
+                      shortDesc="#{bindings.MailingCity.hints.tooltip}" id="it47" showRequired="true">
           <f:validator binding="#{bindings.MailingCity.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.MailingState.inputValue}" label="#{bindings.MailingState.hints.label}"
@@ -288,9 +295,9 @@
         </af:inputText>
         <af:selectOneChoice value="#{bindings.MailingCountryCode.inputValue}"
                             label="#{bindings.MailingCountryCode.label}"
-                            required="#{bindings.MailingCountryCode.hints.mandatory}"
+                            required="false"
                             shortDesc="#{bindings.MailingCountryCode.hints.tooltip}" id="soc4"
-                            contentStyle="width:295px">
+                            contentStyle="width:295px" showRequired="true">
           <f:selectItems value="#{bindings.MailingCountryCode.items}" id="si8"/>
           <f:validator binding="#{bindings.MailingCountryCode.validator}"/>
         </af:selectOneChoice>
