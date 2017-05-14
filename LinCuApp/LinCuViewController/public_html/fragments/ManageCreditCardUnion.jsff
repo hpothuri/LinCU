@@ -124,7 +124,11 @@
                         required="#{bindings.CreditUnionCode.hints.mandatory}"
                         columns="#{bindings.CreditUnionCode.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionCode.hints.precision}"
-                        shortDesc="#{bindings.CreditUnionCode.hints.tooltip}" id="it2">
+                        shortDesc="#{bindings.CreditUnionCode.hints.tooltip}" id="it2"
+                        contentStyle="text-transform:uppercase;">
+            <af:validateLength minimum="2" maximum="2" id="vit2"/>
+            <af:validateRegExp pattern="^[0-9a-zA-Z]+$" messageDetailNoMatch="Please enter alpha numeric characters"
+                               hint="Please enter alpha numeric characters"/>
             <f:validator binding="#{bindings.CreditUnionCode.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.CreditUnionName.inputValue}" label="#{bindings.CreditUnionName.hints.label}"

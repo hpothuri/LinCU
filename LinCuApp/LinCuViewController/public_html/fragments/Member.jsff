@@ -61,7 +61,7 @@
           <f:validator binding="#{bindings.MotherMaidenName.validator}"/>
         </af:inputText>
         <af:inputDate value="#{bindings.DateOfBirth.inputValue}" label="#{bindings.DateOfBirth.hints.label}"
-                      required="#{bindings.DateOfBirth.hints.mandatory}"
+                      required="true"
                       columns="#{bindings.DateOfBirth.hints.displayWidth}"
                       shortDesc="#{bindings.DateOfBirth.hints.tooltip}" id="id2">
           <f:validator binding="#{bindings.DateOfBirth.validator}"/>

@@ -10,7 +10,7 @@
                 queryOperationListener="#{bindings.QueryUserInfoQuery.processQueryOperation}"
                 resultComponentId="::pc1" rows="5" maxColumns="2" saveQueryMode="hidden"/>
     </af:panelHeader>
-    <af:panelCollection id="pc1" styleClass="AFStretchWidth" partialTriggers="::b3 ::b4">
+    <af:panelCollection id="pc1" styleClass="AFStretchWidth" partialTriggers="::b3 ::b4 ::b6">
       <f:facet name="menus"/>
       <f:facet name="toolbar">
         <af:toolbar id="t1">
@@ -18,9 +18,11 @@
                      actionListener="#{userInfo.createUser}">
             <af:setPropertyListener from="create" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
-          <af:button text="#{lincuviewcontrollerBundle.EDIT_USER}" id="b2" actionListener="#{userInfo.editUser}">
+          <af:button text="#{lincuviewcontrollerBundle.EDIT_USER}" id="b2" actionListener="#{userInfo.editUser}" disabled="#{!bindings.Delete.enabled}">
             <af:setPropertyListener from="edit" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
+          <af:button actionListener="#{userInfo.openDeleteUserPopup}" text="#{lincuviewcontrollerBundle.DELETE_USER}" disabled="#{!bindings.Delete.enabled}"
+                     id="b5"/>
         </af:toolbar>
       </f:facet>
       <f:facet name="statusbar"/>
@@ -28,7 +30,7 @@
                 emptyText="#{bindings.LincuUserInfo.viewable ? 'No data to display.' : 'Access Denied.'}"
                 rowBandingInterval="0" selectedRowKeys="#{bindings.LincuUserInfo.collectionModel.selectedRow}"
                 selectionListener="#{bindings.LincuUserInfo.collectionModel.makeCurrent}" rowSelection="single"
-                fetchSize="#{bindings.LincuUserInfo.rangeSize}" id="resId1">
+                fetchSize="#{bindings.LincuUserInfo.rangeSize}" id="resId1" partialTriggers="::b5">
         <af:column headerText="#{bindings.LincuUserInfo.hints.FirstName.label}" id="resId1c1">
           <af:outputText value="#{row.FirstName}" shortDesc="#{bindings.LincuUserInfo.hints.FirstName.tooltip}"
                          id="ot1"/>
@@ -118,11 +120,28 @@
                         shortDesc="#{bindings.LastName.hints.tooltip}" id="it2">
             <f:validator binding="#{bindings.LastName.validator}"/>
           </af:inputText>
+          <af:selectOneChoice value="#{bindings.UserTypeCode.inputValue}" label="#{bindings.UserTypeCode.label}"
+                              required="false" shortDesc="#{bindings.UserTypeCode.hints.tooltip}" id="soc8"
+                              contentStyle="margin-top: 8px;width:252px;" inlineStyle="margin-top: 8px;"
+                              showRequired="true" autoSubmit="true"
+                              valueChangeListener="#{userInfo.changeUserTypeCode}">
+            <f:selectItems value="#{bindings.UserTypeCode.items}" id="si9"/>
+            <f:validator binding="#{bindings.UserTypeCode.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.UserRole.inputValue}"
+                              label="#{bindings.UserRole.label}"
+                              required="false" shortDesc="#{bindings.UserRole.hints.tooltip}" id="soc7"
+                              inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;width:252px;"
+                              partialTriggers="soc8" showRequired="true" disabled="#{bindings.UserTypeCode1 eq ''}">
+            <f:selectItems value="#{bindings.UserRole.items}" id="si7"/>
+            <f:validator binding="#{bindings.UserRole.validator}"/>
+          </af:selectOneChoice>
           <af:selectOneChoice value="#{bindings.CreditUnionId.inputValue}" label="#{bindings.CreditUnionId.label}"
                               required="#{bindings.CreditUnionId.hints.mandatory}"
                               shortDesc="#{bindings.CreditUnionId.hints.tooltip}" id="soc5"
                               inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;width:252px;"
-                              autoSubmit="true" valueChangeListener="#{userInfo.changeCreditUniion}">
+                              autoSubmit="true" valueChangeListener="#{userInfo.changeCreditUniion}"
+                              showRequired="#{bindings.UserTypeCode1 eq 'CREDIT_UNION'}" partialTriggers="soc8">
             <f:selectItems value="#{bindings.CreditUnionId.items}" id="si5"/>
             <f:validator binding="#{bindings.CreditUnionId.validator}"/>
           </af:selectOneChoice>
@@ -131,26 +150,12 @@
                               required="false"
                               shortDesc="#{bindings.CreditUnionBranchId.hints.tooltip}" id="soc6"
                               inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;width:252px;"
-                              partialTriggers="soc5"
-                              binding="#{userInfo.creditUniionBranch}" showRequired="true" autoSubmit="true"
+                              partialTriggers="soc5 soc8"
+                              binding="#{userInfo.creditUniionBranch}"
+                              showRequired="#{bindings.UserTypeCode1 eq 'CREDIT_UNION'}" autoSubmit="true"
                               valueChangeListener="#{userInfo.updateBranch}">
             <f:selectItems value="#{bindings.CreditUnionBranchId.items}" id="si6"/>
             <f:validator binding="#{bindings.CreditUnionBranchId.validator}"/>
-          </af:selectOneChoice>
-          <af:selectOneChoice value="#{bindings.UserTypeCode.inputValue}" label="#{bindings.UserTypeCode.label}"
-                              required="true"
-                              shortDesc="#{bindings.UserTypeCode.hints.tooltip}" id="soc8"
-                              contentStyle="margin-top: 8px;width:252px;" inlineStyle="margin-top: 8px;"
-                              showRequired="true">
-            <f:selectItems value="#{bindings.UserTypeCode.items}" id="si9"/>
-            <f:validator binding="#{bindings.UserTypeCode.validator}"/>
-          </af:selectOneChoice>
-          <af:selectOneChoice value="#{bindings.UserRole.inputValue}" label="#{bindings.UserRole.label}"
-                              required="#{bindings.UserRole.hints.mandatory}"
-                              shortDesc="#{bindings.UserRole.hints.tooltip}" id="soc7"
-                              inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;width:252px;">
-            <f:selectItems value="#{bindings.UserRole.items}" id="si7"/>
-            <f:validator binding="#{bindings.UserRole.validator}"/>
           </af:selectOneChoice>
           <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
                         required="#{bindings.Email.hints.mandatory}" columns="#{bindings.Email.hints.displayWidth}"
@@ -167,7 +172,7 @@
             <f:validator binding="#{bindings.MobilePhoneNumber.validator}"/>
           </af:inputText>
           <af:inputDate value="#{bindings.DateOfBirth.inputValue}" label="#{bindings.DateOfBirth.hints.label}"
-                        required="#{bindings.DateOfBirth.hints.mandatory}"
+                        required="true"
                         columns="#{bindings.DateOfBirth.hints.displayWidth}"
                         shortDesc="#{bindings.DateOfBirth.hints.tooltip}" id="id1">
             <f:validator binding="#{bindings.DateOfBirth.validator}"/>
@@ -188,6 +193,14 @@
             <f:validator binding="#{bindings.UserName.validator}"/>
           </af:inputText>
         </af:panelFormLayout>
+      </af:dialog>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p2" binding="#{userInfo.deleteUserPopup}">
+      <af:dialog id="d2" closeIconVisible="false" title="#{lincuviewcontrollerBundle.CONFIRM_DELETE}" type="cancel">
+        <f:facet name="buttonBar">
+          <af:button text="#{lincuviewcontrollerBundle.OK}" id="b6" actionListener="#{userInfo.deleteUser}"/>
+        </f:facet>
+        <af:outputText value="#{lincuviewcontrollerBundle.DELETE_SELETED_USER}" id="ot6"/>
       </af:dialog>
     </af:popup>
   </af:panelGroupLayout>
