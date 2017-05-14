@@ -74,7 +74,7 @@
           <f:validator binding="#{bindings.Email.validator}"/>
         </af:inputText>
         <af:selectOneRadio value="#{bindings.Gender.inputValue}" label="#{bindings.Gender.label}"
-                           required="#{bindings.Gender.hints.mandatory}" shortDesc="#{bindings.Gender.hints.tooltip}"
+                           required="true" shortDesc="#{bindings.Gender.hints.tooltip}"
                            id="sor1" layout="horizontal">
           <f:selectItems value="#{bindings.Gender.items}" id="si3"/>
           <f:validator binding="#{bindings.Gender.validator}"/>
@@ -237,8 +237,13 @@
       </af:panelFormLayout>
     </af:panelBox>
     <af:panelBox text="#{lincuviewcontrollerBundle.MAILING_ADDRESS}" id="pb3" immediate="true">
-      <f:facet name="toolbar"/>
-      <af:panelFormLayout id="pfl4" rows="3" maxColumns="3" labelWidth="30%">
+      <f:facet name="toolbar">
+        <af:group id="g1">
+          <af:selectBooleanCheckbox label="#{lincuviewcontrollerBundle.SAME_AS_PERMANANT_ADDRESS}" id="sbc1"/>
+          <af:spacer width="100" id="s7"/>
+        </af:group>
+      </f:facet>
+      <af:panelFormLayout id="pfl4" rows="3" maxColumns="3" labelWidth="30%" inlineStyle="text-align:left;">
         <f:facet name="footer"/>
         <af:inputText value="#{bindings.MailingAddrLine1.inputValue}" label="#{bindings.MailingAddrLine1.hints.label}"
                       required="#{bindings.MailingAddrLine1.hints.mandatory}"
