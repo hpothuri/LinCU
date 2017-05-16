@@ -20,7 +20,7 @@
             <af:commandToolbarButton text="#{sessionScope.user.userRole eq 'MSR' ? lincuviewcontrollerBundle.EDIT_CARD_REQUEST : lincuviewcontrollerBundle.VIEW_CARD_REQUEST}" 
             id="ctb2" icon="/images/card.png" action="edit" disabled="#{!bindings.Delete.enabled}"/>
           <af:commandToolbarButton actionListener="#{card.confirmDeleteAction}" icon="/images/card.png"
-                                   text="#{lincuviewcontrollerBundle.DELETE_CARD}" disabled="#{!bindings.Delete.enabled}" id="b1" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
+                                   text="#{lincuviewcontrollerBundle.DELETE_CARD}" disabled="#{(!bindings.Delete.enabled)||(bindings.CardStatus1 eq 'SUBMITTED')||(bindings.CardStatus1 eq 'AUTHORIZED')||(bindings.CardStatus1 eq 'LINCU_AUTHORIZED')||(bindings.CardStatus1 eq 'FCB_AUTHORIZED')}" id="b1" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
           <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT}" id="ctb3" icon="/images/Excel-16.gif"
                                    rendered="#{(sessionScope.user.userRole eq 'FCB')}" disabled="#{!bindings.Delete.enabled}">
               <af:fileDownloadActionListener contentType="application/vnd.ms-excel" filename="ExportCardDetails.xls"

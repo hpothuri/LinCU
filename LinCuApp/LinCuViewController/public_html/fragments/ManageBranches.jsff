@@ -22,6 +22,10 @@
                      actionListener="#{creditUnionBranches.editCreditUnionBranch}">
             <af:setPropertyListener from="edit" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
+          <af:button text="#{lincuviewcontrollerBundle.VIEW_CREDIT_UNION_BRANCH}" id="b5"
+                     actionListener="#{creditUnionBranches.editCreditUnionBranch}">
+            <af:setPropertyListener from="view" to="#{pageFlowScope.action}" type="action"/>
+          </af:button>
           <af:button text="#{lincuviewcontrollerBundle.MANAGE_CREDIT_UNION}" id="b6" action="back"/>
         </af:toolbar>
       </f:facet>
@@ -31,7 +35,7 @@
                 emptyText="#{bindings.CreditUnionBranch.viewable ? 'No data to display.' : 'Access Denied.'}"
                 rowBandingInterval="0" selectedRowKeys="#{bindings.CreditUnionBranch.collectionModel.selectedRow}"
                 selectionListener="#{bindings.CreditUnionBranch.collectionModel.makeCurrent}" rowSelection="single"
-                fetchSize="#{bindings.CreditUnionBranch.rangeSize}" id="resId1">
+                fetchSize="#{bindings.CreditUnionBranch.rangeSize}" id="resId1" partialTriggers=":::b4">
         <af:column headerText="#{bindings.CreditUnionBranch.hints.CreditUnionBranchCode.label}" id="resId1c1">
           <af:outputText value="#{row.CreditUnionBranchCode}"
                          shortDesc="#{bindings.CreditUnionBranch.hints.CreditUnionBranchCode.tooltip}" id="ot1"/>
@@ -93,8 +97,8 @@
         <f:facet name="buttonBar">
           <af:group id="g1">
             <af:button actionListener="#{creditUnionBranches.save}" text="#{lincuviewcontrollerBundle.SAVE}"
-                       id="b3"/>
-            <af:button actionListener="#{creditUnionBranches.cancel}" text="#{lincuviewcontrollerBundle.CANCEL}"
+                       id="b3" visible="#{pageFlowScope.action ne  'view'}"/>
+            <af:button actionListener="#{creditUnionBranches.cancel}" text="#{pageFlowScope.action eq 'view' ? lincuviewcontrollerBundle.CLOSE : lincuviewcontrollerBundle.CANCEL}"
                        immediate="true" id="b4">
               <af:resetActionListener/>
             </af:button>
@@ -113,7 +117,8 @@
                         required="#{bindings.CreditUnionBranchId.hints.mandatory}"
                         columns="#{bindings.CreditUnionBranchId.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionBranchId.hints.precision}"
-                        shortDesc="#{bindings.CreditUnionBranchId.hints.tooltip}" id="it12" visible="false">
+                        shortDesc="#{bindings.CreditUnionBranchId.hints.tooltip}" id="it12" visible="false"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.CreditUnionBranchId.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.CreditUnionBranchCode.inputValue}"
@@ -122,7 +127,7 @@
                         columns="#{bindings.CreditUnionBranchCode.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionBranchCode.hints.precision}"
                         shortDesc="#{bindings.CreditUnionBranchCode.hints.tooltip}" id="it1"
-                        contentStyle="text-transform:uppercase;">
+                        contentStyle="text-transform:uppercase;" disabled="#{pageFlowScope.action eq 'view'}">
             <af:validateLength minimum="2" maximum="2" id="vit1"/>
             <af:validateRegExp pattern="^[0-9a-zA-Z]+$" messageDetailNoMatch="Please enter alpha numeric characters"
                                hint="Please enter alpha numeric characters"/>
@@ -133,7 +138,8 @@
                         required="#{bindings.CreditUnionBranchName.hints.mandatory}"
                         columns="#{bindings.CreditUnionBranchName.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionBranchName.hints.precision}"
-                        shortDesc="#{bindings.CreditUnionBranchName.hints.tooltip}" id="it2">
+                        shortDesc="#{bindings.CreditUnionBranchName.hints.tooltip}" id="it2"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.CreditUnionBranchName.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.CreditUnionAddres1.inputValue}"
@@ -141,7 +147,8 @@
                         required="#{bindings.CreditUnionAddres1.hints.mandatory}"
                         columns="#{bindings.CreditUnionAddres1.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionAddres1.hints.precision}"
-                        shortDesc="#{bindings.CreditUnionAddres1.hints.tooltip}" id="it3">
+                        shortDesc="#{bindings.CreditUnionAddres1.hints.tooltip}" id="it3"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.CreditUnionAddres1.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.CreditUnionAddres2.inputValue}"
@@ -149,7 +156,8 @@
                         required="#{bindings.CreditUnionAddres2.hints.mandatory}"
                         columns="#{bindings.CreditUnionAddres2.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionAddres2.hints.precision}"
-                        shortDesc="#{bindings.CreditUnionAddres2.hints.tooltip}" id="it4">
+                        shortDesc="#{bindings.CreditUnionAddres2.hints.tooltip}" id="it4"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.CreditUnionAddres2.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.CreditUnionAddres3.inputValue}"
@@ -157,7 +165,8 @@
                         required="#{bindings.CreditUnionAddres3.hints.mandatory}"
                         columns="#{bindings.CreditUnionAddres3.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionAddres3.hints.precision}"
-                        shortDesc="#{bindings.CreditUnionAddres3.hints.tooltip}" id="it5">
+                        shortDesc="#{bindings.CreditUnionAddres3.hints.tooltip}" id="it5"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.CreditUnionAddres3.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.CreditUnionAddres4.inputValue}"
@@ -165,21 +174,24 @@
                         required="#{bindings.CreditUnionAddres4.hints.mandatory}"
                         columns="#{bindings.CreditUnionAddres4.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionAddres4.hints.precision}"
-                        shortDesc="#{bindings.CreditUnionAddres4.hints.tooltip}" id="it6">
+                        shortDesc="#{bindings.CreditUnionAddres4.hints.tooltip}" id="it6"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.CreditUnionAddres4.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.CreditUnionCity.inputValue}" label="#{bindings.CreditUnionCity.hints.label}"
                         required="#{bindings.CreditUnionCity.hints.mandatory}"
                         columns="#{bindings.CreditUnionCity.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionCity.hints.precision}"
-                        shortDesc="#{bindings.CreditUnionCity.hints.tooltip}" id="it7">
+                        shortDesc="#{bindings.CreditUnionCity.hints.tooltip}" id="it7"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.CreditUnionCity.validator}"/>
           </af:inputText>
           <af:selectOneChoice value="#{bindings.CreditUnionCountry.inputValue}"
                               label="#{bindings.CreditUnionCountry.label}"
                               required="#{bindings.CreditUnionCountry.hints.mandatory}"
                               shortDesc="#{bindings.CreditUnionCountry.hints.tooltip}" id="soc2"
-                              inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;">
+                              inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;"
+                              disabled="#{pageFlowScope.action eq 'view'}">
             <f:selectItems value="#{bindings.CreditUnionCountry.items}" id="si2"/>
             <f:validator binding="#{bindings.CreditUnionCountry.validator}"/>
           </af:selectOneChoice>
@@ -188,7 +200,8 @@
                         required="#{bindings.CreditUnionPhone1.hints.mandatory}"
                         columns="#{bindings.CreditUnionPhone1.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionPhone1.hints.precision}"
-                        shortDesc="#{bindings.CreditUnionPhone1.hints.tooltip}" id="it8">
+                        shortDesc="#{bindings.CreditUnionPhone1.hints.tooltip}" id="it8"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.CreditUnionPhone1.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.CreditUnionPhone2.inputValue}"
@@ -196,7 +209,8 @@
                         required="#{bindings.CreditUnionPhone2.hints.mandatory}"
                         columns="#{bindings.CreditUnionPhone2.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionPhone2.hints.precision}"
-                        shortDesc="#{bindings.CreditUnionPhone2.hints.tooltip}" id="it9">
+                        shortDesc="#{bindings.CreditUnionPhone2.hints.tooltip}" id="it9"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.CreditUnionPhone2.validator}"/>
           </af:inputText>
           <af:inputText value="#{bindings.CreditUnionEmailId.inputValue}"
@@ -204,7 +218,8 @@
                         required="#{bindings.CreditUnionEmailId.hints.mandatory}"
                         columns="#{bindings.CreditUnionEmailId.hints.displayWidth}"
                         maximumLength="#{bindings.CreditUnionEmailId.hints.precision}"
-                        shortDesc="#{bindings.CreditUnionEmailId.hints.tooltip}" id="it10">
+                        shortDesc="#{bindings.CreditUnionEmailId.hints.tooltip}" id="it10"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.CreditUnionEmailId.validator}"/>
           </af:inputText>
         </af:panelFormLayout>

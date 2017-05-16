@@ -16,8 +16,15 @@
     <f:facet name="menus"/>
     <f:facet name="toolbar">
      <af:toolbar id="t1">
-      <af:button text="#{lincuviewcontrollerBundle.CREATE_MEMBER}" id="b1" action="createMember"/>
-      <af:button text="#{lincuviewcontrollerBundle.EDIT_MEMBER}" id="b2" action="editMember" disabled="#{!bindings.Delete.enabled}"/>
+      <af:button text="#{lincuviewcontrollerBundle.CREATE_MEMBER}" id="b1" action="createMember">
+      <af:setPropertyListener from="create" to="#{pageFlowScope.action}" type="action"/>
+      </af:button>
+      <af:button text="#{lincuviewcontrollerBundle.EDIT_MEMBER}" id="b2" action="editMember" disabled="#{!bindings.Delete.enabled}">
+      <af:setPropertyListener from="edit" to="#{pageFlowScope.action}" type="action"/>
+      </af:button>
+      <af:button text="#{lincuviewcontrollerBundle.VIEW_MEMBER}" id="b5" action="editMember" disabled="#{!bindings.Delete.enabled}">
+      <af:setPropertyListener from="view" to="#{pageFlowScope.action}" type="action"/>
+      </af:button>
       <af:button actionListener="#{member.deleteConfirm}" text="#{lincuviewcontrollerBundle.DELETE_MEMBER}" disabled="#{!bindings.Delete.enabled}"
                  id="b3"/>
      </af:toolbar>

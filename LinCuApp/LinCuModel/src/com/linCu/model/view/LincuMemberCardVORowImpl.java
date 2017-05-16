@@ -133,6 +133,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         LincuComments,
         SupComments,
         AdminComments,
+        CardStatus1,
         LincuMemberCardDocsVO,
         LincuMemberCardAuditVO,
         CardTypeVA,
@@ -281,6 +282,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int LINCUCOMMENTS = AttributesEnum.LincuComments.index();
     public static final int SUPCOMMENTS = AttributesEnum.SupComments.index();
     public static final int ADMINCOMMENTS = AttributesEnum.AdminComments.index();
+    public static final int CARDSTATUS1 = AttributesEnum.CardStatus1.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int LINCUMEMBERCARDAUDITVO = AttributesEnum.LincuMemberCardAuditVO.index();
     public static final int CARDTYPEVA = AttributesEnum.CardTypeVA.index();
@@ -2047,6 +2049,22 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      */
     public void setAdminComments(String value) {
         setAttributeInternal(ADMINCOMMENTS, value);
+    }
+
+    /**
+     * Gets the attribute value for CARD_STATUS using the alias name CardStatus1.
+     * @return the CARD_STATUS
+     */
+    public String getCardStatus1() {
+        return (String) getAttributeInternal(CARDSTATUS1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for CARD_STATUS using the alias name CardStatus1.
+     * @param value value to set the CARD_STATUS
+     */
+    public void setCardStatus1(String value) {
+        setAttributeInternal(CARDSTATUS1, value);
     }
 
     /**

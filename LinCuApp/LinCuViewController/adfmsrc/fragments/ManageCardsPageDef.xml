@@ -51,5 +51,10 @@
                   ReturnName="data.LinCuAMDataControl.methodResults.createExportCardDetailsWb_LinCuAMDataControl_dataProvider_createExportCardDetailsWb_result"/>
     <action IterBinding="LincuMemberCardIterator" id="Delete" InstanceName="LinCuAMDataControl.LincuMemberCard"
             DataControl="LinCuAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="CardStatus1">
+      <AttrNames>
+        <Item Value="CardStatus1"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

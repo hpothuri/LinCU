@@ -21,6 +21,9 @@
           <af:button text="#{lincuviewcontrollerBundle.EDIT_USER}" id="b2" actionListener="#{userInfo.editUser}" disabled="#{!bindings.Delete.enabled}">
             <af:setPropertyListener from="edit" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
+          <af:button text="#{lincuviewcontrollerBundle.VIEW_USER}" id="b7" actionListener="#{userInfo.editUser}" disabled="#{!bindings.Delete.enabled}">
+            <af:setPropertyListener from="view" to="#{pageFlowScope.action}" type="action"/>
+          </af:button>
           <af:button actionListener="#{userInfo.openDeleteUserPopup}" text="#{lincuviewcontrollerBundle.DELETE_USER}" disabled="#{!bindings.Delete.enabled}"
                      id="b5"/>
         </af:toolbar>
@@ -98,8 +101,8 @@
                  closeIconVisible="false">
         <f:facet name="buttonBar">
           <af:group id="g1">
-            <af:button actionListener="#{userInfo.save}" text="#{lincuviewcontrollerBundle.SAVE}" id="b3"/>
-            <af:button actionListener="#{userInfo.cancel}" text="#{lincuviewcontrollerBundle.CANCEL}"
+            <af:button actionListener="#{userInfo.save}" text="#{lincuviewcontrollerBundle.SAVE}" id="b3" visible="#{pageFlowScope.action ne  'view'}"/>
+            <af:button actionListener="#{userInfo.cancel}" text="#{pageFlowScope.action eq 'view' ? lincuviewcontrollerBundle.CLOSE : lincuviewcontrollerBundle.CANCEL}"
                        immediate="true" id="b4">
               <af:resetActionListener/>
             </af:button>
@@ -124,7 +127,8 @@
                               required="false" shortDesc="#{bindings.UserTypeCode.hints.tooltip}" id="soc8"
                               contentStyle="margin-top: 8px;width:252px;" inlineStyle="margin-top: 8px;"
                               showRequired="true" autoSubmit="true"
-                              valueChangeListener="#{userInfo.changeUserTypeCode}">
+                              valueChangeListener="#{userInfo.changeUserTypeCode}"
+                              disabled="#{pageFlowScope.action eq 'view'}">
             <f:selectItems value="#{bindings.UserTypeCode.items}" id="si9"/>
             <f:validator binding="#{bindings.UserTypeCode.validator}"/>
           </af:selectOneChoice>
@@ -132,7 +136,7 @@
                               label="#{bindings.UserRole.label}"
                               required="false" shortDesc="#{bindings.UserRole.hints.tooltip}" id="soc7"
                               inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;width:252px;"
-                              partialTriggers="soc8" showRequired="true" disabled="#{bindings.UserTypeCode1 eq ''}">
+                              partialTriggers="soc8" showRequired="true" disabled="#{(bindings.UserTypeCode1 eq '')||(pageFlowScope.action eq 'view')}">
             <f:selectItems value="#{bindings.UserRole.items}" id="si7"/>
             <f:validator binding="#{bindings.UserRole.validator}"/>
           </af:selectOneChoice>
@@ -141,7 +145,8 @@
                               shortDesc="#{bindings.CreditUnionId.hints.tooltip}" id="soc5"
                               inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;width:252px;"
                               autoSubmit="true" valueChangeListener="#{userInfo.changeCreditUniion}"
-                              showRequired="#{bindings.UserTypeCode1 eq 'CREDIT_UNION'}" partialTriggers="soc8">
+                              showRequired="#{bindings.UserTypeCode1 eq 'CREDIT_UNION'}" partialTriggers="soc8"
+                              disabled="#{pageFlowScope.action eq 'view'}">
             <f:selectItems value="#{bindings.CreditUnionId.items}" id="si5"/>
             <f:validator binding="#{bindings.CreditUnionId.validator}"/>
           </af:selectOneChoice>
@@ -153,7 +158,8 @@
                               partialTriggers="soc5 soc8"
                               binding="#{userInfo.creditUniionBranch}"
                               showRequired="#{bindings.UserTypeCode1 eq 'CREDIT_UNION'}" autoSubmit="true"
-                              valueChangeListener="#{userInfo.updateBranch}">
+                              valueChangeListener="#{userInfo.updateBranch}"
+                              disabled="#{pageFlowScope.action eq 'view'}">
             <f:selectItems value="#{bindings.CreditUnionBranchId.items}" id="si6"/>
             <f:validator binding="#{bindings.CreditUnionBranchId.validator}"/>
           </af:selectOneChoice>
@@ -168,19 +174,21 @@
                         required="#{bindings.MobilePhoneNumber.hints.mandatory}"
                         columns="#{bindings.MobilePhoneNumber.hints.displayWidth}"
                         maximumLength="#{bindings.MobilePhoneNumber.hints.precision}"
-                        shortDesc="#{bindings.MobilePhoneNumber.hints.tooltip}" id="it4">
+                        shortDesc="#{bindings.MobilePhoneNumber.hints.tooltip}" id="it4"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.MobilePhoneNumber.validator}"/>
           </af:inputText>
           <af:inputDate value="#{bindings.DateOfBirth.inputValue}" label="#{bindings.DateOfBirth.hints.label}"
                         required="true"
                         columns="#{bindings.DateOfBirth.hints.displayWidth}"
-                        shortDesc="#{bindings.DateOfBirth.hints.tooltip}" id="id1">
+                        shortDesc="#{bindings.DateOfBirth.hints.tooltip}" id="id1"
+                        disabled="#{pageFlowScope.action eq 'view'}">
             <f:validator binding="#{bindings.DateOfBirth.validator}"/>
             <af:convertDateTime pattern="#{bindings.DateOfBirth.format}"/>
           </af:inputDate>
           <af:selectOneRadio value="#{bindings.Gender.inputValue}" label="#{bindings.Gender.label}"
                              required="#{bindings.Gender.hints.mandatory}" shortDesc="#{bindings.Gender.hints.tooltip}"
-                             id="sor1" layout="horizontal">
+                             id="sor1" layout="horizontal" disabled="#{pageFlowScope.action eq 'view'}">
             <f:selectItems value="#{bindings.Gender.items}" id="si8"/>
             <f:validator binding="#{bindings.Gender.validator}"/>
           </af:selectOneRadio>

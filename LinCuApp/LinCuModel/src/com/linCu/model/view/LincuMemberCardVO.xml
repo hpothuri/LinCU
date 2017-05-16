@@ -1670,6 +1670,13 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="CardStatus1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CardStatus"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="CARD_STATUS1"/>
   <ViewCriteria
     Name="LincuMemberCardVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"

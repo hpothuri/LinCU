@@ -675,6 +675,16 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
      */
     public String getSwitchRoles() {
         System.out.println("UserTypeCode-------------------"+this.getUserTypeCode());
+        String userTypeCode = this.getUserTypeCode();
+        if(userTypeCode != null){
+            if("CREDIT_UNION".equalsIgnoreCase(userTypeCode)){
+                return "LOV_UserRole1";
+            }else if("LINCU".equalsIgnoreCase(userTypeCode)){
+                return "LOV_UserRole";
+            }else{
+                return "LOV_UserRole12";
+            }
+        }
         return (String) getAttributeInternal(SWITCHROLES);
     }
 

@@ -57,7 +57,7 @@ public class CreditUnionBranches {
         try {
             BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();
                  //Get Iterator of table
-                 DCIteratorBinding parentIter = (DCIteratorBinding)bindings.get("IteratorName");
+                 DCIteratorBinding parentIter = (DCIteratorBinding)bindings.get("CreditUnionBranchIterator");
                  //Get current row key
                  Key parentKey = parentIter.getCurrentRow().getKey();
 
