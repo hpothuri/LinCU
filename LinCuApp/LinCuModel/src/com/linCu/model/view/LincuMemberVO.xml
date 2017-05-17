@@ -621,7 +621,14 @@
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="CREATED_BY"/>
+    AliasName="CREATED_BY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CREATED_BY"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreationDate"
     IsUpdateable="while_insert"
@@ -629,7 +636,14 @@
     PrecisionRule="true"
     EntityAttrName="CreationDate"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="CREATION_DATE"/>
+    AliasName="CREATION_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CREATED_ON"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreditUnionId"
     IsNotNull="true"
@@ -788,14 +802,28 @@
     PrecisionRule="true"
     EntityAttrName="LastUpdateDate"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="LAST_UPDATE_DATE"/>
+    AliasName="LAST_UPDATE_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="LAST_UPDATED_ON"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdatedBy"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="LAST_UPDATED_BY"/>
+    AliasName="LAST_UPDATED_BY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="LAST_UPDATED_BY"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="MemberId"
     IsNotNull="true"
@@ -856,7 +884,15 @@
     PrecisionRule="true"
     EntityAttrName="ObjectVersionId"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="OBJECT_VERSION_ID"/>
+    AliasName="OBJECT_VERSION_ID"
+    DefaultValue="1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="VERSION_NUMBER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="TinOrSid"
     PrecisionRule="true"
@@ -1468,7 +1504,8 @@
     PrecisionRule="true"
     EntityAttrName="ObjectVersionId"
     EntityUsage="LincuMemberKycEO"
-    AliasName="OBJECT_VERSION_ID1"/>
+    AliasName="OBJECT_VERSION_ID1"
+    DefaultValue="1"/>
   <ViewAttribute
     Name="OccupationCode"
     PrecisionRule="true"

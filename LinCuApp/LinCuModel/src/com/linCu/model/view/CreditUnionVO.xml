@@ -308,7 +308,15 @@
     PrecisionRule="true"
     EntityAttrName="ObjectVersionId"
     EntityUsage="CreditUnionEO"
-    AliasName="OBJECT_VERSION_ID"/>
+    AliasName="OBJECT_VERSION_ID"
+    DefaultValue="1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="VERSION_NUMBER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastApprovedBy"
     IsNotNull="true"

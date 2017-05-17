@@ -93,6 +93,32 @@
         <af:column headerText="#{bindings.LincuUserInfo.hints.UserName.label}" id="resId1c11">
           <af:outputText value="#{row.UserName}" shortDesc="#{bindings.LincuUserInfo.hints.UserName.tooltip}" id="ot7"/>
         </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.CreatedBy.label}" id="c1" visible="false">
+          <af:outputText value="#{row.CreatedBy}" shortDesc="#{bindings.LincuUserInfo.hints.CreatedBy.tooltip}"
+                         id="ot8"/>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.CreationDate.label}" id="c2" visible="false">
+          <af:outputText value="#{row.CreationDate}" shortDesc="#{bindings.LincuUserInfo.hints.CreationDate.tooltip}"
+                         id="ot9">
+            <af:convertDateTime pattern="#{bindings.LincuUserInfo.hints.CreationDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.LastUpdatedBy.label}" id="c3" visible="false">
+          <af:outputText value="#{row.LastUpdatedBy}" shortDesc="#{bindings.LincuUserInfo.hints.LastUpdatedBy.tooltip}"
+                         id="ot10"/>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.LastUpdateDate.label}" id="c4" visible="false">
+          <af:outputText value="#{row.LastUpdateDate}"
+                         shortDesc="#{bindings.LincuUserInfo.hints.LastUpdateDate.tooltip}" id="ot11">
+            <af:convertDateTime pattern="#{bindings.LincuUserInfo.hints.LastUpdateDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.ObjectVersionId.label}" id="c5" visible="false">
+          <af:outputText value="#{row.ObjectVersionId}"
+                         shortDesc="#{bindings.LincuUserInfo.hints.ObjectVersionId.tooltip}" id="ot12">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.LincuUserInfo.hints.ObjectVersionId.format}"/>
+          </af:outputText>
+        </af:column>
       </af:table>
     </af:panelCollection>
     <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"

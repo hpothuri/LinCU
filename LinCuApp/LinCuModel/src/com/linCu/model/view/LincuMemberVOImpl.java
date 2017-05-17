@@ -45,6 +45,17 @@ public class LincuMemberVOImpl extends ViewObjectImpl implements LincuMemberVO {
             row.setLastUpdateDate(timestamp);
             row.setLastUpdatedBy1(user);
             row.setLastUpdateDate1(timestamp);
+            if(row.getObjectVersionId() != null){
+            row.setObjectVersionId(row.getObjectVersionId()+1);
+            }else{
+            row.setObjectVersionId(new Long(1));   
+            }
+            
+            if(row.getObjectVersionId1() != null){
+            row.setObjectVersionId1(row.getObjectVersionId1()+1);
+            }else{
+            row.setObjectVersionId1(new Long(1));   
+            }
         }
     }
 

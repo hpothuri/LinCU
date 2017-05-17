@@ -547,7 +547,14 @@
     EntityAttrName="CreatedBy"
     EntityUsage="LincuUserInfoEO"
     AliasName="CREATED_BY"
-    IsUpdateable="while_insert"/>
+    IsUpdateable="while_insert">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CREATED_BY"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreationDate"
     IsNotNull="true"
@@ -555,28 +562,57 @@
     EntityAttrName="CreationDate"
     EntityUsage="LincuUserInfoEO"
     AliasName="CREATION_DATE"
-    IsUpdateable="while_insert"/>
+    IsUpdateable="while_insert">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CREATED_ON"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdatedBy"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
     EntityUsage="LincuUserInfoEO"
-    AliasName="LAST_UPDATED_BY"/>
+    AliasName="LAST_UPDATED_BY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="LAST_UPDATED_BY"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdateDate"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="LastUpdateDate"
     EntityUsage="LincuUserInfoEO"
-    AliasName="LAST_UPDATE_DATE"/>
+    AliasName="LAST_UPDATE_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="LAST_UPDATED_ON"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ObjectVersionId"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="ObjectVersionId"
     EntityUsage="LincuUserInfoEO"
-    AliasName="OBJECT_VERSION_ID"/>
+    AliasName="OBJECT_VERSION_ID"
+    DefaultValue="1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="VERSION_NUMBER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastApprovedBy"
     IsNotNull="true"

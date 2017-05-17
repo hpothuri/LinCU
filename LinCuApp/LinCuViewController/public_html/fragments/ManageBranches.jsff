@@ -88,6 +88,33 @@
           <af:outputText value="#{row.CreditUnionEmailId}"
                          shortDesc="#{bindings.CreditUnionBranch.hints.CreditUnionEmailId.tooltip}" id="ot10"/>
         </af:column>
+        <af:column headerText="#{bindings.CreditUnionBranch.hints.CreatedBy.label}" id="c1" visible="false">
+          <af:outputText value="#{row.CreatedBy}" shortDesc="#{bindings.CreditUnionBranch.hints.CreatedBy.tooltip}"
+                         id="ot11"/>
+        </af:column>
+        <af:column headerText="#{bindings.CreditUnionBranch.hints.CreationDate.label}" id="c2" visible="false">
+          <af:outputText value="#{row.CreationDate}"
+                         shortDesc="#{bindings.CreditUnionBranch.hints.CreationDate.tooltip}" id="ot12">
+            <af:convertDateTime pattern="#{bindings.CreditUnionBranch.hints.CreationDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.CreditUnionBranch.hints.LastUpdatedBy.label}" id="c3" visible="false">
+          <af:outputText value="#{row.LastUpdatedBy}"
+                         shortDesc="#{bindings.CreditUnionBranch.hints.LastUpdatedBy.tooltip}" id="ot13"/>
+        </af:column>
+        <af:column headerText="#{bindings.CreditUnionBranch.hints.LastUpdateDate.label}" id="c4" visible="false">
+          <af:outputText value="#{row.LastUpdateDate}"
+                         shortDesc="#{bindings.CreditUnionBranch.hints.LastUpdateDate.tooltip}" id="ot14">
+            <af:convertDateTime pattern="#{bindings.CreditUnionBranch.hints.LastUpdateDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.CreditUnionBranch.hints.ObjectVersionId.label}" id="c5" visible="false">
+          <af:outputText value="#{row.ObjectVersionId}"
+                         shortDesc="#{bindings.CreditUnionBranch.hints.ObjectVersionId.tooltip}" id="ot15">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.CreditUnionBranch.hints.ObjectVersionId.format}"/>
+          </af:outputText>
+        </af:column>
       </af:table>
     </af:panelCollection>
     <af:popup childCreation="deferred" autoCancel="disabled" id="p1"

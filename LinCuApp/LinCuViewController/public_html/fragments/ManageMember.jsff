@@ -106,6 +106,31 @@
       <af:outputText value="#{row.Nationality}" shortDesc="#{bindings.LincuMember.hints.Nationality.tooltip}"
                      id="ot53"/>
      </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.CreatedBy.label}" id="c1" visible="false">
+      <af:outputText value="#{row.CreatedBy}" shortDesc="#{bindings.LincuMember.hints.CreatedBy.tooltip}" id="ot2"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.CreationDate.label}" id="c2" visible="false">
+      <af:outputText value="#{row.CreationDate}" shortDesc="#{bindings.LincuMember.hints.CreationDate.tooltip}"
+                     id="ot7">
+       <af:convertDateTime pattern="#{bindings.LincuMember.hints.CreationDate.format}"/>
+      </af:outputText>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.LastUpdatedBy.label}" id="c3" visible="false">
+      <af:outputText value="#{row.LastUpdatedBy}" shortDesc="#{bindings.LincuMember.hints.LastUpdatedBy.tooltip}"
+                     id="ot9"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.LastUpdateDate.label}" id="c4" visible="false">
+      <af:outputText value="#{row.LastUpdateDate}" shortDesc="#{bindings.LincuMember.hints.LastUpdateDate.tooltip}"
+                     id="ot10">
+       <af:convertDateTime pattern="#{bindings.LincuMember.hints.LastUpdateDate.format}"/>
+      </af:outputText>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.ObjectVersionId.label}" id="c5" visible="false">
+      <af:outputText value="#{row.ObjectVersionId}" shortDesc="#{bindings.LincuMember.hints.ObjectVersionId.tooltip}"
+                     id="ot13">
+       <af:convertNumber groupingUsed="false" pattern="#{bindings.LincuMember.hints.ObjectVersionId.format}"/>
+      </af:outputText>
+     </af:column>
     </af:table>
    </af:panelCollection>
    <af:popup childCreation="deferred" autoCancel="disabled" id="p1" binding="#{member.confirmDeletePopup}">

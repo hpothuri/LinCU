@@ -101,6 +101,32 @@
           <af:outputText value="#{row.CreditUnionEmailId}"
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionEmailId.tooltip}" id="ot13"/>
         </af:column>
+        <af:column headerText="#{bindings.CreditUnion.hints.CreatedBy.label}" id="c2" visible="false">
+          <af:outputText value="#{row.CreatedBy}" shortDesc="#{bindings.CreditUnion.hints.CreatedBy.tooltip}"
+                         id="ot14"/>
+        </af:column>
+        <af:column headerText="#{bindings.CreditUnion.hints.CreationDate.label}" id="c3" visible="false">
+          <af:outputText value="#{row.CreationDate}" shortDesc="#{bindings.CreditUnion.hints.CreationDate.tooltip}"
+                         id="ot15">
+            <af:convertDateTime pattern="#{bindings.CreditUnion.hints.CreationDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.CreditUnion.hints.LastUpdatedBy.label}" id="c4" visible="false">
+          <af:outputText value="#{row.LastUpdatedBy}" shortDesc="#{bindings.CreditUnion.hints.LastUpdatedBy.tooltip}"
+                         id="ot16"/>
+        </af:column>
+        <af:column headerText="#{bindings.CreditUnion.hints.LastUpdateDate.label}" id="c5" visible="false">
+          <af:outputText value="#{row.LastUpdateDate}" shortDesc="#{bindings.CreditUnion.hints.LastUpdateDate.tooltip}"
+                         id="ot17">
+            <af:convertDateTime pattern="#{bindings.CreditUnion.hints.LastUpdateDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.CreditUnion.hints.ObjectVersionId.label}" id="c6" visible="false">
+          <af:outputText value="#{row.ObjectVersionId}"
+                         shortDesc="#{bindings.CreditUnion.hints.ObjectVersionId.tooltip}" id="ot18">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.CreditUnion.hints.ObjectVersionId.format}"/>
+          </af:outputText>
+        </af:column>
         <af:column id="c1" headerText="#{lincuviewcontrollerBundle.ACTION}" width="130" minimumWidth="130">
           <af:button text="#{lincuviewcontrollerBundle.VIEW_EDIT_BRANCHES}" id="b3" action="view">
             <af:setPropertyListener from="#{row.CreditUnionName}" to="#{pageFlowScope.creditUnionName}" type="action"/>

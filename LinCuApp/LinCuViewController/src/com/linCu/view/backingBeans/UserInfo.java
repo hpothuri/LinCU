@@ -58,7 +58,6 @@ public class UserInfo {
             Object creditUnionId = ADFUtils.getBoundAttributeValue("CreditUnionId");
             Object creditUnionBranchId = ADFUtils.getBoundAttributeValue("CreditUnionBranchId");
             if(((userType != null) && ("CREDIT_UNION".equalsIgnoreCase(userType))) && ((creditUnionId == null) || (creditUnionBranchId == null))){
-            System.out.println("--User Type---------------------"+userType);
             if(creditUnionId == null)
             JSFUtils.addErrorMessage("Credit Union is required");
             if(creditUnionBranchId == null)

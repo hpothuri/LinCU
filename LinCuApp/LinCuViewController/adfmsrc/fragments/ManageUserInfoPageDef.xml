@@ -24,6 +24,11 @@
           <Item Value="Gender"/>
           <Item Value="Password"/>
           <Item Value="UserName"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="ObjectVersionId"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

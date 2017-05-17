@@ -38,6 +38,11 @@ public class CreditUnionVOImpl extends ViewObjectImpl implements CreditUnionVO {
         long time = System.currentTimeMillis();
         java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         row.setLastUpdateDate(timestamp);
+            if(row.getObjectVersionId() != null){
+            row.setObjectVersionId(row.getObjectVersionId()+1);
+            }else{
+            row.setObjectVersionId(new Long(1));   
+            }
         }
     }
 

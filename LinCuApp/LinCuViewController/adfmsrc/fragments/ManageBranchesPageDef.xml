@@ -23,6 +23,11 @@
           <Item Value="CreditUnionPhone1"/>
           <Item Value="CreditUnionPhone2"/>
           <Item Value="CreditUnionEmailId"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="ObjectVersionId"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

@@ -96,6 +96,11 @@ public class LincuUserInfoVOImpl extends ViewObjectImpl implements LincuUserInfo
         this.executeQuery();
         row.setLastUpdatedBy(user);
         row.setLastUpdateDate(timestamp);
+        if(row.getObjectVersionId() != null){
+        row.setObjectVersionId(row.getObjectVersionId()+1);
+        }else{
+        row.setObjectVersionId(new Long(1));   
+        }
         }
     }
     
