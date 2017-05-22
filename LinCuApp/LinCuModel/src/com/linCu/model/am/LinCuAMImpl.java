@@ -13,7 +13,9 @@ import com.linCu.model.view.LincuMemberCardVORowImpl;
 import com.linCu.model.view.LincuMemberVOImpl;
 import com.linCu.model.view.LincuMemberVORowImpl;
 import com.linCu.model.view.LincuUserInfoVOImpl;
+import com.linCu.model.vvo.CardApplicationVVOImpl;
 import com.linCu.model.vvo.LincuUnionsVVOImpl;
+
 
 import oracle.jbo.server.SequenceImpl;
 import com.linCu.model.view.LincuUserInfoVORowImpl;
@@ -374,6 +376,14 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
                 docRow2.setRequired("Y"); 
                 docRow2.setDocumentType("ADDRESS_PROOF");
             }
+        }
+    }
+    
+    public void deleteDocumentRecords(){
+        LincuMemberCardDocsVOImpl audit = this.getLincuMemberCardDocs();
+        Row[] rows = audit.getAllRowsInRange();
+        for(Row row : rows){
+            row.remove();
         }
     }
     
@@ -1112,6 +1122,40 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
              creditUnionName = row.getCreditUnionName();
          }
         return creditUnionName;
+    }
+
+
+    /**
+     * Container's getter for LincuMemberCardDocsVO1.
+     * @return LincuMemberCardDocsVO1
+     */
+    public LincuMemberCardDocsVOImpl getReadOnlyDocs() {
+        return (LincuMemberCardDocsVOImpl) findViewObject("ReadOnlyDocs");
+    }
+
+    /**
+     * Container's getter for CreditUnionCardToReadOnlyDocsVL1.
+     * @return CreditUnionCardToReadOnlyDocsVL1
+     */
+    public ViewLinkImpl getCreditUnionCardToReadOnlyDocsVL1() {
+        return (ViewLinkImpl) findViewLink("CreditUnionCardToReadOnlyDocsVL1");
+    }
+
+
+    public Integer findApplicationPerCardType(String cardType, String memberId){
+        CardApplicationVVOImpl applications = this.getCardApplication();
+        applications.setbindCardType(cardType);
+        applications.setbindMemberId(memberId);
+        applications.executeQuery();
+        return applications.getRowCount();
+    }
+
+    /**
+     * Container's getter for CardApplicationVVO1.
+     * @return CardApplicationVVO1
+     */
+    public CardApplicationVVOImpl getCardApplication() {
+        return (CardApplicationVVOImpl) findViewObject("CardApplication");
     }
 }
 

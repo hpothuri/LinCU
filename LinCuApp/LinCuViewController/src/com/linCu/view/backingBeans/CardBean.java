@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import java.math.BigDecimal;
+
 import java.nio.file.StandardCopyOption;
 
 import java.util.ArrayList;
@@ -26,6 +28,8 @@ import javax.el.ValueExpression;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+
+import javax.faces.event.ValueChangeEvent;
 
 import oracle.adf.model.AttributeBinding;
 import oracle.adf.model.BindingContext;
@@ -66,15 +70,38 @@ public class CardBean {
     }
 
     public void saveAndSubmit(ActionEvent actionEvent) {
-        try {
-             Boolean isAllReqDocsUploaded = (Boolean)ADFUtils.executeOperationBinding("isAllRequiredDocumentsUploaded");
-            if(isAllReqDocsUploaded){
-                RichPopup.PopupHints hints = new RichPopup.PopupHints();
-                this.getCommentsPopup().show(hints);
-//             ADFUtils.executeOperationBinding("submitCard");
-            }else{
-                JSFUtils.addErrorMessage("Please add required documents");
+        try {           
+            BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();  
+            AttributeBinding attr1 = (AttributeBinding) bindings.getControlBinding("CardReqType1");  
+            AttributeBinding attr2 = (AttributeBinding) bindings.getControlBinding("RefCardId");  
+            AttributeBinding attr3 = (AttributeBinding) bindings.getControlBinding("TopupAmount");  
+            if (attr1 != null)  
+            { 
+               String cardType = (String)attr1.getInputValue();
+               Object refCardId = attr2.getInputValue();
+               Object topupAmount = attr3.getInputValue();
+               if((("TOPUP_CARD".equalsIgnoreCase(cardType))||("ADDON_CARD".equalsIgnoreCase(cardType))) && (refCardId.equals(""))){
+                   JSFUtils.addErrorMessage("Reference Card is required.");  
+               }else if("TOPUP_CARD".equalsIgnoreCase(cardType) && (topupAmount == null)){
+                   JSFUtils.addErrorMessage("Topup amount is required.");  
+               }else{
+                   if((("TOPUP_CARD".equalsIgnoreCase(cardType))||("ADDON_CARD".equalsIgnoreCase(cardType)))){
+                    ADFUtils.executeOperationBinding("deleteDocumentRecords");
+                       RichPopup.PopupHints hints = new RichPopup.PopupHints();
+                       this.getCommentsPopup().show(hints);
+                   }else{                      
+                       Boolean isAllReqDocsUploaded = (Boolean)ADFUtils.executeOperationBinding("isAllRequiredDocumentsUploaded");
+                       if(isAllReqDocsUploaded){
+                           RichPopup.PopupHints hints = new RichPopup.PopupHints();
+                           this.getCommentsPopup().show(hints);
+                       //             ADFUtils.executeOperationBinding("submitCard");
+                       }else{
+                           JSFUtils.addErrorMessage("Please add required documents");
+                       }  
+                   }
+               }
             }
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -265,6 +292,50 @@ public class CardBean {
     public void downloadFile(FacesContext facesContext, OutputStream outputStream) {
              BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();  
              AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("Document");  
+             if (attr != null)  
+             {  
+               BlobDomain blob = (BlobDomain) attr.getInputValue();  
+               try  
+               {  // copy the data from the blobDomain to the output stream   
+                 IOUtils.copy(blob.getInputStream(), outputStream);  
+                 blob.closeInputStream();  
+                 outputStream.flush();  
+               }  
+               catch (IOException e)  
+               {  
+                 // handle errors  
+                 e.printStackTrace();  
+                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), "");  
+                 FacesContext.getCurrentInstance().addMessage(null, msg);  
+               }  
+             }  
+    }
+    
+    public void downloadFileOtherCardTypeDocs(FacesContext facesContext, OutputStream outputStream) {
+             BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();  
+             AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("Document");  
+             if (attr != null)  
+             {  
+               BlobDomain blob = (BlobDomain) attr.getInputValue();  
+               try  
+               {  // copy the data from the blobDomain to the output stream   
+                 IOUtils.copy(blob.getInputStream(), outputStream);  
+                 blob.closeInputStream();  
+                 outputStream.flush();  
+               }  
+               catch (IOException e)  
+               {  
+                 // handle errors  
+                 e.printStackTrace();  
+                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), "");  
+                 FacesContext.getCurrentInstance().addMessage(null, msg);  
+               }  
+             }  
+    }
+    
+    public void downloadFileOtherTypes(FacesContext facesContext, OutputStream outputStream) {
+             BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();  
+             AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("Document1");  
              if (attr != null)  
              {  
                BlobDomain blob = (BlobDomain) attr.getInputValue();  
@@ -597,9 +668,27 @@ public class CardBean {
 
     public void save(ActionEvent actionEvent) {
         try {
-            ADFUtils.executeOperationBinding("saveCardRequest");
-            ADFUtils.executeOperationBinding("Commit");
-            this.getCommentsPopup().hide();
+            BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();  
+            AttributeBinding attr1 = (AttributeBinding) bindings.getControlBinding("CardReqType1");  
+            AttributeBinding attr2 = (AttributeBinding) bindings.getControlBinding("RefCardId");  
+            AttributeBinding attr3 = (AttributeBinding) bindings.getControlBinding("TopupAmount");  
+            if (attr1 != null)  
+            { 
+               String cardType = (String)attr1.getInputValue();
+               Object refCardId = attr2.getInputValue();
+               Object topupAmount = attr3.getInputValue();
+               if((("TOPUP_CARD".equalsIgnoreCase(cardType))||("ADDON_CARD".equalsIgnoreCase(cardType))) && (refCardId.equals(""))){
+                   JSFUtils.addErrorMessage("Reference Card is required.");  
+               }else if("TOPUP_CARD".equalsIgnoreCase(cardType) && (topupAmount == null)){
+                   JSFUtils.addErrorMessage("Topup amount is required.");  
+               }else{
+                   ADFUtils.executeOperationBinding("deleteDocumentRecords");
+                   ADFUtils.executeOperationBinding("saveCardRequest");
+                   ADFUtils.executeOperationBinding("Commit");
+                   this.getCommentsPopup().hide();
+               }
+            }
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -642,5 +731,9 @@ public class CardBean {
             ex.printStackTrace();
         }
         this.getDeleteConfirm().hide();
+    }
+
+    public void cardReqType(ValueChangeEvent valueChangeEvent) {
+        valueChangeEvent.getComponent().processUpdates(FacesContext.getCurrentInstance());
     }
 }

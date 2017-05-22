@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CreditUnionCardToReadOnlyDocsVL"
+  Version="12.2.1.11.57"
+  InheritPersonalization="merge">
+  <ViewLinkDefEnd
+    Name="LincuMemberCardVO"
+    Cardinality="1"
+    Source="true"
+    Owner="com.linCu.model.view.LincuMemberCardVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="LincuMemberCardVO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.linCu.model.view.LincuMemberCardVO.RefCardId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="LincuMemberCardDocsVO1"
+    Cardinality="-1"
+    Owner="com.linCu.model.view.LincuMemberCardDocsVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="LincuMemberCardDocsVO1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.linCu.model.view.LincuMemberCardDocsVO.CardId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

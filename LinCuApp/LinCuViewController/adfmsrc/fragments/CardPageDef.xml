@@ -9,6 +9,7 @@
               id="LincuMemberCardDocsIterator"/>
     <iterator Binds="LincuMemberCardAudit" RangeSize="25" DataControl="LinCuAMDataControl"
               id="LincuMemberCardAuditIterator"/>
+    <iterator Binds="ReadOnlyDocs" RangeSize="25" DataControl="LinCuAMDataControl" id="ReadOnlyDocsIterator"/>
   </executables>
   <bindings>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CardStatus" id="CardStatus"
@@ -262,11 +263,6 @@
             RequiresUpdateModel="true" Action="createInsertRow"/>
     <action IterBinding="LincuMemberCardDocsIterator" id="Delete" RequiresUpdateModel="false"
             Action="removeCurrentRow"/>
-    <attributeValues IterBinding="LincuMemberCardDocsIterator" id="Document">
-      <AttrNames>
-        <Item Value="Document"/>
-      </AttrNames>
-    </attributeValues>
     <methodAction id="removeCurrentRow" RequiresUpdateModel="true" Action="invokeMethod" MethodName="removeCurrentRow"
                   IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
                   InstanceName="data.LinCuAMDataControl.LincuMemberCardDocs"/>
@@ -360,5 +356,53 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <tree IterBinding="ReadOnlyDocsIterator" id="ReadOnlyDocs">
+      <nodeDefinition DefName="com.linCu.model.view.LincuMemberCardDocsVO" Name="ReadOnlyDocs0">
+        <AttrNames>
+          <Item Value="CardId"/>
+          <Item Value="DocDesc"/>
+          <Item Value="DocId"/>
+          <Item Value="Document"/>
+          <Item Value="DocumentName"/>
+          <Item Value="DocumentType"/>
+          <Item Value="Required"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="CardReqType1">
+      <AttrNames>
+        <Item Value="CardReqType1"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_RefCardId" id="RefCardId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="TopupAmount">
+      <AttrNames>
+        <Item Value="TopupAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="CardReqType2">
+      <AttrNames>
+        <Item Value="CardReqType"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="deleteDocumentRecords" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="deleteDocumentRecords" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"/>
+    <attributeValues IterBinding="LincuMemberCardDocsIterator" id="Document">
+      <AttrNames>
+        <Item Value="Document"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReadOnlyDocsIterator" id="Document1">
+      <AttrNames>
+        <Item Value="Document"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReadOnlyDocsIterator" id="DocId1">
+      <AttrNames>
+        <Item Value="DocId"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

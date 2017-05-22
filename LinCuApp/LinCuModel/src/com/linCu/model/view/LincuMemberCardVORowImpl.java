@@ -134,8 +134,13 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         SupComments,
         AdminComments,
         CardStatus1,
+        RefCardId,
+        TopupAmount,
+        CardReqType1,
+        SwitchRefCard,
         LincuMemberCardDocsVO,
         LincuMemberCardAuditVO,
+        LincuMemberCardDocsVO1,
         CardTypeVA,
         LincuUnionsVA,
         MemberVA,
@@ -148,7 +153,9 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         OccupationVA,
         StreetVA,
         HomeOwnershipVA,
-        FCBShareholdingVA;
+        FCBShareholdingVA,
+        NewCardsVA,
+        NewAndAddOnCardVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -283,8 +290,13 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int SUPCOMMENTS = AttributesEnum.SupComments.index();
     public static final int ADMINCOMMENTS = AttributesEnum.AdminComments.index();
     public static final int CARDSTATUS1 = AttributesEnum.CardStatus1.index();
+    public static final int REFCARDID = AttributesEnum.RefCardId.index();
+    public static final int TOPUPAMOUNT = AttributesEnum.TopupAmount.index();
+    public static final int CARDREQTYPE1 = AttributesEnum.CardReqType1.index();
+    public static final int SWITCHREFCARD = AttributesEnum.SwitchRefCard.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int LINCUMEMBERCARDAUDITVO = AttributesEnum.LincuMemberCardAuditVO.index();
+    public static final int LINCUMEMBERCARDDOCSVO1 = AttributesEnum.LincuMemberCardDocsVO1.index();
     public static final int CARDTYPEVA = AttributesEnum.CardTypeVA.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
     public static final int MEMBERVA = AttributesEnum.MemberVA.index();
@@ -298,6 +310,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int STREETVA = AttributesEnum.StreetVA.index();
     public static final int HOMEOWNERSHIPVA = AttributesEnum.HomeOwnershipVA.index();
     public static final int FCBSHAREHOLDINGVA = AttributesEnum.FCBShareholdingVA.index();
+    public static final int NEWCARDSVA = AttributesEnum.NewCardsVA.index();
+    public static final int NEWANDADDONCARDVA = AttributesEnum.NewAndAddOnCardVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -390,6 +404,13 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      * @param value value to set the CARD_REQ_TYPE
      */
     public void setCardReqType(String value) {
+        if(value != null){
+            if("ADDON_CARD".equalsIgnoreCase(value)){
+                this.setSwitchRefCard("LOV_RefCardId");
+            }else if("TOPUP_CARD".equalsIgnoreCase(value)){
+                this.setSwitchRefCard("LOV_RefCardId1");
+            }
+        }
         setAttributeInternal(CARDREQTYPE, value);
     }
 
@@ -2068,6 +2089,78 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for REF_CARD_ID using the alias name RefCardId.
+     * @return the REF_CARD_ID
+     */
+    public BigDecimal getRefCardId() {
+        return (BigDecimal) getAttributeInternal(REFCARDID);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for REF_CARD_ID using the alias name RefCardId.
+     * @param value value to set the REF_CARD_ID
+     */
+    public void setRefCardId(BigDecimal value) {
+        setAttributeInternal(REFCARDID, value);
+    }
+
+    /**
+     * Gets the attribute value for TOPUP_AMOUNT using the alias name TopupAmount.
+     * @return the TOPUP_AMOUNT
+     */
+    public BigDecimal getTopupAmount() {
+        return (BigDecimal) getAttributeInternal(TOPUPAMOUNT);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for TOPUP_AMOUNT using the alias name TopupAmount.
+     * @param value value to set the TOPUP_AMOUNT
+     */
+    public void setTopupAmount(BigDecimal value) {
+        setAttributeInternal(TOPUPAMOUNT, value);
+    }
+
+    /**
+     * Gets the attribute value for CARD_REQ_TYPE using the alias name CardReqType1.
+     * @return the CARD_REQ_TYPE
+     */
+    public String getCardReqType1() {
+        return (String) getAttributeInternal(CARDREQTYPE1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for CARD_REQ_TYPE using the alias name CardReqType1.
+     * @param value value to set the CARD_REQ_TYPE
+     */
+    public void setCardReqType1(String value) {
+        setAttributeInternal(CARDREQTYPE1, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute SwitchRefCard.
+     * @return the SwitchRefCarduserTypeCode
+     */
+    public String getSwitchRefCard() {
+        String cardType = this.getCardReqType();
+        if(cardType != null){
+            if("ADDON_CARD".equalsIgnoreCase(cardType)){
+                return "LOV_RefCardId";
+            }else if("TOPUP_CARD".equalsIgnoreCase(cardType)){
+                return "LOV_RefCardId1";
+            }
+        }
+        return (String) getAttributeInternal(SWITCHREFCARD);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute SwitchRefCard.
+     * @param value value to set the  SwitchRefCard
+     */
+    public void setSwitchRefCard(String value) {
+        setAttributeInternal(SWITCHREFCARD, value);
+    }
+
+    /**
      * Gets the associated <code>RowIterator</code> using master-detail link LincuMemberCardDocsVO.
      */
     public RowIterator getLincuMemberCardDocsVO() {
@@ -2079,6 +2172,13 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      */
     public RowIterator getLincuMemberCardAuditVO() {
         return (RowIterator) getAttributeInternal(LINCUMEMBERCARDAUDITVO);
+    }
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link LincuMemberCardDocsVO1.
+     */
+    public RowIterator getLincuMemberCardDocsVO1() {
+        return (RowIterator) getAttributeInternal(LINCUMEMBERCARDDOCSVO1);
     }
 
     /**
@@ -2172,6 +2272,20 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      */
     public RowSet getFCBShareholdingVA() {
         return (RowSet) getAttributeInternal(FCBSHAREHOLDINGVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> NewCardsVA.
+     */
+    public RowSet getNewCardsVA() {
+        return (RowSet) getAttributeInternal(NEWCARDSVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> NewAndAddOnCardVA.
+     */
+    public RowSet getNewAndAddOnCardVA() {
+        return (RowSet) getAttributeInternal(NEWANDADDONCARDVA);
     }
 }
 

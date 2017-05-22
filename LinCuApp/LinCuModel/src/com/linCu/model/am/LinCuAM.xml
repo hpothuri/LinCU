@@ -24,12 +24,10 @@
     <ParameterMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
-          trustMode="trusted"
           Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') != 'PREPAID_ADMIN') ? adf.context.current.sessionScope.get('creditUnionId') :  null]]></TransientExpression>
       </PIMap>
       <PIMap Variable="bindCreatedBy">
         <TransientExpression
-          trustMode="trusted"
           Name="ExpressionScript"><![CDATA[adf.context.current.sessionScope.get('user')]]></TransientExpression>
       </PIMap>
     </ParameterMap>
@@ -56,7 +54,6 @@
     <ParameterMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
-          trustMode="trusted"
           Name="ExpressionScript"><![CDATA[ adf.context.current.sessionScope.get('creditUnionId')]]></TransientExpression>
       </PIMap>
     </ParameterMap>
@@ -115,6 +112,12 @@
   <ViewUsage
     Name="ReadOnlyLincuUnions"
     ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"/>
+  <ViewUsage
+    Name="ReadOnlyDocs"
+    ViewObjectName="com.linCu.model.view.LincuMemberCardDocsVO"/>
+  <ViewUsage
+    Name="CardApplication"
+    ViewObjectName="com.linCu.model.vvo.CardApplicationVVO"/>
   <ViewLinkUsage
     Name="CreditUnionBranchVL"
     ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionToBranchVL"
@@ -132,6 +135,12 @@
     ViewLinkObjectName="com.linCu.model.viewLink.MemberCardToMemberCardAuditVL"
     SrcViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberCard"
     DstViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberCardAudit"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="CreditUnionCardToReadOnlyDocsVL1"
+    ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionCardToReadOnlyDocsVL"
+    SrcViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberCard"
+    DstViewUsageName="com.linCu.model.am.LinCuAM.ReadOnlyDocs"
     Reversed="false"/>
   <ClientInterface
     Name="__clientInterface">
@@ -330,6 +339,13 @@
       <Return
         Name="_return_type_"
         Type="java.lang.Boolean"/>
+    </Method>
+    <Method
+      Name="deleteDocumentRecords"
+      MethodName="deleteDocumentRecords">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
     </Method>
   </ClientInterface>
 </AppModule>

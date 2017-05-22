@@ -235,7 +235,6 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
      * @param value value to set the USER_TYPE_CODE
      */
     public void setUserTypeCode(String value) {
-        System.out.println("------------UserTypeCode-------"+value);
         if(value != null){
             if("CREDIT_UNION".equalsIgnoreCase(value)){
                 this.setSwitchRoles("LOV_UserRole1");
@@ -674,7 +673,6 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
      * @return the ViewAttr
      */
     public String getSwitchRoles() {
-        System.out.println("UserTypeCode-------------------"+this.getUserTypeCode());
         String userTypeCode = this.getUserTypeCode();
         if(userTypeCode != null){
             if("CREDIT_UNION".equalsIgnoreCase(userTypeCode)){

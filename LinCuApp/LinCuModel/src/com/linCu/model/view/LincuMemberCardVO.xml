@@ -171,6 +171,52 @@
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="NewCardsVA"
+    ViewObjectName="com.linCu.model.vvo.NewCardsVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByBranch"
+      FullName="com.linCu.model.vvo.NewCardsVVO.QueryByBranch"/>
+    <ViewCriteriaUsage
+      Name="QueryByCreditUnion"
+      FullName="com.linCu.model.view.LincuMemberCardVO.QueryByCreditUnion"/>
+    <ParameterMap>
+      <PIMap Variable="bindCreditUnionId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[CreditUnionId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindBranchId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[MemberId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="NewAndAddOnCardVA"
+    ViewObjectName="com.linCu.model.vvo.NewAndAddOnCardVA"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByCreditUnion"
+      FullName="com.linCu.model.vvo.NewAndAddOnCardVA.QueryByCreditUnion"/>
+    <ViewCriteriaUsage
+      Name="QueryByMember"
+      FullName="com.linCu.model.vvo.NewAndAddOnCardVA.QueryByMember"/>
+    <ParameterMap>
+      <PIMap Variable="bindCreditUnionId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[CreditUnionId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindMemberId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[MemberId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="LOV_CreditUnionId"
     ListVOName="LincuUnionsVA"
@@ -232,9 +278,8 @@
     Name="LOV_CardReqType"
     ListVOName="CardTypeVA"
     ListRangeSize="-1"
-    NullValueFlag="start"
-    MRUCount="0"
-    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+    NullValueFlag="none"
+    MRUCount="0">
     <AttrArray Name="AttrNames">
       <Item Value="CardReqType"/>
     </AttrArray>
@@ -631,6 +676,44 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
+  <ListBinding
+    Name="LOV_RefCardId"
+    ListVOName="NewCardsVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="RefCardId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CardId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CardId"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_RefCardId1"
+    ListVOName="NewAndAddOnCardVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="RefCardId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CardId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CardId"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="LincuMemberCardEO"
     Entity="com.linCu.model.entity.LincuMemberCardEO"/>
@@ -713,13 +796,14 @@
     EntityAttrName="CardReqType"
     EntityUsage="LincuMemberCardEO"
     AliasName="CARD_REQ_TYPE"
-    LOVName="LOV_CardReqType">
+    LOVName="LOV_CardReqType"
+    DefaultValue="NEW_CARD">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="choice"/>
         <LABEL
           ResId="CARD_REQUEST_TYPE"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -779,6 +863,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <LABEL
+          ResId="CREDIT_UNION"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1677,6 +1763,59 @@
     EntityAttrName="CardStatus"
     EntityUsage="LincuMemberCardEO"
     AliasName="CARD_STATUS1"/>
+  <ViewAttribute
+    Name="RefCardId"
+    PrecisionRule="true"
+    EntityAttrName="RefCardId"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="REF_CARD_ID"
+    LOVName="LOV_RefCardId"
+    LOVFinder="SwitchRefCard">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CARD_ID"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="CardReqType"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TopupAmount"
+    PrecisionRule="true"
+    EntityAttrName="TopupAmount"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="TOPUP_AMOUNT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="TOPUP_AMOUNT"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="CardReqType"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CardReqType1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CardReqType"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="CARD_REQ_TYPE1"/>
+  <ViewAttribute
+    Name="SwitchRefCard"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="$none$"
+    SQLType="VARCHAR"/>
   <ViewCriteria
     Name="LincuMemberCardVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"
@@ -1885,6 +2024,11 @@
   <ViewLinkAccessor
     Name="LincuMemberCardAuditVO"
     ViewLink="com.linCu.model.viewLink.MemberCardToMemberCardAuditVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="LincuMemberCardDocsVO1"
+    ViewLink="com.linCu.model.viewLink.CreditUnionCardToReadOnlyDocsVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <ClientInterface

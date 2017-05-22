@@ -46,5 +46,7 @@ public interface LinCuAM extends ApplicationModule {
     Boolean deleteCreditUnionAllowed();
 
     Boolean deleteMemeberAllowed();
+
+    void deleteDocumentRecords();
 }
 

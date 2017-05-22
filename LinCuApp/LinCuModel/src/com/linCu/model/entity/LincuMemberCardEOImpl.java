@@ -48,6 +48,8 @@ public class LincuMemberCardEOImpl extends EntityImpl {
         FcbComments,
         AdminComments,
         SupComments,
+        RefCardId,
+        TopupAmount,
         LincuMemberInfoEO,
         LincuMemberKycEO,
         LincuMemberCardDocsEO,
@@ -92,6 +94,8 @@ public class LincuMemberCardEOImpl extends EntityImpl {
     public static final int FCBCOMMENTS = AttributesEnum.FcbComments.index();
     public static final int ADMINCOMMENTS = AttributesEnum.AdminComments.index();
     public static final int SUPCOMMENTS = AttributesEnum.SupComments.index();
+    public static final int REFCARDID = AttributesEnum.RefCardId.index();
+    public static final int TOPUPAMOUNT = AttributesEnum.TopupAmount.index();
     public static final int LINCUMEMBERINFOEO = AttributesEnum.LincuMemberInfoEO.index();
     public static final int LINCUMEMBERKYCEO = AttributesEnum.LincuMemberKycEO.index();
     public static final int LINCUMEMBERCARDDOCSEO = AttributesEnum.LincuMemberCardDocsEO.index();
@@ -368,6 +372,38 @@ public class LincuMemberCardEOImpl extends EntityImpl {
         setAttributeInternal(SUPCOMMENTS, value);
     }
 
+
+    /**
+     * Gets the attribute value for RefCardId, using the alias name RefCardId.
+     * @return the value of RefCardId
+     */
+    public BigDecimal getRefCardId() {
+        return (BigDecimal) getAttributeInternal(REFCARDID);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for RefCardId.
+     * @param value value to set the RefCardId
+     */
+    public void setRefCardId(BigDecimal value) {
+        setAttributeInternal(REFCARDID, value);
+    }
+
+    /**
+     * Gets the attribute value for TopupAmount, using the alias name TopupAmount.
+     * @return the value of TopupAmount
+     */
+    public BigDecimal getTopupAmount() {
+        return (BigDecimal) getAttributeInternal(TOPUPAMOUNT);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for TopupAmount.
+     * @param value value to set the TopupAmount
+     */
+    public void setTopupAmount(BigDecimal value) {
+        setAttributeInternal(TOPUPAMOUNT, value);
+    }
 
     /**
      * @return the associated entity oracle.jbo.RowIterator.

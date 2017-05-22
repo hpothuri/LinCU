@@ -16,7 +16,8 @@
   RowClass="com.linCu.model.view.LincuMemberCardDocsVORowImpl"
   ComponentClass="com.linCu.model.view.LincuMemberCardDocsVOImpl"
   ComponentInterface="com.linCu.model.view.common.LincuMemberCardDocsVO"
-  ClientProxyName="com.linCu.model.view.client.LincuMemberCardDocsVOClient">
+  ClientProxyName="com.linCu.model.view.client.LincuMemberCardDocsVOClient"
+  FetchMode="FETCH_AS_NEEDED">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -127,6 +128,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <LABEL
+          ResId="DOCUMENT_TYPE"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
