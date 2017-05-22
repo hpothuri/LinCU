@@ -347,5 +347,18 @@
         Name="_return_type_"
         Type="void"/>
     </Method>
+    <Method
+      Name="findApplicationPerCardType"
+      MethodName="findApplicationPerCardType">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.Integer"/>
+      <Parameter
+        Name="cardType"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="memberId"
+        Type="java.lang.String"/>
+    </Method>
   </ClientInterface>
 </AppModule>
