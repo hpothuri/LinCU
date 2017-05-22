@@ -217,6 +217,21 @@
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="MemberPrefixVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['PREFIX']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="LOV_CreditUnionId"
     ListVOName="LincuUnionsVA"
@@ -714,6 +729,24 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
+  <ListBinding
+    Name="LOV_MemberPrefix"
+    ListVOName="MemberPrefixVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="MemberPrefix"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="LincuMemberCardEO"
     Entity="com.linCu.model.entity.LincuMemberCardEO"/>
@@ -1034,7 +1067,15 @@
     PrecisionRule="true"
     EntityAttrName="MemberPrefix"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="MEMBER_PREFIX"/>
+    AliasName="MEMBER_PREFIX"
+    LOVName="LOV_MemberPrefix">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="MiddleName"
     PrecisionRule="true"

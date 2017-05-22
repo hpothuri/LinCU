@@ -247,13 +247,13 @@
               <af:outputLabel value="#{lincuviewcontrollerBundle.PREFIX}" id="ol36"/>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="22%" id="gc82">
-              <af:inputText value="#{bindings.MemberPrefix.inputValue}" label="#{bindings.MemberPrefix.hints.label}"
-                            required="#{bindings.MemberPrefix.hints.mandatory}"
-                            columns="#{bindings.MemberPrefix.hints.displayWidth}"
-                            maximumLength="#{bindings.MemberPrefix.hints.precision}"
-                            shortDesc="#{bindings.MemberPrefix.hints.tooltip}" id="it13" simple="true">
+              <af:selectOneChoice value="#{bindings.MemberPrefix.inputValue}" label="#{bindings.MemberPrefix.label}"
+                                  required="#{bindings.MemberPrefix.hints.mandatory}"
+                                  shortDesc="#{bindings.MemberPrefix.hints.tooltip}" id="soc22" readOnly="true"
+                                  simple="true">
+                <f:selectItems value="#{bindings.MemberPrefix.items}" id="si30"/>
                 <f:validator binding="#{bindings.MemberPrefix.validator}"/>
-              </af:inputText>
+              </af:selectOneChoice>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="10%" id="gc83" halign="end">
               <af:outputLabel value="#{lincuviewcontrollerBundle.GENDER}" id="ol37"/>
@@ -372,7 +372,7 @@
               </af:inputText>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="10%" id="gc101" halign="end">
-              <af:outputLabel value="#{lincuviewcontrollerBundle.ELECTORIAL_ID}" id="ol46"/>
+              <af:outputLabel value="#{lincuviewcontrollerBundle.NATIONAL_ID}" id="ol46"/>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="24%" id="gc102">
               <af:inputText value="#{bindings.ElectorialId.inputValue}" label="#{bindings.ElectorialId.hints.label}"

@@ -51,11 +51,6 @@
         <Item Value="LastName"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="LincuMemberIterator" id="MemberPrefix">
-      <AttrNames>
-        <Item Value="MemberPrefix"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="LincuMemberIterator" id="MiddleName">
       <AttrNames>
         <Item Value="MiddleName"/>
@@ -305,5 +300,7 @@
                   InstanceName="data.LinCuAMDataControl.LincuMember">
       <NamedData NDName="copy" NDType="java.lang.Boolean"/>
     </methodAction>
+    <list IterBinding="LincuMemberIterator" StaticList="false" Uses="LOV_MemberPrefix" id="MemberPrefix"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>

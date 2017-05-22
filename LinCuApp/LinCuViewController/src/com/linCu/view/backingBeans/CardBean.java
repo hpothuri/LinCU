@@ -3,6 +3,8 @@ package com.linCu.view.backingBeans;
 import com.linCu.view.utils.ADFUtils;
 import com.linCu.view.utils.JSFUtils;
 
+import com.linCu.view.utils.PasswordUtil;
+
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.util.List;
@@ -19,6 +21,8 @@ import java.nio.file.StandardCopyOption;
 
 import java.util.ArrayList;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -72,6 +76,7 @@ public class CardBean {
     public void saveAndSubmit(ActionEvent actionEvent) {
         try {           
             BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();  
+            AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("MemberId");
             AttributeBinding attr1 = (AttributeBinding) bindings.getControlBinding("CardReqType1");  
             AttributeBinding attr2 = (AttributeBinding) bindings.getControlBinding("RefCardId");  
             AttributeBinding attr3 = (AttributeBinding) bindings.getControlBinding("TopupAmount");  
@@ -85,6 +90,18 @@ public class CardBean {
                }else if("TOPUP_CARD".equalsIgnoreCase(cardType) && (topupAmount == null)){
                    JSFUtils.addErrorMessage("Topup amount is required.");  
                }else{
+                   String memberId = (String)attr.getInputValue();
+                   Map paramMap = new HashMap();
+                   paramMap.put("cardType", cardType);
+                   paramMap.put("memberId", memberId);
+                   Integer rowCount = (Integer)ADFUtils.executeOperationBinding("findApplicationPerCardType",paramMap);
+                   
+                   if((rowCount>0) && ("NEW_CARD".equalsIgnoreCase(cardType))){
+                       JSFUtils.addErrorMessage("Member is already issued with new card or application process is in progress. Please request for Add-On card for this card"); 
+                   }else if((rowCount>=5) && ("ADDON_CARD".equalsIgnoreCase(cardType))){
+                       JSFUtils.addErrorMessage("Member is eligible to request maximum 5 Add-On cards"); 
+                   }else{
+                   
                    if((("TOPUP_CARD".equalsIgnoreCase(cardType))||("ADDON_CARD".equalsIgnoreCase(cardType)))){
                     ADFUtils.executeOperationBinding("deleteDocumentRecords");
                        RichPopup.PopupHints hints = new RichPopup.PopupHints();
@@ -99,6 +116,7 @@ public class CardBean {
                            JSFUtils.addErrorMessage("Please add required documents");
                        }  
                    }
+               }
                }
             }
             
@@ -682,7 +700,10 @@ public class CardBean {
                }else if("TOPUP_CARD".equalsIgnoreCase(cardType) && (topupAmount == null)){
                    JSFUtils.addErrorMessage("Topup amount is required.");  
                }else{
-                   ADFUtils.executeOperationBinding("deleteDocumentRecords");
+                   if((("TOPUP_CARD".equalsIgnoreCase(cardType))||("ADDON_CARD".equalsIgnoreCase(cardType)))){
+                    ADFUtils.executeOperationBinding("deleteDocumentRecords");
+                   }
+                   
                    ADFUtils.executeOperationBinding("saveCardRequest");
                    ADFUtils.executeOperationBinding("Commit");
                    this.getCommentsPopup().hide();

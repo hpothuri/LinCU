@@ -24,7 +24,7 @@
     Name="bindMemberId"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT CARD_ID,MEMBER_ID,CREDIT_UNION_ID,CARD_REQ_TYPE FROM LINCU_MEMBER_CARD]]></SQLQuery>
+  <SQLQuery><![CDATA[SELECT CARD_ID,MEMBER_ID,CREDIT_UNION_ID,CARD_REQ_TYPE,CARD_STATUS FROM LINCU_MEMBER_CARD]]></SQLQuery>
   <ViewAttribute
     Name="CardId"
     IsUpdateable="false"
@@ -78,6 +78,21 @@
     SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CardStatus"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="40"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CARD_STATUS"
+    Expression="CARD_STATUS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
     </DesignTime>
   </ViewAttribute>
   <ViewCriteria
@@ -149,6 +164,41 @@
         Conjunction="AND"
         Value=":bindMemberId"
         IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="QueryNonDraftApplications"
+    ViewObjectName="com.linCu.model.vvo.CardApplicationVVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="CardApplicationVVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CardStatus"
+        ViewAttribute="CardStatus"
+        Operator="&lt;>"
+        Conjunction="AND"
+        Value="DRAFT"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>

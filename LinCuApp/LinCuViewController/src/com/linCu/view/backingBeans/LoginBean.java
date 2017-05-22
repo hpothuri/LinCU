@@ -58,7 +58,7 @@ public class LoginBean {
                 }
                 userSessionData.setUserType(userMap.get("userType").toString());
                 fc.getExternalContext().getSessionMap().put("user", userSessionData);
-                    
+                    JSFUtils.getSession().setAttribute("userId", userMap.get("userName").toString());   
                     JSFUtils.getSession().setAttribute("role", userMap.get("role").toString());
                     ADFUtils.setPageFlowScopeValue("passwordPage", false);
                         //ADFUtils.setPageFlowScopeValue("firstLogin", false);

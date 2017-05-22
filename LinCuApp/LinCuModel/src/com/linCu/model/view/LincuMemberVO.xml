@@ -144,6 +144,21 @@
     Name="OccupationVA"
     ViewObjectName="com.linCu.model.vvo.OccupationCodesVVO"
     RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PrefixVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['PREFIX']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="LOV_CreditUnionId"
     ListVOName="LincuUnionsVA"
@@ -565,6 +580,25 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
+  <ListBinding
+    Name="LOV_MemberPrefix"
+    ListVOName="PrefixVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="MemberPrefix"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="LincuMemberInfoEO"
     Entity="com.linCu.model.entity.LincuMemberInfoEO"/>
@@ -838,13 +872,16 @@
     PrecisionRule="true"
     EntityAttrName="MemberPrefix"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="MEMBER_PREFIX">
+    AliasName="MEMBER_PREFIX"
+    LOVName="LOV_MemberPrefix">
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="40"/>
         <LABEL
           ResId="PREFIX"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1109,7 +1146,7 @@
         <DISPLAYWIDTH
           Value="40"/>
         <LABEL
-          ResId="ELECTORIAL_ID"/>
+          ResId="NATIONAL_ID"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

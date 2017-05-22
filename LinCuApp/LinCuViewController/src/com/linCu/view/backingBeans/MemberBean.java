@@ -64,8 +64,6 @@ public class MemberBean {
     }
 
     public void onCopyOfPermanantAddress(ValueChangeEvent valueChangeEvent) {
-        System.out.println("-----------valueChangeEvent--------"+valueChangeEvent.getOldValue());
-       System.out.println("-----------valueChangeEvent--------"+valueChangeEvent.getNewValue());
         Map paramMap = new HashMap();
         paramMap.put("copy", valueChangeEvent.getNewValue());
         ADFUtils.executeOperationBinding("copyPermanantAddress",paramMap);

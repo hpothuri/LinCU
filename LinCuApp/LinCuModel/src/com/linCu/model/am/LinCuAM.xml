@@ -24,11 +24,11 @@
     <ParameterMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
-          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') != 'PREPAID_ADMIN') ? adf.context.current.sessionScope.get('creditUnionId') :  null]]></TransientExpression>
+          Name="ExpressionScript"><![CDATA[((adf.context.current.sessionScope.get('role') == 'PREPAID_ADMIN') || (adf.context.current.sessionScope.get('role') == 'MAN_ADMIN')) ? null : adf.context.current.sessionScope.get('creditUnionId')]]></TransientExpression>
       </PIMap>
       <PIMap Variable="bindCreatedBy">
         <TransientExpression
-          Name="ExpressionScript"><![CDATA[adf.context.current.sessionScope.get('user')]]></TransientExpression>
+          Name="ExpressionScript"><![CDATA[adf.context.current.sessionScope.get('userId')]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewUsage>
@@ -90,7 +90,7 @@
       </PIMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
-          Name="ExpressionScript"><![CDATA[((adf.context.current.sessionScope.get('role') == 'MSR') || (adf.context.current.sessionScope.get('role') == 'SUP') || (adf.context.current.sessionScope.get('role') == 'MAN_ADMIN') ) ? adf.context.current.sessionScope.get('creditUnionId') :  null]]></TransientExpression>
+          Name="ExpressionScript"><![CDATA[((adf.context.current.sessionScope.get('role') == 'MSR') || (adf.context.current.sessionScope.get('role') == 'SUP') ) ? adf.context.current.sessionScope.get('creditUnionId') :  null]]></TransientExpression>
       </PIMap>
       <PIMap Variable="bindStatus5">
         <TransientExpression
@@ -117,7 +117,17 @@
     ViewObjectName="com.linCu.model.view.LincuMemberCardDocsVO"/>
   <ViewUsage
     Name="CardApplication"
-    ViewObjectName="com.linCu.model.vvo.CardApplicationVVO"/>
+    ViewObjectName="com.linCu.model.vvo.CardApplicationVVO">
+    <ViewCriteriaUsage
+      Name="QueryByCardType"
+      FullName="com.linCu.model.vvo.CardApplicationVVO.QueryByCardType"/>
+    <ViewCriteriaUsage
+      Name="QueryByMember"
+      FullName="com.linCu.model.vvo.CardApplicationVVO.QueryByMember"/>
+    <ViewCriteriaUsage
+      Name="QueryNonDraftApplications"
+      FullName="com.linCu.model.vvo.CardApplicationVVO.QueryNonDraftApplications"/>
+  </ViewUsage>
   <ViewLinkUsage
     Name="CreditUnionBranchVL"
     ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionToBranchVL"

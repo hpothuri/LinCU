@@ -60,11 +60,6 @@
         <Item Value="LastName"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="LincuMemberCardIterator" id="MemberPrefix">
-      <AttrNames>
-        <Item Value="MemberPrefix"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="LincuMemberCardIterator" id="MiddleName">
       <AttrNames>
         <Item Value="MiddleName"/>
@@ -404,5 +399,14 @@
         <Item Value="DocId"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="findApplicationPerCardType" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="findApplicationPerCardType" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.findApplicationPerCardType_LinCuAMDataControl_dataProvider_findApplicationPerCardType_result">
+      <NamedData NDName="cardType" NDType="java.lang.String"/>
+      <NamedData NDName="memberId" NDType="java.lang.String"/>
+    </methodAction>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MemberPrefix" id="MemberPrefix"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>

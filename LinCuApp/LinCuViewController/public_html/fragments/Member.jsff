@@ -27,13 +27,12 @@
       <f:facet name="toolbar"/>
       <af:panelFormLayout id="pfl2" maxColumns="3" rows="7" labelWidth="30%">
         <f:facet name="footer"/>
-        <af:inputText value="#{bindings.MemberPrefix.inputValue}" label="#{bindings.MemberPrefix.hints.label}"
-                      required="#{bindings.MemberPrefix.hints.mandatory}"
-                      columns="#{bindings.MemberPrefix.hints.displayWidth}"
-                      maximumLength="#{bindings.MemberPrefix.hints.precision}"
-                      shortDesc="#{bindings.MemberPrefix.hints.tooltip}" id="it13" disabled="#{pageFlowScope.action eq 'view'}">
+        <af:selectOneChoice value="#{bindings.MemberPrefix.inputValue}" label="#{bindings.MemberPrefix.label}"
+                            required="#{bindings.MemberPrefix.hints.mandatory}"
+                            shortDesc="#{bindings.MemberPrefix.hints.tooltip}" id="soc16">
+          <f:selectItems value="#{bindings.MemberPrefix.items}" id="si24"/>
           <f:validator binding="#{bindings.MemberPrefix.validator}"/>
-        </af:inputText>
+        </af:selectOneChoice>
         <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
                       required="#{bindings.FirstName.hints.mandatory}"
                       columns="#{bindings.FirstName.hints.displayWidth}"

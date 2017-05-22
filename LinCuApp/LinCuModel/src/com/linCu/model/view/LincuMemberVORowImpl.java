@@ -122,7 +122,8 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
         HomeOwnershipVA,
         FCBShareholdingVA,
         EducationVA,
-        OccupationVA;
+        OccupationVA,
+        PrefixVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -249,6 +250,7 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     public static final int FCBSHAREHOLDINGVA = AttributesEnum.FCBShareholdingVA.index();
     public static final int EDUCATIONVA = AttributesEnum.EducationVA.index();
     public static final int OCCUPATIONVA = AttributesEnum.OccupationVA.index();
+    public static final int PREFIXVA = AttributesEnum.PrefixVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -1789,6 +1791,13 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
      */
     public RowSet getOccupationVA() {
         return (RowSet) getAttributeInternal(OCCUPATIONVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> PrefixVA.
+     */
+    public RowSet getPrefixVA() {
+        return (RowSet) getAttributeInternal(PREFIXVA);
     }
 
 

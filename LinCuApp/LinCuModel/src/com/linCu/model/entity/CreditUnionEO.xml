@@ -178,6 +178,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
+    <validation:RegExpValidationBean
+      Name="CreditUnionFaxRule0"
+      ResId="INVALID_FAX_NUMBER"
+      OnAttribute="CreditUnionFax"
+      Pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
+      Inverse="false"/>
   </Attribute>
   <Attribute
     Name="CreditUnionEmailId"

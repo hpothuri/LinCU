@@ -155,7 +155,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         HomeOwnershipVA,
         FCBShareholdingVA,
         NewCardsVA,
-        NewAndAddOnCardVA;
+        NewAndAddOnCardVA,
+        MemberPrefixVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -312,6 +313,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int FCBSHAREHOLDINGVA = AttributesEnum.FCBShareholdingVA.index();
     public static final int NEWCARDSVA = AttributesEnum.NewCardsVA.index();
     public static final int NEWANDADDONCARDVA = AttributesEnum.NewAndAddOnCardVA.index();
+    public static final int MEMBERPREFIXVA = AttributesEnum.MemberPrefixVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -2286,6 +2288,13 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      */
     public RowSet getNewAndAddOnCardVA() {
         return (RowSet) getAttributeInternal(NEWANDADDONCARDVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> MemberPrefixVA.
+     */
+    public RowSet getMemberPrefixVA() {
+        return (RowSet) getAttributeInternal(MEMBERPREFIXVA);
     }
 }
 
