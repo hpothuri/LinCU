@@ -9,9 +9,12 @@ public class MailTest {
     }
 
     public static void main(String[] args) {
-                     final String username = "dbmstestmail@gmail.com";
-                    final String password = "dbmstestmail123";
-
+//                    final String username = "dbmstestmail@gmail.com";
+//                    final String password = "dbmstestmail123";
+                    
+                    final String username = "contact@sirmaindia.com";
+                    final String password = "Sirma@123";
+                    
                     Properties props = new Properties();
                     props.put("mail.smtp.auth", "true");
                     props.put("mail.smtp.starttls.enable", "true");

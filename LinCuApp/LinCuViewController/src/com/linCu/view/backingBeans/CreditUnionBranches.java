@@ -5,10 +5,13 @@ import com.linCu.view.utils.ADFUtils;
 import javax.faces.event.ActionEvent;
 
 import oracle.adf.model.BindingContext;
+import oracle.adf.model.binding.DCBindingContainer;
 import oracle.adf.model.binding.DCIteratorBinding;
 import oracle.adf.view.rich.component.rich.RichPopup;
 
 import oracle.binding.BindingContainer;
+
+import oracle.binding.OperationBinding;
 
 import oracle.jbo.Key;
 
@@ -55,21 +58,13 @@ public class CreditUnionBranches {
 
     public void cancel(ActionEvent actionEvent) {
         try {
-            BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();
-                 //Get Iterator of table
-                 DCIteratorBinding parentIter = (DCIteratorBinding)bindings.get("CreditUnionBranchIterator");
-                 //Get current row key
-                 Key parentKey = parentIter.getCurrentRow().getKey();
-
-                 //You can add your operation code here, i have used simple Cancel operation 
-                 //with Rollback and Execute
-                 
-                 
-                 ADFUtils.executeOperationBinding("Rollback"); 
-                 ADFUtils.executeOperationBinding("Execute"); 
-                
-                 //Set again row key as current row
-                 parentIter.setCurrentRowWithKey(parentKey.toStringFormat(true));
+           DCBindingContainer dcBC = (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+           DCIteratorBinding dcIter = dcBC.findIteratorBinding("CreditUnionIterator");
+            Key branchKey = dcIter.getCurrentRow().getKey();
+            BindingContainer bc = BindingContext.getCurrent().getCurrentBindingsEntry();
+            OperationBinding ob = bc.getOperationBinding("Rollback");
+            ob.execute();
+            dcIter.setCurrentRowWithKey(branchKey.toStringFormat(true));
         } catch (Exception ex) {
             ex.printStackTrace();
         }

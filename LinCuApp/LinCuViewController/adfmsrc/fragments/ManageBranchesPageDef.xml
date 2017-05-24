@@ -7,6 +7,7 @@
     <iterator Binds="CreditUnionBranch" RangeSize="25" DataControl="LinCuAMDataControl" id="CreditUnionBranchIterator"/>
     <searchRegion Criteria="QueryBranches" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
                   Binds="CreditUnionBranchIterator" id="QueryBranchesQuery"/>
+    <iterator id="CreditUnionIterator" Binds="CreditUnion" DataControl="LinCuAMDataControl" RangeSize="25"/>
   </executables>
   <bindings>
     <tree IterBinding="CreditUnionBranchIterator" id="CreditUnionBranch">
@@ -108,5 +109,10 @@
                   InstanceName="data.LinCuAMDataControl.CreditUnionBranch">
       <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
     </methodAction>
+    <action IterBinding="CreditUnionBranchIterator" id="Execute" InstanceName="LinCuAMDataControl.CreditUnionBranch"
+            DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <methodAction id="retainCurrentRow" RequiresUpdateModel="true" Action="invokeMethod" MethodName="retainCurrentRow"
+                  IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"/>
   </bindings>
 </pageDefinition>
