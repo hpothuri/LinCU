@@ -108,5 +108,11 @@
                   MethodName="deleteCreditUnionAllowed" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
                   InstanceName="data.LinCuAMDataControl.dataProvider"
                   ReturnName="data.LinCuAMDataControl.methodResults.deleteCreditUnionAllowed_LinCuAMDataControl_dataProvider_deleteCreditUnionAllowed_result"/>
+    <methodAction IterBinding="CreditUnionIterator" id="closeCreditUnion" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="closeCreditUnion" IsViewObjectMethod="false"
+                  DataControl="LinCuAMDataControl" InstanceName="bindings.CreditUnionIterator.currentRow"
+                  IsLocalObjectReference="true"/>
+    <action IterBinding="CreditUnionIterator" id="Execute" InstanceName="LinCuAMDataControl.CreditUnion"
+            DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
   </bindings>
 </pageDefinition>

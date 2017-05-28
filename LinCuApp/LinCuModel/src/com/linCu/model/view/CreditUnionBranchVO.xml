@@ -16,7 +16,9 @@
   RowClass="com.linCu.model.view.CreditUnionBranchVORowImpl"
   ComponentClass="com.linCu.model.view.CreditUnionBranchVOImpl"
   ComponentInterface="com.linCu.model.view.common.CreditUnionBranchVO"
-  ClientProxyName="com.linCu.model.view.client.CreditUnionBranchVOClient">
+  ClientProxyName="com.linCu.model.view.client.CreditUnionBranchVOClient"
+  RowInterface="com.linCu.model.view.common.CreditUnionBranchVORow"
+  ClientRowProxyName="com.linCu.model.view.client.CreditUnionBranchVORowClient">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -326,6 +328,13 @@
     EntityAttrName="LastApprovedDate"
     EntityUsage="CreditUnionBranchEO"
     AliasName="LAST_APPROVED_DATE"/>
+  <ViewAttribute
+    Name="Active"
+    PrecisionRule="true"
+    EntityAttrName="Active"
+    EntityUsage="CreditUnionBranchEO"
+    AliasName="ACTIVE"
+    DefaultValue="Y"/>
   <ViewCriteria
     Name="QueryBranches"
     ViewObjectName="com.linCu.model.view.CreditUnionBranchVO"
@@ -390,6 +399,41 @@
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <ViewCriteria
+    Name="QueryActiveUnion"
+    ViewObjectName="com.linCu.model.view.CreditUnionBranchVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="CreditUnionBranchVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CreditUnionBranchVOCriteria_CreditUnionBranchVOCriteria_row_0_Active"
+        ViewAttribute="Active"
+        Operator="="
+        Conjunction="AND"
+        Value="Y"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="LincuUserInfoVO"
     ViewLink="com.linCu.model.viewLink.CreditUnionBranchToUserInfoVL"
@@ -418,6 +462,16 @@
         Type="java.lang.String"/>
     </Method>
   </ClientInterface>
+  <ClientRowInterface
+    Name="__rowClientInterface">
+    <Method
+      Name="closeBranch"
+      MethodName="closeBranch">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientRowInterface>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.linCu.model.LinCuModelBundle"/>

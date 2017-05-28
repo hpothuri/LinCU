@@ -24,7 +24,7 @@
           <af:button text="#{lincuviewcontrollerBundle.VIEW_USER}" id="b7" actionListener="#{userInfo.editUser}" disabled="#{!bindings.Delete.enabled}">
             <af:setPropertyListener from="view" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
-          <af:button actionListener="#{userInfo.openDeleteUserPopup}" text="#{lincuviewcontrollerBundle.DELETE_USER}" disabled="#{!bindings.Delete.enabled}"
+          <af:button actionListener="#{userInfo.openDeleteUserPopup}" text="#{lincuviewcontrollerBundle.CLOSE_USER}" disabled="#{!bindings.Delete.enabled}"
                      id="b5"/>
         </af:toolbar>
       </f:facet>
@@ -33,7 +33,8 @@
                 emptyText="#{bindings.LincuUserInfo.viewable ? 'No data to display.' : 'Access Denied.'}"
                 rowBandingInterval="0" selectedRowKeys="#{bindings.LincuUserInfo.collectionModel.selectedRow}"
                 selectionListener="#{bindings.LincuUserInfo.collectionModel.makeCurrent}" rowSelection="single"
-                fetchSize="#{bindings.LincuUserInfo.rangeSize}" id="resId1" partialTriggers="::b5">
+                fetchSize="#{bindings.LincuUserInfo.rangeSize}" id="resId1"
+                binding="#{userInfo.userInfoTable}">
         <af:column headerText="#{bindings.LincuUserInfo.hints.FirstName.label}" id="resId1c1">
           <af:outputText value="#{row.FirstName}" shortDesc="#{bindings.LincuUserInfo.hints.FirstName.tooltip}"
                          id="ot1"/>
@@ -172,7 +173,7 @@
                               inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;width:252px;"
                               autoSubmit="true" valueChangeListener="#{userInfo.changeCreditUniion}"
                               showRequired="#{bindings.UserTypeCode1 eq 'CREDIT_UNION'}" partialTriggers="soc8"
-                              disabled="#{pageFlowScope.action eq 'view'}">
+                              disabled="#{(pageFlowScope.action eq 'view') or (bindings.UserTypeCode1 eq 'FCB')}">
             <f:selectItems value="#{bindings.CreditUnionId.items}" id="si5"/>
             <f:validator binding="#{bindings.CreditUnionId.validator}"/>
           </af:selectOneChoice>
@@ -185,7 +186,7 @@
                               binding="#{userInfo.creditUniionBranch}"
                               showRequired="#{bindings.UserTypeCode1 eq 'CREDIT_UNION'}" autoSubmit="true"
                               valueChangeListener="#{userInfo.updateBranch}"
-                              disabled="#{pageFlowScope.action eq 'view'}">
+                              disabled="#{(pageFlowScope.action eq 'view') or (bindings.UserTypeCode1 eq 'FCB')}">
             <f:selectItems value="#{bindings.CreditUnionBranchId.items}" id="si6"/>
             <f:validator binding="#{bindings.CreditUnionBranchId.validator}"/>
           </af:selectOneChoice>
@@ -234,7 +235,7 @@
         <f:facet name="buttonBar">
           <af:button text="#{lincuviewcontrollerBundle.OK}" id="b6" actionListener="#{userInfo.deleteUser}"/>
         </f:facet>
-        <af:outputText value="#{lincuviewcontrollerBundle.DELETE_SELETED_USER}" id="ot6"/>
+        <af:outputText value="#{lincuviewcontrollerBundle.CLOSE_SELETED_USER}" id="ot6"/>
       </af:dialog>
     </af:popup>
   </af:panelGroupLayout>

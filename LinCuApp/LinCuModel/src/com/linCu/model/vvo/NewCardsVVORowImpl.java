@@ -16,7 +16,8 @@ public class NewCardsVVORowImpl extends ViewRowImpl {
     public enum AttributesEnum {
         CardId,
         MemberId,
-        CreditUnionId;
+        CreditUnionId,
+        Active;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -39,9 +40,11 @@ public class NewCardsVVORowImpl extends ViewRowImpl {
             return vals;
         }
     }
+
     public static final int CARDID = AttributesEnum.CardId.index();
     public static final int MEMBERID = AttributesEnum.MemberId.index();
     public static final int CREDITUNIONID = AttributesEnum.CreditUnionId.index();
+    public static final int ACTIVE = AttributesEnum.Active.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -71,6 +74,14 @@ public class NewCardsVVORowImpl extends ViewRowImpl {
      */
     public String getCreditUnionId() {
         return (String) getAttributeInternal(CREDITUNIONID);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute Active.
+     * @return the Active
+     */
+    public String getActive() {
+        return (String) getAttributeInternal(ACTIVE);
     }
 }
 

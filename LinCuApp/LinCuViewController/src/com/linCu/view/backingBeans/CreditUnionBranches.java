@@ -2,12 +2,17 @@ package com.linCu.view.backingBeans;
 
 import com.linCu.view.utils.ADFUtils;
 
+import com.linCu.view.utils.JSFUtils;
+
 import javax.faces.event.ActionEvent;
 
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
 import oracle.adf.model.binding.DCIteratorBinding;
 import oracle.adf.view.rich.component.rich.RichPopup;
+
+import oracle.adf.view.rich.component.rich.data.RichTable;
+import oracle.adf.view.rich.context.AdfFacesContext;
 
 import oracle.binding.BindingContainer;
 
@@ -18,6 +23,8 @@ import oracle.jbo.Key;
 public class CreditUnionBranches {
     private RichPopup creditUnionBranchPopup;
     private RichPopup deleteBranchConfirmPopup;
+    private RichPopup confirmDeleteBranchPopup;
+    private RichTable branchTable;
 
     public CreditUnionBranches() {
         super();
@@ -77,5 +84,48 @@ public class CreditUnionBranches {
 
     public RichPopup getDeleteBranchConfirmPopup() {
         return deleteBranchConfirmPopup;
+    }
+
+    public void confirmDeleteBranch(ActionEvent actionEvent) {
+        try {
+            Boolean deleteCreditUnionAllowed = (Boolean)ADFUtils.executeOperationBinding("deleteBranchesAllowed");
+            if(deleteCreditUnionAllowed){
+                RichPopup.PopupHints hints = new RichPopup.PopupHints();
+                this.getConfirmDeleteBranchPopup().show(hints);   
+            }else{
+                JSFUtils.addErrorMessage("Cannot delete the branch. It has active members or users associated to it.");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void setConfirmDeleteBranchPopup(RichPopup confirmDeleteBranchPopup) {
+        this.confirmDeleteBranchPopup = confirmDeleteBranchPopup;
+    }
+
+    public RichPopup getConfirmDeleteBranchPopup() {
+        return confirmDeleteBranchPopup;
+    }
+
+    public void deleteBranch(ActionEvent actionEvent) {
+        try {
+            //ADFUtils.executeOperationBinding("Delete"); 
+            ADFUtils.executeOperationBinding("closeBranch");
+            ADFUtils.executeOperationBinding("Commit"); 
+            ADFUtils.executeOperationBinding("Execute"); 
+            AdfFacesContext.getCurrentInstance().addPartialTarget(this.getBranchTable());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        this.getConfirmDeleteBranchPopup().hide();
+    }
+
+    public void setBranchTable(RichTable branchTable) {
+        this.branchTable = branchTable;
+    }
+
+    public RichTable getBranchTable() {
+        return branchTable;
     }
 }

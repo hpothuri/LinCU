@@ -97,5 +97,10 @@
         <Item Value="UserTypeCode"/>
       </AttrNames>
     </attributeValues>
+    <methodAction IterBinding="LincuUserInfoIterator" id="closeUser" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="closeUser" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="bindings.LincuUserInfoIterator.currentRow" IsLocalObjectReference="true"/>
+    <action IterBinding="LincuUserInfoIterator" id="Execute" InstanceName="LinCuAMDataControl.LincuUserInfo"
+            DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
   </bindings>
 </pageDefinition>

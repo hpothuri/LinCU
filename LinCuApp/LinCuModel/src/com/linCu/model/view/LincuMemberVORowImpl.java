@@ -13,7 +13,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class LincuMemberVORowImpl extends ViewRowImpl {
+public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model.view.common.LincuMemberVORow {
 
     public static final int ENTITY_LINCUMEMBERINFOEO = 0;
     public static final int ENTITY_LINCUMEMBERKYCEO = 1;
@@ -112,6 +112,8 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
         ShareholderCode,
         StreetType,
         WorkPhone,
+        Active,
+        Active1,
         LincuUnionsVA,
         LincuBranchesVA,
         GenderVA,
@@ -239,6 +241,8 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     public static final int SHAREHOLDERCODE = AttributesEnum.ShareholderCode.index();
     public static final int STREETTYPE = AttributesEnum.StreetType.index();
     public static final int WORKPHONE = AttributesEnum.WorkPhone.index();
+    public static final int ACTIVE = AttributesEnum.Active.index();
+    public static final int ACTIVE1 = AttributesEnum.Active1.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
     public static final int LINCUBRANCHESVA = AttributesEnum.LincuBranchesVA.index();
     public static final int GENDERVA = AttributesEnum.GenderVA.index();
@@ -1717,6 +1721,38 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for ACTIVE using the alias name Active.
+     * @return the ACTIVE
+     */
+    public String getActive() {
+        return (String) getAttributeInternal(ACTIVE);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ACTIVE using the alias name Active.
+     * @param value value to set the ACTIVE
+     */
+    public void setActive(String value) {
+        setAttributeInternal(ACTIVE, value);
+    }
+
+    /**
+     * Gets the attribute value for ACTIVE using the alias name Active1.
+     * @return the ACTIVE
+     */
+    public String getActive1() {
+        return (String) getAttributeInternal(ACTIVE1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ACTIVE using the alias name Active1.
+     * @param value value to set the ACTIVE
+     */
+    public void setActive1(String value) {
+        setAttributeInternal(ACTIVE1, value);
+    }
+
+    /**
      * Gets the view accessor <code>RowSet</code> LincuUnionsVA.
      */
     public RowSet getLincuUnionsVA() {
@@ -1799,7 +1835,10 @@ public class LincuMemberVORowImpl extends ViewRowImpl {
     public RowSet getPrefixVA() {
         return (RowSet) getAttributeInternal(PREFIXVA);
     }
-
+    public void closeMember(){
+        this.setActive("N");
+        this.setActive1("N");
+    }
 
 }
 

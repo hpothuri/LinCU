@@ -24,7 +24,7 @@
     Name="bindMemberId"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT CARD_ID,MEMBER_ID,CREDIT_UNION_ID,CARD_REQ_TYPE,CARD_STATUS FROM LINCU_MEMBER_CARD]]></SQLQuery>
+  <SQLQuery><![CDATA[SELECT CARD_ID,MEMBER_ID,CREDIT_UNION_ID,CARD_REQ_TYPE,CARD_STATUS,ACTIVE FROM LINCU_MEMBER_CARD]]></SQLQuery>
   <ViewAttribute
     Name="CardId"
     IsUpdateable="false"
@@ -93,6 +93,21 @@
     SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Active"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ACTIVE"
+    Expression="ACTIVE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
   </ViewAttribute>
   <ViewCriteria
@@ -199,6 +214,41 @@
         Operator="&lt;>"
         Conjunction="AND"
         Value="DRAFT"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="QureyActiveApplications"
+    ViewObjectName="com.linCu.model.vvo.CardApplicationVVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="CardApplicationVVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CardApplicationVVOCriteria_CardApplicationVVOCriteria_row_0_Active"
+        ViewAttribute="Active"
+        Operator="="
+        Conjunction="AND"
+        Value="Y"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>

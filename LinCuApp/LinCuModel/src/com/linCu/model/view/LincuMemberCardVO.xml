@@ -16,7 +16,9 @@
   RowClass="com.linCu.model.view.LincuMemberCardVORowImpl"
   ComponentClass="com.linCu.model.view.LincuMemberCardVOImpl"
   ComponentInterface="com.linCu.model.view.common.LincuMemberCardVO"
-  ClientProxyName="com.linCu.model.view.client.LincuMemberCardVOClient">
+  ClientProxyName="com.linCu.model.view.client.LincuMemberCardVOClient"
+  RowInterface="com.linCu.model.view.common.LincuMemberCardVORow"
+  ClientRowProxyName="com.linCu.model.view.client.LincuMemberCardVORowClient">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -66,7 +68,11 @@
   <ViewAccessor
     Name="LincuUnionsVA"
     ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"
-    RowLevelBinds="true"/>
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryActiveUnions"
+      FullName="com.linCu.model.vvo.LincuUnionsVVO.QueryActiveUnions"/>
+  </ViewAccessor>
   <ViewAccessor
     Name="MemberVA"
     ViewObjectName="com.linCu.model.vvo.MemberVVO"
@@ -74,6 +80,9 @@
     <ViewCriteriaUsage
       Name="MemberVVOCriteria"
       FullName="com.linCu.model.vvo.MemberVVO.MemberVVOCriteria"/>
+    <ViewCriteriaUsage
+      Name="QueryActiveMembers"
+      FullName="com.linCu.model.vvo.MemberVVO.QueryActiveMembers"/>
     <ParameterMap>
       <PIMap Variable="bindUnionId">
         <TransientExpression
@@ -176,6 +185,9 @@
     ViewObjectName="com.linCu.model.vvo.NewCardsVVO"
     RowLevelBinds="true">
     <ViewCriteriaUsage
+      Name="QueryActiveCards"
+      FullName="com.linCu.model.vvo.NewCardsVVO.QueryActiveCards"/>
+    <ViewCriteriaUsage
       Name="QueryByBranch"
       FullName="com.linCu.model.vvo.NewCardsVVO.QueryByBranch"/>
     <ViewCriteriaUsage
@@ -199,8 +211,11 @@
     ViewObjectName="com.linCu.model.vvo.NewAndAddOnCardVA"
     RowLevelBinds="true">
     <ViewCriteriaUsage
+      Name="QueryActiveCards"
+      FullName="com.linCu.model.vvo.NewAndAddOnCardVA.QueryActiveCards"/>
+    <ViewCriteriaUsage
       Name="QueryByCreditUnion"
-      FullName="com.linCu.model.vvo.NewAndAddOnCardVA.QueryByCreditUnion"/>
+      FullName="com.linCu.model.view.LincuMemberCardVO.QueryByCreditUnion"/>
     <ViewCriteriaUsage
       Name="QueryByMember"
       FullName="com.linCu.model.vvo.NewAndAddOnCardVA.QueryByMember"/>
@@ -1857,6 +1872,13 @@
     Type="java.lang.String"
     ColumnType="$none$"
     SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="Active"
+    PrecisionRule="true"
+    EntityAttrName="Active"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="ACTIVE"
+    DefaultValue="Y"/>
   <ViewCriteria
     Name="LincuMemberCardVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"
@@ -2054,6 +2076,41 @@
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <ViewCriteria
+    Name="QueryActiveCards"
+    ViewObjectName="com.linCu.model.view.LincuMemberCardVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="LincuMemberCardVOCriteria1_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="LincuMemberCardVOCriteria1_LincuMemberCardVOCriteria1_row_0_Active"
+        ViewAttribute="Active"
+        Operator="="
+        Conjunction="AND"
+        Value="Y"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <AttrArray Name="KeyAttributes">
     <Item Value="CardId"/>
   </AttrArray>
@@ -2142,6 +2199,16 @@
         Type="java.lang.String"/>
     </Method>
   </ClientInterface>
+  <ClientRowInterface
+    Name="__rowClientInterface">
+    <Method
+      Name="closeCard"
+      MethodName="closeCard">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientRowInterface>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.linCu.model.LinCuModelBundle"/>

@@ -56,5 +56,8 @@
         <Item Value="CardStatus1"/>
       </AttrNames>
     </attributeValues>
+    <methodAction IterBinding="LincuMemberCardIterator" id="closeCard" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="closeCard" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="bindings.LincuMemberCardIterator.currentRow" IsLocalObjectReference="true"/>
   </bindings>
 </pageDefinition>

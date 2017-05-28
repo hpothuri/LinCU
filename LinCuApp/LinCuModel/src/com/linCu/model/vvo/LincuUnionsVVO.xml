@@ -26,7 +26,7 @@
     Name="bindCreditUnionId"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT CREDIT_UNION_ID, CREDIT_UNION_CODE, CREDIT_UNION_NAME FROM CREDIT_UNION]]></SQLQuery>
+  <SQLQuery><![CDATA[SELECT CREDIT_UNION_ID, CREDIT_UNION_CODE, CREDIT_UNION_NAME, ACTIVE FROM CREDIT_UNION]]></SQLQuery>
   <ViewAttribute
     Name="CreditUnionId"
     IsUpdateable="false"
@@ -72,6 +72,21 @@
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
   </ViewAttribute>
+  <ViewAttribute
+    Name="Active"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ACTIVE"
+    Expression="ACTIVE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </ViewAttribute>
   <ViewCriteria
     Name="QueryByCreditUnion"
     ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"
@@ -105,6 +120,41 @@
         Conjunction="AND"
         Value=":bindCreditUnionId"
         IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="QueryActiveUnions"
+    ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="LincuUnionsVVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="LincuUnionsVVOCriteria_LincuUnionsVVOCriteria_row_0_Active"
+        ViewAttribute="Active"
+        Operator="="
+        Conjunction="AND"
+        Value="Y"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>

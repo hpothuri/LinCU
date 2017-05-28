@@ -14,7 +14,8 @@ public class LincuUnionsVVORowImpl extends ViewRowImpl {
     public enum AttributesEnum {
         CreditUnionId,
         CreditUnionCode,
-        CreditUnionName;
+        CreditUnionName,
+        Active;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -37,9 +38,11 @@ public class LincuUnionsVVORowImpl extends ViewRowImpl {
             return vals;
         }
     }
+
     public static final int CREDITUNIONID = AttributesEnum.CreditUnionId.index();
     public static final int CREDITUNIONCODE = AttributesEnum.CreditUnionCode.index();
     public static final int CREDITUNIONNAME = AttributesEnum.CreditUnionName.index();
+    public static final int ACTIVE = AttributesEnum.Active.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -69,6 +72,14 @@ public class LincuUnionsVVORowImpl extends ViewRowImpl {
      */
     public String getCreditUnionName() {
         return (String) getAttributeInternal(CREDITUNIONNAME);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute Active.
+     * @return the Active
+     */
+    public String getActive() {
+        return (String) getAttributeInternal(ACTIVE);
     }
 }
 

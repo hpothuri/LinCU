@@ -16,7 +16,9 @@
   RowClass="com.linCu.model.view.LincuMemberVORowImpl"
   ComponentClass="com.linCu.model.view.LincuMemberVOImpl"
   ComponentInterface="com.linCu.model.view.common.LincuMemberVO"
-  ClientProxyName="com.linCu.model.view.client.LincuMemberVOClient">
+  ClientProxyName="com.linCu.model.view.client.LincuMemberVOClient"
+  RowInterface="com.linCu.model.view.common.LincuMemberVORow"
+  ClientRowProxyName="com.linCu.model.view.client.LincuMemberVORowClient">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -30,8 +32,11 @@
     ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"
     RowLevelBinds="true">
     <ViewCriteriaUsage
+      Name="QueryActiveUnions"
+      FullName="com.linCu.model.vvo.LincuUnionsVVO.QueryActiveUnions"/>
+    <ViewCriteriaUsage
       Name="QueryByCreditUnion"
-      FullName="com.linCu.model.vvo.LincuUnionsVVO.QueryByCreditUnion"/>
+      FullName="com.linCu.model.view.LincuMemberVO.QueryByCreditUnion"/>
     <ParameterMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
@@ -44,8 +49,11 @@
     ViewObjectName="com.linCu.model.vvo.LincuBranchesVVO"
     RowLevelBinds="true">
     <ViewCriteriaUsage
+      Name="QueryActiveBranches"
+      FullName="com.linCu.model.vvo.LincuBranchesVVO.QueryActiveBranches"/>
+    <ViewCriteriaUsage
       Name="QueryByCreditUnion"
-      FullName="com.linCu.model.vvo.LincuBranchesVVO.QueryByCreditUnion"/>
+      FullName="com.linCu.model.view.LincuMemberVO.QueryByCreditUnion"/>
     <ParameterMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
@@ -1798,6 +1806,20 @@
     EntityAttrName="WorkPhone"
     EntityUsage="LincuMemberKycEO"
     AliasName="WORK_PHONE"/>
+  <ViewAttribute
+    Name="Active"
+    PrecisionRule="true"
+    EntityAttrName="Active"
+    EntityUsage="LincuMemberInfoEO"
+    AliasName="ACTIVE"
+    DefaultValue="Y"/>
+  <ViewAttribute
+    Name="Active1"
+    PrecisionRule="true"
+    EntityAttrName="Active"
+    EntityUsage="LincuMemberKycEO"
+    AliasName="ACTIVE1"
+    DefaultValue="Y"/>
   <ViewCriteria
     Name="LincuMemberVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberVO"
@@ -1898,6 +1920,48 @@
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <ViewCriteria
+    Name="QueryActiveMembers"
+    ViewObjectName="com.linCu.model.view.LincuMemberVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="LincuMemberVOCriteria1_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="LincuMemberVOCriteria1_LincuMemberVOCriteria1_row_0_Active"
+        ViewAttribute="Active"
+        Operator="="
+        Conjunction="AND"
+        Value="Y"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="LincuMemberVOCriteria1_LincuMemberVOCriteria1_row_0_Active1"
+        ViewAttribute="Active1"
+        Operator="="
+        Conjunction="AND"
+        Value="Y"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ClientInterface
     Name="__clientInterface">
     <Method
@@ -1931,6 +1995,16 @@
         Type="java.lang.Boolean"/>
     </Method>
   </ClientInterface>
+  <ClientRowInterface
+    Name="__rowClientInterface">
+    <Method
+      Name="closeMember"
+      MethodName="closeMember">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientRowInterface>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.linCu.model.LinCuModelBundle"/>

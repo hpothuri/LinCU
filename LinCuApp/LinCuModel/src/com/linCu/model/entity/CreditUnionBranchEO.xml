@@ -283,6 +283,18 @@
     Type="java.sql.Timestamp"
     ColumnType="DATE"
     TableName="CREDIT_UNION_BRANCH"/>
+  <Attribute
+    Name="Active"
+    Precision="1"
+    ColumnName="ACTIVE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CREDIT_UNION_BRANCH">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="CreditUnionEO"
     Association="com.linCu.model.assoc.CreditUnionToBranchAssoc"

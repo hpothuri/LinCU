@@ -104,5 +104,10 @@
                   InstanceName="data.LinCuAMDataControl.dataProvider"
                   ReturnName="data.LinCuAMDataControl.methodResults.deleteMemeberAllowed_LinCuAMDataControl_dataProvider_deleteMemeberAllowed_result"/>
     <action id="Commit" DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <methodAction IterBinding="LincuMemberIterator" id="closeMember" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="closeMember" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="bindings.LincuMemberIterator.currentRow" IsLocalObjectReference="true"/>
+    <action IterBinding="LincuMemberIterator" id="Execute" InstanceName="LinCuAMDataControl.LincuMember"
+            DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
   </bindings>
 </pageDefinition>

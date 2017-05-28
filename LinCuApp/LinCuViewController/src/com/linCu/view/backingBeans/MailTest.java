@@ -12,8 +12,8 @@ public class MailTest {
 //                    final String username = "dbmstestmail@gmail.com";
 //                    final String password = "dbmstestmail123";
                     
-                    final String username = "contact@sirmaindia.com";
-                    final String password = "Sirma@123";
+                    final String username = "support@lincultd.com";
+                    final String password = "Lincu@321";
                     
                     Properties props = new Properties();
                     props.put("mail.smtp.auth", "true");

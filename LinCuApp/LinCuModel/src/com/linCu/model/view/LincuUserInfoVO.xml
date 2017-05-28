@@ -16,7 +16,9 @@
   RowClass="com.linCu.model.view.LincuUserInfoVORowImpl"
   ComponentClass="com.linCu.model.view.LincuUserInfoVOImpl"
   ComponentInterface="com.linCu.model.view.common.LincuUserInfoVO"
-  ClientProxyName="com.linCu.model.view.client.LincuUserInfoVOClient">
+  ClientProxyName="com.linCu.model.view.client.LincuUserInfoVOClient"
+  RowInterface="com.linCu.model.view.common.LincuUserInfoVORow"
+  ClientRowProxyName="com.linCu.model.view.client.LincuUserInfoVORowClient">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -46,8 +48,11 @@
     ViewObjectName="com.linCu.model.vvo.LincuUnionsVVO"
     RowLevelBinds="true">
     <ViewCriteriaUsage
+      Name="QueryActiveUnions"
+      FullName="com.linCu.model.vvo.LincuUnionsVVO.QueryActiveUnions"/>
+    <ViewCriteriaUsage
       Name="QueryByCreditUnion"
-      FullName="com.linCu.model.vvo.LincuUnionsVVO.QueryByCreditUnion"/>
+      FullName="com.linCu.model.view.LincuUserInfoVO.QueryByCreditUnion"/>
     <ParameterMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
@@ -60,8 +65,11 @@
     ViewObjectName="com.linCu.model.vvo.LincuBranchesVVO"
     RowLevelBinds="true">
     <ViewCriteriaUsage
+      Name="QueryActiveBranches"
+      FullName="com.linCu.model.vvo.LincuBranchesVVO.QueryActiveBranches"/>
+    <ViewCriteriaUsage
       Name="QueryByCreditUnion"
-      FullName="com.linCu.model.vvo.LincuBranchesVVO.QueryByCreditUnion"/>
+      FullName="com.linCu.model.view.LincuUserInfoVO.QueryByCreditUnion"/>
     <ParameterMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
@@ -817,6 +825,13 @@
     Type="java.lang.String"
     ColumnType="$none$"
     SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="Active"
+    PrecisionRule="true"
+    EntityAttrName="Active"
+    EntityUsage="LincuUserInfoEO"
+    AliasName="ACTIVE"
+    DefaultValue="Y"/>
   <ViewCriteria
     Name="QueryUserInfo"
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO"
@@ -949,6 +964,41 @@
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <ViewCriteria
+    Name="QueryActiveUsers"
+    ViewObjectName="com.linCu.model.view.LincuUserInfoVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="LincuUserInfoVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="LincuUserInfoVOCriteria_LincuUserInfoVOCriteria_row_0_Active"
+        ViewAttribute="Active"
+        Operator="="
+        Conjunction="AND"
+        Value="Y"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ClientInterface
     Name="__clientInterface">
     <Method
@@ -989,6 +1039,16 @@
         Type="java.lang.String"/>
     </Method>
   </ClientInterface>
+  <ClientRowInterface
+    Name="__rowClientInterface">
+    <Method
+      Name="closeUser"
+      MethodName="closeUser">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientRowInterface>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.linCu.model.LinCuModelBundle"/>

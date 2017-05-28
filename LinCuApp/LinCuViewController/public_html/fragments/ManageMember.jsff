@@ -16,17 +16,17 @@
     <f:facet name="menus"/>
     <f:facet name="toolbar">
      <af:toolbar id="t1">
-      <af:button text="#{lincuviewcontrollerBundle.CREATE_MEMBER}" id="b1" action="createMember">
+      <af:button text="#{lincuviewcontrollerBundle.CREATE_MEMBER}" id="b1" action="createMember" rendered="#{(sessionScope.user.userRole eq 'MSR')}">
       <af:setPropertyListener from="create" to="#{pageFlowScope.action}" type="action"/>
       </af:button>
-      <af:button text="#{lincuviewcontrollerBundle.EDIT_MEMBER}" id="b2" action="editMember" disabled="#{!bindings.Delete.enabled}">
+      <af:button text="#{lincuviewcontrollerBundle.EDIT_MEMBER}" id="b2" action="editMember" disabled="#{!bindings.Delete.enabled}" rendered="#{(sessionScope.user.userRole eq 'MSR')}">
       <af:setPropertyListener from="edit" to="#{pageFlowScope.action}" type="action"/>
       </af:button>
       <af:button text="#{lincuviewcontrollerBundle.VIEW_MEMBER}" id="b5" action="editMember" disabled="#{!bindings.Delete.enabled}">
       <af:setPropertyListener from="view" to="#{pageFlowScope.action}" type="action"/>
       </af:button>
-      <af:button actionListener="#{member.deleteConfirm}" text="#{lincuviewcontrollerBundle.DELETE_MEMBER}" disabled="#{!bindings.Delete.enabled}"
-                 id="b3"/>
+      <af:button actionListener="#{member.deleteConfirm}" text="#{lincuviewcontrollerBundle.CLOSE_MEMBER}" disabled="#{!bindings.Delete.enabled}"
+                 id="b3" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
      </af:toolbar>
     </f:facet>
     <f:facet name="statusbar"/>
@@ -34,7 +34,8 @@
               emptyText="#{bindings.LincuMember.viewable ? 'No data to display.' : 'Access Denied.'}"
               rowBandingInterval="0" selectedRowKeys="#{bindings.LincuMember.collectionModel.selectedRow}"
               selectionListener="#{bindings.LincuMember.collectionModel.makeCurrent}" rowSelection="single"
-              fetchSize="#{bindings.LincuMember.rangeSize}" id="resId1" partialTriggers="::b3">
+              fetchSize="#{bindings.LincuMember.rangeSize}" id="resId1"
+              binding="#{member.memberTable}">
      <af:column headerText="#{bindings.LincuMember.hints.CreditUnionId.label}" id="resId1c4">
       <af:selectOneChoice value="#{row.bindings.CreditUnionId.inputValue}" label="#{row.bindings.CreditUnionId.label}"
                           required="#{bindings.LincuMember.hints.CreditUnionId.mandatory}"
@@ -138,7 +139,7 @@
      <f:facet name="buttonBar">
       <af:button text="#{lincuviewcontrollerBundle.OK}" id="b4" actionListener="#{member.deleteMember}"/>
      </f:facet>
-     <af:outputText value="#{lincuviewcontrollerBundle.DELETE_SELECTED_MEMBER}" id="ot1"/>
+     <af:outputText value="#{lincuviewcontrollerBundle.CLOSE_SELECTED_MEMBER}" id="ot1"/>
     </af:dialog>
    </af:popup>
   </af:panelGroupLayout>

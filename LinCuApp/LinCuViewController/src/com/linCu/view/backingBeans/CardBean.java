@@ -746,8 +746,11 @@ public class CardBean {
 
     public void deleteCard(ActionEvent actionEvent) {
         try {
-            ADFUtils.executeOperationBinding("Delete"); 
+            //ADFUtils.executeOperationBinding("Delete"); 
+            ADFUtils.executeOperationBinding("closeCard");
             ADFUtils.executeOperationBinding("Commit"); 
+            ADFUtils.executeOperationBinding("Execute"); 
+            AdfFacesContext.getCurrentInstance().addPartialTarget(this.getCardTable());
         } catch (Exception ex) {
             ex.printStackTrace();
         }

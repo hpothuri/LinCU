@@ -11,7 +11,7 @@
                 queryOperationListener="#{bindings.LincuMemberCardVOCriteriaQuery.processQueryOperation}"
                 resultComponentId="::pc1" maxColumns="2" rows="2" saveQueryMode="hidden"/>
     </af:panelHeader>
-    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+    <af:panelCollection id="pc1" styleClass="AFStretchWidth" partialTriggers="::b2">
       <f:facet name="menus"/>
       <f:facet name="toolbar">
         <af:toolbar id="t1">
@@ -20,7 +20,7 @@
             <af:commandToolbarButton text="#{sessionScope.user.userRole eq 'MSR' ? lincuviewcontrollerBundle.EDIT_CARD_REQUEST : lincuviewcontrollerBundle.VIEW_CARD_REQUEST}" 
             id="ctb2" icon="/images/card.png" action="edit" disabled="#{!bindings.Delete.enabled}"/>
           <af:commandToolbarButton actionListener="#{card.confirmDeleteAction}" icon="/images/card.png"
-                                   text="#{lincuviewcontrollerBundle.DELETE_CARD}" disabled="#{(!bindings.Delete.enabled)||(bindings.CardStatus1 eq 'SUBMITTED')||(bindings.CardStatus1 eq 'AUTHORIZED')||(bindings.CardStatus1 eq 'LINCU_AUTHORIZED')||(bindings.CardStatus1 eq 'FCB_AUTHORIZED')}" id="b1" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
+                                   text="#{lincuviewcontrollerBundle.CLOSE_CARD}" disabled="#{(!bindings.Delete.enabled)||(bindings.CardStatus1 eq 'SUBMITTED')||(bindings.CardStatus1 eq 'AUTHORIZED')||(bindings.CardStatus1 eq 'LINCU_AUTHORIZED')||(bindings.CardStatus1 eq 'FCB_AUTHORIZED')}" id="b1" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
           <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT}" id="ctb3" icon="/images/Excel-16.gif"
                                    rendered="#{(sessionScope.user.userRole eq 'FCB')}" disabled="#{!bindings.Delete.enabled}">
               <af:fileDownloadActionListener contentType="application/vnd.ms-excel" filename="ExportCardDetails.xls"
@@ -44,7 +44,7 @@
                 fetchSize="#{bindings.LincuMemberCard.rangeSize}"
                 filterModel="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor}" filterVisible="true"
                 queryListener="#{bindings.LincuMemberCardVOCriteriaQuery.processQuery}" varStatus="vs" id="resId1"
-                binding="#{card.cardTable}" autoHeightRows="0" partialTriggers="::ctb21 ::b1">
+                binding="#{card.cardTable}" autoHeightRows="11" partialTriggers="::ctb21 :::b2">
         <af:column align="center" headerText="#{bindings.LincuMemberCard.hints.RowSelection.label}" id="c2"
                    filterable="true" rendered="#{(sessionScope.user.userRole eq 'FCB')}">
           <af:selectBooleanCheckbox id="sbc1" shortDesc="#{bindings.LincuMemberCard.hints.RowSelection.tooltip}" autoSubmit="true"
@@ -159,7 +159,7 @@
         <f:facet name="buttonBar">
           <af:button text="#{lincuviewcontrollerBundle.OK}" id="b2" actionListener="#{card.deleteCard}"/>
         </f:facet>
-        <af:outputText value="#{lincuviewcontrollerBundle.DO_YOU_WANT_TO_DELETE_SELECTED_CARD_}" id="ot7"/>
+        <af:outputText value="#{lincuviewcontrollerBundle.CLOSE__SELECTED_CARD}" id="ot7"/>
       </af:dialog>
     </af:popup>
   </af:panelGroupLayout>

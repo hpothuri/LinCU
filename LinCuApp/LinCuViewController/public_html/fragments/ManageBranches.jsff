@@ -14,18 +14,20 @@
       <f:facet name="menus"/>
       <f:facet name="toolbar">
         <af:toolbar id="t1">
-          <af:button text="#{lincuviewcontrollerBundle.CREATE_CREDIT_UNION_BRANCHES}" id="b1"
+          <af:button text="#{lincuviewcontrollerBundle.CREATE_CREDIT_UNION_BRANCHES}" id="b1" disabled="#{!bindings.Delete.enabled}"
                      actionListener="#{creditUnionBranches.createCreditUnionBranch}" partialSubmit="false">
             <af:setPropertyListener from="create" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
           <af:button text="#{lincuviewcontrollerBundle.EDIT_CREDIT_UNION_BRANCH}" id="b2"
-                     actionListener="#{creditUnionBranches.editCreditUnionBranch}">
+                     actionListener="#{creditUnionBranches.editCreditUnionBranch}" disabled="#{!bindings.Delete.enabled}">
             <af:setPropertyListener from="edit" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
           <af:button text="#{lincuviewcontrollerBundle.VIEW_CREDIT_UNION_BRANCH}" id="b5"
-                     actionListener="#{creditUnionBranches.editCreditUnionBranch}">
+                     actionListener="#{creditUnionBranches.editCreditUnionBranch}" disabled="#{!bindings.Delete.enabled}">
             <af:setPropertyListener from="view" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
+          <af:button actionListener="#{creditUnionBranches.confirmDeleteBranch}" text="#{lincuviewcontrollerBundle.CLOSE_BRANCH}" 
+          disabled="#{!bindings.Delete.enabled}" id="b7"/>
           <af:button text="#{lincuviewcontrollerBundle.MANAGE_CREDIT_UNION}" id="b6" action="back"/>
         </af:toolbar>
       </f:facet>
@@ -35,7 +37,8 @@
                 emptyText="#{bindings.CreditUnionBranch.viewable ? 'No data to display.' : 'Access Denied.'}"
                 rowBandingInterval="0" selectedRowKeys="#{bindings.CreditUnionBranch.collectionModel.selectedRow}"
                 selectionListener="#{bindings.CreditUnionBranch.collectionModel.makeCurrent}" rowSelection="single"
-                fetchSize="#{bindings.CreditUnionBranch.rangeSize}" id="resId1" partialTriggers=":::b4">
+                fetchSize="#{bindings.CreditUnionBranch.rangeSize}" id="resId1" partialTriggers=":::b4"
+                binding="#{creditUnionBranches.branchTable}">
         <af:column headerText="#{bindings.CreditUnionBranch.hints.CreditUnionBranchCode.label}" id="resId1c1">
           <af:outputText value="#{row.CreditUnionBranchCode}"
                          shortDesc="#{bindings.CreditUnionBranch.hints.CreditUnionBranchCode.tooltip}" id="ot1"/>
@@ -250,6 +253,16 @@
             <f:validator binding="#{bindings.CreditUnionEmailId.validator}"/>
           </af:inputText>
         </af:panelFormLayout>
+      </af:dialog>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+              binding="#{creditUnionBranches.confirmDeleteBranchPopup}">
+      <af:dialog id="d2" closeIconVisible="false" title="#{lincuviewcontrollerBundle.CONFIRM_DELETE}" type="cancel">
+        <f:facet name="buttonBar">
+          <af:button text="#{lincuviewcontrollerBundle.OK}" id="b8"
+                     actionListener="#{creditUnionBranches.deleteBranch}"/>
+        </f:facet>
+        <af:outputText value="#{lincuviewcontrollerBundle.CLOSE_SELECTED_BRANCH}" id="ot16"/>
       </af:dialog>
     </af:popup>
   </af:panelGroupLayout>

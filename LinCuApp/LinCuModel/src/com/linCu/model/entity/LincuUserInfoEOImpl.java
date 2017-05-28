@@ -64,6 +64,7 @@ public class LincuUserInfoEOImpl extends EntityImpl {
         SecurityQustnAns3,
         SecurityQustn4,
         SecurityQustnAns4,
+        Active,
         CreditUnionBranchEO;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
@@ -121,6 +122,7 @@ public class LincuUserInfoEOImpl extends EntityImpl {
     public static final int SECURITYQUSTNANS3 = AttributesEnum.SecurityQustnAns3.index();
     public static final int SECURITYQUSTN4 = AttributesEnum.SecurityQustn4.index();
     public static final int SECURITYQUSTNANS4 = AttributesEnum.SecurityQustnAns4.index();
+    public static final int ACTIVE = AttributesEnum.Active.index();
     public static final int CREDITUNIONBRANCHEO = AttributesEnum.CreditUnionBranchEO.index();
 
     /**
@@ -647,6 +649,22 @@ public class LincuUserInfoEOImpl extends EntityImpl {
      */
     public void setSecurityQustnAns4(String value) {
         setAttributeInternal(SECURITYQUSTNANS4, value);
+    }
+
+    /**
+     * Gets the attribute value for Active, using the alias name Active.
+     * @return the value of Active
+     */
+    public String getActive() {
+        return (String) getAttributeInternal(ACTIVE);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Active.
+     * @param value value to set the Active
+     */
+    public void setActive(String value) {
+        setAttributeInternal(ACTIVE, value);
     }
 
     /**

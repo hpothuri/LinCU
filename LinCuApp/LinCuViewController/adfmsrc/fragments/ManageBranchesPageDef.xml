@@ -114,5 +114,14 @@
     <methodAction id="retainCurrentRow" RequiresUpdateModel="true" Action="invokeMethod" MethodName="retainCurrentRow"
                   IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
                   InstanceName="data.LinCuAMDataControl.dataProvider"/>
+    <action IterBinding="CreditUnionBranchIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <methodAction id="deleteBranchesAllowed" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="deleteBranchesAllowed" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.deleteBranchesAllowed_LinCuAMDataControl_dataProvider_deleteBranchesAllowed_result"/>
+    <methodAction IterBinding="CreditUnionBranchIterator" id="closeBranch" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="closeBranch" IsViewObjectMethod="false"
+                  DataControl="LinCuAMDataControl" InstanceName="bindings.CreditUnionBranchIterator.currentRow"
+                  IsLocalObjectReference="true"/>
   </bindings>
 </pageDefinition>

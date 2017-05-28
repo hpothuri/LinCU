@@ -2,6 +2,8 @@ package com.linCu.model.view;
 
 import com.linCu.model.entity.LincuMemberCardEOImpl;
 
+import com.linCu.model.view.common.LincuMemberCardVORow;
+
 import java.math.BigDecimal;
 
 import java.sql.Timestamp;
@@ -16,7 +18,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class LincuMemberCardVORowImpl extends ViewRowImpl {
+public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMemberCardVORow {
     public static final int ENTITY_LINCUMEMBERCARDEO = 0;
     public static final int ENTITY_LINCUMEMBERINFOEO = 1;
     public static final int ENTITY_LINCUMEMBERKYCEO = 2;
@@ -138,6 +140,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
         TopupAmount,
         CardReqType1,
         SwitchRefCard,
+        Active,
         LincuMemberCardDocsVO,
         LincuMemberCardAuditVO,
         LincuMemberCardDocsVO1,
@@ -295,6 +298,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     public static final int TOPUPAMOUNT = AttributesEnum.TopupAmount.index();
     public static final int CARDREQTYPE1 = AttributesEnum.CardReqType1.index();
     public static final int SWITCHREFCARD = AttributesEnum.SwitchRefCard.index();
+    public static final int ACTIVE = AttributesEnum.Active.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int LINCUMEMBERCARDAUDITVO = AttributesEnum.LincuMemberCardAuditVO.index();
     public static final int LINCUMEMBERCARDDOCSVO1 = AttributesEnum.LincuMemberCardDocsVO1.index();
@@ -2163,6 +2167,22 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for ACTIVE using the alias name Active.
+     * @return the ACTIVE
+     */
+    public String getActive() {
+        return (String) getAttributeInternal(ACTIVE);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ACTIVE using the alias name Active.
+     * @param value value to set the ACTIVE
+     */
+    public void setActive(String value) {
+        setAttributeInternal(ACTIVE, value);
+    }
+
+    /**
      * Gets the associated <code>RowIterator</code> using master-detail link LincuMemberCardDocsVO.
      */
     public RowIterator getLincuMemberCardDocsVO() {
@@ -2295,6 +2315,10 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl {
      */
     public RowSet getMemberPrefixVA() {
         return (RowSet) getAttributeInternal(MEMBERPREFIXVA);
+    }
+    
+    public void closeCard(){
+        this.setActive("N");
     }
 }
 

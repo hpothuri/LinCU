@@ -50,5 +50,7 @@ public interface LinCuAM extends ApplicationModule {
     void deleteDocumentRecords();
 
     Integer findApplicationPerCardType(String cardType, String memberId);
+
+    Boolean deleteBranchesAllowed();
 }
 

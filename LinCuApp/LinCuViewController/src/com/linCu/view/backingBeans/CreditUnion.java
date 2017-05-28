@@ -7,10 +7,15 @@ import com.linCu.view.utils.JSFUtils;
 import javax.faces.event.ActionEvent;
 
 import oracle.adf.view.rich.component.rich.RichPopup;
+import oracle.adf.view.rich.component.rich.data.RichTable;
+import oracle.adf.view.rich.component.rich.nav.RichButton;
+import oracle.adf.view.rich.context.AdfFacesContext;
 
 public class CreditUnion {
     private RichPopup createCreditUnionPopup;
     private RichPopup deleteCreditUnionConfirmPopup;
+    private RichTable creditUnionTable;
+    private RichPopup deleteBranchConfirm;
 
     public CreditUnion() {
         super();
@@ -48,6 +53,7 @@ public class CreditUnion {
         try {
             ADFUtils.executeOperationBinding("updateCreditUnion"); 
             ADFUtils.executeOperationBinding("Commit"); 
+            ADFUtils.executeOperationBinding("Execute"); 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -87,11 +93,30 @@ public class CreditUnion {
 
     public void deleteCreditUnion(ActionEvent actionEvent) {
         try {
-            ADFUtils.executeOperationBinding("Delete"); 
+            //ADFUtils.executeOperationBinding("Delete"); 
+            ADFUtils.executeOperationBinding("closeCreditUnion");
             ADFUtils.executeOperationBinding("Commit"); 
+            ADFUtils.executeOperationBinding("Execute"); 
+            AdfFacesContext.getCurrentInstance().addPartialTarget(this.getCreditUnionTable());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         this.getDeleteCreditUnionConfirmPopup().hide();
+    }
+
+    public void setCreditUnionTable(RichTable creditUnionTable) {
+        this.creditUnionTable = creditUnionTable;
+    }
+
+    public RichTable getCreditUnionTable() {
+        return creditUnionTable;
+    }
+
+    public void setDeleteBranchConfirm(RichPopup deleteBranchConfirm) {
+        this.deleteBranchConfirm = deleteBranchConfirm;
+    }
+
+    public RichPopup getDeleteBranchConfirm() {
+        return deleteBranchConfirm;
     }
 }

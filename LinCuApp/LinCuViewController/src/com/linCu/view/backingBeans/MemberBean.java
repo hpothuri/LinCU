@@ -14,9 +14,12 @@ import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 
 import oracle.adf.view.rich.component.rich.RichPopup;
+import oracle.adf.view.rich.component.rich.data.RichTable;
+import oracle.adf.view.rich.context.AdfFacesContext;
 
 public class MemberBean {
     private RichPopup confirmDeletePopup;
+    private RichTable memberTable;
 
     public MemberBean() {
         super();
@@ -55,8 +58,10 @@ public class MemberBean {
 
     public void deleteMember(ActionEvent actionEvent) {
         try {
-            ADFUtils.executeOperationBinding("Delete"); 
+            ADFUtils.executeOperationBinding("closeMember"); 
             ADFUtils.executeOperationBinding("Commit"); 
+            ADFUtils.executeOperationBinding("Execute"); 
+            AdfFacesContext.getCurrentInstance().addPartialTarget(this.getMemberTable());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -67,5 +72,13 @@ public class MemberBean {
         Map paramMap = new HashMap();
         paramMap.put("copy", valueChangeEvent.getNewValue());
         ADFUtils.executeOperationBinding("copyPermanantAddress",paramMap);
+    }
+
+    public void setMemberTable(RichTable memberTable) {
+        this.memberTable = memberTable;
+    }
+
+    public RichTable getMemberTable() {
+        return memberTable;
     }
 }

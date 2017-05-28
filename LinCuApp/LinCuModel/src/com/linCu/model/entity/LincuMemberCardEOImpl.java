@@ -50,6 +50,7 @@ public class LincuMemberCardEOImpl extends EntityImpl {
         SupComments,
         RefCardId,
         TopupAmount,
+        Active,
         LincuMemberInfoEO,
         LincuMemberKycEO,
         LincuMemberCardDocsEO,
@@ -96,6 +97,7 @@ public class LincuMemberCardEOImpl extends EntityImpl {
     public static final int SUPCOMMENTS = AttributesEnum.SupComments.index();
     public static final int REFCARDID = AttributesEnum.RefCardId.index();
     public static final int TOPUPAMOUNT = AttributesEnum.TopupAmount.index();
+    public static final int ACTIVE = AttributesEnum.Active.index();
     public static final int LINCUMEMBERINFOEO = AttributesEnum.LincuMemberInfoEO.index();
     public static final int LINCUMEMBERKYCEO = AttributesEnum.LincuMemberKycEO.index();
     public static final int LINCUMEMBERCARDDOCSEO = AttributesEnum.LincuMemberCardDocsEO.index();
@@ -403,6 +405,22 @@ public class LincuMemberCardEOImpl extends EntityImpl {
      */
     public void setTopupAmount(BigDecimal value) {
         setAttributeInternal(TOPUPAMOUNT, value);
+    }
+
+    /**
+     * Gets the attribute value for Active, using the alias name Active.
+     * @return the value of Active
+     */
+    public String getActive() {
+        return (String) getAttributeInternal(ACTIVE);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Active.
+     * @param value value to set the Active
+     */
+    public void setActive(String value) {
+        setAttributeInternal(ACTIVE, value);
     }
 
     /**

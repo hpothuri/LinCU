@@ -1,5 +1,7 @@
 package com.linCu.model.view;
 
+import com.linCu.model.entity.LincuUserInfoEOImpl;
+
 import java.sql.Timestamp;
 
 import oracle.jbo.RowSet;
@@ -11,7 +13,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class LincuUserInfoVORowImpl extends ViewRowImpl {
+public class LincuUserInfoVORowImpl extends ViewRowImpl implements com.linCu.model.view.common.LincuUserInfoVORow {
 
 
     public static final int ENTITY_LINCUUSERINFOEO = 0;
@@ -53,6 +55,7 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
         SecurityQustnAns3,
         SecurityQustnAns4,
         SwitchRoles,
+        Active,
         GenderVA,
         LinCuRolesVA,
         LincuUnionsVA,
@@ -119,6 +122,7 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
     public static final int SECURITYQUSTNANS3 = AttributesEnum.SecurityQustnAns3.index();
     public static final int SECURITYQUSTNANS4 = AttributesEnum.SecurityQustnAns4.index();
     public static final int SWITCHROLES = AttributesEnum.SwitchRoles.index();
+    public static final int ACTIVE = AttributesEnum.Active.index();
     public static final int GENDERVA = AttributesEnum.GenderVA.index();
     public static final int LINCUROLESVA = AttributesEnum.LinCuRolesVA.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
@@ -138,8 +142,8 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
      * Gets LincuUserInfoEO entity object.
      * @return the LincuUserInfoEO
      */
-    public EntityImpl getLincuUserInfoEO() {
-        return (EntityImpl) getEntity(ENTITY_LINCUUSERINFOEO);
+    public LincuUserInfoEOImpl getLincuUserInfoEO() {
+        return (LincuUserInfoEOImpl) getEntity(ENTITY_LINCUUSERINFOEO);
     }
 
     /**
@@ -695,6 +699,22 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for ACTIVE using the alias name Active.
+     * @return the ACTIVE
+     */
+    public String getActive() {
+        return (String) getAttributeInternal(ACTIVE);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ACTIVE using the alias name Active.
+     * @param value value to set the ACTIVE
+     */
+    public void setActive(String value) {
+        setAttributeInternal(ACTIVE, value);
+    }
+
+    /**
      * Gets the view accessor <code>RowSet</code> GenderVA.
      */
     public RowSet getGenderVA() {
@@ -748,6 +768,10 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl {
      */
     public RowSet getFCBRolesVA() {
         return (RowSet) getAttributeInternal(FCBROLESVA);
+    }
+    
+    public void closeUser(){
+        this.setActive("N");
     }
 }
 

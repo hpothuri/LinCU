@@ -3,6 +3,7 @@ package com.linCu.model.am;
 import com.linCu.model.am.common.LinCuAM;
 import com.linCu.model.constants.LookupValuesForExcel;
 import com.linCu.model.view.CreditUnionBranchVOImpl;
+import com.linCu.model.view.CreditUnionBranchVORowImpl;
 import com.linCu.model.view.CreditUnionVOImpl;
 import com.linCu.model.view.LincuMemberCardAuditVOImpl;
 import com.linCu.model.view.LincuMemberCardAuditVORowImpl;
@@ -1100,6 +1101,23 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         Row[] cardRows = cardVO.getFilteredRows("MemberId", memberRow.getMemberId());
         if(cardRows != null && cardRows.length > 0){
             return false;
+        }else{
+            return true;
+        }
+    }
+    
+    public Boolean deleteBranchesAllowed(){
+         CreditUnionBranchVOImpl branchVO = this.getCreditUnionBranch();
+        CreditUnionBranchVORowImpl branchRow = (CreditUnionBranchVORowImpl)branchVO.getCurrentRow();
+        LincuMemberVOImpl memberVO = this.getLincuMember();
+        LincuUserInfoVOImpl userVO = this.getLincuUserInfo();
+        
+        Row[] memberRows = memberVO.getFilteredRows("CreditUnionBranchId", branchRow.getCreditUnionBranchId());
+        Row[] userRows = userVO.getFilteredRows("CreditUnionBranchId", branchRow.getCreditUnionBranchId());
+        if(memberRows != null && memberRows.length > 0){
+            return false;
+        }else if(userRows != null && userRows.length > 0){
+           return false; 
         }else{
             return true;
         }

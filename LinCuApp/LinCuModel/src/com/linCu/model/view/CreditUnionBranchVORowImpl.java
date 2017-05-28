@@ -1,5 +1,7 @@
 package com.linCu.model.view;
 
+import com.linCu.model.view.common.CreditUnionBranchVORow;
+
 import java.sql.Timestamp;
 
 import oracle.jbo.RowIterator;
@@ -12,7 +14,8 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class CreditUnionBranchVORowImpl extends ViewRowImpl {
+public class CreditUnionBranchVORowImpl extends ViewRowImpl implements CreditUnionBranchVORow {
+
 
     public static final int ENTITY_CREDITUNIONBRANCHEO = 0;
 
@@ -40,6 +43,7 @@ public class CreditUnionBranchVORowImpl extends ViewRowImpl {
         ObjectVersionId,
         LastApprovedBy,
         LastApprovedDate,
+        Active,
         LincuUserInfoVO,
         CountryVA;
         static AttributesEnum[] vals = null;
@@ -66,6 +70,7 @@ public class CreditUnionBranchVORowImpl extends ViewRowImpl {
         }
     }
 
+
     public static final int CREDITUNIONID = AttributesEnum.CreditUnionId.index();
     public static final int CREDITUNIONBRANCHID = AttributesEnum.CreditUnionBranchId.index();
     public static final int CREDITUNIONBRANCHCODE = AttributesEnum.CreditUnionBranchCode.index();
@@ -86,6 +91,7 @@ public class CreditUnionBranchVORowImpl extends ViewRowImpl {
     public static final int OBJECTVERSIONID = AttributesEnum.ObjectVersionId.index();
     public static final int LASTAPPROVEDBY = AttributesEnum.LastApprovedBy.index();
     public static final int LASTAPPROVEDDATE = AttributesEnum.LastApprovedDate.index();
+    public static final int ACTIVE = AttributesEnum.Active.index();
     public static final int LINCUUSERINFOVO = AttributesEnum.LincuUserInfoVO.index();
     public static final int COUNTRYVA = AttributesEnum.CountryVA.index();
 
@@ -424,6 +430,22 @@ public class CreditUnionBranchVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for ACTIVE using the alias name Active.
+     * @return the ACTIVE
+     */
+    public String getActive() {
+        return (String) getAttributeInternal(ACTIVE);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ACTIVE using the alias name Active.
+     * @param value value to set the ACTIVE
+     */
+    public void setActive(String value) {
+        setAttributeInternal(ACTIVE, value);
+    }
+
+    /**
      * Gets the associated <code>RowIterator</code> using master-detail link LincuUserInfoVO.
      */
     public RowIterator getLincuUserInfoVO() {
@@ -435,6 +457,9 @@ public class CreditUnionBranchVORowImpl extends ViewRowImpl {
      */
     public RowSet getCountryVA() {
         return (RowSet) getAttributeInternal(COUNTRYVA);
+    }
+    public void closeBranch(){
+        this.setActive("N");
     }
 }
 

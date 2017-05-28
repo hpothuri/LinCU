@@ -1,5 +1,7 @@
 package com.linCu.model.view;
 
+import com.linCu.model.view.common.CreditUnionVORow;
+
 import java.sql.Timestamp;
 
 import oracle.jbo.RowIterator;
@@ -12,7 +14,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class CreditUnionVORowImpl extends ViewRowImpl {
+public class CreditUnionVORowImpl extends ViewRowImpl implements CreditUnionVORow {
 
 
     public static final int ENTITY_CREDITUNIONEO = 0;
@@ -41,6 +43,7 @@ public class CreditUnionVORowImpl extends ViewRowImpl {
         ObjectVersionId,
         LastApprovedBy,
         LastApprovedDate,
+        Active,
         CreditUnionBranchVO,
         CountryVA;
         static AttributesEnum[] vals = null;
@@ -88,6 +91,7 @@ public class CreditUnionVORowImpl extends ViewRowImpl {
     public static final int OBJECTVERSIONID = AttributesEnum.ObjectVersionId.index();
     public static final int LASTAPPROVEDBY = AttributesEnum.LastApprovedBy.index();
     public static final int LASTAPPROVEDDATE = AttributesEnum.LastApprovedDate.index();
+    public static final int ACTIVE = AttributesEnum.Active.index();
     public static final int CREDITUNIONBRANCHVO = AttributesEnum.CreditUnionBranchVO.index();
     public static final int COUNTRYVA = AttributesEnum.CountryVA.index();
 
@@ -426,6 +430,22 @@ public class CreditUnionVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for ACTIVE using the alias name Active.
+     * @return the ACTIVE
+     */
+    public String getActive() {
+        return (String) getAttributeInternal(ACTIVE);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ACTIVE using the alias name Active.
+     * @param value value to set the ACTIVE
+     */
+    public void setActive(String value) {
+        setAttributeInternal(ACTIVE, value);
+    }
+
+    /**
      * Gets the associated <code>RowIterator</code> using master-detail link CreditUnionBranchVO.
      */
     public RowIterator getCreditUnionBranchVO() {
@@ -439,6 +459,8 @@ public class CreditUnionVORowImpl extends ViewRowImpl {
         return (RowSet) getAttributeInternal(COUNTRYVA);
     }
 
-
+    public void closeCreditUnion(){
+        this.setActive("N");
+    }
 }
 

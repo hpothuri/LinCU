@@ -14,10 +14,17 @@
   </DesignTime>
   <ViewUsage
     Name="CreditUnion"
-    ViewObjectName="com.linCu.model.view.CreditUnionVO"/>
+    ViewObjectName="com.linCu.model.view.CreditUnionVO">
+    <ViewCriteriaUsage
+      Name="QueryActiveCreditUnion"
+      FullName="com.linCu.model.view.CreditUnionVO.QueryActiveCreditUnion"/>
+  </ViewUsage>
   <ViewUsage
     Name="LincuUserInfo"
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO">
+    <ViewCriteriaUsage
+      Name="QueryActiveUsers"
+      FullName="com.linCu.model.view.LincuUserInfoVO.QueryActiveUsers"/>
     <ViewCriteriaUsage
       Name="QueryByCreditUnion"
       FullName="com.linCu.model.view.LincuUserInfoVO.QueryByCreditUnion"/>
@@ -34,7 +41,11 @@
   </ViewUsage>
   <ViewUsage
     Name="CreditUnionBranch"
-    ViewObjectName="com.linCu.model.view.CreditUnionBranchVO"/>
+    ViewObjectName="com.linCu.model.view.CreditUnionBranchVO">
+    <ViewCriteriaUsage
+      Name="QueryActiveUnion"
+      FullName="com.linCu.model.view.CreditUnionBranchVO.QueryActiveUnion"/>
+  </ViewUsage>
   <ViewUsage
     Name="LoginView"
     ViewObjectName="com.linCu.model.vvo.LoginVVO">
@@ -49,6 +60,9 @@
     Name="LincuMember"
     ViewObjectName="com.linCu.model.view.LincuMemberVO">
     <ViewCriteriaUsage
+      Name="QueryActiveMembers"
+      FullName="com.linCu.model.view.LincuMemberVO.QueryActiveMembers"/>
+    <ViewCriteriaUsage
       Name="QueryByCreditUnion"
       FullName="com.linCu.model.view.LincuMemberVO.QueryByCreditUnion"/>
     <ParameterMap>
@@ -61,6 +75,9 @@
   <ViewUsage
     Name="LincuMemberCard"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO">
+    <ViewCriteriaUsage
+      Name="QueryActiveCards"
+      FullName="com.linCu.model.view.LincuMemberCardVO.QueryActiveCards"/>
     <ViewCriteriaUsage
       Name="QueryByCardStatus"
       FullName="com.linCu.model.view.LincuMemberCardVO.QueryByCardStatus"/>
@@ -369,6 +386,13 @@
       <Parameter
         Name="memberId"
         Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="deleteBranchesAllowed"
+      MethodName="deleteBranchesAllowed">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.Boolean"/>
     </Method>
   </ClientInterface>
 </AppModule>

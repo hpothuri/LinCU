@@ -17,6 +17,7 @@ import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 
 import oracle.adf.view.rich.component.rich.RichPopup;
+import oracle.adf.view.rich.component.rich.data.RichTable;
 import oracle.adf.view.rich.component.rich.input.RichSelectOneChoice;
 import oracle.adf.view.rich.context.AdfFacesContext;
 
@@ -25,6 +26,7 @@ public class UserInfo {
     private Boolean showbranch = true;
     private RichSelectOneChoice creditUniionBranch;
     private RichPopup deleteUserPopup;
+    private RichTable userInfoTable;
 
     public UserInfo() {
         super();
@@ -77,6 +79,7 @@ public class UserInfo {
             }
             ADFUtils.executeOperationBinding("updateUser"); 
             ADFUtils.executeOperationBinding("Commit"); 
+            ADFUtils.executeOperationBinding("Execute");
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -140,8 +143,11 @@ public class UserInfo {
 
     public void deleteUser(ActionEvent actionEvent) {
         try {
-            ADFUtils.executeOperationBinding("Delete"); 
+            ADFUtils.executeOperationBinding("closeUser"); 
+            //ADFUtils.executeOperationBinding("Delete"); 
             ADFUtils.executeOperationBinding("Commit"); 
+            ADFUtils.executeOperationBinding("Execute");
+            AdfFacesContext.getCurrentInstance().addPartialTarget(this.getUserInfoTable());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -149,7 +155,14 @@ public class UserInfo {
     }
 
     public void changeUserTypeCode(ValueChangeEvent valueChangeEvent) {
-        System.out.println("---------------newValue--------"+valueChangeEvent.getNewValue());
         valueChangeEvent.getComponent().processUpdates(FacesContext.getCurrentInstance());
+    }
+
+    public void setUserInfoTable(RichTable userInfoTable) {
+        this.userInfoTable = userInfoTable;
+    }
+
+    public RichTable getUserInfoTable() {
+        return userInfoTable;
     }
 }
