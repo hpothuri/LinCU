@@ -65,10 +65,18 @@
     <ViewCriteriaUsage
       Name="QueryByCreditUnion"
       FullName="com.linCu.model.view.LincuMemberVO.QueryByCreditUnion"/>
+    <ViewCriteriaUsage
+      Name="QueryByStatus"
+      FullName="com.linCu.model.view.LincuMemberVO.QueryByStatus"/>
     <ParameterMap>
       <PIMap Variable="bindCreditUnionId">
         <TransientExpression
           Name="ExpressionScript"><![CDATA[ adf.context.current.sessionScope.get('creditUnionId')]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'SUP') ? 'SUBMIT' :  null]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewUsage>

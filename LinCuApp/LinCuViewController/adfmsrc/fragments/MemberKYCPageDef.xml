@@ -95,6 +95,7 @@
           <Item Value="LastUpdatedBy"/>
           <Item Value="LastUpdateDate"/>
           <Item Value="ObjectVersionId"/>
+          <Item Value="Status"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

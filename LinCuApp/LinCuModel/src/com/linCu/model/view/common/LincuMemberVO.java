@@ -11,5 +11,7 @@ public interface LincuMemberVO extends ViewObject {
     void updateMember(String user);
 
     void copyPermanantAddress(Boolean copy);
+
+    void updateMemberAndSubmit(String user);
 }
 

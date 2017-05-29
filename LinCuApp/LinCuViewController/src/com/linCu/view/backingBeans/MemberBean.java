@@ -20,6 +20,7 @@ import oracle.adf.view.rich.context.AdfFacesContext;
 public class MemberBean {
     private RichPopup confirmDeletePopup;
     private RichTable memberTable;
+    private RichPopup memberCancelComments;
 
     public MemberBean() {
         super();
@@ -28,6 +29,15 @@ public class MemberBean {
     public void save(ActionEvent actionEvent) {
         try {
             ADFUtils.executeOperationBinding("updateMember"); 
+            ADFUtils.executeOperationBinding("Commit"); 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void saveAndSubmit(ActionEvent actionEvent) {
+        try {
+            ADFUtils.executeOperationBinding("updateMemberAndSubmit"); 
             ADFUtils.executeOperationBinding("Commit"); 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -80,5 +90,37 @@ public class MemberBean {
 
     public RichTable getMemberTable() {
         return memberTable;
+    }
+
+    public void approve(ActionEvent actionEvent) {
+        try {
+            ADFUtils.executeOperationBinding("approveMember"); 
+            ADFUtils.executeOperationBinding("Commit"); 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void setMemberCancelComments(RichPopup memberCancelComments) {
+        this.memberCancelComments = memberCancelComments;
+    }
+
+    public RichPopup getMemberCancelComments() {
+        return memberCancelComments;
+    }
+
+    public void rejectMember(ActionEvent actionEvent) {
+        RichPopup.PopupHints hints = new RichPopup.PopupHints();
+        this.getMemberCancelComments().show(hints);
+    }
+    
+    public void confirmRejectMember(ActionEvent actionEvent) {
+        try {
+            ADFUtils.executeOperationBinding("rejectMember");
+            ADFUtils.executeOperationBinding("Commit");
+            this.getMemberCancelComments().hide();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

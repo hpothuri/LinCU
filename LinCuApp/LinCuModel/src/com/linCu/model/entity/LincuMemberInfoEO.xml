@@ -330,6 +330,30 @@
       <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="Status"
+    Precision="40"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Comments"
+    Precision="250"
+    ColumnName="COMMENTS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="CreditUnionBranchEO"
     Association="com.linCu.model.assoc.CreditUnionBranchToMemberInfoAssoc"

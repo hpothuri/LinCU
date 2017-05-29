@@ -7,5 +7,9 @@ import oracle.jbo.Row;
 // ---------------------------------------------------------------------
 public interface LincuMemberVORow extends Row {
     void closeMember();
+
+    void approveMember(String user);
+
+    void rejectMember(String user);
 }
 

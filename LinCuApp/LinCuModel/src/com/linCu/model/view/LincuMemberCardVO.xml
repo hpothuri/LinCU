@@ -83,10 +83,18 @@
     <ViewCriteriaUsage
       Name="QueryActiveMembers"
       FullName="com.linCu.model.vvo.MemberVVO.QueryActiveMembers"/>
+    <ViewCriteriaUsage
+      Name="QueryByStatus"
+      FullName="com.linCu.model.vvo.MemberVVO.QueryByStatus"/>
     <ParameterMap>
       <PIMap Variable="bindUnionId">
         <TransientExpression
           Name="ExpressionScript"><![CDATA[CreditUnionId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['APPROVE']]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewAccessor>

@@ -39,12 +39,37 @@ public class LincuMemberVOImpl extends ViewObjectImpl implements LincuMemberVO {
         long time = System.currentTimeMillis();
         java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         if(row != null){
-//            this.executeQuery();
-//            this.setCurrentRow(row);
+
             row.setLastUpdatedBy(user);
             row.setLastUpdateDate(timestamp);
             row.setLastUpdatedBy1(user);
             row.setLastUpdateDate1(timestamp);
+            if(row.getObjectVersionId() != null){
+            row.setObjectVersionId(row.getObjectVersionId()+1);
+            }else{
+            row.setObjectVersionId(new Long(1));   
+            }
+            
+            if(row.getObjectVersionId1() != null){
+            row.setObjectVersionId1(row.getObjectVersionId1()+1);
+            }else{
+            row.setObjectVersionId1(new Long(1));   
+            }
+        }
+    }
+    
+    public void updateMemberAndSubmit(String user){
+        LincuMemberVORowImpl row = (LincuMemberVORowImpl) this.getCurrentRow();
+        long time = System.currentTimeMillis();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+        if(row != null){
+
+            row.setLastUpdatedBy(user);
+            row.setLastUpdateDate(timestamp);
+            row.setLastUpdatedBy1(user);
+            row.setLastUpdateDate1(timestamp);
+            row.setStatus("SUBMIT");
+            row.setStatus1("SUBMIT");
             if(row.getObjectVersionId() != null){
             row.setObjectVersionId(row.getObjectVersionId()+1);
             }else{
@@ -96,6 +121,22 @@ public class LincuMemberVOImpl extends ViewObjectImpl implements LincuMemberVO {
             row.setMailingCountryCode(null);
             row.setMailingZipCode(null);
         }
+    }
+
+    /**
+     * Returns the variable value for bindStatus.
+     * @return variable value for bindStatus
+     */
+    public String getbindStatus() {
+        return (String) ensureVariableManager().getVariableValue("bindStatus");
+    }
+
+    /**
+     * Sets <code>value</code> for variable bindStatus.
+     * @param value value to bind as bindStatus
+     */
+    public void setbindStatus(String value) {
+        ensureVariableManager().setVariableValue("bindStatus", value);
     }
 }
 

@@ -302,5 +302,32 @@
     </methodAction>
     <list IterBinding="LincuMemberIterator" StaticList="false" Uses="LOV_MemberPrefix" id="MemberPrefix"
           DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberIterator" StaticList="false" Uses="LOV_Status" id="Status" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LincuMemberIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberIterator" id="TransMemberStatus">
+      <AttrNames>
+        <Item Value="TransMemberStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="updateMemberAndSubmit" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="updateMemberAndSubmit" IsViewObjectMethod="true" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.LincuMember">
+      <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction IterBinding="LincuMemberIterator" id="approveMember" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="approveMember" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="bindings.LincuMemberIterator.currentRow" IsLocalObjectReference="true">
+      <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction IterBinding="LincuMemberIterator" id="rejectMember" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="rejectMember" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="bindings.LincuMemberIterator.currentRow" IsLocalObjectReference="true">
+      <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

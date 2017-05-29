@@ -27,6 +27,8 @@
       </af:button>
       <af:button actionListener="#{member.deleteConfirm}" text="#{lincuviewcontrollerBundle.CLOSE_MEMBER}" disabled="#{!bindings.Delete.enabled}"
                  id="b3" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
+      <!--<af:button actionListener="#{member.deleteConfirm}" text="#{lincuviewcontrollerBundle.APPROVE}" disabled="#{!bindings.Delete.enabled}"
+                 id="b6" rendered="#{(sessionScope.user.userRole eq 'SUP')}"/>-->
      </af:toolbar>
     </f:facet>
     <f:facet name="statusbar"/>
@@ -56,6 +58,14 @@
      </af:column>
      <af:column headerText="#{bindings.LincuMember.hints.MemberId.label}" id="resId1c14">
       <af:outputText value="#{row.MemberId}" shortDesc="#{bindings.LincuMember.hints.MemberId.tooltip}" id="ot12"/>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.Status.label}" id="c6">
+      <af:selectOneChoice value="#{row.bindings.Status.inputValue}" label="#{row.bindings.Status.label}"
+                          required="#{bindings.LincuMember.hints.Status.mandatory}"
+                          shortDesc="#{bindings.LincuMember.hints.Status.tooltip}" id="soc3" readOnly="true">
+       <f:selectItems value="#{row.bindings.Status.items}" id="si3"/>
+       <f:validator binding="#{row.bindings.Status.validator}"/>
+      </af:selectOneChoice>
      </af:column>
      <af:column headerText="#{bindings.LincuMember.hints.FirstName.label}" id="resId1c8">
       <af:outputText value="#{row.FirstName}" shortDesc="#{bindings.LincuMember.hints.FirstName.tooltip}" id="ot6"/>

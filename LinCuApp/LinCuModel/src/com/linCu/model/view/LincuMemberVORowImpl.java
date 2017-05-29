@@ -114,6 +114,10 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         WorkPhone,
         Active,
         Active1,
+        Status,
+        Status1,
+        Comments,
+        TransMemberStatus,
         LincuUnionsVA,
         LincuBranchesVA,
         GenderVA,
@@ -125,7 +129,8 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         FCBShareholdingVA,
         EducationVA,
         OccupationVA,
-        PrefixVA;
+        PrefixVA,
+        MemberStatusVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -243,6 +248,10 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public static final int WORKPHONE = AttributesEnum.WorkPhone.index();
     public static final int ACTIVE = AttributesEnum.Active.index();
     public static final int ACTIVE1 = AttributesEnum.Active1.index();
+    public static final int STATUS = AttributesEnum.Status.index();
+    public static final int STATUS1 = AttributesEnum.Status1.index();
+    public static final int COMMENTS = AttributesEnum.Comments.index();
+    public static final int TRANSMEMBERSTATUS = AttributesEnum.TransMemberStatus.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
     public static final int LINCUBRANCHESVA = AttributesEnum.LincuBranchesVA.index();
     public static final int GENDERVA = AttributesEnum.GenderVA.index();
@@ -255,6 +264,7 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public static final int EDUCATIONVA = AttributesEnum.EducationVA.index();
     public static final int OCCUPATIONVA = AttributesEnum.OccupationVA.index();
     public static final int PREFIXVA = AttributesEnum.PrefixVA.index();
+    public static final int MEMBERSTATUSVA = AttributesEnum.MemberStatusVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -1753,6 +1763,63 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     }
 
     /**
+     * Gets the attribute value for STATUS using the alias name Status.
+     * @return the STATUS
+     */
+    public String getStatus() {
+        return (String) getAttributeInternal(STATUS);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for STATUS using the alias name Status.
+     * @param value value to set the STATUS
+     */
+    public void setStatus(String value) {
+        setAttributeInternal(STATUS, value);
+    }
+
+    /**
+     * Gets the attribute value for STATUS using the alias name Status1.
+     * @return the STATUS
+     */
+    public String getStatus1() {
+        return (String) getAttributeInternal(STATUS1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for STATUS using the alias name Status1.
+     * @param value value to set the STATUS
+     */
+    public void setStatus1(String value) {
+        setAttributeInternal(STATUS1, value);
+    }
+
+    /**
+     * Gets the attribute value for COMMENTS using the alias name Comments.
+     * @return the COMMENTS
+     */
+    public String getComments() {
+        return (String) getAttributeInternal(COMMENTS);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for COMMENTS using the alias name Comments.
+     * @param value value to set the COMMENTS
+     */
+    public void setComments(String value) {
+        setAttributeInternal(COMMENTS, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute TransMemberStatus.
+     * @return the TransMemberStatus
+     */
+    public String getTransMemberStatus() {
+        return this.getStatus();
+        //return (String) getAttributeInternal(TRANSMEMBERSTATUS);
+    }
+
+    /**
      * Gets the view accessor <code>RowSet</code> LincuUnionsVA.
      */
     public RowSet getLincuUnionsVA() {
@@ -1835,10 +1902,43 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public RowSet getPrefixVA() {
         return (RowSet) getAttributeInternal(PREFIXVA);
     }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> MemberStatusVA.
+     */
+    public RowSet getMemberStatusVA() {
+        return (RowSet) getAttributeInternal(MEMBERSTATUSVA);
+    }
+
     public void closeMember(){
         this.setActive("N");
         this.setActive1("N");
     }
-
+    
+    public void approveMember(String user){
+        long time = System.currentTimeMillis();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+        this.setStatus("APPROVE");
+        this.setStatus1("APPROVE");
+        this.setLastUpdatedBy(user);
+        this.setLastUpdateDate(timestamp);
+        this.setLastUpdatedBy1(user);
+        this.setLastUpdateDate1(timestamp);
+        this.setObjectVersionId(this.getObjectVersionId()+1);
+        this.setObjectVersionId1(this.getObjectVersionId1()+1);
+    }
+    
+    public void rejectMember(String user){
+        long time = System.currentTimeMillis();
+        java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
+        this.setStatus("REJECT");
+        this.setStatus1("REJECT");
+        this.setLastUpdatedBy(user);
+        this.setLastUpdateDate(timestamp);
+        this.setLastUpdatedBy1(user);
+        this.setLastUpdateDate1(timestamp);
+        this.setObjectVersionId(this.getObjectVersionId()+1);
+        this.setObjectVersionId1(this.getObjectVersionId1()+1);
+    }
 }
 
