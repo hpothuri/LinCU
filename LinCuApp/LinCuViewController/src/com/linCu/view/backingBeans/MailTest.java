@@ -18,7 +18,7 @@ public class MailTest {
                     Properties props = new Properties();
                     props.put("mail.smtp.auth", "true");
                     props.put("mail.smtp.starttls.enable", "true");
-                    props.put("mail.smtp.host", "smtp.gmail.com");
+                    props.put("mail.smtp.host", "mail.lincultd.com");
                     props.put("mail.smtp.port", "587");
             
                     Session session = Session.getInstance(props, new javax.mail.Authenticator() {
@@ -30,7 +30,7 @@ public class MailTest {
                     try {
             
                         Message message = new MimeMessage(session);
-                        message.setFrom(new InternetAddress("dbmstestmail@gmail.com"));
+                        message.setFrom(new InternetAddress("support@lincultd.com"));
                         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("dileeprongaliprojects@gmail.com"));
                         message.setSubject("Testing Subject");
                         message.setText("Dear User," + "\n\n You are added to LinCU system as Admin, You can access system using below credentials.\n\n Login Name: "+username+"\n\n Password: "+password);

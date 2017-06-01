@@ -7,6 +7,7 @@
       <af:button text="#{lincuviewcontrollerBundle.VIEW_COMMENTS}" id="b21">
         <af:showPopupBehavior popupId="p4"/>
       </af:button>
+      <af:spacer width="10" height="10" id="s41"/>
       <af:button text="#{lincuviewcontrollerBundle.AUTHORIZE}" id="b4" actionListener="#{card.openPopup}"
                  rendered="#{(sessionScope.user.userRole eq 'SUP') or(sessionScope.user.userRole eq 'MAN_ADMIN')}"
                  visible="#{(bindings.TransCardStatus eq 'SUBMITTED')}">
@@ -37,6 +38,7 @@
                  visible="#{bindings.TransCardStatus eq 'LINCU_AUTHORIZED'}" actionListener="#{card.openPopup}">
                   <af:setPropertyListener from="FCB_REJECTED" to="#{pageFlowScope.action}" type="action"/>
                  </af:button>
+      <af:spacer width="10" height="10" id="s42"/>
       <af:button actionListener="#{card.save}" text="#{lincuviewcontrollerBundle.SAVE}" id="b1"
                  visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED')}"
                  rendered="#{(sessionScope.user.userRole eq 'MSR')}" partialSubmit="false"/>

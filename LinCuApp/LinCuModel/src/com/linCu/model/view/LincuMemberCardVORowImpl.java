@@ -141,6 +141,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
         CardReqType1,
         SwitchRefCard,
         Active,
+        ApplicationNo,
         LincuMemberCardDocsVO,
         LincuMemberCardAuditVO,
         LincuMemberCardDocsVO1,
@@ -299,6 +300,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     public static final int CARDREQTYPE1 = AttributesEnum.CardReqType1.index();
     public static final int SWITCHREFCARD = AttributesEnum.SwitchRefCard.index();
     public static final int ACTIVE = AttributesEnum.Active.index();
+    public static final int APPLICATIONNO = AttributesEnum.ApplicationNo.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int LINCUMEMBERCARDAUDITVO = AttributesEnum.LincuMemberCardAuditVO.index();
     public static final int LINCUMEMBERCARDDOCSVO1 = AttributesEnum.LincuMemberCardDocsVO1.index();
@@ -2180,6 +2182,22 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
      */
     public void setActive(String value) {
         setAttributeInternal(ACTIVE, value);
+    }
+
+    /**
+     * Gets the attribute value for APPLICATION_NO using the alias name ApplicationNo.
+     * @return the APPLICATION_NO
+     */
+    public String getApplicationNo() {
+        return (String) getAttributeInternal(APPLICATIONNO);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for APPLICATION_NO using the alias name ApplicationNo.
+     * @param value value to set the APPLICATION_NO
+     */
+    public void setApplicationNo(String value) {
+        setAttributeInternal(APPLICATIONNO, value);
     }
 
     /**

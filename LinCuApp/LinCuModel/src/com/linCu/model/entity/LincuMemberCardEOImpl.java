@@ -51,6 +51,7 @@ public class LincuMemberCardEOImpl extends EntityImpl {
         RefCardId,
         TopupAmount,
         Active,
+        ApplicationNo,
         LincuMemberInfoEO,
         LincuMemberKycEO,
         LincuMemberCardDocsEO,
@@ -98,6 +99,7 @@ public class LincuMemberCardEOImpl extends EntityImpl {
     public static final int REFCARDID = AttributesEnum.RefCardId.index();
     public static final int TOPUPAMOUNT = AttributesEnum.TopupAmount.index();
     public static final int ACTIVE = AttributesEnum.Active.index();
+    public static final int APPLICATIONNO = AttributesEnum.ApplicationNo.index();
     public static final int LINCUMEMBERINFOEO = AttributesEnum.LincuMemberInfoEO.index();
     public static final int LINCUMEMBERKYCEO = AttributesEnum.LincuMemberKycEO.index();
     public static final int LINCUMEMBERCARDDOCSEO = AttributesEnum.LincuMemberCardDocsEO.index();
@@ -421,6 +423,22 @@ public class LincuMemberCardEOImpl extends EntityImpl {
      */
     public void setActive(String value) {
         setAttributeInternal(ACTIVE, value);
+    }
+
+    /**
+     * Gets the attribute value for ApplicationNo, using the alias name ApplicationNo.
+     * @return the value of ApplicationNo
+     */
+    public String getApplicationNo() {
+        return (String) getAttributeInternal(APPLICATIONNO);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for ApplicationNo.
+     * @param value value to set the ApplicationNo
+     */
+    public void setApplicationNo(String value) {
+        setAttributeInternal(APPLICATIONNO, value);
     }
 
     /**

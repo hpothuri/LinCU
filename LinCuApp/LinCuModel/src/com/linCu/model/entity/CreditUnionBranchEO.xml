@@ -46,7 +46,7 @@
   <Attribute
     Name="CreditUnionBranchCode"
     IsNotNull="true"
-    Precision="2"
+    Precision="3"
     ColumnName="CREDIT_UNION_BRANCH_CODE"
     SQLType="VARCHAR"
     Type="java.lang.String"

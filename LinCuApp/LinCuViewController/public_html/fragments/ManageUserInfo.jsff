@@ -28,7 +28,13 @@
                      id="b5"/>
         </af:toolbar>
       </f:facet>
-      <f:facet name="statusbar"/>
+      <f:facet name="statusbar">
+      <af:toolbar id="t3" stretchId="s2">
+              <af:spacer width="10" height="10" id="s2" clientComponent="true"/>
+              <af:outputText value="Total Records:#{bindings.LincuUserInfoIterator.estimatedRowCount}" id="ot2"
+                             noWrap="true"/>
+            </af:toolbar>
+      </f:facet>
       <af:table value="#{bindings.LincuUserInfo.collectionModel}" var="row" rows="#{bindings.LincuUserInfo.rangeSize}"
                 emptyText="#{bindings.LincuUserInfo.viewable ? 'No data to display.' : 'Access Denied.'}"
                 rowBandingInterval="0" selectedRowKeys="#{bindings.LincuUserInfo.collectionModel.selectedRow}"
@@ -40,7 +46,7 @@
                          id="ot1"/>
         </af:column>
         <af:column headerText="#{bindings.LincuUserInfo.hints.LastName.label}" id="resId1c2">
-          <af:outputText value="#{row.LastName}" shortDesc="#{bindings.LincuUserInfo.hints.LastName.tooltip}" id="ot2"/>
+          <af:outputText value="#{row.LastName}" shortDesc="#{bindings.LincuUserInfo.hints.LastName.tooltip}" id="ot21"/>
         </af:column>
         <af:column headerText="#{bindings.LincuUserInfo.hints.CreditUnionId.label}" id="resId1c3">
           <af:selectOneChoice value="#{row.bindings.CreditUnionId.inputValue}"

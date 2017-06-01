@@ -1887,6 +1887,12 @@
     EntityUsage="LincuMemberCardEO"
     AliasName="ACTIVE"
     DefaultValue="Y"/>
+  <ViewAttribute
+    Name="ApplicationNo"
+    PrecisionRule="true"
+    EntityAttrName="ApplicationNo"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="APPLICATION_NO"/>
   <ViewCriteria
     Name="LincuMemberCardVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"

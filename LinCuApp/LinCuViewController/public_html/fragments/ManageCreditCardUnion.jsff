@@ -31,7 +31,13 @@
                      id="b6" actionListener="#{creditUnion.confirmdeleteCreditUnion}"/>
         </af:toolbar>
       </f:facet>
-      <f:facet name="statusbar"/>
+      <f:facet name="statusbar">
+      <af:toolbar id="t3" stretchId="s2">
+              <af:spacer width="10" height="10" id="s2" clientComponent="true"/>
+              <af:outputText value="Total Records:#{bindings.CreditUnionIterator.estimatedRowCount}" id="ot21"
+                             noWrap="true"/>
+            </af:toolbar>
+      </f:facet>
       <af:table value="#{bindings.CreditUnion.collectionModel}" var="row" rows="#{bindings.CreditUnion.rangeSize}"
                 emptyText="#{bindings.CreditUnion.viewable ? 'No data to display.' : 'Access Denied.'}"
                 rowBandingInterval="0" selectedRowKeys="#{bindings.CreditUnion.collectionModel.selectedRow}"
@@ -74,10 +80,15 @@
           <af:outputText value="#{row.CreditUnionCity}"
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionCity.tooltip}" id="ot8"/>
         </af:column>
-        <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionCountry.name}" sortable="true"
-                   headerText="#{bindings.CreditUnion.hints.CreditUnionCountry.label}" id="resId1c9">
-          <af:outputText value="#{row.CreditUnionCountry}"
-                         shortDesc="#{bindings.CreditUnion.hints.CreditUnionCountry.tooltip}" id="ot9"/>
+        <af:column headerText="#{bindings.CreditUnion.hints.CreditUnionCountry.label}" id="c7">
+          <af:selectOneChoice value="#{row.bindings.CreditUnionCountry.inputValue}"
+                              label="#{row.bindings.CreditUnionCountry.label}"
+                              required="#{bindings.CreditUnion.hints.CreditUnionCountry.mandatory}"
+                              shortDesc="#{bindings.CreditUnion.hints.CreditUnionCountry.tooltip}" id="soc2"
+                              readOnly="true">
+            <f:selectItems value="#{row.bindings.CreditUnionCountry.items}" id="si2"/>
+            <f:validator binding="#{row.bindings.CreditUnionCountry.validator}"/>
+          </af:selectOneChoice>
         </af:column>
         <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionPhone1.name}" sortable="true"
                    headerText="#{bindings.CreditUnion.hints.CreditUnionPhone1.label}" id="resId1c10" width="120"
@@ -156,7 +167,7 @@
                         maximumLength="#{bindings.CreditUnionCode.hints.precision}"
                         shortDesc="#{bindings.CreditUnionCode.hints.tooltip}" id="it2"
                         contentStyle="text-transform:uppercase;">
-            <af:validateLength minimum="2" maximum="2" id="vit2"/>
+            <af:validateLength minimum="3" maximum="7" id="vit2"/>
             <af:validateRegExp pattern="^[0-9a-zA-Z]+$" messageDetailNoMatch="Please enter alpha numeric characters"
                                hint="Please enter alpha numeric characters"/>
             <f:validator binding="#{bindings.CreditUnionCode.validator}"/>

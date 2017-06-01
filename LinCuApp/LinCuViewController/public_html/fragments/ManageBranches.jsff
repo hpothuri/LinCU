@@ -31,7 +31,13 @@
           <af:button text="#{lincuviewcontrollerBundle.MANAGE_CREDIT_UNION}" id="b6" action="back"/>
         </af:toolbar>
       </f:facet>
-      <f:facet name="statusbar"/>
+      <f:facet name="statusbar">
+      <af:toolbar id="t3" stretchId="s2">
+              <af:spacer width="10" height="10" id="s2" clientComponent="true"/>
+              <af:outputText value="Total Records:#{bindings.CreditUnionBranchIterator.estimatedRowCount}" id="ot21"
+                             noWrap="true"/>
+            </af:toolbar>
+      </f:facet>
       <af:table value="#{bindings.CreditUnionBranch.collectionModel}" var="row"
                 rows="#{bindings.CreditUnionBranch.rangeSize}"
                 emptyText="#{bindings.CreditUnionBranch.viewable ? 'No data to display.' : 'Access Denied.'}"
@@ -158,7 +164,7 @@
                         maximumLength="#{bindings.CreditUnionBranchCode.hints.precision}"
                         shortDesc="#{bindings.CreditUnionBranchCode.hints.tooltip}" id="it1"
                         contentStyle="text-transform:uppercase;" disabled="#{pageFlowScope.action eq 'view'}">
-            <af:validateLength minimum="2" maximum="2" id="vit1"/>
+            <af:validateLength minimum="3" maximum="3" id="vit1"/>
             <af:validateRegExp pattern="^[0-9a-zA-Z]+$" messageDetailNoMatch="Please enter alpha numeric characters"
                                hint="Please enter alpha numeric characters"/>
             <f:validator binding="#{bindings.CreditUnionBranchCode.validator}"/>

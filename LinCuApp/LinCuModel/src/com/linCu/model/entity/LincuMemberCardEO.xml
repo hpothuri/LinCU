@@ -159,7 +159,7 @@
     TableName="LINCU_MEMBER_CARD"/>
   <Attribute
     Name="LincuComments"
-    Precision="20"
+    Precision="300"
     ColumnName="LINCU_COMMENTS"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -171,7 +171,7 @@
   </Attribute>
   <Attribute
     Name="FcbComments"
-    Precision="20"
+    Precision="300"
     ColumnName="FCB_COMMENTS"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -183,7 +183,7 @@
   </Attribute>
   <Attribute
     Name="AdminComments"
-    Precision="20"
+    Precision="300"
     ColumnName="ADMIN_COMMENTS"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -229,6 +229,18 @@
     TableName="LINCU_MEMBER_CARD">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ApplicationNo"
+    Precision="10"
+    ColumnName="APPLICATION_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_CARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
   </Attribute>
   <AccessorAttribute

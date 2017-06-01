@@ -32,7 +32,7 @@
   <Attribute
     Name="CreditUnionCode"
     IsNotNull="true"
-    Precision="2"
+    Precision="7"
     ColumnName="CREDIT_UNION_CODE"
     SQLType="VARCHAR"
     Type="java.lang.String"

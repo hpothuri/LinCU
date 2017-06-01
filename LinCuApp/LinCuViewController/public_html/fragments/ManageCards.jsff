@@ -35,7 +35,13 @@
                                    actionListener="#{card.addToBatch}" rendered="#{(sessionScope.user.userRole eq 'FCB')}" disabled="#{!bindings.Delete.enabled}"/>
         </af:toolbar>
       </f:facet>
-      <f:facet name="statusbar"/>
+      <f:facet name="statusbar">
+      <af:toolbar id="t3" stretchId="s2">
+              <af:spacer width="10" height="10" id="s2" clientComponent="true"/>
+              <af:outputText value="Total Records:#{bindings.LincuMemberCardIterator.estimatedRowCount}" id="ot21"
+                             noWrap="true"/>
+            </af:toolbar>
+      </f:facet>
       <af:table value="#{bindings.LincuMemberCard.collectionModel}" var="row"
                 rows="#{bindings.LincuMemberCard.rangeSize}"
                 emptyText="#{bindings.LincuMemberCard.viewable ? 'No data to display.' : 'Access Denied.'}"

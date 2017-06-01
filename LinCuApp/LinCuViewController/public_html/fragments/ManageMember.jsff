@@ -31,7 +31,13 @@
                  id="b6" rendered="#{(sessionScope.user.userRole eq 'SUP')}"/>-->
      </af:toolbar>
     </f:facet>
-    <f:facet name="statusbar"/>
+    <f:facet name="statusbar">
+      <af:toolbar id="t3" stretchId="s2">
+              <af:spacer width="10" height="10" id="s2" clientComponent="true"/>
+              <af:outputText value="Total Records:#{bindings.LincuMemberIterator.estimatedRowCount}" id="ot21"
+                             noWrap="true"/>
+            </af:toolbar>
+      </f:facet>
     <af:table value="#{bindings.LincuMember.collectionModel}" var="row" rows="#{bindings.LincuMember.rangeSize}"
               emptyText="#{bindings.LincuMember.viewable ? 'No data to display.' : 'Access Denied.'}"
               rowBandingInterval="0" selectedRowKeys="#{bindings.LincuMember.collectionModel.selectedRow}"

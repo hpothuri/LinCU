@@ -911,7 +911,14 @@
     EntityAttrName="MemberId"
     EntityUsage="LincuMemberInfoEO"
     AliasName="MEMBER_ID"
-    IsUpdateable="while_insert"/>
+    IsUpdateable="while_insert">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="MEMBER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="MemberPrefix"
     IsNotNull="true"
