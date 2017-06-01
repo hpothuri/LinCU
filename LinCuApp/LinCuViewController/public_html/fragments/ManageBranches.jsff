@@ -14,7 +14,7 @@
       <f:facet name="menus"/>
       <f:facet name="toolbar">
         <af:toolbar id="t1">
-          <af:button text="#{lincuviewcontrollerBundle.CREATE_CREDIT_UNION_BRANCHES}" id="b1" disabled="#{!bindings.Delete.enabled}"
+          <af:button text="#{lincuviewcontrollerBundle.CREATE_CREDIT_UNION_BRANCHES}" id="b1"
                      actionListener="#{creditUnionBranches.createCreditUnionBranch}" partialSubmit="false">
             <af:setPropertyListener from="create" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
