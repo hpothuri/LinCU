@@ -22,6 +22,8 @@
           <Item Value="AuthorizedOn"/>
           <Item Value="BatchNumber"/>
           <Item Value="RowSelection" Binds="RowSelection" />
+          <Item Value="Active"/>
+          <Item Value="TempActive"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -59,5 +61,10 @@
     <methodAction IterBinding="LincuMemberCardIterator" id="closeCard" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="closeCard" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
                   InstanceName="bindings.LincuMemberCardIterator.currentRow" IsLocalObjectReference="true"/>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

@@ -25,10 +25,12 @@
       <af:button text="#{lincuviewcontrollerBundle.VIEW_MEMBER}" id="b5" action="editMember" disabled="#{!bindings.Delete.enabled}">
       <af:setPropertyListener from="view" to="#{pageFlowScope.action}" type="action"/>
       </af:button>
-      <af:button actionListener="#{member.deleteConfirm}" text="#{lincuviewcontrollerBundle.CLOSE_MEMBER}" disabled="#{!bindings.Delete.enabled}"
+      <af:button actionListener="#{member.deleteConfirm}" text="#{lincuviewcontrollerBundle.CLOSE_MEMBER}" disabled="#{(!bindings.Delete.enabled) or (bindings.Active eq 'N')}"
                  id="b3" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
-      <!--<af:button actionListener="#{member.deleteConfirm}" text="#{lincuviewcontrollerBundle.APPROVE}" disabled="#{!bindings.Delete.enabled}"
-                 id="b6" rendered="#{(sessionScope.user.userRole eq 'SUP')}"/>-->
+      <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="ctb4" icon="/images/Excel-16.gif"
+                                     rendered="#{(sessionScope.user.userRole eq 'MSR')}">
+            <af:showPopupBehavior popupId="::p2"/>
+          </af:button>
      </af:toolbar>
     </f:facet>
     <f:facet name="statusbar">
@@ -71,6 +73,14 @@
                           shortDesc="#{bindings.LincuMember.hints.Status.tooltip}" id="soc3" readOnly="true">
        <f:selectItems value="#{row.bindings.Status.items}" id="si3"/>
        <f:validator binding="#{row.bindings.Status.validator}"/>
+      </af:selectOneChoice>
+     </af:column>
+     <af:column headerText="#{bindings.LincuMember.hints.Active.label}" id="c7">
+      <af:selectOneChoice value="#{row.bindings.Active.inputValue}" label="#{row.bindings.Active.label}"
+                          required="#{bindings.LincuMember.hints.Active.mandatory}"
+                          shortDesc="#{bindings.LincuMember.hints.Active.tooltip}" id="soc4" readOnly="true">
+       <f:selectItems value="#{row.bindings.Active.items}" id="si4"/>
+       <f:validator binding="#{row.bindings.Active.validator}"/>
       </af:selectOneChoice>
      </af:column>
      <af:column headerText="#{bindings.LincuMember.hints.FirstName.label}" id="resId1c8">
@@ -158,6 +168,18 @@
      <af:outputText value="#{lincuviewcontrollerBundle.CLOSE_SELECTED_MEMBER}" id="ot1"/>
     </af:dialog>
    </af:popup>
+   <af:popup childCreation="deferred" autoCancel="disabled" id="p2" binding="#{member.massUpload}"
+              contentDelivery="lazyUncached">
+      <af:dialog id="d2" type="cancel" title="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}">
+        <f:facet name="buttonBar">
+          <af:button text="#{lincuviewcontrollerBundle.UPLOAD}" id="b11" actionListener="#{member.massUpload}"
+                     partialSubmit="false"/>
+        </f:facet>
+        <af:panelFormLayout id="pfl2">
+          <af:inputFile label="#{lincuviewcontrollerBundle.UPLOAD_EXCEL}" id="if1" value="#{member.uploadFile}"/>
+        </af:panelFormLayout>
+      </af:dialog>
+    </af:popup>
   </af:panelGroupLayout>
  </af:panelGroupLayout>
  </jsp:root>

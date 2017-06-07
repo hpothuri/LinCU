@@ -37,6 +37,10 @@
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="AddExtraDocsVA"
+    ViewObjectName="com.linCu.model.vvo.AddExtraDocsVVO"
+    RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_DocumentType"
     ListVOName="DocumentTypeVA"
@@ -46,6 +50,25 @@
     MRUCount="0">
     <AttrArray Name="AttrNames">
       <Item Value="DocumentType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DocumentType1"
+    ListVOName="AddExtraDocsVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DocumentType1"/>
     </AttrArray>
     <AttrArray Name="AttrExpressions"/>
     <AttrArray Name="ListAttrNames">
@@ -141,6 +164,22 @@
     EntityUsage="LincuMemberCardDocsEO"
     AliasName="REQUIRED"
     DefaultValue="N"/>
+  <ViewAttribute
+    Name="DocumentType1"
+    PrecisionRule="true"
+    EntityAttrName="DocumentType"
+    EntityUsage="LincuMemberCardDocsEO"
+    AliasName="DOCUMENT_TYPE1"
+    LOVName="LOV_DocumentType1">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="DOCUMENT_TYPE"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ClientInterface
     Name="__clientInterface">
     <Method

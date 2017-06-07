@@ -29,6 +29,7 @@
           <Item Value="LastUpdatedBy"/>
           <Item Value="LastUpdateDate"/>
           <Item Value="ObjectVersionId"/>
+          <Item Value="Active"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -102,5 +103,10 @@
                   InstanceName="bindings.LincuUserInfoIterator.currentRow" IsLocalObjectReference="true"/>
     <action IterBinding="LincuUserInfoIterator" id="Execute" InstanceName="LinCuAMDataControl.LincuUserInfo"
             DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="LincuUserInfoIterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

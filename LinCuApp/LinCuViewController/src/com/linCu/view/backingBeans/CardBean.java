@@ -79,12 +79,15 @@ public class CardBean {
             AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("MemberId");
             AttributeBinding attr1 = (AttributeBinding) bindings.getControlBinding("CardReqType1");  
             AttributeBinding attr2 = (AttributeBinding) bindings.getControlBinding("RefCardId");  
-            AttributeBinding attr3 = (AttributeBinding) bindings.getControlBinding("TopupAmount");  
+            AttributeBinding attr3 = (AttributeBinding) bindings.getControlBinding("TopupAmount"); 
+            AttributeBinding attr4 = (AttributeBinding) bindings.getControlBinding("TransCardStatus");            
+            
             if (attr1 != null)  
             { 
                String cardType = (String)attr1.getInputValue();
                Object refCardId = attr2.getInputValue();
                Object topupAmount = attr3.getInputValue();
+               String status = (String) attr4.getInputValue();
                if((("TOPUP_CARD".equalsIgnoreCase(cardType))||("ADDON_CARD".equalsIgnoreCase(cardType))) && (refCardId.equals(""))){
                    JSFUtils.addErrorMessage("Reference Card is required.");  
                }else if("TOPUP_CARD".equalsIgnoreCase(cardType) && (topupAmount == null)){
@@ -96,9 +99,9 @@ public class CardBean {
                    paramMap.put("memberId", memberId);
                    Integer rowCount = (Integer)ADFUtils.executeOperationBinding("findApplicationPerCardType",paramMap);
                    
-                   if((rowCount>0) && ("NEW_CARD".equalsIgnoreCase(cardType))){
+                   if((rowCount>0) && ("NEW_CARD".equalsIgnoreCase(cardType)) && !("REJECTED".equalsIgnoreCase(status) || "LINCU_REJECTED".equalsIgnoreCase(status) || "FCB_REJECTED".equalsIgnoreCase(status))){
                        JSFUtils.addErrorMessage("Member is already issued with new card or application process is in progress. Please request for Add-On card for this card"); 
-                   }else if((rowCount>=5) && ("ADDON_CARD".equalsIgnoreCase(cardType))){
+                   }else if((rowCount>=5) && ("ADDON_CARD".equalsIgnoreCase(cardType)) && !("REJECTED".equalsIgnoreCase(status) || "LINCU_REJECTED".equalsIgnoreCase(status) || "FCB_REJECTED".equalsIgnoreCase(status))){
                        JSFUtils.addErrorMessage("Member is eligible to request maximum 5 Add-On cards"); 
                    }else{
                    
@@ -695,7 +698,7 @@ public class CardBean {
                String cardType = (String)attr1.getInputValue();
                Object refCardId = attr2.getInputValue();
                Object topupAmount = attr3.getInputValue();
-               if((("TOPUP_CARD".equalsIgnoreCase(cardType))||("ADDON_CARD".equalsIgnoreCase(cardType))) && (refCardId.equals(""))){
+               if((("TOPUP_CARD".equalsIgnoreCase(cardType))||("ADDON_CARD".equalsIgnoreCase(cardType))) && ((refCardId==null)||(refCardId.equals("")))){
                    JSFUtils.addErrorMessage("Reference Card is required.");  
                }else if("TOPUP_CARD".equalsIgnoreCase(cardType) && (topupAmount == null)){
                    JSFUtils.addErrorMessage("Topup amount is required.");  

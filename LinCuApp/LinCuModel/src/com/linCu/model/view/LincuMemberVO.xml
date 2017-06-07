@@ -186,6 +186,10 @@
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="OpenCloseVA"
+    ViewObjectName="com.linCu.model.vvo.OpenCloseVVO"
+    RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_CreditUnionId"
     ListVOName="LincuUnionsVA"
@@ -642,6 +646,24 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Active"
+    ListVOName="OpenCloseVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Active"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Code"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Value"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -1857,7 +1879,17 @@
     EntityAttrName="Active"
     EntityUsage="LincuMemberInfoEO"
     AliasName="ACTIVE"
-    DefaultValue="Y"/>
+    DefaultValue="Y"
+    LOVName="LOV_Active">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="RECORD_STATE"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Active1"
     PrecisionRule="true"

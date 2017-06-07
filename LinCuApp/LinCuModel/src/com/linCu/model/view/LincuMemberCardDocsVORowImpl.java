@@ -28,7 +28,9 @@ public class LincuMemberCardDocsVORowImpl extends ViewRowImpl {
         DocumentName,
         DocumentType,
         Required,
-        DocumentTypeVA;
+        DocumentType1,
+        DocumentTypeVA,
+        AddExtraDocsVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -61,7 +63,9 @@ public class LincuMemberCardDocsVORowImpl extends ViewRowImpl {
     public static final int DOCUMENTNAME = AttributesEnum.DocumentName.index();
     public static final int DOCUMENTTYPE = AttributesEnum.DocumentType.index();
     public static final int REQUIRED = AttributesEnum.Required.index();
+    public static final int DOCUMENTTYPE1 = AttributesEnum.DocumentType1.index();
     public static final int DOCUMENTTYPEVA = AttributesEnum.DocumentTypeVA.index();
+    public static final int ADDEXTRADOCSVA = AttributesEnum.AddExtraDocsVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -190,10 +194,33 @@ public class LincuMemberCardDocsVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for DOCUMENT_TYPE using the alias name DocumentType1.
+     * @return the DOCUMENT_TYPE
+     */
+    public String getDocumentType1() {
+        return (String) getAttributeInternal(DOCUMENTTYPE1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for DOCUMENT_TYPE using the alias name DocumentType1.
+     * @param value value to set the DOCUMENT_TYPE
+     */
+    public void setDocumentType1(String value) {
+        setAttributeInternal(DOCUMENTTYPE1, value);
+    }
+
+    /**
      * Gets the view accessor <code>RowSet</code> DocumentTypeVA.
      */
     public RowSet getDocumentTypeVA() {
         return (RowSet) getAttributeInternal(DOCUMENTTYPEVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> AddExtraDocsVA.
+     */
+    public RowSet getAddExtraDocsVA() {
+        return (RowSet) getAttributeInternal(ADDEXTRADOCSVA);
     }
 }
 

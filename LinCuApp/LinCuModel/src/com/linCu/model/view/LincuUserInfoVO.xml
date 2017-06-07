@@ -122,6 +122,10 @@
       Name="QueryByFCB"
       FullName="com.linCu.model.vvo.LinCuRolesVVO.QueryByFCB"/>
   </ViewAccessor>
+  <ViewAccessor
+    Name="OpenCloseVA"
+    ViewObjectName="com.linCu.model.vvo.OpenCloseVVO"
+    RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_Gender"
     ListVOName="GenderVA"
@@ -343,6 +347,24 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="RoleDescription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Active"
+    ListVOName="OpenCloseVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Active"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Code"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Value"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -831,7 +853,17 @@
     EntityAttrName="Active"
     EntityUsage="LincuUserInfoEO"
     AliasName="ACTIVE"
-    DefaultValue="Y"/>
+    DefaultValue="Y"
+    LOVName="LOV_Active">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="RECORD_STATE"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewCriteria
     Name="QueryUserInfo"
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO"

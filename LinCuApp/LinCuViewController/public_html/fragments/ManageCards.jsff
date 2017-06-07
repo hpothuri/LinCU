@@ -20,7 +20,7 @@
             <af:commandToolbarButton text="#{sessionScope.user.userRole eq 'MSR' ? lincuviewcontrollerBundle.EDIT_CARD_REQUEST : lincuviewcontrollerBundle.VIEW_CARD_REQUEST}" 
             id="ctb2" icon="/images/card.png" action="edit" disabled="#{!bindings.Delete.enabled}"/>
           <af:commandToolbarButton actionListener="#{card.confirmDeleteAction}" icon="/images/card.png"
-                                   text="#{lincuviewcontrollerBundle.CLOSE_CARD}" disabled="#{(!bindings.Delete.enabled)||(bindings.CardStatus1 eq 'SUBMITTED')||(bindings.CardStatus1 eq 'AUTHORIZED')||(bindings.CardStatus1 eq 'LINCU_AUTHORIZED')||(bindings.CardStatus1 eq 'FCB_AUTHORIZED')}" id="b1" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
+                                   text="#{lincuviewcontrollerBundle.CLOSE_CARD}" disabled="#{(!bindings.Delete.enabled)||(bindings.CardStatus1 eq 'SUBMITTED')||(bindings.CardStatus1 eq 'AUTHORIZED')||(bindings.CardStatus1 eq 'LINCU_AUTHORIZED')||(bindings.CardStatus1 eq 'FCB_AUTHORIZED')||(bindings.Active eq 'N')}" id="b1" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
           <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT}" id="ctb3" icon="/images/Excel-16.gif"
                                    rendered="#{(sessionScope.user.userRole eq 'FCB')}" disabled="#{!bindings.Delete.enabled}">
               <af:fileDownloadActionListener contentType="application/vnd.ms-excel" filename="ExportCardDetails.xls"
@@ -51,13 +51,12 @@
                 filterModel="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor}" filterVisible="true"
                 queryListener="#{bindings.LincuMemberCardVOCriteriaQuery.processQuery}" varStatus="vs" id="resId1"
                 binding="#{card.cardTable}" autoHeightRows="11" partialTriggers="::ctb21 :::b2">
-        <af:column align="center" headerText="#{bindings.LincuMemberCard.hints.RowSelection.label}" id="c2"
-                   filterable="true" rendered="#{(sessionScope.user.userRole eq 'FCB')}">
+        <af:column align="center" headerText="#{bindings.LincuMemberCard.hints.RowSelection.label}" id="c2" rendered="#{(sessionScope.user.userRole eq 'FCB')}">
           <af:selectBooleanCheckbox id="sbc1" shortDesc="#{bindings.LincuMemberCard.hints.RowSelection.tooltip}" autoSubmit="true"
                                     value="#{row.bindings.RowSelection.inputValue}"
                                     visible="#{row.bindings.CardStatus.attributeValue eq 'FCB_AUTHORIZED' and row.bindings.BatchNumber.inputValue eq null}"/>
         </af:column>
-        <af:column sortProperty="#{bindings.LincuMemberCard.hints.MemberId.name}" filterable="true" sortable="true"
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.MemberId.name}" sortable="true"
                    headerText="#{bindings.LincuMemberCard.hints.MemberId.label}" id="resId1c1">
           <af:selectOneChoice value="#{row.bindings.MemberId.inputValue}" label="#{row.bindings.MemberId.label}"
                               required="#{bindings.LincuMemberCard.hints.MemberId.mandatory}"
@@ -66,7 +65,7 @@
             <f:validator binding="#{row.bindings.MemberId.validator}"/>
           </af:selectOneChoice>
         </af:column>
-        <af:column headerText="#{bindings.LincuMemberCard.hints.CardReqType.label}" id="c1" filterable="true"
+        <af:column headerText="#{bindings.LincuMemberCard.hints.CardReqType.label}" id="c1"
                    sortable="true" sortProperty="#{bindings.LincuMemberCard.hints.CardReqType.name}" width="150"
                    minimumWidth="150">
           <af:selectOneChoice value="#{row.bindings.CardReqType.inputValue}" label="#{row.bindings.CardReqType.label}"
@@ -77,7 +76,11 @@
             <f:validator binding="#{row.bindings.CardReqType.validator}"/>
           </af:selectOneChoice>
         </af:column>
-        <af:column sortProperty="#{bindings.LincuMemberCard.hints.CardStatus.name}" filterable="true" sortable="true"
+        <af:column headerText="#{bindings.LincuMemberCard.hints.TempActive.label}" id="c4">
+          <af:outputText value="#{row.TempActive}" shortDesc="#{bindings.LincuMemberCard.hints.TempActive.tooltip}"
+                         id="ot8"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.CardStatus.name}" sortable="true"
                    headerText="#{bindings.LincuMemberCard.hints.CardStatus.label}" id="resId1c3">
           <af:selectOneChoice value="#{row.bindings.CardStatus.inputValue}" label="#{row.bindings.CardStatus.label}"
                               required="#{bindings.LincuMemberCard.hints.CardStatus.mandatory}"
@@ -87,12 +90,12 @@
             <f:validator binding="#{row.bindings.CardStatus.validator}"/>
           </af:selectOneChoice>
         </af:column>
-        <af:column sortProperty="#{bindings.LincuMemberCard.hints.CreatedBy.name}" filterable="true" sortable="true"
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.CreatedBy.name}" sortable="true"
                    headerText="#{bindings.LincuMemberCard.hints.CreatedBy.label}" id="resId1c4">
           <af:outputText value="#{row.CreatedBy}" shortDesc="#{bindings.LincuMemberCard.hints.CreatedBy.tooltip}"
                          id="ot2"/>
         </af:column>
-        <af:column sortProperty="#{bindings.LincuMemberCard.hints.CreatedOn.name}" filterable="true" sortable="true"
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.CreatedOn.name}" sortable="true"
                    headerText="#{bindings.LincuMemberCard.hints.CreatedOn.label}" id="resId1c5">
           <f:facet name="filter">
             <af:inputDate value="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.CreatedOn.value}"
@@ -105,7 +108,7 @@
             <af:convertDateTime pattern="#{bindings.LincuMemberCard.hints.CreatedOn.format}"/>
           </af:outputText>
         </af:column>
-        <af:column sortProperty="#{bindings.LincuMemberCard.hints.SubmittedOn.name}" filterable="true" sortable="true"
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.SubmittedOn.name}" sortable="true"
                    headerText="#{bindings.LincuMemberCard.hints.SubmittedOn.label}" id="resId1c6">
           <f:facet name="filter">
             <af:inputDate value="#{bindings.LincuMemberCardVOCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.SubmittedOn.value}"
@@ -118,13 +121,13 @@
             <af:convertDateTime pattern="#{bindings.LincuMemberCard.hints.SubmittedOn.format}"/>
           </af:outputText>
         </af:column>
-        <af:column sortProperty="#{bindings.LincuMemberCard.hints.AuthorizedBy.name}" filterable="true" sortable="true"
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.AuthorizedBy.name}" sortable="true"
                    headerText="#{bindings.LincuMemberCard.hints.AuthorizedBy.label}" id="resId1c7" width="150"
                    minimumWidth="150">
           <af:outputText value="#{row.AuthorizedBy}" shortDesc="#{bindings.LincuMemberCard.hints.AuthorizedBy.tooltip}"
                          id="ot5"/>
         </af:column>
-        <af:column sortProperty="#{bindings.LincuMemberCard.hints.AuthorizedOn.name}" filterable="true" sortable="true"
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.AuthorizedOn.name}" sortable="true"
                    headerText="#{bindings.LincuMemberCard.hints.AuthorizedOn.label}" id="resId1c8" width="150"
                    minimumWidth="150">
           <f:facet name="filter">
@@ -138,7 +141,7 @@
             <af:convertDateTime pattern="#{bindings.LincuMemberCard.hints.AuthorizedOn.format}"/>
           </af:outputText>
         </af:column>
-        <af:column sortProperty="#{bindings.LincuMemberCard.hints.BatchNumber.name}" filterable="true"
+        <af:column sortProperty="#{bindings.LincuMemberCard.hints.BatchNumber.name}"
                    headerText="#{bindings.LincuMemberCard.hints.BatchNumber.label}" id="c3">
           <af:outputText value="#{row.BatchNumber}" shortDesc="#{bindings.LincuMemberCard.hints.BatchNumber.tooltip}"
                          id="ot1">

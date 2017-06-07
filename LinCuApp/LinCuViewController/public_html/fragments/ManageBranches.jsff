@@ -27,7 +27,7 @@
             <af:setPropertyListener from="view" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
           <af:button actionListener="#{creditUnionBranches.confirmDeleteBranch}" text="#{lincuviewcontrollerBundle.CLOSE_BRANCH}" 
-          disabled="#{!bindings.Delete.enabled}" id="b7"/>
+          disabled="#{(!bindings.Delete.enabled) or (bindings.Active eq 'N')}" id="b7"/>
           <af:button text="#{lincuviewcontrollerBundle.MANAGE_CREDIT_UNION}" id="b6" action="back"/>
         </af:toolbar>
       </f:facet>
@@ -52,6 +52,14 @@
         <af:column headerText="#{bindings.CreditUnionBranch.hints.CreditUnionBranchName.label}" id="resId1c2">
           <af:outputText value="#{row.CreditUnionBranchName}"
                          shortDesc="#{bindings.CreditUnionBranch.hints.CreditUnionBranchName.tooltip}" id="ot2"/>
+        </af:column>
+        <af:column headerText="#{bindings.CreditUnionBranch.hints.Active.label}" id="c6">
+          <af:selectOneChoice value="#{row.bindings.Active.inputValue}" label="#{row.bindings.Active.label}"
+                              required="#{bindings.CreditUnionBranch.hints.Active.mandatory}"
+                              shortDesc="#{bindings.CreditUnionBranch.hints.Active.tooltip}" id="soc3" readOnly="true">
+            <f:selectItems value="#{row.bindings.Active.items}" id="si3"/>
+            <f:validator binding="#{row.bindings.Active.validator}"/>
+          </af:selectOneChoice>
         </af:column>
         <af:column headerText="#{bindings.CreditUnionBranch.hints.CreditUnionAddres1.label}" id="resId1c3">
           <af:outputText value="#{row.CreditUnionAddres1}"

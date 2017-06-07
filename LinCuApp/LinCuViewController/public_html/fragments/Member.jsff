@@ -96,7 +96,7 @@
           <f:validator binding="#{bindings.LastName.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.MotherMaidenName.inputValue}" label="#{bindings.MotherMaidenName.hints.label}"
-                      required="#{bindings.MotherMaidenName.hints.mandatory}"
+                      required="true"
                       columns="#{bindings.MotherMaidenName.hints.displayWidth}"
                       maximumLength="#{bindings.MotherMaidenName.hints.precision}"
                       shortDesc="#{bindings.MotherMaidenName.hints.tooltip}" id="it54"
@@ -133,7 +133,7 @@
           <f:validator binding="#{bindings.MaritalStatus.validator}"/>
         </af:selectOneChoice>
         <af:inputText value="#{bindings.NoOfDependents.inputValue}" label="#{bindings.NoOfDependents.hints.label}"
-                      required="#{bindings.NoOfDependents.hints.mandatory}"
+                      required="true"
                       columns="#{bindings.NoOfDependents.hints.displayWidth}"
                       maximumLength="#{bindings.NoOfDependents.hints.precision}"
                       shortDesc="#{bindings.NoOfDependents.hints.tooltip}" id="it56"
@@ -197,7 +197,7 @@
           <f:validator binding="#{bindings.FaxNumber.validator}"/>
         </af:inputText>
         <af:selectOneChoice value="#{bindings.EducationCode.inputValue}" label="#{bindings.EducationCode.label}"
-                            required="#{bindings.EducationCode.hints.mandatory}"
+                            required="true"
                             shortDesc="#{bindings.EducationCode.hints.tooltip}" id="soc14"
                             contentStyle="margin-top: 8px;width:295px;"
                             disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
@@ -205,7 +205,7 @@
           <f:validator binding="#{bindings.EducationCode.validator}"/>
         </af:selectOneChoice>
         <af:inputText value="#{bindings.MonthlySalary.inputValue}" label="#{bindings.MonthlySalary.hints.label}"
-                      required="#{bindings.MonthlySalary.hints.mandatory}"
+                      required="true"
                       columns="#{bindings.MonthlySalary.hints.displayWidth}"
                       maximumLength="#{bindings.MonthlySalary.hints.precision}"
                       shortDesc="#{bindings.MonthlySalary.hints.tooltip}" id="it53"
@@ -296,7 +296,7 @@
           <f:validator binding="#{bindings.PermanentZipCode.validator}"/>
         </af:inputText>
         <af:selectOneRadio value="#{bindings.HomeOwnership.inputValue}" label="#{bindings.HomeOwnership.label}"
-                           required="#{bindings.HomeOwnership.hints.mandatory}"
+                           required="true"
                            shortDesc="#{bindings.HomeOwnership.hints.tooltip}" id="sor4"
                            disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:selectItems value="#{bindings.HomeOwnership.items}" id="si7"/>

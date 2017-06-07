@@ -29,6 +29,7 @@
           <Item Value="LastUpdatedBy"/>
           <Item Value="LastUpdateDate"/>
           <Item Value="ObjectVersionId"/>
+          <Item Value="Active"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -123,5 +124,10 @@
                   Action="invokeMethod" MethodName="closeBranch" IsViewObjectMethod="false"
                   DataControl="LinCuAMDataControl" InstanceName="bindings.CreditUnionBranchIterator.currentRow"
                   IsLocalObjectReference="true"/>
+    <attributeValues IterBinding="CreditUnionBranchIterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

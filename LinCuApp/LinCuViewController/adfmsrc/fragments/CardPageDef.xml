@@ -408,5 +408,12 @@
     </methodAction>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MemberPrefix" id="MemberPrefix"
           DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardDocsIterator" StaticList="false" Uses="LOV_DocumentType1" id="DocumentType1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LincuMemberCardDocsIterator" id="DocDesc">
+      <AttrNames>
+        <Item Value="DocDesc"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

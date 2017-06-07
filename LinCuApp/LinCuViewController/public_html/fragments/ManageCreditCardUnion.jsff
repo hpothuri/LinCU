@@ -27,7 +27,7 @@
                      actionListener="#{creditUnion.editCreditUnion}" disabled="#{!bindings.Delete.enabled}">
             <af:setPropertyListener from="view" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
-          <af:button text="#{lincuviewcontrollerBundle.CLOSE_CREDIT_UNION}" disabled="#{!bindings.Delete.enabled}"
+          <af:button text="#{lincuviewcontrollerBundle.CLOSE_CREDIT_UNION}" disabled="#{(!bindings.Delete.enabled) or (bindings.Active eq 'N')}"
                      id="b6" actionListener="#{creditUnion.confirmdeleteCreditUnion}"/>
         </af:toolbar>
       </f:facet>
@@ -55,6 +55,14 @@
           <af:outputText value="#{row.CreditUnionName}"
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionName.tooltip}" id="ot3"/>
         </af:column>
+        <af:column headerText="#{bindings.CreditUnion.hints.Active.label}" id="c8">
+          <af:selectOneChoice value="#{row.bindings.Active.inputValue}" label="#{row.bindings.Active.label}"
+                              required="#{bindings.CreditUnion.hints.Active.mandatory}"
+                              shortDesc="#{bindings.CreditUnion.hints.Active.tooltip}" id="soc3" readOnly="true">
+            <f:selectItems value="#{row.bindings.Active.items}" id="si3"/>
+            <f:validator binding="#{row.bindings.Active.validator}"/>
+          </af:selectOneChoice>
+        </af:column>
         <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionAddres1.name}" sortable="true"
                    headerText="#{bindings.CreditUnion.hints.CreditUnionAddres1.label}" id="resId1c4">
           <af:outputText value="#{row.CreditUnionAddres1}"
@@ -66,7 +74,7 @@
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionAddres2.tooltip}" id="ot5"/>
         </af:column>
         <af:column sortProperty="#{bindings.CreditUnion.hints.CreditUnionAddres3.name}" sortable="true"
-                   headerText="#{bindings.CreditUnion.hints.CreditUnionAddres3.label}" id="resId1c6">
+                   headerText="#{bindings.CreditUnion.hints.CreditUnionAddres3.label}" id="resId1c6" visible="false">
           <af:outputText value="#{row.CreditUnionAddres3}"
                          shortDesc="#{bindings.CreditUnion.hints.CreditUnionAddres3.tooltip}" id="ot6"/>
         </af:column>

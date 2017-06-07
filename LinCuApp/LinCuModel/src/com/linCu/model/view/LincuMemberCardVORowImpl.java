@@ -142,6 +142,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
         SwitchRefCard,
         Active,
         ApplicationNo,
+        TempActive,
         LincuMemberCardDocsVO,
         LincuMemberCardAuditVO,
         LincuMemberCardDocsVO1,
@@ -160,7 +161,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
         FCBShareholdingVA,
         NewCardsVA,
         NewAndAddOnCardVA,
-        MemberPrefixVA;
+        MemberPrefixVA,
+        OpenCloseVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -301,6 +303,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     public static final int SWITCHREFCARD = AttributesEnum.SwitchRefCard.index();
     public static final int ACTIVE = AttributesEnum.Active.index();
     public static final int APPLICATIONNO = AttributesEnum.ApplicationNo.index();
+    public static final int TEMPACTIVE = AttributesEnum.TempActive.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int LINCUMEMBERCARDAUDITVO = AttributesEnum.LincuMemberCardAuditVO.index();
     public static final int LINCUMEMBERCARDDOCSVO1 = AttributesEnum.LincuMemberCardDocsVO1.index();
@@ -320,6 +323,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     public static final int NEWCARDSVA = AttributesEnum.NewCardsVA.index();
     public static final int NEWANDADDONCARDVA = AttributesEnum.NewAndAddOnCardVA.index();
     public static final int MEMBERPREFIXVA = AttributesEnum.MemberPrefixVA.index();
+    public static final int OPENCLOSEVA = AttributesEnum.OpenCloseVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -2201,6 +2205,20 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     }
 
     /**
+     * Gets the attribute value for the calculated attribute TempActive.
+     * @return the TempActive
+     */
+    public String getTempActive() {
+        if("Y".equalsIgnoreCase(this.getActive())){
+            return "Open";
+        }else{
+            return "Close";
+        }
+         
+        //return (String) getAttributeInternal(TEMPACTIVE);
+    }
+
+    /**
      * Gets the associated <code>RowIterator</code> using master-detail link LincuMemberCardDocsVO.
      */
     public RowIterator getLincuMemberCardDocsVO() {
@@ -2334,7 +2352,14 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     public RowSet getMemberPrefixVA() {
         return (RowSet) getAttributeInternal(MEMBERPREFIXVA);
     }
-    
+
+    /**
+     * Gets the view accessor <code>RowSet</code> OpenCloseVA.
+     */
+    public RowSet getOpenCloseVA() {
+        return (RowSet) getAttributeInternal(OPENCLOSEVA);
+    }
+
     public void closeCard(){
         this.setActive("N");
     }

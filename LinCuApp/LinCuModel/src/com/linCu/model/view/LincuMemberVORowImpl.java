@@ -130,7 +130,8 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         EducationVA,
         OccupationVA,
         PrefixVA,
-        MemberStatusVA;
+        MemberStatusVA,
+        OpenCloseVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -265,6 +266,7 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public static final int OCCUPATIONVA = AttributesEnum.OccupationVA.index();
     public static final int PREFIXVA = AttributesEnum.PrefixVA.index();
     public static final int MEMBERSTATUSVA = AttributesEnum.MemberStatusVA.index();
+    public static final int OPENCLOSEVA = AttributesEnum.OpenCloseVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -1908,6 +1910,13 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
      */
     public RowSet getMemberStatusVA() {
         return (RowSet) getAttributeInternal(MEMBERSTATUSVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> OpenCloseVA.
+     */
+    public RowSet getOpenCloseVA() {
+        return (RowSet) getAttributeInternal(OPENCLOSEVA);
     }
 
     public void closeMember(){

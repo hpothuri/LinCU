@@ -30,6 +30,7 @@
           <Item Value="LastUpdatedBy"/>
           <Item Value="LastUpdateDate"/>
           <Item Value="ObjectVersionId"/>
+          <Item Value="Active"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -114,5 +115,10 @@
                   IsLocalObjectReference="true"/>
     <action IterBinding="CreditUnionIterator" id="Execute" InstanceName="LinCuAMDataControl.CreditUnion"
             DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="CreditUnionIterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

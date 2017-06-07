@@ -63,7 +63,8 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl implements com.linCu.mod
         LookUpDataVA,
         SecurityQuestionsVA,
         CreditUnionLinCuRolesVA,
-        FCBRolesVA;
+        FCBRolesVA,
+        OpenCloseVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -131,6 +132,7 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl implements com.linCu.mod
     public static final int SECURITYQUESTIONSVA = AttributesEnum.SecurityQuestionsVA.index();
     public static final int CREDITUNIONLINCUROLESVA = AttributesEnum.CreditUnionLinCuRolesVA.index();
     public static final int FCBROLESVA = AttributesEnum.FCBRolesVA.index();
+    public static final int OPENCLOSEVA = AttributesEnum.OpenCloseVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -769,7 +771,14 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl implements com.linCu.mod
     public RowSet getFCBRolesVA() {
         return (RowSet) getAttributeInternal(FCBROLESVA);
     }
-    
+
+    /**
+     * Gets the view accessor <code>RowSet</code> OpenCloseVA.
+     */
+    public RowSet getOpenCloseVA() {
+        return (RowSet) getAttributeInternal(OPENCLOSEVA);
+    }
+
     public void closeUser(){
         this.setActive("N");
     }

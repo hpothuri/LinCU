@@ -14,17 +14,10 @@
   </DesignTime>
   <ViewUsage
     Name="CreditUnion"
-    ViewObjectName="com.linCu.model.view.CreditUnionVO">
-    <ViewCriteriaUsage
-      Name="QueryActiveCreditUnion"
-      FullName="com.linCu.model.view.CreditUnionVO.QueryActiveCreditUnion"/>
-  </ViewUsage>
+    ViewObjectName="com.linCu.model.view.CreditUnionVO"/>
   <ViewUsage
     Name="LincuUserInfo"
     ViewObjectName="com.linCu.model.view.LincuUserInfoVO">
-    <ViewCriteriaUsage
-      Name="QueryActiveUsers"
-      FullName="com.linCu.model.view.LincuUserInfoVO.QueryActiveUsers"/>
     <ViewCriteriaUsage
       Name="QueryByCreditUnion"
       FullName="com.linCu.model.view.LincuUserInfoVO.QueryByCreditUnion"/>
@@ -41,11 +34,7 @@
   </ViewUsage>
   <ViewUsage
     Name="CreditUnionBranch"
-    ViewObjectName="com.linCu.model.view.CreditUnionBranchVO">
-    <ViewCriteriaUsage
-      Name="QueryActiveUnion"
-      FullName="com.linCu.model.view.CreditUnionBranchVO.QueryActiveUnion"/>
-  </ViewUsage>
+    ViewObjectName="com.linCu.model.view.CreditUnionBranchVO"/>
   <ViewUsage
     Name="LoginView"
     ViewObjectName="com.linCu.model.vvo.LoginVVO">
@@ -59,9 +48,6 @@
   <ViewUsage
     Name="LincuMember"
     ViewObjectName="com.linCu.model.view.LincuMemberVO">
-    <ViewCriteriaUsage
-      Name="QueryActiveMembers"
-      FullName="com.linCu.model.view.LincuMemberVO.QueryActiveMembers"/>
     <ViewCriteriaUsage
       Name="QueryByCreditUnion"
       FullName="com.linCu.model.view.LincuMemberVO.QueryByCreditUnion"/>
@@ -83,9 +69,6 @@
   <ViewUsage
     Name="LincuMemberCard"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO">
-    <ViewCriteriaUsage
-      Name="QueryActiveCards"
-      FullName="com.linCu.model.view.LincuMemberCardVO.QueryActiveCards"/>
     <ViewCriteriaUsage
       Name="QueryByCardStatus"
       FullName="com.linCu.model.view.LincuMemberCardVO.QueryByCardStatus"/>
@@ -152,6 +135,113 @@
     <ViewCriteriaUsage
       Name="QueryNonDraftApplications"
       FullName="com.linCu.model.vvo.CardApplicationVVO.QueryNonDraftApplications"/>
+    <ViewCriteriaUsage
+      Name="QureyActiveApplications"
+      FullName="com.linCu.model.vvo.CardApplicationVVO.QureyActiveApplications"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="CreditUnionBranch1"
+    ViewObjectName="com.linCu.model.view.CreditUnionBranchVO">
+    <ViewCriteriaUsage
+      Name="QueryActiveUnion"
+      FullName="com.linCu.model.view.CreditUnionBranchVO.QueryActiveUnion"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="LincuMember1"
+    ViewObjectName="com.linCu.model.view.LincuMemberVO">
+    <ViewCriteriaUsage
+      Name="QueryActiveMembers"
+      FullName="com.linCu.model.view.LincuMemberVO.QueryActiveMembers"/>
+    <ViewCriteriaUsage
+      Name="QueryByCreditUnion"
+      FullName="com.linCu.model.view.LincuMemberVO.QueryByCreditUnion"/>
+    <ViewCriteriaUsage
+      Name="QueryByStatus"
+      FullName="com.linCu.model.view.LincuMemberVO.QueryByStatus"/>
+    <ParameterMap>
+      <PIMap Variable="bindCreditUnionId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[adf.context.current.sessionScope.get('creditUnionId')]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'SUP') ? 'SUBMIT' :  null]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="LincuUserInfo1"
+    ViewObjectName="com.linCu.model.view.LincuUserInfoVO">
+    <ViewCriteriaUsage
+      Name="QueryActiveUsers"
+      FullName="com.linCu.model.view.LincuUserInfoVO.QueryActiveUsers"/>
+    <ViewCriteriaUsage
+      Name="QueryByCreditUnion"
+      FullName="com.linCu.model.view.LincuUserInfoVO.QueryByCreditUnion"/>
+    <ParameterMap>
+      <PIMap Variable="bindCreditUnionId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[((adf.context.current.sessionScope.get('role') == 'PREPAID_ADMIN') || (adf.context.current.sessionScope.get('role') == 'MAN_ADMIN')) ? null : adf.context.current.sessionScope.get('creditUnionId')]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindCreatedBy">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[adf.context.current.sessionScope.get('userId')]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="LincuMemberCard1"
+    ViewObjectName="com.linCu.model.view.LincuMemberCardVO">
+    <ViewCriteriaUsage
+      Name="QueryActiveCards"
+      FullName="com.linCu.model.view.LincuMemberCardVO.QueryActiveCards"/>
+    <ViewCriteriaUsage
+      Name="QueryByCardStatus"
+      FullName="com.linCu.model.view.LincuMemberCardVO.QueryByCardStatus"/>
+    <ViewCriteriaUsage
+      Name="QueryByCreditUnion"
+      FullName="com.linCu.model.view.LincuMemberCardVO.QueryByCreditUnion"/>
+    <ParameterMap>
+      <PIMap Variable="bindStatus">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'FCB') ? 'LINCU_AUTHORIZED' : ((adf.context.current.sessionScope.get('role') == 'LINCU_ADMIN') || (adf.context.current.sessionScope.get('role') == 'PREPAID_ADMIN') || (adf.context.current.sessionScope.get('role') == 'SUP') || (adf.context.current.sessionScope.get('role') == 'MAN_ADMIN') ? 'AUTHORIZED' : null)]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus1">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'FCB') ? 'FCB_AUTHORIZED' : ((adf.context.current.sessionScope.get('role') == 'LINCU_ADMIN') ? 'LINCU_AUTHORIZED' : null)]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus2">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'FCB') ? 'FCB_REJECTED' : ((adf.context.current.sessionScope.get('role') == 'LINCU_ADMIN') ? 'LINCU_REJECTED' : null)]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus3">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'SUP') ? 'SUBMITTED' :  null]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus4">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[((adf.context.current.sessionScope.get('role') == 'SUP') || (adf.context.current.sessionScope.get('role') == 'MAN_ADMIN'))? 'REJECTED' :  null]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindCreditUnionId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[((adf.context.current.sessionScope.get('role') == 'MSR') || (adf.context.current.sessionScope.get('role') == 'SUP') ) ? adf.context.current.sessionScope.get('creditUnionId') :  null]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="bindStatus5">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[(adf.context.current.sessionScope.get('role') == 'MAN_ADMIN') ? 'DRAFT' :  null]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
   </ViewUsage>
   <ViewLinkUsage
     Name="CreditUnionBranchVL"
@@ -176,6 +266,12 @@
     ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionCardToReadOnlyDocsVL"
     SrcViewUsageName="com.linCu.model.am.LinCuAM.LincuMemberCard"
     DstViewUsageName="com.linCu.model.am.LinCuAM.ReadOnlyDocs"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="CreditUnionToBranchVL1"
+    ViewLinkObjectName="com.linCu.model.viewLink.CreditUnionToBranchVL"
+    SrcViewUsageName="com.linCu.model.am.LinCuAM.CreditUnion"
+    DstViewUsageName="com.linCu.model.am.LinCuAM.CreditUnionBranch1"
     Reversed="false"/>
   <ClientInterface
     Name="__clientInterface">

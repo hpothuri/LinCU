@@ -45,7 +45,8 @@ public class CreditUnionBranchVORowImpl extends ViewRowImpl implements CreditUni
         LastApprovedDate,
         Active,
         LincuUserInfoVO,
-        CountryVA;
+        CountryVA,
+        OpenCloseVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -94,6 +95,7 @@ public class CreditUnionBranchVORowImpl extends ViewRowImpl implements CreditUni
     public static final int ACTIVE = AttributesEnum.Active.index();
     public static final int LINCUUSERINFOVO = AttributesEnum.LincuUserInfoVO.index();
     public static final int COUNTRYVA = AttributesEnum.CountryVA.index();
+    public static final int OPENCLOSEVA = AttributesEnum.OpenCloseVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -458,6 +460,14 @@ public class CreditUnionBranchVORowImpl extends ViewRowImpl implements CreditUni
     public RowSet getCountryVA() {
         return (RowSet) getAttributeInternal(COUNTRYVA);
     }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> OpenCloseVA.
+     */
+    public RowSet getOpenCloseVA() {
+        return (RowSet) getAttributeInternal(OPENCLOSEVA);
+    }
+
     public void closeBranch(){
         this.setActive("N");
     }

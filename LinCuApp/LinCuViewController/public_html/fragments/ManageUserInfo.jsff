@@ -24,7 +24,7 @@
           <af:button text="#{lincuviewcontrollerBundle.VIEW_USER}" id="b7" actionListener="#{userInfo.editUser}" disabled="#{!bindings.Delete.enabled}">
             <af:setPropertyListener from="view" to="#{pageFlowScope.action}" type="action"/>
           </af:button>
-          <af:button actionListener="#{userInfo.openDeleteUserPopup}" text="#{lincuviewcontrollerBundle.CLOSE_USER}" disabled="#{!bindings.Delete.enabled}"
+          <af:button actionListener="#{userInfo.openDeleteUserPopup}" text="#{lincuviewcontrollerBundle.CLOSE_USER}" disabled="#{(!bindings.Delete.enabled) or (bindings.Active eq 'N')}"
                      id="b5"/>
         </af:toolbar>
       </f:facet>
@@ -95,6 +95,14 @@
                               shortDesc="#{bindings.LincuUserInfo.hints.Gender.tooltip}" readOnly="true" id="soc4">
             <f:selectItems value="#{row.bindings.Gender.items}" id="si4"/>
             <f:validator binding="#{row.bindings.Gender.validator}"/>
+          </af:selectOneChoice>
+        </af:column>
+        <af:column headerText="#{bindings.LincuUserInfo.hints.Active.label}" id="c6">
+          <af:selectOneChoice value="#{row.bindings.Active.inputValue}" label="#{row.bindings.Active.label}"
+                              required="#{bindings.LincuUserInfo.hints.Active.mandatory}"
+                              shortDesc="#{bindings.LincuUserInfo.hints.Active.tooltip}" id="soc9" readOnly="true">
+            <f:selectItems value="#{row.bindings.Active.items}" id="si10"/>
+            <f:validator binding="#{row.bindings.Active.validator}"/>
           </af:selectOneChoice>
         </af:column>
         <af:column headerText="#{bindings.LincuUserInfo.hints.UserName.label}" id="resId1c11">

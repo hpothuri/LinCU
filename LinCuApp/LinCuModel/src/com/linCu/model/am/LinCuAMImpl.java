@@ -1085,7 +1085,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     }
     
     public Boolean deleteCreditUnionAllowed(){
-        CreditUnionBranchVOImpl creditUnionBranchVOImpl = this.getCreditUnionBranch();
+        CreditUnionBranchVOImpl creditUnionBranchVOImpl = this.getCreditUnionBranch1();
         int rowCount = creditUnionBranchVOImpl.getRowCount();
         if(rowCount > 0){
            return false; 
@@ -1097,7 +1097,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     public Boolean deleteMemeberAllowed(){
          LincuMemberVOImpl memberVO = this.getLincuMember();
         LincuMemberVORowImpl memberRow = (LincuMemberVORowImpl)memberVO.getCurrentRow();
-        LincuMemberCardVOImpl cardVO = this.getLincuMemberCard();
+        LincuMemberCardVOImpl cardVO = this.getLincuMemberCard1();
         Row[] cardRows = cardVO.getFilteredRows("MemberId", memberRow.getMemberId());
         if(cardRows != null && cardRows.length > 0){
             return false;
@@ -1109,8 +1109,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     public Boolean deleteBranchesAllowed(){
          CreditUnionBranchVOImpl branchVO = this.getCreditUnionBranch();
         CreditUnionBranchVORowImpl branchRow = (CreditUnionBranchVORowImpl)branchVO.getCurrentRow();
-        LincuMemberVOImpl memberVO = this.getLincuMember();
-        LincuUserInfoVOImpl userVO = this.getLincuUserInfo();
+        LincuMemberVOImpl memberVO = this.getLincuMember1();
+        LincuUserInfoVOImpl userVO = this.getLincuUserInfo1();
         
         Row[] memberRows = memberVO.getFilteredRows("CreditUnionBranchId", branchRow.getCreditUnionBranchId());
         Row[] userRows = userVO.getFilteredRows("CreditUnionBranchId", branchRow.getCreditUnionBranchId());
@@ -1174,6 +1174,46 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
      */
     public CardApplicationVVOImpl getCardApplication() {
         return (CardApplicationVVOImpl) findViewObject("CardApplication");
+    }
+
+    /**
+     * Container's getter for CreditUnionBranchVO1.
+     * @return CreditUnionBranchVO1
+     */
+    public CreditUnionBranchVOImpl getCreditUnionBranch1() {
+        return (CreditUnionBranchVOImpl) findViewObject("CreditUnionBranch1");
+    }
+
+    /**
+     * Container's getter for CreditUnionToBranchVL1.
+     * @return CreditUnionToBranchVL1
+     */
+    public ViewLinkImpl getCreditUnionToBranchVL1() {
+        return (ViewLinkImpl) findViewLink("CreditUnionToBranchVL1");
+    }
+
+    /**
+     * Container's getter for LincuMemberVO1.
+     * @return LincuMemberVO1
+     */
+    public LincuMemberVOImpl getLincuMember1() {
+        return (LincuMemberVOImpl) findViewObject("LincuMember1");
+    }
+
+    /**
+     * Container's getter for LincuUserInfoVO1.
+     * @return LincuUserInfoVO1
+     */
+    public LincuUserInfoVOImpl getLincuUserInfo1() {
+        return (LincuUserInfoVOImpl) findViewObject("LincuUserInfo1");
+    }
+
+    /**
+     * Container's getter for LincuMemberCardVO1.
+     * @return LincuMemberCardVO1
+     */
+    public LincuMemberCardVOImpl getLincuMemberCard1() {
+        return (LincuMemberCardVOImpl) findViewObject("LincuMemberCard1");
     }
 }
 
