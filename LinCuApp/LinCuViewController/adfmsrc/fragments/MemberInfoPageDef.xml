@@ -329,5 +329,7 @@
                   InstanceName="bindings.LincuMemberIterator.currentRow" IsLocalObjectReference="true">
       <NamedData NDName="user" NDValue="#{sessionScope.user.userName}" NDType="java.lang.String"/>
     </methodAction>
+    <action IterBinding="LincuMemberIterator" id="Execute" InstanceName="LinCuAMDataControl.LincuMember"
+            DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
   </bindings>
 </pageDefinition>

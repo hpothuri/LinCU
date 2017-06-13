@@ -5,6 +5,7 @@ import com.linCu.model.constants.LookupValuesForExcel;
 import com.linCu.model.view.CreditUnionBranchVOImpl;
 import com.linCu.model.view.CreditUnionBranchVORowImpl;
 import com.linCu.model.view.CreditUnionVOImpl;
+import com.linCu.model.view.CreditUnionVORowImpl;
 import com.linCu.model.view.LincuMemberCardAuditVOImpl;
 import com.linCu.model.view.LincuMemberCardAuditVORowImpl;
 import com.linCu.model.view.LincuMemberCardDocsVOImpl;
@@ -14,31 +15,26 @@ import com.linCu.model.view.LincuMemberCardVORowImpl;
 import com.linCu.model.view.LincuMemberVOImpl;
 import com.linCu.model.view.LincuMemberVORowImpl;
 import com.linCu.model.view.LincuUserInfoVOImpl;
+import com.linCu.model.view.LincuUserInfoVORowImpl;
 import com.linCu.model.vvo.CardApplicationVVOImpl;
 import com.linCu.model.vvo.LincuUnionsVVOImpl;
-
-
-import oracle.jbo.server.SequenceImpl;
-import com.linCu.model.view.LincuUserInfoVORowImpl;
 import com.linCu.model.vvo.LincuUnionsVVORowImpl;
 import com.linCu.model.vvo.LoginVVOImpl;
-import java.util.Map;
 import com.linCu.model.vvo.LoginVVORowImpl;
-import java.math.BigDecimal;
-import java.util.HashMap;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
 import java.util.Set;
 
 import oracle.jbo.Key;
 import oracle.jbo.Row;
 import oracle.jbo.RowSetIterator;
 import oracle.jbo.server.ApplicationModuleImpl;
+import oracle.jbo.server.SequenceImpl;
 import oracle.jbo.server.ViewLinkImpl;
-
-
 import oracle.jbo.server.ViewObjectImpl;
 
 import org.apache.poi.hssf.usermodel.HSSFBorderFormatting;
@@ -497,17 +493,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     }
     
     public List createExportCardDetailsWb() {
-    LookupValuesForExcel excelLookups = new LookupValuesForExcel();
-    Map<String, String> countryMap = excelLookups.getCountries();
-    Map<String, String> occupationMap = excelLookups.getOccupationCode();
-    Map<String, String> cardTypes = excelLookups.getCardTypes();
-    Map<String, String> statues = excelLookups.getCardStatues();
-    Map<String, String> maritalStatus = excelLookups.getMaritalStatues(); 
-    Map<String, String> streets = excelLookups.getStreet();    
-    Map<String, String> howeTownShip = excelLookups.getHomeTownShips();
-    Map<String, String> educationCodes = excelLookups.getEducationCodes();
-    Map<String, String> yesOrNoCodes = excelLookups.getYesOrNoCodes();  
-    Map<String, String> genderCodes = excelLookups.getGenderCodes();      
+    LookupValuesForExcel excelLookups = new LookupValuesForExcel();    
     HSSFWorkbook wb = new HSSFWorkbook();
     HSSFSheet sheet = wb.createSheet("CardDetails"); //Sheet Name
     int idx = 0; // rows index
@@ -794,13 +780,21 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     idx = idx + 1;
     row = sheet.createRow(idx); //creating 2nd row
     }
+        
+        
     row.createCell(0).setCellValue(dataRow.getCardId().toString());
     sheet.autoSizeColumn(0);
-    row.createCell(1).setCellValue(cardTypes.get(dataRow.getCardReqType()));
+    //row.createCell(1).setCellValue(cardTypes.get(dataRow.getCardReqType()));
+    row.createCell(1).setCellValue(dataRow.getCardReqType());
     sheet.autoSizeColumn(1);
-    row.createCell(2).setCellValue(statues.get(dataRow.getCardStatus()));
+    //row.createCell(2).setCellValue(statues.get(dataRow.getCardStatus()));
+    row.createCell(2).setCellValue(dataRow.getCardStatus());
     sheet.autoSizeColumn(2);
-    row.createCell(3).setCellValue(findCreditUnionName(dataRow.getCreditUnionId()));
+    //row.createCell(3).setCellValue(findCreditUnionName(dataRow.getCreditUnionId()));
+    CreditUnionVOImpl creditUnion = this.getCreditUnion();
+    Row[] rows = creditUnion.findByKey(new Key(new Object[]{dataRow.getCreditUnionId()}), 1);
+    CreditUnionVORowImpl creditUnionRow = (CreditUnionVORowImpl)rows[0];
+    row.createCell(3).setCellValue(creditUnionRow.getCreditUnionCode());
     sheet.autoSizeColumn(3);
     row.createCell(4).setCellValue(dataRow.getMemberId());
     sheet.autoSizeColumn(4);
@@ -828,12 +822,14 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     row.createCell(14).setCellValue(dataRow.getEmail());
     sheet.autoSizeColumn(14);
         if(dataRow.getGender() != null)
-        row.createCell(15).setCellValue(genderCodes.get(dataRow.getGender()));
+        //row.createCell(15).setCellValue(genderCodes.get(dataRow.getGender()));
+        row.createCell(15).setCellValue(dataRow.getGender());
         else
         row.createCell(15).setCellValue("");
         sheet.autoSizeColumn(15);
         if(dataRow.getMaritalStatus() != null)
-        row.createCell(16).setCellValue(maritalStatus.get(dataRow.getMaritalStatus()));
+        //row.createCell(16).setCellValue(maritalStatus.get(dataRow.getMaritalStatus()));
+        row.createCell(16).setCellValue(dataRow.getMaritalStatus());
         else
         row.createCell(16).setCellValue("");
         sheet.autoSizeColumn(16);
@@ -878,7 +874,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         row.createCell(24).setCellValue("");
         sheet.autoSizeColumn(24);
         if(dataRow.getEducationCode() != null)
-        row.createCell(25).setCellValue(educationCodes.get(dataRow.getEducationCode()));
+        //row.createCell(25).setCellValue(educationCodes.get(dataRow.getEducationCode()));
+        row.createCell(25).setCellValue(dataRow.getEducationCode());
         else
         row.createCell(25).setCellValue("");
         sheet.autoSizeColumn(25);
@@ -908,7 +905,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         row.createCell(30).setCellValue("");
         sheet.autoSizeColumn(30);
         if(dataRow.getPermanentAddrLine4() != null)
-        row.createCell(31).setCellValue(streets.get(dataRow.getPermanentAddrLine4()));
+        //row.createCell(31).setCellValue(streets.get(dataRow.getPermanentAddrLine4()));
+        row.createCell(31).setCellValue(dataRow.getPermanentAddrLine4());
         else
         row.createCell(31).setCellValue("");
         sheet.autoSizeColumn(31);
@@ -923,7 +921,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         row.createCell(33).setCellValue("");
         sheet.autoSizeColumn(33);
         if(dataRow.getPermanentCountryCode() != null)
-        row.createCell(34).setCellValue(countryMap.get(dataRow.getPermanentCountryCode()));
+        //row.createCell(34).setCellValue(countryMap.get(dataRow.getPermanentCountryCode()));
+        row.createCell(34).setCellValue(dataRow.getPermanentCountryCode());
         else
         row.createCell(34).setCellValue("");
         sheet.autoSizeColumn(34);
@@ -933,7 +932,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         row.createCell(35).setCellValue("");
         sheet.autoSizeColumn(35);
         if(dataRow.getHomeOwnership() != null)
-        row.createCell(36).setCellValue(howeTownShip.get(dataRow.getHomeOwnership()));
+        //row.createCell(36).setCellValue(howeTownShip.get(dataRow.getHomeOwnership()));
+        row.createCell(36).setCellValue(dataRow.getHomeOwnership());
         else
         row.createCell(36).setCellValue("");
         sheet.autoSizeColumn(36);
@@ -953,7 +953,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         row.createCell(39).setCellValue("");
         sheet.autoSizeColumn(39);
         if(dataRow.getMailingAddrLine4() != null)
-        row.createCell(40).setCellValue(streets.get(dataRow.getMailingAddrLine4().toString()));
+        //row.createCell(40).setCellValue(streets.get(dataRow.getMailingAddrLine4().toString()));
+        row.createCell(40).setCellValue(dataRow.getMailingAddrLine4().toString());
         else
         row.createCell(40).setCellValue("");
         sheet.autoSizeColumn(40);
@@ -968,7 +969,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         row.createCell(42).setCellValue("");
         sheet.autoSizeColumn(42);
         if(dataRow.getMailingCountryCode() != null)
-        row.createCell(43).setCellValue(countryMap.get(dataRow.getMailingCountryCode().toString()));
+        //row.createCell(43).setCellValue(countryMap.get(dataRow.getMailingCountryCode().toString()));
+        row.createCell(43).setCellValue(dataRow.getMailingCountryCode().toString());
         else
         row.createCell(43).setCellValue("");
         sheet.autoSizeColumn(43);
@@ -1003,7 +1005,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         row.createCell(49).setCellValue("");
         sheet.autoSizeColumn(49);
         if(dataRow.getOccupationCode() != null)
-        row.createCell(50).setCellValue(occupationMap.get(dataRow.getOccupationCode().toString()));
+        //row.createCell(50).setCellValue(occupationMap.get(dataRow.getOccupationCode().toString()));
+        row.createCell(50).setCellValue(dataRow.getOccupationCode().toString());
         else
         row.createCell(50).setCellValue("");
         sheet.autoSizeColumn(50);
@@ -1013,57 +1016,68 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         row.createCell(51).setCellValue("");
         sheet.autoSizeColumn(51);
         if(dataRow.getBirthCountryCode() != null)
-        row.createCell(52).setCellValue(countryMap.get(dataRow.getBirthCountryCode()));
+        //row.createCell(52).setCellValue(countryMap.get(dataRow.getBirthCountryCode()));
+        row.createCell(52).setCellValue(dataRow.getBirthCountryCode());
         else
         row.createCell(52).setCellValue("");
         sheet.autoSizeColumn(52);
         if(dataRow.getCitizenShipCountry1() != null)
-        row.createCell(53).setCellValue(countryMap.get(dataRow.getCitizenShipCountry1()));
+        //row.createCell(53).setCellValue(countryMap.get(dataRow.getCitizenShipCountry1()));
+        row.createCell(53).setCellValue(dataRow.getCitizenShipCountry1());
         else
         row.createCell(53).setCellValue("");
         sheet.autoSizeColumn(53);
         if(dataRow.getCitizenShipCountry2() != null)
-        row.createCell(54).setCellValue(countryMap.get(dataRow.getCitizenShipCountry2().toString()));
+        //row.createCell(54).setCellValue(countryMap.get(dataRow.getCitizenShipCountry2().toString()));
+        row.createCell(54).setCellValue(dataRow.getCitizenShipCountry2().toString());
         else
         row.createCell(54).setCellValue("");
         sheet.autoSizeColumn(54);
         if(dataRow.getCitizenShipCountry3() != null)
-        row.createCell(55).setCellValue(countryMap.get(dataRow.getCitizenShipCountry3()));
+        //row.createCell(55).setCellValue(countryMap.get(dataRow.getCitizenShipCountry3()));
+        row.createCell(55).setCellValue(dataRow.getCitizenShipCountry3());
         else
         row.createCell(55).setCellValue("");
         sheet.autoSizeColumn(55);
         if(dataRow.getCitizenShipCountry4() != null)
-        row.createCell(56).setCellValue(countryMap.get(dataRow.getCitizenShipCountry4()));
+        //row.createCell(56).setCellValue(countryMap.get(dataRow.getCitizenShipCountry4()));
+        row.createCell(56).setCellValue(dataRow.getCitizenShipCountry4());
         else
         row.createCell(56).setCellValue("");
         sheet.autoSizeColumn(56);
         if(dataRow.getLocalTaxExempt() != null)
-        row.createCell(57).setCellValue(yesOrNoCodes.get(dataRow.getLocalTaxExempt().toString()));
+        //row.createCell(57).setCellValue(yesOrNoCodes.get(dataRow.getLocalTaxExempt().toString()));
+        row.createCell(57).setCellValue(dataRow.getLocalTaxExempt().toString());
         else
         row.createCell(57).setCellValue("");
         sheet.autoSizeColumn(57);
         if(dataRow.getNationality() != null)
-        row.createCell(58).setCellValue(countryMap.get(dataRow.getNationality()));
+        //row.createCell(58).setCellValue(countryMap.get(dataRow.getNationality()));
+        row.createCell(58).setCellValue(dataRow.getNationality());
         else
         row.createCell(58).setCellValue("");
         sheet.autoSizeColumn(58);
         if(dataRow.getEligibleForeignTax() != null)
-        row.createCell(59).setCellValue(yesOrNoCodes.get(dataRow.getEligibleForeignTax()));
+        //row.createCell(59).setCellValue(yesOrNoCodes.get(dataRow.getEligibleForeignTax()));
+        row.createCell(59).setCellValue(dataRow.getEligibleForeignTax());
         else
         row.createCell(59).setCellValue("");
         sheet.autoSizeColumn(59);
         if(dataRow.getDocForeignTaxExempt() != null)
-        row.createCell(60).setCellValue(yesOrNoCodes.get(dataRow.getDocForeignTaxExempt()));
+        //row.createCell(60).setCellValue(yesOrNoCodes.get(dataRow.getDocForeignTaxExempt()));
+        row.createCell(60).setCellValue(dataRow.getDocForeignTaxExempt());
         else
         row.createCell(60).setCellValue("");
         sheet.autoSizeColumn(60);
         if(dataRow.getForeignCitizenship() != null)
-        row.createCell(61).setCellValue(yesOrNoCodes.get(dataRow.getForeignCitizenship().toString()));
+        //row.createCell(61).setCellValue(yesOrNoCodes.get(dataRow.getForeignCitizenship().toString()));
+        row.createCell(61).setCellValue(dataRow.getForeignCitizenship().toString());
         else
         row.createCell(61).setCellValue("");
         sheet.autoSizeColumn(61);
         if(dataRow.getPowerOfAttorney() != null)
-        row.createCell(62).setCellValue(yesOrNoCodes.get(dataRow.getPowerOfAttorney()));
+        //row.createCell(62).setCellValue(yesOrNoCodes.get(dataRow.getPowerOfAttorney()));
+        row.createCell(62).setCellValue(dataRow.getPowerOfAttorney());
         else
         row.createCell(62).setCellValue("");
         sheet.autoSizeColumn(62);
