@@ -22,8 +22,8 @@ public class PdfPopulator {
 	
 	public static void main(String[] args) {
 		
-		String originalPdf = "E:\\Freelancing\\LinCU\\LinCU_wkspace\\trunk\\LinCuApp\\LinCuViewController\\public_html\\resources\\ApplicationCreditUnion.pdf";
-		String targetPdf = "E:\\Freelancing\\LinCU\\LinCU_wkspace\\trunk\\LinCuApp\\LinCuViewController\\public_html\\resources\\ApplicationCreditUnionFilled.pdf";
+		String originalPdf = "C:\\Users\\DileepKumar\\Desktop\\LinCu\\trunk\\LinCuApp\\LinCuViewController\\public_html\\resources\\ApplicationCreditUnion.pdf";
+		String targetPdf = "C:\\Users\\DileepKumar\\Desktop\\LinCu\\trunk\\LinCuApp\\LinCuViewController\\public_html\\resources\\ApplicationCreditUnionFilled.pdf";
 		
 		try {
 			populateAndCopy(new File(originalPdf), new File(targetPdf));
@@ -40,7 +40,7 @@ public class PdfPopulator {
 		_pdfDocument.getNumberOfPages();
 		printFields();  //Uncomment to see the fields in this document in console
 		
-//		setField("Credit Union", "1234567890");
+		setField("Credit Union", "1234567890");
 		_pdfDocument.save(targetPdf);
 		_pdfDocument.close();
 	}
@@ -95,7 +95,7 @@ public class PdfPopulator {
          else {
 //             String outputString = sLevel + sParent + "." + field.getFullyQualifiedName() + ",  type=" + field.getClass().getName();
             String outputString = field.getFullyQualifiedName() ;
-             System.out.println("String " + outputString.replaceAll(" ", ""));
+             System.out.println("String - " + outputString.replaceAll(" ", ""));
             try{
                 if(field instanceof org.apache.pdfbox.pdmodel.interactive.form.PDTextbox)
              field.setValue(field.getFullyQualifiedName());

@@ -201,7 +201,7 @@ public class MemberBean {
                     ADFUtils.executeOperationBinding("Commit"); 
                      ADFUtils.executeOperationBinding("Execute"); 
                     this.getMassUpload().hide();
-                    JSFUtils.addInformationMessage("Applications are uploaded successfully");
+                    JSFUtils.addInformationMessage("Members are uploaded successfully");
                     //AdfFacesContext.getCurrentInstance().addPartialTarget(getCardTable());
 
                 } catch (IOException e) {
