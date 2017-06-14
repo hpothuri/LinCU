@@ -1229,5 +1229,31 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     public LincuMemberCardVOImpl getLincuMemberCard1() {
         return (LincuMemberCardVOImpl) findViewObject("LincuMemberCard1");
     }
+    
+    public String findCreditUnionIdByCode(String code){
+        Row[] selectedRows = this.getCreditUnion().getFilteredRows("CreditUnionCode", code);
+        for(Row row : selectedRows){
+            CreditUnionVORowImpl unionRow = (CreditUnionVORowImpl)row;
+            return unionRow.getCreditUnionId();
+        }
+        return null;
+    }
+    
+    public String findCreditUnionBranchIdByCode(String code){
+        Row[] selectedRows = this.getCreditUnionBranch2().getFilteredRows("CreditUnionBranchCode", code);
+        for(Row row : selectedRows){
+            CreditUnionBranchVORowImpl branchRow = (CreditUnionBranchVORowImpl)row;
+            return branchRow.getCreditUnionBranchId();
+        }
+        return null;
+    }
+
+    /**
+     * Container's getter for CreditUnionBranchVO1.
+     * @return CreditUnionBranchVO1
+     */
+    public CreditUnionBranchVOImpl getCreditUnionBranch2() {
+        return (CreditUnionBranchVOImpl) findViewObject("CreditUnionBranch2");
+    }
 }
 

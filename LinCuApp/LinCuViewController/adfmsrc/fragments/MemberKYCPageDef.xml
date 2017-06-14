@@ -118,5 +118,17 @@
         <Item Value="Active"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="findCreditUnionIdByCode" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="findCreditUnionIdByCode" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.findCreditUnionIdByCode_LinCuAMDataControl_dataProvider_findCreditUnionIdByCode_result">
+      <NamedData NDName="code" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="findCreditUnionBranchIdByCode" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="findCreditUnionBranchIdByCode" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.findCreditUnionBranchIdByCode_LinCuAMDataControl_dataProvider_findCreditUnionBranchIdByCode_result">
+      <NamedData NDName="code" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

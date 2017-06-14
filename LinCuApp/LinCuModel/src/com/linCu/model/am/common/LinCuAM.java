@@ -52,5 +52,9 @@ public interface LinCuAM extends ApplicationModule {
     Integer findApplicationPerCardType(String cardType, String memberId);
 
     Boolean deleteBranchesAllowed();
+
+    String findCreditUnionBranchIdByCode(String code);
+
+    String findCreditUnionIdByCode(String code);
 }
 

@@ -334,10 +334,18 @@ public class MemberBean {
                            Index = MytempCell.getColumnIndex();
                        
                        if (Index == 0) {
-                           row.setAttribute("CreditUnionId", (int)MytempCell.getNumericCellValue());
+                           Map paramMap = new HashMap();
+                           paramMap.put("code", MytempCell.getStringCellValue());
+                           String creditUnionId = (String) ADFUtils.executeOperationBinding("findCreditUnionIdByCode",paramMap);
+                           System.out.println("-------creditUnionId--------"+creditUnionId);
+                           row.setAttribute("CreditUnionId", creditUnionId);
 
                        } else if (Index == 1) {
-                           row.setAttribute("CreditUnionBranchId", (int)MytempCell.getNumericCellValue());
+                           Map paramMap = new HashMap();
+                           paramMap.put("code", MytempCell.getStringCellValue());
+                           String creditUnionBranchId = (String) ADFUtils.executeOperationBinding("findCreditUnionBranchIdByCode",paramMap);
+                           System.out.println("-------creditUnionBranchId--------"+creditUnionBranchId);
+                           row.setAttribute("CreditUnionBranchId", creditUnionBranchId);
 
                        }else if (Index == 2) {
                            row.setAttribute("MemberPrefix", MytempCell.getStringCellValue());
