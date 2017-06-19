@@ -146,11 +146,6 @@
         <Item Value="MailingZipCode"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="LincuMemberIterator" id="MonthlySalary">
-      <AttrNames>
-        <Item Value="MonthlySalary"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="LincuMemberIterator" id="MotherMaidenName">
       <AttrNames>
         <Item Value="MotherMaidenName"/>
@@ -331,5 +326,12 @@
     </methodAction>
     <action IterBinding="LincuMemberIterator" id="Execute" InstanceName="LinCuAMDataControl.LincuMember"
             DataControl="LinCuAMDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <list IterBinding="LincuMemberIterator" StaticList="false" Uses="LOV_MonthlySalary" id="MonthlySalary"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LincuMemberIterator" id="MemberNo">
+      <AttrNames>
+        <Item Value="MemberNo"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

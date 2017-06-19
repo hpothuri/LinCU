@@ -20,13 +20,14 @@
     Name="bindStatus"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT MEMBER_ID,   
-CREDIT_UNION_ID,    
-CREDIT_UNION_BRANCH_ID,    
-FIRST_NAME,    
-LAST_NAME,  
-ACTIVE, 
-STATUS 
+  <SQLQuery><![CDATA[SELECT MEMBER_ID,    
+CREDIT_UNION_ID,     
+CREDIT_UNION_BRANCH_ID,     
+FIRST_NAME,     
+LAST_NAME,   
+ACTIVE,  
+STATUS, 
+MEMBER_NO 
 FROM LINCU_MEMBER_INFO]]></SQLQuery>
   <ViewAttribute
     Name="MemberId"
@@ -131,6 +132,21 @@ FROM LINCU_MEMBER_INFO]]></SQLQuery>
     SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MemberNo"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="MEMBER_NO"
+    Expression="MEMBER_NO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
   </ViewAttribute>
   <ViewCriteria

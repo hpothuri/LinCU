@@ -521,5 +521,12 @@
         Name="code"
         Type="java.lang.String"/>
     </Method>
+    <Method
+      Name="downloadApplication"
+      MethodName="downloadApplication">
+      <Return
+        Name="_return_type_"
+        Type="java.util.Map"/>
+    </Method>
   </ClientInterface>
 </AppModule>

@@ -135,11 +135,6 @@
         <Item Value="MailingZipCode"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="LincuMemberCardIterator" id="MonthlySalary">
-      <AttrNames>
-        <Item Value="MonthlySalary"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="LincuMemberCardIterator" id="MotherMaidenName">
       <AttrNames>
         <Item Value="MotherMaidenName"/>
@@ -415,5 +410,11 @@
         <Item Value="DocDesc"/>
       </AttrNames>
     </attributeValues>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MonthlySalary" id="MonthlySalary"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <methodAction id="downloadApplication" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="downloadApplication" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.downloadApplication_LinCuAMDataControl_dataProvider_downloadApplication_result"/>
   </bindings>
 </pageDefinition>

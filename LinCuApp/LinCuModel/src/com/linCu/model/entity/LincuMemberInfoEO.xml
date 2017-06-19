@@ -354,6 +354,18 @@
       <Attr Name="_DisplaySize" Value="250"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="MemberNo"
+    Precision="50"
+    ColumnName="MEMBER_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="CreditUnionBranchEO"
     Association="com.linCu.model.assoc.CreditUnionBranchToMemberInfoAssoc"

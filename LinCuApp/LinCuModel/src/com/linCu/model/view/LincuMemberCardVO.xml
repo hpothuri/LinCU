@@ -259,6 +259,21 @@
     Name="OpenCloseVA"
     ViewObjectName="com.linCu.model.vvo.OpenCloseVVO"
     RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="CurrencyVA"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['CURRENCY']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="LOV_CreditUnionId"
     ListVOName="LincuUnionsVA"
@@ -293,7 +308,7 @@
       <Item Value="MemberId"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="MemberId"/>
+      <Item Value="MemberNo"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -792,6 +807,25 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
+  <ListBinding
+    Name="LOV_MonthlySalary"
+    ListVOName="CurrencyVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="MonthlySalary"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="LincuMemberCardEO"
     Entity="com.linCu.model.entity.LincuMemberCardEO"/>
@@ -956,10 +990,10 @@
     LOVName="LOV_MemberId">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="choice"/>
         <LABEL
           ResId="MEMBER"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1532,7 +1566,15 @@
     PrecisionRule="true"
     EntityAttrName="MonthlySalary"
     EntityUsage="LincuMemberKycEO"
-    AliasName="MONTHLY_SALARY"/>
+    AliasName="MONTHLY_SALARY"
+    LOVName="LOV_MonthlySalary">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="MotherMaidenName"
     IsNotNull="true"
@@ -1944,6 +1986,12 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="MemberNo"
+    PrecisionRule="true"
+    EntityAttrName="MemberNo"
+    EntityUsage="LincuMemberInfoEO"
+    AliasName="MEMBER_NO"/>
   <ViewCriteria
     Name="LincuMemberCardVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"

@@ -35,11 +35,12 @@
     <af:spacer width="10" height="10" id="s1"/>
     <af:panelBox text="#{lincuviewcontrollerBundle.MEMBER_INFORMATION}" id="pb6">
       <f:facet name="toolbar"/>
-      <af:panelFormLayout id="pfl6" maxColumns="3" rows="1">
+      <af:panelFormLayout id="pfl6" maxColumns="2" rows="2" fieldWidth="75%">
         <f:facet name="footer"/>
         <af:selectOneChoice value="#{bindings.CreditUnionId.inputValue}" label="#{bindings.CreditUnionId.label}"
                             required="#{bindings.CreditUnionId.hints.mandatory}"
-                            shortDesc="#{bindings.CreditUnionId.hints.tooltip}" id="soc2" contentStyle="width:295px;"
+                            shortDesc="#{bindings.CreditUnionId.hints.tooltip}" id="soc2"
+                            contentStyle="width:295px;margin-top: 8px;"
                             autoSubmit="true"
                             disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:selectItems value="#{bindings.CreditUnionId.items}" id="si2"/>
@@ -48,14 +49,22 @@
         <af:selectOneChoice value="#{bindings.CreditUnionBranchId.inputValue}"
                             label="#{bindings.CreditUnionBranchId.label}" required="false"
                             shortDesc="#{bindings.CreditUnionBranchId.hints.tooltip}" id="soc1"
-                            contentStyle="width:295px;" partialTriggers="soc2" showRequired="true"
-                            disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}" labelStyle="white-space: nowrap;">
+                            contentStyle="width:295px;margin-top: 8px; " partialTriggers="soc2" showRequired="true"
+                            disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}"
+                            labelStyle="white-space: nowrap;">
           <f:selectItems value="#{bindings.CreditUnionBranchId.items}" id="si1"/>
           <f:validator binding="#{bindings.CreditUnionBranchId.validator}"/>
         </af:selectOneChoice>
+        <af:inputText value="#{bindings.MemberNo.inputValue}" label="#{bindings.MemberNo.hints.label}"
+                      required="#{bindings.MemberNo.hints.mandatory}" columns="#{bindings.MemberNo.hints.displayWidth}"
+                      maximumLength="#{bindings.MemberNo.hints.precision}"
+                      shortDesc="#{bindings.MemberNo.hints.tooltip}" id="it7" contentStyle="width:295px;"
+                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
+          <f:validator binding="#{bindings.MemberNo.validator}"/>
+        </af:inputText>
         <af:selectOneChoice value="#{bindings.Status.inputValue}" label="#{bindings.Status.label}"
                             required="#{bindings.Status.hints.mandatory}" shortDesc="#{bindings.Status.hints.tooltip}"
-                            id="soc17" disabled="true">
+                            id="soc17" disabled="true" contentStyle="margin-top: 8px; width:295px;">
           <f:selectItems value="#{bindings.Status.items}" id="si25"/>
           <f:validator binding="#{bindings.Status.validator}"/>
         </af:selectOneChoice>
@@ -204,15 +213,13 @@
           <f:selectItems value="#{bindings.EducationCode.items}" id="si22"/>
           <f:validator binding="#{bindings.EducationCode.validator}"/>
         </af:selectOneChoice>
-        <af:inputText value="#{bindings.MonthlySalary.inputValue}" label="#{bindings.MonthlySalary.hints.label}"
-                      required="true"
-                      columns="#{bindings.MonthlySalary.hints.displayWidth}"
-                      maximumLength="#{bindings.MonthlySalary.hints.precision}"
-                      shortDesc="#{bindings.MonthlySalary.hints.tooltip}" id="it53"
-                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
+        <af:selectOneChoice value="#{bindings.MonthlySalary.inputValue}" label="#{bindings.MonthlySalary.label}"
+                            required="#{bindings.MonthlySalary.hints.mandatory}"
+                            shortDesc="#{bindings.MonthlySalary.hints.tooltip}" id="soc18"
+                            contentStyle="margin-top: 8px;width:295px;">
+          <f:selectItems value="#{bindings.MonthlySalary.items}" id="si26"/>
           <f:validator binding="#{bindings.MonthlySalary.validator}"/>
-          <af:convertNumber groupingUsed="false" pattern="#{bindings.MonthlySalary.format}"/>
-        </af:inputText>
+        </af:selectOneChoice>
         <af:selectOneRadio value="#{bindings.ShareholderCode.inputValue}" label="#{bindings.ShareholderCode.label}"
                            required="#{bindings.ShareholderCode.hints.mandatory}"
                            shortDesc="#{bindings.ShareholderCode.hints.tooltip}" id="sor3"

@@ -5,6 +5,8 @@ import com.linCu.view.utils.JSFUtils;
 
 import com.linCu.view.utils.PasswordUtil;
 
+import com.linCu.view.utils.PdfPopulator;
+
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.util.List;
@@ -34,6 +36,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import javax.faces.event.ValueChangeEvent;
+
+import javax.servlet.ServletContext;
 
 import oracle.adf.model.AttributeBinding;
 import oracle.adf.model.BindingContext;
@@ -762,5 +766,55 @@ public class CardBean {
 
     public void cardReqType(ValueChangeEvent valueChangeEvent) {
         valueChangeEvent.getComponent().processUpdates(FacesContext.getCurrentInstance());
+    }
+
+//    public void printApplication(ActionEvent actionEvent) {
+//        String originalPdf = "C:\\Users\\DileepKumar\\Desktop\\LinCu\\trunk\\LinCuApp\\LinCuViewController\\public_html\\resources\\ApplicationCreditUnion.pdf";
+//        String targetPdf = "C:\\Users\\DileepKumar\\Desktop\\LinCu\\trunk\\LinCuApp\\LinCuViewController\\public_html\\resources\\ApplicationCreditUnionFilled.pdf";
+//        
+//        try {
+//            PdfPopulator.populateAndCopy(new File(originalPdf), new File(targetPdf));
+//        } catch (Exception e) {
+//                e.printStackTrace();
+//        }
+//        
+//        System.out.println("Complete");
+//    }
+    
+    public void printApplication(FacesContext facesContext, OutputStream outputStream) {
+        //String originalPdf = "C:\\Users\\DileepKumar\\Desktop\\LinCu\\trunk\\LinCuApp\\LinCuViewController\\public_html\\resources\\ApplicationCreditUnion.pdf";
+        //String targetPdf = "C:\\Users\\DileepKumar\\Desktop\\LinCu\\trunk\\LinCuApp\\LinCuViewController\\public_html\\resources\\ApplicationCreditUnionFilled.pdf";
+        
+        //String originalPdf = "C:\\Users\\DileepKumar\\AppData\\Roaming\\JDeveloper\\system12.2.1.0.42.170105.1157\\o.j2ee\\drs\\LinCuApp\\LinCuViewControllerWebApp.war\\resources\\ApplicationCreditUnion.pdf";
+        //String targetPdf = "C:\\Users\\DileepKumar\\AppData\\Roaming\\JDeveloper\\system12.2.1.0.42.170105.1157\\o.j2ee\\drs\\LinCuApp\\LinCuViewControllerWebApp.war\\resources\\ApplicationCreditUnionFilled.pdf";;
+
+        
+          try  
+          {  // copy the data from the blobDomain to the output stream   
+          //InputStream inputStream = new FileInputStream(targetPdf);
+          ServletContext servletCtx = (ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
+          String originalPdf = servletCtx.getResource("/resources/ApplicationCreditUnion.pdf").toString();
+          originalPdf = originalPdf.substring(6, originalPdf.length());
+              System.out.println("---originalPdf----"+originalPdf);
+          String targetPdf = servletCtx.getResource("/resources/ApplicationCreditUnionFilled.pdf").toString();
+              targetPdf = targetPdf.substring(6, targetPdf.length());
+              System.out.println("---targetPdf----"+targetPdf);
+           Map applicationData = (Map) ADFUtils.executeOperationBinding("downloadApplication");     
+          PdfPopulator.populateAndCopy(new File(originalPdf), new File(targetPdf), applicationData);
+          //ServletContext servletCtx = (ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
+          InputStream inputStream = servletCtx.getResourceAsStream("/resources/ApplicationCreditUnionFilled.pdf");
+            IOUtils.copy(inputStream, outputStream);  
+            inputStream.close();  
+            outputStream.flush();  
+          }  
+          catch (IOException e)  
+          {  
+            // handle errors  
+            e.printStackTrace();  
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), "");  
+            FacesContext.getCurrentInstance().addMessage(null, msg);  
+          } catch (Exception e) {
+        }
+
     }
 }

@@ -118,6 +118,7 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         Status1,
         Comments,
         TransMemberStatus,
+        MemberNo,
         LincuUnionsVA,
         LincuBranchesVA,
         GenderVA,
@@ -131,7 +132,8 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         OccupationVA,
         PrefixVA,
         MemberStatusVA,
-        OpenCloseVA;
+        OpenCloseVA,
+        CurrencyVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -253,6 +255,7 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public static final int STATUS1 = AttributesEnum.Status1.index();
     public static final int COMMENTS = AttributesEnum.Comments.index();
     public static final int TRANSMEMBERSTATUS = AttributesEnum.TransMemberStatus.index();
+    public static final int MEMBERNO = AttributesEnum.MemberNo.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
     public static final int LINCUBRANCHESVA = AttributesEnum.LincuBranchesVA.index();
     public static final int GENDERVA = AttributesEnum.GenderVA.index();
@@ -267,6 +270,7 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public static final int PREFIXVA = AttributesEnum.PrefixVA.index();
     public static final int MEMBERSTATUSVA = AttributesEnum.MemberStatusVA.index();
     public static final int OPENCLOSEVA = AttributesEnum.OpenCloseVA.index();
+    public static final int CURRENCYVA = AttributesEnum.CurrencyVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -1822,6 +1826,22 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     }
 
     /**
+     * Gets the attribute value for MEMBER_NO using the alias name MemberNo.
+     * @return the MEMBER_NO
+     */
+    public String getMemberNo() {
+        return (String) getAttributeInternal(MEMBERNO);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for MEMBER_NO using the alias name MemberNo.
+     * @param value value to set the MEMBER_NO
+     */
+    public void setMemberNo(String value) {
+        setAttributeInternal(MEMBERNO, value);
+    }
+
+    /**
      * Gets the view accessor <code>RowSet</code> LincuUnionsVA.
      */
     public RowSet getLincuUnionsVA() {
@@ -1917,6 +1937,13 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
      */
     public RowSet getOpenCloseVA() {
         return (RowSet) getAttributeInternal(OPENCLOSEVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> CurrencyVA.
+     */
+    public RowSet getCurrencyVA() {
+        return (RowSet) getAttributeInternal(CURRENCYVA);
     }
 
     public void closeMember(){

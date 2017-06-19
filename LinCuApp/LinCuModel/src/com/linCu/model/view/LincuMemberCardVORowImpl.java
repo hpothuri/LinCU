@@ -143,6 +143,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
         Active,
         ApplicationNo,
         TempActive,
+        MemberNo,
         LincuMemberCardDocsVO,
         LincuMemberCardAuditVO,
         LincuMemberCardDocsVO1,
@@ -162,7 +163,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
         NewCardsVA,
         NewAndAddOnCardVA,
         MemberPrefixVA,
-        OpenCloseVA;
+        OpenCloseVA,
+        CurrencyVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -304,6 +306,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     public static final int ACTIVE = AttributesEnum.Active.index();
     public static final int APPLICATIONNO = AttributesEnum.ApplicationNo.index();
     public static final int TEMPACTIVE = AttributesEnum.TempActive.index();
+    public static final int MEMBERNO = AttributesEnum.MemberNo.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int LINCUMEMBERCARDAUDITVO = AttributesEnum.LincuMemberCardAuditVO.index();
     public static final int LINCUMEMBERCARDDOCSVO1 = AttributesEnum.LincuMemberCardDocsVO1.index();
@@ -324,6 +327,7 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     public static final int NEWANDADDONCARDVA = AttributesEnum.NewAndAddOnCardVA.index();
     public static final int MEMBERPREFIXVA = AttributesEnum.MemberPrefixVA.index();
     public static final int OPENCLOSEVA = AttributesEnum.OpenCloseVA.index();
+    public static final int CURRENCYVA = AttributesEnum.CurrencyVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -2219,6 +2223,22 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     }
 
     /**
+     * Gets the attribute value for MEMBER_NO using the alias name MemberNo.
+     * @return the MEMBER_NO
+     */
+    public String getMemberNo() {
+        return (String) getAttributeInternal(MEMBERNO);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for MEMBER_NO using the alias name MemberNo.
+     * @param value value to set the MEMBER_NO
+     */
+    public void setMemberNo(String value) {
+        setAttributeInternal(MEMBERNO, value);
+    }
+
+    /**
      * Gets the associated <code>RowIterator</code> using master-detail link LincuMemberCardDocsVO.
      */
     public RowIterator getLincuMemberCardDocsVO() {
@@ -2358,6 +2378,13 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
      */
     public RowSet getOpenCloseVA() {
         return (RowSet) getAttributeInternal(OPENCLOSEVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> CurrencyVA.
+     */
+    public RowSet getCurrencyVA() {
+        return (RowSet) getAttributeInternal(CURRENCYVA);
     }
 
     public void closeCard(){

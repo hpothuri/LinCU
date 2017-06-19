@@ -22,7 +22,11 @@ import com.linCu.model.vvo.LincuUnionsVVORowImpl;
 import com.linCu.model.vvo.LoginVVOImpl;
 import com.linCu.model.vvo.LoginVVORowImpl;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -1247,6 +1251,24 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         }
         return null;
     }
+    
+    public String findCreditUnionBranchNameById(String branchId){
+        Row[] selectedRows = this.getCreditUnionBranch2().getFilteredRows("CreditUnionBranchId", branchId);
+        for(Row row : selectedRows){
+            CreditUnionBranchVORowImpl branchRow = (CreditUnionBranchVORowImpl)row;
+            return branchRow.getCreditUnionBranchName();
+        }
+        return null;
+    }
+    
+//    public String findMemberNoById(String memberId){
+//        Row[] selectedRows = this.getLincuMember1().getFilteredRows("CreditUnionBranchId", memberId);
+//        for(Row row : selectedRows){
+//            LincuMemberVORowImpl memberRow = (LincuMemberVORowImpl)row;
+//            return memberRow.getMemberNo();
+//        }
+//        return null;
+//    }
 
     /**
      * Container's getter for CreditUnionBranchVO1.
@@ -1254,6 +1276,318 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
      */
     public CreditUnionBranchVOImpl getCreditUnionBranch2() {
         return (CreditUnionBranchVOImpl) findViewObject("CreditUnionBranch2");
+    }
+    
+    public Map downloadApplication(){
+        LookupValuesForExcel excelLookups = new LookupValuesForExcel();
+            Map<String, String> countryMap = excelLookups.getCountries();
+            Map<String, String> occupationMap = excelLookups.getOccupationCode();
+            Map<String, String> maritalStatus = excelLookups.getMaritalStatues(); 
+            Map<String, String> streets = excelLookups.getStreet();    
+            Map<String, String> currencies = excelLookups.getCurrenciesRanges();
+            Map<String, String> educationCodes = excelLookups.getEducationCodes();
+            Map<String, String> yesOrNoCodes = excelLookups.getYesOrNoCodes();  
+            Map<String, String> genderCodes = excelLookups.getGenderCodes();   
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        //Date date = new Date();
+        Map<String, String> downloadApplicationMap = new HashMap<String, String>();
+        
+        LincuMemberCardVOImpl memberCard =  this.getLincuMemberCard();
+         LincuMemberCardVORowImpl memberCardRow = (LincuMemberCardVORowImpl)memberCard.getCurrentRow();
+        
+        if (memberCardRow.getCreditUnionId() != null) {
+            downloadApplicationMap.put("CREDIT_UNION", findCreditUnionName(memberCardRow.getCreditUnionId()));
+        } else {
+            downloadApplicationMap.put("CREDIT_UNION", "");
+        }
+        if (memberCardRow.getCreditUnionBranchId() != null) {
+            downloadApplicationMap.put("CREDIT_UNION_BRANCH", findCreditUnionBranchNameById(memberCardRow.getCreditUnionBranchId()));
+        } else {
+            downloadApplicationMap.put("CREDIT_UNION_BRANCH", "");
+        }
+        if (memberCardRow.getMemberNo() != null) {
+            downloadApplicationMap.put("MEMBER_NO", memberCardRow.getMemberNo());
+        } else {
+            downloadApplicationMap.put("MEMBER_NO", "");
+        }
+        if (memberCardRow.getMemberPrefix() != null) {
+            downloadApplicationMap.put("PREFIX", memberCardRow.getMemberPrefix());
+        } else {
+            downloadApplicationMap.put("PREFIX", "");
+        }
+        if (memberCardRow.getFirstName() != null) {
+            downloadApplicationMap.put("FIRST_NAME", memberCardRow.getFirstName());
+        } else {
+            downloadApplicationMap.put("FIRST_NAME", "");
+        }
+        if (memberCardRow.getMiddleName() != null) {
+            downloadApplicationMap.put("MIDDLE_NAME", memberCardRow.getMiddleName());
+        } else {
+            downloadApplicationMap.put("MIDDLE_NAME", "");
+        }
+        if (memberCardRow.getLastName() != null) {
+            downloadApplicationMap.put("LAST_NAME", memberCardRow.getLastName());
+        } else {
+            downloadApplicationMap.put("LAST_NAME", "");
+        }
+        if (memberCardRow.getMotherMaidenName() != null) {
+            downloadApplicationMap.put("MOTHER_MAIDEN_NAME", memberCardRow.getMotherMaidenName());
+        } else {
+            downloadApplicationMap.put("MOTHER_MAIDEN_NAME", "");
+        }
+        if (memberCardRow.getDateOfBirth() != null) {
+            downloadApplicationMap.put("DOB", dateFormat.format(memberCardRow.getDateOfBirth()));
+            //downloadApplicationMap.put("DOB", memberCardRow.getDateOfBirth().toString());
+        } else {
+            downloadApplicationMap.put("DOB", "");
+        }
+        if (memberCardRow.getEmail() != null) {
+            downloadApplicationMap.put("EMAIL", memberCardRow.getEmail());
+        } else {
+            downloadApplicationMap.put("EMAIL", "");
+        }
+        if (memberCardRow.getGender() != null) {
+            downloadApplicationMap.put("GENDER", genderCodes.get(memberCardRow.getGender()));
+        } else {
+            downloadApplicationMap.put("GENDER", "");
+        }
+        if (memberCardRow.getMaritalStatus() != null) {
+            downloadApplicationMap.put("MARITAL_STATUS", maritalStatus.get(memberCardRow.getMaritalStatus()));
+        } else {
+            downloadApplicationMap.put("MARITAL_STATUS", "");
+        }
+        if (memberCardRow.getNoOfDependents() != null) {
+            downloadApplicationMap.put("NO_OF_DEPENDENTS", memberCardRow.getNoOfDependents().toString());
+        } else {
+            downloadApplicationMap.put("NO_OF_DEPENDENTS", "");
+        }
+        if (memberCardRow.getElectorialId() != null) {
+            downloadApplicationMap.put("NATIONAL_ID", memberCardRow.getElectorialId());
+        } else {
+            downloadApplicationMap.put("NATIONAL_ID", "");
+        }
+        if (memberCardRow.getPassportNo() != null) {
+            downloadApplicationMap.put("PASSPORT", memberCardRow.getPassportNo());
+        } else {
+            downloadApplicationMap.put("PASSPORT", "");
+        }
+        if (memberCardRow.getDriverPermit() != null) {
+            downloadApplicationMap.put("DRIVING_LICENCE", memberCardRow.getDriverPermit());
+        } else {
+            downloadApplicationMap.put("DRIVING_LICENCE", "");
+        }
+        if (memberCardRow.getBirNo() != null) {
+            downloadApplicationMap.put("BIR", memberCardRow.getBirNo());
+        } else {
+            downloadApplicationMap.put("BIR", "");
+        }
+        if (memberCardRow.getHomePhoneNumber() != null) {
+            downloadApplicationMap.put("HOME_PHONE", memberCardRow.getHomePhoneNumber());
+        } else {
+            downloadApplicationMap.put("HOME_PHONE", "");
+        }
+        if (memberCardRow.getMobilePhoneNumber() != null) {
+            downloadApplicationMap.put("MOBILE_PHONE", memberCardRow.getMobilePhoneNumber());
+        } else {
+            downloadApplicationMap.put("MOBILE_PHONE", "");
+        }
+        if (memberCardRow.getFaxNumber() != null) {
+            downloadApplicationMap.put("FAX_NUMBER", memberCardRow.getFaxNumber());
+        } else {
+            downloadApplicationMap.put("FAX_NUMBER", "");
+        }
+        if (memberCardRow.getEducationCode() != null) {
+            downloadApplicationMap.put("EDUCATION", educationCodes.get(memberCardRow.getEducationCode()));
+        } else {
+            downloadApplicationMap.put("EDUCATION", "");
+        }
+        if (memberCardRow.getMonthlySalary() != null) {
+            downloadApplicationMap.put("MONTHLY_SALARY", currencies.get(memberCardRow.getMonthlySalary().toString()));
+        } else {
+            downloadApplicationMap.put("MONTHLY_SALARY", "");
+        }
+        if (memberCardRow.getShareholderCode() != null) {
+            downloadApplicationMap.put("FCB_SHAREHOLDING", memberCardRow.getShareholderCode());
+        } else {
+            downloadApplicationMap.put("FCB_SHAREHOLDING", "");
+        }
+        if (memberCardRow.getPermanentAddrLine1() != null) {
+            downloadApplicationMap.put("PER_ADD_LINE1", memberCardRow.getPermanentAddrLine1());
+        } else {
+            downloadApplicationMap.put("PER_ADD_LINE1", "");
+        }
+        if (memberCardRow.getPermanentAddrLine2() != null) {
+            downloadApplicationMap.put("PER_ADD_LINE2", memberCardRow.getPermanentAddrLine2());
+        } else {
+            downloadApplicationMap.put("PER_ADD_LINE2", "");
+        }
+        if (memberCardRow.getPermanentAddrLine3() != null) {
+            downloadApplicationMap.put("PER_ADD_LINE3", memberCardRow.getPermanentAddrLine3());
+        } else {
+            downloadApplicationMap.put("PER_ADD_LINE3", "");
+        }
+        if (memberCardRow.getPermanentAddrLine4() != null) {
+            downloadApplicationMap.put("PER_STREET", streets.get(memberCardRow.getPermanentAddrLine4()));
+        } else {
+            downloadApplicationMap.put("PER_STREET", "");
+        }
+        if (memberCardRow.getPermanentCity() != null) {
+            downloadApplicationMap.put("PER_CITY", memberCardRow.getPermanentCity());
+        } else {
+            downloadApplicationMap.put("PER_CITY", "");
+        }
+        if (memberCardRow.getPermanentState() != null) {
+            downloadApplicationMap.put("PER_STATE", memberCardRow.getPermanentState());
+        } else {
+            downloadApplicationMap.put("PER_STATE", "");
+        }
+        if (memberCardRow.getPermanentCountryCode() != null) {
+            downloadApplicationMap.put("PER_COUNTRY", countryMap.get(memberCardRow.getPermanentCountryCode()));
+        } else {
+            downloadApplicationMap.put("PER_COUNTRY", "");
+        }
+        if (memberCardRow.getPermanentZipCode() != null) {
+            downloadApplicationMap.put("PER_ZIP", memberCardRow.getPermanentZipCode());
+        } else {
+            downloadApplicationMap.put("PER_ZIP", "");
+        }
+        if (memberCardRow.getHomeOwnership() != null) {
+            downloadApplicationMap.put("PER_HOMETOWNSHIP", memberCardRow.getHomeOwnership());
+        } else {
+            downloadApplicationMap.put("PER_HOMETOWNSHIP", "");
+        }
+        if (memberCardRow.getMailingAddrLine1() != null) {
+            downloadApplicationMap.put("MAIL_ADD_LINE1", memberCardRow.getMailingAddrLine1());
+        } else {
+            downloadApplicationMap.put("MAIL_ADD_LINE1", "");
+        }
+        if (memberCardRow.getMailingAddrLine2() != null) {
+            downloadApplicationMap.put("MAIL_ADD_LINE2", memberCardRow.getMailingAddrLine2());
+        } else {
+            downloadApplicationMap.put("MAIL_ADD_LINE2", "");
+        }
+        if (memberCardRow.getMailingAddrLine3() != null) {
+            downloadApplicationMap.put("MAIL_ADD_LINE3", memberCardRow.getMailingAddrLine3());
+        } else {
+            downloadApplicationMap.put("MAIL_ADD_LINE3", "");
+        }
+        if (memberCardRow.getMailingAddrLine4() != null) {
+            downloadApplicationMap.put("MAIL_ADD_STREET", streets.get(memberCardRow.getMailingAddrLine4().toString()));
+        } else {
+            downloadApplicationMap.put("MAIL_ADD_STREET", "");
+        }
+        if (memberCardRow.getMailingCity() != null) {
+            downloadApplicationMap.put("MAIL_ADD_CITY", memberCardRow.getMailingCity());
+        } else {
+            downloadApplicationMap.put("MAIL_ADD_CITY", "");
+        }
+        if (memberCardRow.getMailingState() != null) {
+            downloadApplicationMap.put("MAIL_ADD_STATE", memberCardRow.getMailingState());
+        } else {
+            downloadApplicationMap.put("MAIL_ADD_STATE", "");
+        }
+        if (memberCardRow.getMailingCountryCode() != null) {
+            downloadApplicationMap.put("MAIL_ADD_COUNTRY", countryMap.get(memberCardRow.getMailingCountryCode().toString()));
+        } else {
+            downloadApplicationMap.put("MAIL_ADD_COUNTRY", "");
+        }
+        if (memberCardRow.getMailingZipCode() != null) {
+            downloadApplicationMap.put("MAIL_ADD_ZIP", memberCardRow.getMailingZipCode());
+        } else {
+            downloadApplicationMap.put("MAIL_ADD_ZIP", "");
+        }
+        if (memberCardRow.getEmployer() != null) {
+            downloadApplicationMap.put("EMP_NAME", memberCardRow.getEmployer());
+        } else {
+            downloadApplicationMap.put("EMP_NAME", "");
+        }
+        if (memberCardRow.getOccupationCode() != null) {
+            downloadApplicationMap.put("EMP_OCCUPATION", occupationMap.get(memberCardRow.getOccupationCode().toString()));
+        } else {
+            downloadApplicationMap.put("EMP_OCCUPATION", "");
+        }
+        if (memberCardRow.getEmployerAddress1() != null) {
+            downloadApplicationMap.put("EMP_ADD_LINE1", memberCardRow.getEmployerAddress1());
+        } else {
+            downloadApplicationMap.put("EMP_ADD_LINE1", "");
+        }
+        if (memberCardRow.getEmployerAddress2() != null) {
+            downloadApplicationMap.put("EMP_ADD_LINE2", memberCardRow.getEmployerAddress2());
+        } else {
+            downloadApplicationMap.put("EMP_ADD_LINE2", "");
+        }
+        if (memberCardRow.getEmployerCity() != null) {
+            downloadApplicationMap.put("EMP_ADD_CITY", memberCardRow.getEmployerCity());
+        } else {
+            downloadApplicationMap.put("EMP_ADD_CITY", "");
+        }
+        if (memberCardRow.getBusinessPhoneNumber() != null) {
+            downloadApplicationMap.put("BUSINESS_PHONE", memberCardRow.getBusinessPhoneNumber());
+        } else {
+            downloadApplicationMap.put("BUSINESS_PHONE", "");
+        }
+        if (memberCardRow.getBusinessPhoneExtn() != null) {
+            downloadApplicationMap.put("BUSINESS_PHONE_EXTN", memberCardRow.getBusinessPhoneExtn());
+        } else {
+            downloadApplicationMap.put("BUSINESS_PHONE_EXTN", "");
+        }
+        if (memberCardRow.getBirthCountryCode() != null) {
+            downloadApplicationMap.put("COUNTRY_OF_BIRTH", countryMap.get(memberCardRow.getBirthCountryCode().toString()));
+        } else {
+            downloadApplicationMap.put("COUNTRY_OF_BIRTH", "");
+        }
+        if (memberCardRow.getLocalTaxExempt() != null) {
+            downloadApplicationMap.put("LOCAL_TAX_EXMP", yesOrNoCodes.get(memberCardRow.getLocalTaxExempt().toString()));
+        } else {
+            downloadApplicationMap.put("LOCAL_TAX_EXMP", "");
+        }
+        if (memberCardRow.getNationality() != null) {
+            downloadApplicationMap.put("NATIONALITY", countryMap.get(memberCardRow.getNationality().toString()));
+        } else {
+            downloadApplicationMap.put("NATIONALITY", "");
+        }
+        if (memberCardRow.getCitizenShipCountry1() != null) {
+            downloadApplicationMap.put("CITIZENSHIP1", countryMap.get(memberCardRow.getCitizenShipCountry1().toString()));
+        } else {
+            downloadApplicationMap.put("CITIZENSHIP1", "");
+        }
+        if (memberCardRow.getCitizenShipCountry2() != null) {
+            downloadApplicationMap.put("CITIZENSHIP2", countryMap.get(memberCardRow.getCitizenShipCountry2().toString()));
+        } else {
+            downloadApplicationMap.put("CITIZENSHIP2", "");
+        }
+        if (memberCardRow.getCitizenShipCountry3() != null) {
+            downloadApplicationMap.put("CITIZENSHIP3", countryMap.get(memberCardRow.getCitizenShipCountry3().toString()));
+        } else {
+            downloadApplicationMap.put("CITIZENSHIP3", "");
+        }
+        if (memberCardRow.getCitizenShipCountry4() != null) {
+            downloadApplicationMap.put("CITIZENSHIP4", countryMap.get(memberCardRow.getCitizenShipCountry4().toString()));
+        } else {
+            downloadApplicationMap.put("CITIZENSHIP4", "");
+        }
+        if (memberCardRow.getEligibleForeignTax() != null) {
+            downloadApplicationMap.put("ELIGIBLE_FOR_TAX", yesOrNoCodes.get(memberCardRow.getEligibleForeignTax().toString()));
+        } else {
+            downloadApplicationMap.put("ELIGIBLE_FOR_TAX", "");
+        }
+        if (memberCardRow.getDocForeignTaxExempt() != null) {
+            downloadApplicationMap.put("DOCS_FOR_TAX_EXMP", yesOrNoCodes.get(memberCardRow.getDocForeignTaxExempt().toString()));
+        } else {
+            downloadApplicationMap.put("DOCS_FOR_TAX_EXMP", "");
+        }
+        if (memberCardRow.getForeignCitizenship() != null) {
+            downloadApplicationMap.put("CITIZENS_IN_OTHER_COUNTRY", yesOrNoCodes.get(memberCardRow.getForeignCitizenship().toString()));
+        } else {
+            downloadApplicationMap.put("CITIZENS_IN_OTHER_COUNTRY", "");
+        }
+        if (memberCardRow.getPowerOfAttorney() != null) {
+            downloadApplicationMap.put("POWER_OF_ATTERNY", yesOrNoCodes.get(memberCardRow.getPowerOfAttorney().toString()));
+        } else {
+            downloadApplicationMap.put("POWER_OF_ATTERNY", "");
+        }
+        
+        return downloadApplicationMap;
     }
 }
 

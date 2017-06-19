@@ -56,5 +56,7 @@ public interface LinCuAM extends ApplicationModule {
     String findCreditUnionBranchIdByCode(String code);
 
     String findCreditUnionIdByCode(String code);
+
+    Map downloadApplication();
 }
 

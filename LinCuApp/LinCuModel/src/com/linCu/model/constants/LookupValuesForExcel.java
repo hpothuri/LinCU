@@ -302,4 +302,26 @@ public class LookupValuesForExcel {
         gender.put("F","Female");
         return gender;
     }
+    
+    public Map<String, String> getCurrenciesRanges() {
+        Map<String, String> currinces = new HashMap<String, String>();
+        currinces.put("0","LESS THAN $10,000");
+        currinces.put("1","$10,000 - $19,999");
+        currinces.put("2","$20,000 - $29,999");
+        currinces.put("3","$30,000 - $39,999");
+        currinces.put("4","$40,000 - $49,999");
+        currinces.put("5","$50,000 - $59,999");
+        currinces.put("6","$60,000 - $69,000");
+        currinces.put("7","$70,000 - $79,999");
+        currinces.put("8","$80,000 - $89,999");
+        currinces.put("9","$90,000 - $99,000");
+        currinces.put("10","$100,000 - $149,999");
+        currinces.put("11","$150,000 - $199,999");
+        currinces.put("12","$200,000 - $299,999");
+        currinces.put("13","$300,000 - $399,000");
+        currinces.put("14","$400,000 - $499,999");
+        currinces.put("15","$500,000. PLUS"); 
+        currinces.put("16","NOT SUPPLIED"); 
+        return currinces;
+    }
 }
