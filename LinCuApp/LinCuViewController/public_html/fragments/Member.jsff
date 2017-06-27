@@ -213,12 +213,21 @@
           <f:selectItems value="#{bindings.EducationCode.items}" id="si22"/>
           <f:validator binding="#{bindings.EducationCode.validator}"/>
         </af:selectOneChoice>
-        <af:selectOneChoice value="#{bindings.MonthlySalary.inputValue}" label="#{bindings.MonthlySalary.label}"
-                            required="#{bindings.MonthlySalary.hints.mandatory}"
-                            shortDesc="#{bindings.MonthlySalary.hints.tooltip}" id="soc18"
-                            contentStyle="margin-top: 8px;width:295px;">
-          <f:selectItems value="#{bindings.MonthlySalary.items}" id="si26"/>
+        <af:inputText value="#{bindings.MonthlySalary.inputValue}" label="#{bindings.MonthlySalary.hints.label}"
+                      required="#{bindings.MonthlySalary.hints.mandatory}"
+                      columns="#{bindings.MonthlySalary.hints.displayWidth}"
+                      maximumLength="#{bindings.MonthlySalary.hints.precision}"
+                      shortDesc="#{bindings.MonthlySalary.hints.tooltip}" id="it9" contentStyle="width:295px;"
+                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
           <f:validator binding="#{bindings.MonthlySalary.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.MonthlySalary.format}"/>
+        </af:inputText>
+        <af:selectOneChoice value="#{bindings.AnnualIncome.inputValue}" label="#{bindings.AnnualIncome.label}"
+                            required="#{bindings.AnnualIncome.hints.mandatory}"
+                            shortDesc="#{bindings.AnnualIncome.hints.tooltip}" id="soc18" contentStyle="margin-top: 8px;width:295px;"
+                            disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+          <f:selectItems value="#{bindings.AnnualIncome.items}" id="si26"/>
+          <f:validator binding="#{bindings.AnnualIncome.validator}"/>
         </af:selectOneChoice>
         <af:selectOneRadio value="#{bindings.ShareholderCode.inputValue}" label="#{bindings.ShareholderCode.label}"
                            required="#{bindings.ShareholderCode.hints.mandatory}"
@@ -573,13 +582,6 @@
         <f:validator binding="#{bindings.DpIssueDate.validator}"/>
         <af:convertDateTime pattern="#{bindings.DpIssueDate.format}"/>
       </af:inputDate>
-      <af:inputText value="#{bindings.IncomeCode.inputValue}" label="#{bindings.IncomeCode.hints.label}"
-                    required="#{bindings.IncomeCode.hints.mandatory}"
-                    columns="#{bindings.IncomeCode.hints.displayWidth}"
-                    maximumLength="#{bindings.IncomeCode.hints.precision}"
-                    shortDesc="#{bindings.IncomeCode.hints.tooltip}" id="it39">
-        <f:validator binding="#{bindings.IncomeCode.validator}"/>
-      </af:inputText>
       <af:inputDate value="#{bindings.PpExpiryDate.inputValue}" label="#{bindings.PpExpiryDate.hints.label}"
                     required="#{bindings.PpExpiryDate.hints.mandatory}"
                     columns="#{bindings.PpExpiryDate.hints.displayWidth}"

@@ -255,16 +255,39 @@ public class CardBean {
 
     public String uploadDoc() {
         UploadedFile imageFile = this.getFile();
-        BindingContext bindingCtx = BindingContext.getCurrent();
-        BindingContainer bindingcnt = bindingCtx.getCurrentBindingsEntry();
-        DCBindingContainer dcContainger = (DCBindingContainer) bindingcnt;
-        DCIteratorBinding itr = dcContainger.findIteratorBinding("LincuMemberCardDocsIterator");
+        String fileName = imageFile.getFilename();
+        String fileExtn = getFileExtn(fileName);
 
-        oracle.jbo.Row row = itr.getCurrentRow();
-        row.setAttribute("Document", createBlobDomain(imageFile));
-        row.setAttribute("DocumentName", imageFile.getFilename());
-        //this.getAttachDocument().hide();
+        if (!isExcel(fileExtn)) {
+            JSFUtils.addErrorMessage("Only follwing file formats are allowed for upload. pdf, txt, png, tif, tiff, gif, jpg, jpeg, jpe, jfif");
+            this.setFile(null);
+        } else {
+            BindingContext bindingCtx = BindingContext.getCurrent();
+            BindingContainer bindingcnt = bindingCtx.getCurrentBindingsEntry();
+            DCBindingContainer dcContainger = (DCBindingContainer) bindingcnt;
+            DCIteratorBinding itr = dcContainger.findIteratorBinding("LincuMemberCardDocsIterator");
+
+            oracle.jbo.Row row = itr.getCurrentRow();
+            row.setAttribute("Document", createBlobDomain(imageFile));
+            row.setAttribute("DocumentName", fileName);
+            //this.getAttachDocument().hide();
+        }
         return null;
+    }
+    
+    String getFileExtn(String filename) {
+        String parts[] = filename.split("\\.(?=[^\\.]+$)");
+        return parts[1].toLowerCase();
+    }
+
+    boolean isExcel(String fileExtn) {
+        if (fileExtn.equals("pdf") || fileExtn.equals("txt") || fileExtn.equals("png") || fileExtn.equals("tif") ||
+            fileExtn.equals("tiff") || fileExtn.equals("gif") || fileExtn.equals("jpeg") || fileExtn.equals("jpe") ||
+            fileExtn.equals("jfif"))
+            return true;
+        else
+            return false;
+
     }
     
         private BlobDomain createBlobDomain(UploadedFile imageFile){

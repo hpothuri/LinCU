@@ -108,5 +108,12 @@
         <Item Value="Active"/>
       </AttrNames>
     </attributeValues>
+    <list IterBinding="LincuUserInfoIterator" StaticList="false" Uses="LOV_UserSupervisor" id="UserSupervisor"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LincuUserInfoIterator" id="UserRole1">
+      <AttrNames>
+        <Item Value="UserRole"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

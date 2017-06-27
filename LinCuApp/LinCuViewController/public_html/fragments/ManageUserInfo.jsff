@@ -177,7 +177,8 @@
                               label="#{bindings.UserRole.label}"
                               required="false" shortDesc="#{bindings.UserRole.hints.tooltip}" id="soc7"
                               inlineStyle="margin-top: 8px;" contentStyle="margin-top: 8px;width:252px;"
-                              partialTriggers="soc8" showRequired="true" disabled="#{(bindings.UserTypeCode1 eq '')||(pageFlowScope.action eq 'view')}">
+                              partialTriggers="soc8" showRequired="true" disabled="#{(bindings.UserTypeCode1 eq '')||(pageFlowScope.action eq 'view')}"
+                              autoSubmit="true">
             <f:selectItems value="#{bindings.UserRole.items}" id="si7"/>
             <f:validator binding="#{bindings.UserRole.validator}"/>
           </af:selectOneChoice>
@@ -241,6 +242,15 @@
                         rendered="false">
             <f:validator binding="#{bindings.UserName.validator}"/>
           </af:inputText>
+          <af:selectOneChoice value="#{bindings.UserSupervisor.inputValue}" label="#{bindings.UserSupervisor.label}"
+                              required="#{bindings.UserSupervisor.hints.mandatory}"
+                              shortDesc="#{bindings.UserSupervisor.hints.tooltip}" id="soc10"
+                              disabled="#{(pageFlowScope.action eq 'view') or (bindings.UserRole1 ne 'MSR')}"
+                              contentStyle="width:252px;" showRequired="#{bindings.UserRole1 eq 'MSR'}"
+                              partialTriggers="soc5 soc7">
+            <f:selectItems value="#{bindings.UserSupervisor.items}" id="si11"/>
+            <f:validator binding="#{bindings.UserSupervisor.validator}"/>
+          </af:selectOneChoice>
         </af:panelFormLayout>
       </af:dialog>
     </af:popup>

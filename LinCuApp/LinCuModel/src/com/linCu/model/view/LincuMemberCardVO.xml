@@ -115,7 +115,18 @@
   <ViewAccessor
     Name="CountryVA"
     ViewObjectName="com.linCu.model.vvo.CountryVVO"
-    RowLevelBinds="true"/>
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByCode"
+      FullName="com.linCu.model.vvo.CountryVVO.QueryByCode"/>
+    <ParameterMap>
+      <PIMap Variable="bindCodeType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['COUNTRY']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ViewAccessor
     Name="GenderVA"
     ViewObjectName="com.linCu.model.vvo.GenderVVO"
@@ -808,14 +819,14 @@
     <DisplayCriteria/>
   </ListBinding>
   <ListBinding
-    Name="LOV_MonthlySalary"
+    Name="LOV_AnnualIncome"
     ListVOName="CurrencyVA"
     ListRangeSize="-1"
     NullValueFlag="start"
     NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
     MRUCount="0">
     <AttrArray Name="AttrNames">
-      <Item Value="MonthlySalary"/>
+      <Item Value="AnnualIncome"/>
     </AttrArray>
     <AttrArray Name="AttrExpressions"/>
     <AttrArray Name="ListAttrNames">
@@ -1418,12 +1429,6 @@
     </Properties>
   </ViewAttribute>
   <ViewAttribute
-    Name="IncomeCode"
-    PrecisionRule="true"
-    EntityAttrName="IncomeCode"
-    EntityUsage="LincuMemberKycEO"
-    AliasName="INCOME_CODE"/>
-  <ViewAttribute
     Name="LastApprovedBy1"
     IsNotNull="true"
     PrecisionRule="true"
@@ -1561,20 +1566,6 @@
     EntityAttrName="MemberId"
     EntityUsage="LincuMemberKycEO"
     AliasName="MEMBER_ID2"/>
-  <ViewAttribute
-    Name="MonthlySalary"
-    PrecisionRule="true"
-    EntityAttrName="MonthlySalary"
-    EntityUsage="LincuMemberKycEO"
-    AliasName="MONTHLY_SALARY"
-    LOVName="LOV_MonthlySalary">
-    <Properties>
-      <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="choice"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
   <ViewAttribute
     Name="MotherMaidenName"
     IsNotNull="true"
@@ -1992,6 +1983,26 @@
     EntityAttrName="MemberNo"
     EntityUsage="LincuMemberInfoEO"
     AliasName="MEMBER_NO"/>
+  <ViewAttribute
+    Name="MonthlySalary"
+    PrecisionRule="true"
+    EntityAttrName="MonthlySalary"
+    EntityUsage="LincuMemberKycEO"
+    AliasName="MONTHLY_SALARY"/>
+  <ViewAttribute
+    Name="AnnualIncome"
+    PrecisionRule="true"
+    EntityAttrName="AnnualIncome"
+    EntityUsage="LincuMemberKycEO"
+    AliasName="ANNUAL_INCOME"
+    LOVName="LOV_AnnualIncome">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewCriteria
     Name="LincuMemberCardVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"

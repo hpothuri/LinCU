@@ -641,18 +641,6 @@
     ColumnType="NUMBER"
     TableName="LINCU_MEMBER_KYC"/>
   <Attribute
-    Name="IncomeCode"
-    Precision="3"
-    ColumnName="INCOME_CODE"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LINCU_MEMBER_KYC">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="3"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="EducationCode"
     Precision="4"
     ColumnName="EDUCATION_CODE"
@@ -702,8 +690,6 @@
   </Attribute>
   <Attribute
     Name="MonthlySalary"
-    Precision="12"
-    Scale="2"
     ColumnName="MONTHLY_SALARY"
     SQLType="NUMERIC"
     Type="java.math.BigDecimal"
@@ -834,6 +820,18 @@
     TableName="LINCU_MEMBER_KYC">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AnnualIncome"
+    Precision="3"
+    ColumnName="ANNUAL_INCOME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_KYC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
     </DesignTime>
   </Attribute>
   <AccessorAttribute

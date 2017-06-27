@@ -59,12 +59,18 @@ public class UserInfo {
             String userType = (String)ADFUtils.getBoundAttributeValue("UserTypeCode1");
             Object creditUnionId = ADFUtils.getBoundAttributeValue("CreditUnionId");
             Object creditUnionBranchId = ADFUtils.getBoundAttributeValue("CreditUnionBranchId");
+            String roleType = (String)ADFUtils.getBoundAttributeValue("UserRole1");
+            Object supervisorId = ADFUtils.getBoundAttributeValue("UserSupervisor");
             if(((userType != null) && ("CREDIT_UNION".equalsIgnoreCase(userType))) && ((creditUnionId == null) || (creditUnionBranchId == null))){
-            if(creditUnionId == null)
-            JSFUtils.addErrorMessage("Credit Union is required");
-            if(creditUnionBranchId == null)
-            JSFUtils.addErrorMessage("Branch is required");
-            }else{
+                if(creditUnionId == null){
+                    JSFUtils.addErrorMessage("Credit Union is required");
+                }
+                if(creditUnionBranchId == null){
+                    JSFUtils.addErrorMessage("Branch is required");
+                }              
+            }else if((roleType != null) && "MSR".equalsIgnoreCase(roleType) && ((supervisorId == null) || ("".equalsIgnoreCase(supervisorId.toString())))){
+                    JSFUtils.addErrorMessage("Supervisor is required");
+                }else{
         try {
             String action = (String)ADFUtils.getPageFlowScopeValue("action");
             if((action != null) && ("create".equalsIgnoreCase(action))){

@@ -12,7 +12,11 @@
   <DesignTime>
     <Attr Name="_isExpertMode" Value="true"/>
   </DesignTime>
-  <SQLQuery><![CDATA[SELECT COUNTRY_ID, COUNTRY_NAME   
+  <Variable
+    Name="bindCodeType"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[SELECT COUNTRY_ID, COUNTRY_NAME, CODE_TYPE    
 FROM COUNTRY_CODES]]></SQLQuery>
   <ViewAttribute
     Name="CountryId"
@@ -44,6 +48,57 @@ FROM COUNTRY_CODES]]></SQLQuery>
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
   </ViewAttribute>
+  <ViewAttribute
+    Name="CodeType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CODE_TYPE"
+    Expression="CODE_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="QueryByCode"
+    ViewObjectName="com.linCu.model.vvo.CountryVVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="CountryVVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CountryVVOCriteria_CountryVVOCriteria_row_0_CodeType"
+        ViewAttribute="CodeType"
+        Operator="="
+        Conjunction="AND"
+        Value=":bindCodeType"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <AttrArray Name="KeyAttributes">
     <Item Value="CountryId"/>
   </AttrArray>

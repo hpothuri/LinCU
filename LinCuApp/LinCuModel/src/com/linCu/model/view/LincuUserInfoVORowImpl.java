@@ -64,7 +64,8 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl implements com.linCu.mod
         SecurityQuestionsVA,
         CreditUnionLinCuRolesVA,
         FCBRolesVA,
-        OpenCloseVA;
+        OpenCloseVA,
+        SupervisorVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -133,6 +134,7 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl implements com.linCu.mod
     public static final int CREDITUNIONLINCUROLESVA = AttributesEnum.CreditUnionLinCuRolesVA.index();
     public static final int FCBROLESVA = AttributesEnum.FCBRolesVA.index();
     public static final int OPENCLOSEVA = AttributesEnum.OpenCloseVA.index();
+    public static final int SUPERVISORVA = AttributesEnum.SupervisorVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -273,15 +275,15 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl implements com.linCu.mod
      * Gets the attribute value for USER_SUPERVISOR using the alias name UserSupervisor.
      * @return the USER_SUPERVISOR
      */
-    public String getUserSupervisor() {
-        return (String) getAttributeInternal(USERSUPERVISOR);
+    public Long getUserSupervisor() {
+        return (Long) getAttributeInternal(USERSUPERVISOR);
     }
 
     /**
      * Sets <code>value</code> as attribute value for USER_SUPERVISOR using the alias name UserSupervisor.
      * @param value value to set the USER_SUPERVISOR
      */
-    public void setUserSupervisor(String value) {
+    public void setUserSupervisor(Long value) {
         setAttributeInternal(USERSUPERVISOR, value);
     }
 
@@ -777,6 +779,13 @@ public class LincuUserInfoVORowImpl extends ViewRowImpl implements com.linCu.mod
      */
     public RowSet getOpenCloseVA() {
         return (RowSet) getAttributeInternal(OPENCLOSEVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> SupervisorVA.
+     */
+    public RowSet getSupervisorVA() {
+        return (RowSet) getAttributeInternal(SUPERVISORVA);
     }
 
     public void closeUser(){

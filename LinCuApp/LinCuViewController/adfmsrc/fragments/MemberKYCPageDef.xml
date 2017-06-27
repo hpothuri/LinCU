@@ -52,7 +52,6 @@
           <Item Value="EmployerCity"/>
           <Item Value="ForeignCitizenship"/>
           <Item Value="HomeOwnership"/>
-          <Item Value="IncomeCode"/>
           <Item Value="LocalTaxExempt"/>
           <Item Value="MailingAddrLine1"/>
           <Item Value="MailingAddrLine2"/>

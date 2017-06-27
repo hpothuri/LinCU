@@ -69,7 +69,6 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         EmployerCity,
         ForeignCitizenship,
         HomeOwnership,
-        IncomeCode,
         LastApprovedBy1,
         LastApprovedDate1,
         LastUpdateDate1,
@@ -85,7 +84,6 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         MailingZipCode,
         MaritalStatus,
         MemberId1,
-        MonthlySalary,
         MotherMaidenName,
         Nationality,
         NoOfDependents,
@@ -119,6 +117,8 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         Comments,
         TransMemberStatus,
         MemberNo,
+        MonthlySalary,
+        AnnualIncome,
         LincuUnionsVA,
         LincuBranchesVA,
         GenderVA,
@@ -206,7 +206,6 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public static final int EMPLOYERCITY = AttributesEnum.EmployerCity.index();
     public static final int FOREIGNCITIZENSHIP = AttributesEnum.ForeignCitizenship.index();
     public static final int HOMEOWNERSHIP = AttributesEnum.HomeOwnership.index();
-    public static final int INCOMECODE = AttributesEnum.IncomeCode.index();
     public static final int LASTAPPROVEDBY1 = AttributesEnum.LastApprovedBy1.index();
     public static final int LASTAPPROVEDDATE1 = AttributesEnum.LastApprovedDate1.index();
     public static final int LASTUPDATEDATE1 = AttributesEnum.LastUpdateDate1.index();
@@ -222,7 +221,6 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public static final int MAILINGZIPCODE = AttributesEnum.MailingZipCode.index();
     public static final int MARITALSTATUS = AttributesEnum.MaritalStatus.index();
     public static final int MEMBERID1 = AttributesEnum.MemberId1.index();
-    public static final int MONTHLYSALARY = AttributesEnum.MonthlySalary.index();
     public static final int MOTHERMAIDENNAME = AttributesEnum.MotherMaidenName.index();
     public static final int NATIONALITY = AttributesEnum.Nationality.index();
     public static final int NOOFDEPENDENTS = AttributesEnum.NoOfDependents.index();
@@ -256,6 +254,8 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public static final int COMMENTS = AttributesEnum.Comments.index();
     public static final int TRANSMEMBERSTATUS = AttributesEnum.TransMemberStatus.index();
     public static final int MEMBERNO = AttributesEnum.MemberNo.index();
+    public static final int MONTHLYSALARY = AttributesEnum.MonthlySalary.index();
+    public static final int ANNUALINCOME = AttributesEnum.AnnualIncome.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
     public static final int LINCUBRANCHESVA = AttributesEnum.LincuBranchesVA.index();
     public static final int GENDERVA = AttributesEnum.GenderVA.index();
@@ -1048,21 +1048,6 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         setAttributeInternal(HOMEOWNERSHIP, value);
     }
 
-    /**
-     * Gets the attribute value for INCOME_CODE using the alias name IncomeCode.
-     * @return the INCOME_CODE
-     */
-    public String getIncomeCode() {
-        return (String) getAttributeInternal(INCOMECODE);
-    }
-
-    /**
-     * Sets <code>value</code> as attribute value for INCOME_CODE using the alias name IncomeCode.
-     * @param value value to set the INCOME_CODE
-     */
-    public void setIncomeCode(String value) {
-        setAttributeInternal(INCOMECODE, value);
-    }
 
     /**
      * Gets the attribute value for LAST_APPROVED_BY using the alias name LastApprovedBy1.
@@ -1318,6 +1303,22 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
      */
     public void setMonthlySalary(BigDecimal value) {
         setAttributeInternal(MONTHLYSALARY, value);
+    }
+
+    /**
+     * Gets the attribute value for ANNUAL_INCOME using the alias name AnnualIncome.
+     * @return the ANNUAL_INCOME
+     */
+    public String getAnnualIncome() {
+        return (String) getAttributeInternal(ANNUALINCOME);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ANNUAL_INCOME using the alias name AnnualIncome.
+     * @param value value to set the ANNUAL_INCOME
+     */
+    public void setAnnualIncome(String value) {
+        setAttributeInternal(ANNUALINCOME, value);
     }
 
     /**

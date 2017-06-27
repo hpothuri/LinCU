@@ -126,6 +126,21 @@
     Name="OpenCloseVA"
     ViewObjectName="com.linCu.model.vvo.OpenCloseVVO"
     RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SupervisorVA"
+    ViewObjectName="com.linCu.model.vvo.SupervisorVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByCreditUnion"
+      FullName="com.linCu.model.vvo.SupervisorVVO.QueryByCreditUnion"/>
+    <ParameterMap>
+      <PIMap Variable="bindCreditUnion">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[CreditUnionId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="LOV_Gender"
     ListVOName="GenderVA"
@@ -368,6 +383,25 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
+  <ListBinding
+    Name="LOV_UserSupervisor"
+    ListVOName="SupervisorVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UserSupervisor"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UserId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SupervisorName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="LincuUserInfoEO"
     Entity="com.linCu.model.entity.LincuUserInfoEO"/>
@@ -498,13 +532,16 @@
     PrecisionRule="true"
     EntityAttrName="UserSupervisor"
     EntityUsage="LincuUserInfoEO"
-    AliasName="USER_SUPERVISOR">
+    AliasName="USER_SUPERVISOR"
+    LOVName="LOV_UserSupervisor">
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="37"/>
         <LABEL
           ResId="SUPERVISOR"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

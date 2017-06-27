@@ -497,7 +497,6 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     }
     
     public List createExportCardDetailsWb() {
-    LookupValuesForExcel excelLookups = new LookupValuesForExcel();    
     HSSFWorkbook wb = new HSSFWorkbook();
     HSSFSheet sheet = wb.createSheet("CardDetails"); //Sheet Name
     int idx = 0; // rows index

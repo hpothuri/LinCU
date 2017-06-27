@@ -65,8 +65,13 @@ public class LincuUserInfoEOImpl extends EntityImpl {
         SecurityQustn4,
         SecurityQustnAns4,
         Active,
+        Password1,
+        Password2,
+        Password3,
+        Password4,
         CreditUnionBranchEO;
-        private static AttributesEnum[] vals = null;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -123,6 +128,10 @@ public class LincuUserInfoEOImpl extends EntityImpl {
     public static final int SECURITYQUSTN4 = AttributesEnum.SecurityQustn4.index();
     public static final int SECURITYQUSTNANS4 = AttributesEnum.SecurityQustnAns4.index();
     public static final int ACTIVE = AttributesEnum.Active.index();
+    public static final int PASSWORD1 = AttributesEnum.Password1.index();
+    public static final int PASSWORD2 = AttributesEnum.Password2.index();
+    public static final int PASSWORD3 = AttributesEnum.Password3.index();
+    public static final int PASSWORD4 = AttributesEnum.Password4.index();
     public static final int CREDITUNIONBRANCHEO = AttributesEnum.CreditUnionBranchEO.index();
 
     /**
@@ -255,15 +264,15 @@ public class LincuUserInfoEOImpl extends EntityImpl {
      * Gets the attribute value for UserSupervisor, using the alias name UserSupervisor.
      * @return the value of UserSupervisor
      */
-    public String getUserSupervisor() {
-        return (String) getAttributeInternal(USERSUPERVISOR);
+    public Long getUserSupervisor() {
+        return (Long) getAttributeInternal(USERSUPERVISOR);
     }
 
     /**
      * Sets <code>value</code> as the attribute value for UserSupervisor.
      * @param value value to set the UserSupervisor
      */
-    public void setUserSupervisor(String value) {
+    public void setUserSupervisor(Long value) {
         setAttributeInternal(USERSUPERVISOR, value);
     }
 
@@ -665,6 +674,71 @@ public class LincuUserInfoEOImpl extends EntityImpl {
      */
     public void setActive(String value) {
         setAttributeInternal(ACTIVE, value);
+    }
+
+
+    /**
+     * Gets the attribute value for Password1, using the alias name Password1.
+     * @return the value of Password1
+     */
+    public String getPassword1() {
+        return (String) getAttributeInternal(PASSWORD1);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Password1.
+     * @param value value to set the Password1
+     */
+    public void setPassword1(String value) {
+        setAttributeInternal(PASSWORD1, value);
+    }
+
+    /**
+     * Gets the attribute value for Password2, using the alias name Password2.
+     * @return the value of Password2
+     */
+    public String getPassword2() {
+        return (String) getAttributeInternal(PASSWORD2);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Password2.
+     * @param value value to set the Password2
+     */
+    public void setPassword2(String value) {
+        setAttributeInternal(PASSWORD2, value);
+    }
+
+    /**
+     * Gets the attribute value for Password3, using the alias name Password3.
+     * @return the value of Password3
+     */
+    public String getPassword3() {
+        return (String) getAttributeInternal(PASSWORD3);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Password3.
+     * @param value value to set the Password3
+     */
+    public void setPassword3(String value) {
+        setAttributeInternal(PASSWORD3, value);
+    }
+
+    /**
+     * Gets the attribute value for Password4, using the alias name Password4.
+     * @return the value of Password4
+     */
+    public String getPassword4() {
+        return (String) getAttributeInternal(PASSWORD4);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Password4.
+     * @param value value to set the Password4
+     */
+    public void setPassword4(String value) {
+        setAttributeInternal(PASSWORD4, value);
     }
 
     /**

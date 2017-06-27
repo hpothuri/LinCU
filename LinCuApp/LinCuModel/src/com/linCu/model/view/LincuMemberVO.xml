@@ -72,7 +72,18 @@
   <ViewAccessor
     Name="CountryVA"
     ViewObjectName="com.linCu.model.vvo.CountryVVO"
-    RowLevelBinds="true"/>
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByCode"
+      FullName="com.linCu.model.vvo.CountryVVO.QueryByCode"/>
+    <ParameterMap>
+      <PIMap Variable="bindCodeType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['COUNTRY']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ViewAccessor
     Name="YesOrNoVA"
     ViewObjectName="com.linCu.model.vvo.YesOrNoVVO"
@@ -683,14 +694,14 @@
     <DisplayCriteria/>
   </ListBinding>
   <ListBinding
-    Name="LOV_MonthlySalary"
+    Name="LOV_AnnualIncome"
     ListVOName="CurrencyVA"
     ListRangeSize="-1"
     NullValueFlag="start"
     NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
     MRUCount="0">
     <AttrArray Name="AttrNames">
-      <Item Value="MonthlySalary"/>
+      <Item Value="AnnualIncome"/>
     </AttrArray>
     <AttrArray Name="AttrExpressions"/>
     <AttrArray Name="ListAttrNames">
@@ -1070,7 +1081,7 @@
     EntityAttrName="BirthCountryCode"
     EntityUsage="LincuMemberKycEO"
     AliasName="BIRTH_COUNTRY_CODE"
-    DefaultValue="1"
+    DefaultValue="TT"
     LOVName="LOV_BirthCountryCode">
     <Properties>
       <SchemaBasedProperties>
@@ -1366,12 +1377,6 @@
     </Properties>
   </ViewAttribute>
   <ViewAttribute
-    Name="IncomeCode"
-    PrecisionRule="true"
-    EntityAttrName="IncomeCode"
-    EntityUsage="LincuMemberKycEO"
-    AliasName="INCOME_CODE"/>
-  <ViewAttribute
     Name="LastApprovedBy1"
     IsNotNull="true"
     PrecisionRule="true"
@@ -1508,7 +1513,7 @@
     EntityAttrName="MailingCountryCode"
     EntityUsage="LincuMemberKycEO"
     AliasName="MAILING_COUNTRY_CODE"
-    DefaultValue="1"
+    DefaultValue="TT"
     LOVName="LOV_MailingCountryCode">
     <Properties>
       <SchemaBasedProperties>
@@ -1583,24 +1588,6 @@
       CodeSourceName="LincuMemberVORow"/>
   </ViewAttribute>
   <ViewAttribute
-    Name="MonthlySalary"
-    PrecisionRule="true"
-    EntityAttrName="MonthlySalary"
-    EntityUsage="LincuMemberKycEO"
-    AliasName="MONTHLY_SALARY"
-    LOVName="LOV_MonthlySalary">
-    <Properties>
-      <SchemaBasedProperties>
-        <LABEL
-          ResId="ANNUAL_INCOME"/>
-        <DISPLAYWIDTH
-          Value="40"/>
-        <CONTROLTYPE
-          Value="choice"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
-  <ViewAttribute
     Name="MotherMaidenName"
     IsNotNull="true"
     PrecisionRule="true"
@@ -1624,7 +1611,7 @@
     EntityUsage="LincuMemberKycEO"
     AliasName="NATIONALITY"
     LOVName="LOV_Nationality"
-    DefaultValue="1">
+    DefaultValue="TT">
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
@@ -1771,7 +1758,7 @@
     EntityAttrName="PermanentCountryCode"
     EntityUsage="LincuMemberKycEO"
     AliasName="PERMANENT_COUNTRY_CODE"
-    DefaultValue="1"
+    DefaultValue="TT"
     LOVName="LOV_PermanentCountryCode">
     <Properties>
       <SchemaBasedProperties>
@@ -1985,6 +1972,35 @@
       <SchemaBasedProperties>
         <LABEL
           ResId="MEMBER_NO"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MonthlySalary"
+    PrecisionRule="true"
+    EntityAttrName="MonthlySalary"
+    EntityUsage="LincuMemberKycEO"
+    AliasName="MONTHLY_SALARY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="MONTHLY_SALARY"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AnnualIncome"
+    PrecisionRule="true"
+    EntityAttrName="AnnualIncome"
+    EntityUsage="LincuMemberKycEO"
+    AliasName="ANNUAL_INCOME"
+    LOVName="LOV_AnnualIncome">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="ANNUAL_SALARY"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

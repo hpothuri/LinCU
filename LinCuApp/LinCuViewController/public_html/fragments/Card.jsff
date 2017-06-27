@@ -39,7 +39,7 @@
                   <af:setPropertyListener from="LINCU_REJECTED" to="#{pageFlowScope.action}" type="action"/>
                  </af:button>
       <af:button text="#{lincuviewcontrollerBundle.REJECT}" id="b10" rendered="#{sessionScope.user.userRole eq 'FCB'}"
-                 visible="#{bindings.TransCardStatus eq 'LINCU_AUTHORIZED'}" actionListener="#{card.openPopup}">
+                 visible="#{(bindings.TransCardStatus eq 'LINCU_AUTHORIZED') or (bindings.TransCardStatus eq 'FCB_AUTHORIZED')}" actionListener="#{card.openPopup}">
                   <af:setPropertyListener from="FCB_REJECTED" to="#{pageFlowScope.action}" type="action"/>
                  </af:button>
       <af:spacer width="10" height="10" id="s42"/>
@@ -160,6 +160,10 @@
               <f:validator binding="#{row.bindings.DocumentType.validator}"/>
             </af:selectOneChoice>
           </af:column>
+          <af:column headerText="#{bindings.LincuMemberCardDocs.hints.DocDesc.label}" id="c11">
+            <af:outputText value="#{row.DocDesc}" shortDesc="#{bindings.LincuMemberCardDocs.hints.DocDesc.tooltip}"
+                           id="ot2"/>
+          </af:column>
           <af:column headerText="#{bindings.LincuMemberCardDocs.hints.DocumentName.label}" id="c4" width="250"
                      minimumWidth="250">
             <af:outputText value="#{row.DocumentName}"
@@ -186,10 +190,6 @@
                      rendered="#{(sessionScope.user.userRole eq 'MSR')}">
             <af:link id="l3" icon="/images/delete.png" actionListener="#{bindings.Delete.execute}"
                      visible="#{row.bindings.Required.inputValue eq 'N'}"/>
-          </af:column>
-          <af:column headerText="#{bindings.LincuMemberCardDocs.hints.DocDesc.label}" id="c11">
-            <af:outputText value="#{row.DocDesc}" shortDesc="#{bindings.LincuMemberCardDocs.hints.DocDesc.tooltip}"
-                           id="ot2"/>
           </af:column>
         </af:table>
       </af:panelCollection>
@@ -435,15 +435,17 @@
               </af:inputText>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="10%" id="gc109" halign="end">
-              <af:outputLabel value="#{lincuviewcontrollerBundle.ANNUAL_INCOME}" id="ol50"/>
+              <af:outputLabel value="#{lincuviewcontrollerBundle.MONTHLY_SALARY}" id="ol56"/>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="24%" marginEnd="5px" id="gc110">
-              <af:selectOneChoice value="#{bindings.MonthlySalary.inputValue}" label="#{bindings.MonthlySalary.label}"
-                                  required="#{bindings.MonthlySalary.hints.mandatory}"
-                                  shortDesc="#{bindings.MonthlySalary.hints.tooltip}" id="soc24" simple="true">
-                <f:selectItems value="#{bindings.MonthlySalary.items}" id="si32"/>
+              <af:inputText value="#{bindings.MonthlySalary.inputValue}" label="#{bindings.MonthlySalary.hints.label}"
+                            required="#{bindings.MonthlySalary.hints.mandatory}"
+                            columns="#{bindings.MonthlySalary.hints.displayWidth}"
+                            maximumLength="#{bindings.MonthlySalary.hints.precision}"
+                            shortDesc="#{bindings.MonthlySalary.hints.tooltip}" id="it21" disabled="true" simple="true">
                 <f:validator binding="#{bindings.MonthlySalary.validator}"/>
-              </af:selectOneChoice>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.MonthlySalary.format}"/>
+              </af:inputText>
             </af:gridCell>
           </af:gridRow>
           <af:gridRow marginTop="5px" height="auto" id="gr19">
@@ -472,17 +474,16 @@
               </af:inputText>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="10%" id="gc115" halign="end">
-              <af:outputLabel value="#{lincuviewcontrollerBundle.FCB_SHAREHOLDING}" id="ol53"/>
+              <af:outputLabel value="#{lincuviewcontrollerBundle.ANNUAL_SALARY}" id="ol50"/>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="24%" marginEnd="5px" id="gc116">
-              <af:selectOneRadio value="#{bindings.ShareholderCode.inputValue}"
-                                 label="#{bindings.ShareholderCode.label}"
-                                 required="#{bindings.ShareholderCode.hints.mandatory}"
-                                 shortDesc="#{bindings.ShareholderCode.hints.tooltip}" id="sor3" simple="true"
-                                 contentStyle="margin-top: 4px;">
-                <f:selectItems value="#{bindings.ShareholderCode.items}" id="si5"/>
-                <f:validator binding="#{bindings.ShareholderCode.validator}"/>
-              </af:selectOneRadio>
+              <af:selectOneChoice value="#{bindings.AnnualIncome.inputValue}" label="#{bindings.AnnualIncome.label}"
+                                  required="#{bindings.AnnualIncome.hints.mandatory}"
+                                  shortDesc="#{bindings.AnnualIncome.hints.tooltip}" id="soc24" readOnly="true"
+                                  simple="true">
+                <f:selectItems value="#{bindings.AnnualIncome.items}" id="si32"/>
+                <f:validator binding="#{bindings.AnnualIncome.validator}"/>
+              </af:selectOneChoice>
             </af:gridCell>
           </af:gridRow>
           <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr20">
@@ -508,8 +509,19 @@
                 <f:validator binding="#{bindings.BirNo.validator}"/>
               </af:inputText>
             </af:gridCell>
-            <af:gridCell marginStart="5px" width="10%" id="gc121"/>
-            <af:gridCell marginStart="5px" width="24%" marginEnd="5px" id="gc122"/>
+            <af:gridCell marginStart="5px" width="10%" id="gc121" halign="end">
+              <af:outputLabel value="#{lincuviewcontrollerBundle.FCB_SHAREHOLDING}" id="ol53"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="24%" marginEnd="5px" id="gc122">
+              <af:selectOneRadio value="#{bindings.ShareholderCode.inputValue}"
+                                 label="#{bindings.ShareholderCode.label}"
+                                 required="#{bindings.ShareholderCode.hints.mandatory}"
+                                 shortDesc="#{bindings.ShareholderCode.hints.tooltip}" id="sor3" simple="true"
+                                 contentStyle="margin-top: 4px;">
+                <f:selectItems value="#{bindings.ShareholderCode.items}" id="si5"/>
+                <f:validator binding="#{bindings.ShareholderCode.validator}"/>
+              </af:selectOneRadio>
+            </af:gridCell>
           </af:gridRow>
         </af:panelGridLayout>
       </af:panelBox>

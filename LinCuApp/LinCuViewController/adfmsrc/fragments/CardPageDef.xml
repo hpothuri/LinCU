@@ -410,11 +410,16 @@
         <Item Value="DocDesc"/>
       </AttrNames>
     </attributeValues>
-    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MonthlySalary" id="MonthlySalary"
-          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
     <methodAction id="downloadApplication" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="downloadApplication" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
                   InstanceName="data.LinCuAMDataControl.dataProvider"
                   ReturnName="data.LinCuAMDataControl.methodResults.downloadApplication_LinCuAMDataControl_dataProvider_downloadApplication_result"/>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MonthlySalary">
+      <AttrNames>
+        <Item Value="MonthlySalary"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_AnnualIncome" id="AnnualIncome"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>

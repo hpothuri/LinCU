@@ -26,7 +26,18 @@
   <ViewAccessor
     Name="CountryVA"
     ViewObjectName="com.linCu.model.vvo.CountryVVO"
-    RowLevelBinds="true"/>
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByCode"
+      FullName="com.linCu.model.vvo.CountryVVO.QueryByCode"/>
+    <ParameterMap>
+      <PIMap Variable="bindCodeType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['COUNTRY']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ViewAccessor
     Name="OpenCloseVA"
     ViewObjectName="com.linCu.model.vvo.OpenCloseVVO"
@@ -196,7 +207,7 @@
     EntityUsage="CreditUnionEO"
     AliasName="CREDIT_UNION_COUNTRY"
     LOVName="LOV_CreditUnionCountry"
-    DefaultValue="1">
+    DefaultValue="TT">
     <Properties>
       <SchemaBasedProperties>
         <CONTROLTYPE
