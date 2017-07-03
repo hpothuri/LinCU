@@ -333,5 +333,7 @@
     </attributeValues>
     <list IterBinding="LincuMemberIterator" StaticList="false" Uses="LOV_AnnualIncome" id="AnnualIncome"
           DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberIterator" StaticList="false" Uses="LOV_ResidencyCode" id="ResidencyCode1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>

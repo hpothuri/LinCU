@@ -285,6 +285,36 @@
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="ResidencyCodesVA"
+    ViewObjectName="com.linCu.model.vvo.CountryVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByCode"
+      FullName="com.linCu.model.vvo.CountryVVO.QueryByCode"/>
+    <ParameterMap>
+      <PIMap Variable="bindCodeType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['RESIDENCY']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="MemberCardVA"
+    ViewObjectName="com.linCu.model.vvo.MemberCardVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByCardId"
+      FullName="com.linCu.model.vvo.MemberCardVVO.QueryByCardId"/>
+    <ParameterMap>
+      <PIMap Variable="bindCardId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[RefCardId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="LOV_CreditUnionId"
     ListVOName="LincuUnionsVA"
@@ -320,6 +350,8 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="MemberNo"/>
+      <Item Value="FirstName"/>
+      <Item Value="LastName"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -837,6 +869,45 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
+  <ListBinding
+    Name="LOV_ResidencyCode"
+    ListVOName="ResidencyCodesVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ResidencyCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CountryId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CountryName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_MemberId3"
+    ListVOName="MemberCardVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="MemberId3"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="MemberId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="MemberNo"/>
+      <Item Value="FirstName"/>
+      <Item Value="LastName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="LincuMemberCardEO"
     Entity="com.linCu.model.entity.LincuMemberCardEO"/>
@@ -875,6 +946,25 @@
       </AttrArray>
       <AttrArray Name="_srcAttributes">
         <Item Value="com.linCu.model.entity.LincuMemberCardEO.MemberId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="RefLincuMemberCardEO"
+    Entity="com.linCu.model.entity.LincuMemberCardEO"
+    Association="com.linCu.model.assoc.CardToRefCardAssoc"
+    AssociationEnd="com.linCu.model.assoc.CardToRefCardAssoc.RefCardIdLincuMemberCardEO"
+    SourceUsage="com.linCu.model.view.LincuMemberCardVO.LincuMemberCardEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="LEFT OUTER JOIN">
+    <DesignTime>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.linCu.model.entity.LincuMemberCardEO.CardId"/>
+      </AttrArray>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.linCu.model.entity.LincuMemberCardEO.RefCardId"/>
       </AttrArray>
     </DesignTime>
   </EntityUsage>
@@ -1752,12 +1842,6 @@
     EntityUsage="LincuMemberKycEO"
     AliasName="RESIDENCE_TIN4"/>
   <ViewAttribute
-    Name="ResidencyCode"
-    PrecisionRule="true"
-    EntityAttrName="ResidencyCode"
-    EntityUsage="LincuMemberKycEO"
-    AliasName="RESIDENCY_CODE"/>
-  <ViewAttribute
     Name="ShareholderCode"
     PrecisionRule="true"
     EntityAttrName="ShareholderCode"
@@ -1892,10 +1976,10 @@
     LOVFinder="SwitchRefCard">
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="CARD_ID"/>
         <CONTROLTYPE
           Value="choice"/>
+        <LABEL
+          ResId="REF_CARD_ID"/>
       </SchemaBasedProperties>
     </Properties>
     <Dependencies>
@@ -2003,6 +2087,108 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="ResidencyCode"
+    PrecisionRule="true"
+    EntityAttrName="ResidencyCode"
+    EntityUsage="LincuMemberKycEO"
+    AliasName="RESIDENCY_CODE"
+    LOVName="LOV_ResidencyCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="RESIDENCY_CODE"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CifNumber"
+    PrecisionRule="true"
+    EntityAttrName="CifNumber"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="CIF_NUMBER">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CIF_NUMBER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MpsdId"
+    PrecisionRule="true"
+    EntityAttrName="MpsdId"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="MPSD_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="MPSD_ID"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TransCifNumber"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="CifNumber1"
+    PrecisionRule="true"
+    EntityAttrName="CifNumber"
+    EntityUsage="RefLincuMemberCardEO"
+    AliasName="CIF_NUMBER1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="REF_CIF_NUMBER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CardId1"
+    IsUpdateable="while_insert"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CardId"
+    EntityUsage="RefLincuMemberCardEO"
+    AliasName="CARD_ID1"/>
+  <ViewAttribute
+    Name="MemberId3"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="MemberId"
+    EntityUsage="RefLincuMemberCardEO"
+    AliasName="MEMBER_ID3"
+    LOVName="LOV_MemberId3">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="REF_MEMBER_NO"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TransRefCIFNumber"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
   <ViewCriteria
     Name="LincuMemberCardVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"

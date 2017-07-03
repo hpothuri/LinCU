@@ -216,6 +216,21 @@
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="ResidencyCodesVA"
+    ViewObjectName="com.linCu.model.vvo.CountryVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="QueryByCode"
+      FullName="com.linCu.model.vvo.CountryVVO.QueryByCode"/>
+    <ParameterMap>
+      <PIMap Variable="bindCodeType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['RESIDENCY']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="LOV_CreditUnionId"
     ListVOName="LincuUnionsVA"
@@ -709,6 +724,25 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="LookupDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ResidencyCode"
+    ListVOName="ResidencyCodesVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ResidencyCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CountryId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CountryName"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -1864,12 +1898,6 @@
     EntityUsage="LincuMemberKycEO"
     AliasName="RESIDENCE_TIN4"/>
   <ViewAttribute
-    Name="ResidencyCode"
-    PrecisionRule="true"
-    EntityAttrName="ResidencyCode"
-    EntityUsage="LincuMemberKycEO"
-    AliasName="RESIDENCY_CODE"/>
-  <ViewAttribute
     Name="ShareholderCode"
     PrecisionRule="true"
     EntityAttrName="ShareholderCode"
@@ -2001,6 +2029,22 @@
           Value="choice"/>
         <LABEL
           ResId="ANNUAL_SALARY"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ResidencyCode"
+    PrecisionRule="true"
+    EntityAttrName="ResidencyCode"
+    EntityUsage="LincuMemberKycEO"
+    AliasName="RESIDENCY_CODE"
+    LOVName="LOV_ResidencyCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="RESIDENCY_CODE"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

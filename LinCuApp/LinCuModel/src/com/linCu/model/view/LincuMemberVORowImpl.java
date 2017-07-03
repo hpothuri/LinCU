@@ -106,7 +106,6 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         ResidenceTin2,
         ResidenceTin3,
         ResidenceTin4,
-        ResidencyCode,
         ShareholderCode,
         StreetType,
         WorkPhone,
@@ -119,6 +118,7 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         MemberNo,
         MonthlySalary,
         AnnualIncome,
+        ResidencyCode,
         LincuUnionsVA,
         LincuBranchesVA,
         GenderVA,
@@ -133,7 +133,8 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
         PrefixVA,
         MemberStatusVA,
         OpenCloseVA,
-        CurrencyVA;
+        CurrencyVA,
+        ResidencyCodesVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -243,7 +244,6 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public static final int RESIDENCETIN2 = AttributesEnum.ResidenceTin2.index();
     public static final int RESIDENCETIN3 = AttributesEnum.ResidenceTin3.index();
     public static final int RESIDENCETIN4 = AttributesEnum.ResidenceTin4.index();
-    public static final int RESIDENCYCODE = AttributesEnum.ResidencyCode.index();
     public static final int SHAREHOLDERCODE = AttributesEnum.ShareholderCode.index();
     public static final int STREETTYPE = AttributesEnum.StreetType.index();
     public static final int WORKPHONE = AttributesEnum.WorkPhone.index();
@@ -256,6 +256,7 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public static final int MEMBERNO = AttributesEnum.MemberNo.index();
     public static final int MONTHLYSALARY = AttributesEnum.MonthlySalary.index();
     public static final int ANNUALINCOME = AttributesEnum.AnnualIncome.index();
+    public static final int RESIDENCYCODE = AttributesEnum.ResidencyCode.index();
     public static final int LINCUUNIONSVA = AttributesEnum.LincuUnionsVA.index();
     public static final int LINCUBRANCHESVA = AttributesEnum.LincuBranchesVA.index();
     public static final int GENDERVA = AttributesEnum.GenderVA.index();
@@ -271,6 +272,7 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
     public static final int MEMBERSTATUSVA = AttributesEnum.MemberStatusVA.index();
     public static final int OPENCLOSEVA = AttributesEnum.OpenCloseVA.index();
     public static final int CURRENCYVA = AttributesEnum.CurrencyVA.index();
+    public static final int RESIDENCYCODESVA = AttributesEnum.ResidencyCodesVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -1677,15 +1679,15 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
      * Gets the attribute value for RESIDENCY_CODE using the alias name ResidencyCode.
      * @return the RESIDENCY_CODE
      */
-    public Integer getResidencyCode() {
-        return (Integer) getAttributeInternal(RESIDENCYCODE);
+    public String getResidencyCode() {
+        return (String) getAttributeInternal(RESIDENCYCODE);
     }
 
     /**
      * Sets <code>value</code> as attribute value for RESIDENCY_CODE using the alias name ResidencyCode.
      * @param value value to set the RESIDENCY_CODE
      */
-    public void setResidencyCode(Integer value) {
+    public void setResidencyCode(String value) {
         setAttributeInternal(RESIDENCYCODE, value);
     }
 
@@ -1945,6 +1947,13 @@ public class LincuMemberVORowImpl extends ViewRowImpl implements com.linCu.model
      */
     public RowSet getCurrencyVA() {
         return (RowSet) getAttributeInternal(CURRENCYVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> ResidencyCodesVA.
+     */
+    public RowSet getResidencyCodesVA() {
+        return (RowSet) getAttributeInternal(RESIDENCYCODESVA);
     }
 
     public void closeMember(){

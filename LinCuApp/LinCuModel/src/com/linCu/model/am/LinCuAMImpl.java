@@ -17,10 +17,19 @@ import com.linCu.model.view.LincuMemberVORowImpl;
 import com.linCu.model.view.LincuUserInfoVOImpl;
 import com.linCu.model.view.LincuUserInfoVORowImpl;
 import com.linCu.model.vvo.CardApplicationVVOImpl;
+import com.linCu.model.vvo.CardApplicationVVORowImpl;
+import com.linCu.model.vvo.CountryVVORowImpl;
 import com.linCu.model.vvo.LincuUnionsVVOImpl;
 import com.linCu.model.vvo.LincuUnionsVVORowImpl;
 import com.linCu.model.vvo.LoginVVOImpl;
 import com.linCu.model.vvo.LoginVVORowImpl;
+
+
+import com.linCu.model.vvo.LookUpDataVVORowImpl;
+
+import com.linCu.model.vvo.OccupationCodesVVORowImpl;
+
+import java.math.BigDecimal;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -37,6 +46,7 @@ import oracle.jbo.Key;
 import oracle.jbo.Row;
 import oracle.jbo.RowSetIterator;
 import oracle.jbo.server.ApplicationModuleImpl;
+import oracle.jbo.server.RowQualifier;
 import oracle.jbo.server.SequenceImpl;
 import oracle.jbo.server.ViewLinkImpl;
 import oracle.jbo.server.ViewObjectImpl;
@@ -1184,6 +1194,44 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         applications.executeQuery();
         return applications.getRowCount();
     }
+    
+    public String findCIFNumberPerCardType(String cardId){
+        CardApplicationVVOImpl applications = this.getCardApplicationCIFNumber();
+        Row[] rows = applications.findByKey(new Key(new Object[]{cardId}), 1);
+        if((rows != null) && (rows.length > 0)){
+          CardApplicationVVORowImpl row = (CardApplicationVVORowImpl)rows[0];  
+            return row.getCifNumber();
+        }else{
+            return null;
+        }
+    }
+    
+    public String findCIFNumberForCardTypeNew(String cardType, String memberId){
+        CardApplicationVVOImpl applications = this.getCardApplication();
+        applications.setbindCardType(cardType);
+        applications.setbindMemberId(memberId);
+        applications.executeQuery();
+        Row[] rows = applications.getAllRowsInRange();
+        if((rows != null) && (rows.length > 0)){
+          CardApplicationVVORowImpl row = (CardApplicationVVORowImpl)rows[0];  
+            return row.getCifNumber();
+        }else{
+            return null;
+        }
+    }
+    
+    public BigDecimal cardTotalTopupToday(BigDecimal cardId){
+        CardApplicationVVOImpl applications = this.getCardTodayTopup();
+        applications.setbindCardId(cardId);
+        applications.executeQuery();
+        Row[] rows = applications.getAllRowsInRange();
+        BigDecimal topupSum = new BigDecimal(0);
+        for(Row row : rows){
+            CardApplicationVVORowImpl cardRow = (CardApplicationVVORowImpl) row;
+            topupSum = topupSum.add(cardRow.getTopupAmount());
+        }
+        return topupSum;
+    }
 
     /**
      * Container's getter for CardApplicationVVO1.
@@ -1279,12 +1327,12 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     
     public Map downloadApplication(){
         LookupValuesForExcel excelLookups = new LookupValuesForExcel();
-            Map<String, String> countryMap = excelLookups.getCountries();
-            Map<String, String> occupationMap = excelLookups.getOccupationCode();
-            Map<String, String> maritalStatus = excelLookups.getMaritalStatues(); 
-            Map<String, String> streets = excelLookups.getStreet();    
-            Map<String, String> currencies = excelLookups.getCurrenciesRanges();
-            Map<String, String> educationCodes = excelLookups.getEducationCodes();
+            //Map<String, String> countryMap = excelLookups.getCountries();
+            //Map<String, String> occupationMap = excelLookups.getOccupationCode();
+            //Map<String, String> maritalStatus = excelLookups.getMaritalStatues(); 
+            //Map<String, String> streets = excelLookups.getStreet();    
+            //Map<String, String> currencies = excelLookups.getCurrenciesRanges();
+            //Map<String, String> educationCodes = excelLookups.getEducationCodes();
             Map<String, String> yesOrNoCodes = excelLookups.getYesOrNoCodes();  
             Map<String, String> genderCodes = excelLookups.getGenderCodes();   
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -1351,7 +1399,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             downloadApplicationMap.put("GENDER", "");
         }
         if (memberCardRow.getMaritalStatus() != null) {
-            downloadApplicationMap.put("MARITAL_STATUS", maritalStatus.get(memberCardRow.getMaritalStatus()));
+            downloadApplicationMap.put("MARITAL_STATUS", findLookupDesc("MARITAL_STATUS",memberCardRow.getMaritalStatus()));
         } else {
             downloadApplicationMap.put("MARITAL_STATUS", "");
         }
@@ -1396,12 +1444,12 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             downloadApplicationMap.put("FAX_NUMBER", "");
         }
         if (memberCardRow.getEducationCode() != null) {
-            downloadApplicationMap.put("EDUCATION", educationCodes.get(memberCardRow.getEducationCode()));
+            downloadApplicationMap.put("EDUCATION", findLookupDesc("EDUCATION_CODE",memberCardRow.getEducationCode()));
         } else {
             downloadApplicationMap.put("EDUCATION", "");
         }
         if (memberCardRow.getMonthlySalary() != null) {
-            downloadApplicationMap.put("MONTHLY_SALARY", currencies.get(memberCardRow.getMonthlySalary().toString()));
+            downloadApplicationMap.put("MONTHLY_SALARY", findLookupDesc("CURRENCY",memberCardRow.getAnnualIncome().toString()));
         } else {
             downloadApplicationMap.put("MONTHLY_SALARY", "");
         }
@@ -1426,7 +1474,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             downloadApplicationMap.put("PER_ADD_LINE3", "");
         }
         if (memberCardRow.getPermanentAddrLine4() != null) {
-            downloadApplicationMap.put("PER_STREET", streets.get(memberCardRow.getPermanentAddrLine4()));
+            downloadApplicationMap.put("PER_STREET", findLookupDesc("STREET_TYPE",memberCardRow.getPermanentAddrLine4()));
         } else {
             downloadApplicationMap.put("PER_STREET", "");
         }
@@ -1441,7 +1489,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             downloadApplicationMap.put("PER_STATE", "");
         }
         if (memberCardRow.getPermanentCountryCode() != null) {
-            downloadApplicationMap.put("PER_COUNTRY", countryMap.get(memberCardRow.getPermanentCountryCode()));
+            downloadApplicationMap.put("PER_COUNTRY", findCountryNames("COUNTRY", memberCardRow.getPermanentCountryCode().toString()));
         } else {
             downloadApplicationMap.put("PER_COUNTRY", "");
         }
@@ -1471,7 +1519,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             downloadApplicationMap.put("MAIL_ADD_LINE3", "");
         }
         if (memberCardRow.getMailingAddrLine4() != null) {
-            downloadApplicationMap.put("MAIL_ADD_STREET", streets.get(memberCardRow.getMailingAddrLine4().toString()));
+            downloadApplicationMap.put("MAIL_ADD_STREET", findLookupDesc("STREET_TYPE",memberCardRow.getMailingAddrLine4()));
         } else {
             downloadApplicationMap.put("MAIL_ADD_STREET", "");
         }
@@ -1486,7 +1534,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             downloadApplicationMap.put("MAIL_ADD_STATE", "");
         }
         if (memberCardRow.getMailingCountryCode() != null) {
-            downloadApplicationMap.put("MAIL_ADD_COUNTRY", countryMap.get(memberCardRow.getMailingCountryCode().toString()));
+            downloadApplicationMap.put("MAIL_ADD_COUNTRY", findCountryNames("COUNTRY", memberCardRow.getMailingCountryCode().toString()));
         } else {
             downloadApplicationMap.put("MAIL_ADD_COUNTRY", "");
         }
@@ -1501,7 +1549,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             downloadApplicationMap.put("EMP_NAME", "");
         }
         if (memberCardRow.getOccupationCode() != null) {
-            downloadApplicationMap.put("EMP_OCCUPATION", occupationMap.get(memberCardRow.getOccupationCode().toString()));
+            downloadApplicationMap.put("EMP_OCCUPATION", findOccupationDesc(memberCardRow.getOccupationCode().toString()));
         } else {
             downloadApplicationMap.put("EMP_OCCUPATION", "");
         }
@@ -1531,7 +1579,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             downloadApplicationMap.put("BUSINESS_PHONE_EXTN", "");
         }
         if (memberCardRow.getBirthCountryCode() != null) {
-            downloadApplicationMap.put("COUNTRY_OF_BIRTH", countryMap.get(memberCardRow.getBirthCountryCode().toString()));
+            downloadApplicationMap.put("COUNTRY_OF_BIRTH", findCountryNames("COUNTRY", memberCardRow.getBirthCountryCode().toString()));
         } else {
             downloadApplicationMap.put("COUNTRY_OF_BIRTH", "");
         }
@@ -1541,27 +1589,27 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             downloadApplicationMap.put("LOCAL_TAX_EXMP", "");
         }
         if (memberCardRow.getNationality() != null) {
-            downloadApplicationMap.put("NATIONALITY", countryMap.get(memberCardRow.getNationality().toString()));
+            downloadApplicationMap.put("NATIONALITY", findCountryNames("COUNTRY", memberCardRow.getNationality().toString()));
         } else {
             downloadApplicationMap.put("NATIONALITY", "");
         }
         if (memberCardRow.getCitizenShipCountry1() != null) {
-            downloadApplicationMap.put("CITIZENSHIP1", countryMap.get(memberCardRow.getCitizenShipCountry1().toString()));
+            downloadApplicationMap.put("CITIZENSHIP1", findCountryNames("COUNTRY", memberCardRow.getCitizenShipCountry1().toString()));
         } else {
             downloadApplicationMap.put("CITIZENSHIP1", "");
         }
         if (memberCardRow.getCitizenShipCountry2() != null) {
-            downloadApplicationMap.put("CITIZENSHIP2", countryMap.get(memberCardRow.getCitizenShipCountry2().toString()));
+            downloadApplicationMap.put("CITIZENSHIP2", findCountryNames("COUNTRY", memberCardRow.getCitizenShipCountry2().toString()));
         } else {
             downloadApplicationMap.put("CITIZENSHIP2", "");
         }
         if (memberCardRow.getCitizenShipCountry3() != null) {
-            downloadApplicationMap.put("CITIZENSHIP3", countryMap.get(memberCardRow.getCitizenShipCountry3().toString()));
+            downloadApplicationMap.put("CITIZENSHIP3", findCountryNames("COUNTRY", memberCardRow.getCitizenShipCountry3().toString()));
         } else {
             downloadApplicationMap.put("CITIZENSHIP3", "");
         }
         if (memberCardRow.getCitizenShipCountry4() != null) {
-            downloadApplicationMap.put("CITIZENSHIP4", countryMap.get(memberCardRow.getCitizenShipCountry4().toString()));
+            downloadApplicationMap.put("CITIZENSHIP4", findCountryNames("COUNTRY", memberCardRow.getCitizenShipCountry4().toString()));
         } else {
             downloadApplicationMap.put("CITIZENSHIP4", "");
         }
@@ -1587,6 +1635,86 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         }
         
         return downloadApplicationMap;
+    }
+    
+    public String findLookupDesc(String lookupType, String lookupCode){
+            ViewObjectImpl lookupVO = this.getLookUpDataVO();
+            RowQualifier rowQualifier = new RowQualifier(lookupVO);
+            //set where clause to row qualifier 
+            rowQualifier.setWhereClause("LookupType='"+lookupType+"' AND LookupCode='"+lookupCode+"'");
+            //get filtered rows using row qualifier 
+            Row[] filteredRows = lookupVO.getFilteredRows(rowQualifier);  
+            if((filteredRows != null) && (filteredRows.length >0)){
+              LookUpDataVVORowImpl row = (LookUpDataVVORowImpl)filteredRows[0];
+              return row.getLookupDesc();
+            }else{
+                return null;
+            }
+    }
+    
+    public String findCountryNames(String lookupType, String lookupCode){
+            ViewObjectImpl lookupVO = this.getCountryVO();
+            RowQualifier rowQualifier = new RowQualifier(lookupVO);
+            //set where clause to row qualifier 
+            rowQualifier.setWhereClause("CodeType='"+lookupType+"' AND CountryId='"+lookupCode+"'");
+            //get filtered rows using row qualifier 
+            Row[] filteredRows = lookupVO.getFilteredRows(rowQualifier);  
+            if((filteredRows != null) && (filteredRows.length >0)){
+              CountryVVORowImpl row = (CountryVVORowImpl)filteredRows[0];
+              return row.getCountryName();
+            }else{
+                return null;
+            }
+    }
+    
+    public String findOccupationDesc(String occupationCode){
+            ViewObjectImpl lookupVO = this.getOccupationCodesVO();
+            Row[] filteredRows = lookupVO.getFilteredRows("OccupationId",occupationCode);  
+            if((filteredRows != null) && (filteredRows.length >0)){
+              OccupationCodesVVORowImpl row = (OccupationCodesVVORowImpl)filteredRows[0];
+              return row.getOccupationDes();
+            }else{
+                return null;
+            }
+    }
+    /**
+     * Container's getter for CardApplicationVVO1.
+     * @return CardApplicationVVO1
+     */
+    public CardApplicationVVOImpl getCardTodayTopup() {
+        return (CardApplicationVVOImpl) findViewObject("CardTodayTopup");
+    }
+
+    /**
+     * Container's getter for CardApplicationVVO1.
+     * @return CardApplicationVVO1
+     */
+    public CardApplicationVVOImpl getCardApplicationCIFNumber() {
+        return (CardApplicationVVOImpl) findViewObject("CardApplicationCIFNumber");
+    }
+
+    /**
+     * Container's getter for LookUpDataVVO1.
+     * @return LookUpDataVVO1
+     */
+    public ViewObjectImpl getLookUpDataVO() {
+        return (ViewObjectImpl) findViewObject("LookUpDataVO");
+    }
+
+    /**
+     * Container's getter for CountryVVO1.
+     * @return CountryVVO1
+     */
+    public ViewObjectImpl getCountryVO() {
+        return (ViewObjectImpl) findViewObject("CountryVO");
+    }
+
+    /**
+     * Container's getter for OccupationCodesVVO1.
+     * @return OccupationCodesVVO1
+     */
+    public ViewObjectImpl getOccupationCodesVO() {
+        return (ViewObjectImpl) findViewObject("OccupationCodesVO");
     }
 }
 

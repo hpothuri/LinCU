@@ -421,5 +421,48 @@
     </attributeValues>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_AnnualIncome" id="AnnualIncome"
           DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_ResidencyCode" id="ResidencyCode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="CifNumber">
+      <AttrNames>
+        <Item Value="CifNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="TransCifNumber">
+      <AttrNames>
+        <Item Value="TransCifNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="CifNumber1">
+      <AttrNames>
+        <Item Value="CifNumber1"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MemberId3" id="MemberId3"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="TransRefCIFNumber">
+      <AttrNames>
+        <Item Value="TransRefCIFNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="cardTotalTopupToday" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="cardTotalTopupToday" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.cardTotalTopupToday_LinCuAMDataControl_dataProvider_cardTotalTopupToday_result">
+      <NamedData NDName="cardId" NDType="java.math.BigDecimal"/>
+    </methodAction>
+    <methodAction id="findCIFNumberPerCardType" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="findCIFNumberPerCardType" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.findCIFNumberPerCardType_LinCuAMDataControl_dataProvider_findCIFNumberPerCardType_result">
+      <NamedData NDName="cardId" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="findCIFNumberForCardTypeNew" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="findCIFNumberForCardTypeNew" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.findCIFNumberForCardTypeNew_LinCuAMDataControl_dataProvider_findCIFNumberForCardTypeNew_result">
+      <NamedData NDName="cardType" NDType="java.lang.String"/>
+      <NamedData NDName="memberId" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

@@ -24,7 +24,15 @@
     Name="bindMemberId"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT CARD_ID,MEMBER_ID,CREDIT_UNION_ID,CARD_REQ_TYPE,CARD_STATUS,ACTIVE FROM LINCU_MEMBER_CARD]]></SQLQuery>
+  <Variable
+    Name="bindTodayDate"
+    Kind="viewcriteria"
+    Type="java.sql.Timestamp"/>
+  <Variable
+    Name="bindCardId"
+    Kind="viewcriteria"
+    Type="java.math.BigDecimal"/>
+  <SQLQuery><![CDATA[SELECT CARD_ID,MEMBER_ID,CREDIT_UNION_ID,CARD_REQ_TYPE,CARD_STATUS,ACTIVE, CIF_NUMBER, TRUNC(CREATED_ON) AS TRUNC_CREDATED_DATE, TOPUP_AMOUNT, REF_CARD_ID FROM LINCU_MEMBER_CARD]]></SQLQuery>
   <ViewAttribute
     Name="CardId"
     IsUpdateable="false"
@@ -110,6 +118,51 @@
       <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
   </ViewAttribute>
+  <ViewAttribute
+    Name="CifNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CIF_NUMBER"
+    Expression="CIF_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TruncCredatedDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    AliasName="TRUNC_CREDATED_DATE"
+    Expression="TRUNC_CREDATED_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="TopupAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="TOPUP_AMOUNT"
+    Expression="TOPUP_AMOUNT"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="RefCardId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="REF_CARD_ID"
+    Expression="REF_CARD_ID"
+    SQLType="NUMERIC"/>
   <ViewCriteria
     Name="QueryByCardType"
     ViewObjectName="com.linCu.model.vvo.CardApplicationVVO"
@@ -249,6 +302,121 @@
         Operator="="
         Conjunction="AND"
         Value="Y"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="QueryTopupsToday"
+    ViewObjectName="com.linCu.model.vvo.CardApplicationVVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="CardApplicationVVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CardReqType"
+        ViewAttribute="CardReqType"
+        Operator="="
+        Conjunction="AND"
+        Value="TOPUP_CARD"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="TruncCredatedDate"
+        ViewAttribute="TruncCredatedDate"
+        Operator="="
+        Conjunction="AND"
+        Value=":bindTodayDate"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="QueryByCardId"
+    ViewObjectName="com.linCu.model.vvo.CardApplicationVVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="CardApplicationVVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CardId"
+        ViewAttribute="CardId"
+        Operator="="
+        Conjunction="AND"
+        Value=":bindCardId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="QueryByRefCardId"
+    ViewObjectName="com.linCu.model.vvo.CardApplicationVVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="CardApplicationVVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="RefCardId"
+        ViewAttribute="RefCardId"
+        Operator="="
+        Conjunction="AND"
+        Value=":bindCardId"
+        IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>

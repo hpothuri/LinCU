@@ -25,7 +25,7 @@
     Name="bindBranchId"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT CARD_ID,MEMBER_ID,CREDIT_UNION_ID,ACTIVE FROM LINCU_MEMBER_CARD    
+  <SQLQuery><![CDATA[SELECT CARD_ID,MEMBER_ID,CREDIT_UNION_ID,ACTIVE FROM LINCU_MEMBER_CARD        
 WHERE CARD_REQ_TYPE = 'NEW_CARD']]></SQLQuery>
   <ViewAttribute
     Name="CardId"

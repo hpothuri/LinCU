@@ -63,8 +63,20 @@ public class MemberBean {
 
     public void save(ActionEvent actionEvent) {
         try {
-            ADFUtils.executeOperationBinding("updateMember"); 
-            ADFUtils.executeOperationBinding("Commit"); 
+            Object electorialId = ADFUtils.getBoundAttributeValue("ElectorialId");
+            Object passportNo = ADFUtils.getBoundAttributeValue("PassportNo");
+            Object driverPermit = ADFUtils.getBoundAttributeValue("DriverPermit");
+            Object birNo = ADFUtils.getBoundAttributeValue("BirNo");
+            
+            if (((electorialId == null) || ("".equalsIgnoreCase(electorialId.toString()))) && ((passportNo == null) ||
+                ("".equalsIgnoreCase(passportNo.toString()))) && ((driverPermit == null) ||
+                ("".equalsIgnoreCase(driverPermit.toString()))) && ((birNo == null) ||
+                ("".equalsIgnoreCase(birNo.toString())))){
+                JSFUtils.addErrorMessage("Atleast one of the following fields are required. National ID, Passport, Driver's Permit, BIR");
+            } else {
+                ADFUtils.executeOperationBinding("updateMember");
+                ADFUtils.executeOperationBinding("Commit");
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -72,8 +84,20 @@ public class MemberBean {
     
     public void saveAndSubmit(ActionEvent actionEvent) {
         try {
+            Object electorialId = ADFUtils.getBoundAttributeValue("ElectorialId");
+            Object passportNo = ADFUtils.getBoundAttributeValue("PassportNo");
+            Object driverPermit = ADFUtils.getBoundAttributeValue("DriverPermit");
+            Object birNo = ADFUtils.getBoundAttributeValue("BirNo");
+            
+            if (((electorialId == null) || ("".equalsIgnoreCase(electorialId.toString()))) && ((passportNo == null) ||
+                ("".equalsIgnoreCase(passportNo.toString()))) && ((driverPermit == null) ||
+                ("".equalsIgnoreCase(driverPermit.toString()))) && ((birNo == null) ||
+                ("".equalsIgnoreCase(birNo.toString())))){
+                JSFUtils.addErrorMessage("Atleast one of the following fields are required. National ID, Passport, Driver's Permit, BIR");
+            } else {
             ADFUtils.executeOperationBinding("updateMemberAndSubmit"); 
             ADFUtils.executeOperationBinding("Commit"); 
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }

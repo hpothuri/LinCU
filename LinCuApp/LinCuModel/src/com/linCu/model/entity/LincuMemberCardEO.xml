@@ -243,6 +243,30 @@
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="CifNumber"
+    Precision="15"
+    ColumnName="CIF_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_CARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MpsdId"
+    Precision="20"
+    ColumnName="MPSD_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_CARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="LincuMemberInfoEO"
     Association="com.linCu.model.assoc.MemberCardToMemberInfoAssoc"
@@ -271,6 +295,20 @@
     AssociationOtherEnd="com.linCu.model.assoc.LincuMemberCardAuditAssoc.LincuMemberCardEO"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="RefCardIdLincuMemberCardEO"
+    Association="com.linCu.model.assoc.CardToRefCardAssoc"
+    AssociationEnd="com.linCu.model.assoc.CardToRefCardAssoc.RefCardIdLincuMemberCardEO"
+    AssociationOtherEnd="com.linCu.model.assoc.CardToRefCardAssoc.LincuMemberCardEO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="LincuMemberCardEO"
+    Association="com.linCu.model.assoc.CardToRefCardAssoc"
+    AssociationEnd="com.linCu.model.assoc.CardToRefCardAssoc.LincuMemberCardEO"
+    AssociationOtherEnd="com.linCu.model.assoc.CardToRefCardAssoc.RefCardIdLincuMemberCardEO"
+    Type="com.linCu.model.entity.LincuMemberCardEOImpl"
+    IsUpdateable="true"/>
   <Key
     Name="LincuMemberCardCardStatusCheck">
     <DesignTime>

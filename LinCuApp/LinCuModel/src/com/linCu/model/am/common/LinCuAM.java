@@ -1,5 +1,7 @@
 package com.linCu.model.am.common;
 
+import java.math.BigDecimal;
+
 import java.util.List;
 import java.util.Map;
 
@@ -58,5 +60,12 @@ public interface LinCuAM extends ApplicationModule {
     String findCreditUnionIdByCode(String code);
 
     Map downloadApplication();
+
+
+    BigDecimal cardTotalTopupToday(BigDecimal cardId);
+
+    String findCIFNumberPerCardType(String cardId);
+
+    String findCIFNumberForCardTypeNew(String cardType, String memberId);
 }
 

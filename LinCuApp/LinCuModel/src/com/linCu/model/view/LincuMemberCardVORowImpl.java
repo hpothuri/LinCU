@@ -19,9 +19,11 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
 public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMemberCardVORow {
+
     public static final int ENTITY_LINCUMEMBERCARDEO = 0;
     public static final int ENTITY_LINCUMEMBERINFOEO = 1;
     public static final int ENTITY_LINCUMEMBERKYCEO = 2;
+    public static final int ENTITY_REFLINCUMEMBERCARDEO = 3;
 
     /**
      * AttributesEnum: generated enum for identifying attributes and accessors. DO NOT MODIFY.
@@ -121,7 +123,6 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
         ResidenceTin2,
         ResidenceTin3,
         ResidenceTin4,
-        ResidencyCode,
         ShareholderCode,
         StreetType,
         WorkPhone,
@@ -144,6 +145,14 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
         MemberNo,
         MonthlySalary,
         AnnualIncome,
+        ResidencyCode,
+        CifNumber,
+        MpsdId,
+        TransCifNumber,
+        CifNumber1,
+        CardId1,
+        MemberId3,
+        TransRefCIFNumber,
         LincuMemberCardDocsVO,
         LincuMemberCardAuditVO,
         LincuMemberCardDocsVO1,
@@ -164,7 +173,9 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
         NewAndAddOnCardVA,
         MemberPrefixVA,
         OpenCloseVA,
-        CurrencyVA;
+        CurrencyVA,
+        ResidencyCodesVA,
+        MemberCardVA;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -284,7 +295,6 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     public static final int RESIDENCETIN2 = AttributesEnum.ResidenceTin2.index();
     public static final int RESIDENCETIN3 = AttributesEnum.ResidenceTin3.index();
     public static final int RESIDENCETIN4 = AttributesEnum.ResidenceTin4.index();
-    public static final int RESIDENCYCODE = AttributesEnum.ResidencyCode.index();
     public static final int SHAREHOLDERCODE = AttributesEnum.ShareholderCode.index();
     public static final int STREETTYPE = AttributesEnum.StreetType.index();
     public static final int WORKPHONE = AttributesEnum.WorkPhone.index();
@@ -307,6 +317,14 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     public static final int MEMBERNO = AttributesEnum.MemberNo.index();
     public static final int MONTHLYSALARY = AttributesEnum.MonthlySalary.index();
     public static final int ANNUALINCOME = AttributesEnum.AnnualIncome.index();
+    public static final int RESIDENCYCODE = AttributesEnum.ResidencyCode.index();
+    public static final int CIFNUMBER = AttributesEnum.CifNumber.index();
+    public static final int MPSDID = AttributesEnum.MpsdId.index();
+    public static final int TRANSCIFNUMBER = AttributesEnum.TransCifNumber.index();
+    public static final int CIFNUMBER1 = AttributesEnum.CifNumber1.index();
+    public static final int CARDID1 = AttributesEnum.CardId1.index();
+    public static final int MEMBERID3 = AttributesEnum.MemberId3.index();
+    public static final int TRANSREFCIFNUMBER = AttributesEnum.TransRefCIFNumber.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int LINCUMEMBERCARDAUDITVO = AttributesEnum.LincuMemberCardAuditVO.index();
     public static final int LINCUMEMBERCARDDOCSVO1 = AttributesEnum.LincuMemberCardDocsVO1.index();
@@ -328,6 +346,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     public static final int MEMBERPREFIXVA = AttributesEnum.MemberPrefixVA.index();
     public static final int OPENCLOSEVA = AttributesEnum.OpenCloseVA.index();
     public static final int CURRENCYVA = AttributesEnum.CurrencyVA.index();
+    public static final int RESIDENCYCODESVA = AttributesEnum.ResidencyCodesVA.index();
+    public static final int MEMBERCARDVA = AttributesEnum.MemberCardVA.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -357,6 +377,15 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
      */
     public EntityImpl getLincuMemberKycEO() {
         return (EntityImpl) getEntity(ENTITY_LINCUMEMBERKYCEO);
+    }
+
+
+    /**
+     * Gets RefLincuMemberCardEO entity object.
+     * @return the RefLincuMemberCardEO
+     */
+    public LincuMemberCardEOImpl getRefLincuMemberCardEO() {
+        return (LincuMemberCardEOImpl) getEntity(ENTITY_REFLINCUMEMBERCARDEO);
     }
 
     /**
@@ -1908,16 +1937,118 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
      * Gets the attribute value for RESIDENCY_CODE using the alias name ResidencyCode.
      * @return the RESIDENCY_CODE
      */
-    public Integer getResidencyCode() {
-        return (Integer) getAttributeInternal(RESIDENCYCODE);
+    public String getResidencyCode() {
+        return (String) getAttributeInternal(RESIDENCYCODE);
     }
 
     /**
      * Sets <code>value</code> as attribute value for RESIDENCY_CODE using the alias name ResidencyCode.
      * @param value value to set the RESIDENCY_CODE
      */
-    public void setResidencyCode(Integer value) {
+    public void setResidencyCode(String value) {
         setAttributeInternal(RESIDENCYCODE, value);
+    }
+
+    /**
+     * Gets the attribute value for CIF_NUMBER using the alias name CifNumber.
+     * @return the CIF_NUMBER
+     */
+    public String getCifNumber() {
+        return (String) getAttributeInternal(CIFNUMBER);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for CIF_NUMBER using the alias name CifNumber.
+     * @param value value to set the CIF_NUMBER
+     */
+    public void setCifNumber(String value) {
+        setAttributeInternal(CIFNUMBER, value);
+    }
+
+    /**
+     * Gets the attribute value for MPSD_ID using the alias name MpsdId.
+     * @return the MPSD_ID
+     */
+    public String getMpsdId() {
+        return (String) getAttributeInternal(MPSDID);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for MPSD_ID using the alias name MpsdId.
+     * @param value value to set the MPSD_ID
+     */
+    public void setMpsdId(String value) {
+        setAttributeInternal(MPSDID, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute TransCifNumber.
+     * @return the TransCifNumber
+     */
+    public String getTransCifNumber() {
+        if((this.getCifNumber() != null) && ("".equalsIgnoreCase(this.getCifNumber()))){
+            return null;
+        }else{
+            return this.getCifNumber(); 
+        }
+        //return (String) getAttributeInternal(TRANSCIFNUMBER);
+    }
+
+    /**
+     * Gets the attribute value for CIF_NUMBER using the alias name CifNumber1.
+     * @return the CIF_NUMBER
+     */
+    public String getCifNumber1() {
+        return (String) getAttributeInternal(CIFNUMBER1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for CIF_NUMBER using the alias name CifNumber1.
+     * @param value value to set the CIF_NUMBER
+     */
+    public void setCifNumber1(String value) {
+        setAttributeInternal(CIFNUMBER1, value);
+    }
+
+    /**
+     * Gets the attribute value for CARD_ID using the alias name CardId1.
+     * @return the CARD_ID
+     */
+    public BigDecimal getCardId1() {
+        return (BigDecimal) getAttributeInternal(CARDID1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for CARD_ID using the alias name CardId1.
+     * @param value value to set the CARD_ID
+     */
+    public void setCardId1(BigDecimal value) {
+        setAttributeInternal(CARDID1, value);
+    }
+
+    /**
+     * Gets the attribute value for MEMBER_ID using the alias name MemberId3.
+     * @return the MEMBER_ID
+     */
+    public String getMemberId3() {
+        return (String) getAttributeInternal(MEMBERID3);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for MEMBER_ID using the alias name MemberId3.
+     * @param value value to set the MEMBER_ID
+     */
+    public void setMemberId3(String value) {
+        setAttributeInternal(MEMBERID3, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute TransRefCIFNumber.
+     * @return the TransRefCIFNumber
+     */
+    public String getTransRefCIFNumber() {
+        return this.getCifNumber1();
+        //return (String) getAttributeInternal(TRANSREFCIFNUMBER);
     }
 
     /**
@@ -2386,6 +2517,21 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
      */
     public RowSet getCurrencyVA() {
         return (RowSet) getAttributeInternal(CURRENCYVA);
+    }
+
+
+    /**
+     * Gets the view accessor <code>RowSet</code> ResidencyCodesVA.
+     */
+    public RowSet getResidencyCodesVA() {
+        return (RowSet) getAttributeInternal(RESIDENCYCODESVA);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> MemberCardVA.
+     */
+    public RowSet getMemberCardVA() {
+        return (RowSet) getAttributeInternal(MEMBERCARDVA);
     }
 
     public void closeCard(){

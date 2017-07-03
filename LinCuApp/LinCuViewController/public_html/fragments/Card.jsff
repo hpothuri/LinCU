@@ -44,9 +44,9 @@
                  </af:button>
       <af:spacer width="10" height="10" id="s42"/>
       <af:button actionListener="#{card.save}" text="#{lincuviewcontrollerBundle.SAVE}" id="b1"
-                 visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED')}"
-                 rendered="#{(sessionScope.user.userRole eq 'MSR')}" partialSubmit="false"/>
-      <af:spacer width="10" height="10" id="s3" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
+                 visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED') or (sessionScope.user.userRole eq 'FCB')}"
+                 rendered="#{(sessionScope.user.userRole eq 'MSR')  or (sessionScope.user.userRole eq 'FCB')}" partialSubmit="false"/>
+      <af:spacer width="10" height="10" id="s3" rendered="#{(sessionScope.user.userRole eq 'MSR') or (sessionScope.user.userRole eq 'FCB')}"/>
       <af:button actionListener="#{card.saveAndSubmit}" text="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED') ? lincuviewcontrollerBundle.SAVE_AND_RESUBMIT : lincuviewcontrollerBundle.SAVE_AND_SUBMIT}" id="b3"
                  visible="#{(bindings.TransCardStatus eq 'REJECTED') or (bindings.TransCardStatus eq 'DRAFT') or (bindings.TransCardStatus eq 'LINCU_REJECTED') or (bindings.TransCardStatus eq 'FCB_REJECTED')}"
                  rendered="#{(sessionScope.user.userRole eq 'MSR')}" partialSubmit="false">
@@ -67,7 +67,7 @@
     <af:spacer width="10" height="10" id="s9"/>
     <af:panelBox text="#{lincuviewcontrollerBundle.REQUEST_CARD}" id="pb7">
       <f:facet name="toolbar"/>
-      <af:panelFormLayout id="pfl1" rows="2" maxColumns="3" labelWidth="50%">
+      <af:panelFormLayout id="pfl1" rows="2" maxColumns="3">
         <af:selectOneChoice value="#{bindings.CardReqType.inputValue}" label="#{bindings.CardReqType.label}"
                             required="#{bindings.CardReqType.hints.mandatory}"
                             shortDesc="#{bindings.CardReqType.hints.tooltip}" id="soc4"
@@ -83,6 +83,7 @@
           <f:selectItems value="#{bindings.CardStatus.items}" id="si1"/>
           <f:validator binding="#{bindings.CardStatus.validator}"/>
         </af:selectOneChoice>
+        <af:outputText value="" id="ot5"/>
         <af:selectOneChoice value="#{bindings.CreditUnionId.inputValue}" label="#{bindings.CreditUnionId.label}"
                             required="#{bindings.CreditUnionId.hints.mandatory}"
                             shortDesc="#{bindings.CreditUnionId.hints.tooltip}" id="soc2" autoSubmit="true"
@@ -98,6 +99,16 @@
           <f:selectItems value="#{bindings.MemberId.items}" id="si3"/>
           <f:validator binding="#{bindings.MemberId.validator}"/>
         </af:selectOneChoice>
+        <af:inputText value="#{bindings.TopupAmount.inputValue}" label="#{bindings.TopupAmount.hints.label}"
+                      required="#{bindings.TopupAmount.hints.mandatory}"
+                      columns="#{bindings.TopupAmount.hints.displayWidth}"
+                      maximumLength="#{bindings.TopupAmount.hints.precision}"
+                      shortDesc="#{bindings.TopupAmount.hints.tooltip}" id="it20"
+                      disabled="#{(bindings.CardReqType1 eq 'NEW_CARD') or (bindings.CardReqType1 eq 'ADDON_CARD') or (bindings.TransCardStatus ne 'DRAFT')}"
+                      partialTriggers="soc4" showRequired="true" labelStyle="white-space: nowrap;">
+          <f:validator binding="#{bindings.TopupAmount.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.TopupAmount.format}"/>
+        </af:inputText>
         <af:selectOneChoice value="#{bindings.RefCardId.inputValue}" label="#{bindings.RefCardId.label}"
                             required="#{bindings.RefCardId.hints.mandatory}"
                             shortDesc="#{bindings.RefCardId.hints.tooltip}" id="soc21"
@@ -106,15 +117,31 @@
           <f:selectItems value="#{bindings.RefCardId.items}" id="si29"/>
           <f:validator binding="#{bindings.RefCardId.validator}"/>
         </af:selectOneChoice>
-        <af:inputText value="#{bindings.TopupAmount.inputValue}" label="#{bindings.TopupAmount.hints.label}"
-                      required="#{bindings.TopupAmount.hints.mandatory}"
-                      columns="#{bindings.TopupAmount.hints.displayWidth}"
-                      maximumLength="#{bindings.TopupAmount.hints.precision}"
-                      shortDesc="#{bindings.TopupAmount.hints.tooltip}" id="it20"
-                      disabled="#{(bindings.CardReqType1 eq 'NEW_CARD') or (bindings.CardReqType1 eq 'ADDON_CARD') or (bindings.TransCardStatus ne 'DRAFT')}" partialTriggers="soc4" showRequired="true">
-          <f:validator binding="#{bindings.TopupAmount.validator}"/>
-          <af:convertNumber groupingUsed="false" pattern="#{bindings.TopupAmount.format}"/>
+        <af:inputText value="#{bindings.CifNumber.inputValue}" label="#{bindings.CifNumber.hints.label}"
+                      required="#{bindings.CifNumber.hints.mandatory}"
+                      columns="#{bindings.CifNumber.hints.displayWidth}"
+                      maximumLength="#{bindings.CifNumber.hints.precision}"
+                      shortDesc="#{bindings.CifNumber.hints.tooltip}" id="it23"
+                      disabled="#{(sessionScope.user.userRole ne 'FCB')}" contentStyle="width:165px;"
+                      rendered="#{bindings.CardReqType1 eq 'NEW_CARD'}" partialTriggers="soc4">
+          <f:validator binding="#{bindings.CifNumber.validator}"/>
         </af:inputText>
+        <af:inputText value="#{bindings.CifNumber1.inputValue}" label="#{bindings.CifNumber1.hints.label}"
+                      required="#{bindings.CifNumber1.hints.mandatory}"
+                      columns="#{bindings.CifNumber1.hints.displayWidth}"
+                      maximumLength="#{bindings.CifNumber1.hints.precision}"
+                      shortDesc="#{bindings.CifNumber1.hints.tooltip}" id="it25" contentStyle="width:165px;"
+                      disabled="true" rendered="#{(bindings.CardReqType1 eq 'ADDON_CARD') or (bindings.CardReqType1 eq 'TOPUP_CARD')}" partialTriggers="soc4 soc21">
+          <f:validator binding="#{bindings.CifNumber1.validator}"/>
+        </af:inputText>
+        <af:selectOneChoice value="#{bindings.MemberId3.inputValue}" label="#{bindings.MemberId3.label}"
+                            required="#{bindings.MemberId3.hints.mandatory}"
+                            shortDesc="#{bindings.MemberId3.hints.tooltip}" id="soc26" disabled="true"
+                            rendered="#{bindings.CardReqType1 ne 'NEW_CARD'}" partialTriggers="soc4 soc21"
+                            contentStyle="margin-top: 8px;">
+          <f:selectItems value="#{bindings.MemberId3.items}" id="si34"/>
+          <f:validator binding="#{bindings.MemberId3.validator}"/>
+        </af:selectOneChoice>
       </af:panelFormLayout>
     </af:panelBox>
     <af:panelBox text="#{lincuviewcontrollerBundle.ATTACH_DOCUMENTS}" id="pb6">
@@ -907,16 +934,15 @@
           </af:gridRow>
           <af:gridRow marginTop="5px" height="auto" id="gr2">
             <af:gridCell marginStart="5px" width="10%" id="gc7" halign="end">
-              <af:outputLabel value="#{lincuviewcontrollerBundle.LOCAL_TAX_EXEMPT}" id="ol4"/>
+              <af:outputLabel value="#{lincuviewcontrollerBundle.NATIONALITY}" id="ol7"/>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="22%" id="gc8">
-              <af:selectOneRadio value="#{bindings.LocalTaxExempt.inputValue}" label="#{bindings.LocalTaxExempt.label}"
-                                 required="#{bindings.LocalTaxExempt.hints.mandatory}"
-                                 shortDesc="#{bindings.LocalTaxExempt.hints.tooltip}" id="sor2" simple="true"
-                                 contentStyle="margin-top: 4px;">
-                <f:selectItems value="#{bindings.LocalTaxExempt.items}" id="si22"/>
-                <f:validator binding="#{bindings.LocalTaxExempt.validator}"/>
-              </af:selectOneRadio>
+              <af:selectOneChoice value="#{bindings.Nationality.inputValue}" label="#{bindings.Nationality.label}"
+                                  required="#{bindings.Nationality.hints.mandatory}"
+                                  shortDesc="#{bindings.Nationality.hints.tooltip}" id="soc15" simple="true">
+                <f:selectItems value="#{bindings.Nationality.items}" id="si23"/>
+                <f:validator binding="#{bindings.Nationality.validator}"/>
+              </af:selectOneChoice>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="10%" id="gc9" halign="end">
               <af:outputLabel value="#{lincuviewcontrollerBundle.CITIZENSHIP_COUNTRY_2}" id="ol5"/>
@@ -945,18 +971,29 @@
           </af:gridRow>
           <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr3">
             <af:gridCell marginStart="5px" width="10%" id="gc13" halign="end">
-              <af:outputLabel value="#{lincuviewcontrollerBundle.NATIONALITY}" id="ol7"/>
+              <af:outputLabel value="#{lincuviewcontrollerBundle.RESIDENCY_CODE}" id="ol57"/>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="22%" id="gc14">
-              <af:selectOneChoice value="#{bindings.Nationality.inputValue}" label="#{bindings.Nationality.label}"
-                                  required="#{bindings.Nationality.hints.mandatory}"
-                                  shortDesc="#{bindings.Nationality.hints.tooltip}" id="soc15" simple="true">
-                <f:selectItems value="#{bindings.Nationality.items}" id="si23"/>
-                <f:validator binding="#{bindings.Nationality.validator}"/>
+              <af:selectOneChoice value="#{bindings.ResidencyCode.inputValue}" label="#{bindings.ResidencyCode.label}"
+                                  required="#{bindings.ResidencyCode.hints.mandatory}"
+                                  shortDesc="#{bindings.ResidencyCode.hints.tooltip}" id="soc25" readOnly="true"
+                                  simple="true">
+                <f:selectItems value="#{bindings.ResidencyCode.items}" id="si33"/>
+                <f:validator binding="#{bindings.ResidencyCode.validator}"/>
               </af:selectOneChoice>
             </af:gridCell>
-            <af:gridCell marginStart="5px" width="10%" id="gc15"/>
-            <af:gridCell marginStart="5px" width="24%" id="gc16"/>
+            <af:gridCell marginStart="5px" width="10%" id="gc15" halign="end">
+              <af:outputLabel value="#{lincuviewcontrollerBundle.LOCAL_TAX_EXEMPT}" id="ol4"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="24%" id="gc16">
+              <af:selectOneRadio value="#{bindings.LocalTaxExempt.inputValue}" label="#{bindings.LocalTaxExempt.label}"
+                                 required="#{bindings.LocalTaxExempt.hints.mandatory}"
+                                 shortDesc="#{bindings.LocalTaxExempt.hints.tooltip}" id="sor2" simple="true"
+                                 contentStyle="margin-top: 4px;">
+                <f:selectItems value="#{bindings.LocalTaxExempt.items}" id="si22"/>
+                <f:validator binding="#{bindings.LocalTaxExempt.validator}"/>
+              </af:selectOneRadio>
+            </af:gridCell>
             <af:gridCell marginStart="5px" width="10%" id="gc17"/>
             <af:gridCell marginStart="5px" width="24%" marginEnd="5px" id="gc18"/>
           </af:gridRow>

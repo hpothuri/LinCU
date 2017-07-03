@@ -181,10 +181,10 @@ public class PdfPopulator {
             setField("PwrFNo", "check");
         }
 	    
-	    setField("Member Service Representative Print Name", "Dileep Kumar Rongali");
-	    setField("Date", "15-06-2017");
-	    setField("Superviser Print Name", "Lalitha Rani Vekanuru");
-	    setField("Date_2", "18-06-2017");
+	    setField("Member Service Representative Print Name", "");
+	    setField("Date", dateFormat.format(date));
+	    setField("Superviser Print Name", "");
+	    setField("Date_2", dateFormat.format(date));
 	    
 	    setField("SSN No", "");
 	    setField("SSN No: sub", "");

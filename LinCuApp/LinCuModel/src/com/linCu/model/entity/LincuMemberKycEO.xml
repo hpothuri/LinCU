@@ -611,12 +611,11 @@
   </Attribute>
   <Attribute
     Name="ResidencyCode"
-    Precision="3"
-    Scale="0"
+    Precision="4"
     ColumnName="RESIDENCY_CODE"
-    SQLType="NUMERIC"
-    Type="java.lang.Integer"
-    ColumnType="NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
     TableName="LINCU_MEMBER_KYC"/>
   <Attribute
     Name="MotherMaidenName"

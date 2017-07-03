@@ -94,7 +94,7 @@
                       columns="#{bindings.MiddleName.hints.displayWidth}"
                       maximumLength="#{bindings.MiddleName.hints.precision}"
                       shortDesc="#{bindings.MiddleName.hints.tooltip}" id="it14"
-                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.MiddleName.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
@@ -109,14 +109,14 @@
                       columns="#{bindings.MotherMaidenName.hints.displayWidth}"
                       maximumLength="#{bindings.MotherMaidenName.hints.precision}"
                       shortDesc="#{bindings.MotherMaidenName.hints.tooltip}" id="it54"
-                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.MotherMaidenName.validator}"/>
         </af:inputText>
         <af:inputDate value="#{bindings.DateOfBirth.inputValue}" label="#{bindings.DateOfBirth.hints.label}"
                       required="true"
                       columns="#{bindings.DateOfBirth.hints.displayWidth}"
                       shortDesc="#{bindings.DateOfBirth.hints.tooltip}" id="id2"
-                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.DateOfBirth.validator}"/>
           <af:convertDateTime pattern="#{bindings.DateOfBirth.format}"/>
         </af:inputDate>
@@ -146,7 +146,7 @@
                       columns="#{bindings.NoOfDependents.hints.displayWidth}"
                       maximumLength="#{bindings.NoOfDependents.hints.precision}"
                       shortDesc="#{bindings.NoOfDependents.hints.tooltip}" id="it56"
-                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.NoOfDependents.validator}"/>
           <af:convertNumber groupingUsed="false" pattern="#{bindings.NoOfDependents.format}"/>
         </af:inputText>
@@ -163,7 +163,7 @@
                       columns="#{bindings.PassportNo.hints.displayWidth}"
                       maximumLength="#{bindings.PassportNo.hints.precision}"
                       shortDesc="#{bindings.PassportNo.hints.tooltip}" id="it59"
-                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.PassportNo.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.DriverPermit.inputValue}" label="#{bindings.DriverPermit.hints.label}"
@@ -171,14 +171,14 @@
                       columns="#{bindings.DriverPermit.hints.displayWidth}"
                       maximumLength="#{bindings.DriverPermit.hints.precision}"
                       shortDesc="#{bindings.DriverPermit.hints.tooltip}" id="it29"
-                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.DriverPermit.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.BirNo.inputValue}" label="#{bindings.BirNo.hints.label}"
                       required="#{bindings.BirNo.hints.mandatory}" columns="#{bindings.BirNo.hints.displayWidth}"
                       maximumLength="#{bindings.BirNo.hints.precision}" shortDesc="#{bindings.BirNo.hints.tooltip}"
                       id="it18"
-                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.BirNo.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.HomePhoneNumber.inputValue}" label="#{bindings.HomePhoneNumber.hints.label}"
@@ -202,14 +202,14 @@
                       columns="#{bindings.FaxNumber.hints.displayWidth}"
                       maximumLength="#{bindings.FaxNumber.hints.precision}"
                       shortDesc="#{bindings.FaxNumber.hints.tooltip}" id="it5"
-                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.FaxNumber.validator}"/>
         </af:inputText>
         <af:selectOneChoice value="#{bindings.EducationCode.inputValue}" label="#{bindings.EducationCode.label}"
                             required="true"
                             shortDesc="#{bindings.EducationCode.hints.tooltip}" id="soc14"
                             contentStyle="margin-top: 8px;width:295px;"
-                            disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                            disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:selectItems value="#{bindings.EducationCode.items}" id="si22"/>
           <f:validator binding="#{bindings.EducationCode.validator}"/>
         </af:selectOneChoice>
@@ -218,21 +218,21 @@
                       columns="#{bindings.MonthlySalary.hints.displayWidth}"
                       maximumLength="#{bindings.MonthlySalary.hints.precision}"
                       shortDesc="#{bindings.MonthlySalary.hints.tooltip}" id="it9" contentStyle="width:295px;"
-                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                      disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.MonthlySalary.validator}"/>
           <af:convertNumber groupingUsed="false" pattern="#{bindings.MonthlySalary.format}"/>
         </af:inputText>
         <af:selectOneChoice value="#{bindings.AnnualIncome.inputValue}" label="#{bindings.AnnualIncome.label}"
                             required="#{bindings.AnnualIncome.hints.mandatory}"
                             shortDesc="#{bindings.AnnualIncome.hints.tooltip}" id="soc18" contentStyle="margin-top: 8px;width:295px;"
-                            disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                            disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:selectItems value="#{bindings.AnnualIncome.items}" id="si26"/>
           <f:validator binding="#{bindings.AnnualIncome.validator}"/>
         </af:selectOneChoice>
         <af:selectOneRadio value="#{bindings.ShareholderCode.inputValue}" label="#{bindings.ShareholderCode.label}"
                            required="#{bindings.ShareholderCode.hints.mandatory}"
                            shortDesc="#{bindings.ShareholderCode.hints.tooltip}" id="sor3"
-                           disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT')}">
+                           disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:selectItems value="#{bindings.ShareholderCode.items}" id="si5"/>
           <f:validator binding="#{bindings.ShareholderCode.validator}"/>
         </af:selectOneRadio>
@@ -475,19 +475,20 @@
           <f:selectItems value="#{bindings.BirthCountryCode.items}" id="si17"/>
           <f:validator binding="#{bindings.BirthCountryCode.validator}"/>
         </af:selectOneChoice>
-        <af:selectOneRadio value="#{bindings.LocalTaxExempt.inputValue}" label="#{bindings.LocalTaxExempt.label}"
-                           required="#{bindings.LocalTaxExempt.hints.mandatory}"
-                           shortDesc="#{bindings.LocalTaxExempt.hints.tooltip}" id="sor9" layout="horizontal"
-                           disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
-          <f:selectItems value="#{bindings.LocalTaxExempt.items}" id="si18"/>
-          <f:validator binding="#{bindings.LocalTaxExempt.validator}"/>
-        </af:selectOneRadio>
         <af:selectOneChoice value="#{bindings.Nationality.inputValue}" label="#{bindings.Nationality.label}"
                             required="#{bindings.Nationality.hints.mandatory}"
                             shortDesc="#{bindings.Nationality.hints.tooltip}" id="soc10" contentStyle="margin-top: 8px;width:295px;"
                             disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:selectItems value="#{bindings.Nationality.items}" id="si19"/>
           <f:validator binding="#{bindings.Nationality.validator}"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice value="#{bindings.ResidencyCode1.inputValue}" label="#{bindings.ResidencyCode1.label}"
+                            required="#{bindings.ResidencyCode1.hints.mandatory}"
+                            contentStyle="margin-top: 8px;width:295px;"
+                            shortDesc="#{bindings.ResidencyCode1.hints.tooltip}" id="soc19"
+                            disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
+          <f:selectItems value="#{bindings.ResidencyCode1.items}" id="si27"/>
+          <f:validator binding="#{bindings.ResidencyCode1.validator}"/>
         </af:selectOneChoice>
         <af:selectOneChoice value="#{bindings.CitizenShipCountry1.inputValue}"
                             label="#{bindings.CitizenShipCountry1.label}"
@@ -509,7 +510,13 @@
           <f:selectItems value="#{bindings.CitizenShipCountry2.items}" id="si10"/>
           <f:validator binding="#{bindings.CitizenShipCountry2.validator}"/>
         </af:selectOneChoice>
-         <af:outputText value="" id="ot3"/>
+        <af:selectOneRadio value="#{bindings.LocalTaxExempt.inputValue}" label="#{bindings.LocalTaxExempt.label}"
+                           required="#{bindings.LocalTaxExempt.hints.mandatory}"
+                           shortDesc="#{bindings.LocalTaxExempt.hints.tooltip}" id="sor9" layout="horizontal"
+                           disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
+          <f:selectItems value="#{bindings.LocalTaxExempt.items}" id="si18"/>
+          <f:validator binding="#{bindings.LocalTaxExempt.validator}"/>
+        </af:selectOneRadio>
         <af:selectOneChoice value="#{bindings.CitizenShipCountry3.inputValue}"
                             label="#{bindings.CitizenShipCountry3.label}"
                             required="#{bindings.CitizenShipCountry3.hints.mandatory}"
@@ -528,9 +535,10 @@
           <f:selectItems value="#{bindings.CitizenShipCountry4.items}" id="si12"/>
           <f:validator binding="#{bindings.CitizenShipCountry4.validator}"/>
         </af:selectOneChoice>
+        <af:outputText value="" id="ot3"/>
       </af:panelFormLayout>
       <af:spacer width="10" height="10" id="s2"/>
-      <af:panelFormLayout id="pfl8" maxColumns="4" rows="1">
+      <af:panelFormLayout id="pfl8" maxColumns="5" rows="1">
         <f:facet name="footer"/>
         <af:selectOneRadio value="#{bindings.EligibleForeignTax.inputValue}"
                            label="#{bindings.EligibleForeignTax.label}"

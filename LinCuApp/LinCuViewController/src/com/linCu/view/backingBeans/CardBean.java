@@ -84,7 +84,9 @@ public class CardBean {
             AttributeBinding attr1 = (AttributeBinding) bindings.getControlBinding("CardReqType1");  
             AttributeBinding attr2 = (AttributeBinding) bindings.getControlBinding("RefCardId");  
             AttributeBinding attr3 = (AttributeBinding) bindings.getControlBinding("TopupAmount"); 
-            AttributeBinding attr4 = (AttributeBinding) bindings.getControlBinding("TransCardStatus");            
+            AttributeBinding attr4 = (AttributeBinding) bindings.getControlBinding("TransCardStatus"); 
+            //AttributeBinding attr5 = (AttributeBinding) bindings.getControlBinding("TransRefCIFNumber"); 
+            BigDecimal totalTopupAmount = new BigDecimal(0);
             
             if (attr1 != null)  
             { 
@@ -92,19 +94,46 @@ public class CardBean {
                Object refCardId = attr2.getInputValue();
                Object topupAmount = attr3.getInputValue();
                String status = (String) attr4.getInputValue();
+               
+                if(("TOPUP_CARD".equalsIgnoreCase(cardType)) && (!refCardId.equals("")) && ((topupAmount != null))){
+                    BigDecimal cardId = (BigDecimal)attr2.getInputValue();
+                    BigDecimal currentCardAmount = (BigDecimal)topupAmount;
+                    Map paramMap = new HashMap();
+                    paramMap.put("cardId", cardId);
+                    totalTopupAmount = (BigDecimal)ADFUtils.executeOperationBinding("cardTotalTopupToday",paramMap);
+                    totalTopupAmount = totalTopupAmount.add(currentCardAmount);
+                }
+                
                if((("TOPUP_CARD".equalsIgnoreCase(cardType))||("ADDON_CARD".equalsIgnoreCase(cardType))) && (refCardId.equals(""))){
                    JSFUtils.addErrorMessage("Reference Card is required.");  
                }else if("TOPUP_CARD".equalsIgnoreCase(cardType) && (topupAmount == null)){
                    JSFUtils.addErrorMessage("Topup amount is required.");  
+               }else if(("TOPUP_CARD".equalsIgnoreCase(cardType)) && (topupAmount != null) && (!refCardId.equals("")) && (totalTopupAmount.compareTo(new BigDecimal(30000)) > 0)){
+                   JSFUtils.addErrorMessage("Maximum 30000 topup is allowed per card per day.");                    
                }else{
                    String memberId = (String)attr.getInputValue();
                    Map paramMap = new HashMap();
                    paramMap.put("cardType", cardType);
                    paramMap.put("memberId", memberId);
                    Integer rowCount = (Integer)ADFUtils.executeOperationBinding("findApplicationPerCardType",paramMap);
+                   String cifNumber = null;
+                   if("NEW_CARD".equalsIgnoreCase(cardType)){
+                       Map paramMap1 = new HashMap();
+                       paramMap1.put("cardType", cardType);
+                       paramMap1.put("memberId", memberId); 
+                       cifNumber = (String)ADFUtils.executeOperationBinding("findCIFNumberForCardTypeNew",paramMap1);
+                   }else if((refCardId != null) && !("NEW_CARD".equalsIgnoreCase(cardType))){
+                   Map paramMap1 = new HashMap();
+                   paramMap1.put("cardId", (BigDecimal)refCardId);
+                   cifNumber = (String)ADFUtils.executeOperationBinding("findCIFNumberPerCardType",paramMap1);
+                   }
                    
-                   if((rowCount>0) && ("NEW_CARD".equalsIgnoreCase(cardType)) && !("REJECTED".equalsIgnoreCase(status) || "LINCU_REJECTED".equalsIgnoreCase(status) || "FCB_REJECTED".equalsIgnoreCase(status))){
-                       JSFUtils.addErrorMessage("Member is already issued with new card or application process is in progress. Please request for Add-On card for this card"); 
+                   if((rowCount>0) && ("NEW_CARD".equalsIgnoreCase(cardType)) && !("REJECTED".equalsIgnoreCase(status) || "LINCU_REJECTED".equalsIgnoreCase(status) || "FCB_REJECTED".equalsIgnoreCase(status)) && (cifNumber != null)){
+                       JSFUtils.addErrorMessage("Member has been issued with a LinCu card"); 
+                   }else if((rowCount>0) && ("NEW_CARD".equalsIgnoreCase(cardType)) && !("REJECTED".equalsIgnoreCase(status) || "LINCU_REJECTED".equalsIgnoreCase(status) || "FCB_REJECTED".equalsIgnoreCase(status)) && (cifNumber == null)){
+                       JSFUtils.addErrorMessage("Member application for new card is in process"); 
+                   }else if((cifNumber == null) && (("ADDON_CARD".equalsIgnoreCase(cardType)) || ("TOPUP_CARD".equalsIgnoreCase(cardType)))){
+                       JSFUtils.addErrorMessage("Application cannot be submitted till primary card issued with CIF number."); 
                    }else if((rowCount>=5) && ("ADDON_CARD".equalsIgnoreCase(cardType)) && !("REJECTED".equalsIgnoreCase(status) || "LINCU_REJECTED".equalsIgnoreCase(status) || "FCB_REJECTED".equalsIgnoreCase(status))){
                        JSFUtils.addErrorMessage("Member is eligible to request maximum 5 Add-On cards"); 
                    }else{

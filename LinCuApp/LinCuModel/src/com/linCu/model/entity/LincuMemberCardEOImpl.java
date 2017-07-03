@@ -52,10 +52,14 @@ public class LincuMemberCardEOImpl extends EntityImpl {
         TopupAmount,
         Active,
         ApplicationNo,
+        CifNumber,
+        MpsdId,
         LincuMemberInfoEO,
         LincuMemberKycEO,
         LincuMemberCardDocsEO,
-        LincuMemberCardAuditEO;
+        LincuMemberCardAuditEO,
+        RefCardIdLincuMemberCardEO,
+        LincuMemberCardEO;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -100,10 +104,14 @@ public class LincuMemberCardEOImpl extends EntityImpl {
     public static final int TOPUPAMOUNT = AttributesEnum.TopupAmount.index();
     public static final int ACTIVE = AttributesEnum.Active.index();
     public static final int APPLICATIONNO = AttributesEnum.ApplicationNo.index();
+    public static final int CIFNUMBER = AttributesEnum.CifNumber.index();
+    public static final int MPSDID = AttributesEnum.MpsdId.index();
     public static final int LINCUMEMBERINFOEO = AttributesEnum.LincuMemberInfoEO.index();
     public static final int LINCUMEMBERKYCEO = AttributesEnum.LincuMemberKycEO.index();
     public static final int LINCUMEMBERCARDDOCSEO = AttributesEnum.LincuMemberCardDocsEO.index();
     public static final int LINCUMEMBERCARDAUDITEO = AttributesEnum.LincuMemberCardAuditEO.index();
+    public static final int REFCARDIDLINCUMEMBERCARDEO = AttributesEnum.RefCardIdLincuMemberCardEO.index();
+    public static final int LINCUMEMBERCARDEO = AttributesEnum.LincuMemberCardEO.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -442,6 +450,38 @@ public class LincuMemberCardEOImpl extends EntityImpl {
     }
 
     /**
+     * Gets the attribute value for CifNumber, using the alias name CifNumber.
+     * @return the value of CifNumber
+     */
+    public String getCifNumber() {
+        return (String) getAttributeInternal(CIFNUMBER);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for CifNumber.
+     * @param value value to set the CifNumber
+     */
+    public void setCifNumber(String value) {
+        setAttributeInternal(CIFNUMBER, value);
+    }
+
+    /**
+     * Gets the attribute value for MpsdId, using the alias name MpsdId.
+     * @return the value of MpsdId
+     */
+    public String getMpsdId() {
+        return (String) getAttributeInternal(MPSDID);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for MpsdId.
+     * @param value value to set the MpsdId
+     */
+    public void setMpsdId(String value) {
+        setAttributeInternal(MPSDID, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getLincuMemberInfoEO() {
@@ -467,6 +507,27 @@ public class LincuMemberCardEOImpl extends EntityImpl {
      */
     public RowIterator getLincuMemberCardAuditEO() {
         return (RowIterator) getAttributeInternal(LINCUMEMBERCARDAUDITEO);
+    }
+
+    /**
+     * @return the associated entity oracle.jbo.RowIterator.
+     */
+    public RowIterator getRefCardIdLincuMemberCardEO() {
+        return (RowIterator) getAttributeInternal(REFCARDIDLINCUMEMBERCARDEO);
+    }
+
+    /**
+     * @return the associated entity LincuMemberCardEOImpl.
+     */
+    public LincuMemberCardEOImpl getLincuMemberCardEO() {
+        return (LincuMemberCardEOImpl) getAttributeInternal(LINCUMEMBERCARDEO);
+    }
+
+    /**
+     * Sets <code>value</code> as the associated entity LincuMemberCardEOImpl.
+     */
+    public void setLincuMemberCardEO(LincuMemberCardEOImpl value) {
+        setAttributeInternal(LINCUMEMBERCARDEO, value);
     }
 
     /**
