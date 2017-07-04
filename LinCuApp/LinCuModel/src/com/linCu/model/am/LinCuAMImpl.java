@@ -599,195 +599,198 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     dataRow = (LincuMemberCardVORowImpl) rowIter.next();
     if(flag == false){
 
-    row.createCell(0).setCellValue("Card No"); //setting column heading
+    row.createCell(0).setCellValue("#MPSD ID"); //setting column heading
     sheet.autoSizeColumn(0);
     row.getCell(0).setCellStyle(colStyleTopLeft);
-    row.createCell(1).setCellValue("Card Type");
+    row.createCell(1).setCellValue("PREF");
     sheet.autoSizeColumn(1);
     row.getCell(1).setCellStyle(colStyleTopLeft);
-    row.createCell(2).setCellValue("Card Status");
+    row.createCell(2).setCellValue("FNAME");
     sheet.autoSizeColumn(2);
     row.getCell(2).setCellStyle(colStyleTopLeft);
-    row.createCell(3).setCellValue("Credit Union");
+    row.createCell(3).setCellValue("MNAME");
     sheet.autoSizeColumn(3);
     row.getCell(3).setCellStyle(colStyleTopLeft);
-    row.createCell(4).setCellValue("Member Id");
+    row.createCell(4).setCellValue("LNM");
     sheet.autoSizeColumn(4);
     row.getCell(4).setCellStyle(colStyleTopLeft);
-    row.createCell(5).setCellValue("Created By");
+    row.createCell(5).setCellValue("DOB");
     sheet.autoSizeColumn(5);
     row.getCell(5).setCellStyle(colStyleTopLeft);
-    row.createCell(6).setCellValue("Created On");
+    row.createCell(6).setCellValue("ZEID");
     sheet.autoSizeColumn(6);
     row.getCell(6).setCellStyle(colStyleTopLeft);
-    row.createCell(7).setCellValue("Submitted On");
+    row.createCell(7).setCellValue("ZDP");
     sheet.autoSizeColumn(7);
     row.getCell(7).setCellStyle(colStyleTopLeft);
-    row.createCell(8).setCellValue("Member Prefix");
+    row.createCell(8).setCellValue("ZPP");
     sheet.autoSizeColumn(8);
     row.getCell(8).setCellStyle(colStyleTopLeft);
-    row.createCell(9).setCellValue("First Name");
+    row.createCell(9).setCellValue("ZBIR");
     sheet.autoSizeColumn(9);
     row.getCell(9).setCellStyle(colStyleTopLeft);        
-    row.createCell(10).setCellValue("Middle Name");
+    row.createCell(10).setCellValue("SEX");
     sheet.autoSizeColumn(10);
     row.getCell(10).setCellStyle(colStyleTopLeft); 
-    row.createCell(11).setCellValue("Last Name");
+    row.createCell(11).setCellValue("PAD1");
     sheet.autoSizeColumn(11);
     row.getCell(11).setCellStyle(colStyleTopLeft); 
-    row.createCell(12).setCellValue("Mother Maiden Name");
+    row.createCell(12).setCellValue("PAD2");
     sheet.autoSizeColumn(12);
     row.getCell(12).setCellStyle(colStyleTopLeft); 
-    row.createCell(13).setCellValue("Date Of Birth");
+    row.createCell(13).setCellValue("PAD3");
     sheet.autoSizeColumn(13);
     row.getCell(13).setCellStyle(colStyleTopLeft); 
-    row.createCell(14).setCellValue("Email");
+    row.createCell(14).setCellValue("PAD4");
     sheet.autoSizeColumn(14);
     row.getCell(14).setCellStyle(colStyleTopLeft);
-        row.createCell(15).setCellValue("Gender");
+        row.createCell(15).setCellValue("PCITY");
         sheet.autoSizeColumn(15);
         row.getCell(15).setCellStyle(colStyleTopLeft);
-        row.createCell(16).setCellValue("Marital Status");
+        row.createCell(16).setCellValue("PSTATE");
         sheet.autoSizeColumn(16);
         row.getCell(16).setCellStyle(colStyleTopLeft);        
-        row.createCell(17).setCellValue("No Of Dependents");
+        row.createCell(17).setCellValue("PZIP");
         sheet.autoSizeColumn(17);
         row.getCell(17).setCellStyle(colStyleTopLeft); 
-        row.createCell(18).setCellValue("Electorial Id");
+        row.createCell(18).setCellValue("PCNTRY");
         sheet.autoSizeColumn(18);
         row.getCell(18).setCellStyle(colStyleTopLeft); 
-        row.createCell(19).setCellValue("Passport No");
+        row.createCell(19).setCellValue("MCNTRY");
         sheet.autoSizeColumn(19);
         row.getCell(19).setCellStyle(colStyleTopLeft); 
-        row.createCell(20).setCellValue("Driver Permit");
+        row.createCell(20).setCellValue("MAD1");
         sheet.autoSizeColumn(20);
         row.getCell(20).setCellStyle(colStyleTopLeft); 
-        row.createCell(21).setCellValue("BirNo");
+        row.createCell(21).setCellValue("MAD2");
         sheet.autoSizeColumn(21);
         row.getCell(21).setCellStyle(colStyleTopLeft);
-        row.createCell(22).setCellValue("Home Phone Number");
+        row.createCell(22).setCellValue("MAD3");
         sheet.autoSizeColumn(22);
         row.getCell(22).setCellStyle(colStyleTopLeft);
-        row.createCell(23).setCellValue("Mobile Phone Number");
+        row.createCell(23).setCellValue("MAD4");
         sheet.autoSizeColumn(23);
         row.getCell(23).setCellStyle(colStyleTopLeft);
-        row.createCell(24).setCellValue("Fax Number");
+        row.createCell(24).setCellValue("MCITY");
         sheet.autoSizeColumn(24);
         row.getCell(24).setCellStyle(colStyleTopLeft);
-        row.createCell(25).setCellValue("Education Code");
+        row.createCell(25).setCellValue("MSTATE");
         sheet.autoSizeColumn(25);
         row.getCell(25).setCellStyle(colStyleTopLeft);
-        row.createCell(26).setCellValue("Monthly Salary");
+        row.createCell(26).setCellValue("MZIP");
         sheet.autoSizeColumn(26);
         row.getCell(26).setCellStyle(colStyleTopLeft);
-        row.createCell(27).setCellValue("Shareholder Code");
+        row.createCell(27).setCellValue("EMAIL");
         sheet.autoSizeColumn(27);
         row.getCell(27).setCellStyle(colStyleTopLeft);
-        row.createCell(28).setCellValue("Permanent Address Line1");
+        row.createCell(28).setCellValue("HPH");
         sheet.autoSizeColumn(28);
         row.getCell(28).setCellStyle(colStyleTopLeft);
-        row.createCell(29).setCellValue("Permanent Addrress Line2");
+        row.createCell(29).setCellValue("BPH");
         sheet.autoSizeColumn(29);
         row.getCell(29).setCellStyle(colStyleTopLeft);
-        row.createCell(30).setCellValue("Permanent Address Line3");
+        row.createCell(30).setCellValue("BPHEXT");
         sheet.autoSizeColumn(30);
         row.getCell(30).setCellStyle(colStyleTopLeft);
-        row.createCell(31).setCellValue("Permanent Address Street");
+        row.createCell(31).setCellValue("APH");
         sheet.autoSizeColumn(31);
         row.getCell(31).setCellStyle(colStyleTopLeft);
-        row.createCell(32).setCellValue("Permanent City");
+        row.createCell(32).setCellValue("FAXNUM");
         sheet.autoSizeColumn(32);
         row.getCell(32).setCellStyle(colStyleTopLeft);
-        row.createCell(33).setCellValue("Permanent State");
+        row.createCell(33).setCellValue("TAXID");
         sheet.autoSizeColumn(33);
         row.getCell(33).setCellStyle(colStyleTopLeft);
-        row.createCell(34).setCellValue("Permanent Country");
+        row.createCell(34).setCellValue("NATION");
         sheet.autoSizeColumn(34);
         row.getCell(34).setCellStyle(colStyleTopLeft);
-        row.createCell(35).setCellValue("Permanent ZipCode");
+        row.createCell(35).setCellValue("TAXEXM");
         sheet.autoSizeColumn(35);
         row.getCell(35).setCellStyle(colStyleTopLeft);
-        row.createCell(36).setCellValue("HomeOwnership");
+        row.createCell(36).setCellValue("ZNATION");
         sheet.autoSizeColumn(36);
         row.getCell(36).setCellStyle(colStyleTopLeft);
-        row.createCell(37).setCellValue("Mailing Address Line1");
+        row.createCell(37).setCellValue("ZFRNTAXF");
         sheet.autoSizeColumn(37);
         row.getCell(37).setCellStyle(colStyleTopLeft);
-        row.createCell(38).setCellValue("Mailing Address Line2");
+        row.createCell(38).setCellValue("ZFRNTAXD");
         sheet.autoSizeColumn(38);
         row.getCell(38).setCellStyle(colStyleTopLeft);
-        row.createCell(39).setCellValue("Mailing Address Line3");
+        row.createCell(39).setCellValue("ZCITRESF");
         sheet.autoSizeColumn(39);
         row.getCell(39).setCellStyle(colStyleTopLeft);
-        row.createCell(40).setCellValue("Mailing Address Street");
+        row.createCell(40).setCellValue("ZPAFLG");
         sheet.autoSizeColumn(40);
         row.getCell(40).setCellStyle(colStyleTopLeft);
-        row.createCell(41).setCellValue("Mailing City");
+        row.createCell(41).setCellValue("ZCRCNTR1");
         sheet.autoSizeColumn(41);
         row.getCell(41).setCellStyle(colStyleTopLeft);
-        row.createCell(42).setCellValue("Mailing State");
+        row.createCell(42).setCellValue("ZCRCNTR2");
         sheet.autoSizeColumn(42);
         row.getCell(42).setCellStyle(colStyleTopLeft);
-        row.createCell(43).setCellValue("Mailing Country");
+        row.createCell(43).setCellValue("ZCRCNTR3");
         sheet.autoSizeColumn(43);
         row.getCell(43).setCellStyle(colStyleTopLeft);
-        row.createCell(44).setCellValue("Mailing ZipCode");
+        row.createCell(44).setCellValue("ZCRCNTR4");
         sheet.autoSizeColumn(44);
         row.getCell(44).setCellStyle(colStyleTopLeft);
-        row.createCell(45).setCellValue("Employer");
+        row.createCell(45).setCellValue("ZRESTIN1");
         sheet.autoSizeColumn(45);
         row.getCell(45).setCellStyle(colStyleTopLeft);
-        row.createCell(46).setCellValue("Employer Address1");
+        row.createCell(46).setCellValue("ZRESTIN2");
         sheet.autoSizeColumn(46);
         row.getCell(46).setCellStyle(colStyleTopLeft);
-        row.createCell(47).setCellValue("Employer Address2");
+        row.createCell(47).setCellValue("ZRESTIN3");
         sheet.autoSizeColumn(47);
         row.getCell(47).setCellStyle(colStyleTopLeft);
-        row.createCell(48).setCellValue("Business Phone Extension");
+        row.createCell(48).setCellValue("ZRESTIN4");
         sheet.autoSizeColumn(48);
         row.getCell(48).setCellStyle(colStyleTopLeft);
-        row.createCell(49).setCellValue("Business Phone Number");
+        row.createCell(49).setCellValue("OCC");
         sheet.autoSizeColumn(49);
         row.getCell(49).setCellStyle(colStyleTopLeft);
-        row.createCell(50).setCellValue("Occupation Code");
+        row.createCell(50).setCellValue("RESCD");
         sheet.autoSizeColumn(50);
         row.getCell(50).setCellStyle(colStyleTopLeft);
-        row.createCell(51).setCellValue("Employer City");
+        row.createCell(51).setCellValue("CEMPNAM");
         sheet.autoSizeColumn(51);
         row.getCell(51).setCellStyle(colStyleTopLeft);
-        row.createCell(52).setCellValue("Birth Country");
+        row.createCell(52).setCellValue("CEMPADD1");
         sheet.autoSizeColumn(52);
         row.getCell(52).setCellStyle(colStyleTopLeft);
-        row.createCell(53).setCellValue("CitizenShip Country1");
+        row.createCell(53).setCellValue("CEMPADD2");
         sheet.autoSizeColumn(53);
         row.getCell(53).setCellStyle(colStyleTopLeft);
-        row.createCell(54).setCellValue("CitizenShip Country2");
+        row.createCell(54).setCellValue("PID");
         sheet.autoSizeColumn(54);
         row.getCell(54).setCellStyle(colStyleTopLeft);
-        row.createCell(55).setCellValue("CitizenShip Country3");
+        row.createCell(55).setCellValue("DEP");
         sheet.autoSizeColumn(55);
         row.getCell(55).setCellStyle(colStyleTopLeft);
-        row.createCell(56).setCellValue("CitizenShip Country4");
+        row.createCell(56).setCellValue("INC");
         sheet.autoSizeColumn(56);
         row.getCell(56).setCellStyle(colStyleTopLeft);
-        row.createCell(57).setCellValue("Local Tax Exempt");
+        row.createCell(57).setCellValue("EDUC");
         sheet.autoSizeColumn(57);
         row.getCell(57).setCellStyle(colStyleTopLeft);
-        row.createCell(58).setCellValue("Nationality");
+        row.createCell(58).setCellValue("SHHLD");
         sheet.autoSizeColumn(58);
         row.getCell(58).setCellStyle(colStyleTopLeft);
-        row.createCell(59).setCellValue("Eligible Foreign Tax");
+        row.createCell(59).setCellValue("OWN");
         sheet.autoSizeColumn(59);
         row.getCell(59).setCellStyle(colStyleTopLeft);
-        row.createCell(60).setCellValue("Doc Foreign Tax Exempt");
+        row.createCell(60).setCellValue("STRTYP");
         sheet.autoSizeColumn(60);
         row.getCell(60).setCellStyle(colStyleTopLeft);
-        row.createCell(61).setCellValue("Foreign Citizenship");
+        row.createCell(61).setCellValue("MONSAL");
         sheet.autoSizeColumn(61);
         row.getCell(61).setCellStyle(colStyleTopLeft);
-        row.createCell(62).setCellValue("Power Of Attorney");
+        row.createCell(62).setCellValue("CEMCITY");
         sheet.autoSizeColumn(62);
         row.getCell(62).setCellStyle(colStyleTopLeft);
+        row.createCell(63).setCellValue("MAR");
+        sheet.autoSizeColumn(63);
+        row.getCell(63).setCellStyle(colStyleTopLeft);
     //1st row ends here
     //2nd row starts here
     idx = idx + 1;
@@ -795,305 +798,367 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     }
         
         
-    row.createCell(0).setCellValue(dataRow.getCardId().toString());
-    sheet.autoSizeColumn(0);
-    //row.createCell(1).setCellValue(cardTypes.get(dataRow.getCardReqType()));
-    row.createCell(1).setCellValue(dataRow.getCardReqType());
-    sheet.autoSizeColumn(1);
-    //row.createCell(2).setCellValue(statues.get(dataRow.getCardStatus()));
-    row.createCell(2).setCellValue(dataRow.getCardStatus());
-    sheet.autoSizeColumn(2);
-    //row.createCell(3).setCellValue(findCreditUnionName(dataRow.getCreditUnionId()));
-    CreditUnionVOImpl creditUnion = this.getCreditUnion();
-    Row[] rows = creditUnion.findByKey(new Key(new Object[]{dataRow.getCreditUnionId()}), 1);
-    CreditUnionVORowImpl creditUnionRow = (CreditUnionVORowImpl)rows[0];
-    row.createCell(3).setCellValue(creditUnionRow.getCreditUnionCode());
-    sheet.autoSizeColumn(3);
-    row.createCell(4).setCellValue(dataRow.getMemberId());
-    sheet.autoSizeColumn(4);
-    row.createCell(5).setCellValue(dataRow.getCreatedBy());
-    sheet.autoSizeColumn(5);
-    row.createCell(6).setCellValue(dataRow.getCreatedOn().toString());
-    sheet.autoSizeColumn(6);
-    row.createCell(7).setCellValue(dataRow.getSubmittedOn());
-    sheet.autoSizeColumn(7);
-    row.createCell(8).setCellValue(dataRow.getMemberPrefix());
-    sheet.autoSizeColumn(8);
-    row.createCell(9).setCellValue(dataRow.getFirstName());
-    sheet.autoSizeColumn(9);
-    row.createCell(10).setCellValue(dataRow.getMiddleName());
-    sheet.autoSizeColumn(10);
-    row.createCell(11).setCellValue(dataRow.getLastName());
-    sheet.autoSizeColumn(11);
-    row.createCell(12).setCellValue(dataRow.getMotherMaidenName());
-    sheet.autoSizeColumn(12);
-    if(dataRow.getDateOfBirth() != null)
-    row.createCell(13).setCellValue(dataRow.getDateOfBirth());
-    else
-    row.createCell(13).setCellValue("");
-    sheet.autoSizeColumn(13);
-    row.createCell(14).setCellValue(dataRow.getEmail());
-    sheet.autoSizeColumn(14);
-        if(dataRow.getGender() != null)
-        //row.createCell(15).setCellValue(genderCodes.get(dataRow.getGender()));
-        row.createCell(15).setCellValue(dataRow.getGender());
+            row.createCell(0).setCellValue("");
+            sheet.autoSizeColumn(0);
+           
+        if (dataRow.getMemberPrefix() != null)
+            row.createCell(1).setCellValue(dataRow.getMemberPrefix().toString());
         else
-        row.createCell(15).setCellValue("");
-        sheet.autoSizeColumn(15);
-        if(dataRow.getMaritalStatus() != null)
-        //row.createCell(16).setCellValue(maritalStatus.get(dataRow.getMaritalStatus()));
-        row.createCell(16).setCellValue(dataRow.getMaritalStatus());
+            row.createCell(1).setCellValue("");
+        sheet.autoSizeColumn(1);
+
+        if (dataRow.getFirstName() != null)
+            row.createCell(2).setCellValue(dataRow.getFirstName().toString());
         else
-        row.createCell(16).setCellValue("");
-        sheet.autoSizeColumn(16);
-        if(dataRow.getNoOfDependents() != null)
-        row.createCell(17).setCellValue(dataRow.getNoOfDependents());
+            row.createCell(2).setCellValue("");
+        sheet.autoSizeColumn(2);
+
+        if (dataRow.getMiddleName() != null)
+            row.createCell(3).setCellValue(dataRow.getMiddleName().toString());
         else
-        row.createCell(17).setCellValue("");
-        sheet.autoSizeColumn(17);
-        if(dataRow.getElectorialId() != null)
-        row.createCell(18).setCellValue(dataRow.getElectorialId());
+            row.createCell(3).setCellValue("");
+        sheet.autoSizeColumn(3);
+
+        if (dataRow.getLastName() != null)
+            row.createCell(4).setCellValue(dataRow.getLastName().toString());
         else
-        row.createCell(18).setCellValue("");
-        sheet.autoSizeColumn(18);
-        if(dataRow.getPassportNo() != null)
-        row.createCell(19).setCellValue(dataRow.getPassportNo());
+            row.createCell(4).setCellValue("");
+        sheet.autoSizeColumn(4);
+
+        if (dataRow.getDateOfBirth() != null)
+            row.createCell(5).setCellValue(dataRow.getDateOfBirth().toString());
         else
-        row.createCell(19).setCellValue("");
-        sheet.autoSizeColumn(19);
-        if(dataRow.getDriverPermit() != null)
-        row.createCell(20).setCellValue(dataRow.getDriverPermit());
+            row.createCell(5).setCellValue("");
+        sheet.autoSizeColumn(5);
+
+        if (dataRow.getElectorialId() != null)
+            row.createCell(6).setCellValue(dataRow.getElectorialId().toString());
         else
-        row.createCell(20).setCellValue("");
-        sheet.autoSizeColumn(20);
-        if(dataRow.getBirNo() != null)
-        row.createCell(21).setCellValue(dataRow.getBirNo());
+            row.createCell(6).setCellValue("");
+        sheet.autoSizeColumn(6);
+
+        if (dataRow.getDriverPermit() != null)
+            row.createCell(7).setCellValue(dataRow.getDriverPermit().toString());
         else
-        row.createCell(21).setCellValue("");
-        sheet.autoSizeColumn(21);
-        if(dataRow.getHomePhoneNumber() != null)
-        row.createCell(22).setCellValue(dataRow.getHomePhoneNumber());
+            row.createCell(7).setCellValue("");
+        sheet.autoSizeColumn(7);
+
+        if (dataRow.getPassportNo() != null)
+            row.createCell(8).setCellValue(dataRow.getPassportNo().toString());
         else
-        row.createCell(22).setCellValue("");
-        sheet.autoSizeColumn(22);
-        if(dataRow.getMobilePhoneNumber() != null)
-        row.createCell(23).setCellValue(dataRow.getMobilePhoneNumber());
+            row.createCell(8).setCellValue("");
+        sheet.autoSizeColumn(8);
+
+        if (dataRow.getBirNo() != null)
+            row.createCell(9).setCellValue(dataRow.getBirNo().toString());
         else
-        row.createCell(23).setCellValue("");
-        sheet.autoSizeColumn(23);
-        if(dataRow.getFaxNumber() != null)
-        row.createCell(24).setCellValue(dataRow.getFaxNumber());
+            row.createCell(9).setCellValue("");
+        sheet.autoSizeColumn(9);
+
+        if (dataRow.getGender() != null)
+            row.createCell(10).setCellValue(dataRow.getGender().toString());
         else
-        row.createCell(24).setCellValue("");
-        sheet.autoSizeColumn(24);
-        if(dataRow.getEducationCode() != null)
-        //row.createCell(25).setCellValue(educationCodes.get(dataRow.getEducationCode()));
-        row.createCell(25).setCellValue(dataRow.getEducationCode());
+            row.createCell(10).setCellValue("");
+        sheet.autoSizeColumn(10);
+
+        if (dataRow.getPermanentAddrLine1() != null)
+            row.createCell(11).setCellValue(dataRow.getPermanentAddrLine1().toString());
         else
-        row.createCell(25).setCellValue("");
-        sheet.autoSizeColumn(25);
-        if(dataRow.getMonthlySalary() != null)
-        row.createCell(26).setCellValue(dataRow.getMonthlySalary().toString());
+            row.createCell(11).setCellValue("");
+        sheet.autoSizeColumn(11);
+
+        if (dataRow.getPermanentAddrLine2() != null)
+            row.createCell(12).setCellValue(dataRow.getPermanentAddrLine2().toString());
         else
-        row.createCell(26).setCellValue("");
-        sheet.autoSizeColumn(26);
-        if(dataRow.getShareholderCode() != null)
-        row.createCell(27).setCellValue(dataRow.getShareholderCode());
+            row.createCell(12).setCellValue("");
+        sheet.autoSizeColumn(12);
+
+            if (dataRow.getPermanentAddrLine3() != null)
+                row.createCell(13).setCellValue(dataRow.getPermanentAddrLine3().toString());
+            else
+                row.createCell(13).setCellValue("");
+            sheet.autoSizeColumn(13);
+
+        if (dataRow.getPermanentAddrLine4() != null)
+            row.createCell(14).setCellValue(dataRow.getPermanentAddrLine4().toString());
         else
-        row.createCell(27).setCellValue("");
-        sheet.autoSizeColumn(27);
-        if(dataRow.getPermanentAddrLine1() != null)
-        row.createCell(28).setCellValue(dataRow.getPermanentAddrLine1());
-        else
-        row.createCell(28).setCellValue("");
-        sheet.autoSizeColumn(28);
-        if(dataRow.getPermanentAddrLine2() != null)
-        row.createCell(29).setCellValue(dataRow.getPermanentAddrLine2().toString());
-        else
-        row.createCell(29).setCellValue("");
-        sheet.autoSizeColumn(29);
-        if(dataRow.getPermanentAddrLine3() != null)
-        row.createCell(30).setCellValue(dataRow.getPermanentAddrLine3());
-        else
-        row.createCell(30).setCellValue("");
-        sheet.autoSizeColumn(30);
-        if(dataRow.getPermanentAddrLine4() != null)
-        //row.createCell(31).setCellValue(streets.get(dataRow.getPermanentAddrLine4()));
-        row.createCell(31).setCellValue(dataRow.getPermanentAddrLine4());
-        else
-        row.createCell(31).setCellValue("");
-        sheet.autoSizeColumn(31);
-        if(dataRow.getPermanentCity() != null)
-        row.createCell(32).setCellValue(dataRow.getPermanentCity().toString());
-        else
-        row.createCell(32).setCellValue("");
-        sheet.autoSizeColumn(32);
-        if(dataRow.getPermanentState() != null)
-        row.createCell(33).setCellValue(dataRow.getPermanentState());
-        else
-        row.createCell(33).setCellValue("");
-        sheet.autoSizeColumn(33);
-        if(dataRow.getPermanentCountryCode() != null)
-        //row.createCell(34).setCellValue(countryMap.get(dataRow.getPermanentCountryCode()));
-        row.createCell(34).setCellValue(dataRow.getPermanentCountryCode());
-        else
-        row.createCell(34).setCellValue("");
-        sheet.autoSizeColumn(34);
-        if(dataRow.getPermanentZipCode() != null)
-        row.createCell(35).setCellValue(dataRow.getPermanentZipCode().toString());
-        else
-        row.createCell(35).setCellValue("");
-        sheet.autoSizeColumn(35);
-        if(dataRow.getHomeOwnership() != null)
-        //row.createCell(36).setCellValue(howeTownShip.get(dataRow.getHomeOwnership()));
-        row.createCell(36).setCellValue(dataRow.getHomeOwnership());
-        else
-        row.createCell(36).setCellValue("");
-        sheet.autoSizeColumn(36);
-        if(dataRow.getMailingAddrLine1() != null)
-        row.createCell(37).setCellValue(dataRow.getMailingAddrLine1().toString());
-        else
-        row.createCell(37).setCellValue("");
-        sheet.autoSizeColumn(37);
-        if(dataRow.getMailingAddrLine2() != null)
-        row.createCell(38).setCellValue(dataRow.getMailingAddrLine2());
-        else
-        row.createCell(38).setCellValue("");
-        sheet.autoSizeColumn(38);
-        if(dataRow.getMailingAddrLine3() != null)
-        row.createCell(39).setCellValue(dataRow.getMailingAddrLine3());
-        else
-        row.createCell(39).setCellValue("");
-        sheet.autoSizeColumn(39);
-        if(dataRow.getMailingAddrLine4() != null)
-        //row.createCell(40).setCellValue(streets.get(dataRow.getMailingAddrLine4().toString()));
-        row.createCell(40).setCellValue(dataRow.getMailingAddrLine4().toString());
-        else
-        row.createCell(40).setCellValue("");
-        sheet.autoSizeColumn(40);
-        if(dataRow.getMailingCity() != null)
-        row.createCell(41).setCellValue(dataRow.getMailingCity());
-        else
-        row.createCell(41).setCellValue("");
-        sheet.autoSizeColumn(41);
-        if(dataRow.getMailingState() != null)
-        row.createCell(42).setCellValue(dataRow.getMailingState());
-        else
-        row.createCell(42).setCellValue("");
-        sheet.autoSizeColumn(42);
-        if(dataRow.getMailingCountryCode() != null)
-        //row.createCell(43).setCellValue(countryMap.get(dataRow.getMailingCountryCode().toString()));
-        row.createCell(43).setCellValue(dataRow.getMailingCountryCode().toString());
-        else
-        row.createCell(43).setCellValue("");
-        sheet.autoSizeColumn(43);
-        if(dataRow.getMailingZipCode() != null)
-        row.createCell(44).setCellValue(dataRow.getMailingZipCode());
-        else
-        row.createCell(44).setCellValue("");
-        sheet.autoSizeColumn(44);
-        if(dataRow.getEmployer() != null)
-        row.createCell(45).setCellValue(dataRow.getEmployer());
-        else
-        row.createCell(45).setCellValue("");
-        sheet.autoSizeColumn(45);
-        if(dataRow.getEmployerAddress1() != null)
-        row.createCell(46).setCellValue(dataRow.getEmployerAddress1());
-        else
-        row.createCell(46).setCellValue("");
-        sheet.autoSizeColumn(46);
-        if(dataRow.getEmployerAddress2() != null)
-        row.createCell(47).setCellValue(dataRow.getEmployerAddress2().toString());
-        else
-        row.createCell(47).setCellValue("");
-        sheet.autoSizeColumn(47);
-        if(dataRow.getBusinessPhoneExtn() != null)
-        row.createCell(48).setCellValue(dataRow.getBusinessPhoneExtn());
-        else
-        row.createCell(48).setCellValue("");
-        sheet.autoSizeColumn(48);
-        if(dataRow.getBusinessPhoneNumber() != null)
-        row.createCell(49).setCellValue(dataRow.getBusinessPhoneNumber());
-        else
-        row.createCell(49).setCellValue("");
-        sheet.autoSizeColumn(49);
-        if(dataRow.getOccupationCode() != null)
-        //row.createCell(50).setCellValue(occupationMap.get(dataRow.getOccupationCode().toString()));
-        row.createCell(50).setCellValue(dataRow.getOccupationCode().toString());
-        else
-        row.createCell(50).setCellValue("");
-        sheet.autoSizeColumn(50);
-        if(dataRow.getEmployerCity() != null)
-        row.createCell(51).setCellValue(dataRow.getEmployerCity());
-        else
-        row.createCell(51).setCellValue("");
-        sheet.autoSizeColumn(51);
-        if(dataRow.getBirthCountryCode() != null)
-        //row.createCell(52).setCellValue(countryMap.get(dataRow.getBirthCountryCode()));
-        row.createCell(52).setCellValue(dataRow.getBirthCountryCode());
-        else
-        row.createCell(52).setCellValue("");
-        sheet.autoSizeColumn(52);
-        if(dataRow.getCitizenShipCountry1() != null)
-        //row.createCell(53).setCellValue(countryMap.get(dataRow.getCitizenShipCountry1()));
-        row.createCell(53).setCellValue(dataRow.getCitizenShipCountry1());
-        else
-        row.createCell(53).setCellValue("");
-        sheet.autoSizeColumn(53);
-        if(dataRow.getCitizenShipCountry2() != null)
-        //row.createCell(54).setCellValue(countryMap.get(dataRow.getCitizenShipCountry2().toString()));
-        row.createCell(54).setCellValue(dataRow.getCitizenShipCountry2().toString());
-        else
-        row.createCell(54).setCellValue("");
-        sheet.autoSizeColumn(54);
-        if(dataRow.getCitizenShipCountry3() != null)
-        //row.createCell(55).setCellValue(countryMap.get(dataRow.getCitizenShipCountry3()));
-        row.createCell(55).setCellValue(dataRow.getCitizenShipCountry3());
-        else
-        row.createCell(55).setCellValue("");
-        sheet.autoSizeColumn(55);
-        if(dataRow.getCitizenShipCountry4() != null)
-        //row.createCell(56).setCellValue(countryMap.get(dataRow.getCitizenShipCountry4()));
-        row.createCell(56).setCellValue(dataRow.getCitizenShipCountry4());
-        else
-        row.createCell(56).setCellValue("");
-        sheet.autoSizeColumn(56);
-        if(dataRow.getLocalTaxExempt() != null)
-        //row.createCell(57).setCellValue(yesOrNoCodes.get(dataRow.getLocalTaxExempt().toString()));
-        row.createCell(57).setCellValue(dataRow.getLocalTaxExempt().toString());
-        else
-        row.createCell(57).setCellValue("");
-        sheet.autoSizeColumn(57);
-        if(dataRow.getNationality() != null)
-        //row.createCell(58).setCellValue(countryMap.get(dataRow.getNationality()));
-        row.createCell(58).setCellValue(dataRow.getNationality());
-        else
-        row.createCell(58).setCellValue("");
-        sheet.autoSizeColumn(58);
-        if(dataRow.getEligibleForeignTax() != null)
-        //row.createCell(59).setCellValue(yesOrNoCodes.get(dataRow.getEligibleForeignTax()));
-        row.createCell(59).setCellValue(dataRow.getEligibleForeignTax());
-        else
-        row.createCell(59).setCellValue("");
-        sheet.autoSizeColumn(59);
-        if(dataRow.getDocForeignTaxExempt() != null)
-        //row.createCell(60).setCellValue(yesOrNoCodes.get(dataRow.getDocForeignTaxExempt()));
-        row.createCell(60).setCellValue(dataRow.getDocForeignTaxExempt());
-        else
-        row.createCell(60).setCellValue("");
-        sheet.autoSizeColumn(60);
-        if(dataRow.getForeignCitizenship() != null)
-        //row.createCell(61).setCellValue(yesOrNoCodes.get(dataRow.getForeignCitizenship().toString()));
-        row.createCell(61).setCellValue(dataRow.getForeignCitizenship().toString());
-        else
-        row.createCell(61).setCellValue("");
-        sheet.autoSizeColumn(61);
-        if(dataRow.getPowerOfAttorney() != null)
-        //row.createCell(62).setCellValue(yesOrNoCodes.get(dataRow.getPowerOfAttorney()));
-        row.createCell(62).setCellValue(dataRow.getPowerOfAttorney());
-        else
-        row.createCell(62).setCellValue("");
-        sheet.autoSizeColumn(62);
+            row.createCell(14).setCellValue("");
+        sheet.autoSizeColumn(14);
+        
+            if (dataRow.getPermanentCity() != null)
+                row.createCell(15).setCellValue(dataRow.getPermanentCity().toString());
+            else
+                row.createCell(15).setCellValue("");
+            sheet.autoSizeColumn(15);
+        
+            if (dataRow.getPermanentState() != null)
+                row.createCell(16).setCellValue(dataRow.getPermanentState().toString());
+            else
+                row.createCell(16).setCellValue("");
+            sheet.autoSizeColumn(16);
+        
+            if (dataRow.getPermanentZipCode() != null)
+                row.createCell(17).setCellValue(dataRow.getPermanentZipCode().toString());
+            else
+                row.createCell(17).setCellValue("");
+            sheet.autoSizeColumn(17);
+        
+            if (dataRow.getPermanentCountryCode() != null)
+                row.createCell(18).setCellValue(dataRow.getPermanentCountryCode().toString());
+            else
+                row.createCell(18).setCellValue("");
+            sheet.autoSizeColumn(18);
+        
+            if (dataRow.getMailingCountryCode() != null)
+                row.createCell(19).setCellValue(dataRow.getMailingCountryCode().toString());
+            else
+                row.createCell(19).setCellValue("");
+            sheet.autoSizeColumn(19);
+        
+            if (dataRow.getMailingAddrLine1() != null)
+                row.createCell(20).setCellValue(dataRow.getMailingAddrLine1().toString());
+            else
+                row.createCell(20).setCellValue("");
+            sheet.autoSizeColumn(20);
+        
+            if (dataRow.getMailingAddrLine2() != null)
+                row.createCell(21).setCellValue(dataRow.getMailingAddrLine2().toString());
+            else
+                row.createCell(21).setCellValue("");
+            sheet.autoSizeColumn(21);
+        
+            if (dataRow.getMailingAddrLine3() != null)
+                row.createCell(22).setCellValue(dataRow.getMailingAddrLine3().toString());
+            else
+                row.createCell(22).setCellValue("");
+            sheet.autoSizeColumn(22);
+        
+            if (dataRow.getMailingAddrLine4() != null)
+                row.createCell(23).setCellValue(dataRow.getMailingAddrLine4().toString());
+            else
+                row.createCell(23).setCellValue("");
+            sheet.autoSizeColumn(23);
+        
+            if (dataRow.getMailingCity() != null)
+                row.createCell(24).setCellValue(dataRow.getMailingCity().toString());
+            else
+                row.createCell(24).setCellValue("");
+            sheet.autoSizeColumn(24);
+        
+            if (dataRow.getMailingState() != null)
+                row.createCell(25).setCellValue(dataRow.getMailingState().toString());
+            else
+                row.createCell(25).setCellValue("");
+            sheet.autoSizeColumn(25);
+        
+            if (dataRow.getMailingZipCode() != null)
+                row.createCell(26).setCellValue(dataRow.getMailingZipCode().toString());
+            else
+                row.createCell(26).setCellValue("");
+            sheet.autoSizeColumn(26);
+        
+            if (dataRow.getEmail() != null)
+                row.createCell(27).setCellValue(dataRow.getEmail().toString());
+            else
+                row.createCell(27).setCellValue("");
+            sheet.autoSizeColumn(27);
+        
+            if (dataRow.getHomePhoneNumber() != null)
+                row.createCell(28).setCellValue(dataRow.getHomePhoneNumber().toString());
+            else
+                row.createCell(28).setCellValue("");
+            sheet.autoSizeColumn(28);
+        
+            if (dataRow.getBusinessPhoneNumber() != null)
+                row.createCell(29).setCellValue(dataRow.getBusinessPhoneNumber().toString());
+            else
+                row.createCell(29).setCellValue("");
+            sheet.autoSizeColumn(29);
+        
+            if (dataRow.getBusinessPhoneExtn() != null)
+                row.createCell(30).setCellValue(dataRow.getBusinessPhoneExtn().toString());
+            else
+                row.createCell(30).setCellValue("");
+            sheet.autoSizeColumn(30);
+        
+            if (dataRow.getMobilePhoneNumber() != null)
+                row.createCell(31).setCellValue(dataRow.getMobilePhoneNumber().toString());
+            else
+                row.createCell(31).setCellValue("");
+            sheet.autoSizeColumn(31);
+        
+            if (dataRow.getFaxNumber() != null)
+                row.createCell(32).setCellValue(dataRow.getFaxNumber().toString());
+            else
+                row.createCell(32).setCellValue("");
+            sheet.autoSizeColumn(32);
+
+            row.createCell(33).setCellValue("");
+            sheet.autoSizeColumn(33);
+
+            if (dataRow.getBirthCountryCode() != null)
+                row.createCell(34).setCellValue(dataRow.getBirthCountryCode().toString());
+            else
+                row.createCell(34).setCellValue("");
+            sheet.autoSizeColumn(34);
+        
+            if (dataRow.getLocalTaxExempt() != null)
+                row.createCell(35).setCellValue(dataRow.getLocalTaxExempt().toString());
+            else
+                row.createCell(35).setCellValue("");
+            sheet.autoSizeColumn(35);
+        
+            if (dataRow.getNationality() != null)
+                row.createCell(36).setCellValue(dataRow.getNationality().toString());
+            else
+                row.createCell(36).setCellValue("");
+            sheet.autoSizeColumn(36);
+        
+            if (dataRow.getEligibleForeignTax() != null)
+                row.createCell(37).setCellValue(dataRow.getEligibleForeignTax().toString());
+            else
+                row.createCell(37).setCellValue("");
+            sheet.autoSizeColumn(37);
+        
+            if (dataRow.getDocForeignTaxExempt() != null)
+                row.createCell(38).setCellValue(dataRow.getDocForeignTaxExempt().toString());
+            else
+                row.createCell(38).setCellValue("");
+            sheet.autoSizeColumn(38);
+        
+            if (dataRow.getForeignCitizenship() != null)
+                row.createCell(39).setCellValue(dataRow.getForeignCitizenship().toString());
+            else
+                row.createCell(39).setCellValue("");
+            sheet.autoSizeColumn(39);
+        
+            if (dataRow.getPowerOfAttorney() != null)
+                row.createCell(40).setCellValue(dataRow.getPowerOfAttorney().toString());
+            else
+                row.createCell(40).setCellValue("");
+            sheet.autoSizeColumn(40);
+        
+            if (dataRow.getCitizenShipCountry1() != null)
+                row.createCell(41).setCellValue(dataRow.getCitizenShipCountry1().toString());
+            else
+                row.createCell(41).setCellValue("");
+            sheet.autoSizeColumn(41);
+        
+            if (dataRow.getCitizenShipCountry2() != null)
+                row.createCell(42).setCellValue(dataRow.getCitizenShipCountry2().toString());
+            else
+                row.createCell(42).setCellValue("");
+            sheet.autoSizeColumn(42);
+        
+            if (dataRow.getCitizenShipCountry3() != null)
+                row.createCell(43).setCellValue(dataRow.getCitizenShipCountry3().toString());
+            else
+                row.createCell(43).setCellValue("");
+            sheet.autoSizeColumn(43);
+
+            if (dataRow.getCitizenShipCountry4() != null)
+                row.createCell(44).setCellValue(dataRow.getCitizenShipCountry4().toString());
+            else
+                row.createCell(44).setCellValue("");
+            sheet.autoSizeColumn(44);
+
+            row.createCell(45).setCellValue("");
+            sheet.autoSizeColumn(45);
+
+            row.createCell(46).setCellValue("");
+            sheet.autoSizeColumn(46);
+
+            row.createCell(47).setCellValue("");
+            sheet.autoSizeColumn(47);
+
+            row.createCell(48).setCellValue("");
+            sheet.autoSizeColumn(48);
+
+            if (dataRow.getOccupationCode() != null)
+                row.createCell(49).setCellValue(dataRow.getOccupationCode().toString());
+            else
+                row.createCell(49).setCellValue("");
+            sheet.autoSizeColumn(49);
+
+            if (dataRow.getResidencyCode() != null)
+                row.createCell(50).setCellValue(dataRow.getResidencyCode().toString());
+            else
+                row.createCell(50).setCellValue("");
+            sheet.autoSizeColumn(50);
+
+            if (dataRow.getEmployer() != null)
+                row.createCell(51).setCellValue(dataRow.getEmployer().toString());
+            else
+                row.createCell(51).setCellValue("");
+            sheet.autoSizeColumn(51);
+
+            if (dataRow.getEmployerAddress1() != null)
+                row.createCell(52).setCellValue(dataRow.getEmployerAddress1().toString());
+            else
+                row.createCell(52).setCellValue("");
+            sheet.autoSizeColumn(52);
+
+            if (dataRow.getEmployerAddress2() != null)
+                row.createCell(53).setCellValue(dataRow.getEmployerAddress2().toString());
+            else
+                row.createCell(53).setCellValue("");
+            sheet.autoSizeColumn(53);
+
+            if (dataRow.getMotherMaidenName() != null)
+                row.createCell(54).setCellValue(dataRow.getMotherMaidenName().toString());
+            else
+                row.createCell(54).setCellValue("");
+            sheet.autoSizeColumn(54);
+
+            if (dataRow.getNoOfDependents() != null)
+                row.createCell(55).setCellValue(dataRow.getNoOfDependents().toString());
+            else
+                row.createCell(55).setCellValue("");
+            sheet.autoSizeColumn(55);
+
+            if (dataRow.getAnnualIncome() != null)
+                row.createCell(56).setCellValue(dataRow.getAnnualIncome().toString());
+            else
+                row.createCell(56).setCellValue("");
+            sheet.autoSizeColumn(56);
+
+            if (dataRow.getEducationCode() != null)
+                row.createCell(57).setCellValue(dataRow.getEducationCode().toString());
+            else
+                row.createCell(57).setCellValue("");
+            sheet.autoSizeColumn(57);
+
+            if (dataRow.getShareholderCode() != null)
+                row.createCell(58).setCellValue(dataRow.getShareholderCode().toString());
+            else
+                row.createCell(58).setCellValue("");
+            sheet.autoSizeColumn(58);
+
+            if (dataRow.getHomeOwnership() != null)
+                row.createCell(59).setCellValue(dataRow.getHomeOwnership().toString());
+            else
+                row.createCell(59).setCellValue("");
+            sheet.autoSizeColumn(59);
+
+            row.createCell(60).setCellValue("");
+            sheet.autoSizeColumn(60);
+
+            if (dataRow.getMonthlySalary() != null)
+                row.createCell(61).setCellValue(dataRow.getMonthlySalary().toString());
+            else
+                row.createCell(61).setCellValue("");
+            sheet.autoSizeColumn(61);
+
+            row.createCell(62).setCellValue("");
+            sheet.autoSizeColumn(62);
+
+            if (dataRow.getMaritalStatus() != null)
+                row.createCell(63).setCellValue(dataRow.getMaritalStatus().toString());
+            else
+                row.createCell(63).setCellValue("");
+            sheet.autoSizeColumn(63);
+        
+        
     //2nd Row ends
     flag = true; 
     idx = idx + 1;
