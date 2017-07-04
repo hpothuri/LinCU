@@ -475,7 +475,7 @@ public class MemberBean {
                            row.setAttribute("PermanentState", MytempCell.getStringCellValue());
 
                        }else if (Index == 28) {
-                           row.setAttribute("PermanentCountryCode", (int)MytempCell.getNumericCellValue());
+                           row.setAttribute("PermanentCountryCode", MytempCell.getStringCellValue());
 
                        }else if (Index == 29) {
                            Double zipcode = MytempCell.getNumericCellValue();
@@ -488,37 +488,30 @@ public class MemberBean {
                           // row.setAttribute("PermanentZipCode", MytempCell.getStringCellValue());
 
                        }else if (Index == 30) {
-                           System.out.println("------"+MytempCell.getStringCellValue());
                            row.setAttribute("HomeOwnership", MytempCell.getStringCellValue());
 
                        }else if (Index == 31) {
                            row.setAttribute("MailingAddrLine1", MytempCell.getStringCellValue());
 
                        }else if (Index == 32) {
-                           System.out.println("--32---"+MytempCell.getStringCellValue());
                            row.setAttribute("MailingAddrLine2", MytempCell.getStringCellValue());
 
                        }else if (Index == 33) {
-                           System.out.println("---33--"+MytempCell.getStringCellValue());
                            row.setAttribute("MailingAddrLine3", MytempCell.getStringCellValue());
 
                        }else if (Index == 34) {
-                           System.out.println("---34--"+MytempCell.getStringCellValue());
                            row.setAttribute("MailingAddrLine4", MytempCell.getStringCellValue());
 
                        }else if (Index == 35) {
-                           System.out.println("---35--"+MytempCell.getStringCellValue());
                            row.setAttribute("MailingCity", MytempCell.getStringCellValue());
 
                        } else if (Index == 36) {
-                           System.out.println("--36---"+MytempCell.getStringCellValue());
                            row.setAttribute("MailingState", MytempCell.getStringCellValue());
 
                        }else if (Index == 37) {
-                           row.setAttribute("MailingCountryCode", (int)MytempCell.getNumericCellValue());
+                           row.setAttribute("MailingCountryCode", MytempCell.getStringCellValue());
 
                        }else if (Index == 38) {
-                           System.out.println("---38--"+MytempCell.getNumericCellValue());
                            Double zipcode = MytempCell.getNumericCellValue();
                            
                            if(zipcode != null){
@@ -526,7 +519,6 @@ public class MemberBean {
                            }else{
                             row.setAttribute("MailingZipCode", "");   
                            }
-                           //row.setAttribute("MailingZipCode", MytempCell.getStringCellValue());
 
                        }else if (Index == 39) {
                            row.setAttribute("Employer", MytempCell.getStringCellValue());
@@ -551,7 +543,6 @@ public class MemberBean {
                            }else{
                             row.setAttribute("BusinessPhoneNumber", "");   
                            }
-                           //row.setAttribute("BusinessPhoneNumber", MytempCell.getStringCellValue());
 
                        }else if (Index == 45) {
                            Double bizExt = MytempCell.getNumericCellValue();
@@ -564,25 +555,25 @@ public class MemberBean {
                            //row.setAttribute("BusinessPhoneExtn", MytempCell.getStringCellValue());
 
                        } else if (Index == 46) {
-                           row.setAttribute("BirthCountryCode", (int)MytempCell.getNumericCellValue());
+                           row.setAttribute("BirthCountryCode", MytempCell.getStringCellValue());
 
                        }else if (Index == 47) {
                            row.setAttribute("LocalTaxExempt", MytempCell.getStringCellValue());
 
                        }else if (Index == 48) {
-                           row.setAttribute("Nationality", (int)MytempCell.getNumericCellValue());
+                           row.setAttribute("Nationality", MytempCell.getStringCellValue());
 
                        }else if (Index == 49) {
-                           row.setAttribute("CitizenShipCountry1", (int)MytempCell.getNumericCellValue());
+                           row.setAttribute("CitizenShipCountry1", MytempCell.getStringCellValue());
 
                        }else if (Index == 50) {
-                           row.setAttribute("CitizenShipCountry2", (int)MytempCell.getNumericCellValue());
+                           row.setAttribute("CitizenShipCountry2", MytempCell.getStringCellValue());
 
                        }else if (Index == 51) {
-                           row.setAttribute("CitizenShipCountry3", (int)MytempCell.getNumericCellValue());
+                           row.setAttribute("CitizenShipCountry3", MytempCell.getStringCellValue());
 
                        }else if (Index == 52) {
-                           row.setAttribute("CitizenShipCountry4", (int)MytempCell.getNumericCellValue());
+                           row.setAttribute("CitizenShipCountry4", MytempCell.getStringCellValue());
 
                        }else if (Index == 53) {
                            row.setAttribute("EligibleForeignTax", MytempCell.getStringCellValue());
@@ -595,6 +586,12 @@ public class MemberBean {
 
                        }else if (Index == 56) {
                            row.setAttribute("PowerOfAttorney", MytempCell.getStringCellValue());
+
+                       }else if (Index == 57) {
+                           row.setAttribute("ResidencyCode", MytempCell.getStringCellValue());
+
+                       }else if (Index == 58) {
+                           row.setAttribute("MemberNo", MytempCell.getStringCellValue());
 
                        }
                        
