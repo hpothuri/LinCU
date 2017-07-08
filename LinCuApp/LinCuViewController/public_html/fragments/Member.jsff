@@ -56,7 +56,7 @@
           <f:validator binding="#{bindings.CreditUnionBranchId.validator}"/>
         </af:selectOneChoice>
         <af:inputText value="#{bindings.MemberNo.inputValue}" label="#{bindings.MemberNo.hints.label}"
-                      required="#{bindings.MemberNo.hints.mandatory}" columns="#{bindings.MemberNo.hints.displayWidth}"
+                      required="true" columns="#{bindings.MemberNo.hints.displayWidth}"
                       maximumLength="#{bindings.MemberNo.hints.precision}"
                       shortDesc="#{bindings.MemberNo.hints.tooltip}" id="it7" contentStyle="width:295px;"
                       disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
@@ -271,7 +271,7 @@
         </af:inputText>
         <af:selectOneChoice value="#{bindings.PermanentAddrLine4.inputValue}"
                             label="#{bindings.PermanentAddrLine4.label}"
-                            required="#{bindings.PermanentAddrLine4.hints.mandatory}"
+                            required="true"
                             shortDesc="#{bindings.PermanentAddrLine4.hints.tooltip}" id="soc12" contentStyle="margin-top: 8px;width:295px;"
                             autoSubmit="true"
                             disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
@@ -360,7 +360,7 @@
           <f:validator binding="#{bindings.MailingAddrLine3.validator}"/>
         </af:inputText>
         <af:selectOneChoice value="#{bindings.MailingAddrLine4.inputValue}" label="#{bindings.MailingAddrLine4.label}"
-                            required="#{bindings.MailingAddrLine4.hints.mandatory}"
+                            required="true"
                             shortDesc="#{bindings.MailingAddrLine4.hints.tooltip}" id="soc13" contentStyle="width:295px;"
                             disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:selectItems value="#{bindings.MailingAddrLine4.items}" id="si21"/>

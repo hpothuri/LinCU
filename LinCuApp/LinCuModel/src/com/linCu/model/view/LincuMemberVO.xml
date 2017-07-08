@@ -291,8 +291,9 @@
     Name="LOV_PermanentCountryCode"
     ListVOName="CountryVA"
     ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="PermanentCountryCode"/>
     </AttrArray>
@@ -309,8 +310,9 @@
     Name="LOV_MailingCountryCode"
     ListVOName="CountryVA"
     ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="MailingCountryCode"/>
     </AttrArray>
@@ -327,8 +329,9 @@
     Name="LOV_BirthCountryCode"
     ListVOName="CountryVA"
     ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="BirthCountryCode"/>
     </AttrArray>
@@ -417,8 +420,9 @@
     Name="LOV_CitizenShipCountry1"
     ListVOName="CountryVA"
     ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="CitizenShipCountry1"/>
     </AttrArray>
@@ -435,8 +439,9 @@
     Name="LOV_CitizenShipCountry2"
     ListVOName="CountryVA"
     ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="CitizenShipCountry2"/>
     </AttrArray>
@@ -453,8 +458,9 @@
     Name="LOV_CitizenShipCountry3"
     ListVOName="CountryVA"
     ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="CitizenShipCountry3"/>
     </AttrArray>
@@ -471,8 +477,9 @@
     Name="LOV_CitizenShipCountry4"
     ListVOName="CountryVA"
     ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="CitizenShipCountry4"/>
     </AttrArray>
@@ -638,8 +645,9 @@
     Name="LOV_OccupationCode"
     ListVOName="OccupationVA"
     ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="OccupationCode"/>
     </AttrArray>
@@ -1119,10 +1127,10 @@
     LOVName="LOV_BirthCountryCode">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="choice"/>
         <LABEL
           ResId="COUNTRY_OF_BIRTH"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1142,10 +1150,10 @@
     LOVName="LOV_CitizenShipCountry1">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="choice"/>
         <LABEL
           ResId="CITIZENSHIP_COUNTRY_1"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -1174,10 +1182,10 @@
     LOVName="LOV_CitizenShipCountry3">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="choice"/>
         <LABEL
           ResId="CITIZENSHIP_COUNTRY_3"/>
+        <CONTROLTYPE
+          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -2038,7 +2046,8 @@
     EntityAttrName="ResidencyCode"
     EntityUsage="LincuMemberKycEO"
     AliasName="RESIDENCY_CODE"
-    LOVName="LOV_ResidencyCode">
+    LOVName="LOV_ResidencyCode"
+    DefaultValue="1">
     <Properties>
       <SchemaBasedProperties>
         <CONTROLTYPE

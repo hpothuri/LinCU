@@ -825,8 +825,11 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             row.createCell(4).setCellValue("");
         sheet.autoSizeColumn(4);
 
-        if (dataRow.getDateOfBirth() != null)
-            row.createCell(5).setCellValue(dataRow.getDateOfBirth().toString());
+        if (dataRow.getDateOfBirth() != null){
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            String today = formatter.format(dataRow.getDateOfBirth());
+            row.createCell(5).setCellValue(today);
+        }
         else
             row.createCell(5).setCellValue("");
         sheet.autoSizeColumn(5);
