@@ -67,5 +67,7 @@ public interface LinCuAM extends ApplicationModule {
     String findCIFNumberPerCardType(String cardId);
 
     String findCIFNumberForCardTypeNew(String cardType, String memberId);
+
+    void generateAndSetMPSDID();
 }
 

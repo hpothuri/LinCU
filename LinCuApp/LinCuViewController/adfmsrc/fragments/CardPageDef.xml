@@ -16,8 +16,6 @@
           DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CreditUnionId" id="CreditUnionId"
           DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
-    <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MemberId" id="MemberId"
-          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
     <list IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_CardReqType" id="CardReqType"
           DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
     <attributeValues IterBinding="LincuMemberCardIterator" id="BusinessPhoneExtn">
@@ -464,5 +462,14 @@
       <NamedData NDName="cardType" NDType="java.lang.String"/>
       <NamedData NDName="memberId" NDType="java.lang.String"/>
     </methodAction>
+    <methodAction id="generateAndSetMPSDID" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="generateAndSetMPSDID" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"/>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="MpsdId">
+      <AttrNames>
+        <Item Value="MpsdId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MemberNo" id="MemberNo"/>
   </bindings>
 </pageDefinition>

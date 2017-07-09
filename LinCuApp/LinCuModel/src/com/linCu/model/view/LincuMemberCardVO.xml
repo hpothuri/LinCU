@@ -335,27 +335,6 @@
     <DisplayCriteria/>
   </ListBinding>
   <ListBinding
-    Name="LOV_MemberId"
-    ListVOName="MemberVA"
-    ListRangeSize="-1"
-    NullValueFlag="start"
-    MRUCount="0"
-    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
-    <AttrArray Name="AttrNames">
-      <Item Value="MemberId"/>
-    </AttrArray>
-    <AttrArray Name="AttrExpressions"/>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="MemberId"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="MemberNo"/>
-      <Item Value="FirstName"/>
-      <Item Value="LastName"/>
-    </AttrArray>
-    <DisplayCriteria/>
-  </ListBinding>
-  <ListBinding
     Name="LOV_CardStatus"
     ListVOName="ApplicationStatusVA"
     ListRangeSize="-1"
@@ -905,6 +884,48 @@
       <Item Value="MemberNo"/>
       <Item Value="FirstName"/>
       <Item Value="LastName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_MemberNo"
+    ListVOName="MemberVA"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="MemberNo"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="MemberId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="MemberNo"/>
+      <Item Value="MemberId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="MemberNo"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SearchMember"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_MemberId"
+    ListVOName="MemberVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="MemberId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="MemberId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="MemberNo"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -2066,7 +2087,15 @@
     PrecisionRule="true"
     EntityAttrName="MemberNo"
     EntityUsage="LincuMemberInfoEO"
-    AliasName="MEMBER_NO"/>
+    AliasName="MEMBER_NO"
+    LOVName="LOV_MemberNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="MonthlySalary"
     PrecisionRule="true"

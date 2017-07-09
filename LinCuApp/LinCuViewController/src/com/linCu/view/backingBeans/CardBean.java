@@ -80,7 +80,7 @@ public class CardBean {
     public void saveAndSubmit(ActionEvent actionEvent) {
         try {           
             BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();  
-            AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("MemberId");
+            AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("MemberId1");
             AttributeBinding attr1 = (AttributeBinding) bindings.getControlBinding("CardReqType1");  
             AttributeBinding attr2 = (AttributeBinding) bindings.getControlBinding("RefCardId");  
             AttributeBinding attr3 = (AttributeBinding) bindings.getControlBinding("TopupAmount"); 
@@ -163,6 +163,7 @@ public class CardBean {
     
     public void submitNotes(ActionEvent actionEvent){
         try {
+              ADFUtils.executeOperationBinding("generateAndSetMPSDID");
               ADFUtils.executeOperationBinding("submitCard");
               ADFUtils.executeOperationBinding("updateAuditTable");
               ADFUtils.executeOperationBinding("Commit");

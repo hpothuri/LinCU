@@ -1236,6 +1236,17 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
          }
         return creditUnionName;
     }
+    
+    private String findCreditUnionCodeById(String credtiUnionId){
+        String creditUnionName = null;
+         LincuUnionsVVOImpl lincuUnionsVVOImpl = this.getReadOnlyLincuUnions();
+         Row[] rows = lincuUnionsVVOImpl.findByKey(new Key(new Object[]{credtiUnionId}), 1);
+         if(rows != null){
+             LincuUnionsVVORowImpl row = (LincuUnionsVVORowImpl)rows[0];
+             creditUnionName = row.getCreditUnionCode();
+         }
+        return creditUnionName;
+    }
 
 
     /**
@@ -1372,6 +1383,15 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         for(Row row : selectedRows){
             CreditUnionBranchVORowImpl branchRow = (CreditUnionBranchVORowImpl)row;
             return branchRow.getCreditUnionBranchName();
+        }
+        return null;
+    }
+    
+    public String findCreditUnionBranchCodeById(String branchId){
+        Row[] selectedRows = this.getCreditUnionBranch2().getFilteredRows("CreditUnionBranchId", branchId);
+        for(Row row : selectedRows){
+            CreditUnionBranchVORowImpl branchRow = (CreditUnionBranchVORowImpl)row;
+            return branchRow.getCreditUnionBranchCode();
         }
         return null;
     }
@@ -1783,6 +1803,46 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
      */
     public ViewObjectImpl getOccupationCodesVO() {
         return (ViewObjectImpl) findViewObject("OccupationCodesVO");
+    }
+    
+    public void generateAndSetMPSDID(){
+        LincuMemberCardVOImpl memberCard = this.getLincuMemberCard();
+         LincuMemberCardVORowImpl memberRow = (LincuMemberCardVORowImpl) memberCard.getCurrentRow();
+         if(memberRow != null){
+             String  creditUnionId = memberRow.getCreditUnionId();
+             String  creditUnionBranchId = memberRow.getCreditUnionBranchId();
+             if(creditUnionId != null){
+                 creditUnionId = this.findCreditUnionCodeById(creditUnionId);
+             }
+             if(creditUnionBranchId != null){
+                 creditUnionBranchId = this.findCreditUnionBranchCodeById(creditUnionBranchId);
+             }
+             SimpleDateFormat format = new SimpleDateFormat("YYDDD");
+             String date = format.format(new Date());
+             String cardId = getFiveDigitApplicationNumber(date, memberRow.getCardId());
+             if((creditUnionId != null) && (creditUnionBranchId != null) && (cardId != null)){
+              memberRow.setMpsdId(creditUnionId.concat(creditUnionBranchId).concat(cardId));
+             }
+         }
+    }
+    
+    private String getFiveDigitApplicationNumber(String date, BigDecimal cardId){
+        if(cardId != null){
+           String cardNumber = cardId.toString(); 
+           if(cardNumber.length() == 1){
+               return cardNumber = date.concat("0000").concat(cardNumber);
+           }else if(cardNumber.length() == 2){
+               return cardNumber = date.concat("000").concat(cardNumber);
+           }else if(cardNumber.length() == 3){
+               return cardNumber = date.concat("00").concat(cardNumber);
+           }else if(cardNumber.length() == 4){
+               return cardNumber = date.concat("0").concat(cardNumber);
+           }else{
+               return date.concat(cardNumber);
+           }
+        }else{
+        return null;
+        }
     }
 }
 

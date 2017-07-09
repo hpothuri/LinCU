@@ -886,5 +886,12 @@
         Name="memberId"
         Type="java.lang.String"/>
     </Method>
+    <Method
+      Name="generateAndSetMPSDID"
+      MethodName="generateAndSetMPSDID">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
   </ClientInterface>
 </AppModule>

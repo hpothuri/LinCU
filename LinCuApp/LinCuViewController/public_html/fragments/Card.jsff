@@ -83,7 +83,12 @@
           <f:selectItems value="#{bindings.CardStatus.items}" id="si1"/>
           <f:validator binding="#{bindings.CardStatus.validator}"/>
         </af:selectOneChoice>
-        <af:outputText value="" id="ot5"/>
+        <af:inputText value="#{bindings.MpsdId.inputValue}" label="#{bindings.MpsdId.hints.label}"
+                      required="#{bindings.MpsdId.hints.mandatory}" columns="#{bindings.MpsdId.hints.displayWidth}"
+                      maximumLength="#{bindings.MpsdId.hints.precision}" shortDesc="#{bindings.MpsdId.hints.tooltip}"
+                      id="it26" disabled="true">
+          <f:validator binding="#{bindings.MpsdId.validator}"/>
+        </af:inputText>
         <af:selectOneChoice value="#{bindings.CreditUnionId.inputValue}" label="#{bindings.CreditUnionId.label}"
                             required="#{bindings.CreditUnionId.hints.mandatory}"
                             shortDesc="#{bindings.CreditUnionId.hints.tooltip}" id="soc2" autoSubmit="true"
@@ -91,14 +96,17 @@
           <f:selectItems value="#{bindings.CreditUnionId.items}" id="si2"/>
           <f:validator binding="#{bindings.CreditUnionId.validator}"/>
         </af:selectOneChoice>
-        <af:selectOneChoice value="#{bindings.MemberId.inputValue}" label="#{bindings.MemberId.label}" required="false"
-                            shortDesc="#{bindings.MemberId.hints.tooltip}" id="soc3" autoSubmit="true"
-                            partialTriggers="soc2" showRequired="true"
-                            disabled="#{(sessionScope.user.userRole ne 'MSR') or (bindings.TransCardStatus ne 'DRAFT')}"
-                            contentStyle="margin-top: 8px;width:325px;">
-          <f:selectItems value="#{bindings.MemberId.items}" id="si3"/>
-          <f:validator binding="#{bindings.MemberId.validator}"/>
-        </af:selectOneChoice>
+        <af:inputListOfValues id="soc3" popupTitle="Search and Select: #{bindings.MemberNo.hints.label}"
+                              value="#{bindings.MemberNo.inputValue}" label="#{bindings.MemberNo.hints.label}"
+                              model="#{bindings.MemberNo.listOfValuesModel}"
+                              required="false"
+                              columns="#{bindings.MemberNo.hints.displayWidth}"
+                              shortDesc="#{bindings.MemberNo.hints.tooltip}"
+                              partialTriggers="soc2" showRequired="true"
+                              disabled="#{(sessionScope.user.userRole ne 'MSR') or (bindings.TransCardStatus ne 'DRAFT')}"
+                              contentStyle="width:305px;" autoSubmit="true">
+          <f:validator binding="#{bindings.MemberNo.validator}"/>
+        </af:inputListOfValues>
         <af:inputText value="#{bindings.TopupAmount.inputValue}" label="#{bindings.TopupAmount.hints.label}"
                       required="#{bindings.TopupAmount.hints.mandatory}"
                       columns="#{bindings.TopupAmount.hints.displayWidth}"
