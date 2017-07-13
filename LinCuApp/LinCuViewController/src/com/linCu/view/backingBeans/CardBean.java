@@ -786,6 +786,18 @@ public class CardBean {
     }
 
     }
+    
+    public void exportCardDetailsTopupDownload(FacesContext facesContext, OutputStream outputStream) {
+    try {
+    List wb = (List) ADFUtils.executeOperationBinding("createExportCardTopupDetailsWb"); //method for creating WB
+    HSSFWorkbook workbook = (HSSFWorkbook) wb.get(0);
+    workbook.write(outputStream);
+    outputStream.flush();
+    } catch (IOException ex) {
+    ex.printStackTrace();
+    }
+
+    }
 
     public void setDeleteConfirm(RichPopup deleteConfirm) {
         this.deleteConfirm = deleteConfirm;

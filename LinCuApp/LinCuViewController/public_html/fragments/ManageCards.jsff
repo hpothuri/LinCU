@@ -21,10 +21,15 @@
             id="ctb2" icon="/images/card.png" action="edit" disabled="#{!bindings.Delete.enabled}"/>
           <af:commandToolbarButton actionListener="#{card.confirmDeleteAction}" icon="/images/card.png"
                                    text="#{lincuviewcontrollerBundle.CLOSE_CARD}" disabled="#{(!bindings.Delete.enabled)||(bindings.CardStatus1 eq 'SUBMITTED')||(bindings.CardStatus1 eq 'AUTHORIZED')||(bindings.CardStatus1 eq 'LINCU_AUTHORIZED')||(bindings.CardStatus1 eq 'FCB_AUTHORIZED')||(bindings.Active eq 'N')}" id="b1" rendered="#{(sessionScope.user.userRole eq 'MSR')}"/>
-          <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT}" id="ctb3" icon="/images/Excel-16.gif"
-                                   rendered="#{(sessionScope.user.userRole eq 'FCB')}" disabled="#{!bindings.Delete.enabled}">
+          <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT_NEW_ADD_ON_CARDS}" id="ctb3" icon="/images/Excel-16.gif"
+                                   rendered="#{(sessionScope.user.userRole eq 'FCB')}" disabled="#{(!bindings.Delete.enabled)||(bindings.CardReqType eq 'TOPUP_CARD')}">
               <af:fileDownloadActionListener contentType="application/vnd.ms-excel" filename="ExportCardDetails.xls"
                                             method="#{card.exportCardDetailsDownload}"/>
+            </af:commandToolbarButton>
+            <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT_TOPUP_CARDS}" id="ctb5" icon="/images/Excel-16.gif"
+                                   rendered="#{(sessionScope.user.userRole eq 'FCB')}" disabled="#{(!bindings.Delete.enabled)||(bindings.CardReqType eq 'NEW_CARD')||(bindings.CardReqType eq 'ADDON_CARD')}">
+              <af:fileDownloadActionListener contentType="application/vnd.ms-excel" filename="ExportCardDetails.xls"
+                                            method="#{card.exportCardDetailsTopupDownload}"/>
             </af:commandToolbarButton>
             <af:commandToolbarButton text="#{lincuviewcontrollerBundle.UPLOAD}" id="ctb4" icon="/images/Excel-16.gif"
                                      actionListener="#{card.requestBulkCards}"
@@ -56,6 +61,15 @@
                                     value="#{row.bindings.RowSelection.inputValue}"
                                     visible="#{row.bindings.CardStatus.attributeValue eq 'FCB_AUTHORIZED' and row.bindings.BatchNumber.inputValue eq null}"/>
         </af:column>
+        <af:column headerText="#{bindings.LincuMemberCard.hints.CardReqType2.label}" id="c5">
+          <af:selectOneChoice value="#{row.bindings.CardReqType2.inputValue}" label="#{row.bindings.CardReqType2.label}"
+                              required="#{bindings.LincuMemberCard.hints.CardReqType2.mandatory}"
+                              shortDesc="#{bindings.LincuMemberCard.hints.CardReqType2.tooltip}" id="soc4"
+                              readOnly="true">
+            <f:selectItems value="#{row.bindings.CardReqType2.items}" id="si4"/>
+            <f:validator binding="#{row.bindings.CardReqType2.validator}"/>
+          </af:selectOneChoice>
+        </af:column>
         <af:column sortProperty="#{bindings.LincuMemberCard.hints.MemberId.name}" sortable="true"
                    headerText="#{bindings.LincuMemberCard.hints.MemberId.label}" id="resId1c1">
           <af:selectOneChoice value="#{row.bindings.MemberId.inputValue}" label="#{row.bindings.MemberId.label}"
@@ -63,17 +77,6 @@
                               shortDesc="#{bindings.LincuMemberCard.hints.MemberId.tooltip}" readOnly="true" id="soc1">
             <f:selectItems value="#{row.bindings.MemberId.items}" id="si1"/>
             <f:validator binding="#{row.bindings.MemberId.validator}"/>
-          </af:selectOneChoice>
-        </af:column>
-        <af:column headerText="#{bindings.LincuMemberCard.hints.CardReqType.label}" id="c1"
-                   sortable="true" sortProperty="#{bindings.LincuMemberCard.hints.CardReqType.name}" width="150"
-                   minimumWidth="150">
-          <af:selectOneChoice value="#{row.bindings.CardReqType.inputValue}" label="#{row.bindings.CardReqType.label}"
-                              required="#{bindings.LincuMemberCard.hints.CardReqType.mandatory}"
-                              shortDesc="#{bindings.LincuMemberCard.hints.CardReqType.tooltip}" id="soc3"
-                              readOnly="true">
-            <f:selectItems value="#{row.bindings.CardReqType.items}" id="si3"/>
-            <f:validator binding="#{row.bindings.CardReqType.validator}"/>
           </af:selectOneChoice>
         </af:column>
         <af:column headerText="#{bindings.LincuMemberCard.hints.TempActive.label}" id="c4">

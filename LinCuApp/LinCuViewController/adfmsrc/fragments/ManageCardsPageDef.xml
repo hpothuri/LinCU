@@ -24,6 +24,7 @@
           <Item Value="RowSelection" Binds="RowSelection" />
           <Item Value="Active"/>
           <Item Value="TempActive"/>
+          <Item Value="CardReqType2"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -66,5 +67,14 @@
         <Item Value="Active"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="LincuMemberCardIterator" id="CardReqType">
+      <AttrNames>
+        <Item Value="CardReqType"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="createExportCardTopupDetailsWb" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="createExportCardTopupDetailsWb" IsViewObjectMethod="false"
+                  DataControl="LinCuAMDataControl" InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.createExportCardTopupDetailsWb_LinCuAMDataControl_dataProvider_createExportCardTopupDetailsWb_result"/>
   </bindings>
 </pageDefinition>

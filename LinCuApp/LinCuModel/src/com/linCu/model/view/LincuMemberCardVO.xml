@@ -357,8 +357,9 @@
     Name="LOV_CardReqType"
     ListVOName="CardTypeVA"
     ListRangeSize="-1"
-    NullValueFlag="none"
-    MRUCount="0">
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
     <AttrArray Name="AttrNames">
       <Item Value="CardReqType"/>
     </AttrArray>
@@ -926,6 +927,24 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="MemberNo"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CardReqType2"
+    ListVOName="CardTypeVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CardReqType2"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupDesc"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -2218,6 +2237,40 @@
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="CardReqType2"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CardReqType"
+    EntityUsage="LincuMemberCardEO"
+    AliasName="CARD_REQ_TYPE2"
+    LOVName="LOV_CardReqType2">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="CARD_REQUEST_TYPE"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SQLSubmittedDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE"
+    Expression="TRUNC(LincuMemberCardEO.SUBMITTED_ON)">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="SUBMITTED_ON"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewCriteria
     Name="LincuMemberCardVOCriteria"
     ViewObjectName="com.linCu.model.view.LincuMemberCardVO"
@@ -2257,14 +2310,14 @@
         Conjunction="AND"
         Required="Optional"/>
       <ViewCriteriaItem
-        Name="SubmittedOn"
-        ViewAttribute="SubmittedOn"
+        Name="BatchNumber"
+        ViewAttribute="BatchNumber"
         Operator="="
         Conjunction="AND"
         Required="Optional"/>
       <ViewCriteriaItem
-        Name="BatchNumber"
-        ViewAttribute="BatchNumber"
+        Name="SQLSubmittedDate"
+        ViewAttribute="SQLSubmittedDate"
         Operator="="
         Conjunction="AND"
         Required="Optional"/>

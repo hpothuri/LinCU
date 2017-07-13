@@ -599,7 +599,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     dataRow = (LincuMemberCardVORowImpl) rowIter.next();
     if(flag == false){
 
-    row.createCell(0).setCellValue("#MPSD ID"); //setting column heading
+    row.createCell(0).setCellValue("ZMDPID"); //setting column heading
     sheet.autoSizeColumn(0);
     row.getCell(0).setCellStyle(colStyleTopLeft);
     row.createCell(1).setCellValue("PREF");
@@ -798,8 +798,11 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     }
         
         
+        if (dataRow.getMpsdId() != null)
+            row.createCell(0).setCellValue(dataRow.getMpsdId().toString());
+        else
             row.createCell(0).setCellValue("");
-            sheet.autoSizeColumn(0);
+        sheet.autoSizeColumn(0);
            
         if (dataRow.getMemberPrefix() != null)
             row.createCell(1).setCellValue(dataRow.getMemberPrefix().toString());
@@ -1162,6 +1165,147 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
             sheet.autoSizeColumn(63);
         
         
+    //2nd Row ends
+    flag = true; 
+    idx = idx + 1;
+    }
+    List list = new ArrayList();
+    list.add(wb);
+    return list;
+    }
+    
+    public List createExportCardTopupDetailsWb() {
+    HSSFWorkbook wb = new HSSFWorkbook();
+    HSSFSheet sheet = wb.createSheet("CardDetails"); //Sheet Name
+    int idx = 0; // rows index
+    //Creating styles code starts
+    HSSFFont colHdrFont = wb.createFont();
+    colHdrFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+    HSSFFont fontSizeHrd = wb.createFont();
+    fontSizeHrd.setFontHeightInPoints((short) 16); //setting Headding font size
+    fontSizeHrd.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+    HSSFCellStyle colStyleHrdWithFont = wb.createCellStyle();
+    colStyleHrdWithFont.setFont(fontSizeHrd);
+
+    HSSFCellStyle colStyleTopLeft = wb.createCellStyle();
+    colStyleTopLeft.setBorderTop(HSSFBorderFormatting.BORDER_THIN);
+    colStyleTopLeft.setBorderLeft(HSSFBorderFormatting.BORDER_THIN);
+    colStyleTopLeft.setFont(colHdrFont);
+    HSSFCellStyle colStyleTopLeftWithCenter = wb.createCellStyle();
+    colStyleTopLeftWithCenter.setBorderTop(HSSFBorderFormatting.BORDER_THIN);
+    colStyleTopLeftWithCenter.setBorderBottom(HSSFBorderFormatting.BORDER_THIN);
+    colStyleTopLeftWithCenter.setBorderLeft(HSSFBorderFormatting.BORDER_THIN);
+    colStyleTopLeftWithCenter.setAlignment(CellStyle.ALIGN_CENTER);
+    colStyleTopLeftWithCenter.setFont(colHdrFont);
+    HSSFCellStyle colStyleLeft = wb.createCellStyle();
+    colStyleLeft.setBorderLeft(HSSFBorderFormatting.BORDER_THIN);
+    colStyleLeft.setFont(colHdrFont);
+    HSSFCellStyle colStyleLeftDealNo = wb.createCellStyle();
+    colStyleLeftDealNo.setAlignment(CellStyle.ALIGN_LEFT);
+    HSSFCellStyle colStyleLeftDept = wb.createCellStyle();
+    colStyleLeftDept.setBorderLeft(HSSFBorderFormatting.BORDER_THIN);
+    colStyleLeftDept.setBorderBottom(HSSFBorderFormatting.BORDER_THIN);
+    colStyleLeftDept.setFont(colHdrFont);
+    HSSFCellStyle colStyleOnlyRight = wb.createCellStyle();
+    colStyleOnlyRight.setBorderRight(HSSFBorderFormatting.BORDER_THIN);
+    HSSFCellStyle colStyleOnlyRightDept = wb.createCellStyle();
+    colStyleOnlyRightDept.setBorderRight(HSSFBorderFormatting.BORDER_THIN);
+    colStyleOnlyRightDept.setBorderBottom(HSSFBorderFormatting.BORDER_THIN);
+    colStyleOnlyRightDept.setBorderLeft(HSSFBorderFormatting.BORDER_THIN);
+    HSSFCellStyle colStyleLeftBottom = wb.createCellStyle();
+    colStyleLeftBottom.setBorderBottom(HSSFBorderFormatting.BORDER_THIN);
+    colStyleLeftBottom.setBorderLeft(HSSFBorderFormatting.BORDER_THIN);
+    colStyleLeftBottom.setFont(colHdrFont);
+    HSSFCellStyle colStyleLeftBottomWithOutHrd = wb.createCellStyle();
+    colStyleLeftBottomWithOutHrd.setBorderBottom(HSSFBorderFormatting.BORDER_THIN);
+    colStyleLeftBottomWithOutHrd.setBorderLeft(HSSFBorderFormatting.BORDER_THIN);
+    HSSFCellStyle colStyleRightBottomWithOutHrd = wb.createCellStyle();
+    colStyleRightBottomWithOutHrd.setBorderBottom(HSSFBorderFormatting.BORDER_THIN);
+    colStyleRightBottomWithOutHrd.setBorderRight(HSSFBorderFormatting.BORDER_THIN);
+    HSSFCellStyle colStyleRightBottomWithOutHrdDept = wb.createCellStyle();
+    colStyleRightBottomWithOutHrdDept.setBorderBottom(HSSFBorderFormatting.BORDER_THIN);
+    colStyleRightBottomWithOutHrdDept.setBorderRight(HSSFBorderFormatting.BORDER_THIN);
+    colStyleRightBottomWithOutHrdDept.setBorderLeft(HSSFBorderFormatting.BORDER_THIN);
+    HSSFCellStyle colStyleTop = wb.createCellStyle();
+    colStyleTop.setBorderTop(HSSFBorderFormatting.BORDER_THIN);
+    colStyleTop.setBorderBottom(HSSFBorderFormatting.BORDER_THIN);
+    colStyleTop.setBorderLeft(HSSFBorderFormatting.BORDER_THIN);
+    colStyleTop.setAlignment(CellStyle.ALIGN_CENTER);
+    colStyleTop.setFont(colHdrFont);
+    HSSFCellStyle colStyleTopRight = wb.createCellStyle();
+    colStyleTopRight.setBorderTop(HSSFBorderFormatting.BORDER_THIN);
+    colStyleTopRight.setBorderLeft(HSSFBorderFormatting.BORDER_THIN);
+    colStyleTopRight.setBorderRight(HSSFBorderFormatting.BORDER_THIN);
+    colStyleTopRight.setAlignment(CellStyle.ALIGN_CENTER);
+    colStyleTopRight.setFont(colHdrFont);
+    HSSFCellStyle colStyleTopWithOutHrd = wb.createCellStyle();
+    colStyleTopWithOutHrd.setBorderTop(HSSFBorderFormatting.BORDER_THIN);
+    HSSFCellStyle colStyleBottom = wb.createCellStyle();
+    colStyleBottom.setBorderBottom(HSSFBorderFormatting.BORDER_THIN);
+    HSSFCellStyle colStyleBottomWithHrd = wb.createCellStyle();
+    colStyleBottomWithHrd.setBorderBottom(HSSFBorderFormatting.BORDER_THIN);
+    colStyleBottomWithHrd.setFont(colHdrFont);
+    HSSFCellStyle colStyleRight = wb.createCellStyle();
+    colStyleRight.setBorderRight(HSSFBorderFormatting.BORDER_THIN);
+    colStyleRight.setBorderTop(HSSFBorderFormatting.BORDER_THIN);
+    colStyleRight.setFont(colHdrFont);
+    HSSFCellStyle colStyleHrd = wb.createCellStyle();
+    colStyleHrd.setFont(colHdrFont);
+    HSSFCellStyle colStyleHrdDept = wb.createCellStyle();
+    colStyleHrdDept.setBorderBottom(HSSFBorderFormatting.BORDER_THIN);
+    colStyleHrdDept.setBorderLeft(HSSFBorderFormatting.BORDER_THIN);
+    colStyleHrdDept.setFont(colHdrFont);
+    //Creating styles code ends
+    HSSFRow row = null;
+    LincuMemberCardVOImpl cardDetails = this.getLincuMemberCard();
+    RowSetIterator rowIter = cardDetails.createRowSetIterator(null); //creating secoundary Iterator
+    rowIter.reset();
+    Boolean flag = false;
+    LincuMemberCardVORowImpl dataRow;
+    while (rowIter.hasNext()) { 
+    row = sheet.createRow(idx); //creating 1st row
+    dataRow = (LincuMemberCardVORowImpl) rowIter.next();
+    if(flag == false){
+
+    row.createCell(0).setCellValue("CIF Number"); //setting column heading
+    sheet.autoSizeColumn(0);
+    row.getCell(0).setCellStyle(colStyleTopLeft);
+    row.createCell(1).setCellValue("Amount");
+    sheet.autoSizeColumn(1);
+    row.getCell(1).setCellStyle(colStyleTopLeft);
+    row.createCell(2).setCellValue("Customer Name");
+    sheet.autoSizeColumn(2);
+    row.getCell(2).setCellStyle(colStyleTopLeft);
+    row.createCell(3).setCellValue("File Trailer");
+    sheet.autoSizeColumn(3);
+    row.getCell(3).setCellStyle(colStyleTopLeft);
+    
+    idx = idx + 1;
+    row = sheet.createRow(idx); //creating 2nd row
+    }
+        
+           
+        if (dataRow.getCifNumber1() != null)
+            row.createCell(0).setCellValue(dataRow.getCifNumber1().toString());
+        else
+            row.createCell(0).setCellValue("");
+        sheet.autoSizeColumn(0);
+
+        if (dataRow.getTopupAmount() != null)
+            row.createCell(1).setCellValue(dataRow.getTopupAmount().toString());
+        else
+            row.createCell(1).setCellValue("");
+        sheet.autoSizeColumn(1);
+
+        if ((dataRow.getFirstName() != null) && (dataRow.getLastName() != null))
+            row.createCell(2).setCellValue(dataRow.getFirstName().concat(" ").concat(dataRow.getLastName()));
+        else
+            row.createCell(2).setCellValue("");
+        sheet.autoSizeColumn(2);
+        
+        row.createCell(3).setCellValue("99999");
+        sheet.autoSizeColumn(3);
+
     //2nd Row ends
     flag = true; 
     idx = idx + 1;

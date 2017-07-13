@@ -893,5 +893,12 @@
         Name="_return_type_"
         Type="void"/>
     </Method>
+    <Method
+      Name="createExportCardTopupDetailsWb"
+      MethodName="createExportCardTopupDetailsWb">
+      <Return
+        Name="_return_type_"
+        Type="java.util.List"/>
+    </Method>
   </ClientInterface>
 </AppModule>

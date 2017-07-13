@@ -360,7 +360,7 @@
           <f:validator binding="#{bindings.MailingAddrLine3.validator}"/>
         </af:inputText>
         <af:selectOneChoice value="#{bindings.MailingAddrLine4.inputValue}" label="#{bindings.MailingAddrLine4.label}"
-                            required="true"
+                            required="false" showRequired="true"
                             shortDesc="#{bindings.MailingAddrLine4.hints.tooltip}" id="soc13" contentStyle="width:295px;"
                             disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:selectItems value="#{bindings.MailingAddrLine4.items}" id="si21"/>

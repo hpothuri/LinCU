@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 
 import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
+import oracle.jbo.domain.Date;
 import oracle.jbo.server.EntityImpl;
 import oracle.jbo.server.ViewRowImpl;
 // ---------------------------------------------------------------------
@@ -153,6 +154,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
         CardId1,
         MemberId3,
         TransRefCIFNumber,
+        CardReqType2,
+        SQLSubmittedDate,
         LincuMemberCardDocsVO,
         LincuMemberCardAuditVO,
         LincuMemberCardDocsVO1,
@@ -325,6 +328,8 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     public static final int CARDID1 = AttributesEnum.CardId1.index();
     public static final int MEMBERID3 = AttributesEnum.MemberId3.index();
     public static final int TRANSREFCIFNUMBER = AttributesEnum.TransRefCIFNumber.index();
+    public static final int CARDREQTYPE2 = AttributesEnum.CardReqType2.index();
+    public static final int SQLSUBMITTEDDATE = AttributesEnum.SQLSubmittedDate.index();
     public static final int LINCUMEMBERCARDDOCSVO = AttributesEnum.LincuMemberCardDocsVO.index();
     public static final int LINCUMEMBERCARDAUDITVO = AttributesEnum.LincuMemberCardAuditVO.index();
     public static final int LINCUMEMBERCARDDOCSVO1 = AttributesEnum.LincuMemberCardDocsVO1.index();
@@ -2049,6 +2054,30 @@ public class LincuMemberCardVORowImpl extends ViewRowImpl implements LincuMember
     public String getTransRefCIFNumber() {
         return this.getCifNumber1();
         //return (String) getAttributeInternal(TRANSREFCIFNUMBER);
+    }
+
+    /**
+     * Gets the attribute value for CARD_REQ_TYPE using the alias name CardReqType2.
+     * @return the CARD_REQ_TYPE
+     */
+    public String getCardReqType2() {
+        return (String) getAttributeInternal(CARDREQTYPE2);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for CARD_REQ_TYPE using the alias name CardReqType2.
+     * @param value value to set the CARD_REQ_TYPE
+     */
+    public void setCardReqType2(String value) {
+        setAttributeInternal(CARDREQTYPE2, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute SQLSubmittedDate.
+     * @return the SQLSubmittedDate
+     */
+    public Date getSQLSubmittedDate() {
+        return (Date) getAttributeInternal(SQLSUBMITTEDDATE);
     }
 
     /**
