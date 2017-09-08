@@ -1,6 +1,8 @@
 package com.linCu.servlets;
 
 import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -41,21 +43,27 @@ public class ImageServlet extends HttpServlet {
             DataSource ds = (DataSource)ctx.lookup("jdbc/LinCuDBDS");
             conn = ds.getConnection();
             PreparedStatement ps;
-            ps = conn.prepareStatement("SELECT DOCUMENT, DOCUMENT_NAME FROM LINCU_MEMBER_CARD_DOCS WHERE DOC_ID = ?");
+            ps = conn.prepareStatement("SELECT DOCUMENT, DOCUMENT_NAME, PATH FROM LINCU_MEMBER_CARD_DOCS WHERE DOC_ID = ?");
             ps.setInt(1, new Integer(imageId));
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                Blob blob = rs.getBlob("DOCUMENT");
+                //Blob blob = rs.getBlob("DOCUMENT");
                 String fileName = rs.getString("DOCUMENT_NAME");
+                String filePath = rs.getString("PATH");
                 response.setContentType(ContentTypes.get(fileName));
-                if(blob != null){
-                BufferedInputStream bis = new BufferedInputStream(blob.getBinaryStream());
+                //if(blob != null){
+                if(filePath != null){
+                //BufferedInputStream bis = new BufferedInputStream(blob.getBinaryStream());
+                File filed = new File(filePath);
+                FileInputStream bis = new FileInputStream(filed);
                 int b;
                 byte[] buffer = new byte[10240];
                 while((b = bis.read(buffer, 0, 10240)) != -1){
                   os.write(buffer,0,b);  
                 }
+                    bis.close();
                 }
+               
                 os.close();
             }
         } catch (NamingException e) {

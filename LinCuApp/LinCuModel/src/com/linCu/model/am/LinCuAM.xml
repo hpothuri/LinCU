@@ -280,8 +280,19 @@
       FullName="com.linCu.model.vvo.CardApplicationVVO.QureyActiveApplications"/>
   </ViewUsage>
   <ViewUsage
-    Name="LookUpDataVO"
-    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO"/>
+    Name="ExportExcelType"
+    ViewObjectName="com.linCu.model.vvo.LookUpDataVVO">
+    <ViewCriteriaUsage
+      Name="QueryByLookupType"
+      FullName="com.linCu.model.vvo.LookUpDataVVO.QueryByLookupType"/>
+    <ParameterMap>
+      <PIMap Variable="bindLookUpType">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA['EXPORT_TYPE']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
   <ViewUsage
     Name="CountryVO"
     ViewObjectName="com.linCu.model.vvo.CountryVVO"/>
@@ -899,6 +910,27 @@
       <Return
         Name="_return_type_"
         Type="java.util.List"/>
+    </Method>
+    <Method
+      Name="createExportCardDetailsAsText"
+      MethodName="createExportCardDetailsAsText">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="createExportCardTopupDetailsAsText"
+      MethodName="createExportCardTopupDetailsAsText">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="exportType"
+      MethodName="exportType">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
     </Method>
   </ClientInterface>
 </AppModule>

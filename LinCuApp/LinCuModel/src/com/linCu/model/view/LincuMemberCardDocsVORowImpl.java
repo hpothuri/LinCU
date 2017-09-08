@@ -29,6 +29,7 @@ public class LincuMemberCardDocsVORowImpl extends ViewRowImpl {
         DocumentType,
         Required,
         DocumentType1,
+        Path,
         DocumentTypeVA,
         AddExtraDocsVA;
         static AttributesEnum[] vals = null;
@@ -64,6 +65,7 @@ public class LincuMemberCardDocsVORowImpl extends ViewRowImpl {
     public static final int DOCUMENTTYPE = AttributesEnum.DocumentType.index();
     public static final int REQUIRED = AttributesEnum.Required.index();
     public static final int DOCUMENTTYPE1 = AttributesEnum.DocumentType1.index();
+    public static final int PATH = AttributesEnum.Path.index();
     public static final int DOCUMENTTYPEVA = AttributesEnum.DocumentTypeVA.index();
     public static final int ADDEXTRADOCSVA = AttributesEnum.AddExtraDocsVA.index();
 
@@ -207,6 +209,22 @@ public class LincuMemberCardDocsVORowImpl extends ViewRowImpl {
      */
     public void setDocumentType1(String value) {
         setAttributeInternal(DOCUMENTTYPE1, value);
+    }
+
+    /**
+     * Gets the attribute value for PATH using the alias name Path.
+     * @return the PATH
+     */
+    public String getPath() {
+        return (String) getAttributeInternal(PATH);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for PATH using the alias name Path.
+     * @param value value to set the PATH
+     */
+    public void setPath(String value) {
+        setAttributeInternal(PATH, value);
     }
 
     /**

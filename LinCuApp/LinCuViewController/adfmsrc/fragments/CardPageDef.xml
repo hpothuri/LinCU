@@ -471,5 +471,10 @@
       </AttrNames>
     </attributeValues>
     <listOfValues IterBinding="LincuMemberCardIterator" StaticList="false" Uses="LOV_MemberNo" id="MemberNo"/>
+    <attributeValues IterBinding="LincuMemberCardDocsIterator" id="Path">
+      <AttrNames>
+        <Item Value="Path"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

@@ -2418,12 +2418,12 @@
           </ViewCriteriaRow>
           <ViewCriteriaRow
             Name="QueryByCardStatus_LincuMemberCardVOCriteria1_row_0_CardStatus_itemHolder_row_5"
-            Conjunction="AND">
+            Conjunction="OR">
             <ViewCriteriaItem
               Name="QueryByCardStatus_LincuMemberCardVOCriteria1_row_0_CardStatus_QueryByCardStatus_LincuMemberCardVOCriteria1_row_0_CardStatus_itemHolder_QueryByCardStatus_LincuMemberCardVOCriteria1_row_0_CardStatus_itemHolder_row_5_CardStatus"
               ViewAttribute="CardStatus"
               Operator="="
-              Conjunction="AND"
+              Conjunction="OR"
               Value=":bindStatus5"
               IsBindVarValue="true"
               Required="Optional"/>

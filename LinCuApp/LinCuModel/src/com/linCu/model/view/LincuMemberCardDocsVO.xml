@@ -180,6 +180,12 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="Path"
+    PrecisionRule="true"
+    EntityAttrName="Path"
+    EntityUsage="LincuMemberCardDocsEO"
+    AliasName="PATH"/>
   <ClientInterface
     Name="__clientInterface">
     <Method

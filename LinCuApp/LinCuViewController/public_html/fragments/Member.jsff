@@ -188,6 +188,7 @@
                       shortDesc="#{bindings.HomePhoneNumber.hints.tooltip}" id="it8"
                       disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.HomePhoneNumber.validator}"/>
+          <af:validateRegExp pattern="[0-9]{1,10}" messageDetailNoMatch="Invalid phone number"/>  
         </af:inputText>
         <af:inputText value="#{bindings.MobilePhoneNumber.inputValue}" label="#{bindings.MobilePhoneNumber.hints.label}"
                       required="#{bindings.MobilePhoneNumber.hints.mandatory}"
@@ -196,6 +197,7 @@
                       shortDesc="#{bindings.MobilePhoneNumber.hints.tooltip}" id="it15"
                       disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.MobilePhoneNumber.validator}"/>
+           <af:validateRegExp pattern="[0-9]{1,10}" messageDetailNoMatch="Invalid phone number"/>  
         </af:inputText>
         <af:inputText value="#{bindings.FaxNumber.inputValue}" label="#{bindings.FaxNumber.hints.label}"
                       required="#{bindings.FaxNumber.hints.mandatory}"
@@ -230,7 +232,7 @@
           <f:validator binding="#{bindings.AnnualIncome.validator}"/>
         </af:selectOneChoice>
         <af:selectOneRadio value="#{bindings.ShareholderCode.inputValue}" label="#{bindings.ShareholderCode.label}"
-                           required="#{bindings.ShareholderCode.hints.mandatory}"
+                           required="true"
                            shortDesc="#{bindings.ShareholderCode.hints.tooltip}" id="sor3"
                            disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:selectItems value="#{bindings.ShareholderCode.items}" id="si5"/>
@@ -406,7 +408,7 @@
       <af:panelFormLayout id="pfl7" maxColumns="3" rows="3" labelWidth="30%">
         <f:facet name="footer"/>
         <af:inputText value="#{bindings.Employer.inputValue}" label="#{bindings.Employer.hints.label}"
-                      required="#{bindings.Employer.hints.mandatory}" columns="#{bindings.Employer.hints.displayWidth}"
+                      required="true" columns="#{bindings.Employer.hints.displayWidth}"
                       maximumLength="#{bindings.Employer.hints.precision}"
                       shortDesc="#{bindings.Employer.hints.tooltip}" id="it33"
                       disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
@@ -421,7 +423,7 @@
         </af:selectOneChoice>
         <af:outputText id="ot1"/>
         <af:inputText value="#{bindings.EmployerAddress1.inputValue}" label="#{bindings.EmployerAddress1.hints.label}"
-                      required="#{bindings.EmployerAddress1.hints.mandatory}"
+                      required="true"
                       columns="#{bindings.EmployerAddress1.hints.displayWidth}"
                       maximumLength="#{bindings.EmployerAddress1.hints.precision}"
                       shortDesc="#{bindings.EmployerAddress1.hints.tooltip}" id="it34"
@@ -437,7 +439,7 @@
           <f:validator binding="#{bindings.EmployerAddress2.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.EmployerCity.inputValue}" label="#{bindings.EmployerCity.hints.label}"
-                      required="#{bindings.EmployerCity.hints.mandatory}"
+                      required="true"
                       columns="#{bindings.EmployerCity.hints.displayWidth}"
                       maximumLength="#{bindings.EmployerCity.hints.precision}"
                       shortDesc="#{bindings.EmployerCity.hints.tooltip}" id="it36"
@@ -452,6 +454,7 @@
                       shortDesc="#{bindings.BusinessPhoneNumber.hints.tooltip}" id="it2"
                       disabled="#{(pageFlowScope.action eq 'view') or (sessionScope.user.userRole ne 'MSR') or (bindings.TransMemberStatus eq 'SUBMIT') or (bindings.TransMemberStatus eq 'APPROVE')}">
           <f:validator binding="#{bindings.BusinessPhoneNumber.validator}"/>
+           <af:validateRegExp pattern="[0-9]{1,10}" messageDetailNoMatch="Invalid phone number"/>
         </af:inputText>
         <af:inputText value="#{bindings.BusinessPhoneExtn.inputValue}" label="#{bindings.BusinessPhoneExtn.hints.label}"
                       required="#{bindings.BusinessPhoneExtn.hints.mandatory}"
@@ -652,6 +655,7 @@
                     maximumLength="#{bindings.WorkPhone.hints.precision}"
                     shortDesc="#{bindings.WorkPhone.hints.tooltip}" id="it77">
         <f:validator binding="#{bindings.WorkPhone.validator}"/>
+         <af:validateRegExp pattern="[0-9]{1,10}" messageDetailNoMatch="Invalid phone number"/>
       </af:inputText>
       <af:inputText value="#{bindings.TinOrSid.inputValue}" label="#{bindings.TinOrSid.hints.label}"
                     required="#{bindings.TinOrSid.hints.mandatory}" columns="#{bindings.TinOrSid.hints.displayWidth}"

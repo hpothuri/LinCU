@@ -27,8 +27,6 @@ public class LoginBean {
     public String login() {
         try {
           String password = (String)ADFUtils.getPageFlowScopeValue("password");
-          System.out.println("-----Password------"+password);
-            System.out.println("-----Password------"+PasswordUtil.encryptPassword(password));  
           Map paramMap = new HashMap();
           paramMap.put("password", PasswordUtil.encryptPassword(password));  
           String msg = (String) ADFUtils.executeOperationBinding("validateLogin",paramMap); 
@@ -57,9 +55,12 @@ public class LoginBean {
                 JSFUtils.getSession().setAttribute("creditUnionId", userMap.get("creditUnionId").toString());
                 }
                 userSessionData.setUserType(userMap.get("userType").toString());
+                    String exportType = (String) ADFUtils.executeOperationBinding("exportType"); 
+                    userSessionData.setExportType(exportType);
+                    JSFUtils.getSession().setAttribute("exportType", exportType); 
                 fc.getExternalContext().getSessionMap().put("user", userSessionData);
                     JSFUtils.getSession().setAttribute("userId", userMap.get("userName").toString());   
-                    JSFUtils.getSession().setAttribute("role", userMap.get("role").toString());
+                    JSFUtils.getSession().setAttribute("role", userMap.get("role").toString());  
                     ADFUtils.setPageFlowScopeValue("passwordPage", false);
                         //ADFUtils.setPageFlowScopeValue("firstLogin", false);
                         ADFUtils.setPageFlowScopeValue("creditUnion", true); 

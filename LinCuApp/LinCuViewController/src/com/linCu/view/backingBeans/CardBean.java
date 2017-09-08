@@ -12,13 +12,20 @@ import java.io.DataInputStream;
 import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import java.io.OutputStreamWriter;
+
 import java.math.BigDecimal;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import java.util.ArrayList;
@@ -284,6 +291,8 @@ public class CardBean {
     }
 
     public String uploadDoc() {
+        InputStream inputStream = null;
+        try{
         UploadedFile imageFile = this.getFile();
         String fileName = imageFile.getFilename();
         String fileExtn = getFileExtn(fileName);
@@ -295,12 +304,42 @@ public class CardBean {
             BindingContext bindingCtx = BindingContext.getCurrent();
             BindingContainer bindingcnt = bindingCtx.getCurrentBindingsEntry();
             DCBindingContainer dcContainger = (DCBindingContainer) bindingcnt;
-            DCIteratorBinding itr = dcContainger.findIteratorBinding("LincuMemberCardDocsIterator");
+            DCIteratorBinding docItr = dcContainger.findIteratorBinding("LincuMemberCardDocsIterator");
 
-            oracle.jbo.Row row = itr.getCurrentRow();
-            row.setAttribute("Document", createBlobDomain(imageFile));
-            row.setAttribute("DocumentName", fileName);
+            DCIteratorBinding cardItr = dcContainger.findIteratorBinding("LincuMemberCardIterator");
+
+            oracle.jbo.Row docRow = docItr.getCurrentRow();
+            oracle.jbo.Row cardRow = cardItr.getCurrentRow();
+            Path p1 = Paths.get("C:\\Users\\DileepKumar\\Desktop\\LinCu\\UploadedDocuments\\"+cardRow.getAttribute("CardId").toString()+"\\"+docRow.getAttribute("DocId").toString());
+            Files.createDirectories(p1);
+            String path = "C:\\Users\\DileepKumar\\Desktop\\LinCu\\UploadedDocuments\\"+cardRow.getAttribute("CardId").toString()+"\\"+docRow.getAttribute("DocId").toString()+"\\"+fileName;
+            FileOutputStream out = new FileOutputStream(path);
+            inputStream = imageFile.getInputStream();
+            byte[] buffer = new byte[10240];
+            int bytesRead = 0;
+            while ((bytesRead = inputStream.read(buffer, 0, 10240)) != -1) {
+                                out.write(buffer, 0, bytesRead);
+                }
+            out.flush();
+            out.close();
+            //Enable this comment when we store value in DB again
+            //row.setAttribute("Document", createBlobDomain(imageFile));
+            //"C:\\Users\\DileepKumar\\Desktop\\LinCu\\UploadedDocuments";
+            docRow.setAttribute("Path", path);
+            docRow.setAttribute("DocumentName", fileName);
             //this.getAttachDocument().hide();
+        }
+        }catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if(inputStream != null)
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -313,7 +352,7 @@ public class CardBean {
     boolean isExcel(String fileExtn) {
         if (fileExtn.equals("pdf") || fileExtn.equals("txt") || fileExtn.equals("png") || fileExtn.equals("tif") ||
             fileExtn.equals("tiff") || fileExtn.equals("gif") || fileExtn.equals("jpeg") || fileExtn.equals("jpe") ||
-            fileExtn.equals("jfif"))
+            fileExtn.equals("jfif") || fileExtn.equals("jpg"))
             return true;
         else
             return false;
@@ -369,23 +408,29 @@ public class CardBean {
 
     public void downloadFile(FacesContext facesContext, OutputStream outputStream) {
              BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();  
-             AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("Document");  
+             //AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("Document");
+               AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("Path");  
              if (attr != null)  
              {  
-               BlobDomain blob = (BlobDomain) attr.getInputValue();  
-               try  
-               {  // copy the data from the blobDomain to the output stream   
-                 IOUtils.copy(blob.getInputStream(), outputStream);  
-                 blob.closeInputStream();  
+                   try  
+                   {   
+               String filePath = (String)attr.getInputValue();
+               File filed = new File(filePath);
+               FileInputStream bis;
+                bis = new FileInputStream(filed);
+
+            //BlobDomain blob = (BlobDomain) attr.getInputValue();
+                // copy the data from the blobDomain to the output stream   
+                 IOUtils.copy(bis, outputStream);  
+                 bis.close();  
                  outputStream.flush();  
                }  
-               catch (IOException e)  
-               {  
+               catch (IOException e){  
                  // handle errors  
                  e.printStackTrace();  
                  FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), "");  
                  FacesContext.getCurrentInstance().addMessage(null, msg);  
-               }  
+               } 
              }  
     }
     
@@ -787,12 +832,36 @@ public class CardBean {
 
     }
     
+    public void exportCardDetailsDownloadAsText(FacesContext facesContext, OutputStream outputStream) {
+    try {
+    String dataText = (String) ADFUtils.executeOperationBinding("createExportCardDetailsAsText"); //method for creating text file
+    OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
+    writer.write(dataText);
+    writer.flush();
+    } catch (IOException ex) {
+    ex.printStackTrace();
+    }
+
+    }
+    
     public void exportCardDetailsTopupDownload(FacesContext facesContext, OutputStream outputStream) {
     try {
     List wb = (List) ADFUtils.executeOperationBinding("createExportCardTopupDetailsWb"); //method for creating WB
     HSSFWorkbook workbook = (HSSFWorkbook) wb.get(0);
     workbook.write(outputStream);
     outputStream.flush();
+    } catch (IOException ex) {
+    ex.printStackTrace();
+    }
+
+    }
+    
+    public void exportCardDetailsTopupDownloadAsText(FacesContext facesContext, OutputStream outputStream) {
+    try {
+        String dataText = (String) ADFUtils.executeOperationBinding("createExportCardTopupDetailsAsText"); //method for creating text file
+        OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
+        writer.write(dataText);
+        writer.flush();
     } catch (IOException ex) {
     ex.printStackTrace();
     }

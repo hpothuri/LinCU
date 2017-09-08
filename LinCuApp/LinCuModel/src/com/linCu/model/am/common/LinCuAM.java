@@ -71,5 +71,11 @@ public interface LinCuAM extends ApplicationModule {
     void generateAndSetMPSDID();
 
     List createExportCardTopupDetailsWb();
+
+    String createExportCardDetailsAsText();
+
+    String createExportCardTopupDetailsAsText();
+
+    String exportType();
 }
 

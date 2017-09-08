@@ -76,5 +76,13 @@
                   MethodName="createExportCardTopupDetailsWb" IsViewObjectMethod="false"
                   DataControl="LinCuAMDataControl" InstanceName="data.LinCuAMDataControl.dataProvider"
                   ReturnName="data.LinCuAMDataControl.methodResults.createExportCardTopupDetailsWb_LinCuAMDataControl_dataProvider_createExportCardTopupDetailsWb_result"/>
+    <methodAction id="createExportCardDetailsAsText" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="createExportCardDetailsAsText" IsViewObjectMethod="false" DataControl="LinCuAMDataControl"
+                  InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.createExportCardDetailsAsText_LinCuAMDataControl_dataProvider_createExportCardDetailsAsText_result"/>
+    <methodAction id="createExportCardTopupDetailsAsText" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="createExportCardTopupDetailsAsText" IsViewObjectMethod="false"
+                  DataControl="LinCuAMDataControl" InstanceName="data.LinCuAMDataControl.dataProvider"
+                  ReturnName="data.LinCuAMDataControl.methodResults.createExportCardTopupDetailsAsText_LinCuAMDataControl_dataProvider_createExportCardTopupDetailsAsText_result"/>
   </bindings>
 </pageDefinition>

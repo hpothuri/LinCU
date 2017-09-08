@@ -6,6 +6,7 @@ public class UserSessionData {
     private String userRoleDesc;
     private String unionId;
     private String userType;
+    private String exportType;
     public UserSessionData() {
         super();
     }
@@ -48,5 +49,13 @@ public class UserSessionData {
 
     public String getUserType() {
         return userType;
+    }
+
+    public void setExportType(String exportType) {
+        this.exportType = exportType;
+    }
+
+    public String getExportType() {
+        return exportType;
     }
 }

@@ -89,6 +89,18 @@
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="Path"
+    Precision="1000"
+    ColumnName="PATH"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LINCU_MEMBER_CARD_DOCS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="LincuMemberCardEO"
     Association="com.linCu.model.assoc.LincuMemberCardDocsAssoc"

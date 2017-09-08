@@ -26,10 +26,20 @@
               <af:fileDownloadActionListener contentType="application/vnd.ms-excel" filename="ExportCardDetails.xls"
                                             method="#{card.exportCardDetailsDownload}"/>
             </af:commandToolbarButton>
+            <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT_NEW_ADD_ON_CARDS}" id="ctb6" icon="/images/text.png"
+                                   rendered="#{(sessionScope.user.userRole eq 'FCB')}" disabled="#{(!bindings.Delete.enabled)||(bindings.CardReqType eq 'TOPUP_CARD')}">
+              <af:fileDownloadActionListener contentType="text/plain; charset=utf-8" filename="ExportCardDetails.txt"
+                                            method="#{card.exportCardDetailsDownloadAsText}"/>
+            </af:commandToolbarButton>
             <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT_TOPUP_CARDS}" id="ctb5" icon="/images/Excel-16.gif"
                                    rendered="#{(sessionScope.user.userRole eq 'FCB')}" disabled="#{(!bindings.Delete.enabled)||(bindings.CardReqType eq 'NEW_CARD')||(bindings.CardReqType eq 'ADDON_CARD')}">
               <af:fileDownloadActionListener contentType="application/vnd.ms-excel" filename="ExportCardDetails.xls"
                                             method="#{card.exportCardDetailsTopupDownload}"/>
+            </af:commandToolbarButton>
+            <af:commandToolbarButton text="#{lincuviewcontrollerBundle.EXPORT_TOPUP_CARDS}" id="ctb7" icon="/images/text.png"
+                                   rendered="#{(sessionScope.user.userRole eq 'FCB')}" disabled="#{(!bindings.Delete.enabled)||(bindings.CardReqType eq 'NEW_CARD')||(bindings.CardReqType eq 'ADDON_CARD')}">
+              <af:fileDownloadActionListener contentType="text/plain; charset=utf-8" filename="ExportCardDetails.txt"
+                                            method="#{card.exportCardDetailsTopupDownloadAsText}"/>
             </af:commandToolbarButton>
             <af:commandToolbarButton text="#{lincuviewcontrollerBundle.UPLOAD}" id="ctb4" icon="/images/Excel-16.gif"
                                      actionListener="#{card.requestBulkCards}"

@@ -450,7 +450,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
            for(Row row : rows){
               LincuMemberCardDocsVORowImpl docRow = (LincuMemberCardDocsVORowImpl)row;
                if(docRow != null){
-                   if("Y".contentEquals(docRow.getRequired()) && docRow.getDocument() == null){
+                   //if("Y".contentEquals(docRow.getRequired()) && docRow.getDocument() == null){
+                   if("Y".contentEquals(docRow.getRequired()) && docRow.getPath() == null){
                        return false;
                    }
                }
@@ -599,7 +600,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     dataRow = (LincuMemberCardVORowImpl) rowIter.next();
     if(flag == false){
 
-    row.createCell(0).setCellValue("ZMDPID"); //setting column heading
+    row.createCell(0).setCellValue("#MPSD ID"); //setting column heading
     sheet.autoSizeColumn(0);
     row.getCell(0).setCellStyle(colStyleTopLeft);
     row.createCell(1).setCellValue("PREF");
@@ -969,15 +970,18 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
                 row.createCell(27).setCellValue("");
             sheet.autoSizeColumn(27);
         
-            if (dataRow.getHomePhoneNumber() != null)
-                row.createCell(28).setCellValue(dataRow.getHomePhoneNumber().toString());
+        if (dataRow.getHomePhoneNumber() != null){
+                String formattedPhone = "".concat(dataRow.getHomePhoneNumber().toString().substring(0, 3).concat("-").concat(dataRow.getHomePhoneNumber().toString().substring(3,6)).concat("-").concat(dataRow.getHomePhoneNumber().toString().substring(6,10)));
+                row.createCell(28).setCellValue(formattedPhone);
+        }
             else
                 row.createCell(28).setCellValue("");
             sheet.autoSizeColumn(28);
         
-            if (dataRow.getBusinessPhoneNumber() != null)
-                row.createCell(29).setCellValue(dataRow.getBusinessPhoneNumber().toString());
-            else
+        if (dataRow.getBusinessPhoneNumber() != null){
+                String formattedPhone = "".concat(dataRow.getBusinessPhoneNumber().toString().substring(0, 3).concat("-").concat(dataRow.getBusinessPhoneNumber().toString().substring(3,6)).concat("-").concat(dataRow.getBusinessPhoneNumber().toString().substring(6,10)));
+                row.createCell(29).setCellValue(formattedPhone);
+        } else
                 row.createCell(29).setCellValue("");
             sheet.autoSizeColumn(29);
         
@@ -987,9 +991,10 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
                 row.createCell(30).setCellValue("");
             sheet.autoSizeColumn(30);
         
-            if (dataRow.getMobilePhoneNumber() != null)
-                row.createCell(31).setCellValue(dataRow.getMobilePhoneNumber().toString());
-            else
+        if (dataRow.getMobilePhoneNumber() != null){
+            String formattedPhone = "".concat(dataRow.getMobilePhoneNumber().toString().substring(0, 3).concat("-").concat(dataRow.getMobilePhoneNumber().toString().substring(3,6)).concat("-").concat(dataRow.getMobilePhoneNumber().toString().substring(6,10)));
+                row.createCell(31).setCellValue(formattedPhone);
+        }else
                 row.createCell(31).setCellValue("");
             sheet.autoSizeColumn(31);
         
@@ -1146,8 +1151,11 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
                 row.createCell(59).setCellValue("");
             sheet.autoSizeColumn(59);
 
+        if (dataRow.getPermanentAddrLine4() != null)
+            row.createCell(60).setCellValue(dataRow.getPermanentAddrLine4().toString());
+        else
             row.createCell(60).setCellValue("");
-            sheet.autoSizeColumn(60);
+        sheet.autoSizeColumn(60);       
 
             if (dataRow.getMonthlySalary() != null)
                 row.createCell(61).setCellValue(dataRow.getMonthlySalary().toString());
@@ -1172,6 +1180,330 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     List list = new ArrayList();
     list.add(wb);
     return list;
+    }
+    
+    public String createExportCardDetailsAsText() {
+        String textFileValue =
+            "#MPSD ID|PREF|FNAME|MNAME|LNM|DOB|ZEID|ZDP|ZPP|ZBIR|SEX|PAD1|PAD2|PAD3|PAD4|PCITY|PSTATE|PZIP|PCNTRY|MCNTRY|MAD1|MAD2|MAD3|MAD4|MCITY|MSTATE|MZIP|EMAIL|HPH|BPH|BPHEXT|APH|FAXNUM|TAXID|NATION|TAXEXM|ZNATION|ZFRNTAXF|ZFRNTAXD|ZCITRESF|ZPAFLG|ZCRCNTR1|ZCRCNTR2|ZCRCNTR3|ZCRCNTR4|ZRESTIN1|ZRESTIN2|ZRESTIN3|ZRESTIN4|OCC|RESCD|CEMPNAM|CEMPADD1|CEMPADD2|PID|DEP|INC|EDUC|SHHLD|OWN|STRTYP|MONSAL|CEMCITY|MAR\r\n";
+        
+        LincuMemberCardVOImpl cardDetails = this.getLincuMemberCard();
+        RowSetIterator rowIter = cardDetails.createRowSetIterator(null); //creating secoundary Iterator
+        rowIter.reset();
+        LincuMemberCardVORowImpl dataRow;
+        while (rowIter.hasNext()) { 
+        dataRow = (LincuMemberCardVORowImpl) rowIter.next();           
+            if (dataRow.getMpsdId() != null)
+                textFileValue = textFileValue.concat(dataRow.getMpsdId().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+               
+            if (dataRow.getMemberPrefix() != null)
+                textFileValue = textFileValue.concat(dataRow.getMemberPrefix().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getFirstName() != null)
+                textFileValue = textFileValue.concat(dataRow.getFirstName().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getMiddleName() != null)
+                textFileValue = textFileValue.concat(dataRow.getMiddleName().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getLastName() != null)
+                textFileValue = textFileValue.concat(dataRow.getLastName().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getDateOfBirth() != null){
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                String today = formatter.format(dataRow.getDateOfBirth());
+                textFileValue = textFileValue.concat(today).concat("|");
+            }
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getElectorialId() != null)
+                textFileValue = textFileValue.concat(dataRow.getElectorialId().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getDriverPermit() != null)
+                textFileValue = textFileValue.concat(dataRow.getDriverPermit().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getPassportNo() != null)
+                textFileValue = textFileValue.concat(dataRow.getPassportNo().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getBirNo() != null)
+                textFileValue = textFileValue.concat(dataRow.getBirNo().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getGender() != null)
+                textFileValue = textFileValue.concat(dataRow.getGender().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getPermanentAddrLine1() != null)
+                textFileValue = textFileValue.concat(dataRow.getPermanentAddrLine1().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getPermanentAddrLine2() != null)
+                textFileValue = textFileValue.concat(dataRow.getPermanentAddrLine2().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getPermanentAddrLine3() != null)
+                    textFileValue = textFileValue.concat(dataRow.getPermanentAddrLine3().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+            if (dataRow.getPermanentAddrLine4() != null)
+                textFileValue = textFileValue.concat(dataRow.getPermanentAddrLine4().toString()).concat("|");
+            else
+                textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getPermanentCity() != null)
+                    textFileValue = textFileValue.concat(dataRow.getPermanentCity().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getPermanentState() != null)
+                    textFileValue = textFileValue.concat(dataRow.getPermanentState().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getPermanentZipCode() != null)
+                    textFileValue = textFileValue.concat(dataRow.getPermanentZipCode().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getPermanentCountryCode() != null)
+                    textFileValue = textFileValue.concat(dataRow.getPermanentCountryCode().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getMailingCountryCode() != null)
+                    textFileValue = textFileValue.concat(dataRow.getMailingCountryCode().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getMailingAddrLine1() != null)
+                    textFileValue = textFileValue.concat(dataRow.getMailingAddrLine1().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getMailingAddrLine2() != null)
+                    textFileValue = textFileValue.concat(dataRow.getMailingAddrLine2().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getMailingAddrLine3() != null)
+                    textFileValue = textFileValue.concat(dataRow.getMailingAddrLine3().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getMailingAddrLine4() != null)
+                    textFileValue = textFileValue.concat(dataRow.getMailingAddrLine4().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getMailingCity() != null)
+                    textFileValue = textFileValue.concat(dataRow.getMailingCity().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getMailingState() != null)
+                    textFileValue = textFileValue.concat(dataRow.getMailingState().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getMailingZipCode() != null)
+                    textFileValue = textFileValue.concat(dataRow.getMailingZipCode().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getEmail() != null)
+                    textFileValue = textFileValue.concat(dataRow.getEmail().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+            if (dataRow.getHomePhoneNumber() != null){
+                    String formattedPhone = "".concat(dataRow.getHomePhoneNumber().toString().substring(0, 3).concat("-").concat(dataRow.getHomePhoneNumber().toString().substring(3,6)).concat("-").concat(dataRow.getHomePhoneNumber().toString().substring(6,10)));
+                    textFileValue = textFileValue.concat(formattedPhone).concat("|");
+            }
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+            if (dataRow.getBusinessPhoneNumber() != null){
+                    String formattedPhone = "".concat(dataRow.getBusinessPhoneNumber().toString().substring(0, 3).concat("-").concat(dataRow.getBusinessPhoneNumber().toString().substring(3,6)).concat("-").concat(dataRow.getBusinessPhoneNumber().toString().substring(6,10)));
+                    textFileValue = textFileValue.concat(formattedPhone).concat("|");
+            } else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getBusinessPhoneExtn() != null)
+                    textFileValue = textFileValue.concat(dataRow.getBusinessPhoneExtn().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+            if (dataRow.getMobilePhoneNumber() != null){
+                String formattedPhone = "".concat(dataRow.getMobilePhoneNumber().toString().substring(0, 3).concat("-").concat(dataRow.getMobilePhoneNumber().toString().substring(3,6)).concat("-").concat(dataRow.getMobilePhoneNumber().toString().substring(6,10)));
+                    textFileValue = textFileValue.concat(formattedPhone).concat("|");
+            }else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getFaxNumber() != null)
+                    textFileValue = textFileValue.concat(dataRow.getFaxNumber().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getBirthCountryCode() != null)
+                    textFileValue = textFileValue.concat(dataRow.getBirthCountryCode().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getLocalTaxExempt() != null)
+                    textFileValue = textFileValue.concat(dataRow.getLocalTaxExempt().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getNationality() != null)
+                    textFileValue = textFileValue.concat(dataRow.getNationality().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getEligibleForeignTax() != null)
+                    textFileValue = textFileValue.concat(dataRow.getEligibleForeignTax().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getDocForeignTaxExempt() != null)
+                    textFileValue = textFileValue.concat(dataRow.getDocForeignTaxExempt().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getForeignCitizenship() != null)
+                    textFileValue = textFileValue.concat(dataRow.getForeignCitizenship().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getPowerOfAttorney() != null)
+                    textFileValue = textFileValue.concat(dataRow.getPowerOfAttorney().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getCitizenShipCountry1() != null)
+                    textFileValue = textFileValue.concat(dataRow.getCitizenShipCountry1().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getCitizenShipCountry2() != null)
+                    textFileValue = textFileValue.concat(dataRow.getCitizenShipCountry2().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+            
+                if (dataRow.getCitizenShipCountry3() != null)
+                    textFileValue = textFileValue.concat(dataRow.getCitizenShipCountry3().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getCitizenShipCountry4() != null)
+                    textFileValue = textFileValue.concat(dataRow.getCitizenShipCountry4().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                textFileValue = textFileValue.concat("").concat("|");
+
+                textFileValue = textFileValue.concat("").concat("|");
+
+                textFileValue = textFileValue.concat("").concat("|");
+
+                textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getOccupationCode() != null)
+                    textFileValue = textFileValue.concat(dataRow.getOccupationCode().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getResidencyCode() != null)
+                    textFileValue = textFileValue.concat(dataRow.getResidencyCode().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getEmployer() != null)
+                    textFileValue = textFileValue.concat(dataRow.getEmployer().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getEmployerAddress1() != null)
+                    textFileValue = textFileValue.concat(dataRow.getEmployerAddress1().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getEmployerAddress2() != null)
+                    textFileValue = textFileValue.concat(dataRow.getEmployerAddress2().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getMotherMaidenName() != null)
+                    textFileValue = textFileValue.concat(dataRow.getMotherMaidenName().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getNoOfDependents() != null)
+                    textFileValue = textFileValue.concat(dataRow.getNoOfDependents().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getAnnualIncome() != null)
+                    textFileValue = textFileValue.concat(dataRow.getAnnualIncome().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getEducationCode() != null)
+                    textFileValue = textFileValue.concat(dataRow.getEducationCode().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getShareholderCode() != null)
+                    textFileValue = textFileValue.concat(dataRow.getShareholderCode().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getHomeOwnership() != null)
+                    textFileValue = textFileValue.concat(dataRow.getHomeOwnership().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getPermanentAddrLine4() != null)
+                    textFileValue = textFileValue.concat(dataRow.getPermanentAddrLine4().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getMonthlySalary() != null)
+                    textFileValue = textFileValue.concat(dataRow.getMonthlySalary().toString()).concat("|");
+                else
+                    textFileValue = textFileValue.concat("").concat("|");
+
+                textFileValue = textFileValue.concat("").concat("|");
+
+                if (dataRow.getMaritalStatus() != null)
+                    textFileValue = textFileValue.concat(dataRow.getMaritalStatus().toString()).concat("\r\n");
+                else
+                    textFileValue = textFileValue.concat("").concat("\r\n");
+            
+        
+        }
+        return textFileValue;
     }
     
     public List createExportCardTopupDetailsWb() {
@@ -1314,7 +1646,49 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     list.add(wb);
     return list;
     }
+    
+    public String createExportCardTopupDetailsAsText() { 
+        String textFileValue = "";
+    BigDecimal totalAmount = new BigDecimal(0);    
+    LincuMemberCardVOImpl cardDetails = this.getLincuMemberCard();
+    RowSetIterator rowIter = cardDetails.createRowSetIterator(null); //creating secoundary Iterator
+    rowIter.reset();
+    LincuMemberCardVORowImpl dataRow;
+    String rowTextValue = "";
+    while (rowIter.hasNext()) { 
+    dataRow = (LincuMemberCardVORowImpl) rowIter.next();
+           
+        if (dataRow.getCifNumber1() != null){
+            String formattedCIFString = new String(new char[15 - dataRow.getCifNumber1().length()]).replace('\0','0') + dataRow.getCifNumber1().toString();
+            rowTextValue = rowTextValue.concat(formattedCIFString);
+        }
+        else{
+            rowTextValue = rowTextValue.concat("000000000000000");
+        }
 
+        if (dataRow.getTopupAmount() != null){
+            String formattedTopupAmoutString = new String(new char[10 - dataRow.getTopupAmount().toString().length()]).replace('\0',' ') + dataRow.getTopupAmount().toString();
+            rowTextValue = rowTextValue.concat(formattedTopupAmoutString);
+            totalAmount = totalAmount.add(dataRow.getTopupAmount());
+        }
+        else
+            rowTextValue = rowTextValue.concat("");
+
+        if ((dataRow.getFirstName() != null) && (dataRow.getLastName() != null)){
+            String formattedTopupNameString = new String(new char[40 - dataRow.getFirstName().concat(" ").concat(dataRow.getLastName()).length()]).replace('\0',' ') + dataRow.getFirstName().concat(" ").concat(dataRow.getLastName());
+            rowTextValue = rowTextValue.concat(formattedTopupNameString);
+        }else
+            rowTextValue = rowTextValue.concat("");
+        
+        rowTextValue = rowTextValue.concat("\r\n");
+
+    }
+    String todayAsString = new SimpleDateFormat("ddMMyyyy").format(new Date());
+    String totalAmountString = new String(new char[9 - totalAmount.toString().length()]).replace('\0','0') + totalAmount.toString();
+    textFileValue = textFileValue.concat(todayAsString).concat(totalAmountString).concat("\r\n").concat(rowTextValue).concat("99999");
+    return textFileValue;
+    }
+    
     /**
      * Container's getter for YesOrNoVVO2.
      * @return YesOrNoVVO2
@@ -1870,7 +2244,7 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
     }
     
     public String findLookupDesc(String lookupType, String lookupCode){
-            ViewObjectImpl lookupVO = this.getLookUpDataVO();
+            ViewObjectImpl lookupVO = this.getExportExcelType();
             RowQualifier rowQualifier = new RowQualifier(lookupVO);
             //set where clause to row qualifier 
             rowQualifier.setWhereClause("LookupType='"+lookupType+"' AND LookupCode='"+lookupCode+"'");
@@ -1929,8 +2303,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
      * Container's getter for LookUpDataVVO1.
      * @return LookUpDataVVO1
      */
-    public ViewObjectImpl getLookUpDataVO() {
-        return (ViewObjectImpl) findViewObject("LookUpDataVO");
+    public ViewObjectImpl getExportExcelType() {
+        return (ViewObjectImpl) findViewObject("ExportExcelType");
     }
 
     /**
@@ -1965,7 +2339,8 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
              String date = format.format(new Date());
              String cardId = getFiveDigitApplicationNumber(date, memberRow.getCardId());
              if((creditUnionId != null) && (creditUnionBranchId != null) && (cardId != null)){
-              memberRow.setMpsdId(creditUnionId.concat(creditUnionBranchId).concat(cardId));
+                 String logicalCreditUnionId = creditUnionId + new String (new char[7- creditUnionId.length()]).replace('\0',' ');
+              memberRow.setMpsdId(logicalCreditUnionId.concat(creditUnionBranchId).concat(cardId));
              }
          }
     }
@@ -1987,6 +2362,13 @@ public class LinCuAMImpl extends ApplicationModuleImpl implements LinCuAM {
         }else{
         return null;
         }
+    }
+    
+    public String exportType(){
+       ViewObjectImpl exportTypeVO = this.getExportExcelType();
+       Row row = exportTypeVO.first();
+       String exportType = (String)row.getAttribute("LookupDesc");
+       return exportType;
     }
 }
 
